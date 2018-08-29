@@ -22,6 +22,11 @@
     <PackageReference Include="Castle.Core" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Application\UnionMall.Application.csproj" />
+    <ProjectReference Include="..\..\src\Domain\UnionMall.Core.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\UnionMall.EntityFrameworkCore\UnionMall.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

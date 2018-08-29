@@ -38,7 +38,6 @@
     <text name="WaitingForActivationMessage" value="Your account is waiting to be activated by system admin." />
     <text name="TenantSelection" value="Tenant Selection" />
     <text name="TenantSelection_Detail" value="Please select one of the following tenants." />
-    <text name="Logout" value="Logout" />
     <text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
     <text name="DatabaseConnectionString" value="Database connection string" />
     <text name="Users" value="Users" />
@@ -91,5 +90,12 @@
     <text name="StartTyping">Start Typing</text>
     <text name="Skins">Skins</text>
     <text name="Settings">Settings</text>
+    
+
+    <!--ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
+    <text name="Logout" value="Logout" />
+    <text value="PersonalInformation" name="PersonalInformation"/>
+    <text value="ModificationInformation" name="ModificationInformation"/>
+    <text value="LockScreen" name="LockScreen"/>
   </texts>
 </localizationDictionary>

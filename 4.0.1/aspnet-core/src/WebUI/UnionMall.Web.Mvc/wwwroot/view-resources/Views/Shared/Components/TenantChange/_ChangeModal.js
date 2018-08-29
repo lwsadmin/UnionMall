@@ -6,12 +6,15 @@
     function switchToSelectedTenant () {
 
         var tenancyName = _$form.find('input[name=TenancyName]').val();
-
-        if (!tenancyName) {
-            abp.multiTenancy.setTenantIdCookie(null);
-            location.reload();
+        if (tenancyName == "") {
+            $form.find('input[name=TenancyName]').focus();
             return;
         }
+        //if (!tenancyName) {
+        //    abp.multiTenancy.setTenantIdCookie(null);
+        //    location.reload();
+        //    return;
+        //}
 
         _accountService.isTenantAvailable({
             tenancyName: tenancyName

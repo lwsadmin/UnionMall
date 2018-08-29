@@ -1,25 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="zh-Hans">
   <texts>
-    <text name="HomePage" value="主页" />
-    <text name="About" value="关于我们" />
-    <text name="WellcomeMessage" value="欢迎使用 UnionMall!" />
-    
-    <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
-    <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
-
-    <text name="InvalidUserNameOrPassword" value="用户名或密码无效" />
-    <text name="ThereIsNoTenantDefinedWithName{0}" value="租户 {0}不存在" />
-    <text name="TenantIsNotActive" value="租户 {0} 未激活." />
-    <text name="UserIsNotActiveAndCanNotLogin" value="用户 {0} 未激活，不能登录." />
-    <text name="PleaseEnterLoginInformation" value="请输入登录信息" />
-    <text name="TenancyName" value="租户名称" />
-    <text name="UserNameOrEmail" value="用户名或邮箱地址" />
-    <text name="Password" value="密码" />
-    <text name="RememberMe" value="记住我" />
-    <text name="LogIn" value="登录" />
-    
-    <text name="LoginFailed" value="登录失败!" />
-    
+    <text value="联盟商城" name="UnionMall"/>
+    <text value="未选择" name="NotSelected"/>
+    <text value="更改商户" name="Changetenant"/>
+    <text value="主页" name="HomePage"/>
+    <text value="运营商" name="Tenants"/>
+    <text value="保存" name="Save"/>
+    <text value="取消" name="Cancel"/>
+    <text value="创建" name="Create"/>
+    <text value="备注" name="Memo"/>
+    <text value="用户" name="Users"/>
+    <text value="名称" name="Title"/>
+    <text value="系统设置" name="SystemSet"/>
+    <text value="创建时间" name="CreationTime"/>
+    <text value="添加" name="Add"/>
+    <text value="编辑" name="Edit"/>
+    <text value="删除" name="Delete"/>
+    <text value="操作" name="Operate"/>
+    <text value="角色" name="Roles"/>
+    <text value="商品管理" name="GoodsManage"/>
+    <text value="商品类别" name="GoodsCategory"/>
+    <text value="商品" name="Goods"/>
+    <text value="关于我们" name="About"/>
+    <text value="欢迎使用" name="WellcomeMessage"/>
+    <text value="部分输入信息不符合要求，请检查并改正.." name="FormIsNotValidMessage"/>
+    <text value="运营商户名不能为空" name="TenantNameCanNotBeEmpty"/>
+    <text value="用户名或密码无效" name="InvalidUserNameOrPassword"/>
+    <text value="运营商户{0}不存在" name="ThereIsNoTenantDefinedWithName{0}"/>
+    <text value="运营商户 {0} 未激活." name="TenantIsNotActive"/>
+    <text value="用户 {0} 未激活，不能登录." name="UserIsNotActiveAndCanNotLogin"/>
+    <text value="请输入登录信息" name="PleaseEnterLoginInformation"/>
+    <text value="运营商户名称" name="TenancyName"/>
+    <text value="用户名或邮箱地址" name="UserNameOrEmail"/>
+    <text value="密码" name="Password"/>
+    <text value="记住我" name="RememberMe"/>
+    <text value="登录" name="LogIn"/>
+    <text value="退出登录" name="Logout"/>
+    <text value="登录失败!" name="LoginFailed"/>
+    <text value="更换" name="Change"/>
+    <text value="当前商户" name="CurrentTenant"/>
+    <text value="个人信息" name="PersonalInformation"/>
+    <text value="修改资料" name="ModificationInformation"/>
+    <text value="安全锁屏" name="LockScreen"/>
   </texts>
 </localizationDictionary>

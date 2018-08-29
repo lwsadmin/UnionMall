@@ -22,25 +22,19 @@
 
     <link rel="shortcut icon" href="~/favicon.ico">
 
-    <title>UnionMall</title>
+    <title>@L("UnionMall")</title>
 
-    <environment names="Development">
-        <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/view-resources/Views/Account/_Layout.css" rel="stylesheet" asp-append-version="true" />
-    </environment>
 
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/view-resources/Views/_Bundles/account-layout.min.css" asp-append-version="true" />
-    </environment>
+    <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+
+
+    <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
+
+
+
 
     <!-- View specific styles -->
     @RenderSection("styles", required: false)
@@ -56,7 +50,7 @@
 
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);">UnionMall</a>
+            <a href="javascript:void(0);">@L("UnionMall")</a>
         </div>
 
         @if (MultiTenancyConfig.IsEnabled)
@@ -72,7 +66,7 @@
 
         <div class="row">
             <div class="col-xs-12 text-center" style="color: #e9e9e9">
-                <small>&copy; @DateTime.Now.Year UnionMall. <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
+                <small>&copy; @DateTime.Now.Year @L("UnionMall")-[@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
             </div>
         </div>
 
@@ -99,9 +93,9 @@
         <script src="~/js/main.js" asp-append-version="true"></script>
 
         @if (CultureInfo.CurrentUICulture.Name != "en")
-    {
-        <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
-}
+        {
+            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
+        }
     </environment>
 
     <environment names="Staging,Production">
