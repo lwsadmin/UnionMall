@@ -370,7 +370,7 @@ namespace UnionMall.Web.Controllers
 
         public ActionResult RedirectToAppHome()
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Main");
         }
 
         public string GetAppHomeUrl()

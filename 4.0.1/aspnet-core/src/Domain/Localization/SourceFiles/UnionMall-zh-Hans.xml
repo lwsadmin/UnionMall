@@ -11,28 +11,27 @@
     <text value="创建" name="Create"/>
     <text value="备注" name="Memo"/>
     <text value="用户" name="Users"/>
-    <text value="名称" name="Title"/>
-    <text value="系统设置" name="SystemSet"/>
+    <text value="名称" name="value"/>
     <text value="创建时间" name="CreationTime"/>
     <text value="添加" name="Add"/>
     <text value="编辑" name="Edit"/>
     <text value="删除" name="Delete"/>
     <text value="操作" name="Operate"/>
     <text value="角色" name="Roles"/>
-    <text value="商品管理" name="GoodsManage"/>
-    <text value="商品类别" name="GoodsCategory"/>
+
+
     <text value="商品" name="Goods"/>
     <text value="关于我们" name="About"/>
     <text value="欢迎使用" name="WellcomeMessage"/>
     <text value="部分输入信息不符合要求，请检查并改正.." name="FormIsNotValidMessage"/>
-    <text value="运营商户名不能为空" name="TenantNameCanNotBeEmpty"/>
-    <text value="用户名或密码无效" name="InvalidUserNameOrPassword"/>
-    <text value="运营商户{0}不存在" name="ThereIsNoTenantDefinedWithName{0}"/>
+    <text value="运营商户名不能为空" name="TenantnameCanNotBeEmpty"/>
+    <text value="用户名或密码无效" name="InvalidUsernameOrPassword"/>
+    <text value="运营商户{0}不存在" name="ThereIsNoTenantDefinedWithname{0}"/>
     <text value="运营商户 {0} 未激活." name="TenantIsNotActive"/>
     <text value="用户 {0} 未激活，不能登录." name="UserIsNotActiveAndCanNotLogin"/>
     <text value="请输入登录信息" name="PleaseEnterLoginInformation"/>
-    <text value="运营商户名称" name="TenancyName"/>
-    <text value="用户名或邮箱地址" name="UserNameOrEmail"/>
+    <text value="运营商户名称" name="Tenancyname"/>
+    <text value="用户名或邮箱地址" name="UsernameOrEmail"/>
     <text value="密码" name="Password"/>
     <text value="记住我" name="RememberMe"/>
     <text value="登录" name="LogIn"/>
@@ -43,5 +42,90 @@
     <text value="个人信息" name="PersonalInformation"/>
     <text value="修改资料" name="ModificationInformation"/>
     <text value="安全锁屏" name="LockScreen"/>
+    <text value="菜单" name="Menu"/>
+
+    <text name="OffLineCashie" value="线下收款"/>
+    <text name="QuickConsume" value="快速消费"/>
+    <text name="GoodsConsume" value="商品消费" />
+    <text name="MemberRecharge" value="会员充值"/>
+    <text name="CouponConsume" value="代金券消费" />
+    <text name="GiftCash" value="礼品兑换" />
+    <text name="PointRecharge" value="积分充值" />
+
+    <text name="OnlineGoods" value="线上商城"/>
+    <text name="GoodsCategory" value="商品类别"/>
+    <text name="GoodsBrand" value="商品品牌" />
+    <text name="GoodsManage" value="商品管理" />
+    <text name="GoodsOrder" value="商品订单" />
+    <text name="GoodsAttr" value="商品属性" />
+    <text name="GoodsSpec" value="商品规格" />
+    <text name="GoodsComment" value="商品评价" />
+    <text name="GoodAsk" value="商品咨询" />
+
+    <text name="Business" value="联盟商户"/>
+    <text name="OneJia" value="代理级别" />
+    <text name="TwoJia" value="我的代理" />
+    <text name="BusinessManage" value="商户管理" />
+    <text name="ChainStore" value="商户门店"/>
+
+    <text name="Member" value="会员管理"/>
+    <text name="MemberCategory" value="会员级别" />
+    <text name="MemberList" value="会员列表" />
+    <text name="MemberRegister" value="会员办理" />
+    <text name="CardInfo" value="卡务中心" />
+
+    <text name="FlashSale" value="限时抢购"/>
+    <text name="FlashSaleList" value="抢购管理"/>
+    <text name="FlashSaleImage" value="抢购图库"/>
+    <text name="FlashSaleOrder" value="抢购订单"/>
+    <text name="FlashSaleComment" value="抢购评价"/>
+    <text name="CityLife" value="同城生活"/>
+    <text name="CityMessage" value="同城信息"/>
+    <text name="ArticleInfo" value="行业资讯"/>
+    <text name="ActivityInfo" value="联盟活动"/>
+    <text name="SystemMarketing" value="系统营销"/>
+    <text name="Wheel" value="大转盘"/>
+    <text name="CrowdFunding" value="众筹"/>
+    <text name="Coupon" value="代金券"/>
+    <text name="OperatorCoupon" value="联盟代金券"/>
+    <text name="BusinessCoupon" value="商户代金券" />
+    <text name="CouponPackage" value="代金券包"/>
+    <text name="Gift" value="积分商城"/>
+    <text name="GiftCategory" value="礼品类别"/>
+    <text name="GiftList" value="礼品管理"/>
+    <text name="GiftOrder" value="GiftOrder" />
+    <text name="FundSettle" value="资金结算"/>
+    <text name="AllSettleSet" value="全局结算设置"/>
+    <text name="BusinessDivideSet" value="门店结算设置"/>
+    <text name="PointSet" value="门店资金结算"/>
+    <text name="BusinessSettle" value="门店资金明细"/>
+    <text name="Statistics" value="统计分析"/>
+    <text name="ChainStorePointStatistics" value="门店积分统计"/>
+    <text name="ChainStoreValueStatistics" value="门店余额统计" />
+    <text name="ChainStoreSmsStatistics" value="门店短信统计"/>
+    <text name="MemberRechargeStatistics" value="会员充值统计"/>
+    <text name="MemberConsumeStatistics" value="会员消费统计"/>
+    <text name="MemberPointStatistics" value="会员积分统计"/>
+    <text name="MemberGetCouponStatistics" value="代金券统计"/>
+    <text name="GiftCashStatistics" value="礼品兑换统计"/>
+    <text name="WeChatSet" value="微信设置"/>
+    <text name="PublicWeChatSet" value="公众号设置" />
+    <text name="WeChatMenu" value="自定义菜单" />
+    <text name="WeChatMessage" value="微信消息" />
+    <text name="Pay" value="支付设置" />
+    <text name="PayCode" value="我的二维码" />
+    <text name="SystemSet" value="系统设置" />
+    <text name="UserManager" value="账号管理" />
+    <text name="ManagerRole" value="权限组" />
+    <text name="Industry" value="运营行业" />
+    <text name="PaySet" value="支付设置"/>
+    <text name="SEO" value="SEO优化" />
+    <text name="Cache" value="清除缓存" />
+    <text name="LogList" value="日志监控" />
+
+    <!--Action-->
+
+    <text name="Aduit" value="审核" />
+    <text name="Reply" value="回复" />
   </texts>
 </localizationDictionary>

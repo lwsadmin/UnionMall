@@ -77,11 +77,11 @@ namespace UnionMall.Web.Startup
             {
                 routes.MapRoute(
                     name: "defaultWithArea",
-                    template: "{area}/{controller=Home}/{action=Index}/{id?}");
+                    template: "{area}/{controller=Main}/{action=Index}/{id?}");
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Main}/{action=Index}/{id?}");
             });
         }
     }

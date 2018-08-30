@@ -1,135 +1,129 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Navigation>
-  <First Name="SystemNotic" Title="SystemNotic" Icon="glyphicon glyphicon-comment">
+  <!--<First Name="SystemNotic" Title="SystemNotic" Icon="glyphicon glyphicon-comment">
     <Second Name="Today" Title="Today" Url="/set/admin/center"></Second>
     <Second Name="MsgSend" Title="MsgSend" Url="/SystemNotic/SmsSend/Index"></Second>
     <Second Name="SysNotic" Title="SysNotic" Url="/SystemNotic/Announcement/List"></Second>
     <Second Name="SendEmail" Title="SendEmail" Url="/SystemNotic/EmailSend/Index"></Second>
-    <!--<Second Name="WebMsg" Title="站内信" Url="javascript:void(0);"></Second>-->
+    <Second Name="WebMsg" Title="站内信" Url="javascript:void(0);"></Second>
+  </First>-->
+  <First Name="OffLineCashie"  Icon="glyphicon glyphicon-yen">
+    <Second Name="QuickConsume"  Url="/OffLine/QuickConsume/Index"></Second>
+    <Second Name="GoodsConsume"  Url="javascript:void(0);"></Second>
+    <Second Name="MemberRecharge" Url="/OffLine/Recharge/Index"></Second>
+    <Second Name="CouponConsume"  Url="javascript:void(0);"></Second>
+    <Second Name="GiftCash"  Url="javascript:void(0);"></Second>
+    <Second Name="PointRecharge"  Url="javascript:void(0);"></Second>
   </First>
-  <First Name="OffLineCashie" Title="线下收款" Icon="glyphicon glyphicon-yen">
-    <Second Name="QuickConsume" Title="快速消费" Url="/OffLine/QuickConsume/Index"></Second>
-    <Second Name="GoodsConsume" Title="商品消费" Url="javascript:void(0);"></Second>
-    <Second Name="MemberRecharge" Title="会员充值" Url="/OffLine/Recharge/Index"></Second>
-    <Second Name="CouponConsume" Title="代金券消费" Url="javascript:void(0);"></Second>
-    <Second Name="GiftCash" Title="礼品兑换" Url="javascript:void(0);"></Second>
-    <Second Name="PointRecharge" Title="积分充值" Url="javascript:void(0);"></Second>
-
-  </First>
-  <First Name="Goods" Title="线上商城" Icon="glyphicon glyphicon-shopping-cart">
-    <Second Name="GoodsCategory" Title="商品类别" Url="/GoodsManage/GoodsCategory/List">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+  <First Name="OnlineGoods" Icon="glyphicon glyphicon-shopping-cart">
+    <Second Name="GoodsCategory" Url="/GoodsManage/GoodsCategory/List">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsBrand" Title="商品品牌" Url="/GoodsManage/Brand/List">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="GoodsBrand"  Url="/GoodsManage/Brand/List">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsList" Title="商品管理" Url="/GoodsManage/Goods/List">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="GoodsManage" Title="商品管理" Url="/GoodsManage/Goods/List">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsOrder" Title="商品订单" Url="javascript:void(0);"></Second>
-    <Second Name="GoodsAttr" Title="商品属性" Url="/GoodsManage/GoodsAttr/List">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="GoodsOrder"  Url="javascript:void(0);"></Second>
+    <Second Name="GoodsAttr" Url="/GoodsManage/GoodsAttr/List">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsSpec" Title="商品规格" Url="javascript:void(0);">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="GoodsSpec"  Url="javascript:void(0);">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsComment" Title="商品评价" Url="javascript:void(0);"></Second>
+    <Second Name="GoodsComment" Url="javascript:void(0);"></Second>
     <Second Name="GoodAsk" Title="商品咨询" Url="javascript:void(0);"></Second>
   </First>
-  <First Name="Business" Title="联盟商户" Icon="glyphicon glyphicon-th">
-    <Second Name="OneJia" Title="代理级别" Url="javascript:void(0);"></Second>
-    <Second Name="TwoJia" Title="我的代理" Url="javascript:void(0);"></Second>
-    <Second Name="MyBusiness" Title="商户管理" Url="/business/business/list">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+  <First Name="Business"  Icon="glyphicon glyphicon-th">
+    <Second Name="OneJia" Url="javascript:void(0);"></Second>
+    <Second Name="TwoJia" Url="javascript:void(0);"></Second>
+    <Second Name="BusinessManage"  Url="/business/business/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="ChainStore" Title="商户门店" Url="/business/chainstore/list">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="ChainStore"  Url="/business/chainstore/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
   </First>
-  <First Name="Member" Title="会员管理" Icon="glyphicon glyphicon-user">
-    <Second Name="MemberCategory" Title="会员级别" Url="/Member/Membercategory/list">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+  <First Name="Member" Icon="glyphicon glyphicon-user">
+    <Second Name="MemberCategory" Url="/Member/Membercategory/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="MemberList" Title="会员列表" Url="/member/member/list"></Second>
-    <Second Name="MemberRegister" Title="会员办理" Url="/member/memberreg/index"></Second>
-    <Second Name="CardInfo" Title="卡务中心" Url="javascript:void(0);"></Second>
+    <Second Name="MemberList" Url="/member/member/list"></Second>
+    <Second Name="MemberRegister"  Url="/member/memberreg/index"></Second>
+    <Second Name="CardInfo"  Url="javascript:void(0);"></Second>
   </First>
-  <First Name="GroupBuy" Title="限时抢购" Icon="glyphicon glyphicon-dashboard">
-    <!--<Second Name="GroupBuyCategory" Title="抢购类别" Url="/groupbuy/category/list"></Second>-->
-    <Second Name="GroupBuyList" Title="抢购管理" Url="/groupbuy/groupbuy/list"></Second>
-    <Second Name="GroupBuyImgs" Title="抢购图库" Url="/groupbuy/image/list"></Second>
-    <Second Name="GroupBuyOrder" Title="抢购订单" Url="/groupbuy/rushorder/list"></Second>
-    <Second Name="GroupBuyComment" Title="抢购评价" Url="/groupbuy/comment/list"></Second>
-  </First>
+  <First Name="FlashSale"  Icon="glyphicon glyphicon-dashboard">
 
-  <First Name="CityLife" Title="同城生活" Icon="glyphicon glyphicon-tint">
-
-    <Second Name="ArticleInfo" Title="行业资讯" Icon="glyphicon glyphicon-align-justify" Url="">
-      <Third Name="ArticleCategory" Title="资讯分类" Url="/articleinfo/articlecategory/list">
-        <Action Name="Add" Title="新增"/>
-        <Action Name="Edit" Title="编辑"/>
-        <Action Name="Delete" Title="删除"/>
-      </Third>
-      <Third Name="Article" Title="资讯管理" Url="/articleinfo/article/list">
-        <Action Name="Add" Title="新增"/>
-        <Action Name="Edit" Title="编辑"/>
-        <Action Name="Delete" Title="删除"/>
-      </Third>
-      <Third Name="ArticleComment" Title="资讯评论" Url="/articleinfo/comment/list">
-        <Action Name="Aduit" Title="审核"/>
-        <Action Name="Reply" Title="回复"/>
-        <Action Name="Delete" Title="删除"/>
-      </Third>
-    </Second>
-
-    <Second Name="ActivityInfo" Title="联盟活动" Url="">
-      <Third Name="ActivityCategory" Title="活动分类" Url="/CityLife/Activity/CategoryList">
-        <Action Name="Add" Title="新增"/>
-        <Action Name="Edit" Title="编辑"/>
-        <Action Name="Delete" Title="删除"/>
-      </Third>
-      <Third Name="Activity" Title="活动管理" Url="/articleinfo/article/list">
-        <Action Name="Add" Title="新增"/>
-        <Action Name="Edit" Title="编辑"/>
-        <Action Name="Delete" Title="删除"/>
-      </Third>
-      <Third Name="ActivityComment" Title="活动评论" Url="/articleinfo/comment/list"></Third>
-    </Second>
-
-
-    <Second Name="CityMsg" Title="同城生活圈" Url="">
-      <Third Name="Category" Title="生活分类" Url="/CityLife/life/CategoryList">
-        <Action Name="Add" Title="新增"/>
-        <Action Name="Edit" Title="编辑"/>
-        <Action Name="Delete" Title="删除"/>
-      </Third>
-      <Third Name="Message" Title="同城信息" Url="/CityLife/life/MessageList">
-        <Action Name="Add" Title="新增"/>
-        <Action Name="Edit" Title="编辑"/>
-        <Action Name="Delete" Title="删除"/>
-      </Third>
-    </Second>
-
-
+    <Second Name="FlashSaleList" Url="/groupbuy/groupbuy/list"></Second>
+    <Second Name="FlashSaleImage"  Url="/groupbuy/image/list"></Second>
+    <Second Name="FlashSaleOrder" Url="/groupbuy/rushorder/list"></Second>
+    <Second Name="FlashSaleComment"  Url="/groupbuy/comment/list"></Second>
   </First>
 
-  <First Name="SystemMarketing" Title="系统营销" Icon="glyphicon glyphicon-certificate">
+  <First Name="CityLife"  Icon="glyphicon glyphicon-tint">
+
+    <Second Name="ArticleInfo"  Icon="glyphicon glyphicon-align-justify" Url="">
+      <Third Name="ArticleCategory" Url="/articleinfo/articlecategory/list">
+        <Action Name="Add" />
+        <Action Name="Edit" />
+        <Action Name="Delete" />
+      </Third>
+      <Third Name="Article" Url="/articleinfo/article/list">
+        <Action Name="Add" />
+        <Action Name="Edit" />
+        <Action Name="Delete" />
+      </Third>
+      <Third Name="ArticleComment" Url="/articleinfo/comment/list">
+        <Action Name="Aduit"/>
+        <Action Name="Reply"  />
+        <Action Name="Delete" />
+      </Third>
+    </Second>
+
+    <Second Name="ActivityInfo" Url="">
+      <Third Name="ActivityCategory"  Url="/CityLife/Activity/CategoryList">
+        <Action Name="Add" />
+        <Action Name="Edit" />
+        <Action Name="Delete" />
+      </Third>
+      <Third Name="Activity"  Url="/articleinfo/article/list">
+        <Action Name="Add" />
+        <Action Name="Edit" />
+        <Action Name="Delete" />
+      </Third>
+      <Third Name="ActivityComment"  Url="/articleinfo/comment/list"></Third>
+    </Second>
+    <Second Name="CityLife"   Url="">
+      <Third Name="Category"   Url="/CityLife/life/CategoryList">
+        <Action Name="Add" />
+        <Action Name="Edit" />
+        <Action Name="Delete" />
+      </Third>
+      <Third Name="CityMessage"   Url="/CityLife/life/MessageList">
+        <Action Name="Add" />
+        <Action Name="Edit" />
+        <Action Name="Delete" />
+      </Third>
+    </Second>
+  </First>
+  <First Name="SystemMarketing" Icon="glyphicon glyphicon-certificate">
     <Second Name="Wheel" Title="大转盘" Url="">
       <Third Name="WheelList" Title="大转盘抽奖" Url="javascript:void(0);"></Third>
       <Third Name="NoteList" Title="参与记录" Url="javascript:void(0);"></Third>
@@ -143,87 +137,87 @@
     </Second>-->
 
 
-    <Second Name="CrowdFunding" Title="众筹" Url="">
-      <Third Name="CrowdFundingPro" Title="众筹项目" Url="javascript:void(0);"></Third>
-      <Third Name="CrowdFundingNoteList" Title="参与记录" Url="javascript:void(0);"></Third>
-      <Third Name="CrowdFundingNoteSttices" Title="众筹统计" Url="javascript:void(0);"></Third>
+    <Second Name="CrowdFunding"   Url="">
+      <Third Name="CrowdFundingPro"  Url="javascript:void(0);"></Third>
+      <Third Name="CrowdFundingNoteList"   Url="javascript:void(0);"></Third>
+      <Third Name="CrowdFundingNoteSttices"   Url="javascript:void(0);"></Third>
     </Second>
   </First>
-  <First Name="Coupon" Title="代金券" Icon="glyphicon glyphicon-send">
-    <Second Name="OperatorCoupon" Title="联盟代金券" Url="/coupon/coupon/list">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+  <First Name="Coupon"   Icon="glyphicon glyphicon-send">
+    <Second Name="OperatorCoupon"  Url="/coupon/coupon/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="BusinessCoupon" Title="商户代金券" Url="/coupon/businessCoupon/list">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="BusinessCoupon"   Url="/coupon/businessCoupon/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="CouponPackage" Title="代金券包" Url="/Coupon/CouponPackage/List">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="CouponPackage"  Url="/Coupon/CouponPackage/List">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
   </First>
-  <First Name="Gift" Title="积分商城" Icon="glyphicon glyphicon-gift">
-    <Second Name="GiftCategory" Title="礼品类别" Url="/Gift/GiftCategory/List">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+  <First Name="Gift"   Icon="glyphicon glyphicon-gift">
+    <Second Name="GiftCategory"   Url="/Gift/GiftCategory/List">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="GiftList" Title="礼品管理" Url="/Gift/Gift/List">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="GiftList" Url="/Gift/Gift/List">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="PointOrder" Title="礼品订单" Url="javascript:void(0);"></Second>
+    <Second Name="GiftOrder"   Url="javascript:void(0);"></Second>
   </First>
-  <First Name="FundSettle" Title="资金结算" Icon="glyphicon glyphicon-usd">
-    <Second Name="AllSettleSet" Title="全局结算设置" Url="/Settlement/Global/Index"></Second>
-    <Second Name="BusinessDivideSet" Title="门店结算设置" Url="/Settlement/StoreSet/List"></Second>
-    <Second Name="PointSet" Title="门店资金结算" Url="/Settlement/StoreCapital/List"></Second>
-    <Second Name="BusinessSettle" Title="门店资金明细" Url="/Settlement/StoreMoneyReport/List"></Second>
+  <First Name="FundSettle"   Icon="glyphicon glyphicon-usd">
+    <Second Name="AllSettleSet"  Url="/Settlement/Global/Index"></Second>
+    <Second Name="BusinessDivideSet"  Url="/Settlement/StoreSet/List"></Second>
+    <Second Name="PointSet"  Url="/Settlement/StoreCapital/List"></Second>
+    <Second Name="BusinessSettle"   Url="/Settlement/StoreMoneyReport/List"></Second>
 
   </First>
-  <First Name="Statistics" Title="统计分析" Icon="glyphicon glyphicon-signal">
-    <Second Name="ChainStorePointStatistics" Title="门店积分统计" Url="/Statistics/StorePoint/List"></Second>
-    <Second Name="ChainStoreValueStatistics" Title="门店余额统计" Url="/Statistics/StoreValueNote/List"></Second>
-    <Second Name="ChainStoreSmsStatistics" Title="门店短信统计" Url="/Statistics/ChainStoreSmsNote/List"></Second>
-    <Second Name="MemberRechargeStatistics" Title="会员充值统计" Url="/Statistics/MemberRecharge/List"></Second>
-    <Second Name="MemberConsumeStatistics" Title="会员消费统计" Url="/Statistics/MemberConsume/List"></Second>
-    <Second Name="MemberPointStatistics" Title="会员积分统计" Url="/Statistics/MemberPoint/List"></Second>
+  <First Name="Statistics"  Icon="glyphicon glyphicon-signal">
+    <Second Name="ChainStorePointStatistics" Url="/Statistics/StorePoint/List"></Second>
+    <Second Name="ChainStoreValueStatistics"  Url="/Statistics/StoreValueNote/List"></Second>
+    <Second Name="ChainStoreSmsStatistics"  Url="/Statistics/ChainStoreSmsNote/List"></Second>
+    <Second Name="MemberRechargeStatistics"  Url="/Statistics/MemberRecharge/List"></Second>
+    <Second Name="MemberConsumeStatistics"  Url="/Statistics/MemberConsume/List"></Second>
+    <Second Name="MemberPointStatistics"  Url="/Statistics/MemberPoint/List"></Second>
 
-    <Second Name="MemberGetCouponStatistics" Title="代金券统计" Url="/Statistics/Coupon/List"></Second>
-    <Second Name="GiftCashStatistics" Title="礼品兑换统计" Url="/Statistics/GiftExchangeNote/List"></Second>
+    <Second Name="MemberGetCouponStatistics" Url="/Statistics/Coupon/List"></Second>
+    <Second Name="GiftCashStatistics"   Url="/Statistics/GiftExchangeNote/List"></Second>
   </First>
 
-  <First Name="WeChatSet" Title="微信设置" Icon="glyphicon glyphicon-phone">
-    <Second Name="Set" Title="公众号设置" Url="/set/admin/list"></Second>
-    <Second Name="Menu" Title="自定义菜单" Url="/set/admin/list"></Second>
-    <Second Name="WeiXinMsg" Title="消息模板" Url="/set/role/list"></Second>
-    <Second Name="Pay" Title="支付设置" Url="/set/pay/type"></Second>
-    <Second Name="PayCode" Title="我的二维码" Url="/set/pay/type"></Second>
+  <First Name="WeChatSet"  Icon="glyphicon glyphicon-phone">
+    <Second Name="PublicWeChatSet"   Url="/set/admin/list"></Second>
+    <Second Name="WeChatMenu"  Url="/set/admin/list"></Second>
+    <Second Name="WeChatMessage"  Url="/set/role/list"></Second>
+    <Second Name="Pay"  Url="/set/pay/type"></Second>
+    <Second Name="PayCode"   Url="/set/pay/type"></Second>
   </First>
-  <First Name="SystemSet" Title="系统设置" Icon="glyphicon glyphicon-wrench">
-    <Second Name="Manager" Title="账号管理" Url="/set/admin/list">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+  <First Name="SystemSet"   Icon="glyphicon glyphicon-wrench">
+    <Second Name="UserManager"  Url="/set/admin/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="ManagerRole" Title="权限组" Url="/set/role/list">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="ManagerRole"   Url="/set/role/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="Industry" Title="运营行业" Url="/set/industry/list">
-      <Action Name="Add" Title="新增"/>
-      <Action Name="Edit" Title="编辑"/>
-      <Action Name="Delete" Title="删除"/>
+    <Second Name="Industry"   Url="/set/industry/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-    <Second Name="PaySet" Title="支付设置" Url="/set/pay/type"></Second>
-    <Second Name="SEO" Title="SEO优化" Url="javascript:void(0);"></Second>
-    <Second Name="Cache" Title="清除缓存" Url="javascript:void(0);"></Second>
-    <Second Name="LogList" Title="日志监控" Url="/set/log/List"></Second>
+    <Second Name="PaySet"  Url="/set/pay/type"></Second>
+    <Second Name="SEO"  Url="javascript:void(0);"></Second>
+    <Second Name="Cache"  Url="javascript:void(0);"></Second>
+    <Second Name="LogList"  Url="/set/log/List"></Second>
   </First>
 </Navigation>

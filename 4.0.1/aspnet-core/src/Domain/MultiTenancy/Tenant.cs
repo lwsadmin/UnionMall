@@ -7,7 +7,7 @@ namespace UnionMall.MultiTenancy
     {
         public Tenant()
         {            
-        }
+        } 
 
         public Tenant(string tenancyName, string name)
             : base(tenancyName, name)

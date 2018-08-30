@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Abp.Application.Navigation;
 using Abp.Runtime.Session;
+using UnionMall.Sessions;
 
 namespace UnionMall.Web.Views.Shared.Components.SideBarNav
 {
@@ -9,13 +10,15 @@ namespace UnionMall.Web.Views.Shared.Components.SideBarNav
     {
         private readonly IUserNavigationManager _userNavigationManager;
         private readonly IAbpSession _abpSession;
+        private readonly ISessionAppService _sessionAppService;
 
         public SideBarNavViewComponent(
             IUserNavigationManager userNavigationManager,
-            IAbpSession abpSession)
+            IAbpSession abpSession, ISessionAppService sessionAppService)
         {
             _userNavigationManager = userNavigationManager;
             _abpSession = abpSession;
+            _sessionAppService = sessionAppService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string activeMenu = "")
@@ -25,7 +28,7 @@ namespace UnionMall.Web.Views.Shared.Components.SideBarNav
                 MainMenu = await _userNavigationManager.GetMenuAsync("MainMenu", _abpSession.ToUserIdentifier()),
                 ActiveMenuItemName = activeMenu
             };
-
+            ViewBag.LoginInfo = await _sessionAppService.GetCurrentLoginInformations();
             return View(model);
         }
     }
