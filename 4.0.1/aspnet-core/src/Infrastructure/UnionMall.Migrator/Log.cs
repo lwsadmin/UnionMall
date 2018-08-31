@@ -17,7 +17,7 @@ namespace UnionMall.Migrator
         public void Write(string text)
         {
             Console.WriteLine(Clock.Now.ToString("yyyy-MM-dd HH:mm:ss") + " | " + text);
-            Logger.Info(text);
+           // Logger.Info(text);
         }
     }
 }

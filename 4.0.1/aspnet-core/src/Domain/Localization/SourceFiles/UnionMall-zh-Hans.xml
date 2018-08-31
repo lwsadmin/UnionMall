@@ -19,7 +19,8 @@
     <text value="操作" name="Operate"/>
     <text value="角色" name="Roles"/>
 
-
+    <text value="欢迎您" name="Welcome to"  />
+    <text name="This system is for demonstration only" value="本系统仅供演示" />
     <text value="商品" name="Goods"/>
     <text value="关于我们" name="About"/>
     <text value="欢迎使用" name="WellcomeMessage"/>
@@ -33,7 +34,7 @@
     <text value="运营商户名称" name="Tenancyname"/>
     <text value="用户名或邮箱地址" name="UsernameOrEmail"/>
     <text value="密码" name="Password"/>
-    <text value="记住我" name="RememberMe"/>
+    <text value="用户名" name="UserName"/>
     <text value="登录" name="LogIn"/>
     <text value="退出登录" name="Logout"/>
     <text value="登录失败!" name="LoginFailed"/>

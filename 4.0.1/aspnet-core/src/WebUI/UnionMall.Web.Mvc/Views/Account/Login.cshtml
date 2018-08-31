@@ -1,67 +1,66 @@
-﻿@using Abp.Authorization.Users
-@using Abp.Extensions
-@using Abp.MultiTenancy
-@model UnionMall.Web.Models.Account.LoginFormViewModel
-@section Styles
-    {
-    <environment names="Development">
-        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
-    </environment>
-
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
-    </environment>
-
+﻿
+@using System.Globalization
+@using Abp.Configuration.Startup
+@using Abp.Web.Security.AntiForgery
+@using UnionMall
+@using UnionMall.Web.Resources
+@inject UnionMall.Timing.AppTimes AppTimes
+@inject IAbpAntiForgeryManager AbpAntiForgeryManager
+@inject IMultiTenancyConfig MultiTenancyConfig
+@inject IWebResourceManager WebResourceManager
+@{
+    Layout = null;
+    AbpAntiForgeryManager.SetCookie(Context);
 }
-@section Scripts
-    {
-    <environment names="Development">
-        <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
-    </environment>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@L("UnionMall")</title>
 
-    <environment names="Staging,Production">
-        <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
-    </environment>
-}
-<div class="card" id="﻿LoginArea">
-    <div class="body">
-        <form id="LoginForm" asp-action="Login" method="post">
-            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
-            <input type="hidden" name="returnUrlHash" />
-            <h4 class="text-center">@L("LogIn")</h4>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">person</i>
-                </span>
-                <div class="form-line">
-                    <input type="text" class="form-control" value="admin" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
-                </div>
+    <link href="~/lib/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/lib/admin/css/style.css" rel="stylesheet">
+    <style>
+        p, h3, small {
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">@L("UnionMall")</h1>
+
             </div>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">lock</i>
-                </span>
-                <div class="form-line">
-                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength" value="123qwe">
+            <h3>@L("Welcome to")</h3>
+            <p>
+                @L("This system is for demonstration only")
+            </p>
+            <form id="LoginForm" asp-action="Login" method="post">
+                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                <input type="hidden" name="returnUrlHash" />
+                <div class="form-group">
+                    <input type="text" class="form-control" value="" name="TenantName" placeholder="@L("TenantName")" required autofocus maxlength="100">
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-8 p-t-5">
-                    <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
-                    <label for="rememberme">@L("RememberMe")</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" value="admin" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="100">
                 </div>
-                <div class="col-xs-4">
-                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="100" value="123qwe">
                 </div>
-            </div>
-            @if (Model.IsSelfRegistrationAllowed)
-            {
-                <div class="row m-t-15 m-b--20">
-                    <div class="col-xs-12">
-                        <a asp-action="Register">@L("Register")</a>
-                    </div>
-                </div>
-            }
-        </form>
+                <button style="margin-top:30px;" type="submit" class="btn btn-danger block full-width m-b">@L("LogIn")</button>
+                @*<a href="#"><small>Forgot password?</small></a>*@
+            </form>
+            <p class="m-t">  <small>&copy; @DateTime.Now.Year @L("UnionMall")-[@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small> </p>
+
+        </div>
     </div>
-</div>
+    <script src="~/view-resources/Views/Account/Login.js"></script>
+</body>
+</html>
