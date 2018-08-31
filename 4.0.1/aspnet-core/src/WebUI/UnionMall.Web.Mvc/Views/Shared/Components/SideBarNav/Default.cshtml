@@ -32,9 +32,14 @@
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
-                            <span class="block m-t-xs">
-                                <strong class="font-bold">@loginInfo.User.Name</strong>
-                            </span> <span class="text-muted text-xs block">@loginInfo.User.EmailAddress<b class="caret"></b></span>
+                            @if (loginInfo.User != null)
+                            {
+
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">@loginInfo.User.Name</strong>
+                                </span>
+                                <span class="text-muted text-xs block">@loginInfo.User.EmailAddress<b class="caret"></b></span>
+                            }
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
