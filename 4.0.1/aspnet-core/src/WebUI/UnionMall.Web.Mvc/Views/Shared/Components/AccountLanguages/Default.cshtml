@@ -18,8 +18,7 @@
             <select id="Language" onchange="LanguageSet();">
                 @foreach (var languageInfo in Model.Languages)
                 {
-                    <option data-url="~/AbpLocalization/ChangeCulture?cultureName=@(languageInfo.Name)&returnUrl=@(UrlEncoder.Default.Encode(Context.Request.Path + Context.Request.QueryString))" 
-                            selected="@(languageInfo == Model.CurrentLanguage ? "language-icon-current" : "")" value="@languageInfo.Name">@languageInfo.DisplayName</option>
+                    <option selected="@(languageInfo == Model.CurrentLanguage ? "language-icon-current" : "")" value="@languageInfo.Name">@languageInfo.DisplayName</option>
                 }
             </select>
         </p>
@@ -28,7 +27,11 @@
     <script>
        function LanguageSet()
         {
-        debugger;
-   var select=document.getElementById("Language");
+
+
+        var select=document.getElementById("Language");
+        var index = select.selectedIndex; // 选中索引
+        var name=select.options[index].value;
+        window.location.href='/AbpLocalization/ChangeCulture?cultureName='+name+'&returnUrl=@(UrlEncoder.Default.Encode(Context.Request.Path + Context.Request.QueryString))';
         }
     </script>
