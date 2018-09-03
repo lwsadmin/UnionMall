@@ -3,12 +3,32 @@
 @model LanguageSelectionViewModel
 @if (Model.Languages.Count > 1)
 {
-    <div class="language-switch-area">
-        @foreach (var languageInfo in Model.Languages)
-        {
-            <a href="~/AbpLocalization/ChangeCulture?cultureName=@(languageInfo.Name)&returnUrl=@(UrlEncoder.Default.Encode(Context.Request.Path + Context.Request.QueryString))">
-                <span class="language-icon @(languageInfo == Model.CurrentLanguage ? "language-icon-current" : "")" title="@languageInfo.DisplayName"><i class="@languageInfo.Icon"></i></span>
-            </a>
-        }
+    @*<div class="language-switch-area">
+            @foreach (var languageInfo in Model.Languages)
+            {
+                <a href="~/AbpLocalization/ChangeCulture?cultureName=@(languageInfo.Name)&returnUrl=@(UrlEncoder.Default.Encode(Context.Request.Path + Context.Request.QueryString))">
+                    <span class="language-icon @(languageInfo == Model.CurrentLanguage ? "language-icon-current" : "")" title="@languageInfo.DisplayName"><i class="@languageInfo.Icon"></i></span>
+                </a>
+            }
+        </div>*@
+
+    <div>
+        <p style="display:flex;justify-content: center;margin-top:5vh;">
+            <lable style="color:white;    margin-top: 2px;">@L("LanguageSetting"):</lable>
+            <select id="Language" onchange="LanguageSet();">
+                @foreach (var languageInfo in Model.Languages)
+                {
+                    <option data-url="~/AbpLocalization/ChangeCulture?cultureName=@(languageInfo.Name)&returnUrl=@(UrlEncoder.Default.Encode(Context.Request.Path + Context.Request.QueryString))" 
+                            selected="@(languageInfo == Model.CurrentLanguage ? "language-icon-current" : "")" value="@languageInfo.Name">@languageInfo.DisplayName</option>
+                }
+            </select>
+        </p>
     </div>
 }
+    <script>
+       function LanguageSet()
+        {
+        debugger;
+   var select=document.getElementById("Language");
+        }
+    </script>

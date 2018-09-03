@@ -51,6 +51,7 @@
     <text name="CurrentTenant">Current tenant</text>
     <text name="NotSelected">Not selected</text>
     <text name="Change">Change</text>
+    <text name="LanguageSetting">Language Setting</text>
     <text name="ChangeTenant">Change tenant</text>
     <text name="Menu">Menu</text>
     <text name="Back">Back</text>
@@ -97,7 +98,6 @@
     <text value="PersonalInformation" name="PersonalInformation"/>
     <text value="ModificationInformation" name="ModificationInformation"/>
     <text value="LockScreen" name="LockScreen"/>
-    
     
     <!--ccccccccccccccccccccccccccccc-->
 

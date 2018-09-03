@@ -16,6 +16,8 @@ namespace UnionMall.Web.Views.Shared.Components.AccountLanguages
 
         public Task<IViewComponentResult> InvokeAsync()
         {
+
+
             var model = new LanguageSelectionViewModel
             {
                 CurrentLanguage = _languageManager.CurrentLanguage,

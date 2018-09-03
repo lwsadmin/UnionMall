@@ -18,7 +18,7 @@
     <text value="删除" name="Delete"/>
     <text value="操作" name="Operate"/>
     <text value="角色" name="Roles"/>
-
+    <text name="LanguageSetting">语言设置</text>
     <text value="欢迎您" name="Welcome to"  />
     <text name="This system is for demonstration only" value="本系统仅供演示" />
     <text value="商品" name="Goods"/>
@@ -32,6 +32,7 @@
     <text value="用户 {0} 未激活，不能登录." name="UserIsNotActiveAndCanNotLogin"/>
     <text value="请输入登录信息" name="PleaseEnterLoginInformation"/>
     <text value="运营商户名称" name="Tenancyname"/>
+    
     <text value="用户名或邮箱地址" name="UsernameOrEmail"/>
     <text value="密码" name="Password"/>
     <text value="用户名" name="UserName"/>
@@ -39,12 +40,14 @@
     <text value="退出登录" name="Logout"/>
     <text value="登录失败!" name="LoginFailed"/>
     <text value="更换" name="Change"/>
+    <text value="记住我"  name="RememberMe" />
     <text value="当前商户" name="CurrentTenant"/>
     <text value="个人信息" name="PersonalInformation"/>
     <text value="修改资料" name="ModificationInformation"/>
     <text value="安全锁屏" name="LockScreen"/>
     <text value="菜单" name="Menu"/>
 
+    <text value="账号" name="TenancyName"/>
     <text name="OffLineCashie" value="线下收款"/>
     <text name="QuickConsume" value="快速消费"/>
     <text name="GoodsConsume" value="商品消费" />

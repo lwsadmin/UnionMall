@@ -98,8 +98,7 @@ namespace UnionMall.Web.Controllers
             {
                 returnUrl = returnUrl + returnUrlHash;
             }
-
-            var loginResult = await GetLoginResultAsync(loginModel.UsernameOrEmailAddress, loginModel.Password, GetTenancyNameOrNull());
+            var loginResult = await GetLoginResultAsync(loginModel.UsernameOrEmailAddress, loginModel.Password, loginModel.TenancyName);
 
             await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
             await UnitOfWorkManager.Current.SaveChangesAsync();
@@ -236,7 +235,7 @@ namespace UnionMall.Web.Controllers
                         return Redirect(GetAppHomeUrl());
                     }
 
-                    Logger.Warn("New registered user could not be login. This should not be normally. login result: " + loginResult.Result);
+                    //Logger.Warn("New registered user could not be login. This should not be normally. login result: " + loginResult.Result);
                 }
 
                 return View("RegisterResult", new RegisterResultViewModel

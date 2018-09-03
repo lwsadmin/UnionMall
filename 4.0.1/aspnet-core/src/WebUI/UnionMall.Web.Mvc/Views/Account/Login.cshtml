@@ -34,7 +34,15 @@
                     <i class="material-icons">person</i>
                 </span>
                 <div class="form-line">
-                    <input type="text" class="form-control" value="admin" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+                    <input type="text" class="form-control" value="" name="TenancyName" placeholder="@L("TenancyName")" autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+                </div>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="material-icons">person</i>
+                </span>
+                <div class="form-line">
+                    <input type="text" class="form-control" value="admin" name="usernameOrEmailAddress" placeholder="@L("UserName")" autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
                 </div>
             </div>
             <div class="input-group">
@@ -42,7 +50,7 @@
                     <i class="material-icons">lock</i>
                 </span>
                 <div class="form-line">
-                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength" value="123qwe">
+                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" maxlength="@AbpUserBase.MaxPlainPasswordLength" value="123qwe">
                 </div>
             </div>
             <div class="row">

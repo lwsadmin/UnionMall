@@ -1,7 +1,9 @@
-﻿$(function () {
+﻿
+$(function () {
     $('#ReturnUrlHash').val(location.hash);
 
     var $loginForm = $('#LoginForm');
+
 
     $loginForm.validate({
         highlight: function (input) {
@@ -17,6 +19,19 @@
 
     $loginForm.submit(function (e) {
         e.preventDefault();
+        if ($("input[name='TenancyName']").val() == "") {
+            $("input[name='TenancyName']").focus();
+            return false;
+        }
+        if ($("input[name='usernameOrEmailAddress']").val() == "") {
+            $("input[name='usernameOrEmailAddress']").focus();
+            return false;
+        }
+
+        if ($("input[name='Password']").val() == "") {
+            $("input[name='Password']").focus();
+            return false;
+        }
 
         if (!$loginForm.valid()) {
             return;

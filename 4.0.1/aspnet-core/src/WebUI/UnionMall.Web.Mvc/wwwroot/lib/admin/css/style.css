@@ -4023,7 +4023,7 @@ table.table-mail tr td {
 /* BACKGROUNDS */
 .gray-bg,
 .bg-muted {
-    background-color: #00BCD4;
+  background-color: #f3f3f4;
 }
 .white-bg {
   background-color: #ffffff;
@@ -4684,7 +4684,7 @@ body.mini-navbar.fixed-sidebar .logo-element {
   max-width: 400px;
   z-index: 100;
   margin: 0 auto;
-  padding-top: 10vh;
+  padding-top: 40px;
 }
 .lockscreen.middle-box {
   width: 200px;
@@ -4704,18 +4704,14 @@ body.mini-navbar.fixed-sidebar .logo-element {
   padding: 100px 20px 20px 20px;
 }
 .logo-name {
-    font-size: 36px;
-    display: block;
-    width: 100%;
-    text-align: center;
-    color: #fff;
+  color: #e6e6e6;
+  font-size: 180px;
+  font-weight: 800;
+  letter-spacing: -10px;
+  margin-bottom: 0;
 }
 .middle-box h1 {
-    font-size: 36px;
-    display: block;
-    width: 100%;
-    text-align: center;
-    color: #fff;
+  font-size: 170px;
 }
 .wrapper .middle-box {
   margin-top: 140px;
