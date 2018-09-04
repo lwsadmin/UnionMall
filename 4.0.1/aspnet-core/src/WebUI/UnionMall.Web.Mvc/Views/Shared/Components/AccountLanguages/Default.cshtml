@@ -18,7 +18,7 @@
             <select id="Language" onchange="LanguageSet();">
                 @foreach (var languageInfo in Model.Languages)
                 {
-                    <option selected="@(languageInfo == Model.CurrentLanguage ? "language-icon-current" : "")" value="@languageInfo.Name">@languageInfo.DisplayName</option>
+                    <option selected="@(languageInfo == Model.CurrentLanguage ? "selected" : "")" value="@languageInfo.Name">@languageInfo.DisplayName</option>
                 }
             </select>
         </p>

@@ -4,4 +4,9 @@
 4.0.1/aspnet-core/src/WebUI/UnionMall.Web.Mvc/App_Data/Logs/Logs.txt
 *.txt
 4.0.1/aspnet-core/src/WebUI/UnionMall.Web.Mvc/App_Data/Logs/Logs.txt
+<<<<<<< HEAD
+4.0.1/aspnet-core/src/WebUI/UnionMall.Web.Mvc/App_Data/Logs/Logs.txt
+=======
+*.txt
+>>>>>>> 96490044dd41771facc4285a8c83aab425acb951
 4.0.1/aspnet-core/src/WebUI/UnionMall.Web.Mvc/App_Data/Logs/Logs.txt
