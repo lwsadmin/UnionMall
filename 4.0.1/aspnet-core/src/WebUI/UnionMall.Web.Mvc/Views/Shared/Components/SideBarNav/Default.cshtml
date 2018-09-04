@@ -7,7 +7,7 @@
 @{
     GetCurrentLoginInformationsOutput loginInfo = ViewBag.LoginInfo;
 
-    RoleEditDto loginRole = ViewBag.Role;
+    //RoleEditDto loginRole = ViewBag.Role;
     var calculateMenuUrl = new Func<string, string>((url) =>
     {
         if (string.IsNullOrEmpty(url))
@@ -41,7 +41,7 @@
                                 <span class="block m-t-xs">
                                     <strong class="font-bold">@loginInfo.User.Name</strong>
                                 </span>
-                                <span class="text-muted text-xs block">@loginRole.DisplayName<b class="caret"></b></span>
+                                <span class="text-muted text-xs block">@loginInfo.User.EmailAddress<b class="caret"></b></span>
                             }
                         </span>
                     </a>

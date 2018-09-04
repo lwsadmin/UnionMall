@@ -135,6 +135,7 @@ namespace UnionMall.Roles
 
             var u = _userManager.GetUserByIdAsync(id);
             var r = _roleManager.GetRoleByIdAsync(u.Result.Roles.FirstOrDefault().RoleId);
+            // _roleManager.get
 
             return r.MapTo<Task<RoleEditDto>>();
             //throw new System.NotImplementedException();
