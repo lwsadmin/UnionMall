@@ -26,7 +26,7 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsManage" Title="商品管理" Url="/GoodsManage/Goods/List">
+    <Second Name="GoodsManage" Url="/GoodsManage/Goods/List">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
@@ -43,7 +43,7 @@
       <Action Name="Delete" />
     </Second>
     <Second Name="GoodsComment" Url="javascript:void(0);"></Second>
-    <Second Name="GoodAsk" Title="商品咨询" Url="javascript:void(0);"></Second>
+    <Second Name="GoodAsk"  Url="javascript:void(0);"></Second>
   </First>
   <First Name="Business"  Icon="glyphicon glyphicon-th">
     <Second Name="OneJia" Url="javascript:void(0);"></Second>
@@ -200,22 +200,22 @@
     <Second Name="PayCode"   Url="/set/pay/type"></Second>
   </First>
   <First Name="SystemSet"   Icon="glyphicon glyphicon-wrench">
-    <Second Name="UserManager"  Url="/set/admin/list">
+    <Second Name="UserManager"  Url="/SystemSet/User/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="ManagerRole"   Url="/set/role/list">
+    <Second Name="ManagerRole"   Url="/SystemSet/role/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="Industry"   Url="/set/industry/list">
+    <Second Name="Industry"   Url="/SystemSet/industry/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="PaySet"  Url="/set/pay/type"></Second>
+    <Second Name="PaySet"  Url="/SystemSet/pay/type"></Second>
     <Second Name="SEO"  Url="javascript:void(0);"></Second>
     <Second Name="Cache"  Url="javascript:void(0);"></Second>
     <Second Name="LogList"  Url="/set/log/List"></Second>

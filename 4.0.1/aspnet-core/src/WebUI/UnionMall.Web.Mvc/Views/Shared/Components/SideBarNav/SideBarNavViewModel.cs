@@ -6,6 +6,8 @@ namespace UnionMall.Web.Views.Shared.Components.SideBarNav
     {
         public UserMenu MainMenu { get; set; }
 
-        public string ActiveMenuItemName { get; set; }
+        public string ActiveFisrtMenuItemName { get; set; }
+
+        public string ActiveSecondMenuItemName { get; set; }
     }
 }

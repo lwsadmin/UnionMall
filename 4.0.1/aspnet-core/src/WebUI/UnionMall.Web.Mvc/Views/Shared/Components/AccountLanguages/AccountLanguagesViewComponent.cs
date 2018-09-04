@@ -5,6 +5,7 @@ using Abp.Localization;
 
 namespace UnionMall.Web.Views.Shared.Components.AccountLanguages
 {
+
     public class AccountLanguagesViewComponent : UnionMallViewComponent
     {
         private readonly ILanguageManager _languageManager;

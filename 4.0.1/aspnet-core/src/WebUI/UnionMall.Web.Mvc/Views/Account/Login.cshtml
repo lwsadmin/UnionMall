@@ -28,13 +28,13 @@
         <form id="LoginForm" asp-action="Login" method="post">
             <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
             <input type="hidden" name="returnUrlHash" />
-            <h4 class="text-center">@L("LogIn")</h4>
+            <h4 class="text-center">@L("LogIn") </h4>
             <div class="input-group">
                 <span class="input-group-addon">
-                    <i class="material-icons">person</i>
+                    <i class="mdui-icon material-icons">vpn_key</i>
                 </span>
                 <div class="form-line">
-                    <input type="text" class="form-control" value="" name="TenancyName" placeholder="@L("TenancyName")" autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+                    <input type="text" class="form-control" value="default" name="TenancyName" placeholder="@L("TenancyName")" autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
                 </div>
             </div>
             <div class="input-group">

@@ -5,7 +5,7 @@ using UnionMall.Authorization.Roles;
 
 namespace UnionMall.Roles.Dto
 {
-    public class RoleEditDto: EntityDto<int>
+    public class RoleEditDto: EntityDto<long>
     {
         [Required]
         [StringLength(AbpRoleBase.MaxNameLength)]

@@ -2,9 +2,12 @@
 @using UnionMall.Web.Views
 @using UnionMall.Web.Views.Shared.Components.SideBarNav
 @using UnionMall.Sessions.Dto
+@using UnionMall.Roles.Dto
 @model SideBarNavViewModel
 @{
     GetCurrentLoginInformationsOutput loginInfo = ViewBag.LoginInfo;
+
+    RoleEditDto loginRole = ViewBag.Role;
     var calculateMenuUrl = new Func<string, string>((url) =>
     {
         if (string.IsNullOrEmpty(url))
@@ -38,7 +41,7 @@
                                 <span class="block m-t-xs">
                                     <strong class="font-bold">@loginInfo.User.Name</strong>
                                 </span>
-                                <span class="text-muted text-xs block">@loginInfo.User.EmailAddress<b class="caret"></b></span>
+                                <span class="text-muted text-xs block">@loginRole.DisplayName<b class="caret"></b></span>
                             }
                         </span>
                     </a>
@@ -57,7 +60,7 @@
             @foreach (var menuItem in Model.MainMenu.Items)
             {
 
-                <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
+                <li class="@(Model.ActiveFisrtMenuItemName == menuItem.Name? "active" : "")">
                     <a href="javascript:void(0);">
                         <i class="@menuItem.Icon"></i>
                         <span class="nav-label">@menuItem.DisplayName</span>
@@ -66,7 +69,7 @@
                     <ul class="nav nav-second-level">
                         @foreach (var subMenuItem in menuItem.Items)
                         {
-                            <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")"><a href="@subMenuItem.Url">@subMenuItem.DisplayName</a></li>
+                            <li class="@(Model.ActiveSecondMenuItemName == subMenuItem.Name ? "active" : "")"><a href="@subMenuItem.Url">@subMenuItem.DisplayName</a></li>
                         }
                     </ul>
                 </li>

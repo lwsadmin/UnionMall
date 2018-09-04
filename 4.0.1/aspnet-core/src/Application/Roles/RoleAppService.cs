@@ -13,6 +13,7 @@ using UnionMall.Authorization;
 using UnionMall.Authorization.Roles;
 using UnionMall.Authorization.Users;
 using UnionMall.Roles.Dto;
+using Abp.AutoMapper;
 
 namespace UnionMall.Roles
 {
@@ -21,6 +22,8 @@ namespace UnionMall.Roles
     {
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
+
+       
 
         public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager)
             : base(repository)
@@ -125,6 +128,16 @@ namespace UnionMall.Roles
                 Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
                 GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
             };
+        }
+
+        public Task<RoleEditDto> GetRole(long id)
+        {
+
+            var u = _userManager.GetUserByIdAsync(id);
+            var r = _roleManager.GetRoleByIdAsync(u.Result.Roles.FirstOrDefault().RoleId);
+
+            return r.MapTo<Task<RoleEditDto>>();
+            //throw new System.NotImplementedException();
         }
     }
 }

@@ -27,7 +27,7 @@ using UnionMall.Identity;
 using UnionMall.MultiTenancy;
 using UnionMall.Sessions;
 using UnionMall.Web.Models.Account;
-using UnionMall.Web.Views.Shared.Components.TenantChange;
+//using UnionMall.Web.Views.Shared.Components.TenantChange;
 
 namespace UnionMall.Web.Controllers
 {
@@ -384,10 +384,7 @@ namespace UnionMall.Web.Controllers
         public async Task<ActionResult> TenantChangeModal()
         {
             var loginInfo = await _sessionAppService.GetCurrentLoginInformations();
-            return View("/Views/Shared/Components/TenantChange/_ChangeModal.cshtml", new ChangeModalViewModel
-            {
-                TenancyName = loginInfo.Tenant?.TenancyName
-            });
+            return View("/Views/Shared/Components/TenantChange/_ChangeModal.cshtml");
         }
 
         #endregion

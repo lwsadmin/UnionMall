@@ -27,12 +27,12 @@
     <text value="部分输入信息不符合要求，请检查并改正.." name="FormIsNotValidMessage"/>
     <text value="运营商户名不能为空" name="TenantnameCanNotBeEmpty"/>
     <text value="用户名或密码无效" name="InvalidUsernameOrPassword"/>
-    <text value="运营商户{0}不存在" name="ThereIsNoTenantDefinedWithname{0}"/>
-    <text value="运营商户 {0} 未激活." name="TenantIsNotActive"/>
-    <text value="用户 {0} 未激活，不能登录." name="UserIsNotActiveAndCanNotLogin"/>
+    <text value="运营账号{0}不存在" name="ThereIsNoTenantDefinedWithName{0}"/>
+    <text value="运营账号 {0} 未激活." name="TenantIsNotActive"/>
+    <text value="用户名{0} 未激活，不能登录." name="UserIsNotActiveAndCanNotLogin"/>
     <text value="请输入登录信息" name="PleaseEnterLoginInformation"/>
     <text value="运营商户名称" name="Tenancyname"/>
-    
+
     <text value="用户名或邮箱地址" name="UsernameOrEmail"/>
     <text value="密码" name="Password"/>
     <text value="用户名" name="UserName"/>
@@ -48,6 +48,8 @@
     <text value="菜单" name="Menu"/>
 
     <text value="账号" name="TenancyName"/>
+    <text name="Welcome, {0}" value="欢迎您 {0}" />
+    
     <text name="OffLineCashie" value="线下收款"/>
     <text name="QuickConsume" value="快速消费"/>
     <text name="GoodsConsume" value="商品消费" />
@@ -119,8 +121,8 @@
     <text name="Pay" value="支付设置" />
     <text name="PayCode" value="我的二维码" />
     <text name="SystemSet" value="系统设置" />
-    <text name="UserManager" value="账号管理" />
-    <text name="ManagerRole" value="权限组" />
+    <text name="UserManager" value="用户管理" />
+    <text name="ManagerRole" value="角色权限" />
     <text name="Industry" value="运营行业" />
     <text name="PaySet" value="支付设置"/>
     <text name="SEO" value="SEO优化" />

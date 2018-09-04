@@ -3,35 +3,31 @@
 @model LanguageSelectionViewModel
 @if (Model.Languages.Count > 1)
 {
-    @*<div class="language-switch-area">
-            @foreach (var languageInfo in Model.Languages)
-            {
-                <a href="~/AbpLocalization/ChangeCulture?cultureName=@(languageInfo.Name)&returnUrl=@(UrlEncoder.Default.Encode(Context.Request.Path + Context.Request.QueryString))">
-                    <span class="language-icon @(languageInfo == Model.CurrentLanguage ? "language-icon-current" : "")" title="@languageInfo.DisplayName"><i class="@languageInfo.Icon"></i></span>
-                </a>
-            }
-        </div>*@
-
     <div>
         <p style="display:flex;justify-content: center;margin-top:5vh;">
             <lable style="color:white;    margin-top: 2px;">@L("LanguageSetting"):</lable>
             <select id="Language" onchange="LanguageSet();">
                 @foreach (var languageInfo in Model.Languages)
                 {
-                    <option selected="@(languageInfo == Model.CurrentLanguage ? "selected" : "")" value="@languageInfo.Name">@languageInfo.DisplayName</option>
+                    if (languageInfo.Name == Model.CurrentLanguage.Name)
+                    {
+                        <option selected="selected" value="@languageInfo.Name">@languageInfo.DisplayName</option>
+                    }
+                    else
+                    {
+                        <option value="@languageInfo.Name">@languageInfo.DisplayName</option>
+                    }
+
                 }
             </select>
         </p>
     </div>
 }
-    <script>
-       function LanguageSet()
-        {
-
-
-        var select=document.getElementById("Language");
+<script>
+    function LanguageSet() {
+        var select = document.getElementById("Language");
         var index = select.selectedIndex; // 选中索引
-        var name=select.options[index].value;
-        window.location.href='/AbpLocalization/ChangeCulture?cultureName='+name+'&returnUrl=@(UrlEncoder.Default.Encode(Context.Request.Path + Context.Request.QueryString))';
-        }
-    </script>
+        var name = select.options[index].value;
+        window.location.href = '/AbpLocalization/ChangeCulture?cultureName=' + name + '&returnUrl=/account/login';
+    }
+</script>

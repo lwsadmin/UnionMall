@@ -19,20 +19,13 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <link rel="shortcut icon" href="~/favicon.ico">
-
     <title>@L("UnionMall")</title>
-
-
     <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
-
-
     <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
-
 
 
 
@@ -55,7 +48,7 @@
         @RenderBody()
         <div class="row">
             <div class="col-xs-12 text-center" style="color: #e9e9e9">
-                <small>&copy; @DateTime.Now.Year @L("UnionMall")-[@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
+                <small>&copy; @DateTime.Now.Year @L("UnionMall")-[@AppVersionHelper.ReleaseDate.ToString("yyyy-MM-dd")]</small>
             </div>
         </div>
 
@@ -64,33 +57,34 @@
     <environment names="Development">
         <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
         <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-        <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
+        @*<script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>*@
         <script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
         <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
         <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
+
+        <!--setBusy--->
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+
+        <!--abp.ajax--->
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
+
+        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>*@
+        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>*@
+        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>*@
+
+        <!---alert--->
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
-        <script src="~/js/admin.js" asp-append-version="true"></script>
-        <script src="~/js/main.js" asp-append-version="true"></script>
-
-        @if (CultureInfo.CurrentUICulture.Name != "en")
-        {
-            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
-        }
+        @*<script src="~/js/admin.js" asp-append-version="true"></script>
+        <script src="~/js/main.js" asp-append-version="true"></script>*@
     </environment>
 
-    <environment names="Staging,Production">
+    @*<environment names="Staging,Production">
         <script src="~/view-resources/Views/_Bundles/account-layout.min.js" asp-append-version="true"></script>
-    </environment>
+    </environment>*@
 
     <script>
     // Localizing momentjs
@@ -98,8 +92,8 @@
     </script>
 
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
-    <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
-    <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+    @*<script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+    <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>*@
 
     @WebResourceManager.RenderScripts()
 

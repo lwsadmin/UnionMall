@@ -10,5 +10,7 @@ namespace UnionMall.Roles
         Task<ListResultDto<PermissionDto>> GetAllPermissions();
 
         Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input);
+
+        Task<RoleEditDto> GetRole(long id);
     }
 }
