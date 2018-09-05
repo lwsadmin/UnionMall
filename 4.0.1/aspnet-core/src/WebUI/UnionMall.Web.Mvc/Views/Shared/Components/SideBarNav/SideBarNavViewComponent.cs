@@ -36,7 +36,7 @@ namespace UnionMall.Web.Views.Shared.Components.SideBarNav
 
             GetCurrentLoginInformationsOutput s = await _sessionAppService.GetCurrentLoginInformations();
             ViewBag.LoginInfo = s;
-           // ViewBag.Role = await _roleAppService.GetRole(s.User.Id);
+            ViewBag.Role = _roleAppService.GetRole(s.User.Id);
             return View(model);
         }
     }

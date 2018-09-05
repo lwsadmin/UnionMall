@@ -14,6 +14,9 @@ using UnionMall.Authorization.Roles;
 using UnionMall.Authorization.Users;
 using UnionMall.Roles.Dto;
 using Abp.AutoMapper;
+using UnionMall.EntityFrameworkCore;
+using System.Data;
+using UnionMall.IRepositorySql;
 
 namespace UnionMall.Roles
 {
@@ -22,14 +25,14 @@ namespace UnionMall.Roles
     {
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
+        private readonly ISqlExecuter _sqlExecuter;
 
-       
-
-        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager)
+        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager, ISqlExecuter sqlExecuter)
             : base(repository)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _sqlExecuter = sqlExecuter;
         }
 
         public override async Task<RoleDto> Create(CreateRoleDto input)
@@ -130,15 +133,12 @@ namespace UnionMall.Roles
             };
         }
 
-        public Task<RoleEditDto> GetRole(long id)
+        public DataSet GetRole(long id)
         {
-
-            var u = _userManager.GetUserByIdAsync(id);
-            var r = _roleManager.GetRoleByIdAsync(u.Result.Roles.FirstOrDefault().RoleId);
-            // _roleManager.get
-
-            return r.MapTo<Task<RoleEditDto>>();
-            //throw new System.NotImplementedException();
+            string sql = $"select r.id,r.TenantId,r.DisplayName from dbo.TUserRoles ur left join dbo.TRoles r on ur.RoleId=r.Id where ur.UserId={id}";
+            DataSet t1 = _sqlExecuter.ExecuteDataSet(sql, null);
+            DataTable t = _sqlExecuter.ExecuteDataSet(sql, null).Tables[0];
+            return _sqlExecuter.ExecuteDataSet(sql, null);
         }
     }
 }

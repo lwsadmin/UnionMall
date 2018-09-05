@@ -18,6 +18,7 @@ namespace UnionMall.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ChangeAbpTablePrefix<Tenant, Role, User>("T");
+         
 
             //modelBuilder.Entity<Category>().ToTable("GoodsCategory", "T");
             //modelBuilder.Entity<Goods>().ToTable("Goods", "T");

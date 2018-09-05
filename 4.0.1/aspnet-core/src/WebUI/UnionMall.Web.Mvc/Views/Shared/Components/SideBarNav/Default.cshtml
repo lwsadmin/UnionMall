@@ -3,11 +3,12 @@
 @using UnionMall.Web.Views.Shared.Components.SideBarNav
 @using UnionMall.Sessions.Dto
 @using UnionMall.Roles.Dto
+@using System.Data;
 @model SideBarNavViewModel
 @{
     GetCurrentLoginInformationsOutput loginInfo = ViewBag.LoginInfo;
 
-    //RoleEditDto loginRole = ViewBag.Role;
+    DataSet loginRole = ViewBag.Role;
     var calculateMenuUrl = new Func<string, string>((url) =>
     {
         if (string.IsNullOrEmpty(url))
@@ -37,11 +38,10 @@
                         <span class="clear">
                             @if (loginInfo.User != null)
                             {
-
                                 <span class="block m-t-xs">
                                     <strong class="font-bold">@loginInfo.User.Name</strong>
                                 </span>
-                                <span class="text-muted text-xs block">@loginInfo.User.EmailAddress<b class="caret"></b></span>
+                                <span class="text-muted text-xs block">@loginRole.Tables[0].Rows[0]["DisplayName"]<b class="caret"></b></span>
                             }
                         </span>
                     </a>

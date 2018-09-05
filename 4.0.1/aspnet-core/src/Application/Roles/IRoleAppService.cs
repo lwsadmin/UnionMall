@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data;
+using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using UnionMall.Roles.Dto;
@@ -11,6 +12,6 @@ namespace UnionMall.Roles
 
         Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input);
 
-        Task<RoleEditDto> GetRole(long id);
+        DataSet GetRole(long id);
     }
 }
