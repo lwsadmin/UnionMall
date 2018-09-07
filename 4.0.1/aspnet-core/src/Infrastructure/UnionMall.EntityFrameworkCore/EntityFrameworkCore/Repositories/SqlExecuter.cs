@@ -51,8 +51,40 @@ namespace UnionMall.EntityFrameworkCore.Repositories
 
             }
 
+        }
 
-            throw new NotImplementedException();
+
+        public DataSet GetPaged(int start, int limit, string table, string fields, string where, string orderBy, out int total)
+        {
+            total = 0;
+            start = (start - 1) * limit + 1;
+            DataSet ds = new DataSet();
+
+            var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());
+            string connectionString = configuration.GetConnectionString(UnionMallConsts.ConnectionStringName);
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand comm = new SqlCommand("GetPaged", conn);
+                comm.CommandTimeout = 60;
+                comm.CommandType = CommandType.StoredProcedure;
+                comm.Parameters.AddWithValue("@PageIndex", start / limit);
+                comm.Parameters.AddWithValue("@PageSize", limit);
+                comm.Parameters.AddWithValue("@Table", table);
+                comm.Parameters.AddWithValue("@OrderBy", orderBy);
+                comm.Parameters.AddWithValue("@Where", where);
+                comm.Parameters.Add("@TotalCount", SqlDbType.Int, 4);
+                comm.Parameters["@TotalCount"].Direction = ParameterDirection.Output;
+                comm.Parameters.Add("@Descript", SqlDbType.VarChar, 100);
+                comm.Parameters["@Descript"].Direction = ParameterDirection.Output;
+                SqlDataAdapter sda = new SqlDataAdapter(comm);
+                sda.Fill(ds);
+                if (comm.Parameters["@Descript"].Value.ToString() != "successful")
+                {
+                    throw new Exception(comm.Parameters["@Descript"].Value.ToString());
+                }
+                int.TryParse(comm.Parameters["@TotalCount"].Value.ToString(), out total);
+            }
+            return ds;
         }
     }
 }
