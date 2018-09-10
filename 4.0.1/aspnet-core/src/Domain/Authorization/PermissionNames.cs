@@ -2,10 +2,14 @@
 {
     public static class PermissionNames
     {
-        public const string Pages_Tenants = "Pages.Tenants";
+        //Pages.Tenants
+        public const string Pages_Tenants = "SystemSet.Tenants";
 
-        public const string Pages_Users = "Pages.Users";
+        //Pages.Users
+        public const string Pages_Users = "SystemSet.UsersManager";
 
-        public const string Pages_Roles = "Pages.Roles";
+
+        //Pages.Roles
+        public const string Pages_Roles = "SystemSet.ManagerRole";
     }
 }

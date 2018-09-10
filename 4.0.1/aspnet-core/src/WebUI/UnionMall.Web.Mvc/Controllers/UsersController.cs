@@ -9,7 +9,7 @@ using UnionMall.Web.Models.Users;
 
 namespace UnionMall.Web.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Users)]
+    //[AbpMvcAuthorize(PermissionNames.Pages_Users)]
     public class UsersController : UnionMallControllerBase
     {
         private readonly IUserAppService _userAppService;

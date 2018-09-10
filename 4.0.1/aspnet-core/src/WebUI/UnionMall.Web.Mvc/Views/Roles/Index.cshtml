@@ -3,16 +3,7 @@
 @{
     ViewBag.CurrentPageName = PageNames.Roles; // The menu item will be active for this page.
 }
-@section scripts
-{
-    <environment names="Development">
-        <script src="~/view-resources/Views/Roles/Index.js" asp-append-version="true"></script>
-    </environment>
-
-    <environment names="Staging,Production">
-        <script src="~/view-resources/Views/Roles/Index.min.js" asp-append-version="true"></script>
-    </environment>
-}
+<script src="~/view-resources/Views/Roles/Index.js" asp-append-version="true"></script>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -34,29 +25,29 @@
             <div class="body table-responsive">
                 <table class="table">
                     <thead>
-                    <tr>
-                        <th>@L("RoleName")</th>
-                        <th>@L("DisplayName")</th>
-                        <th>@L("Actions")</th>
-                    </tr>
+                        <tr>
+                            <th>@L("RoleName")</th>
+                            <th>@L("DisplayName")</th>
+                            <th>@L("Actions")</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    @foreach (var role in Model.Roles)
-                    {
-                        <tr>
-                            <td>@role.Name</td>
-                            <td>@role.DisplayName</td>
-                            <td class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">menu</i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="#" class="waves-effect waves-block edit-role" data-role-id="@role.Id" data-toggle="modal" data-target="#RoleEditModal"><i class="material-icons">edit</i>@L("Edit")</a></li>
-                                    <li><a href="#" class="waves-effect waves-block delete-role" data-role-id="@role.Id" data-role-name="@role.Name"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                    }
+                        @foreach (var role in Model.Roles)
+                        {
+                            <tr>
+                                <td>@role.Name</td>
+                                <td>@role.DisplayName</td>
+                                <td class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">menu</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="#" class="waves-effect waves-block edit-role" data-role-id="@role.Id" data-toggle="modal" data-target="#RoleEditModal"><i class="material-icons">edit</i>@L("Edit")</a></li>
+                                        <li><a href="#" class="waves-effect waves-block delete-role" data-role-id="@role.Id" data-role-name="@role.Name"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
                 <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#RoleCreateModal">

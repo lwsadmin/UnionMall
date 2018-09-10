@@ -9,7 +9,7 @@ using UnionMall.Web.Models.Roles;
 
 namespace UnionMall.Web.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Roles)]
+    //[AbpMvcAuthorize(PermissionNames.Pages_Roles)]
     public class RolesController : UnionMallControllerBase
     {
         private readonly IRoleAppService _roleAppService;
