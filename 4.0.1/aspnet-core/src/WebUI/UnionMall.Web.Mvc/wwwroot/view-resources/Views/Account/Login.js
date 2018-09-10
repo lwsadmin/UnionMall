@@ -19,10 +19,10 @@ $(function () {
 
     $loginForm.submit(function (e) {
         e.preventDefault();
-        //if ($("input[name='TenancyName']").val() == "") {
-        //    $("input[name='TenancyName']").focus();
-        //    return false;
-        //}
+        if ($("input[name='TenancyName']").val() == "") {
+            $("input[name='TenancyName']").focus();
+            return false;
+        }
         if ($("input[name='usernameOrEmailAddress']").val() == "") {
             $("input[name='usernameOrEmailAddress']").focus();
             return false;
@@ -43,7 +43,10 @@ $(function () {
             abp.ajax({
                 contentType: 'application/x-www-form-urlencoded',
                 url: $loginForm.attr('action'),
-                data: $loginForm.serialize()
+                data: $loginForm.serialize(),
+                success: function (data) {
+                    debugger;
+                }
             })
         );
     });

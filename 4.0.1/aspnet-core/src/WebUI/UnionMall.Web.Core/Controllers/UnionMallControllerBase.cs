@@ -8,8 +8,6 @@ namespace UnionMall.Controllers
     public abstract class UnionMallControllerBase : AbpController
     {
 
-        protected string Where = "";
-
         protected UnionMallControllerBase()
         {
             LocalizationSourceName = UnionMallConsts.LocalizationSourceName;

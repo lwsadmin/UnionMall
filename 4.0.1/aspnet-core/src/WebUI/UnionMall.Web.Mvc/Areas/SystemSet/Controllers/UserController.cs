@@ -41,18 +41,17 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
         public IActionResult List()
         {
 
-            if (_AbpSession.TenantId != null)
-            {
-                Where = $" TenantId={_AbpSession.TenantId}";
-            }
+
             int pageIndex = 1;
             int pageSize = 15;
-            string table = $"select *from tusers";
+            string table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,
+s.EmailAddress from TUsers s ";
+            if (_AbpSession.TenantId != null)
+            {
+                table += $" s.TenantId={_AbpSession.TenantId}";
+            }
             int total;
-            DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "", out total);
-
-            // Logger.Debug("-------------------");
-            // Logger.Debug("-------------------");
+            DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "id desc", out total);
 
             return View();
         }
