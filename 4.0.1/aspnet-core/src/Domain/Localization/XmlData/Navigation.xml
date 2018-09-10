@@ -205,7 +205,7 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="ManagerRole"   Url="/SystemSet/role/list">
+    <Second Name="ManagerRole"   Url="/SystemSet/Role/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />

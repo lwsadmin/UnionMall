@@ -140,5 +140,11 @@ namespace UnionMall.Roles
             DataTable t = _sqlExecuter.ExecuteDataSet(sql, null).Tables[0];
             return _sqlExecuter.ExecuteDataSet(sql, null);
         }
+        public DataSet GetRolePage(int pageIndex, int pageSize, string table, string orderBy, out int total)
+        {
+            // int totalCount=0;
+          //  total = 0;
+            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace UnionMall.IRepositorySql
         int Execute(string sql, params object[] parameters);
 
         DataSet ExecuteDataSet(string sql, params object[] parameters);
+
+        DataSet GetPaged(int pageIndex, int pageSize, string table, string orderBy, out int total);
     }
 }

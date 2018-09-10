@@ -54,27 +54,26 @@ namespace UnionMall.EntityFrameworkCore.Repositories
         }
 
 
-        public DataSet GetPaged(int start, int limit, string table, string fields, string where, string orderBy, out int total)
+        public DataSet GetPaged(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
             total = 0;
-            start = (start - 1) * limit + 1;
             DataSet ds = new DataSet();
 
             var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());
             string connectionString = configuration.GetConnectionString(UnionMallConsts.ConnectionStringName);
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                SqlCommand comm = new SqlCommand("GetPaged", conn);
+                SqlCommand comm = new SqlCommand("Global_GetPaged", conn);
                 comm.CommandTimeout = 60;
                 comm.CommandType = CommandType.StoredProcedure;
-                comm.Parameters.AddWithValue("@PageIndex", start / limit);
-                comm.Parameters.AddWithValue("@PageSize", limit);
+                comm.Parameters.AddWithValue("@PageIndex", pageIndex);
+                comm.Parameters.AddWithValue("@PageSize", pageSize);
                 comm.Parameters.AddWithValue("@Table", table);
                 comm.Parameters.AddWithValue("@OrderBy", orderBy);
-                comm.Parameters.AddWithValue("@Where", where);
-                comm.Parameters.Add("@TotalCount", SqlDbType.Int, 4);
+                //comm.Parameters.AddWithValue("@Where", where);
+                comm.Parameters.Add("@TotalCount", SqlDbType.BigInt,10);
                 comm.Parameters["@TotalCount"].Direction = ParameterDirection.Output;
-                comm.Parameters.Add("@Descript", SqlDbType.VarChar, 100);
+                comm.Parameters.Add("@Descript", SqlDbType.VarChar, 500);
                 comm.Parameters["@Descript"].Direction = ParameterDirection.Output;
                 SqlDataAdapter sda = new SqlDataAdapter(comm);
                 sda.Fill(ds);
