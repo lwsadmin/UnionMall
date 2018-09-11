@@ -11,6 +11,7 @@
     <text value="创建" name="Create"/>
     <text value="备注" name="Memo"/>
     <text value="用户" name="Users"/>
+    <text value="列表" name="List"/>
     <text value="名称" name="value"/>
     <text value="创建时间" name="CreationTime"/>
     <text value="添加" name="Add"/>

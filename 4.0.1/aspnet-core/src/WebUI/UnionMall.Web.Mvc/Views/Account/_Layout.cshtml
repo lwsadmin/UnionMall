@@ -21,19 +21,18 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="~/favicon.ico">
     <title>@L("UnionMall")</title>
-    <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
+    <link href="/lib/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/admin/css/bootstrap.min.css" rel="stylesheet" />
+
     <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
-
-
+    <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+    <link href="~/lib/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <script src="/lib/admin/js/jquery-3.1.1.min.js"></script>
 
     <!-- View specific styles -->
     @RenderSection("styles", required: false)
 
     <script type="text/javascript">
-        // This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
         var abp = abp || {};
         abp.appPath = '@ApplicationPath';
     </script>
@@ -55,46 +54,19 @@
         <vc:account-languages></vc:account-languages>
     </div>
     <environment names="Development">
-        @*<script src="~/lib/json2/json2.js" asp-append-version="true"></script>*@
-        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-        <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
-        @*<script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
-        <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
-        <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
-        <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
-        <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>*@
 
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
         <!--setBusy--->
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
 
         <!--abp.ajax--->
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
-
-        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>*@
-        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>*@
-        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>*@
-
-        <!---alert--->
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
-        @*<script src="~/js/admin.js" asp-append-version="true"></script>
-        <script src="~/js/main.js" asp-append-version="true"></script>*@
     </environment>
-
-    @*<environment names="Staging,Production">
-        <script src="~/view-resources/Views/_Bundles/account-layout.min.js" asp-append-version="true"></script>
-    </environment>*@
-
     <script>
     // Localizing momentjs
     moment.locale('@CultureInfo.CurrentUICulture.Name');
     </script>
-
-    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
-    @*<script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
-    <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>*@
-
     @WebResourceManager.RenderScripts()
 
     <!-- View specific scripts -->

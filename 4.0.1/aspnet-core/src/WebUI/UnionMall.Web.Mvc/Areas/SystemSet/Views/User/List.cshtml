@@ -6,19 +6,22 @@
     ViewBag.FirstMenu = "SystemSet";
     ViewBag.SecondMenu = "UserManager";
 }
+@using Webdiyer.WebControls.Mvc
+@using System.Data
+@model PagedList<DataRow>
 <link href="/lib/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
         <ol class="breadcrumb">
             <li>
-                <a href="/">主页</a>
+                <a href="/">@L("HomePage")</a>
             </li>
             <li>
-                <a>系统设置</a>
+                <a>@L("SystemSet")</a>
             </li>
             <li class="active">
-                <strong>用户管理</strong>
+                <strong>@L("User")@L("List")</strong>
             </li>
         </ol>
     </div>
@@ -29,7 +32,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>用户列表 </h5>
+                    <h5>@L("UserList") </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -66,22 +69,16 @@
                             <tr>
                                 <td>小明</td>
                                 <td>15220231801</td>
-                                <td>
-
-                                </td>
+                                <td></td>
                                 <td>
                                     <a href="#"><i class="fa fa-check text-navy"></i></a>
                                 </td>
-                                <td>
-                               
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>小红</td>
                                 <td>15220231801</td>
-                                <td>
-                                 
-                                </td>
+                                <td></td>
                                 <td>wangxiaohong@qq.com</td>
                                 <td>
                                     <a href="#"><i class="fa fa-check text-navy"></i></a>

@@ -1,0 +1,558 @@
+INFO  2018-09-11 11:46:01,028 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-09-11 11:46:01,057 [11   ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2018-09-11 11:46:01,072 [11   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2018-09-11 11:46:01,072 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 72.0208ms
+INFO  2018-09-11 11:46:01,072 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 83.4581ms 302 
+INFO  2018-09-11 11:46:01,077 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-09-11 11:46:01,116 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:46:01,143 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-09-11 11:46:01,143 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0959ms.
+INFO  2018-09-11 11:46:01,167 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:46:01,173 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 7.1377ms.
+INFO  2018-09-11 11:46:01,173 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 57.1698ms
+INFO  2018-09-11 11:46:01,173 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 95.8152ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:46:12,101 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 280
+INFO  2018-09-11 11:46:12,124 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:46:12,261 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:46:12,438 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 176.4563ms.
+INFO  2018-09-11 11:46:12,476 [6    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:46:12,494 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 369.8743ms
+INFO  2018-09-11 11:46:12,494 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 392.9977ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:46:28,786 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 276
+INFO  2018-09-11 11:46:28,792 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:46:28,802 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:46:29,785 [7    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-09-11 11:46:29,787 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 985.2785ms.
+INFO  2018-09-11 11:46:30,257 [7    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:46:30,257 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 1464.3593ms
+INFO  2018-09-11 11:46:30,257 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1471.9706ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:46:30,282 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-11 11:46:30,302 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:46:30,303 [10   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-11 11:46:30,305 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:46:30,305 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0985ms.
+INFO  2018-09-11 11:46:30,383 [19   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-09-11 11:46:30,599 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 215.5865ms.
+INFO  2018-09-11 11:46:30,603 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 300.7166ms
+INFO  2018-09-11 11:46:30,603 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 322.381ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:46:30,884 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-11 11:46:30,893 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.8969ms 404 
+INFO  2018-09-11 11:46:31,315 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/toastr.js.map  
+INFO  2018-09-11 11:46:31,334 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 19.9993ms 404 
+INFO  2018-09-11 11:46:59,504 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/logout  
+INFO  2018-09-11 11:46:59,516 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Logout", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:46:59,523 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:46:59,523 [19   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed out.
+INFO  2018-09-11 11:46:59,523 [19   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.External signed out.
+INFO  2018-09-11 11:46:59,523 [19   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.TwoFactorUserId signed out.
+INFO  2018-09-11 11:46:59,523 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6962ms.
+INFO  2018-09-11 11:46:59,535 [21   ] ft.AspNetCore.Mvc.RedirectToActionResult - Executing RedirectResult, redirecting to /Account/Login.
+INFO  2018-09-11 11:46:59,535 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc) in 18.9515ms
+INFO  2018-09-11 11:46:59,535 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 30.6946ms 302 
+INFO  2018-09-11 11:46:59,543 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login  
+INFO  2018-09-11 11:46:59,548 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:46:59,554 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:46:59,554 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1517ms.
+INFO  2018-09-11 11:46:59,559 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:46:59,565 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 6.6197ms.
+INFO  2018-09-11 11:46:59,566 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 17.886ms
+INFO  2018-09-11 11:46:59,566 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 22.8904ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:46:59,591 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=Mp96paNpigswSDOamlhb_tTgX1gMzuKgqCOElmt5G5Y  
+INFO  2018-09-11 11:46:59,649 [21   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2018-09-11 11:46:59,650 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 59.0071ms 200 application/javascript
+INFO  2018-09-11 11:47:02,690 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login  
+INFO  2018-09-11 11:47:02,701 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:47:02,705 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:47:02,705 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1072ms.
+INFO  2018-09-11 11:47:02,730 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:47:02,735 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 5.3831ms.
+INFO  2018-09-11 11:47:02,735 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 34.3689ms
+INFO  2018-09-11 11:47:02,736 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 45.8156ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:47:02,770 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=Mp96paNpigswSDOamlhb_tTgX1gMzuKgqCOElmt5G5Y  
+INFO  2018-09-11 11:47:02,772 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2018-09-11 11:47:02,772 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.6919ms 304 application/javascript
+INFO  2018-09-11 11:47:06,419 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 279
+INFO  2018-09-11 11:47:06,425 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:47:06,432 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:47:06,456 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 24.3275ms.
+INFO  2018-09-11 11:47:06,503 [10   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:47:06,503 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 77.603ms
+INFO  2018-09-11 11:47:06,503 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 83.8206ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:47:16,770 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 276
+INFO  2018-09-11 11:47:16,773 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:47:16,777 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:47:16,856 [21   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-09-11 11:47:16,857 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 79.7114ms.
+INFO  2018-09-11 11:47:16,871 [21   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:47:16,871 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 97.7254ms
+INFO  2018-09-11 11:47:16,871 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 101.7047ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:47:47,917 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login  
+INFO  2018-09-11 11:47:47,926 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:47:47,929 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:47:47,929 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1249ms.
+INFO  2018-09-11 11:47:47,947 [23   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+WARN  2018-09-11 11:47:47,957 [23   ] naries.DictionaryBasedLocalizationSource - Can not find 'Register' in localization source 'UnionMall'!
+INFO  2018-09-11 11:47:47,961 [23   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 13.8511ms.
+INFO  2018-09-11 11:47:47,961 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 35.2422ms
+INFO  2018-09-11 11:47:47,961 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 44.6009ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:47:47,997 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=ny-Kd5NkL15Ep0e_e7yxznJXUAbSON-e-QKXVDbgOJM  
+INFO  2018-09-11 11:47:47,999 [23   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2018-09-11 11:47:47,999 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4982ms 200 application/javascript
+INFO  2018-09-11 11:47:50,329 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 319
+INFO  2018-09-11 11:47:50,332 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:47:50,336 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:47:50,434 [29   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-09-11 11:47:50,434 [29   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 98.8113ms.
+INFO  2018-09-11 11:47:50,499 [10   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:47:50,499 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 167.346ms
+INFO  2018-09-11 11:47:50,500 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 170.8243ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:47:50,512 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-11 11:47:50,519 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:47:50,519 [10   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-11 11:47:50,520 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:47:50,520 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0132ms.
+INFO  2018-09-11 11:47:50,525 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-09-11 11:47:50,604 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 79.7722ms.
+INFO  2018-09-11 11:47:50,604 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 85.3404ms
+INFO  2018-09-11 11:47:50,605 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 92.9947ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:47:50,841 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-11 11:47:50,846 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.6134ms 404 
+INFO  2018-09-11 11:47:51,434 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/toastr.js.map  
+INFO  2018-09-11 11:47:51,445 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 11.1824ms 404 
+INFO  2018-09-11 11:48:16,374 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Logout  
+INFO  2018-09-11 11:48:16,383 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Logout", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:16,389 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:48:16,389 [21   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed out.
+INFO  2018-09-11 11:48:16,389 [21   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.External signed out.
+INFO  2018-09-11 11:48:16,390 [21   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.TwoFactorUserId signed out.
+INFO  2018-09-11 11:48:16,390 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.9439ms.
+INFO  2018-09-11 11:48:16,414 [21   ] ft.AspNetCore.Mvc.RedirectToActionResult - Executing RedirectResult, redirecting to /account/Login.
+INFO  2018-09-11 11:48:16,414 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc) in 31.5936ms
+INFO  2018-09-11 11:48:16,415 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 40.5483ms 302 
+INFO  2018-09-11 11:48:16,421 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Login  
+INFO  2018-09-11 11:48:16,426 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:16,433 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:48:16,433 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.3349ms.
+INFO  2018-09-11 11:48:16,438 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:48:16,444 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 5.9193ms.
+INFO  2018-09-11 11:48:16,444 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 18.1778ms
+INFO  2018-09-11 11:48:16,444 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 23.7872ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:48:16,466 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 11:48:16,466 [29   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2018-09-11 11:48:16,467 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.7421ms 200 application/javascript
+INFO  2018-09-11 11:48:19,067 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Login  
+INFO  2018-09-11 11:48:19,074 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:19,079 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:48:19,079 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1332ms.
+INFO  2018-09-11 11:48:19,114 [23   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:48:19,118 [23   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 3.704ms.
+INFO  2018-09-11 11:48:19,118 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 43.9417ms
+INFO  2018-09-11 11:48:19,118 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.403ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:48:19,153 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 11:48:19,154 [23   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2018-09-11 11:48:19,154 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.2022ms 304 application/javascript
+INFO  2018-09-11 11:48:23,729 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Login  
+INFO  2018-09-11 11:48:23,738 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:23,743 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:48:23,743 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1378ms.
+INFO  2018-09-11 11:48:23,759 [23   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:48:23,763 [23   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 4.1654ms.
+INFO  2018-09-11 11:48:23,763 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 25.3802ms
+INFO  2018-09-11 11:48:23,764 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 34.43ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:48:23,800 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 11:48:23,801 [23   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2018-09-11 11:48:23,801 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.3645ms 200 application/javascript
+INFO  2018-09-11 11:48:26,923 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/account/Login application/x-www-form-urlencoded 280
+INFO  2018-09-11 11:48:26,926 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:26,931 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:48:26,959 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 27.7763ms.
+INFO  2018-09-11 11:48:27,002 [10   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:48:27,003 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 76.9932ms
+INFO  2018-09-11 11:48:27,003 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 80.2442ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:48:33,728 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/account/Login application/x-www-form-urlencoded 276
+INFO  2018-09-11 11:48:33,732 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:33,736 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:48:33,815 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-09-11 11:48:33,815 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 79.5241ms.
+INFO  2018-09-11 11:48:33,828 [10   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:48:33,828 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 96.0931ms
+INFO  2018-09-11 11:48:33,828 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 100.0419ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:48:33,837 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-11 11:48:33,848 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:33,849 [23   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-11 11:48:33,849 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:48:33,849 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0075ms.
+INFO  2018-09-11 11:48:33,865 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-09-11 11:48:33,957 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 92.0594ms.
+INFO  2018-09-11 11:48:33,957 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 109.3409ms
+INFO  2018-09-11 11:48:33,957 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 120.799ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:48:53,959 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Logout  
+INFO  2018-09-11 11:48:53,963 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Logout", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:53,967 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:48:53,967 [23   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed out.
+INFO  2018-09-11 11:48:53,968 [23   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.External signed out.
+INFO  2018-09-11 11:48:53,968 [23   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.TwoFactorUserId signed out.
+INFO  2018-09-11 11:48:53,968 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.9379ms.
+INFO  2018-09-11 11:48:54,004 [23   ] ft.AspNetCore.Mvc.RedirectToActionResult - Executing RedirectResult, redirecting to /account/Login.
+INFO  2018-09-11 11:48:54,004 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc) in 40.8674ms
+INFO  2018-09-11 11:48:54,004 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 45.2504ms 302 
+INFO  2018-09-11 11:48:54,009 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Login  
+INFO  2018-09-11 11:48:54,012 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:48:54,018 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:48:54,019 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1453ms.
+INFO  2018-09-11 11:48:54,032 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:49:00,612 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 6579.0767ms.
+INFO  2018-09-11 11:49:00,612 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 6599.8799ms
+INFO  2018-09-11 11:49:00,612 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6603.1686ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:49:00,703 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 11:49:00,704 [23   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2018-09-11 11:49:00,704 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4865ms 200 application/javascript
+INFO  2018-09-11 11:49:03,834 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-11 11:49:03,841 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+WARN  2018-09-11 11:49:03,846 [27   ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2018-09-11 11:49:03,846 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-09-11 11:49:03,847 [27   ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2018-09-11 11:49:03,847 [27   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2018-09-11 11:49:03,847 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 5.8502ms
+INFO  2018-09-11 11:49:03,847 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 13.0103ms 302 
+INFO  2018-09-11 11:49:03,851 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-09-11 11:49:03,856 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:49:03,860 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-09-11 11:49:03,860 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0539ms.
+INFO  2018-09-11 11:49:03,868 [27   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:49:04,082 [27   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 214.4549ms.
+INFO  2018-09-11 11:49:04,082 [27   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 226.1973ms
+INFO  2018-09-11 11:49:04,083 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 231.4268ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:49:04,120 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 11:49:04,123 [27   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2018-09-11 11:49:04,123 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.1663ms 304 application/javascript
+INFO  2018-09-11 11:49:07,348 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 282
+INFO  2018-09-11 11:49:07,353 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:49:07,357 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:49:07,373 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 15.759ms.
+INFO  2018-09-11 11:49:07,415 [21   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:49:07,415 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 62.5077ms
+INFO  2018-09-11 11:49:07,416 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 67.5816ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:49:12,477 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 276
+INFO  2018-09-11 11:49:12,481 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:49:12,485 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-11 11:49:12,571 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-09-11 11:49:12,572 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 86.7861ms.
+INFO  2018-09-11 11:49:12,580 [40   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-11 11:49:12,580 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 99.1202ms
+INFO  2018-09-11 11:49:12,581 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 103.3638ms 200 application/json; charset=utf-8
+INFO  2018-09-11 11:49:12,588 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-11 11:49:12,595 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:49:12,596 [23   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-11 11:49:12,597 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:49:12,597 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0139ms.
+INFO  2018-09-11 11:49:12,601 [40   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-09-11 11:49:12,681 [40   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 79.8481ms.
+INFO  2018-09-11 11:49:12,681 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 86.2368ms
+INFO  2018-09-11 11:49:12,681 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 92.9271ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:49:25,098 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/users  
+INFO  2018-09-11 11:49:25,110 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Users", area = ""}. Executing action UnionMall.Web.Controllers.UsersController.Index (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:49:25,209 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.UsersController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:49:25,600 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.UsersController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 390.4808ms.
+INFO  2018-09-11 11:49:25,613 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+WARN  2018-09-11 11:49:25,628 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'Refresh' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,629 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'FullName' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,630 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'EmailAddress' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,630 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'IsActive' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,630 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'Actions' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,632 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'CreateNewUser' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,637 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'UserDetails' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,638 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'UserRoles' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,638 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'Name' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,638 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'Surname' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,639 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'EmailAddress' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,639 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'ConfirmPassword' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:25,639 [21   ] naries.DictionaryBasedLocalizationSource - Can not find 'IsActive' in localization source 'UnionMall'!
+INFO  2018-09-11 11:49:25,733 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 124.1968ms.
+INFO  2018-09-11 11:49:25,733 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.UsersController.Index (UnionMall.Web.Mvc) in 622.9644ms
+INFO  2018-09-11 11:49:25,733 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 635.0028ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:49:25,860 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Users/Index.js?v=yWa-tsYi9HYZctAPAKV6OC92DJp_3kV41TcvjQKSjwE  
+INFO  2018-09-11 11:49:25,861 [21   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Users/Index.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Users\Index.js'
+INFO  2018-09-11 11:49:25,861 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.5578ms 200 application/javascript
+INFO  2018-09-11 11:49:29,418 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/users?UserName=&Name=&Surname=&EmailAddress=&Password=&ConfirmPassword=&IsActive=true  
+INFO  2018-09-11 11:49:29,425 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Users", area = ""}. Executing action UnionMall.Web.Controllers.UsersController.Index (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:49:29,430 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.UsersController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:49:29,447 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.UsersController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16.6822ms.
+INFO  2018-09-11 11:49:29,451 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+WARN  2018-09-11 11:49:29,453 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'Refresh' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,453 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'FullName' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,453 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'EmailAddress' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,454 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'IsActive' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,454 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'Actions' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,454 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'CreateNewUser' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,455 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'UserDetails' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,455 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'UserRoles' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,455 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'Name' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,456 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'Surname' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,456 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'EmailAddress' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,456 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'ConfirmPassword' in localization source 'UnionMall'!
+WARN  2018-09-11 11:49:29,456 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'IsActive' in localization source 'UnionMall'!
+INFO  2018-09-11 11:49:29,531 [23   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 79.6453ms.
+INFO  2018-09-11 11:49:29,531 [23   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.UsersController.Index (UnionMall.Web.Mvc) in 106.3981ms
+INFO  2018-09-11 11:49:29,531 [23   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 112.9483ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:54:08,541 [68   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Logout  
+INFO  2018-09-11 11:54:08,555 [68   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Logout", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:54:08,567 [68   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-11 11:54:08,567 [68   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed out.
+INFO  2018-09-11 11:54:08,567 [68   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.External signed out.
+INFO  2018-09-11 11:54:08,567 [68   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.TwoFactorUserId signed out.
+INFO  2018-09-11 11:54:08,567 [68   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 0.6384ms.
+INFO  2018-09-11 11:54:08,577 [71   ] ft.AspNetCore.Mvc.RedirectToActionResult - Executing RedirectResult, redirecting to /account/Login.
+INFO  2018-09-11 11:54:08,577 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Logout (UnionMall.Web.Mvc) in 21.968ms
+INFO  2018-09-11 11:54:08,577 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 36.199ms 302 
+INFO  2018-09-11 11:54:08,583 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Login  
+INFO  2018-09-11 11:54:08,589 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:54:08,597 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:54:08,597 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.3009ms.
+INFO  2018-09-11 11:54:08,603 [71   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:54:08,916 [71   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 312.9491ms.
+INFO  2018-09-11 11:54:08,916 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 326.3815ms
+INFO  2018-09-11 11:54:08,917 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 333.9018ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:54:08,937 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 11:54:08,938 [71   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2018-09-11 11:54:08,939 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.21ms 304 application/javascript
+INFO  2018-09-11 11:54:08,940 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/sweetalert/sweetalert.css  
+INFO  2018-09-11 11:54:08,941 [66   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/plugins/sweetalert/sweetalert.css was not modified
+INFO  2018-09-11 11:54:08,941 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9552ms 304 text/css
+INFO  2018-09-11 11:54:08,941 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/sweetalert/sweetalert.min.js  
+INFO  2018-09-11 11:54:08,944 [66   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/sweetalert/sweetalert.min.js was not modified
+INFO  2018-09-11 11:54:08,944 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.3502ms 304 application/javascript
+INFO  2018-09-11 11:54:14,112 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Login  
+INFO  2018-09-11 11:54:14,123 [66   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:54:14,134 [66   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:54:14,135 [66   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.373ms.
+INFO  2018-09-11 11:54:14,153 [71   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:54:14,413 [71   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 260.2448ms.
+INFO  2018-09-11 11:54:14,414 [71   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 291.2352ms
+INFO  2018-09-11 11:54:14,415 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 302.4818ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:54:14,451 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ  
+INFO  2018-09-11 11:54:14,453 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg  
+INFO  2018-09-11 11:54:14,453 [69   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/materialize.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\css\materialize.css'
+INFO  2018-09-11 11:54:14,453 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.8833ms 200 text/css
+INFO  2018-09-11 11:54:14,454 [71   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/material-icons/materialicons.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\fonts\material-icons\materialicons.css'
+INFO  2018-09-11 11:54:14,454 [71   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.0976ms 200 text/css
+INFO  2018-09-11 11:54:14,455 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/jquery-3.1.1.min.js  
+INFO  2018-09-11 11:54:14,473 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/sweetalert/sweetalert.css  
+INFO  2018-09-11 11:54:14,474 [69   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/jquery-3.1.1.min.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\jquery-3.1.1.min.js'
+INFO  2018-09-11 11:54:14,474 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 19.3755ms 200 application/javascript
+INFO  2018-09-11 11:54:14,476 [68   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/bootstrap/dist/css/bootstrap.css?v=opI27tVP8lfzTdiKv9Wi8UuRkNhIAvZwMVLWtOpRHKk  
+INFO  2018-09-11 11:54:14,480 [70   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/css/plugins/sweetalert/sweetalert.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\css\plugins\sweetalert\sweetalert.css'
+INFO  2018-09-11 11:54:14,480 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.6186ms 200 text/css
+INFO  2018-09-11 11:54:14,486 [68   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\bootstrap\dist\css\bootstrap.css'
+INFO  2018-09-11 11:54:14,487 [68   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 10.8871ms 200 text/css
+INFO  2018-09-11 11:54:14,489 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/css/style.css?v=Hmj_hRbtMwZt6Iov-5Sm2qe6D6y7PFUTQRDdUyYreE4  
+INFO  2018-09-11 11:54:14,494 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.css?v=poK-oXF5FUWfhU9hEaEbjLzGQhIVms6YtQoQ3OEZtec  
+INFO  2018-09-11 11:54:14,495 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI  
+INFO  2018-09-11 11:54:14,495 [70   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.css'
+INFO  2018-09-11 11:54:14,496 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.0955ms 200 text/css
+INFO  2018-09-11 11:54:14,496 [69   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/style.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\css\style.css'
+INFO  2018-09-11 11:54:14,496 [69   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.1432ms 200 text/css
+INFO  2018-09-11 11:54:14,496 [60   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\jquery-validation\dist\jquery.validate.js'
+INFO  2018-09-11 11:54:14,497 [60   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.5922ms 200 application/javascript
+INFO  2018-09-11 11:54:14,518 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk  
+INFO  2018-09-11 11:54:14,519 [59   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/abp.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\abp.js'
+INFO  2018-09-11 11:54:14,519 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.1334ms 200 application/javascript
+INFO  2018-09-11 11:54:14,531 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/sweetalert/sweetalert.min.js  
+INFO  2018-09-11 11:54:14,532 [58   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/plugins/sweetalert/sweetalert.min.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\plugins\sweetalert\sweetalert.min.js'
+INFO  2018-09-11 11:54:14,532 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4925ms 200 application/javascript
+INFO  2018-09-11 11:54:14,535 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 11:54:14,537 [57   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2018-09-11 11:54:14,537 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.8493ms 200 application/javascript
+INFO  2018-09-11 11:54:14,537 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q  
+INFO  2018-09-11 11:54:14,538 [57   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\libs\abp.jquery.js'
+INFO  2018-09-11 11:54:14,538 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.925ms 200 application/javascript
+INFO  2018-09-11 11:54:14,638 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/fonts/material-icons/materialicons.woff2  
+INFO  2018-09-11 11:54:14,639 [58   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/material-icons/materialicons.woff2'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\fonts\material-icons\materialicons.woff2'
+INFO  2018-09-11 11:54:14,639 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.3151ms 200 font/woff2
+INFO  2018-09-11 11:54:14,747 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-11 11:54:14,749 [58   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-11 11:54:14,749 [58   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.7289ms 200 image/x-icon
+INFO  2018-09-11 11:55:20,132 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/Login  
+INFO  2018-09-11 11:55:20,138 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:55:20,147 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:55:20,148 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.103ms.
+INFO  2018-09-11 11:55:20,168 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:55:20,351 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 183.204ms.
+INFO  2018-09-11 11:55:20,351 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 213.1481ms
+INFO  2018-09-11 11:55:20,352 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 219.8732ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:55:20,412 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/jquery-3.1.1.min.js  
+INFO  2018-09-11 11:55:20,418 [51   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/jquery-3.1.1.min.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\jquery-3.1.1.min.js'
+INFO  2018-09-11 11:55:20,418 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.8068ms 200 application/javascript
+INFO  2018-09-11 11:55:20,418 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ  
+INFO  2018-09-11 11:55:20,419 [51   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/materialize.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\css\materialize.css'
+INFO  2018-09-11 11:55:20,419 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.3287ms 200 text/css
+INFO  2018-09-11 11:55:20,434 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/bootstrap/dist/css/bootstrap.css?v=opI27tVP8lfzTdiKv9Wi8UuRkNhIAvZwMVLWtOpRHKk  
+INFO  2018-09-11 11:55:20,442 [59   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\bootstrap\dist\css\bootstrap.css'
+INFO  2018-09-11 11:55:20,442 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.4124ms 200 text/css
+INFO  2018-09-11 11:55:20,443 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/sweetalert/sweetalert.css  
+INFO  2018-09-11 11:55:20,443 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/fonts/material-icons/materialicons.css?v=8pEJ8MWsFzHRDLY0NI5rssf6T6vankxrJDPnnZxOGrg  
+INFO  2018-09-11 11:55:20,445 [57   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/material-icons/materialicons.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\fonts\material-icons\materialicons.css'
+INFO  2018-09-11 11:55:20,445 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.7795ms 200 text/css
+INFO  2018-09-11 11:55:20,446 [59   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/css/plugins/sweetalert/sweetalert.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\css\plugins\sweetalert\sweetalert.css'
+INFO  2018-09-11 11:55:20,446 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.0784ms 200 text/css
+INFO  2018-09-11 11:55:20,457 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/css/style.css?v=Hmj_hRbtMwZt6Iov-5Sm2qe6D6y7PFUTQRDdUyYreE4  
+INFO  2018-09-11 11:55:20,468 [57   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/style.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\css\style.css'
+INFO  2018-09-11 11:55:20,468 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 11.5894ms 200 text/css
+INFO  2018-09-11 11:55:20,491 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.css?v=poK-oXF5FUWfhU9hEaEbjLzGQhIVms6YtQoQ3OEZtec  
+INFO  2018-09-11 11:55:20,495 [59   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.css'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.css'
+INFO  2018-09-11 11:55:20,495 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.4482ms 200 text/css
+INFO  2018-09-11 11:55:20,496 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/sweetalert/sweetalert.min.js  
+INFO  2018-09-11 11:55:20,497 [57   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/plugins/sweetalert/sweetalert.min.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\plugins\sweetalert\sweetalert.min.js'
+INFO  2018-09-11 11:55:20,498 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4125ms 200 application/javascript
+INFO  2018-09-11 11:55:20,498 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI  
+INFO  2018-09-11 11:55:20,500 [57   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\jquery-validation\dist\jquery.validate.js'
+INFO  2018-09-11 11:55:20,501 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.5633ms 200 application/javascript
+INFO  2018-09-11 11:55:20,516 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk  
+INFO  2018-09-11 11:55:20,517 [59   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/abp.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\abp.js'
+INFO  2018-09-11 11:55:20,517 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.3098ms 200 application/javascript
+INFO  2018-09-11 11:55:20,525 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q  
+INFO  2018-09-11 11:55:20,527 [59   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\libs\abp.jquery.js'
+INFO  2018-09-11 11:55:20,527 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4578ms 200 application/javascript
+INFO  2018-09-11 11:55:20,537 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 11:55:20,538 [54   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2018-09-11 11:55:20,538 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.3762ms 200 application/javascript
+INFO  2018-09-11 11:55:20,686 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/fonts/material-icons/materialicons.woff2  
+INFO  2018-09-11 11:55:20,687 [54   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/fonts/material-icons/materialicons.woff2'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\fonts\material-icons\materialicons.woff2'
+INFO  2018-09-11 11:55:20,687 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.1646ms 200 font/woff2
+INFO  2018-09-11 11:55:33,104 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpLocalization/ChangeCulture?cultureName=en&returnUrl=/account/login  
+INFO  2018-09-11 11:55:33,113 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "ChangeCulture", controller = "AbpLocalization", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore)
+INFO  2018-09-11 11:55:33,117 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore) with arguments (en, /account/login) - Validation state: Valid
+INFO  2018-09-11 11:55:33,127 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 8.4226ms.
+INFO  2018-09-11 11:55:33,129 [51   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /account/login.
+INFO  2018-09-11 11:55:33,129 [51   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore) in 15.7757ms
+INFO  2018-09-11 11:55:33,129 [51   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 26.8414ms 302 
+INFO  2018-09-11 11:55:33,135 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/login  
+INFO  2018-09-11 11:55:33,139 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:55:33,142 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:55:33,142 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0894ms.
+INFO  2018-09-11 11:55:33,158 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:55:33,168 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 10.0817ms.
+INFO  2018-09-11 11:55:33,168 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 29.0639ms
+INFO  2018-09-11 11:55:33,168 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32.8453ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:55:36,139 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpLocalization/ChangeCulture?cultureName=zh-Hans&returnUrl=/account/login  
+INFO  2018-09-11 11:55:36,143 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "ChangeCulture", controller = "AbpLocalization", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore)
+INFO  2018-09-11 11:55:36,145 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore) with arguments (zh-Hans, /account/login) - Validation state: Valid
+INFO  2018-09-11 11:55:36,145 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 0.1491ms.
+INFO  2018-09-11 11:55:36,145 [54   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /account/login.
+INFO  2018-09-11 11:55:36,145 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore) in 2.3931ms
+INFO  2018-09-11 11:55:36,146 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.9897ms 302 
+INFO  2018-09-11 11:55:36,156 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/login  
+INFO  2018-09-11 11:55:36,166 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:55:36,173 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:55:36,173 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1551ms.
+INFO  2018-09-11 11:55:36,177 [50   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:55:36,183 [50   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 6.1334ms.
+INFO  2018-09-11 11:55:36,183 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 17.1017ms
+INFO  2018-09-11 11:55:36,184 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 27.3511ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:55:38,164 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpLocalization/ChangeCulture?cultureName=en&returnUrl=/account/login  
+INFO  2018-09-11 11:55:38,168 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "ChangeCulture", controller = "AbpLocalization", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore)
+INFO  2018-09-11 11:55:38,169 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore) with arguments (en, /account/login) - Validation state: Valid
+INFO  2018-09-11 11:55:38,169 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 0.0475ms.
+INFO  2018-09-11 11:55:38,169 [54   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /account/login.
+INFO  2018-09-11 11:55:38,170 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore) in 1.3132ms
+INFO  2018-09-11 11:55:38,170 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.4016ms 302 
+INFO  2018-09-11 11:55:38,181 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/login  
+INFO  2018-09-11 11:55:38,190 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:55:38,198 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:55:38,198 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1227ms.
+INFO  2018-09-11 11:55:38,235 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:55:38,238 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 3.2419ms.
+INFO  2018-09-11 11:55:38,238 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 47.827ms
+INFO  2018-09-11 11:55:38,239 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 57.2099ms 200 text/html; charset=utf-8
+INFO  2018-09-11 11:55:40,568 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpLocalization/ChangeCulture?cultureName=zh-Hans&returnUrl=/account/login  
+INFO  2018-09-11 11:55:40,572 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "ChangeCulture", controller = "AbpLocalization", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore)
+INFO  2018-09-11 11:55:40,573 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore) with arguments (zh-Hans, /account/login) - Validation state: Valid
+INFO  2018-09-11 11:55:40,573 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 0.0573ms.
+INFO  2018-09-11 11:55:40,574 [59   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /account/login.
+INFO  2018-09-11 11:55:40,575 [59   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpLocalizationController.ChangeCulture (Abp.AspNetCore) in 2.734ms
+INFO  2018-09-11 11:55:40,576 [59   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.5652ms 302 
+INFO  2018-09-11 11:55:40,587 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/account/login  
+INFO  2018-09-11 11:55:40,590 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 11:55:40,595 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, , ) - Validation state: Valid
+INFO  2018-09-11 11:55:40,596 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1317ms.
+INFO  2018-09-11 11:55:40,602 [57   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 11:55:40,605 [57   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 3.4812ms.
+INFO  2018-09-11 11:55:40,605 [57   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 15.0503ms
+INFO  2018-09-11 11:55:40,606 [57   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.6373ms 200 text/html; charset=utf-8
+INFO  2018-09-11 13:50:39,602 [48   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-11 13:50:39,613 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+WARN  2018-09-11 13:50:39,629 [48   ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2018-09-11 13:50:39,630 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-09-11 13:50:39,630 [48   ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2018-09-11 13:50:39,630 [48   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2018-09-11 13:50:39,630 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 16.9692ms
+INFO  2018-09-11 13:50:39,630 [48   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.3936ms 302 
+INFO  2018-09-11 13:50:39,636 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-09-11 13:50:39,645 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 13:50:39,656 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-09-11 13:50:39,657 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.1366ms.
+INFO  2018-09-11 13:50:39,674 [38   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 13:50:39,951 [38   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 281.3958ms.
+INFO  2018-09-11 13:50:39,951 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 306.0677ms
+INFO  2018-09-11 13:50:39,952 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 315.6828ms 200 text/html; charset=utf-8
+INFO  2018-09-11 13:50:39,985 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/sweetalert/sweetalert.css  
+INFO  2018-09-11 13:50:39,986 [38   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/plugins/sweetalert/sweetalert.css was not modified
+INFO  2018-09-11 13:50:39,986 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.0834ms 304 text/css
+INFO  2018-09-11 13:50:40,083 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-11 13:50:40,083 [38   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2018-09-11 13:50:40,083 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6407ms 304 application/javascript
+INFO  2018-09-11 13:50:40,084 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/sweetalert/sweetalert.min.js  
+INFO  2018-09-11 13:50:40,084 [38   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/sweetalert/sweetalert.min.js was not modified
+INFO  2018-09-11 13:50:40,084 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.444ms 304 application/javascript
+INFO  2018-09-11 13:53:50,198 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-09-11 13:53:50,206 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 13:53:50,218 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-09-11 13:53:50,218 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0955ms.
+INFO  2018-09-11 13:53:50,424 [26   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 13:53:50,444 [26   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 205.9518ms.
+INFO  2018-09-11 13:53:50,444 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 237.5541ms
+INFO  2018-09-11 13:53:50,444 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 246.6187ms 200 text/html; charset=utf-8
+INFO  2018-09-11 13:53:50,706 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-11 13:53:50,707 [27   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-11 13:53:50,707 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9394ms 200 image/x-icon
+INFO  2018-09-11 13:54:01,042 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-09-11 13:54:01,048 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 13:54:01,056 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-09-11 13:54:01,058 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.6356ms.
+INFO  2018-09-11 13:54:01,312 [33   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 13:54:01,334 [33   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 210.0021ms.
+INFO  2018-09-11 13:54:01,334 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 285.7172ms
+INFO  2018-09-11 13:54:01,334 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 291.6501ms 200 text/html; charset=utf-8
+INFO  2018-09-11 13:54:01,541 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-11 13:54:01,542 [26   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-11 13:54:01,542 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9809ms 200 image/x-icon
+INFO  2018-09-11 14:01:55,717 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-09-11 14:01:55,723 [3    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-11 14:01:55,734 [3    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-09-11 14:01:55,734 [3    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0577ms.
+INFO  2018-09-11 14:01:55,993 [3    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-11 14:01:56,012 [3    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 249.935ms.
+INFO  2018-09-11 14:01:56,013 [3    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 289.5564ms
+INFO  2018-09-11 14:01:56,014 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 296.8917ms 200 text/html; charset=utf-8
+INFO  2018-09-11 14:01:56,048 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/bootstrap/dist/css/bootstrap.css?v=opI27tVP8lfzTdiKv9Wi8UuRkNhIAvZwMVLWtOpRHKk  
+INFO  2018-09-11 14:01:56,050 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/css/materialize.css?v=ey-J3xahkqficOYUHVX3jexmzvRFrge9bmux4CQr1DQ  
+INFO  2018-09-11 14:01:56,052 [72   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/sweetalert/sweetalert.css  
+INFO  2018-09-11 14:01:56,052 [3    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/font-awesome/css/font-awesome.css  

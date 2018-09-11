@@ -45,7 +45,14 @@ $(function () {
                 url: $loginForm.attr('action'),
                 data: $loginForm.serialize(),
                 success: function (data) {
-                    debugger;
+                    if (data!=null) {
+                        swal({
+                            title: '错误！',
+                            text: data.msg,
+                            type: 'error',
+                            confirmButtonText: '确定'
+                        })
+                    }
                 }
             })
         );

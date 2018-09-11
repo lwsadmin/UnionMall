@@ -8,11 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
 using UnionMall.Users;
 using System.Data;
-using System.Data.Sql;
-using System.Data.SqlClient;
 using UnionMall.Roles;
 using Castle.Core.Logging;
-
+using Webdiyer.WebControls.Mvc;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
@@ -38,22 +36,19 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 
         }
 
-        public IActionResult List()
-        {
-
-
-            int pageIndex = 1;
+        public IActionResult List(int pageIndex = 1)
+        {   
             int pageSize = 15;
             string table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,
 s.EmailAddress from TUsers s ";
             if (_AbpSession.TenantId != null)
             {
-                table += $" s.TenantId={_AbpSession.TenantId}";
+                table += $" where s.TenantId={_AbpSession.TenantId}";
             }
             int total;
             DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "id desc", out total);
-
-            return View();
+            PagedList<DataRow> pagelist = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
+            return View(pagelist);
         }
     }
 }

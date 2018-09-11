@@ -100,10 +100,35 @@ namespace UnionMall.Web.Controllers
             }
             var loginResult = await GetLoginResultAsync(loginModel.UsernameOrEmailAddress, loginModel.Password, loginModel.TenancyName);
 
-            await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
-            await UnitOfWorkManager.Current.SaveChangesAsync();
+            switch (loginResult.Result)
+            {
+                case AbpLoginResultType.Success:
+                    await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
+                    await UnitOfWorkManager.Current.SaveChangesAsync();
+                     return Json(new AjaxResponse { Success = true, TargetUrl = returnUrl });
+                    //return Json(new { succ = true, TargetUrl = returnUrl });
+                case AbpLoginResultType.InvalidUserNameOrEmailAddress:
+                case AbpLoginResultType.InvalidPassword:
+                    return Json(new AjaxResponse { Success = false, Error = new ErrorInfo(string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword")))});
+                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword")) });
+                case AbpLoginResultType.InvalidTenancyName:
+                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("ThereIsNoTenantDefinedWithName{0}", loginModel.TenancyName)) });
+                case AbpLoginResultType.TenantIsNotActive:
+                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("TenantIsNotActive", loginModel.TenancyName)) });
 
-            return Json(new AjaxResponse { TargetUrl = returnUrl });
+                case AbpLoginResultType.UserIsNotActive:
+                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserIsNotActiveAndCanNotLogin", loginModel.UsernameOrEmailAddress)) });
+
+                case AbpLoginResultType.UserEmailIsNotConfirmed:
+                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserEmailIsNotConfirmedAndCanNotLogin")) });
+
+                case AbpLoginResultType.LockedOut:
+                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserLockedOutMessage")) });
+
+                default: // Can not fall to default actually. But other result types can be added in the future and we may forget to handle it
+                    Logger.Warn("Unhandled login fail reason: " + loginResult.Result);
+                    return Json(new { Success = false, msg = string.Format(L("LoginFailed")) });
+            }
         }
 
         public async Task<ActionResult> Logout()
@@ -117,12 +142,15 @@ namespace UnionMall.Web.Controllers
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
 
+            return loginResult;
             switch (loginResult.Result)
             {
                 case AbpLoginResultType.Success:
                     return loginResult;
                 default:
-                    throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
+
+                    return null;
+                    // throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
             }
         }
 
@@ -193,7 +221,7 @@ namespace UnionMall.Web.Controllers
                 if (model.IsExternalLogin)
                 {
                     Debug.Assert(externalLoginInfo != null);
-                    
+
                     if (string.Equals(externalLoginInfo.Principal.FindFirstValue(ClaimTypes.Email), model.EmailAddress, StringComparison.OrdinalIgnoreCase))
                     {
                         user.IsEmailConfirmed = true;
@@ -288,7 +316,7 @@ namespace UnionMall.Web.Controllers
         public virtual async Task<ActionResult> ExternalLoginCallback(string returnUrl, string remoteError = null)
         {
             returnUrl = NormalizeReturnUrl(returnUrl);
-            
+
             if (remoteError != null)
             {
                 Logger.Error("Remote Error in ExternalLoginCallback: " + remoteError);
