@@ -9,14 +9,14 @@
     <text value="保存" name="Save"/>
     <text value="取消" name="Cancel"/>
     <text value="创建" name="Create"/>
-    <text value="备注" name="Memo"/>
+    <text value="备注" name="Note"/>
     
     <text value="用户" name="Users"/>
     <text value="邮箱" name="Email"/>
     <text value="电话" name="PhoneNumber"/>
     <text value="状态" name="Status"/>
-
-    
+    <text value="标题" name="Title"/>
+    <text value="名称" name="Name"/>
     <text value="用户列表" name="UserList"/>
     <text value="列表" name="List"/>
     <text value="名称" name="value"/>

@@ -7,6 +7,7 @@ using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
 using UnionMall.Roles;
+using Webdiyer.WebControls.Mvc;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
@@ -24,14 +25,16 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
         {
 
             int pageSize = 15;
-            string table = $"select *from tusers";
+            string table = $"select r.Id,r.CreationTime,r.Description,r.DisplayName,r.IsDefault from TRoles r ";
             if (_AbpSession.TenantId != null)
             {
                 table += $" where TenantId={_AbpSession.TenantId}";
             }
             int total;
-            DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "", out total);
-            return View();
+
+            DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "id desc", out total);
+            PagedList<DataRow> pagelist = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
+            return View(pagelist);
         }
     }
 }

@@ -52,7 +52,9 @@
     <text value="PhoneNumber" name="PhoneNumber"/>
     <text value="Status" name="Status"/>
     <text value="Operate" name="Operate"/>
-    
+    <text  name="Title" value="Title"/>
+    <text name="Note" value="Note"/>
+
     <text name="CreateNewUser" value="Create new user" />
     <text name="Yes" value="Yes" />
     <text name="No" value="No" />
