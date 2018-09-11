@@ -21,7 +21,7 @@
                 <a>@L("SystemSet")</a>
             </li>
             <li class="active">
-                <strong>@L("User")@L("List")</strong>
+                <strong>@L("UserList")</strong>
             </li>
         </ol>
     </div>
@@ -58,41 +58,27 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>姓名</th>
-                                <th>手机号</th>
-                                <th>状态</th>
-                                <th>邮箱</th>
-                                <th>操作</th>
+                                <th>@L("UserName")</th>
+                                <th>@L("PhoneNumber")</th>
+                                <th>@L("Status")</th>
+                                <th>@L("Email")</th>
+                                <th>@L("Operate")</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach (DataRow item in Model)
+                            {
                             <tr>
-                                <td>小明</td>
-                                <td>15220231801</td>
-                                <td></td>
-                                <td>
-                                    <a href="#"><i class="fa fa-check text-navy"></i></a>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>小红</td>
-                                <td>15220231801</td>
-                                <td></td>
-                                <td>wangxiaohong@qq.com</td>
+                                <td>@item["UserName"]</td>
+                                <td>@item["PhoneNumber"]</td>
+                                <td>  <a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                <td>@item["EmailAddress"]</td>
                                 <td>
                                     <a href="#"><i class="fa fa-check text-navy"></i></a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>小黑</td>
-                                <td>15220231801</td>
-                                <td></td>
-                                <td>wangxiaohei@qq.com</td>
-                                <td>
-                                    <a href="#"><i class="fa fa-check text-navy"></i></a>
-                                </td>
-                            </tr>
+                            }
+
                         </tbody>
                     </table>
 
