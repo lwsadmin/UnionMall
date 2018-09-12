@@ -33,6 +33,7 @@ namespace UnionMall.Web.Startup
                         L(item.Attributes["Name"].Value),
                         url: "",
                         icon: item.Attributes["Icon"].Value
+                        //requiredPermissionName: item.Attributes["Name"].Value
                         //requiresAuthentication:true
                         );
 
@@ -45,6 +46,7 @@ namespace UnionMall.Web.Startup
                                  L(subItem.Attributes["Name"].Value),
                                  url: subItem.Attributes["Url"].Value,
                                  icon: ""
+                                 //requiredPermissionName: item.Attributes["Name"].Value+"."+ subItem.Attributes["Name"].Value
                                  );
                             first.AddItem(second);
                         }

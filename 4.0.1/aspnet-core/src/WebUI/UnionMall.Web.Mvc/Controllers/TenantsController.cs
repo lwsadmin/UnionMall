@@ -8,7 +8,7 @@ using UnionMall.MultiTenancy;
 
 namespace UnionMall.Web.Controllers
 {
-    //[AbpMvcAuthorize(PermissionNames.Pages_Tenants)]
+    [AbpMvcAuthorize]
     public class TenantsController : UnionMallControllerBase
     {
         private readonly ITenantAppService _tenantAppService;

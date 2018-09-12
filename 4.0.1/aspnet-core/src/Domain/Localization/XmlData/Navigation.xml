@@ -210,6 +210,11 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
+    <Second Name="Tenants"   Url="/SystemSet/Tenants/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
+    </Second>
     <Second Name="Industry"   Url="/SystemSet/industry/list">
       <Action Name="Add" />
       <Action Name="Edit" />
