@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
 using UnionMall.Roles;
+using UnionMall.Roles.Dto;
+using UnionMall.Web.Models.Roles;
 using Webdiyer.WebControls.Mvc;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
     [Area("SystemSet")]
+    [AbpMvcAuthorize]
     public class RoleController : UnionMallControllerBase
     {
         private readonly IRoleAppService _roleAppService;
@@ -35,6 +40,21 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "id desc", out total);
             PagedList<DataRow> pagelist = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
             return View(pagelist);
+        }
+
+        public async Task<ActionResult> Edit(int? roleId)
+        {
+            if (roleId != null)
+            {
+                var output = await _roleAppService.GetRoleForEdit(new EntityDto((int)roleId));
+                var model = new EditRoleModalViewModel(output);
+                return View("_Add", model);
+            }
+            else
+            {
+                return View("_Add", new EditRoleModalViewModel(new GetRoleForEditOutput()));
+            }
+          //  AjaxPager s = new AjaxPager();
         }
     }
 }

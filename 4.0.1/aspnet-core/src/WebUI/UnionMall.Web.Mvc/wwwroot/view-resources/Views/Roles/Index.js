@@ -1,86 +1,85 @@
-﻿(function () {
-	$(function () {
+﻿
+$(function () {
 
-		var _roleService = abp.services.app.role;
-		var _$modal = $('#RoleCreateModal');
-		var _$form = _$modal.find('form');
 
-		_$form.validate({
-		});
+    var _$modal = $('#role');
+    var _$form = _$modal.find('form');
+   
+    $('#RefreshButton').click(function () {
+        refreshRoleList();
+    });
+    $('.btn-danger').click(function () {
+        var roleId = $(this).attr("data-role-id");
+        var roleName = $(this).attr('data-role-name');
 
-		$('#RefreshButton').click(function () {
-			refreshRoleList();
-		});
+        deleteRole(roleId, roleName);
+    });
+    $("#add").click(function () {
+        debugger;
+        _$modal.modal("show");
+    });
+    $('.btn-primary').click(function (e) {
+        var roleId = $(this).attr("data-role-id");
 
-		$('.delete-role').click(function () {
-			var roleId = $(this).attr("data-role-id");
-			var roleName = $(this).attr('data-role-name');
+        e.preventDefault();
+        $.ajax({
+            url: abp.appPath + '/SystemSet/Role/Edit?roleId=' + roleId,
+            type: 'POST',
+            contentType: 'application/html',
+            success: function (content) {
+                alert(content);
+                //$('#RoleEditModal div.modal-content').html(content);
+            },
+            error: function (e) { }
+        });
+    });
 
-			deleteRole(roleId, roleName);
-		});
+    _$form.find('button[type="submit"]').click(function (e) {
+        e.preventDefault();
 
-		$('.edit-role').click(function (e) {
-			var roleId = $(this).attr("data-role-id");
+        if (!_$form.valid()) {
+            return;
+        }
 
-			e.preventDefault();
-			$.ajax({
-				url: abp.appPath + 'Roles/EditRoleModal?roleId=' + roleId,
-				type: 'POST',
-				contentType: 'application/html',
-				success: function (content) {
-					$('#RoleEditModal div.modal-content').html(content);
-				},
-				error: function (e) { }
-			});
-		});
+        var role = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
+        role.permissions = [];
+        var _$permissionCheckboxes = $("input[name='permission']:checked");
+        if (_$permissionCheckboxes) {
+            for (var permissionIndex = 0; permissionIndex < _$permissionCheckboxes.length; permissionIndex++) {
+                var _$permissionCheckbox = $(_$permissionCheckboxes[permissionIndex]);
+                role.permissions.push(_$permissionCheckbox.val());
+            }
+        }
 
-		_$form.find('button[type="submit"]').click(function (e) {
-			e.preventDefault();
+        abp.ui.setBusy(_$modal);
+        _roleService.create(role).done(function () {
+            _$modal.modal('hide');
+            location.reload(true); //reload page to see new role!
+        }).always(function () {
+            abp.ui.clearBusy(_$modal);
+        });
+    });
 
-			if (!_$form.valid()) {
-				return;
-			}
+    _$modal.on('shown.bs.modal', function () {
+        _$modal.find('input:not([type=hidden]):first').focus();
+    });
 
-			var role = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
-			role.permissions = [];
-			var _$permissionCheckboxes = $("input[name='permission']:checked");
-			if (_$permissionCheckboxes) {
-				for (var permissionIndex = 0; permissionIndex < _$permissionCheckboxes.length; permissionIndex++) {
-					var _$permissionCheckbox = $(_$permissionCheckboxes[permissionIndex]);
-					role.permissions.push(_$permissionCheckbox.val());
-				}
-			}
+    function refreshRoleList() {
+        location.reload(true); //reload page to see new role!
+    }
 
-			abp.ui.setBusy(_$modal);
-			_roleService.create(role).done(function () {
-				_$modal.modal('hide');
-				location.reload(true); //reload page to see new role!
-			}).always(function () {
-				abp.ui.clearBusy(_$modal);
-			});
-		});
-
-		_$modal.on('shown.bs.modal', function () {
-			_$modal.find('input:not([type=hidden]):first').focus();
-		});
-
-		function refreshRoleList() {
-			location.reload(true); //reload page to see new role!
-		}
-
-		function deleteRole(roleId, roleName) {
-			abp.message.confirm(
-                abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'UnionMall'), roleName),
-				function (isConfirmed) {
-					if (isConfirmed) {
-						_roleService.delete({
-							id: roleId
-						}).done(function () {
-							refreshRoleList();
-						});
-					}
-				}
-			);
-		}
-	});
-})();
+    function deleteRole(roleId, roleName) {
+        abp.message.confirm(
+            abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'UnionMall'), roleName),
+            function (isConfirmed) {
+                if (isConfirmed) {
+                    _roleService.delete({
+                        id: roleId
+                    }).done(function () {
+                        refreshRoleList();
+                    });
+                }
+            }
+        );
+    }
+});

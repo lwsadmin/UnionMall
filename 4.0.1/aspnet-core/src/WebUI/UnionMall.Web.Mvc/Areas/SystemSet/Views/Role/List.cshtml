@@ -10,6 +10,8 @@
 @using System.Data
 @model PagedList<DataRow>
 
+<script src="~/view-resources/Views/Roles/Index.js"></script>
+<script src="~/js/jquery.unobtrusive.js"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -32,10 +34,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-
-                    <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i>&nbsp;新增</button>
-
-
+                    <button id="add" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i>&nbsp;新增</button>
                 </div>
                 <div class="ibox-content">
 
@@ -67,9 +66,38 @@
                         </tbody>
                     </table>
 
+                    @Ajax.Pager(Model,
+    new PagerOptions
+    {
+        PageIndexParameterName = "id",
+        CssClass = "pagination",
+        FirstPageText = "首页",
+        LastPageText = "尾页",
+        PrevPageText = "上一页",
+        PageIndexBoxId = "pageIndexBox",
+        GoToButtonId = "Go",
+        PageIndexOutOfRangeErrorMessage = "页码有误!",
+        NumericPagerItemCount = 8,
+        NextPageText = "下一页",
+        CurrentPagerItemTemplate = "<li class=\"active\"><a data-pageindex=\"{0}\" href=\"/Set/admin/List/{0}\">{0}</a></li>",
+        DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",
+        PagerItemTemplate = "<li>{0}</li>",
+        AutoHide = false,
+
+    }, new MvcAjaxOptions
+    {
+        UpdateTargetId = "divTable",
+        HttpMethod = "Post",
+        DataFormId = "formSearch",
+        EnableHistorySupport = true
+    }
+    )
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div id="divEdit">
 
+    @Html.Partial("_Add")
+</div>
