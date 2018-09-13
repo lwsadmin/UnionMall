@@ -112,6 +112,7 @@
     
     <!--ccccccccccccccccccccccccccccc-->
 
+    
     <text name="OffLineCashie" value="OffLineCashie"/>
     <text name="QuickConsume" value="QuickConsume"/>
     <text name="GoodsConsume" value="GoodsConsume" />
@@ -130,6 +131,7 @@
     <text name="GoodsComment" value="GoodsComment" />
     <text name="GoodAsk" value="GoodAsk" />
 
+    <text name="BusinessName" value="BusinessName"/>
     <text name="Business" value="Business"/>
     <text name="OneJia" value="OneJia" />
     <text name="TwoJia" value="TwoJia" />
@@ -195,5 +197,9 @@
 
     <text name="Aduit" value="Aduit" />
     <text name="Reply" value="Reply" />
+    <!--Table-->
+    <text name="legalPerson" value="legalPerson" />
+    <text name="Sort" value="Sort" />
+    <text name="DueTime" value="DueTime" />
   </texts>
 </localizationDictionary>

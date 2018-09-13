@@ -45,10 +45,10 @@
     <Second Name="GoodsComment" Url="javascript:void(0);"></Second>
     <Second Name="GoodAsk"  Url="javascript:void(0);"></Second>
   </First>
-  <First Name="Business"  Icon="glyphicon glyphicon-th">
+  <First Name="BusinessManage"  Icon="glyphicon glyphicon-th">
     <Second Name="OneJia" Url="javascript:void(0);"></Second>
     <Second Name="TwoJia" Url="javascript:void(0);"></Second>
-    <Second Name="BusinessManage"  Url="/business/business/list">
+    <Second Name="Business"  Url="/business/business/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />

@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.FirstMenu = "BusinessManage";
+    ViewBag.SecondMenu = "Business";
+}
+@using Webdiyer.WebControls.Mvc
+
+@using System.Data
+@model PagedList<DataRow>
+    <link href="/lib/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-12">
+            <h2></h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/">@L("BusinessManage")</a>
+                </li>
+                <li>
+                    <a>@L("Business")</a>
+                </li>
+                <li class="active">
+                    <strong>@L("Business")</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>@L("Business") </h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="#">选项 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">选项 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>@L("BusinessName")</th>
+                                    <th>@L("legalPerson")</th>
+                                    <th>@L("PhoneNumber")</th>
+                                    <th>@L("Sort")</th>
+                                    <th>@L("DueTime")</th>
+                                    <th>@L("Operate")</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (DataRow item in Model)
+                                {
+                                <tr>
+                                    <td>@item["BusinessName"]</td>
+                                    <td>@item["Contact"]</td>
+                                    <td>@item["Tel"]</td>
+                                    <td>@item["Sort"]</td>
+                                    <td>@item["DueTime"]</td>
+                                    <td>
+                                        <a href="#"><i class="fa fa-check text-navy"></i></a>
+                                    </td>
+                                </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
