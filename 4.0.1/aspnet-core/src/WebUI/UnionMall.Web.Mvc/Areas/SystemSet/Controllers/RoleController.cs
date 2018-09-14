@@ -46,6 +46,7 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
         {
             if (roleId != null)
             {
+               
                 var output = await _roleAppService.GetRoleForEdit(new EntityDto((int)roleId));
                 var model = new EditRoleModalViewModel(output);
                 return View("_Add", model);
@@ -54,7 +55,7 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             {
                 return View("_Add", new EditRoleModalViewModel(new GetRoleForEditOutput()));
             }
-          //  AjaxPager s = new AjaxPager();
+            //  AjaxPager s = new AjaxPager();
         }
     }
 }

@@ -8,6 +8,7 @@
 }
 @using Webdiyer.WebControls.Mvc
 @using System.Data
+
 @model PagedList<DataRow>
 
 <script src="~/view-resources/Views/Roles/Index.js"></script>
@@ -65,7 +66,7 @@
 
                         </tbody>
                     </table>
-
+                    
                     @Ajax.Pager(Model,
     new PagerOptions
     {
