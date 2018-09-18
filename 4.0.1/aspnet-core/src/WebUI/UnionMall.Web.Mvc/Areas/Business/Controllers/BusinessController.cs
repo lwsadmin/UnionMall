@@ -24,7 +24,7 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
         }
         public IActionResult List(int pageIndex = 1)
         {
-            int pageSize = 15;
+            int pageSize = 1;
             string table = $"select *from dbo.TBusiness b  ";
             if (_AbpSession.TenantId != null)
             {
@@ -33,8 +33,9 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             int total;
 
             DataSet ds = _AppService.GetPage(pageIndex, pageSize, table, "id desc", out total);
-            var page = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize);
 
+            IPagedList page = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize);
+         //   page.TotalItemCount = total;
             return View(page);
         }
     }

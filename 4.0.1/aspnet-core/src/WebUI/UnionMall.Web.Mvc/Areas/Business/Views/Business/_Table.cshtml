@@ -37,7 +37,7 @@
     </tbody>
 </table>
 
-@Html.PagedListPager((IPagedList)ViewBag.Names, page => Url.Action("GetOnePageOfNames", new { page }),
+@Html.PagedListPager(Model, page => Url.Action("GetOnePageOfNames", new { page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new PagedListRenderOptions {
             MaximumPageNumbersToDisplay = 8,
