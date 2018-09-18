@@ -105,12 +105,12 @@ namespace UnionMall.Web.Controllers
                 case AbpLoginResultType.Success:
                     await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
                     await UnitOfWorkManager.Current.SaveChangesAsync();
-                     return Json(new AjaxResponse { Success = true, TargetUrl = returnUrl });
-                    //return Json(new { succ = true, TargetUrl = returnUrl });
+                    return Json(new AjaxResponse { Success = true, TargetUrl = returnUrl });
+                //return Json(new { succ = true, TargetUrl = returnUrl });
                 case AbpLoginResultType.InvalidUserNameOrEmailAddress:
                 case AbpLoginResultType.InvalidPassword:
-                    return Json(new AjaxResponse { Success = false, Error = new ErrorInfo(string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword")))});
-                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword")) });
+                    return Json(new AjaxResponse { Success = false, Error = new ErrorInfo(string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword"))) });
+                //  return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword")) });
                 case AbpLoginResultType.InvalidTenancyName:
                     return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("ThereIsNoTenantDefinedWithName{0}", loginModel.TenancyName)) });
                 case AbpLoginResultType.TenantIsNotActive:

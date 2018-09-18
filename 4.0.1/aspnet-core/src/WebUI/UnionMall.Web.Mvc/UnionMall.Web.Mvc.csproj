@@ -66,12 +66,16 @@
     <Folder Include="Areas\Business\Models\" />
     <Folder Include="Areas\SystemSet\Data\" />
     <Folder Include="Areas\SystemSet\Models\" />
+    <Folder Include="wwwroot\lib\pager\" />
     <Folder Include="wwwroot\view-resources\Views\Shared\Components\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Webdiyer.MvcPager">
-      <HintPath>wwwroot\lib\pager\Webdiyer.MvcPager.dll</HintPath>
+    <Reference Include="X.PagedList">
+      <HintPath>wwwroot\lib\pager\X.PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="X.PagedList.Mvc.Core">
+      <HintPath>wwwroot\lib\pager\X.PagedList.Mvc.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,57 @@
+﻿
+@{
+
+    Layout = null;
+}
+@using System.Data
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("BusinessName")</th>
+            <th>@L("legalPerson")</th>
+            <th>@L("PhoneNumber")</th>
+            <th>@L("Sort")</th>
+            <th>@L("DueTime")</th>
+            <th>@L("Operate")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr>
+                <td>@item["BusinessName"]</td>
+                <td>@item["Contact"]</td>
+                <td>@item["Tel"]</td>
+                <td>@item["Sort"]</td>
+                <td>@item["DueTime"]</td>
+                <td>
+                    <a href="#"><i class="fa fa-check text-navy"></i></a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager((IPagedList)ViewBag.Names, page => Url.Action("GetOnePageOfNames", new { page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new PagedListRenderOptions {
+            MaximumPageNumbersToDisplay = 8,
+            DisplayPageCountAndCurrentLocation = true,
+
+            UlElementClasses = new[] { "pagination col-md-8" },
+            ContainerDivClasses = new[] { "row" } },
+
+
+        new AjaxOptions()
+        {
+            DataForm = "searchForm",
+            OnBegin = "return Begin(this);",
+            HttpMethod = "GET",
+            UpdateTargetId = "table"
+        }
+))

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\4.0.1",
+    "\\4.0.1\\aspnet-core",
+    "\\4.0.1\\aspnet-core\\src",
+    "\\4.0.1\\aspnet-core\\src\\WebUI",
+    "\\4.0.1\\aspnet-core\\src\\WebUI\\UnionMall.Web.Mvc",
+    "\\4.0.1\\aspnet-core\\src\\WebUI\\UnionMall.Web.Mvc\\Areas",
+    "\\4.0.1\\aspnet-core\\src\\WebUI\\UnionMall.Web.Mvc\\Areas\\Business",
+    "\\4.0.1\\aspnet-core\\src\\WebUI\\UnionMall.Web.Mvc\\Areas\\Business\\Views",
+    "\\4.0.1\\aspnet-core\\src\\WebUI\\UnionMall.Web.Mvc\\Areas\\Business\\Views\\Business"
+  ],
+  "SelectedNode": "\\4.0.1",
+  "PreviewInSolutionExplorer": false
+}

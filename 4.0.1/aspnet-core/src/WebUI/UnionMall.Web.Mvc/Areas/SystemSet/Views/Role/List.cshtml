@@ -6,10 +6,10 @@
     ViewBag.FirstMenu = "SystemSet";
     ViewBag.SecondMenu = "ManagerRole";
 }
-@using Webdiyer.WebControls.Mvc
+
 @using System.Data
 
-@model PagedList<DataRow>
+@model DataTable
 
 <script src="~/view-resources/Views/Roles/Index.js"></script>
 <script src="~/js/jquery.unobtrusive.js"></script>
@@ -49,7 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (DataRow item in Model)
+                            @foreach (DataRow item in Model.Rows)
                             {
                                 <tr>
                                     <td>@item["DisplayName"]</td>
@@ -67,32 +67,7 @@
                         </tbody>
                     </table>
                     
-                    @Ajax.Pager(Model,
-    new PagerOptions
-    {
-        PageIndexParameterName = "id",
-        CssClass = "pagination",
-        FirstPageText = "首页",
-        LastPageText = "尾页",
-        PrevPageText = "上一页",
-        PageIndexBoxId = "pageIndexBox",
-        GoToButtonId = "Go",
-        PageIndexOutOfRangeErrorMessage = "页码有误!",
-        NumericPagerItemCount = 8,
-        NextPageText = "下一页",
-        CurrentPagerItemTemplate = "<li class=\"active\"><a data-pageindex=\"{0}\" href=\"/Set/admin/List/{0}\">{0}</a></li>",
-        DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",
-        PagerItemTemplate = "<li>{0}</li>",
-        AutoHide = false,
 
-    }, new MvcAjaxOptions
-    {
-        UpdateTargetId = "divTable",
-        HttpMethod = "Post",
-        DataFormId = "formSearch",
-        EnableHistorySupport = true
-    }
-    )
                 </div>
             </div>
         </div>

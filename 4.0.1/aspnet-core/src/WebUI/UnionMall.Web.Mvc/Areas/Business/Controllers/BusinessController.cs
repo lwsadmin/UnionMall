@@ -8,8 +8,7 @@ using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Business.Buiness;
 using UnionMall.Controllers;
-using Webdiyer.WebControls.Mvc;
-
+using X.PagedList;
 namespace UnionMall.Web.Mvc.Areas.Business.Controllers
 {
     [Area("Business")]
@@ -23,7 +22,7 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             _AppService = AppService;
             _AbpSession = abpSession;
         }
-        public IActionResult List(int pageIndex=1)
+        public IActionResult List(int pageIndex = 1)
         {
             int pageSize = 15;
             string table = $"select *from dbo.TBusiness b  ";
@@ -34,9 +33,9 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             int total;
 
             DataSet ds = _AppService.GetPage(pageIndex, pageSize, table, "id desc", out total);
-            PagedList<DataRow> pagelist = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
-           
-            return View(pagelist);
+            var page = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize);
+
+            return View(page);
         }
     }
 }

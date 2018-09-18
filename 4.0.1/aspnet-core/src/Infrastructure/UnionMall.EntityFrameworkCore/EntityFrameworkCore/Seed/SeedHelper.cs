@@ -36,11 +36,21 @@ namespace UnionMall.EntityFrameworkCore.Seed
             {
                 using (var uow = uowManager.Object.Begin(TransactionScopeOption.Suppress))
                 {
-                    var context = uowManager.Object.Current.GetDbContext<TDbContext>(MultiTenancySides.Host);
+                    try
+                    {
+                        var context = uowManager.Object.Current.GetDbContext<TDbContext>(MultiTenancySides.Host);
 
-                    contextAction(context);
+                        contextAction(context);
 
-                    uow.Complete();
+                        uow.Complete();
+
+                    }
+                    catch (Exception e)
+                    {
+
+                        throw e;
+                    }
+
                 }
             }
         }

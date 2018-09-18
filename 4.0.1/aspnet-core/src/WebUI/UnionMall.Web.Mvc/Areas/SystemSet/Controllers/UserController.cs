@@ -10,8 +10,7 @@ using UnionMall.Users;
 using System.Data;
 using UnionMall.Roles;
 using Castle.Core.Logging;
-using Webdiyer.WebControls.Mvc;
-//using System.Web.Mvc;
+
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
     [AbpMvcAuthorize("SystemSet.UsersManager")]
@@ -47,8 +46,8 @@ s.EmailAddress from TUsers s ";
             }
             int total;
             DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "id desc", out total);
-            PagedList<DataRow> pagelist = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
-            return View(pagelist);
+           
+            return View(ds.Tables[0]);
         }
     }
 }

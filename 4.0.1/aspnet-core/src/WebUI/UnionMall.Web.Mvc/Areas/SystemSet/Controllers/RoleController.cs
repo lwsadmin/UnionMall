@@ -11,7 +11,6 @@ using UnionMall.Controllers;
 using UnionMall.Roles;
 using UnionMall.Roles.Dto;
 using UnionMall.Web.Models.Roles;
-using Webdiyer.WebControls.Mvc;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
@@ -38,8 +37,8 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             int total;
 
             DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "id desc", out total);
-            PagedList<DataRow> pagelist = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
-            return View(pagelist);
+         
+            return View(ds.Tables[0]);
         }
 
         public async Task<ActionResult> Edit(int? roleId)
