@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+@using System.Data
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Name")</th>
+            <th>@L("Note")</th>
+            <th>@L("CreationTime")</th>
+            <th>@L("Operate")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr>
+                <td>@item["DisplayName"]</td>
+                <td>@item["Description"]</td>
+                <td>@item["CreationTime"]</td>
+                <td>
+
+                    <button type="button" class="btn btn-outline btn-primary btn-xs">编辑</button>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-outline btn-danger btn-xs">删除</button>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("GetOnePageOfNames", new { page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new PagedListRenderOptions {
+            MaximumPageNumbersToDisplay = 8,
+            DisplayPageCountAndCurrentLocation = true,
+
+            UlElementClasses = new[] { "pagination col-md-8" },
+            ContainerDivClasses = new[] { "row" } },
+
+
+        new AjaxOptions()
+        {
+            DataForm = "searchForm",
+            OnBegin = "return Begin(this);",
+            HttpMethod = "GET",
+            UpdateTargetId = "table"
+        }
+))

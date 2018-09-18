@@ -11,6 +11,7 @@ using UnionMall.Controllers;
 using UnionMall.Roles;
 using UnionMall.Roles.Dto;
 using UnionMall.Web.Models.Roles;
+using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
@@ -37,8 +38,13 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             int total;
 
             DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "id desc", out total);
-         
-            return View(ds.Tables[0]);
+
+
+
+
+            IPagedList page = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
+
+            return View(page);
         }
 
         public async Task<ActionResult> Edit(int? roleId)

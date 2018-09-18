@@ -34,7 +34,7 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
 
             DataSet ds = _AppService.GetPage(pageIndex, pageSize, table, "id desc", out total);
 
-            IPagedList page = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize);
+            IPagedList page = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
          //   page.TotalItemCount = total;
             return View(page);
         }

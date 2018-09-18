@@ -6,10 +6,9 @@
     ViewBag.FirstMenu = "SystemSet";
     ViewBag.SecondMenu = "ManagerRole";
 }
-
 @using System.Data
-
-@model DataTable
+@using X.PagedList
+@model PagedList<DataRow>
 
 <script src="~/view-resources/Views/Roles/Index.js"></script>
 <script src="~/js/jquery.unobtrusive.js"></script>
@@ -37,43 +36,13 @@
                 <div class="ibox-title">
                     <button id="add" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i>&nbsp;新增</button>
                 </div>
-                <div class="ibox-content">
-
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>@L("Name")</th>
-                                <th>@L("Note")</th>
-                                <th>@L("CreationTime")</th>
-                                <th>@L("Operate")</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (DataRow item in Model.Rows)
-                            {
-                                <tr>
-                                    <td>@item["DisplayName"]</td>
-                                    <td>@item["Description"]</td>
-                                    <td>@item["CreationTime"]</td>
-                                    <td>
-
-                                        <button type="button" class="btn btn-outline btn-primary btn-xs">编辑</button>
-                                        &nbsp;&nbsp;
-                                        <button type="button" class="btn btn-outline btn-danger btn-xs">删除</button>
-                                    </td>
-                                </tr>
-                            }
-
-                        </tbody>
-                    </table>
-                    
-
+                <div class="ibox-content" id="table">
+                    @Html.Partial("_Table", Model)
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div id="divEdit">
-
     @Html.Partial("_Add")
 </div>
