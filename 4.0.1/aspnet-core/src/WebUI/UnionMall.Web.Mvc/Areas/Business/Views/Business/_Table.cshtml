@@ -37,7 +37,7 @@
     </tbody>
 </table>
 
-@Html.PagedListPager(Model, page => Url.Action("GetOnePageOfNames", new { page }),
+@Html.PagedListPager(Model, page => Url.Action("Table", new { page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new PagedListRenderOptions {
             MaximumPageNumbersToDisplay = 8,
@@ -50,7 +50,7 @@
         new AjaxOptions()
         {
             DataForm = "searchForm",
-            OnBegin = "return Begin(this);",
+           
             HttpMethod = "GET",
             UpdateTargetId = "table"
         }
