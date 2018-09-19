@@ -11,11 +11,10 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>@L("BusinessName")</th>
-            <th>@L("legalPerson")</th>
-            <th>@L("PhoneNumber")</th>
+            <th>@L("Title")</th>
+            <th>@L("Parent")</th>
             <th>@L("Sort")</th>
-            <th>@L("DueTime")</th>
+            <th>@L("Note")</th>
             <th>@L("Operate")</th>
         </tr>
     </thead>
@@ -23,11 +22,10 @@
         @foreach (DataRow item in Model)
         {
             <tr>
-                <td>@item["BusinessName"]</td>
-                <td>@item["Contact"]</td>
-                <td>@item["Tel"]</td>
+                <td>@item["Title"]</td>
+                <td>@item["ParentId"]</td>
                 <td>@item["Sort"]</td>
-                <td>@item["DueTime"]</td>
+                <td>@item["Note"]</td>
                 <td>
                     <a href="#"><i class="fa fa-check text-navy"></i></a>
                 </td>
@@ -40,7 +38,7 @@
 @Html.PagedListPager(Model, page => Url.Action("Table", new { page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new PagedListRenderOptions {
-            MaximumPageNumbersToDisplay = 8,
+            MaximumPageNumbersToDisplay = 10,
             DisplayPageCountAndCurrentLocation = true,
             LinkToFirstPageFormat = L("FirstPage"),
             LinkToLastPageFormat = L("LastPage"),

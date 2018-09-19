@@ -1,0 +1,603 @@
+DEBUG 2018-09-18 15:53:07,889 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.MultiTenancy.Dto.TenantDto
+DEBUG 2018-09-18 15:53:07,906 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Web.Models.Roles.EditRoleModalViewModel
+INFO  2018-09-18 15:53:18,096 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-18 15:53:20,055 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+WARN  2018-09-18 15:53:20,302 [6    ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2018-09-18 15:53:20,312 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-09-18 15:53:20,329 [6    ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2018-09-18 15:53:20,368 [6    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2018-09-18 15:53:20,372 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 311.0095ms
+INFO  2018-09-18 15:53:20,437 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2344.6872ms 302 
+INFO  2018-09-18 15:53:20,438 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-09-18 15:53:20,474 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-18 15:53:22,148 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-09-18 15:53:22,160 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 8.2327ms.
+INFO  2018-09-18 15:53:22,605 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-18 15:53:23,366 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 826.7181ms.
+INFO  2018-09-18 15:53:23,382 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 2905.1232ms
+INFO  2018-09-18 15:53:23,391 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/css/style.css?v=i2jnDNv8FonyBWKTKJ8-6-FXKIosylzWLso6RtF6vNE  
+INFO  2018-09-18 15:53:23,433 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2995.4678ms 200 text/html; charset=utf-8
+INFO  2018-09-18 15:53:23,434 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/font-awesome/css/font-awesome.css  
+INFO  2018-09-18 15:53:23,438 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.css?v=poK-oXF5FUWfhU9hEaEbjLzGQhIVms6YtQoQ3OEZtec  
+INFO  2018-09-18 15:53:23,440 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/jquery-3.1.1.min.js  
+INFO  2018-09-18 15:53:23,441 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/sweetalert/sweetalert.css  
+INFO  2018-09-18 15:53:23,565 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/plugins/sweetalert/sweetalert.css was not modified
+INFO  2018-09-18 15:53:23,565 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/jquery-3.1.1.min.js was not modified
+INFO  2018-09-18 15:53:23,565 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /css/style.css was not modified
+INFO  2018-09-18 15:53:23,565 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/font-awesome/css/font-awesome.css was not modified
+INFO  2018-09-18 15:53:23,565 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.css was not modified
+INFO  2018-09-18 15:53:23,571 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 136.9223ms 304 text/css
+INFO  2018-09-18 15:53:23,571 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 130.8134ms 304 application/javascript
+INFO  2018-09-18 15:53:23,571 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 132.7255ms 304 text/css
+INFO  2018-09-18 15:53:23,571 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 179.8015ms 304 text/css
+INFO  2018-09-18 15:53:23,571 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 129.7482ms 304 text/css
+INFO  2018-09-18 15:53:23,571 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css  
+INFO  2018-09-18 15:53:23,571 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/bootstrap.min.css was not modified
+INFO  2018-09-18 15:53:23,571 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5773ms 304 text/css
+INFO  2018-09-18 15:53:23,873 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css  
+INFO  2018-09-18 15:53:23,874 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI  
+INFO  2018-09-18 15:53:23,874 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/sweetalert/sweetalert.min.js  
+INFO  2018-09-18 15:53:23,875 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/jquery-validation/dist/jquery.validate.js was not modified
+INFO  2018-09-18 15:53:23,875 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/sweetalert/sweetalert.min.js was not modified
+INFO  2018-09-18 15:53:23,875 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css was not modified
+INFO  2018-09-18 15:53:23,875 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.376ms 304 application/javascript
+INFO  2018-09-18 15:53:23,875 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4123ms 304 application/javascript
+INFO  2018-09-18 15:53:23,875 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4952ms 304 text/css
+INFO  2018-09-18 15:53:23,876 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q  
+INFO  2018-09-18 15:53:23,877 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js was not modified
+INFO  2018-09-18 15:53:23,877 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.0896ms 304 application/javascript
+INFO  2018-09-18 15:53:23,877 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk  
+INFO  2018-09-18 15:53:23,877 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/abp-web-resources/Abp/Framework/scripts/abp.js was not modified
+INFO  2018-09-18 15:53:23,877 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3696ms 304 application/javascript
+INFO  2018-09-18 15:53:23,880 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-18 15:53:23,881 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2018-09-18 15:53:23,881 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.862ms 304 application/javascript
+INFO  2018-09-18 15:53:24,325 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0  
+INFO  2018-09-18 15:53:24,326 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/font-awesome/fonts/fontawesome-webfont.woff2 was not modified
+INFO  2018-09-18 15:53:24,326 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.2648ms 304 font/woff2
+INFO  2018-09-18 15:53:25,053 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 15:53:25,119 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 15:53:25,120 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 67.6376ms 200 image/x-icon
+INFO  2018-09-18 15:53:27,465 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 276
+INFO  2018-09-18 15:53:27,491 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-18 15:53:27,662 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-18 15:53:29,724 [7    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-09-18 15:53:29,738 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 2075.6944ms.
+INFO  2018-09-18 15:53:30,094 [7    ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-18 15:53:30,112 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 2620.9408ms
+INFO  2018-09-18 15:53:30,112 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2647.026ms 200 application/json; charset=utf-8
+INFO  2018-09-18 15:53:30,159 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-18 15:53:30,212 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+INFO  2018-09-18 15:53:30,268 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 15:53:30,273 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-18 15:53:30,274 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.8144ms.
+INFO  2018-09-18 15:53:30,476 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-09-18 15:53:31,851 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/style.css  
+INFO  2018-09-18 15:53:31,851 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/style.css was not modified
+INFO  2018-09-18 15:53:31,851 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.6768ms 304 text/css
+INFO  2018-09-18 15:53:31,865 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 1509.8288ms.
+INFO  2018-09-18 15:53:31,873 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 1660.1764ms
+INFO  2018-09-18 15:53:31,874 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1715.2451ms 200 text/html; charset=utf-8
+INFO  2018-09-18 15:53:31,898 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/toastr/toastr.min.css  
+INFO  2018-09-18 15:53:31,898 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/plugins/toastr/toastr.min.css was not modified
+INFO  2018-09-18 15:53:31,898 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6275ms 304 text/css
+INFO  2018-09-18 15:53:31,920 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/chartJs/Chart.min.js  
+INFO  2018-09-18 15:53:31,921 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/chartJs/Chart.min.js was not modified
+INFO  2018-09-18 15:53:31,921 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5826ms 304 application/javascript
+INFO  2018-09-18 15:53:31,966 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/flot/jquery.flot.tooltip.min.js  
+INFO  2018-09-18 15:53:31,966 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/flot/jquery.flot.tooltip.min.js was not modified
+INFO  2018-09-18 15:53:31,966 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5157ms 304 application/javascript
+INFO  2018-09-18 15:53:31,967 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/flot/jquery.flot.js  
+INFO  2018-09-18 15:53:31,967 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/flot/jquery.flot.js was not modified
+INFO  2018-09-18 15:53:31,967 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.4038ms 304 application/javascript
+INFO  2018-09-18 15:53:31,967 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/flot/jquery.flot.spline.js  
+INFO  2018-09-18 15:53:31,968 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/flot/jquery.flot.spline.js was not modified
+INFO  2018-09-18 15:53:31,968 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6347ms 304 application/javascript
+INFO  2018-09-18 15:53:31,969 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/flot/jquery.flot.resize.js  
+INFO  2018-09-18 15:53:31,969 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/flot/jquery.flot.resize.js was not modified
+INFO  2018-09-18 15:53:31,970 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9522ms 304 application/javascript
+INFO  2018-09-18 15:53:31,970 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/flot/jquery.flot.pie.js  
+INFO  2018-09-18 15:53:31,971 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/flot/jquery.flot.pie.js was not modified
+INFO  2018-09-18 15:53:31,972 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.0998ms 304 application/javascript
+INFO  2018-09-18 15:53:31,983 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/toastr/toastr.min.js  
+INFO  2018-09-18 15:53:31,983 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/bootstrap.min.js  
+INFO  2018-09-18 15:53:31,984 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/bootstrap.min.js was not modified
+INFO  2018-09-18 15:53:31,984 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/toastr/toastr.min.js was not modified
+INFO  2018-09-18 15:53:31,984 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5135ms 304 application/javascript
+INFO  2018-09-18 15:53:31,984 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5161ms 304 application/javascript
+INFO  2018-09-18 15:53:31,994 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/inspinia.js  
+INFO  2018-09-18 15:53:31,994 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/inspinia.js was not modified
+INFO  2018-09-18 15:53:31,995 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7781ms 304 application/javascript
+INFO  2018-09-18 15:53:32,057 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/metisMenu/jquery.metisMenu.js  
+INFO  2018-09-18 15:53:32,058 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/metisMenu/jquery.metisMenu.js was not modified
+INFO  2018-09-18 15:53:32,058 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.959ms 304 application/javascript
+INFO  2018-09-18 15:53:32,058 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/profile_small.jpg  
+INFO  2018-09-18 15:53:32,058 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/slimscroll/jquery.slimscroll.min.js  
+INFO  2018-09-18 15:53:32,059 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/profile_small.jpg was not modified
+INFO  2018-09-18 15:53:32,059 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/plugins/slimscroll/jquery.slimscroll.min.js was not modified
+INFO  2018-09-18 15:53:32,059 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5184ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,059 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5584ms 304 application/javascript
+INFO  2018-09-18 15:53:32,061 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/a4.jpg  
+INFO  2018-09-18 15:53:32,062 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/a4.jpg was not modified
+INFO  2018-09-18 15:53:32,062 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6456ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,094 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/a7.jpg  
+INFO  2018-09-18 15:53:32,095 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/profile.jpg  
+INFO  2018-09-18 15:53:32,095 [22   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/a7.jpg was not modified
+INFO  2018-09-18 15:53:32,095 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.252ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,095 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/a3.jpg  
+INFO  2018-09-18 15:53:32,095 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/a1.jpg  
+INFO  2018-09-18 15:53:32,095 [21   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/profile.jpg was not modified
+INFO  2018-09-18 15:53:32,095 [18   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/a3.jpg was not modified
+INFO  2018-09-18 15:53:32,095 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5935ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,095 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4213ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,095 [22   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/a1.jpg was not modified
+INFO  2018-09-18 15:53:32,096 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4908ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,104 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/fonts/glyphicons-halflings-regular.woff2  
+INFO  2018-09-18 15:53:32,105 [18   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/fonts/glyphicons-halflings-regular.woff2 was not modified
+INFO  2018-09-18 15:53:32,105 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8408ms 304 font/woff2
+INFO  2018-09-18 15:53:32,105 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/a2.jpg  
+INFO  2018-09-18 15:53:32,106 [18   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/a2.jpg was not modified
+INFO  2018-09-18 15:53:32,106 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7015ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,106 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/a5.jpg  
+INFO  2018-09-18 15:53:32,107 [22   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/a5.jpg was not modified
+INFO  2018-09-18 15:53:32,107 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.087ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,108 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/img/a8.jpg  
+INFO  2018-09-18 15:53:32,108 [22   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/img/a8.jpg was not modified
+INFO  2018-09-18 15:53:32,108 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6486ms 304 image/jpeg
+INFO  2018-09-18 15:53:32,144 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/patterns/header-profile.png  
+INFO  2018-09-18 15:53:32,145 [22   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/patterns/header-profile.png was not modified
+INFO  2018-09-18 15:53:32,145 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6192ms 304 image/png
+INFO  2018-09-18 15:54:01,857 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 15:54:01,866 [22   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 15:54:01,867 [22   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 15:54:01,886 [22   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 15:54:02,286 [22   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 400.0791ms.
+INFO  2018-09-18 15:54:02,301 [19   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 15:54:02,439 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 572.9728ms
+ERROR 2018-09-18 15:54:02,487 [19   ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at X.PagedList.Mvc.Core.HtmlHelper.PagedListPager(IHtmlHelper html, IPagedList list, Func`2 generatePageUrl, PagedListRenderOptionsBase options)
+   at AspNetCore.Areas_Business_Views_Business__Table.ExecuteAsync() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\Business\Views\Business\_Table.cshtml:line 40
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.RenderPartialCoreAsync(String partialViewName, Object model, ViewDataDictionary viewData, TextWriter writer)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.PartialAsync(String partialViewName, Object model, ViewDataDictionary viewData)
+   at Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.Partial(IHtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   at AspNetCore.Areas_Business_Views_Business_List.ExecuteAsync() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\Business\Views\Business\List.cshtml:line 58
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultAsync(IActionResult result)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResultExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeResultFilters()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+INFO  2018-09-18 15:54:02,708 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 850.6488ms 500 text/html; charset=utf-8
+INFO  2018-09-18 15:55:07,993 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 15:55:08,001 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 15:55:08,002 [33   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 15:55:08,012 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 15:55:08,020 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 7.5735ms.
+INFO  2018-09-18 15:55:08,025 [32   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 15:55:13,823 [28   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 5798.0528ms.
+INFO  2018-09-18 15:55:13,823 [28   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 5821.339ms
+INFO  2018-09-18 15:55:13,823 [28   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5830.1061ms 200 text/html; charset=utf-8
+INFO  2018-09-18 15:55:13,898 [32   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/iCheck/custom.css  
+INFO  2018-09-18 15:55:13,903 [32   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/plugins/iCheck/custom.css was not modified
+INFO  2018-09-18 15:55:13,903 [32   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.4818ms 304 text/css
+INFO  2018-09-18 15:55:14,220 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 15:55:14,222 [29   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 15:55:14,222 [29   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.6243ms 200 image/x-icon
+INFO  2018-09-18 15:55:38,135 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 15:55:38,141 [27   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.8951ms 404 
+INFO  2018-09-18 15:57:50,425 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 15:57:50,437 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 15:57:50,437 [21   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 15:57:50,440 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 15:57:50,456 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16.5014ms.
+INFO  2018-09-18 15:57:50,460 [15   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 15:57:50,525 [13   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 65.1644ms.
+INFO  2018-09-18 15:57:50,525 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 88.8713ms
+INFO  2018-09-18 15:57:50,526 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 101.1808ms 200 text/html; charset=utf-8
+INFO  2018-09-18 15:57:50,808 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 15:57:50,816 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.9696ms 404 
+INFO  2018-09-18 15:57:51,081 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 15:57:51,082 [13   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 15:57:51,082 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.0138ms 200 image/x-icon
+INFO  2018-09-18 16:04:06,351 [48   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:04:06,361 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:04:06,363 [48   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:04:06,368 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:04:06,387 [48   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 19.0648ms.
+INFO  2018-09-18 16:04:06,394 [48   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:04:07,168 [56   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 774.0356ms.
+INFO  2018-09-18 16:04:07,168 [56   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 806.7297ms
+INFO  2018-09-18 16:04:07,168 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 817.3937ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:04:07,357 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:04:07,363 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.4007ms 404 
+INFO  2018-09-18 16:04:19,079 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:04:19,083 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.8418ms 404 
+INFO  2018-09-18 16:05:41,665 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:05:41,679 [66   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:05:41,679 [66   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:05:41,680 [66   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:05:41,724 [66   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 43.1684ms.
+INFO  2018-09-18 16:05:41,729 [66   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:05:42,145 [65   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 415.7887ms.
+INFO  2018-09-18 16:05:42,145 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 466.0478ms
+INFO  2018-09-18 16:05:42,145 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 479.4943ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:05:42,460 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:05:42,467 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.8733ms 404 
+INFO  2018-09-18 16:05:42,792 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 16:05:42,793 [65   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 16:05:42,793 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.8741ms 200 image/x-icon
+INFO  2018-09-18 16:05:58,192 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:05:58,200 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:05:58,201 [64   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:05:58,208 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:05:58,241 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 33.0746ms.
+INFO  2018-09-18 16:05:58,245 [64   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:05:58,508 [66   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 263.1972ms.
+INFO  2018-09-18 16:05:58,509 [66   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 308.4741ms
+INFO  2018-09-18 16:05:58,509 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 316.9043ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:05:58,888 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 16:05:58,888 [66   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 16:05:58,889 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.0545ms 200 image/x-icon
+INFO  2018-09-18 16:06:01,600 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:06:01,608 [66   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.5435ms 404 
+INFO  2018-09-18 16:06:25,845 [65   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:06:25,858 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:06:25,860 [65   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:06:25,867 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:06:25,873 [65   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 6.0665ms.
+INFO  2018-09-18 16:06:25,876 [65   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:06:26,271 [64   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 394.7756ms.
+INFO  2018-09-18 16:06:26,271 [64   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 412.4826ms
+INFO  2018-09-18 16:06:26,271 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 425.7739ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:06:26,459 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:06:26,464 [64   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.0058ms 404 
+INFO  2018-09-18 16:06:26,887 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 16:06:26,889 [70   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 16:06:26,889 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.6707ms 200 image/x-icon
+INFO  2018-09-18 16:07:49,671 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:07:49,681 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:07:49,682 [54   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:07:49,683 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:07:49,703 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 20.0238ms.
+INFO  2018-09-18 16:07:49,711 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:07:49,803 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 92.6312ms.
+INFO  2018-09-18 16:07:49,803 [54   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 121.7458ms
+INFO  2018-09-18 16:07:49,803 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 132.1281ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:07:49,971 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:07:49,978 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6.0949ms 404 
+INFO  2018-09-18 16:08:21,369 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:08:21,377 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:08:21,378 [53   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:08:21,383 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:08:21,425 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 41.4437ms.
+INFO  2018-09-18 16:08:21,429 [50   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:08:21,873 [53   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 444.8334ms.
+INFO  2018-09-18 16:08:21,874 [53   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 496.522ms
+INFO  2018-09-18 16:08:21,874 [53   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 504.6593ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:08:22,098 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:08:22,106 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.6086ms 404 
+INFO  2018-09-18 16:08:23,176 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 16:08:23,177 [50   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 16:08:23,177 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.1214ms 200 image/x-icon
+INFO  2018-09-18 16:08:27,230 [50   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:08:27,233 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:08:27,233 [50   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:08:27,234 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:08:27,249 [50   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 14.0875ms.
+INFO  2018-09-18 16:08:27,252 [54   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:08:27,316 [70   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 63.6175ms.
+INFO  2018-09-18 16:08:27,316 [70   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 83.2057ms
+INFO  2018-09-18 16:08:27,316 [70   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 86.6907ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:08:27,468 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:08:27,474 [54   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.5353ms 404 
+DEBUG 2018-09-18 16:10:57,865 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-09-18 16:10:57,932 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-09-18 16:10:57,967 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.Web.Startup.UnionMallWebMvcModule, UnionMall.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,972 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallWebCoreModule, UnionMall.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,973 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallApplicationModule, UnionMall.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,974 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallCoreModule, UnionMall.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,975 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,975 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,976 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,979 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,980 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.EntityFrameworkCore.UnionMallEntityFrameworkModule, UnionMall.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,981 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,981 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,982 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,982 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,983 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,983 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:57,993 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-09-18 16:10:58,057 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 16:10:58,057 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 16:10:58,057 [1    ] o.Configuration.LanguageManagementConfig - Converted UnionMall (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 16:10:58,057 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 16:10:58,301 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: UnionMall.EntityFrameworkCore.UnionMallDbContext, UnionMall.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:10:58,746 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-09-18 16:10:58,814 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-09-18 16:10:58,883 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-09-18 16:10:58,890 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: UnionMall
+DEBUG 2018-09-18 16:10:58,942 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-09-18 16:10:58,992 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-09-18 16:10:59,056 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 11 classes define auto mapping attributes
+DEBUG 2018-09-18 16:10:59,056 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-09-18 16:10:59,068 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Users.Dto.CreateUserDto
+DEBUG 2018-09-18 16:10:59,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Users.Dto.UserDto
+DEBUG 2018-09-18 16:10:59,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-09-18 16:10:59,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-09-18 16:10:59,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.CreateRoleDto
+DEBUG 2018-09-18 16:10:59,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.PermissionDto
+DEBUG 2018-09-18 16:10:59,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.RoleDto
+DEBUG 2018-09-18 16:10:59,070 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-09-18 16:10:59,070 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.MultiTenancy.Dto.TenantDto
+DEBUG 2018-09-18 16:10:59,070 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Web.Models.Roles.EditRoleModalViewModel
+INFO  2018-09-18 16:11:03,919 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:11:05,426 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:11:05,477 [6    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:11:05,585 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:11:06,056 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 469.4812ms.
+INFO  2018-09-18 16:11:06,181 [13   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:11:07,778 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 1639.7515ms.
+INFO  2018-09-18 16:11:07,817 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 2388.6161ms
+INFO  2018-09-18 16:11:07,856 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3940.9281ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:11:22,387 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:11:22,410 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 22.7405ms 404 
+INFO  2018-09-18 16:11:31,572 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:11:31,579 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:11:31,580 [6    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:11:31,583 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:11:31,638 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 54.8946ms.
+INFO  2018-09-18 16:11:31,644 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:11:31,711 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 68.5019ms.
+INFO  2018-09-18 16:11:31,711 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 131.942ms
+INFO  2018-09-18 16:11:31,712 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 139.756ms 200 text/html; charset=utf-8
+DEBUG 2018-09-18 16:12:41,543 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-09-18 16:12:41,566 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-09-18 16:12:41,582 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.Web.Startup.UnionMallWebMvcModule, UnionMall.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,585 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallWebCoreModule, UnionMall.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,585 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallApplicationModule, UnionMall.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,585 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallCoreModule, UnionMall.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,586 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,586 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,586 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,586 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,587 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.EntityFrameworkCore.UnionMallEntityFrameworkModule, UnionMall.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,587 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,587 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,587 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,588 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,588 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,588 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:41,591 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-09-18 16:12:41,646 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 16:12:41,646 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 16:12:41,646 [1    ] o.Configuration.LanguageManagementConfig - Converted UnionMall (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 16:12:41,646 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 16:12:41,923 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: UnionMall.EntityFrameworkCore.UnionMallDbContext, UnionMall.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 16:12:42,407 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-09-18 16:12:42,470 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-09-18 16:12:42,523 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-09-18 16:12:42,529 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: UnionMall
+DEBUG 2018-09-18 16:12:42,569 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-09-18 16:12:42,615 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-09-18 16:12:42,685 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 11 classes define auto mapping attributes
+DEBUG 2018-09-18 16:12:42,685 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-09-18 16:12:42,695 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Users.Dto.CreateUserDto
+DEBUG 2018-09-18 16:12:42,695 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Users.Dto.UserDto
+DEBUG 2018-09-18 16:12:42,696 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-09-18 16:12:42,696 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-09-18 16:12:42,696 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.CreateRoleDto
+DEBUG 2018-09-18 16:12:42,696 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.PermissionDto
+DEBUG 2018-09-18 16:12:42,696 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.RoleDto
+DEBUG 2018-09-18 16:12:42,697 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-09-18 16:12:42,697 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.MultiTenancy.Dto.TenantDto
+DEBUG 2018-09-18 16:12:42,697 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Web.Models.Roles.EditRoleModalViewModel
+INFO  2018-09-18 16:12:48,108 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:12:49,417 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:12:49,469 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:12:49,574 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:12:50,128 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 551.6667ms.
+INFO  2018-09-18 16:12:50,255 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:12:51,668 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 1454.4304ms.
+INFO  2018-09-18 16:12:51,702 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 2281.9868ms
+INFO  2018-09-18 16:12:51,748 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3641.1655ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:12:52,064 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 16:12:52,111 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 16:12:52,112 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 47.7802ms 200 image/x-icon
+INFO  2018-09-18 16:15:36,708 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:15:36,723 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 14.8347ms 404 
+INFO  2018-09-18 16:17:29,996 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:17:30,006 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:17:30,007 [21   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:17:30,008 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:17:30,039 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 30.3654ms.
+INFO  2018-09-18 16:17:30,045 [24   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:17:30,110 [22   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 66.9564ms.
+INFO  2018-09-18 16:17:30,110 [22   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 104.0334ms
+INFO  2018-09-18 16:17:30,110 [22   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 114.1873ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:17:54,366 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:17:54,375 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 8.7296ms 404 
+INFO  2018-09-18 16:18:17,568 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/business/business/list  
+INFO  2018-09-18 16:18:17,576 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "Business", action = "List", controller = "Business"}. Executing action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc)
+INFO  2018-09-18 16:18:17,577 [20   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 16:18:17,580 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-18 16:18:17,617 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 36.4603ms.
+INFO  2018-09-18 16:18:17,654 [20   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-18 16:18:17,753 [26   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 98.6665ms.
+INFO  2018-09-18 16:18:17,753 [26   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.Business.Controllers.BusinessController.List (UnionMall.Web.Mvc) in 176.9621ms
+INFO  2018-09-18 16:18:17,753 [26   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 185.5219ms 200 text/html; charset=utf-8
+INFO  2018-09-18 16:18:17,997 [30   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css.map  
+INFO  2018-09-18 16:18:18,003 [30   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.7139ms 404 
+INFO  2018-09-18 16:18:18,370 [30   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-18 16:18:18,371 [30   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-18 16:18:18,371 [30   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.1761ms 200 image/x-icon
+DEBUG 2018-09-18 22:50:00,284 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-09-18 22:50:00,305 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-09-18 22:50:00,317 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.Web.Startup.UnionMallWebMvcModule, UnionMall.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallWebCoreModule, UnionMall.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,320 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallApplicationModule, UnionMall.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,320 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.UnionMallCoreModule, UnionMall.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,320 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,320 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,320 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,321 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,321 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: UnionMall.EntityFrameworkCore.UnionMallEntityFrameworkModule, UnionMall.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,322 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,322 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,322 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,322 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,322 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,322 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,325 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-09-18 22:50:00,374 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 22:50:00,374 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 22:50:00,374 [1    ] o.Configuration.LanguageManagementConfig - Converted UnionMall (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 22:50:00,374 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-09-18 22:50:00,599 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: UnionMall.EntityFrameworkCore.UnionMallDbContext, UnionMall.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-09-18 22:50:00,917 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-09-18 22:50:00,980 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-09-18 22:50:01,016 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-09-18 22:50:01,021 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: UnionMall
+DEBUG 2018-09-18 22:50:01,044 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-09-18 22:50:01,073 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-09-18 22:50:01,107 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 11 classes define auto mapping attributes
+DEBUG 2018-09-18 22:50:01,107 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-09-18 22:50:01,114 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Users.Dto.CreateUserDto
+DEBUG 2018-09-18 22:50:01,115 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Users.Dto.UserDto
+DEBUG 2018-09-18 22:50:01,115 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-09-18 22:50:01,115 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-09-18 22:50:01,116 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.CreateRoleDto
+DEBUG 2018-09-18 22:50:01,116 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.PermissionDto
+DEBUG 2018-09-18 22:50:01,116 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Roles.Dto.RoleDto
+DEBUG 2018-09-18 22:50:01,116 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-09-18 22:50:01,116 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.MultiTenancy.Dto.TenantDto
+DEBUG 2018-09-18 22:50:01,116 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - UnionMall.Web.Models.Roles.EditRoleModalViewModel
+INFO  2018-09-18 22:50:04,063 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-18 22:50:05,028 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+WARN  2018-09-18 22:50:05,191 [10   ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 98
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2018-09-18 22:50:05,196 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-09-18 22:50:05,204 [10   ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2018-09-18 22:50:05,222 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2018-09-18 22:50:05,225 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 192.8087ms
+INFO  2018-09-18 22:50:05,269 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1210.0576ms 302 
+INFO  2018-09-18 22:50:05,273 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-09-18 22:50:05,301 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-18 22:50:06,177 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-09-18 22:50:06,184 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 5.6204ms.
+INFO  2018-09-18 22:50:06,400 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-09-18 22:50:06,739 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 382.595ms.
+INFO  2018-09-18 22:50:06,744 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 1442.6947ms
+INFO  2018-09-18 22:50:06,759 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/css/style.css?v=i2jnDNv8FonyBWKTKJ8-6-FXKIosylzWLso6RtF6vNE  
+INFO  2018-09-18 22:50:06,759 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1486.0658ms 200 text/html; charset=utf-8
+INFO  2018-09-18 22:50:06,759 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/font-awesome/css/font-awesome.css  
+INFO  2018-09-18 22:50:06,759 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/bootstrap.min.css  
+INFO  2018-09-18 22:50:06,759 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css  
+INFO  2018-09-18 22:50:06,759 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.css?v=poK-oXF5FUWfhU9hEaEbjLzGQhIVms6YtQoQ3OEZtec  
+INFO  2018-09-18 22:50:06,759 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/sweetalert/sweetalert.css  
+INFO  2018-09-18 22:50:06,809 [19   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/css/plugins/sweetalert/sweetalert.css'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\css\plugins\sweetalert\sweetalert.css'
+INFO  2018-09-18 22:50:06,809 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\css\plugins\awesome-bootstrap-checkbox\awesome-bootstrap-checkbox.css'
+INFO  2018-09-18 22:50:06,809 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 49.9394ms 200 text/css
+INFO  2018-09-18 22:50:06,809 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/css/style.css'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\css\style.css'
+INFO  2018-09-18 22:50:06,809 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 50.776ms 200 text/css
+INFO  2018-09-18 22:50:06,809 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.css'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.css'
+INFO  2018-09-18 22:50:06,809 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/css/bootstrap.min.css'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\css\bootstrap.min.css'
+INFO  2018-09-18 22:50:06,810 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 49.5554ms 200 text/css
+INFO  2018-09-18 22:50:06,809 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/font-awesome/css/font-awesome.css'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\font-awesome\css\font-awesome.css'
+INFO  2018-09-18 22:50:06,809 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 50.1935ms 200 text/css
+INFO  2018-09-18 22:50:06,810 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.032ms 200 text/css
+INFO  2018-09-18 22:50:06,810 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 50.7218ms 200 text/css
+INFO  2018-09-18 22:50:06,812 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/jquery-3.1.1.min.js  
+INFO  2018-09-18 22:50:06,813 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/jquery-validation/dist/jquery.validate.js?v=ZDzsHzuLAtqQVxXwbgRtfAPXQ7UAoJRXBAUDvc9G9CI  
+INFO  2018-09-18 22:50:06,814 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\jquery-validation\dist\jquery.validate.js'
+INFO  2018-09-18 22:50:06,815 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.7799ms 200 application/javascript
+INFO  2018-09-18 22:50:06,816 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/sweetalert/sweetalert.min.js  
+INFO  2018-09-18 22:50:06,817 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/abp-web-resources/Abp/Framework/scripts/abp.js?v=EjNSmvtPSqCVK_xG_aTvOp8hmVM_7vwyd3hg45CAMGk  
+INFO  2018-09-18 22:50:06,818 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js?v=XEXcdRYb4eN3XoQCbnM-BSR6UifHRLsXYDIVFZ7Oc6Q  
+INFO  2018-09-18 22:50:06,819 [18   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/abp.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\abp.js'
+INFO  2018-09-18 22:50:06,819 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.0614ms 200 application/javascript
+INFO  2018-09-18 22:50:06,820 [19   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\abp-web-resources\Abp\Framework\scripts\libs\abp.jquery.js'
+INFO  2018-09-18 22:50:06,820 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.3628ms 200 application/javascript
+INFO  2018-09-18 22:50:06,821 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/plugins/sweetalert/sweetalert.min.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\plugins\sweetalert\sweetalert.min.js'
+INFO  2018-09-18 22:50:06,821 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.8143ms 200 application/javascript
+INFO  2018-09-18 22:50:06,824 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=h71k_TJ3umXZ8m66Z9JGQjjre83cefVsB4F3OJiG55A  
+INFO  2018-09-18 22:50:06,827 [7    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Account/Login.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\view-resources\Views\Account\Login.js'
+INFO  2018-09-18 22:50:06,827 [7    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.3873ms 200 application/javascript
+INFO  2018-09-18 22:50:06,834 [15   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/jquery-3.1.1.min.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\jquery-3.1.1.min.js'
+INFO  2018-09-18 22:50:06,834 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.6644ms 200 application/javascript
+INFO  2018-09-18 22:50:06,874 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0  
+INFO  2018-09-18 22:50:06,877 [12   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/font-awesome/fonts/fontawesome-webfont.woff2'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\font-awesome\fonts\fontawesome-webfont.woff2'
+INFO  2018-09-18 22:50:06,877 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.8192ms 200 font/woff2
+INFO  2018-09-18 22:50:09,245 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 276
+INFO  2018-09-18 22:50:09,267 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc)
+INFO  2018-09-18 22:50:09,371 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) with arguments (UnionMall.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-09-18 22:50:10,023 [18   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-09-18 22:50:10,027 [18   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 656.129ms.
+INFO  2018-09-18 22:50:10,151 [19   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-09-18 22:50:10,158 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.AccountController.Login (UnionMall.Web.Mvc) in 891.5334ms
+INFO  2018-09-18 22:50:10,158 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 913.4817ms 200 application/json; charset=utf-8
+INFO  2018-09-18 22:50:10,168 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-09-18 22:50:10,194 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+INFO  2018-09-18 22:50:10,218 [15   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-18 22:50:10,220 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-09-18 22:50:10,221 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.3135ms.
+INFO  2018-09-18 22:50:10,228 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-09-18 22:50:10,768 [18   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 543.2155ms.
+INFO  2018-09-18 22:50:10,773 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/style.css  
+INFO  2018-09-18 22:50:10,773 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/toastr/toastr.min.css  
+INFO  2018-09-18 22:50:10,774 [18   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 579.4246ms
+INFO  2018-09-18 22:50:10,774 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 606.382ms 200 text/html; charset=utf-8
+INFO  2018-09-18 22:50:10,775 [18   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/css/plugins/toastr/toastr.min.css'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\css\plugins\toastr\toastr.min.css'
+INFO  2018-09-18 22:50:10,775 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.6435ms 200 text/css
+INFO  2018-09-18 22:50:10,777 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/css/style.css'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\css\style.css'
+INFO  2018-09-18 22:50:10,777 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 4.127ms 200 text/css
+INFO  2018-09-18 22:50:10,780 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/chartJs/Chart.min.js  
+INFO  2018-09-18 22:50:10,785 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/plugins/chartJs/Chart.min.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\plugins\chartJs\Chart.min.js'
+INFO  2018-09-18 22:50:10,786 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.7372ms 200 application/javascript
+INFO  2018-09-18 22:50:10,798 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/flot/jquery.flot.js  
+INFO  2018-09-18 22:50:10,802 [6    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/plugins/flot/jquery.flot.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\plugins\flot\jquery.flot.js'
+INFO  2018-09-18 22:50:10,802 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.3344ms 200 application/javascript
+INFO  2018-09-18 22:50:10,813 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/flot/jquery.flot.tooltip.min.js  
+INFO  2018-09-18 22:50:10,815 [18   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/plugins/flot/jquery.flot.tooltip.min.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\plugins\flot\jquery.flot.tooltip.min.js'
+INFO  2018-09-18 22:50:10,815 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.4148ms 200 application/javascript
+INFO  2018-09-18 22:50:11,250 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/plugins/flot/jquery.flot.spline.js  
+INFO  2018-09-18 22:50:11,252 [14   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/lib/admin/js/plugins/flot/jquery.flot.spline.js'. Physical path: 'D:\技术开发\我的项目\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\lib\admin\js\plugins\flot\jquery.flot.spline.js'

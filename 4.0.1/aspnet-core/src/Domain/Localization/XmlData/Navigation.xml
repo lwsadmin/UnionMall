@@ -16,7 +16,7 @@
     <Second Name="PointRecharge"  Url="javascript:void(0);"></Second>
   </First>
   <First Name="OnlineGoods" Icon="glyphicon glyphicon-shopping-cart">
-    <Second Name="GoodsCategory" Url="/GoodsManage/GoodsCategory/List">
+    <Second Name="GoodsCategory" Url="/GoodsManage/Category/List">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />

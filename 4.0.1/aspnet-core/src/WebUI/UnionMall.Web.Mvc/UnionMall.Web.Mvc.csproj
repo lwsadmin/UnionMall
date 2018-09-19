@@ -64,6 +64,8 @@
     <Folder Include="App_Data\Logs\" />
     <Folder Include="Areas\Business\Data\" />
     <Folder Include="Areas\Business\Models\" />
+    <Folder Include="Areas\GoodsManage\Data\" />
+    <Folder Include="Areas\GoodsManage\Models\" />
     <Folder Include="Areas\SystemSet\Data\" />
     <Folder Include="Areas\SystemSet\Models\" />
     <Folder Include="wwwroot\lib\pager\" />
@@ -79,6 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Areas\GoodsManage\Views\Category\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\_ViewImports.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

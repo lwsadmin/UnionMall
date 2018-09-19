@@ -18,6 +18,7 @@
     <text value="标题" name="Title"/>
     <text value="名称" name="Name"/>
     <text value="用户列表" name="UserList"/>
+    <text value="父级" name="Parent"/>
     <text value="列表" name="List"/>
     <text value="名称" name="value"/>
     <text value="创建时间" name="CreationTime"/>
@@ -146,5 +147,10 @@
     <text name="Sort" value="排序" />
     <text name="legalPerson" value="法人" />
     <text name="DueTime" value="到期时间" />
+
+    <text name="FirstPage" value="首页" />
+    <text name="LastPage" value="尾页" />
+    <text name="PreviousPage" value="上一页" />
+    <text name="NextPage" value="下一页" />
   </texts>
 </localizationDictionary>

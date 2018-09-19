@@ -47,7 +47,11 @@
     <text name="IsActive" value="Is active" />
     <text name="FullName" value="Full name" />
 
-
+    <text value="FirstPage" name="FirstPage"/>
+    <text value="LastPage" name="LastPage"/>
+    <text name="PreviousPage" value="PreviousPage" />
+    <text name="NextPage" value="NextPage" />
+    <text value="Parent" name="Parent"/>
     <text value="Email" name="Email"/>
     <text value="PhoneNumber" name="PhoneNumber"/>
     <text value="Status" name="Status"/>
@@ -109,10 +113,10 @@
     <text value="PersonalInformation" name="PersonalInformation"/>
     <text value="ModificationInformation" name="ModificationInformation"/>
     <text value="LockScreen" name="LockScreen"/>
-    
+
     <!--ccccccccccccccccccccccccccccc-->
 
-    
+
     <text name="OffLineCashie" value="OffLineCashie"/>
     <text name="QuickConsume" value="QuickConsume"/>
     <text name="GoodsConsume" value="GoodsConsume" />
