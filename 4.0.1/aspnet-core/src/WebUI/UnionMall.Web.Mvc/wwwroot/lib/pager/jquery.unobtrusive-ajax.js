@@ -200,5 +200,6 @@ function GoPage(btn) {
     }
     var href = $(".active a").attr("href");
     var html = $(".active a").html();
+    alert(1);
     $(".active a").attr("href", href.replace(html, input_page)).click();
 }

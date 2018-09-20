@@ -8,11 +8,10 @@
 @using X.PagedList.Mvc.Core
 @model PagedList<DataRow>
 
-<table class="table table-bordered table-hover footable  table-stripped toggle-arrow-tiny default breakpoint footable-loaded">
+<table id="tree_table" class="table table-bordered table-hover footable">
     <thead>
         <tr>
             <th>@L("Title")</th>
-            <th>@L("Parent")</th>
             <th>@L("Sort")</th>
             <th>@L("Note")</th>
             <th>@L("Operate")</th>
@@ -21,13 +20,18 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-            <tr class="footable-even">
-                <td><span class="footable-toggle"></span>@item["Title"]</td>
-                <td>@item["ParentId"]</td>
+            <tr class="footable-even" id="first@(item["id"])" data-hasChild="true" data-tt-id="@item["id"]">
+                <td class="foo" data-tt-branch><span class="footable-toggle"></span>@item["Title"]</td>
                 <td>@item["Sort"]</td>
                 <td>@item["Note"]</td>
                 <td>
-                    <a href="#"><i class="fa fa-check text-navy"></i></a>
+                    @*@if (IsGranted(""))
+                    {
+
+                    }*@
+                    <button type="button" class="btn btn-outline btn-primary btn-xs">编辑</button>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-outline btn-danger btn-xs">删除</button>
                 </td>
             </tr>
         }
@@ -58,3 +62,23 @@
             UpdateTargetId = "table"
         }
 ))
+<script>
+$(function() {
+        $("#tree_table").treetable({
+            expandable: true,
+            clickableNodeNames: true,
+            stringExpand: '点击展开',
+            indent: 15,
+            onNodeExpand: function () {
+                var node = this;
+                //判断当前节点是否已经拥有子节点
+           
+                var childSize = $("#treetable").find("[data-tt-parent-id='" + node.id + "']").length;
+                if (childSize > 0) { return; }
+                var data = "pageId=" + node.id;
+                alert(node.id);
+                // Render loader/spinner while loading 加载时渲染
+            }
+        });
+    });
+</script>

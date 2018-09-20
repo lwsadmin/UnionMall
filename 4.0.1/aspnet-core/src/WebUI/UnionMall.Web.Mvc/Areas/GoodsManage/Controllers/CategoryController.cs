@@ -26,9 +26,9 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         public IActionResult List(int page = 1)
         {
             int pageSize = 10;
-            string table = $"select *from tgoodscategory";
+            string table = $"select g.Id,g.Title,g.Sort,g.Note from TGoodsCategory g";
             if (_AbpSession.TenantId != null)
-                table += $" where TenantId={_AbpSession.TenantId}";
+                table += $" where g.TenantId={_AbpSession.TenantId}";
 
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
@@ -37,17 +37,29 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             return View(pageList);
         }
 
-        public IActionResult Table(int page = 1,int pageSize= 10)
+        public IActionResult Table(int page = 1, int pageSize = 10)
         {
-            string table = $"select *from tgoodscategory";
+            string table = $"select g.Id,g.Title,g.Sort,g.Note from TGoodsCategory g";
             if (_AbpSession.TenantId != null)
-                table += $" where TenantId={_AbpSession.TenantId}";
+                table += $" where g.TenantId={_AbpSession.TenantId}";
 
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
 
             return View("_Table", pageList);
+        }
+
+        public async Task<IActionResult> Add(Guid? id)
+        {
+            //if (id == null)
+            //{
+            //    return PartialView("_Add", goodsCategory);
+            //}
+
+            //var dtos = await _AppService.get();
+            return PartialView(dtos);
+        
         }
     }
 }

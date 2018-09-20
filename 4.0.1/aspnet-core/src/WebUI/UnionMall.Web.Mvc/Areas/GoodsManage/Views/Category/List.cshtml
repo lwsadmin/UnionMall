@@ -9,8 +9,9 @@
 @using System.Data
 @using X.PagedList
 @model PagedList<DataRow>
-<link href="/lib/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
-<script src="~/lib/pager/jquery.unobtrusive-ajax.js"></script>
+
+<link href="~/lib/treetable/jquery.treetable.css" rel="stylesheet" />
+<link href="~/lib/treetable/jquery.treetable.theme.default.css" rel="stylesheet" />
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -32,8 +33,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
+
                 <div class="ibox-title">
-                    <h5>@L("GoodsCategory") </h5>
+                    <h5>@L("GoodsCategory")</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -67,12 +69,21 @@
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content" id="table">
-                    @Html.Partial("_Table", Model)
+                <div class="ibox-content">
+                    <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;新增</button>
+                    @*<input type="text" class="form-control input-sm m-b-xs" id="filter" placeholder="搜索表">*@
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+           
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="~/lib/pager/jquery.unobtrusive-ajax.js"></script>
+<script src="~/lib/treetable/jquery.treetable.js"></script>
 
 

@@ -81,6 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Areas\GoodsManage\Views\Category\_Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\GoodsManage\Views\Category\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

@@ -38,7 +38,7 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
          //   page.TotalItemCount = total;
             return View(pageList);
         }
-
+        
         public IActionResult Table(int page = 1)
         {
             int pageSize = 2;
