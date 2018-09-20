@@ -8,7 +8,7 @@
 @using X.PagedList.Mvc.Core
 @model PagedList<DataRow>
 
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover footable  table-stripped toggle-arrow-tiny default breakpoint footable-loaded">
     <thead>
         <tr>
             <th>@L("Title")</th>
@@ -21,8 +21,8 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-            <tr>
-                <td>@item["Title"]</td>
+            <tr class="footable-even">
+                <td><span class="footable-toggle"></span>@item["Title"]</td>
                 <td>@item["ParentId"]</td>
                 <td>@item["Sort"]</td>
                 <td>@item["Note"]</td>
@@ -43,6 +43,7 @@
             LinkToFirstPageFormat = L("FirstPage"),
             LinkToLastPageFormat = L("LastPage"),
             LinkToNextPageFormat = L("NextPage"),
+            PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
             LinkToPreviousPageFormat = L("PreviousPage"),
             UlElementClasses = new[] { "pagination col-md-8" },
             ContainerDivClasses = new[] { "row" } },
@@ -51,7 +52,8 @@
         new AjaxOptions()
         {
             DataForm = "searchForm",
-
+            LoadingElementDuration = 2,
+            LoadingElementId = "loading",
             HttpMethod = "GET",
             UpdateTargetId = "table"
         }

@@ -38,9 +38,9 @@
 @Html.PagedListPager(Model, page => Url.Action("GetOnePageOfNames", new { page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new PagedListRenderOptions {
-            MaximumPageNumbersToDisplay = 8,
+            MaximumPageNumbersToDisplay = 10,
             DisplayPageCountAndCurrentLocation = true,
-
+            PageCountAndCurrentLocationFormat = "{1}pages{2}Records",
             UlElementClasses = new[] { "pagination col-md-8" },
             ContainerDivClasses = new[] { "row" } },
 

@@ -152,5 +152,6 @@
     <text name="LastPage" value="尾页" />
     <text name="PreviousPage" value="上一页" />
     <text name="NextPage" value="下一页" />
+    <text name="{1}pages{2}Records" value="共{1}页{2}记录" />
   </texts>
 </localizationDictionary>

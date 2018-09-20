@@ -47,10 +47,7 @@
     <text name="IsActive" value="Is active" />
     <text name="FullName" value="Full name" />
 
-    <text value="FirstPage" name="FirstPage"/>
-    <text value="LastPage" name="LastPage"/>
-    <text name="PreviousPage" value="PreviousPage" />
-    <text name="NextPage" value="NextPage" />
+
     <text value="Parent" name="Parent"/>
     <text value="Email" name="Email"/>
     <text value="PhoneNumber" name="PhoneNumber"/>
@@ -205,5 +202,12 @@
     <text name="legalPerson" value="legalPerson" />
     <text name="Sort" value="Sort" />
     <text name="DueTime" value="DueTime" />
+
+    <text value="FirstPage" name="FirstPage"/>
+    <text value="LastPage" name="LastPage"/>
+    <text name="PreviousPage" value="PreviousPage" />
+    <text name="NextPage" value="NextPage" />
+
+    <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
   </texts>
 </localizationDictionary>
