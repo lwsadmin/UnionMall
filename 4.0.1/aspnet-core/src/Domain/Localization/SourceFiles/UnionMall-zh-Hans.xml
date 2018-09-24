@@ -10,7 +10,7 @@
     <text value="取消" name="Cancel"/>
     <text value="创建" name="Create"/>
     <text value="备注" name="Note"/>
-    
+
     <text value="用户" name="Users"/>
     <text value="邮箱" name="Email"/>
     <text value="电话" name="PhoneNumber"/>
@@ -45,6 +45,7 @@
     <text value="用户名或邮箱地址" name="UsernameOrEmail"/>
     <text value="密码" name="Password"/>
     <text value="用户名" name="UserName"/>
+    <text value="-请选择-" name="Select"/>
     <text value="登录" name="LogIn"/>
     <text value="退出登录" name="Logout"/>
     <text value="登录失败!" name="LoginFailed"/>
@@ -58,7 +59,7 @@
 
     <text value="账号" name="TenancyName"/>
     <text name="Welcome, {0}" value="欢迎您 {0}" />
-    
+
     <text name="OffLineCashie" value="线下收款"/>
     <text name="QuickConsume" value="快速消费"/>
     <text name="GoodsConsume" value="商品消费" />

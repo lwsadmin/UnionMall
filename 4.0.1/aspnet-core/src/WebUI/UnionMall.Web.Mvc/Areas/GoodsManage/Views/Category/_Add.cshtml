@@ -2,24 +2,87 @@
 @{
     ViewData["Title"] = "_Add";
     Layout = null;
+    DataTable dt = ViewBag.Category;
 }
-<div class="modal inmodal fade in" id="category" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+@using System.Data
+@using UnionMall.Goods.GoodsCategory.Dto
+@model CategoryEditDto
+<div class="modal inmodal fade in" id="CreateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">模态标题</h4>
-                <small class="font-bold">副标题副标题副标题</small>
+                <h5 class="modal-title">新增商品类别</h5>
             </div>
             <div class="modal-body">
-                <p><strong>内容测试</strong> 内容测试内容测试内容测试内容测试内容测试内容测试内容测试</p>
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+
+
+                        <form method="post" action="/GoodsManage/Category/AddPost" id="formPost" class="form-horizontal">
+
+                            <input type="hidden" name="TenantId" value="1" />
+                            <input type="hidden" name="Brand" value="1" />
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Title")</label>
+
+                                <div class="col-sm-10"><input type="text" name="Title" value="@Model.Title" class="form-control" required maxlength="10"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Parent")</label>
+                                <div class="col-sm-10">
+                                    <select data-placeholder="@L("Select")" name="ParentId" class="form-control chosen-select" tabindex="2">
+                                        <option value="">@L("Select")</option>
+                                        @foreach (DataRow item in dt.Rows)
+                                        {
+                                            if (Model.Id.ToString() == item["id"].ToString())
+                                            {
+                                                continue;
+                                            }
+                                            if (Model.ParentId.ToString() == item["id"].ToString())
+                                            {
+                                                <option selected="selected" value="@item["id"]">@item["Title"]</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item["id"]">@item["Title"]</option>
+
+                                            }
+                                        }
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Sort")</label>
+                                <div class="col-sm-10">
+                                    <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
+                                    <span class="help-block m-b-none">从大到小排序展示</span>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Note")</label>
+
+                                <div class="col-sm-10">
+                                    <textarea name="Note" class="form-control" cols="5">@Model.Note</textarea>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <button type="submit" class="btn btn-primary">提交保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">提交保存</button>
-            </div>
+
         </div>
     </div>
 </div>
-
+<script>
+     $('.chosen-select').chosen({ width: "100%" });
+</script>

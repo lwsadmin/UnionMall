@@ -9,7 +9,8 @@ namespace UnionMall.EntityFrameworkCore
     public class UnionMallDbContext : AbpZeroDbContext<Tenant, Role, User, UnionMallDbContext>
     {
         /* Define a DbSet for each entity of the application */
-        
+        public DbSet<Goods.Category.GoodsCategory> GoodsCategory { get; set; }
+
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {
@@ -18,7 +19,7 @@ namespace UnionMall.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ChangeAbpTablePrefix<Tenant, Role, User>("T");
-         
+
 
             //modelBuilder.Entity<Category>().ToTable("GoodsCategory", "T");
             //modelBuilder.Entity<Goods>().ToTable("Goods", "T");

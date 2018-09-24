@@ -13,11 +13,11 @@ namespace UnionMall.Goods.GoodsCategory.Dto
     [AutoMap(typeof(model.GoodsCategory))]
     public class CategoryEditDto : EntityDto<long>
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
         public string Title { get; set; }
         public long ParentId { get; set; }
         public int Sort { get; set; }
         public string Brand { get; set; }
-        public string Memo { get; set; }
+        public string Note { get; set; }
     }
 }

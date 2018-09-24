@@ -13,6 +13,7 @@ namespace UnionMall.Goods.GoodsCategory
         DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total);
         Task CreateOrEditAsync(CategoryEditDto dto);
 
-        Task<CategoryEditDto> GetByIdAsync(long taskId);
+        Task<CategoryEditDto> GetByIdAsync(long Id);
+        DataSet GetCategoryDropDownList(int? tenantId, int parentId = 0, int type = 0);
     }
 }

@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
 {
+    [Area("GoodsManage")]
     [AbpMvcAuthorize]
     public class BrandController : Controller
     {
-        public IActionResult Index()
+        public IActionResult List()
         {
             return View();
         }

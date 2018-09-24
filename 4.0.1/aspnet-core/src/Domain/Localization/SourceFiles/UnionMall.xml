@@ -61,7 +61,7 @@
     <text name="No" value="No" />
     <text name="Optional" value="Optional" />
     <text name="CurrentTenant">Current tenant</text>
-    <text name="NotSelected">Not selected</text>
+    <text name="Select">Select</text>
     <text name="Change">Change</text>
     <text name="LanguageSetting">Language Setting</text>
     <text name="ChangeTenant">Change tenant</text>

@@ -198,8 +198,7 @@ function GoPage(btn) {
     if (parseInt(input_page) > parseInt($(btn).parent().siblings("input[type='number']").attr("max"))) {
         input_page = $(btn).parent().siblings("input[type='number']").attr("max");
     }
-    var href = $(".active a").attr("href");
-    var html = $(".active a").html();
-    alert(1);
-    $(".active a").attr("href", href.replace(html, input_page)).click();
+    var href = $(".pagination  .active a").attr("href");
+    var html = $(".pagination .active a").html();
+    $(".pagination .active a").attr("href", href.replace(html, input_page)).click();
 }

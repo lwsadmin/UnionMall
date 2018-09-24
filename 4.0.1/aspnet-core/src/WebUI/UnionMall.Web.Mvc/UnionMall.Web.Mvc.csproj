@@ -14,6 +14,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="wwwroot\Abp\Framework\scripts\abp.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.blockUI.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.jquery.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.jtable.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.moment.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.signalr-client.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.signalr.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.spin.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.sweet-alert.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\abp.toastr.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\angularjs\abp.ng.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\libs\requirejs\plugins\service.js" />
+    <None Include="wwwroot\Abp\Framework\scripts\utils\ie10fix.js" />
+    <None Include="wwwroot\Abp\Framework\styles\abp.css.map" />
+    <None Include="wwwroot\Abp\Framework\styles\abp.less" />
+    <None Include="wwwroot\Abp\Framework\styles\abp.mixings.css.map" />
+    <None Include="wwwroot\Abp\Framework\styles\abp.mixings.less" />
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -79,6 +96,11 @@
     <Reference Include="X.PagedList.Mvc.Core">
       <HintPath>wwwroot\lib\pager\X.PagedList.Mvc.Core.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\Abp\Framework\scripts\abp.d.ts" />
+    <TypeScriptCompile Include="wwwroot\Abp\Framework\scripts\libs\abp.jquery.d.ts" />
+    <TypeScriptCompile Include="wwwroot\Abp\Framework\scripts\libs\abp.signalr.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="Areas\GoodsManage\Views\Category\_Add.cshtml">

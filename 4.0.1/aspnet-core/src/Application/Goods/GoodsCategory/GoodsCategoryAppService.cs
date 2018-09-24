@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using UnionMall.EntityFrameworkCore;
 using UnionMall.Goods.GoodsCategory.Dto;
 using UnionMall.IRepositorySql;
 using model = UnionMall.Goods.Category;
@@ -25,6 +26,7 @@ namespace UnionMall.Goods.GoodsCategory
             DataSet ds = _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
             return ds;
         }
+
         public async Task CreateOrEditAsync(CategoryEditDto dto)
         {
             if (dto.Id > 0)
@@ -38,6 +40,12 @@ namespace UnionMall.Goods.GoodsCategory
         {
             var s = await _Repository.GetAsync(id);
             return s.MapTo<CategoryEditDto>();
+        }
+
+        public DataSet GetCategoryDropDownList(int? tenantId, int parentId = 0, int type = 0)
+        {
+            DataSet ds = _sqlExecuter.GetCategoryDropDownList(tenantId, parentId, type);
+            return ds;
         }
     }
 }

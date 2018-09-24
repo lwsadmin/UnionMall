@@ -12,6 +12,8 @@ namespace UnionMall.IRepositorySql
 
         DataSet ExecuteDataSet(string sql, params object[] parameters);
 
+        DataSet GetCategoryDropDownList(int?tenantId, int parentId = 0, int type = 0);
+
         DataSet GetPaged(int pageIndex, int pageSize, string table, string orderBy, out int total);
     }
 }
