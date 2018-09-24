@@ -87,13 +87,21 @@
     </div>
 </div>
 <div id="DivAdd">
-    @Html.Partial("_Add",new CategoryEditDto())
+    @Html.Partial("_Add", new CategoryEditDto())
 </div>
+<environment names="Development">
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
 
+
+</environment>
+
+<script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.jquery.js"></script>
 <script src="~/lib/pager/jquery.unobtrusive-ajax.js"></script>
 <script src="~/lib/treetable/jquery.treetable.js"></script>
+<script src="~/view-resources/Areas/GoodsManage/category_list.js"></script>
+<script src="~/js/main.js"></script>
 
-<script src="~/lib/Validform/Validform_v5.3.2_min.js"></script>
+@*<script src="~/lib/Validform/Validform_v5.3.2_min.js"></script>*@
 <script>
     $("#add").click(function () {
         $("#CreateModal").modal("show");

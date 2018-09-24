@@ -1,19 +1,18 @@
 ﻿(function () {
 
     $(function () {
-        debugger;
+
         var categoryService = abp.services.app.goodsCategory;
         var _$modal = $("#CreateModal");
         var _$form = _$modal.find("form");
-        _$form.find("button[type='submit']").click(function (e) {
-            e.preventDefault();
-            
-
+        _$form.find("#Save").click(function (e) {
+          //  e.preventDefault();
+            debugger;
             var EditDto = _$form.serializeFormToObject();
             //abp.ui.setBusy(_$form);
             categoryService.createOrEdit(EditDto).done(function () {
                 _$modal.modal('hide');
-                Refresh();
+               // Refresh();
             }).always(function () {
                 abp.ui.clearBusy(_$form);
             });
