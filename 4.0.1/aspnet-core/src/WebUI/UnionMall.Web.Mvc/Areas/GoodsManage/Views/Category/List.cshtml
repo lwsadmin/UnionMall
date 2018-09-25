@@ -93,9 +93,7 @@
 
 <script src="~/lib/pager/jquery.unobtrusive-ajax.js"></script>
 <script src="~/lib/treetable/jquery.treetable.js"></script>
-
-
-@*<script src="~/lib/Validform/Validform_v5.3.2_min.js"></script>*@
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script>
     $("#add").click(function () {
         $("#CreateModal").modal("show");
@@ -104,29 +102,5 @@
     function EditShow(data) {
         $("#CreateModal").modal("show");
     }
-    $(function () {
-
-        //$("#formPost").Validform({
-        //    showAllError: true,
-        //    ajaxPost: true,
-        //    beforeSubmit: function (curform) {
-        //        return true;
-        //    },
-        //    callback: function (data) {
-        //        debugger;
-        //        if (data.succ) {
-        //            $("#CreateModal").modal('hide');
-        //            $(".pagination .active").find("a").click();
-        //        }
-        //    },
-        //    tiptype: function (msg, o) {
-
-        //        if (o.type != 1) {
-        //            alert(msg);
-        //        }
-        //    }
-        //}
-        //);
-    });
 </script>
 

@@ -20,6 +20,14 @@
     <link href="/lib/admin/font-awesome/css/font-awesome.css"  rel="stylesheet" asp-append-version="true" />
     <link href="/lib/admin/css/style.css" rel="stylesheet" asp-append-version="true">
     <script src="/lib/admin/js/jquery-3.1.1.min.js" asp-append-version="true" ></script>
+    <style>
+        .spiner-example {
+            top: 40%;
+            position: absolute;
+            z-index: 1;
+            width: 90%;
+        }
+    </style>
 </head>
 <body>
 
@@ -58,7 +66,7 @@
 
 
     <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+   
     <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
 
     <script src="~/js/main.js"></script>
@@ -67,7 +75,7 @@
     <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript" asp-append-version="true"></script>
     <script>
         window.onload = function () {
-           // $("#loading").fadeOut(500);
+           $("#loading").fadeOut(500);
         }
     </script>
 </body>
