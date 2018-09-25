@@ -104,3 +104,102 @@ INFO  2018-09-25 18:10:15,895 [4    ] Core.Mvc.ViewFeatures.ViewResultExecutor -
 INFO  2018-09-25 18:10:15,961 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 66.3986ms.
 INFO  2018-09-25 18:10:15,961 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) in 125.8672ms
 INFO  2018-09-25 18:10:15,961 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 131.3062ms 200 text/html; charset=utf-8
+INFO  2018-09-25 18:12:00,219 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/GoodsManage/Category/List  
+INFO  2018-09-25 18:12:00,227 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "GoodsManage", action = "List", controller = "Category"}. Executing action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc)
+INFO  2018-09-25 18:12:00,227 [19   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-25 18:12:00,230 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-25 18:12:00,285 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 54.8095ms.
+INFO  2018-09-25 18:12:00,289 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-25 18:12:00,539 [11   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 249.1483ms.
+INFO  2018-09-25 18:12:00,539 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) in 311.7361ms
+INFO  2018-09-25 18:12:00,539 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 320.2414ms 200 text/html; charset=utf-8
+INFO  2018-09-25 18:12:00,563 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/style.css?v=vr-CFDwlZ5TqA5IJfM2mxTemw-tqWPTyuZsx2UDQT34  
+INFO  2018-09-25 18:12:00,567 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/css/style.css was not modified
+INFO  2018-09-25 18:12:00,568 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.1109ms 304 text/css
+INFO  2018-09-25 18:12:00,609 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/js/inspinia.js?v=C7Ie7SIFjMSEBnK-eJ6omE02x3USLGrPqBmmmgY35bk  
+INFO  2018-09-25 18:12:00,610 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The file /lib/admin/js/inspinia.js was not modified
+INFO  2018-09-25 18:12:00,611 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.3857ms 304 application/javascript
+INFO  2018-09-25 18:12:00,619 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636734953831288699  
+INFO  2018-09-25 18:12:00,630 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-09-25 18:12:00,632 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-09-25 18:12:00,640 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 7.9507ms.
+INFO  2018-09-25 18:12:00,641 [11   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-09-25 18:12:00,641 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 10.1769ms
+INFO  2018-09-25 18:12:00,641 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 22.0065ms 200 application/x-javascript
+INFO  2018-09-25 18:12:00,992 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-25 18:12:00,993 [16   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-25 18:12:00,993 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.2377ms 200 image/x-icon
+INFO  2018-09-25 18:12:02,444 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/GoodsManage/Category/List  
+INFO  2018-09-25 18:12:02,461 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "GoodsManage", action = "List", controller = "Category"}. Executing action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc)
+INFO  2018-09-25 18:12:02,461 [11   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-25 18:12:02,465 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-25 18:12:02,492 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 27.2333ms.
+INFO  2018-09-25 18:12:02,504 [11   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-25 18:12:02,629 [11   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 125.6893ms.
+INFO  2018-09-25 18:12:02,629 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) in 168.4412ms
+INFO  2018-09-25 18:12:02,630 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 188.3541ms 200 text/html; charset=utf-8
+INFO  2018-09-25 18:12:05,104 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/chosen/bootstrap-chosen.css.map  
+INFO  2018-09-25 18:12:05,110 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 5.5508ms 404 
+INFO  2018-09-25 18:12:10,137 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/GoodsManage/Category/List  
+INFO  2018-09-25 18:12:10,144 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "GoodsManage", action = "List", controller = "Category"}. Executing action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc)
+INFO  2018-09-25 18:12:10,145 [17   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-25 18:12:10,148 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-25 18:12:10,177 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 28.7946ms.
+INFO  2018-09-25 18:12:10,181 [17   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-25 18:12:10,417 [19   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 236.0667ms.
+INFO  2018-09-25 18:12:10,417 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) in 272.8162ms
+INFO  2018-09-25 18:12:10,417 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 280.2455ms 200 text/html; charset=utf-8
+INFO  2018-09-25 18:12:10,582 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636734953831288699  
+INFO  2018-09-25 18:12:10,587 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-09-25 18:12:10,589 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-09-25 18:12:10,598 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 8.4691ms.
+INFO  2018-09-25 18:12:10,598 [11   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-09-25 18:12:10,598 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 10.8931ms
+INFO  2018-09-25 18:12:10,599 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.5467ms 200 application/x-javascript
+INFO  2018-09-25 18:12:10,659 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/chosen/bootstrap-chosen.css.map  
+INFO  2018-09-25 18:12:10,670 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 10.65ms 404 
+INFO  2018-09-25 18:12:10,940 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-25 18:12:10,943 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-25 18:12:10,943 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.8458ms 200 image/x-icon
+INFO  2018-09-25 18:12:17,978 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/GoodsManage/Category/List  
+INFO  2018-09-25 18:12:17,987 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "GoodsManage", action = "List", controller = "Category"}. Executing action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc)
+INFO  2018-09-25 18:12:17,989 [17   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-25 18:12:17,991 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-25 18:12:18,032 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 40.7832ms.
+INFO  2018-09-25 18:12:18,038 [11   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-25 18:12:18,098 [17   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 60.141ms.
+INFO  2018-09-25 18:12:18,098 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) in 110.8002ms
+INFO  2018-09-25 18:12:18,098 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 120.4908ms 200 text/html; charset=utf-8
+INFO  2018-09-25 18:12:18,140 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636734953831288699  
+INFO  2018-09-25 18:12:18,147 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-09-25 18:12:18,148 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-09-25 18:12:18,157 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 8.9059ms.
+INFO  2018-09-25 18:12:18,157 [17   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-09-25 18:12:18,158 [17   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 10.4559ms
+INFO  2018-09-25 18:12:18,158 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.6371ms 200 application/x-javascript
+INFO  2018-09-25 18:12:18,340 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/chosen/bootstrap-chosen.css.map  
+INFO  2018-09-25 18:12:18,344 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.434ms 404 
+INFO  2018-09-25 18:12:18,593 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-25 18:12:18,596 [16   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-25 18:12:18,596 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.2683ms 200 image/x-icon
+INFO  2018-09-25 18:12:21,938 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/GoodsManage/Category/List  
+INFO  2018-09-25 18:12:21,945 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "GoodsManage", action = "List", controller = "Category"}. Executing action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc)
+INFO  2018-09-25 18:12:21,949 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-09-25 18:12:21,951 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) with arguments (1) - Validation state: Valid
+INFO  2018-09-25 18:12:22,045 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 94.1123ms.
+INFO  2018-09-25 18:12:22,050 [17   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+INFO  2018-09-25 18:12:22,113 [16   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 63.4395ms.
+INFO  2018-09-25 18:12:22,113 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.GoodsManage.Controllers.CategoryController.List (UnionMall.Web.Mvc) in 168.1747ms
+INFO  2018-09-25 18:12:22,113 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 175.8063ms 200 text/html; charset=utf-8
+INFO  2018-09-25 18:12:22,305 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636734953831288699  
+INFO  2018-09-25 18:12:22,311 [42   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-09-25 18:12:22,313 [42   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-09-25 18:12:22,319 [42   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 5.9246ms.
+INFO  2018-09-25 18:12:22,319 [42   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-09-25 18:12:22,319 [42   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 8.0583ms
+INFO  2018-09-25 18:12:22,320 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.6314ms 200 application/x-javascript
+INFO  2018-09-25 18:12:22,429 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/lib/admin/css/plugins/chosen/bootstrap-chosen.css.map  
+INFO  2018-09-25 18:12:22,442 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 12.7829ms 404 
+INFO  2018-09-25 18:12:22,750 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/favicon.ico  
+INFO  2018-09-25 18:12:22,751 [16   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon.ico'. Physical path: 'G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\wwwroot\favicon.ico'
+INFO  2018-09-25 18:12:22,751 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.2575ms 200 image/x-icon
