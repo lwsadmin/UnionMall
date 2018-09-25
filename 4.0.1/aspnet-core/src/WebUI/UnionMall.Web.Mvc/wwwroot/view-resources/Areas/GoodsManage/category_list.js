@@ -12,12 +12,15 @@
                 return;
             }
             var EditDto = _$form.serializeFormToObject();
-            abp.ui.setBusy(_$form);
             categoryService.createOrEdit(EditDto).done(function (data) {
                 _$modal.modal('hide');
-                $(".pagination").find("button").click();
-            }).always(function () {
-                abp.ui.clearBusy(_$form);
+                $(".pagination .active a").click();
+            }).fail(function (data) {
+              //  debugger;
+             //   abp.message.error(data.message, 'Error');
+            }).always(function (data) {
+               
+                
             });
         });
 

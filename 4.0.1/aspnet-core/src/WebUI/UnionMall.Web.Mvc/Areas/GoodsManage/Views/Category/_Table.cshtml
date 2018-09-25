@@ -7,7 +7,10 @@
 @using X.PagedList
 @using X.PagedList.Mvc.Core
 @model PagedList<DataRow>
+@*@if (IsGranted(""))
+    {
 
+    }*@
 <table id="tree_table" class="table table-bordered table-hover footable">
     <thead>
         <tr>
@@ -18,24 +21,21 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (DataRow item in Model)
+        @foreach (DataRow item in Model.Where(c => c["ParentId"].ToString() == "0"))
         {
-            <tr class="footable-even" id="first@(item["id"])" data-hasChild="true" data-tt-id="@item["id"]">
-                <td class="foo" data-tt-branch><span class="footable-toggle"></span>@item["Title"]</td>
+            <tr class="footable-even" id="tr@(item["id"])" data-hasChild="true" data-tt-id="@item["id"]">
+                <td onclick="trClick('@item["id"]');" class="foo" data-tt-branch><span class="footable-toggle"></span>@item["Title"]</td>
                 <td>@item["Sort"]</td>
                 <td>@item["Note"]</td>
                 <td>
-                    @*@if (IsGranted(""))
-        {
-
-        }*@
-                    <a class="btn btn-outline btn-primary btn-xs" data-ajax="true" data-ajax-method="GET" 
+                    <a class="btn btn-outline btn-primary btn-xs" data-ajax="true" data-ajax-method="GET"
                        data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
                        href="/GoodsManage/Category/Add/@item["id"]">编辑</a>
                     &nbsp;&nbsp;
                     <button type="button" class="btn btn-outline btn-danger btn-xs">删除</button>
                 </td>
             </tr>
+
         }
 
     </tbody>
@@ -65,22 +65,43 @@
         }
 ))
 <script>
-$(function() {
+    $(function () {
         $("#tree_table").treetable({
             expandable: true,
             clickableNodeNames: true,
             stringExpand: '点击展开',
             indent: 15,
-            onNodeExpand: function () {
-                var node = this;
-                //判断当前节点是否已经拥有子节点
-           
-                var childSize = $("#treetable").find("[data-tt-parent-id='" + node.id + "']").length;
-                if (childSize > 0) { return; }
-                var data = "pageId=" + node.id;
-               // alert(node.id);
-                // Render loader/spinner while loading 加载时渲染
-            }
         });
     });
+
+    function trClick(id) {
+        var childSize = $("#treetable").find("[data-tt-parent-id='tr" + id + "']").length;
+        if (childSize > 0) { return; }
+
+        $.post("/GoodsManage/Category/GetChildCategory", { parentId:id }, function (data) {
+
+            //  console.log(data.result.data[0].title);
+            for (var i = 0; i < data.result.data.length; i++) {
+                var h = " <tr class='footable-even branch collapsed' id='tr" + data.result.data[i].id + "' data-hasChild='true' data-tt-parent-id='tr" +id + "'>\
+                <td class='foo' data-tt-branch><span class='footable-toggle'></span>"+ data.result.data[i].title + "</td>\
+                <td>"+ data.result.data[i].sort + "</td>\
+                <td>"+ data.result.data[i].note + "</td>\
+                <td>\
+                    <a class='btn btn-outline btn-primary btn-xs' data-ajax='true' data-ajax-method='GET'\
+                       data-ajax-mode='Replace' data-ajax-update='#DivAdd' data-ajax-success='EditShow'\
+                       href='/GoodsManage/Category/Add/"+ data.result.data[i].id + "'>编辑</a>\
+                    &nbsp;&nbsp;\
+                    <button type='button' class='btn btn-outline btn-danger btn-xs'>删除</button>\
+                </td>\
+            </tr>";
+                $("#tr" + id).after(h);
+            }
+            $("#tree_table").treetable({
+                expandable: true,
+                clickableNodeNames: true,
+                stringExpand: '点击展开',
+                indent: 15,
+            });
+        });
+    }
 </script>

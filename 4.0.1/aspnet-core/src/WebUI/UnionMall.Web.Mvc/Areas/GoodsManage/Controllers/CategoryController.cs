@@ -27,9 +27,9 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         public IActionResult List(int page = 1)
         {
             int pageSize = 10;
-            string table = $"select g.Id,g.Title,g.ParentId,g.Sort,g.Note from TGoodsCategory g";
+            string table = $"select g.Id,g.Title,g.ParentId,g.Sort,g.Note from TGoodsCategory g where g.ParentId=0";
             if (_AbpSession.TenantId != null)
-                table += $" where g.TenantId={_AbpSession.TenantId}";
+                table += $" and g.TenantId={_AbpSession.TenantId}";
 
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
@@ -46,7 +46,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
                 table += $" where g.TenantId={_AbpSession.TenantId}";
 
             int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
+            DataSet ds = _AppService.GetPage(page, pageSize, table, "sort asc, id desc", out total);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
 
             return View("_Table", pageList);
@@ -67,13 +67,10 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<JsonResult> AddPost(CategoryEditDto dto)
+        public async Task<JsonResult> GetChildCategory(long parentId)
         {
-            await _AppService.CreateOrEditAsync(dto);
-            return Json(new { success = true });
+            var catList = await _AppService.GetAllListByParentIdAsync(parentId);
+            return Json(new { data = catList });
         }
-
-
     }
 }

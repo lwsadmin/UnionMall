@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Runtime.Session;
+using Abp.UI;
 using UnionMall.EntityFrameworkCore;
 using UnionMall.Goods.GoodsCategory.Dto;
 using UnionMall.IRepositorySql;
@@ -16,10 +18,13 @@ namespace UnionMall.Goods.GoodsCategory
     {
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<model.GoodsCategory, long> _Repository;
-        public GoodsCategoryAppService(ISqlExecuter sqlExecuter, IRepository<model.GoodsCategory, long> Repository)
+        public readonly IAbpSession _AbpSession;
+        public GoodsCategoryAppService(ISqlExecuter sqlExecuter,
+            IRepository<model.GoodsCategory, long> Repository, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
+            _AbpSession = AbpSession;
         }
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
@@ -29,10 +34,23 @@ namespace UnionMall.Goods.GoodsCategory
 
         public async Task CreateOrEditAsync(CategoryEditDto dto)
         {
-            if (dto.Id > 0)
-                await _Repository.UpdateAsync(dto.MapTo<model.GoodsCategory>());
-            else
-                await _Repository.InsertAsync(dto.MapTo<model.GoodsCategory>());
+            try
+            {
+                if (dto.Id > 0)
+                {
+                    await _Repository.UpdateAsync(dto.MapTo<model.GoodsCategory>());
+                }
+                else
+                {
+                    if (_AbpSession.TenantId != null)
+                    { dto.TenantId = (int)_AbpSession.TenantId; }
+                    await _Repository.InsertAsync(dto.MapTo<model.GoodsCategory>());
+                }
+            }
+            catch (Exception e)
+            {
+                throw new UserFriendlyException(e.Message);
+            }
 
         }
 
@@ -46,6 +64,17 @@ namespace UnionMall.Goods.GoodsCategory
         {
             DataSet ds = _sqlExecuter.GetCategoryDropDownList(tenantId, parentId, type);
             return ds;
+        }
+        public async Task DeleteAsync(long id)
+        {
+            await _Repository.DeleteAsync(id);
+            // throw new NotImplementedException();
+        }
+
+        public async Task<List<CategoryEditDto>> GetAllListByParentIdAsync(long parentId)
+        {
+            var query = await _Repository.GetAllListAsync(c => c.ParentId == parentId);
+            return query.MapTo<List<CategoryEditDto>>(); ;
         }
     }
 }
