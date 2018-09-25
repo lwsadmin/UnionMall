@@ -5,14 +5,17 @@
         var categoryService = abp.services.app.goodsCategory;
         var _$modal = $("#CreateModal");
         var _$form = _$modal.find("form");
-        _$form.find("#Save").click(function (e) {
-          //  e.preventDefault();
-            debugger;
+        $("#Save").click(function (e) {
+
+            e.preventDefault();
+            if (!_$form.valid()) {
+                return;
+            }
             var EditDto = _$form.serializeFormToObject();
-            //abp.ui.setBusy(_$form);
-            categoryService.createOrEdit(EditDto).done(function () {
+            abp.ui.setBusy(_$form);
+            categoryService.createOrEdit(EditDto).done(function (data) {
                 _$modal.modal('hide');
-               // Refresh();
+                $(".pagination").find("button").click();
             }).always(function () {
                 abp.ui.clearBusy(_$form);
             });
