@@ -12,8 +12,12 @@
                 return;
             }
             var EditDto = _$form.serializeFormToObject();
+            if (EditDto.ParentId=="") {
+                EditDto.ParentId = "0";
+            }
             categoryService.createOrEdit(EditDto).done(function (data) {
                 _$modal.modal('hide');
+                _$form[0].reset();
                 $(".pagination .active a").click();
             }).fail(function (data) {
               //  debugger;
@@ -24,42 +28,5 @@
             });
         });
 
-        $("#CreateModal").on("hide.bs.modal", function () {
-            _$form[0].reset();
-        });
-        $("#RefreshButton").click(function () {
-            Refresh();
-        });
-        function Refresh() {
-            window.location.reload();
-        }
-
-        $(".delete").click(function () {
-            var id = $(this).attr("data-id");
-            var name = $(this).attr("data-name");
-            abp.message.confirm("确定要商品分类【" + name + "】吗?", function (isConfirm) {
-                if (isConfirm) {
-                    categoryService.delete(id).done(function () {
-                        Refresh();
-                    });
-                }
-            });
-        });
-
-        $(".edit").click(function (e) {
-            e.preventDefault();
-
-            var id = $(this).attr("data-id");
-
-            pesonService.getPersonBuyID(id).done(function (data) {
-                debugger;
-                $("input[name='Id']").val(id);
-                $("input[name='Name']").val(data.name).parent().addClass("focused");
-                $("input[name='Email']").val(data.email).parent().addClass("focused");
-                $("#Address").val(data.address).parent().addClass("focused");
-            });
-
-            _$modal.modal('show');
-        });
     });
 })();

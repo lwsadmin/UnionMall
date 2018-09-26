@@ -32,7 +32,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
                 table += $" and g.TenantId={_AbpSession.TenantId}";
 
             int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
+            DataSet ds = _AppService.GetPage(page, pageSize, table, "sort desc, id desc", out total);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
 
             List<DropDownDto> dtoList = _AppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
@@ -47,7 +47,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
                 table += $" and g.TenantId={_AbpSession.TenantId}";
 
             int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, table, "sort asc, id desc", out total);
+            DataSet ds = _AppService.GetPage(page, pageSize, table, "sort desc, id desc", out total);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
 
             return View("_Table", pageList);

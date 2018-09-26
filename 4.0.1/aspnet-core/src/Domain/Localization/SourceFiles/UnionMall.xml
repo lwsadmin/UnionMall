@@ -208,9 +208,14 @@
     <text name="PreviousPage" value="PreviousPage" />
     <text name="NextPage" value="NextPage" />
     <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
-    
+
     <!--message-->
-    <text name="{0},It does not exist. It may have been deleted!" value="{0}editeNoExist" />
-    <text name="The name {0} already exists!" value="{0}AlreadyExist" />
+    <text name="{0}editeNoExist" value="{0},It does not exist. It may have been deleted!" />
+    <text name="{0}AlreadyExist" value="The name {0} already exists!" />
+
+    <text name="DeleteConfirm" value="Do you want to delete it ?" />
+    <text name="DeleteMsg" value="Cannot be restored after deletion" />
+    <text name="OK" value="OK" />
+
   </texts>
 </localizationDictionary>

@@ -72,7 +72,10 @@ namespace UnionMall.Goods.GoodsCategory
             int maxLevel = Convert.ToInt32(ds.Tables[0].Select("1=1", " level desc")[0]["level"]);
             for (int i = 0; i <= maxLevel; i++)
             {
-                foreach (DataRow item in ds.Tables[0].Select("level=" + i))
+                DataRow[] rows = ds.Tables[0].Select("level=" + i);
+                if (rows.Length == 0)
+                    break;
+                foreach (DataRow item in rows)
                 {
                     DropDownDto dto = new DropDownDto();
                     dto.Id = (long)item["id"];
@@ -81,7 +84,7 @@ namespace UnionMall.Goods.GoodsCategory
                     dto.Level = (int)item["Level"];
                     if (dto.Level != 0)
                         dto.Title = "├" + dto.Title;
-                    for (int j = 0; j < dto.Level; i++)
+                    for (int j = 0; j < dto.Level; j++)
                     {
                         dto.Title = System.Web.HttpUtility.HtmlDecode("&nbsp;") + dto.Title;
                     }
@@ -90,13 +93,16 @@ namespace UnionMall.Goods.GoodsCategory
                     else
                     {
                         int index = dropDownList.IndexOf(dropDownList.Find(c => c.Id == dto.ParentId));
-                        dropDownList.Insert(index, dto);
+                        // dropDownList.in
+                        dropDownList.Insert(index + 1, dto);
                     }
 
                 }
             }
+
             return dropDownList;
         }
+
         public async Task DeleteAsync(long id)
         {
             await _Repository.DeleteAsync(id);

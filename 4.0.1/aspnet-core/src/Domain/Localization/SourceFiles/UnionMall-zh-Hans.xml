@@ -158,5 +158,14 @@
     <!--message-->
     <text name="{0}不存在,可能已经被删除!" value="{0}editeNoExist" />
     <text name="{0}已存在!" value="{0}AlreadyExist" />
+
+    <!--message-->
+    <text name="{0}editeNoExist" value="{0},It does not exist. It may have been deleted!" />
+    <text name="{0}AlreadyExist" value="The name {0} already exists!" />
+
+    <text name="DeleteConfirm" value="确认删除吗?" />
+    <text name="DeleteMsg" value="删除之后无法恢复!" />
+    <text name="OK" value="确认" />
+
   </texts>
 </localizationDictionary>

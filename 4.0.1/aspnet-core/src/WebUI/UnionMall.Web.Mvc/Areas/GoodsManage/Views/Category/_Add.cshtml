@@ -34,7 +34,7 @@
                                         <option value="0">@L("Select")</option>
 
                                     </select>*@
-                                    @Html.DropDownList("ParentID", (SelectList)ViewData["cat"], "--请选择--", new { @class = "form-control chosen-select" })
+                                    @Html.DropDownListFor(c=>c.ParentId, (SelectList)ViewData["cat"], "--请选择--", new { @class = "form-control chosen-select" })
 
                                 </div>
                             </div>
