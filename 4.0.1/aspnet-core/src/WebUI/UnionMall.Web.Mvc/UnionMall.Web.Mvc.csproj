@@ -31,6 +31,9 @@
     <None Include="wwwroot\Abp\Framework\styles\abp.less" />
     <None Include="wwwroot\Abp\Framework\styles\abp.mixings.css.map" />
     <None Include="wwwroot\Abp\Framework\styles\abp.mixings.less" />
+    <None Include="wwwroot\lib\treetable\script\jquery.js" />
+    <None Include="wwwroot\lib\treetable\script\treeTable\jquery.treeTable.js" />
+    <None Include="wwwroot\lib\treetable\script\treeTable\vsStyle\allbgs.psd" />
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

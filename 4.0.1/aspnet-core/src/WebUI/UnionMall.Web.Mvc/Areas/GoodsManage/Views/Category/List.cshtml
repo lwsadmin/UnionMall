@@ -5,19 +5,16 @@
 
     ViewBag.FirstMenu = "OnlineGoods";
     ViewBag.SecondMenu = "GoodsCategory";
-
-
 }
 @using System.Data
 @using X.PagedList
 @using UnionMall.Goods.GoodsCategory.Dto
 @model PagedList<DataRow>
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
-<link href="~/lib/treetable/jquery.treetable.css" rel="stylesheet" />
-<link href="~/lib/treetable/jquery.treetable.theme.default.css" rel="stylesheet" />
+<link href="~/lib/treetable/script/treeTable/vsStyle/jquery.treeTable.css" rel="stylesheet" />
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js"></script>
-<link href="~/lib/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -34,12 +31,10 @@
         </ol>
     </div>
 </div>
-
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-
                 <div class="ibox-title">
                     <h5>@L("GoodsCategory")</h5>
                     <div class="ibox-tools">
@@ -81,8 +76,6 @@
                     <div id="table">
                         @Html.Partial("_Table", Model)
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -92,9 +85,8 @@
     @Html.Partial("_Add", new CategoryEditDto())
 </div>
 
-
 <script src="~/lib/pager/jquery.unobtrusive-ajax.js"></script>
-<script src="~/lib/treetable/jquery.treetable.js"></script>
+<script src="~/lib/treetable/script/treeTable/jquery.treeTable.js" rel="stylesheet"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script>
     $("#add").click(function () {
@@ -104,5 +96,6 @@
     function EditShow(data) {
         $("#CreateModal").modal("show");
     }
+
 </script>
 

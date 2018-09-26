@@ -15,6 +15,6 @@ namespace UnionMall.Goods.GoodsCategory
         Task<CategoryEditDto> GetByIdAsync(long Id);
         Task DeleteAsync(long id);
         Task<List<CategoryEditDto>> GetAllListByParentIdAsync(long parentId);
-        DataSet GetCategoryDropDownList(int? tenantId, int parentId = 0, int type = 0);
+        List<DropDownDto> GetCategoryDropDownList(int? tenantId, long parentId = 0, int type = 0);
     }
 }

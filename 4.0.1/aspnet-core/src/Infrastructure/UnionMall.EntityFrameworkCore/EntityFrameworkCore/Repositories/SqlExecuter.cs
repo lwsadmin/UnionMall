@@ -48,7 +48,7 @@ namespace UnionMall.EntityFrameworkCore.Repositories
             }
 
         }
-        public DataSet GetCategoryDropDownList(int?tenantId, int parentId = 0, int type = 0)
+        public DataSet GetCategoryDropDownList(int?tenantId, long parentId = 0, int type = 0)
         {
             DataSet ds = new DataSet();
             var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());

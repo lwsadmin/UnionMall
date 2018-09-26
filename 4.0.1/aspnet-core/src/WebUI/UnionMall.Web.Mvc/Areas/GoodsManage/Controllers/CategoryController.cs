@@ -35,15 +35,16 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
 
-            ViewBag.Category = _AppService.GetCategoryDropDownList(AbpSession.TenantId, 0).Tables[0];
+            List<DropDownDto> dtoList = _AppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
+            ViewData.Add("cat", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(dtoList, "Id", "Title"));
             return View(pageList);
         }
 
         public IActionResult Table(int page = 1, int pageSize = 10)
         {
-            string table = $"select g.Id,g.Title,g.ParentId,g.Sort,g.Note from TGoodsCategory g";
+            string table = $"select g.Id,g.Title,g.ParentId,g.Sort,g.Note from TGoodsCategory g where g.ParentId=0";
             if (_AbpSession.TenantId != null)
-                table += $" where g.TenantId={_AbpSession.TenantId}";
+                table += $" and g.TenantId={_AbpSession.TenantId}";
 
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, table, "sort asc, id desc", out total);
@@ -54,7 +55,8 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
 
         public async Task<IActionResult> Add(long? id)
         {
-            ViewBag.Category = _AppService.GetCategoryDropDownList(AbpSession.TenantId, 0).Tables[0];
+            List<DropDownDto> dtoList = _AppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
+            ViewData.Add("cat", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(dtoList, "Id", "Title"));
             if (id == null)
             {
                 var s = new CategoryEditDto();

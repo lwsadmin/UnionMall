@@ -207,7 +207,10 @@
     <text value="LastPage" name="LastPage"/>
     <text name="PreviousPage" value="PreviousPage" />
     <text name="NextPage" value="NextPage" />
-
     <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
+    
+    <!--message-->
+    <text name="{0},It does not exist. It may have been deleted!" value="{0}editeNoExist" />
+    <text name="The name {0} already exists!" value="{0}AlreadyExist" />
   </texts>
 </localizationDictionary>

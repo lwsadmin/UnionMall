@@ -60,10 +60,39 @@ namespace UnionMall.Goods.GoodsCategory
             return s.MapTo<CategoryEditDto>();
         }
 
-        public DataSet GetCategoryDropDownList(int? tenantId, int parentId = 0, int type = 0)
+        public List<DropDownDto> GetCategoryDropDownList(int? tenantId, long parentId = 0, int type = 0)
         {
             DataSet ds = _sqlExecuter.GetCategoryDropDownList(tenantId, parentId, type);
-            return ds;
+            List<DropDownDto> dropDownList = new List<DropDownDto>();
+
+
+            if (ds.Tables[0].Rows.Count == 0)
+                return dropDownList;
+
+            int maxLevel = Convert.ToInt32(ds.Tables[0].Select("1=1", " level desc")[0]["level"]);
+            for (int i = 0; i <= maxLevel; i++)
+            {
+                foreach (DataRow item in ds.Tables[0].Select("level=" + parentId))
+                {
+                    DropDownDto dto = new DropDownDto();
+                    dto.Id = (long)item["id"];
+                    dto.Title = item["title"].ToString();
+                    dto.ParentId = (long)item["ParentId"];
+                    dto.Level = (int)item["Level"];
+                    if (dto.Level != 0)
+                        dto.Title = "├" + dto.Title;
+                    for (int j = 0; j < dto.Level; i++)
+                    {
+                        dto.Title = System.Web.HttpUtility.HtmlDecode("&nbsp;") + dto.Title;
+                    }
+                    if (i == 0)
+                        dropDownList.Add(dto);
+                    else
+                        dropDownList.Insert(dropDownList.IndexOf(dropDownList.Find(c => c.Id == dto.ParentId)), dto);
+
+                }
+            }
+            return dropDownList;
         }
         public async Task DeleteAsync(long id)
         {
