@@ -72,7 +72,7 @@ namespace UnionMall.Goods.GoodsCategory
             int maxLevel = Convert.ToInt32(ds.Tables[0].Select("1=1", " level desc")[0]["level"]);
             for (int i = 0; i <= maxLevel; i++)
             {
-                foreach (DataRow item in ds.Tables[0].Select("level=" + parentId))
+                foreach (DataRow item in ds.Tables[0].Select("level=" + i))
                 {
                     DropDownDto dto = new DropDownDto();
                     dto.Id = (long)item["id"];
@@ -88,7 +88,10 @@ namespace UnionMall.Goods.GoodsCategory
                     if (i == 0)
                         dropDownList.Add(dto);
                     else
-                        dropDownList.Insert(dropDownList.IndexOf(dropDownList.Find(c => c.Id == dto.ParentId)), dto);
+                    {
+                        int index = dropDownList.IndexOf(dropDownList.Find(c => c.Id == dto.ParentId));
+                        dropDownList.Insert(index, dto);
+                    }
 
                 }
             }
