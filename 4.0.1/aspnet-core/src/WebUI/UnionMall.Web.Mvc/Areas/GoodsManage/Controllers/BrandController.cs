@@ -26,7 +26,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         public IActionResult List(int page=1)
         {
             int pageSize = 10;
-            string table = $"select b.id,b.TenantId,b.Logo,b.Sort,b.Url,b.Note from dbo.TBrand b";
+            string table = $"select b.id,b.Title,b.Url, b.TenantId,b.Logo,b.Sort,b.Note from dbo.TBrand b";
             if (_AbpSession.TenantId != null&& (int)AbpSession.TenantId>0)
                 table += $" where b.TenantId={_AbpSession.TenantId}";
 
@@ -37,7 +37,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         }
         public IActionResult Table(int page = 1, int pageSize = 10)
         {
-            string table = $"select b.id,b.TenantId,b.Logo,b.Sort,b.Url,b.Note from dbo.TBrand b";
+            string table = $"select b.id,b.Title,b.Url,b.TenantId,b.Logo,b.Sort,b.Note from dbo.TBrand b";
             if (_AbpSession.TenantId != null && (int)AbpSession.TenantId > 0)
                 table += $" where  b.TenantId={_AbpSession.TenantId}";
 
