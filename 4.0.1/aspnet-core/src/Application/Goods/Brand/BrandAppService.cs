@@ -10,7 +10,7 @@ using UnionMall.IRepositorySql;
 
 namespace UnionMall.Goods.Brand
 {
-    class BrandAppService : ApplicationService, IBrandAppService
+    public class BrandAppService : ApplicationService, IBrandAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<Brand, long> _Repository;
@@ -48,19 +48,21 @@ namespace UnionMall.Goods.Brand
 
         }
 
-        public Task DeleteAsync(long id)
+        public async Task DeleteAsync(long id)
         {
-            throw new NotImplementedException();
+            await _Repository.DeleteAsync(id);
         }
 
-        public Task<Brand> GetByIdAsync(long Id)
+        public async Task<Brand> GetByIdAsync(long Id)
         {
-            throw new NotImplementedException();
+            var s = await _Repository.GetAsync(Id);
+            return s;
         }
 
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
-            throw new NotImplementedException();
+            DataSet ds = _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            return ds;
         }
     }
 }

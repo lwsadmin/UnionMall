@@ -6,7 +6,7 @@ using Abp.Domain.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace UnionMall.Goods.Brand
 {
-    [Table("TGoodsCategory")]
+    [Table("TBrand")]
     public class Brand : Entity<long>, IMustHaveTenant
     {
         public int TenantId { get; set; }
@@ -14,7 +14,6 @@ namespace UnionMall.Goods.Brand
         public string Title { get; set; }
         public string Logo { get; set; }
         public int Sort { get; set; }
-        [Column("Remark")]
         public string Note { get; set; }
         public string Introduce { get; set; }
         public string Url { get; set; }

@@ -74,5 +74,13 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             var catList = await _AppService.GetAllListByParentIdAsync(parentId);
             return Json(new { data = catList });
         }
+
+        [HttpPost]
+        public JsonResult Delete(long id)
+        {
+            string msg = string.Empty;
+            var booler = _AppService.Delete(id, out msg);
+            return Json(new { succ = booler, msg = L(msg) });
+        }
     }
 }

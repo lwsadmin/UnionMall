@@ -103,10 +103,25 @@ namespace UnionMall.Goods.GoodsCategory
             return dropDownList;
         }
 
-        public async Task DeleteAsync(long id)
+        public bool Delete(long id, out string msg)
         {
-            await _Repository.DeleteAsync(id);
+            //  await _Repository.DeleteAsync(id);
             // throw new NotImplementedException();
+            var query = _Repository.FirstOrDefault(c => c.Id == id);
+            if (query == null)
+            {
+                msg = "NotExist";
+                return false;
+            }
+            var count = _Repository.GetAllList(c => c.ParentId == id).Count;
+            if (count > 0)
+            {
+                msg = "HasChild";
+                return false;
+            }
+            _Repository.Delete(id);
+            msg = "";
+            return true;
         }
 
         public async Task<List<CategoryEditDto>> GetAllListByParentIdAsync(long parentId)

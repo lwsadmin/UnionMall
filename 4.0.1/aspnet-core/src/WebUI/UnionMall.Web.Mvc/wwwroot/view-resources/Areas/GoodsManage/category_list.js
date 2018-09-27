@@ -20,13 +20,14 @@
                 _$form[0].reset();
                 $(".pagination .active a").click();
             }).fail(function (data) {
-              //  debugger;
-             //   abp.message.error(data.message, 'Error');
-            }).always(function (data) {
-               
-                
-            });
+            }).always(function (data) {});
         });
+        _$modal.on("hidden.bs.modal", function () {
+            _$form.find("input[name='Title']").val('');
+            _$form.find("select[name='ParentId']").val('');
 
+            _$form.find("input[name='Sort']").val(0);
+            _$form.find("textarea[name='Note']").val('');
+        })
     });
 })();

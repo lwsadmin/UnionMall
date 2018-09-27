@@ -13,7 +13,7 @@ namespace UnionMall.Goods.GoodsCategory
         DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total);
         Task CreateOrEditAsync(CategoryEditDto dto);
         Task<CategoryEditDto> GetByIdAsync(long Id);
-        Task DeleteAsync(long id);
+        bool Delete(long id,out string msg);
         Task<List<CategoryEditDto>> GetAllListByParentIdAsync(long parentId);
         List<DropDownDto> GetCategoryDropDownList(int? tenantId, long parentId = 0, int type = 0);
     }

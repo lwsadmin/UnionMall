@@ -30,16 +30,12 @@
                 <td>
                     <a class="btn btn-outline btn-primary btn-xs" data-ajax="true" data-ajax-method="GET"
                        data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
-                       href="/GoodsManage/Category/Add/@item["id"]">编辑</a>
+                       href="/GoodsManage/Category/Add/@item["id"]">@L("Edit")</a>
                     &nbsp;&nbsp;
-                    <button type="button" data-name="@item["Title"]" data-id="@item["id"]" onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">删除</button>
+                    <button type="button" data-name="@item["Title"]" data-id="@item["id"]" onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>
                 </td>
             </tr>
-
-
         }
-
-
     </tbody>
 </table>
 
@@ -55,8 +51,6 @@
             LinkToPreviousPageFormat = L("PreviousPage"),
             UlElementClasses = new[] { "pagination col-md-8" },
             ContainerDivClasses = new[] { "row" } },
-
-
         new AjaxOptions()
         {
             DataForm = "searchForm",
@@ -79,7 +73,6 @@
                 var str = "";
                 $.post("/GoodsManage/Category/GetChildCategory", { parentId: id }, function (data) {
 
-                    //  console.log(data.result.data[0].title);
                     for (var i = 0; i < data.result.data.length; i++) {
                         var h = " <tr id='" + data.result.data[i].id+"' hasChild='true' pId='" + id + "'>\
                 <td controller='true'>"+ data.result.data[i].title + "</td>\
@@ -88,9 +81,9 @@
                 <td>\
                     <a class='btn btn-outline btn-primary btn-xs' data-ajax='true' data-ajax-method='GET'\
                        data-ajax-mode='Replace' data-ajax-update='#DivAdd' data-ajax-success='EditShow'\
-                       href='/GoodsManage/Category/Add/"+ data.result.data[i].id + "'>编辑</a>\
+                       href='/GoodsManage/Category/Add/"+ data.result.data[i].id + "'>@L("Edit")</a>\
                     &nbsp;&nbsp;\
-                    <button data-name='"+ data.result.data[i].title + "' data-id='" + data.result.data[i].id +"' type='button' class='btn btn-outline btn-danger btn-xs'>删除</button>\
+                    <button onclick='Delete(this);' data-name='"+ data.result.data[i].title + "' data-id='" + data.result.data[i].id +"' type='button' class='btn btn-outline btn-danger btn-xs'>@L("Delete")</button>\
                 </td>\
             </tr>";
                         $treeTable.addChilds(h);

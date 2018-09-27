@@ -22,7 +22,7 @@
     <text value="列表" name="List"/>
     <text value="名称" name="value"/>
     <text value="创建时间" name="CreationTime"/>
-    <text value="添加" name="Add"/>
+    <text value="新增" name="Add"/>
     <text value="编辑" name="Edit"/>
     <text value="删除" name="Delete"/>
     <text value="操作" name="Operate"/>
@@ -160,12 +160,13 @@
     <text name="{0}已存在!" value="{0}AlreadyExist" />
 
     <!--message-->
-    <text name="{0}editeNoExist" value="{0},It does not exist. It may have been deleted!" />
-    <text name="{0}AlreadyExist" value="The name {0} already exists!" />
+    <text name="NotExist" value="该条记录不存在,可能已经被删除!" />
+    <text name="{0}AlreadyExist" value="已经存在名为{0}的记录!" />
 
     <text name="DeleteConfirm" value="确认删除吗?" />
     <text name="DeleteMsg" value="删除之后无法恢复!" />
     <text name="OK" value="确认" />
-
+  
+    <text name="HasChild" value="该类别下包括子级类别,请先移除子级类别!" />
   </texts>
 </localizationDictionary>
