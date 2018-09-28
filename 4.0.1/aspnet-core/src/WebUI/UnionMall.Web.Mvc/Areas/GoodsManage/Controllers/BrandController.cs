@@ -23,12 +23,15 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             _AppService = AppService;
             _AbpSession = abpSession;
         }
-        public IActionResult List(int page=1, int pageSize = 10)
+        public IActionResult List(int page = 1, int pageSize = 10,string Title="")
         {
-            
-            string table = $"select b.id,b.Title,b.Url, b.TenantId,b.Logo,b.Sort,b.Note from dbo.TBrand b";
-            if (_AbpSession.TenantId != null&& (int)AbpSession.TenantId>0)
-                table += $" where b.TenantId={_AbpSession.TenantId}";
+
+            string table = $"select b.id,b.Title,b.Url, b.TenantId,b.Logo,b.Sort,b.Note from dbo.TBrand b where 1=1 ";
+
+            if (_AbpSession.TenantId != null && (int)AbpSession.TenantId > 0)
+                table += $"  and b.TenantId={_AbpSession.TenantId}";
+            if (!string.IsNullOrEmpty(Title))
+            { table += $" and b.Title like '%{Title}%'"; }
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
@@ -38,16 +41,21 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             }
             return View(pageList);
         }
-        public IActionResult Table(int page = 1, int pageSize = 10)
+        public async Task<IActionResult> Add(long? id)
         {
-            string table = $"select b.id,b.Title,b.Url,b.TenantId,b.Logo,b.Sort,b.Note from dbo.TBrand b";
-            if (_AbpSession.TenantId != null && (int)AbpSession.TenantId > 0)
-                table += $" where  b.TenantId={_AbpSession.TenantId}";
 
-            int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
-            IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
-            return View("_Table", pageList);
+            if (id == null)
+            {
+                var s = new Brand();
+                if (_AbpSession.TenantId != null)
+                    s.TenantId = (int)_AbpSession.TenantId;
+                else
+                    s.TenantId = 0;
+                return PartialView("_Add", s);
+            }
+
+            var dtos = await _AppService.GetByIdAsync((long)id);
+            return PartialView("_Add", dtos);
         }
     }
 }

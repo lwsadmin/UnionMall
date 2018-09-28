@@ -66,7 +66,22 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/GoodsManage/Brand/List" method="post">
+                                <div class="input-group">
+                                    <input type="text" name="Title" placeholder="@L("SearchPlaceholder")" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     <div id="table">
                         @Html.Partial("_Table", Model)
                     </div>
@@ -87,6 +102,16 @@
 
     function EditShow(data) {
         $("#CreateModal").modal("show");
+    }
+    function PageSucc() {
+        alert(1);
+        var txt = $("input[name='Title']").val().trim();
+        if (txt.length > 0) {
+            $(".title").each(function () {
+                var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+                $(this).html(newTxt);
+            });
+        }
     }
     function Delete(btn) {
 

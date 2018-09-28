@@ -200,6 +200,8 @@
     <text name="Aduit" value="Aduit" />
     <text name="Reply" value="Reply" />
     <!--Table-->
+    <text name="Search" value="Search" />
+    <text name="SearchPlaceholder" value="Please input the title" />
     <text name="legalPerson" value="legalPerson" />
     <text name="Sort" value="Sort" />
     <text name="DueTime" value="DueTime" />
