@@ -34,19 +34,26 @@
                 <td>@item["Sort"]</td>
                 <td>@item["Note"]</td>
                 <td>
-                    <a href="#"><i class="fa fa-check text-navy"></i></a>
-                    @*<a class="btn btn-outline btn-primary btn-xs" data-ajax="true" data-ajax-method="GET"
-                           data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
-                           href="/GoodsManage/Brand/Add/@item["id"]">@L("Edit")</a>
-                        &nbsp;&nbsp;
-                        <button type="button" data-name="@item["Title"]" data-id="@item["id"]" onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>*@
+                    <a data-id="@item["id"]" onclick="Delete(this);" title="@L("Edit")"  href="javascript:void(0);">
+                        <i class="fa fa-edit text-navy"></i>
+                    </a>    &nbsp;&nbsp;
+                    <a title="@L("Delete")" data-ajax="true" data-ajax-method="GET"
+                       data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow" href="/GoodsManage/Brand/Add/@item["id"]"><i class="fa fa-trash text-navy"></i></a>
+
+
+                    @*<a class="btn btn-outline btn-primary btn-xs"
+           href="/GoodsManage/Brand/Add/@item["id"]">@L("Edit")</a>
+        &nbsp;&nbsp;
+        <button type="button" data-name="@item["Title"]" data-id="@item["id"]" onclick="Delete(this);"
+        class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>*@
                 </td>
+
             </tr>
         }
     </tbody>
 </table>
 
-@Html.PagedListPager(Model, page => Url.Action("Table", new { page }),
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new PagedListRenderOptions {
             MaximumPageNumbersToDisplay = 10,

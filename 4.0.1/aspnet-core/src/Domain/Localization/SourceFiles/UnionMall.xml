@@ -46,7 +46,8 @@
     <text name="DatabaseConnectionString" value="Database connection string" />
     <text name="IsActive" value="Is active" />
     <text name="FullName" value="Full name" />
-
+    <text value="Detail" name="Detail"/>
+    <text value="Introduce" name="Introduce"/>
 
     <text value="Parent" name="Parent"/>
     <text value="Email" name="Email"/>

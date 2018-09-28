@@ -10,6 +10,16 @@
     <RootNamespace>UnionMall.Web</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Areas\SystemSet\Data\**" />
+    <Compile Remove="Areas\SystemSet\Models\**" />
+    <Content Remove="Areas\SystemSet\Data\**" />
+    <Content Remove="Areas\SystemSet\Models\**" />
+    <EmbeddedResource Remove="Areas\SystemSet\Data\**" />
+    <EmbeddedResource Remove="Areas\SystemSet\Models\**" />
+    <None Remove="Areas\SystemSet\Data\**" />
+    <None Remove="Areas\SystemSet\Models\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="App_Data\Logs\Logs.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -86,8 +96,6 @@
     <Folder Include="Areas\Business\Models\" />
     <Folder Include="Areas\GoodsManage\Data\" />
     <Folder Include="Areas\GoodsManage\Models\" />
-    <Folder Include="Areas\SystemSet\Data\" />
-    <Folder Include="Areas\SystemSet\Models\" />
     <Folder Include="wwwroot\lib\pager\" />
     <Folder Include="wwwroot\view-resources\Views\Shared\Components\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />

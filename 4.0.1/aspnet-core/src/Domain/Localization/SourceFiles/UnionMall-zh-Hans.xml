@@ -10,7 +10,8 @@
     <text value="取消" name="Cancel"/>
     <text value="创建" name="Create"/>
     <text value="备注" name="Note"/>
-
+    <text value="详情" name="Detail"/>
+    <text value="介绍" name="Introduce"/>
     <text value="用户" name="Users"/>
     <text value="邮箱" name="Email"/>
     <text value="电话" name="PhoneNumber"/>
