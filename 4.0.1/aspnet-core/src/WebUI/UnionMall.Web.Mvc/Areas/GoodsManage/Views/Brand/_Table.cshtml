@@ -10,7 +10,7 @@
     #pic {
         position: fixed;
         display: none;
-        z-index:10;
+        z-index: 10;
     }
 </style>
 <table class="table table-bordered table-hover footable">
@@ -29,17 +29,17 @@
         {
             <tr>
                 <td>@item["Title"]</td>
-                <td class="img"><img style="height:15px;" src="@item["Logo"]" />  </td>
+                <td class="img"><img style="height:15px;" src="@item["Logo"]" onerror="this.src='/img/nopic.png'" />  </td>
                 <td><a href="@item["Url"]" target="_blank">@item["Url"]</a></td>
                 <td>@item["Sort"]</td>
                 <td>@item["Note"]</td>
                 <td>
                     <a href="#"><i class="fa fa-check text-navy"></i></a>
                     @*<a class="btn btn-outline btn-primary btn-xs" data-ajax="true" data-ajax-method="GET"
-           data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
-           href="/GoodsManage/Brand/Add/@item["id"]">@L("Edit")</a>
-        &nbsp;&nbsp;
-        <button type="button" data-name="@item["Title"]" data-id="@item["id"]" onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>*@
+                           data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
+                           href="/GoodsManage/Brand/Add/@item["id"]">@L("Edit")</a>
+                        &nbsp;&nbsp;
+                        <button type="button" data-name="@item["Title"]" data-id="@item["id"]" onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>*@
                 </td>
             </tr>
         }
@@ -69,11 +69,16 @@
     $(".img").hover(function () {
         $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
         $(".img").mousemove(function (e) {
+            var h = window.screen.height;
+            var showY = e.pageY;
+            if (e.pageY + $("#pic").height() + 100 >= h) {
+                showY = h - $("#pic").height() - 200;
+            }
             $("#pic").css({
-                "top": (e.pageY+10),
-                "left": (e.pageX+15)
+                "top": (showY),
+                "left": (e.pageX + 15)
             }).fadeIn("fast");
-            // $("#pic").fadeIn("fast");
+
         });
     }, function () {
         $("#pic").remove();
