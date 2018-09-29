@@ -6,13 +6,10 @@
 
 
 @{
-Layout=null;
+    Layout = null;
 
-GetCurrentLoginInformationsOutput loginInfo = ViewBag.LoginInfo;
+    GetCurrentLoginInformationsOutput loginInfo = ViewBag.LoginInfo;
 }
-
-
-
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -29,19 +26,19 @@ GetCurrentLoginInformationsOutput loginInfo = ViewBag.LoginInfo;
             </li>
 
             <li class="dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                <a id="CurrentLanguage" data-lan="@Model.CurrentLanguage.Name" href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                     <i class="@Model.CurrentLanguage.Icon" title="@Model.CurrentLanguage.DisplayName"></i>
                     <span>@Model.CurrentLanguage.DisplayName</span>
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu pull-right">
                     @foreach (var language in Model.Languages)
-        {
-            if (language.Name != Model.CurrentLanguage.Name)
-            {
-                    <li><a href="@(ApplicationPath)AbpLocalization/ChangeCulture?cultureName=@(language.Name)&returnUrl=@(Context.Request.Path)"><i class="@language.Icon"></i> @language.DisplayName</a></li>
-            }
-        }
+                    {
+                        if (language.Name != Model.CurrentLanguage.Name)
+                        {
+                            <li><a href="@(ApplicationPath)AbpLocalization/ChangeCulture?cultureName=@(language.Name)&returnUrl=@(Context.Request.Path)"><i class="@language.Icon"></i> @language.DisplayName</a></li>
+                        }
+                    }
                 </ul>
             </li>
             <li class="dropdown">
