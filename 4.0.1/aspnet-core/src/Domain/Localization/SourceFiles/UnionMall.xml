@@ -199,6 +199,8 @@
 
     <text name="Aduit" value="Aduit" />
     <text name="Reply" value="Reply" />
+    <!--Form-->
+    <text name="SortTip" value="Descending from big to small" />
     <!--Table-->
     <text name="Search" value="Search" />
     <text name="SearchPlaceholder" value="Please input the title" />
