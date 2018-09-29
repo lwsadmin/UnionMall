@@ -27,21 +27,17 @@ namespace UnionMall.Goods.Brand
         {
             if (dto.Id > 0)
             {
-                var query = _Repository.FirstOrDefaultAsync(c => c.Title == dto.Title);
-                if (query == null)
-                {
-                    return new JsonResult(new { succ = false, msg = "NotExist" });
-                }
                 await _Repository.UpdateAsync(dto);
                 return new JsonResult(new { succ = true, msg = "" });
             }
             else
             {
-                var query = _Repository.FirstOrDefault(c => c.Title == dto.Title);
-                if (query != null)
-                {
-                    return new JsonResult(new { succ = false, msg = "{0}AlreadyExist" });
-                }
+                //var query = _Repository.FirstOrDefault(c => c.Title == dto.Title);
+                //if (query != null)
+                //{
+                //    return new JsonResult(new { succ = false, msg = "{0}AlreadyExist" });
+                //}
+                
 
                 if (_AbpSession.TenantId != null)
                 { dto.TenantId = (int)_AbpSession.TenantId; }

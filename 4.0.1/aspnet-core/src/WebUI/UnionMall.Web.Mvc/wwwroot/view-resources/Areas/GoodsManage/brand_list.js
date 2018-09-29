@@ -12,8 +12,13 @@
             var EditDto = _$form.serializeFormToObject();
 
             brandService.createOrEdit(EditDto).done(function (data) {
-                _$modal.modal('hide');
-                $(".pagination .active a").click();
+                if (data.succ) {
+                    _$modal.modal('hide');
+                    $(".pagination .active a").click();
+                } else {
+
+                }
+
             }).fail(function (data) {
             }).always(function (data) { });
         });
@@ -24,6 +29,7 @@
             });
             $("#formPost input[name='Id']").val(0);
             $("#formPost input[name='TenantId']").val(0);
+            $('#input').fileinput('reset');
         });
         $("#add").click(function () {
             $("#CreateModal").modal("show");
@@ -35,6 +41,7 @@ function Edit(id) {
     brandService.getById(id).done(function (data) {
         $("#formPost input[name='Id']").val(data.id);
         $("#formPost input[name='Title']").val(data.title);
+        $("#formPost input[name='Logo']").val(data.logo);
         $("#formPost input[name='TenantId']").val(data.tenantId);
         $("#formPost input[name='Url']").val(data.url);
         $("#formPost input[name='Sort']").val(data.sort);

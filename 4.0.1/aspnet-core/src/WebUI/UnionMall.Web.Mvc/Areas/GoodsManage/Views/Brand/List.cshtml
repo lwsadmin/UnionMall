@@ -106,13 +106,25 @@
         language: language,
         showRemove: false,
         showUpload: false,
+        allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
         showUploadedThumbs: false,
+        uploadUrl: "/Common/Upload",
         showClose: false,
-        showCancel: false
+        showCancel: false,
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+  
+    //选择文件后处理事件
+    $("#input").on("filebatchselected", function (event, files) {
+        //执行文件上传方法
+        $("#input").fileinput("upload");
     });
     //上传成功后处理方法
     $("#input").on("fileuploaded", function (event, data, previewId, index) {
-        var url = data.response.url;
-        $(".hid" + index).val(url).addClass(previewId);
+        var url = data.response.result.url;
+        $("input[name='Logo']").val(url);
+        //$(".hid" + index).val(url).addClass(previewId);
     });
 </script>
