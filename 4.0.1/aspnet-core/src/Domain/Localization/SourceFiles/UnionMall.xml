@@ -217,6 +217,7 @@
     <text name="{0}AlreadyExist" value="The name {0} already exists!" />
 
     <text name="DeleteConfirm" value="Do you want to delete it ?" />
+    <text name="DeleteConfirm{0}" value="Do you want to delete 【{0}】 ?" />
     <text name="DeleteMsg" value="Cannot be restored after deletion" />
     <text name="OK" value="OK" />
     <text name="Add" value="Add" />

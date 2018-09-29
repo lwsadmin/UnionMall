@@ -15,7 +15,6 @@ namespace UnionMall.Goods.Brand
         public string Logo { get; set; }
         public int Sort { get; set; }
         public string Note { get; set; }
-        public string Introduce { get; set; }
         public string Url { get; set; }
    
 

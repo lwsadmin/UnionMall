@@ -33,7 +33,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             if (!string.IsNullOrEmpty(Title))
             { table += $" and b.Title like '%{Title}%'"; }
             int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
+            DataSet ds = _AppService.GetPage(page, pageSize, table, "sort desc,id desc", out total);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             if (Request.Headers.ContainsKey("x-requested-with"))
             {

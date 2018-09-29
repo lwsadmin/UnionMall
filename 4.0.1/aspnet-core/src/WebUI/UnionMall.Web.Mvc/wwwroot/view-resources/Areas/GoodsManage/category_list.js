@@ -25,7 +25,6 @@
         _$modal.on("hidden.bs.modal", function () {
             _$form.find("input[name='Title']").val('');
             _$form.find("select[name='ParentId']").val('');
-
             _$form.find("input[name='Sort']").val(0);
             _$form.find("textarea[name='Note']").val('');
         })

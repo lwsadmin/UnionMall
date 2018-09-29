@@ -160,9 +160,7 @@
     <text name="SearchPlaceholder" value="请输入标题" />
     <!--message-->
     <text name="{0}不存在,可能已经被删除!" value="{0}editeNoExist" />
-    <text name="{0}已存在!" value="{0}AlreadyExist" />
-
-    <!--message-->
+    <text name="DeleteConfirm{0}" value="确认删除【{0}】吗?" />
     <text name="NotExist" value="该条记录不存在,可能已经被删除!" />
     <text name="{0}AlreadyExist" value="已经存在名为{0}的记录!" />
 
