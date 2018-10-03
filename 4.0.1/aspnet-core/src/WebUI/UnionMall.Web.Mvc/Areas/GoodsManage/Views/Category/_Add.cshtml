@@ -14,7 +14,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h5 class="modal-title">@(Model.Id <= 0 ? "新增" : Model.Title + "-")@(Model.Id)商品类别</h5>
+                <h5 id="headTitle" class="modal-title">@(Model.Id <= 0 ? L("Add") : Model.Title + "-")@L("GoodsCategory")</h5>
             </div>
             <div class="modal-body">
 
@@ -60,7 +60,7 @@
                                 <label class="col-sm-2 control-label">@L("Sort")</label>
                                 <div class="col-sm-9">
                                     <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
-                                    <span class="help-block m-b-none">从大到小排序展示</span>
+                                    <span class="help-block m-b-none">@L("SortTip")</span>
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
