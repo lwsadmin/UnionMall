@@ -3,16 +3,18 @@
     ViewData["Title"] = "_Add";
     Layout = null;
     List<DropDownDto> list = ViewBag.Category;
+    List<BrandSelectDto> brandDtoList = ViewData["brand"] as List<BrandSelectDto>;
 }
 @using System.Data
 @using UnionMall.Goods.GoodsCategory.Dto
+@using UnionMall.Goods.Brand.Dto
 @model CategoryEditDto
 <div class="modal inmodal fade in" id="CreateModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h5 class="modal-title">@(Model.Id <= 0 ? "新增" : Model.Title + "-")商品类别</h5>
+                <h5 class="modal-title">@(Model.Id <= 0 ? "新增" : Model.Title + "-")@(Model.Id)商品类别</h5>
             </div>
             <div class="modal-body">
 
@@ -21,26 +23,42 @@
                         <form method="post" id="formPost" class="form-horizontal">
                             <input type="hidden" name="Id" value="@Model.Id" />
                             <input type="hidden" name="TenantId" value="@Model.TenantId" />
-                            <input type="hidden" name="Brand" value="@Model.Brand" />
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("Title")</label>
-
-                                <div class="col-sm-10"><input type="text" name="Title" value="@Model.Title" class="form-control" required maxlength="10"></div>
+                                <div class="col-sm-9"><input type="text" name="Title" value="@Model.Title" class="form-control" required maxlength="10"></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("Parent")</label>
-                                <div class="col-sm-10">
-                                    @*<select data-placeholder="@L("Select")" name="ParentId" class="form-control chosen-select" tabindex="2">
-                                        <option value="0">@L("Select")</option>
+                                <div class="col-sm-9">
+                                    @Html.DropDownListFor(c => c.ParentId, (SelectList)ViewData["cat"], "--请选择--", new { @class = "form-control chosen-select" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Brand")</label>
+                                <div class="col-sm-9">
+                                    <select style="height:150px;" multiple="multiple" name="Brand" id="duallist">
+                                        @if (brandDtoList != null && brandDtoList.Count > 0)
+                                        {
+                                            foreach (BrandSelectDto item in brandDtoList)
+                                            {
+                                                if (Model.Brand.Split(',').FirstOrDefault(c => c == item.Id.ToString()) != null)
+                                                {
+                                                    <option selected="selected" value="@item.Id">@item.Title</option>
 
-                                    </select>*@
-                                    @Html.DropDownListFor(c=>c.ParentId, (SelectList)ViewData["cat"], "--请选择--", new { @class = "form-control chosen-select" })
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id"> @item.Title</option>
+                                                }
+                                            }
 
+                                        }
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("Sort")</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-9">
                                     <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
                                     <span class="help-block m-b-none">从大到小排序展示</span>
                                 </div>
@@ -49,7 +67,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("Note")</label>
 
-                                <div class="col-sm-10">
+                                <div class="col-sm-9">
                                     <textarea name="Note" class="form-control" cols="5">@Model.Note</textarea>
                                 </div>
                             </div>
@@ -69,5 +87,18 @@
 </div>
 <script>
     $('.chosen-select').chosen({ width: "100%" });
+
+    $(function () {
+        var demo1 = $('select[name="Brand"]').bootstrapDualListbox({
+            filterPlaceHolder: '',
+            infoTextEmpty: '',
+            filterTextClear: '',
+            infoText: '{0}@L("Brand")',
+            infoTextFiltered: '',
+            nonSelectedListLabel: '@L("Selectable")',
+            selectedListLabel:  '@L("Selected")'
+        });
+    });
+
 </script>
 <script src="~/view-resources/Areas/GoodsManage/category_list.js"></script>

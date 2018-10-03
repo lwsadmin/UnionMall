@@ -15,9 +15,9 @@ namespace UnionMall.Goods.GoodsCategory.Dto
     {
         public int? TenantId { get; set; }
         public string Title { get; set; }
-        public long ParentId { get; set; }
-        public int Sort { get; set; }
-        public string Brand { get; set; }
-        public string Note { get; set; }
+        public long ParentId { get; set; } = 0;
+        public int Sort { get; set; } = 0;
+        public string Brand { get; set; } = "";
+        public string Note { get; set; } = "";
     }
 }

@@ -4,9 +4,11 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
+using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
+using UnionMall.Goods.Brand.Dto;
 using UnionMall.IRepositorySql;
 
 namespace UnionMall.Goods.Brand
@@ -37,7 +39,7 @@ namespace UnionMall.Goods.Brand
                 //{
                 //    return new JsonResult(new { succ = false, msg = "{0}AlreadyExist" });
                 //}
-                
+
 
                 if (_AbpSession.TenantId != null)
                 { dto.TenantId = (int)_AbpSession.TenantId; }
@@ -69,6 +71,15 @@ namespace UnionMall.Goods.Brand
         {
             DataSet ds = _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
             return ds;
+        }
+        public List<BrandSelectDto> GetMultiSelect()
+        {
+            var query = _Repository.GetAllList();
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+            {
+                query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
+            }
+            return query.MapTo<List<BrandSelectDto>>();
         }
     }
 }

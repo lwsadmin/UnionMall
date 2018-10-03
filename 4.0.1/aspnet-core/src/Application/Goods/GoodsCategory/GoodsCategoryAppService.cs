@@ -127,7 +127,7 @@ namespace UnionMall.Goods.GoodsCategory
         public async Task<List<CategoryEditDto>> GetAllListByParentIdAsync(long parentId)
         {
             var query = await _Repository.GetAllListAsync(c => c.ParentId == parentId);
-            return query.MapTo<List<CategoryEditDto>>(); ;
+            return query.MapTo<List<CategoryEditDto>>(); 
         }
     }
 }

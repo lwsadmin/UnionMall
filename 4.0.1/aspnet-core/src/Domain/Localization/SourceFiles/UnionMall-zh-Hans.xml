@@ -146,6 +146,9 @@
     <text name="Reply" value="回复" />
     <!--Form-->
     <text name="SortTip" value="从大到小降序展示" />
+    <text name="Brand" value="品牌" />
+    <text name="Selected" value="已选" />
+    <text name="Selectable" value="可选" />
     <!--Table-->
     <text name="Sort" value="排序" />
     <text name="legalPerson" value="法人" />

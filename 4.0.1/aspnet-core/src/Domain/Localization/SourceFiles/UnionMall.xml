@@ -201,6 +201,9 @@
     <text name="Reply" value="Reply" />
     <!--Form-->
     <text name="SortTip" value="Descending from big to small" />
+    <text name="Brand" value="Brand" />
+    <text name="Selected" value="Selected" />
+    <text name="Selectable" value="Selectable" />
     <!--Table-->
     <text name="Search" value="Search" />
     <text name="SearchPlaceholder" value="Please input the title" />

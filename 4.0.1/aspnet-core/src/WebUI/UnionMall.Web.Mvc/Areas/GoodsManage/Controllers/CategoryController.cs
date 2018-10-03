@@ -7,6 +7,8 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
+using UnionMall.Goods.Brand;
+using UnionMall.Goods.Brand.Dto;
 using UnionMall.Goods.GoodsCategory;
 using UnionMall.Goods.GoodsCategory.Dto;
 using X.PagedList;
@@ -18,10 +20,14 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
     public class CategoryController : UnionMallControllerBase
     {
         private readonly IGoodsCategoryAppService _AppService;
+        private readonly IBrandAppService _brandAppService;
         private readonly IAbpSession _AbpSession;
-        public CategoryController(IGoodsCategoryAppService AppService, IAbpSession abpSession)
+        public CategoryController(IGoodsCategoryAppService AppService,
+            IBrandAppService brandAppService,
+            IAbpSession abpSession)
         {
             _AppService = AppService;
+            _brandAppService = brandAppService;
             _AbpSession = abpSession;
         }
         public IActionResult List(int page = 1)
@@ -37,6 +43,10 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
 
             List<DropDownDto> dtoList = _AppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
             ViewData.Add("cat", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(dtoList, "Id", "Title"));
+
+            List<BrandSelectDto> t = _brandAppService.GetMultiSelect();
+            ViewData.Add("brand", t);
+
             return View(pageList);
         }
 
@@ -57,9 +67,13 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         {
             List<DropDownDto> dtoList = _AppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
             ViewData.Add("cat", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(dtoList, "Id", "Title"));
+
+            List<BrandSelectDto> d = _brandAppService.GetMultiSelect();
+            ViewData.Add("brand", d);
             if (id == null)
             {
                 var s = new CategoryEditDto();
+                s.Id = 0;
                 s.TenantId = _AbpSession.TenantId;
                 return PartialView("_Add", s);
             }
