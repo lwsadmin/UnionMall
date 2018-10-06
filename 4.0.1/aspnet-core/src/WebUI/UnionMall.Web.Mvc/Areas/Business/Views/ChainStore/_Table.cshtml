@@ -11,31 +11,35 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>@L("BusinessName")</th>
-            <th>@L("legalPerson")</th>
+            <th>@L("Name")</th>
+            <th>@L("Image")</th>
+            <th>@L("BelongBusiness")</th>
+            <th>@L("Contact")</th>
             <th>@L("PhoneNumber")</th>
             <th>@L("Sort")</th>
-            <th>@L("DueTime")</th>
             <th>@L("Operate")</th>
         </tr>
     </thead>
     <tbody>
         @foreach (DataRow item in Model)
         {
-        <tr>
-            <td class="title">@item["BusinessName"]</td>
-            <td>@item["Contact"]</td>
-            <td>@item["Tel"]</td>
-            <td>@item["Sort"]</td>
-            <td>@item["DueTime"]</td>
-            <td>
-                <a data-title="@L("DeleteConfirm{0}",item["BusinessName"])" data-ok="@L("OK")"
-                   data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                    <i class="fa fa-trash text-navy"></i>
-                </a>    &nbsp;&nbsp;
-                <a onclick="Edit(@item["Id"])" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
-            </td>
-        </tr>
+            <tr>
+                <td class="title">@item["name"]</td>
+                <td>@item["Image"]</td>
+                <td>@item["BusinessName"]</td>
+                <td>@item["Contact"]</td>
+                <td>@item["Mobile"]</td>
+                <td>@item["Sort"]</td>
+                <td>
+                    <a data-title="@L("DeleteConfirm{0}",item["BusinessName"])" data-ok="@L("OK")"
+                       data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                        <i class="fa fa-trash text-navy"></i>
+                    </a>    &nbsp;&nbsp;
+                    <a  data-ajax="true" data-ajax-method="GET"
+                       data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
+                       href="/Business/ChainStore/Add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
+                </td>
+            </tr>
         }
 
     </tbody>

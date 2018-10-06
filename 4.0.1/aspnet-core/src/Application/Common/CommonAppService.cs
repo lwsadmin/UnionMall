@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UnionMall.IRepositorySql;
 using UnionMall.MultiTenancy;
 
 namespace UnionMall.Common
@@ -18,14 +20,22 @@ namespace UnionMall.Common
         private readonly IRepository<MultiTenancy.Tenant> _Repository;
         private readonly IAbpSession _AbpSession;
         private readonly IHostingEnvironment _HostingEnvironment;
+        private readonly ISqlExecuter _sqlExecuter;
         public CommonAppService(IRepository<MultiTenancy.Tenant> Repository, IAbpSession AbpSession,
-            IHostingEnvironment HostingEnvironment)
+            IHostingEnvironment HostingEnvironment, ISqlExecuter sqlExecuter)
 
         {
             _Repository = Repository;
             _AbpSession = AbpSession;
             _HostingEnvironment = HostingEnvironment;
+            _Repository = Repository;
         }
+
+        public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
+        {
+            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+        }
+
         public JsonResult SaveSingleImg(IFormFile file, int tenandId)
         {
             Tenant t = _Repository.Get(tenandId);

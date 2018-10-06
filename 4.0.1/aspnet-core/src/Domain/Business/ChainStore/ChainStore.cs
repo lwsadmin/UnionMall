@@ -12,7 +12,8 @@ using Abp.Runtime.Session;
 namespace UnionMall.Business.ChainStore
 {
     //TChainStore
-    public class TChainStore : Entity<long>, IHasCreationTime, IMustHaveTenant
+    [Table("TChainStore")]
+    public class ChainStore : Entity<long>, IHasCreationTime, IMustHaveTenant
     {
 
         public int TenantId { get; set; }
@@ -33,13 +34,9 @@ namespace UnionMall.Business.ChainStore
         public decimal TakeoutPrice { get; set; }
         public bool IsTakeoutSms { get; set; }
         public int AvailableSmsCount { get; set; }
-        public int TotalSmsCount { get; set; }
-        public decimal TotalPoint { get; set; }
         public decimal AvailablePoint { get; set; }
-        public decimal TotalValue { get; set; }
         public decimal AvailableValue { get; set; }
         public decimal SettlementMoney { get; set; }
-        public string Memo { get; set; }
         public int Sort { get; set; }
         public string Introduce { get; set; }
         public DateTime CreationTime { get; set; }

@@ -4,14 +4,13 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using UnionMall.Business.ChainStore;
 
-namespace UnionMall.Common
+namespace UnionMall.Business.Buiness
 {
-    public interface ICommonAppService : IApplicationService
+    public interface IChainStoreAppService : IApplicationService
     {
-        JsonResult SaveSingleImg(IFormFile file, int tenandId);
         DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total);
+        Task<ChainStore.ChainStore> GetByIdAsync(long Id);
     }
 }

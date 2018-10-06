@@ -139,7 +139,7 @@
     <text name="SEO" value="SEO优化" />
     <text name="Cache" value="清除缓存" />
     <text name="LogList" value="日志监控" />
-
+    <text name="BelongBusiness" value="所属商户" />
     <!--Action-->
 
     <text name="Aduit" value="审核" />
@@ -149,6 +149,9 @@
     <text name="Brand" value="品牌" />
     <text name="Selected" value="已选" />
     <text name="Selectable" value="可选" />
+    <text name="Choose" value="-请选择-" />
+    <text name="Address" value="地址" />
+    <text name="AddressPlace" value="请输入详细地址 如 市, 区, 街道" />
     <!--Table-->
     <text name="Sort" value="排序" />
     <text name="legalPerson" value="法人" />
@@ -158,6 +161,8 @@
     <text name="LastPage" value="尾页" />
     <text name="PreviousPage" value="上一页" />
     <text name="NextPage" value="下一页" />
+    <text name="Contact" value="联系人" />
+    <text name="Image" value="展示图" />
     <text name="{1}pages{2}Records" value="共{1}页{2}记录" />
 
     <text name="Search" value="搜索" />

@@ -12,8 +12,16 @@
     <RootNamespace>UnionMall</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Localization\XmlData\address\Cities.xml" />
+    <None Remove="Localization\XmlData\address\Districts.xml" />
+    <None Remove="Localization\XmlData\address\Provinces.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Localization\SourceFiles\UnionMall-zh-Hans.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\UnionMall.xml" />
+    <EmbeddedResource Include="Localization\XmlData\address\Cities.xml" />
+    <EmbeddedResource Include="Localization\XmlData\address\Districts.xml" />
+    <EmbeddedResource Include="Localization\XmlData\address\Provinces.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Abp.AutoMapper" Version="3.8.1" />
@@ -22,5 +30,16 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.1.1" />
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Html.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.html.abstractions\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Html.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.abstractions\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.ViewFeatures">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.viewfeatures\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

@@ -4,13 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     ViewBag.FirstMenu = "BusinessManage";
-    ViewBag.SecondMenu = "Business";
+    ViewBag.SecondMenu = "ChainStore";
 }
 @using System.Data
 @using X.PagedList
+@using UnionMall.Business.ChainStore
 @model PagedList<DataRow>
-<link href="/lib/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
 <script src="~/lib/pager/jquery.unobtrusive-ajax.js"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -30,7 +32,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>@L("Business") </h5>
+                    <h5>@L("ChainStore") </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -43,19 +45,19 @@
                                 <a data-ajax="true" data-ajax-form="searchForm"
                                    data-ajax-loading="loading" data-ajax-loading-duration="2"
                                    data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
-                                   href="/business/business/list?page=1&pageSize=10">10</a>
+                                   href="/business/chainstore/list?page=1&pageSize=10">10</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm"
                                    data-ajax-loading="loading" data-ajax-loading-duration="2"
                                    data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
-                                   href="/business/business/list?page=1&pageSize=15">15</a>
+                                   href="/business/chainstore/list?page=1&pageSize=15">15</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm"
                                    data-ajax-loading="loading" data-ajax-loading-duration="2"
                                    data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
-                                   href="/business/business/list?page=1&pageSize=20">20</a>
+                                   href="/business/chainstore/list?page=1&pageSize=20">20</a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -65,16 +67,15 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-
                     <div class="row">
                         <div class="col-sm-1">
                             <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
                         </div>
 
                         <div class="col-sm-2">
-                            <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/business/List" method="post">
+                            <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/chainstore/List" method="post">
                                 <div class="input-group">
-                                    <input type="text" name="BusinessName" placeholder="@L("BusinessName")" class="input-sm form-control"> <span class="input-group-btn">
+                                    <input type="text" name="BusinessName" placeholder="@L("Name")" class="input-sm form-control"> <span class="input-group-btn">
                                         <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
                                     </span>
                                 </div>
@@ -85,11 +86,32 @@
                     <div id="table">
                         @Html.Partial("_Table", Model)
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+    <div id="DivAdd">
+        @Html.Partial("_Add", new ChainStore())
+    </div>
 </div>
+<script>
+    function EditShow(data) {
+        $("#CreateModal").modal("show");
+    }
+    function ProChange(Pro) {
+        $.post("/business/business/GetAddressSlect", { id: $(Pro).val(), type: 0 }, function (data) {
+            if (data.succ) {
+                $("#city").html(""); $("#city").html(data.str);
+                CityChange($("#city"));
+            }
+        });
+    }
 
-
+    function CityChange(City) {
+        $.post("/business/business/GetAddressSlect", { id: $(City).val(), type: 1 }, function (data) {
+            if (data.succ) {
+                $("#dis").html(""); $("#dis").html(data.str);
+            }
+        });
+    }
+</script>

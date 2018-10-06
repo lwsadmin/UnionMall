@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewData["Title"] = "_Add";
+    Layout = null;
+}
+@using System.Data
+@using UnionMall.Business.ChainStore
+@using UnionMall.Core;
+@model ChainStore
+
+<div class="modal inmodal fade in" id="CreateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h5 id="headTitle" class="modal-title">@(Model.Id <= 0 ? L("Add") : Model.Name + "-")@L("ChainStore")</h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <form method="post" id="formPost" class="form-horizontal">
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <input type="hidden" name="TenantId" value="@Model.TenantId" />
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">@L("Name")</label>
+                                        <div class="col-md-4">
+                                            <input type="text" name="Title" value="@Model.Name" class="form-control" required maxlength="50" />
+                                        </div>
+
+                                        <label class="col-md-2 control-label">@L("BelongBusiness")</label>
+                                        <div class="col-md-4">
+                                            @Html.DropDownListFor(c => c.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "form-control chosen-select" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">@L("Contact")</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="Contact" value="@Model.Contact" class="form-control" required maxlength="15">
+                                        </div>
+
+                                        <label class="col-sm-2 control-label">@L("PhoneNumber")</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="Contact" value="@Model.Mobile" class="form-control" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">@L("Sort")</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
+                                            <span class="help-block m-b-none">@L("SortTip")</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">@L("Address")</label>
+                                        <div class="col-sm-8">
+                                            @Html.GetAddress(c => c.ProvinceId, c => c.CityId, c => c.DistrictId,new { })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label"></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="Address" placeholder="@L("AddressPlace")" value="@Model.Address" class="form-control" maxlength="200" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Note")</label>
+
+                                <div class="col-sm-9">
+                                    <textarea name="Note" class="form-control" cols="5"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                <button id="Save" type="submit" class="btn btn-primary">提交保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script>
+    $('.chosen-select').chosen({ width: "100%" });
+</script>
+<script src="~/view-resources/Areas/Business/store_list.js"></script>
+

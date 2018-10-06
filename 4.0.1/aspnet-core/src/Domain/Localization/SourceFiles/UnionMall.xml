@@ -202,8 +202,12 @@
     <!--Form-->
     <text name="SortTip" value="Descending from big to small" />
     <text name="Brand" value="Brand" />
+    <text name="Choose" value="-Choose-" />
     <text name="Selected" value="Selected" />
     <text name="Selectable" value="Selectable" />
+    <text name="Address" value="Address" />
+    <text name="AddressPlace" value="Please input detailed address such as city, district, street." />
+    <text name="BelongBusiness" value="BelongBusiness" />
     <!--Table-->
     <text name="Search" value="Search" />
     <text name="SearchPlaceholder" value="Please input the title" />
@@ -215,6 +219,8 @@
     <text value="LastPage" name="LastPage"/>
     <text name="PreviousPage" value="PreviousPage" />
     <text name="NextPage" value="NextPage" />
+    <text name="Contact" value="Contact" />
+    <text name="Image" value="Image" />
     <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
 
     <!--message-->

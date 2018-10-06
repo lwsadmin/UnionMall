@@ -11,6 +11,8 @@ namespace UnionMall.EntityFrameworkCore
         /* Define a DbSet for each entity of the application */
         public DbSet<Goods.Category.GoodsCategory> GoodsCategory { get; set; }
         public DbSet<Goods.Brand.Brand> Brand { get; set; }
+        public DbSet<Business.Buiness.Business> Business { get; set; }
+        public DbSet<Business.ChainStore.ChainStore> ChainStore { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

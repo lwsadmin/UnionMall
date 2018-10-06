@@ -10,12 +10,28 @@
     <RootNamespace>UnionMall.Web</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Areas\Business\Data\**" />
+    <Compile Remove="Areas\Business\Models\**" />
+    <Compile Remove="Areas\GoodsManage\Data\**" />
+    <Compile Remove="Areas\GoodsManage\Models\**" />
     <Compile Remove="Areas\SystemSet\Data\**" />
     <Compile Remove="Areas\SystemSet\Models\**" />
+    <Content Remove="Areas\Business\Data\**" />
+    <Content Remove="Areas\Business\Models\**" />
+    <Content Remove="Areas\GoodsManage\Data\**" />
+    <Content Remove="Areas\GoodsManage\Models\**" />
     <Content Remove="Areas\SystemSet\Data\**" />
     <Content Remove="Areas\SystemSet\Models\**" />
+    <EmbeddedResource Remove="Areas\Business\Data\**" />
+    <EmbeddedResource Remove="Areas\Business\Models\**" />
+    <EmbeddedResource Remove="Areas\GoodsManage\Data\**" />
+    <EmbeddedResource Remove="Areas\GoodsManage\Models\**" />
     <EmbeddedResource Remove="Areas\SystemSet\Data\**" />
     <EmbeddedResource Remove="Areas\SystemSet\Models\**" />
+    <None Remove="Areas\Business\Data\**" />
+    <None Remove="Areas\Business\Models\**" />
+    <None Remove="Areas\GoodsManage\Data\**" />
+    <None Remove="Areas\GoodsManage\Models\**" />
     <None Remove="Areas\SystemSet\Data\**" />
     <None Remove="Areas\SystemSet\Models\**" />
   </ItemGroup>
@@ -102,10 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Logs\" />
-    <Folder Include="Areas\Business\Data\" />
-    <Folder Include="Areas\Business\Models\" />
-    <Folder Include="Areas\GoodsManage\Data\" />
-    <Folder Include="Areas\GoodsManage\Models\" />
     <Folder Include="wwwroot\lib\pager\" />
     <Folder Include="wwwroot\view-resources\Views\Shared\Components\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
@@ -124,6 +136,9 @@
     <TypeScriptCompile Include="wwwroot\Abp\Framework\scripts\libs\abp.signalr.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Areas\Business\Views\ChainStore\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\GoodsManage\Views\Category\_Add.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
