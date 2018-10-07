@@ -13,7 +13,7 @@ namespace UnionMall.Core
     public static class AddressSelect
     {
 
-        public static string GetPro(string ProID, string NameAttr = "ProviceID")
+        public static string GetPro(string ProID="1", string NameAttr = "ProviceID")
         {
             XmlDocument Xml = new XmlData().ProvincesXml;
             StringBuilder sb = new StringBuilder();
@@ -34,7 +34,7 @@ namespace UnionMall.Core
             sb.Append("</select>");
             return sb.ToString();
         }
-        public static string GetCity(string ProID, string CityID = null, string NameAttr = "CityID")
+        public static string GetCity(string ProID="1", string CityID = "1", string NameAttr = "CityID")
         {
             XmlDocument Xml = new XmlData().CitiesXml;
             //string path = HttpContext.Current.Server.MapPath("/Content/xmlData/address/Cities.xml");
@@ -54,11 +54,11 @@ namespace UnionMall.Core
                 }
 
             }
-            strCity.Append("/<select>");
+            strCity.Append("</select>");
             return strCity.ToString();
         }
 
-        public static string GetDis(string CityID, string DisID = null, string NameAttr = "DistrictID")
+        public static string GetDis(string CityID="1", string DisID = "1", string NameAttr = "DistrictID")
         {
             XmlDocument Xml = new XmlData().DistrictsXml;
             //string path = HttpContext.Current.Server.MapPath("/Content/xmlData/address/Districts.xml");
@@ -76,7 +76,7 @@ namespace UnionMall.Core
                 else { strCity.Append("<option value='" + node.Attributes["ID"].Value + "'>" + node.Attributes["DistrictName"].Value + "</option>"); }
 
             }
-            strCity.Append("/<select>");
+            strCity.Append("</select>");
             return strCity.ToString();
         }
 
@@ -84,8 +84,6 @@ namespace UnionMall.Core
         {
             StringBuilder sb = new StringBuilder();
             string ProName = string.Empty; string CityName = string.Empty; string DisName = string.Empty;
-
-            //ProvinceID.ReduceExtensions().
             var param = Expression.Parameter(typeof(TModel), "ProviceID");
 
 
@@ -96,9 +94,9 @@ namespace UnionMall.Core
 
             string s = ProvinceID.Name;
             string v = ProvinceID.Parameters[0].Name;
-            sb.Append(GetPro(ProValue, ProName));
-            sb.Append(GetCity(ProValue, CityValue, CityName));
-            sb.Append(GetDis(CityValue, DisValue, DisName));
+            sb.Append(GetPro());
+            sb.Append(GetCity());
+            sb.Append(GetDis());
             return new HtmlString(sb.ToString());
         }
 

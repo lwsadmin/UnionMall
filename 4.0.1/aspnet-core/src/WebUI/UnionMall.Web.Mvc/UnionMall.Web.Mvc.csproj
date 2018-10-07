@@ -67,6 +67,43 @@
     <None Include="wwwroot\lib\fileinput\js\plugins\purify.min.js" />
     <None Include="wwwroot\lib\fileinput\js\plugins\sortable.js" />
     <None Include="wwwroot\lib\fileinput\js\plugins\sortable.min.js" />
+    <None Include="wwwroot\lib\kindeditor\asp.net\bin\LitJSON.dll" />
+    <None Include="wwwroot\lib\kindeditor\asp.net\demo.aspx" />
+    <None Include="wwwroot\lib\kindeditor\asp.net\file_manager_json.ashx" />
+    <None Include="wwwroot\lib\kindeditor\asp.net\upload_json.ashx" />
+    <None Include="wwwroot\lib\kindeditor\kindeditor-all-min.js" />
+    <None Include="wwwroot\lib\kindeditor\kindeditor-all.js" />
+    <None Include="wwwroot\lib\kindeditor\lang\ar.js" />
+    <None Include="wwwroot\lib\kindeditor\lang\en.js" />
+    <None Include="wwwroot\lib\kindeditor\lang\ko.js" />
+    <None Include="wwwroot\lib\kindeditor\lang\ru.js" />
+    <None Include="wwwroot\lib\kindeditor\lang\zh-CN.js" />
+    <None Include="wwwroot\lib\kindeditor\lang\zh-TW.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\anchor\anchor.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\autoheight\autoheight.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\baidumap\baidumap.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\clearhtml\clearhtml.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\code\code.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\code\prettify.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\emoticons\emoticons.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\filemanager\filemanager.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\fixtoolbar\fixtoolbar.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\flash\flash.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\image\image.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\insertfile\insertfile.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\lineheight\lineheight.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\link\link.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\map\map.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\media\media.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\multiimage\images\swfupload.swf" />
+    <None Include="wwwroot\lib\kindeditor\plugins\multiimage\multiimage.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\pagebreak\pagebreak.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\plainpaste\plainpaste.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\preview\preview.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\quickformat\quickformat.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\table\table.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\template\template.js" />
+    <None Include="wwwroot\lib\kindeditor\plugins\wordpaste\wordpaste.js" />
     <None Include="wwwroot\lib\treetable\script\jquery.js" />
     <None Include="wwwroot\lib\treetable\script\treeTable\jquery.treeTable.js" />
     <None Include="wwwroot\lib\treetable\script\treeTable\vsStyle\allbgs.psd" />
@@ -136,6 +173,9 @@
     <TypeScriptCompile Include="wwwroot\Abp\Framework\scripts\libs\abp.signalr.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Areas\Business\Views\Business\_Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Business\Views\ChainStore\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

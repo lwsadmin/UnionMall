@@ -30,14 +30,14 @@ namespace UnionMall.Business.ChainStore
         public string Longitude { get; set; }
         public string Latitude { get; set; }
         public bool IsTakeOut { get; set; }
-        public decimal AveragePrice { get; set; }
-        public decimal TakeoutPrice { get; set; }
+        public decimal AveragePrice { get; set; } = 0;
+        public decimal TakeoutPrice { get; set; } = 0;
         public bool IsTakeoutSms { get; set; }
-        public int AvailableSmsCount { get; set; }
-        public decimal AvailablePoint { get; set; }
-        public decimal AvailableValue { get; set; }
-        public decimal SettlementMoney { get; set; }
-        public int Sort { get; set; }
+        public int AvailableSmsCount { get; set; } = 0;
+        public decimal AvailablePoint { get; set; } = 0;
+        public decimal AvailableValue { get; set; } = 0;
+        public decimal SettlementMoney { get; set; } = 0;
+        public int Sort { get; set; } = 0;
         public string Introduce { get; set; }
         public DateTime CreationTime { get; set; }
     }

@@ -196,7 +196,8 @@
     <text name="LogList" value="LogList" />
 
     <!--Action-->
-
+    
+    <text name="Loading" value="Loading..." />
     <text name="Aduit" value="Aduit" />
     <text name="Reply" value="Reply" />
     <!--Form-->
@@ -209,6 +210,7 @@
     <text name="AddressPlace" value="Please input detailed address such as city, district, street." />
     <text name="BelongBusiness" value="BelongBusiness" />
     <!--Table-->
+    <text name="Query" value="Query" />
     <text name="Search" value="Search" />
     <text name="SearchPlaceholder" value="Please input the title" />
     <text name="legalPerson" value="legalPerson" />

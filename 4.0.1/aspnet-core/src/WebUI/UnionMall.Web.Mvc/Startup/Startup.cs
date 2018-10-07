@@ -51,6 +51,21 @@ namespace UnionMall.Web.Startup
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = context =>
+                {
+                    //缓存一年
+                    if (!string.IsNullOrEmpty(context.Context.Request.Query["v"]))
+                    {
+                        context.Context.Response.Headers.Add("cache-control", new[] { "public,max-age=31536000" });
+                        context.Context.Response.Headers.Add("Expires", new[] { DateTime.UtcNow.AddYears(1).ToString("R") }); // Format RFC1123
+                    }
+                }
+            });
+
+
             app.UseAbp(); // Initializes ABP framework.
 
             if (env.IsDevelopment())

@@ -28,7 +28,7 @@ namespace UnionMall.Common
             _Repository = Repository;
             _AbpSession = AbpSession;
             _HostingEnvironment = HostingEnvironment;
-            _Repository = Repository;
+            _sqlExecuter = sqlExecuter;
         }
 
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)

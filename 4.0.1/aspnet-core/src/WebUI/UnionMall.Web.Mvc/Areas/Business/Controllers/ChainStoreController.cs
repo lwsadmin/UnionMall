@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
-using UnionMall.Business.Buiness;
-using UnionMall.Business.Buiness.Dto;
+using UnionMall.Business.Business;
+using UnionMall.Business.Business.Dto;
 using UnionMall.Business.ChainStore;
 using UnionMall.Common;
 using UnionMall.Controllers;
+using UnionMall.Core;
 using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.Business.Controllers
@@ -31,7 +32,8 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             _AbpSession = abpSession;
             _businessAppService = businessAppService;
         }
-        public async Task<IActionResult> List(int page = 1, int pageSize = 10, string storeName = "")
+        public async Task<IActionResult> List(int page = 1, int pageSize = 10, 
+            string storeName = "",string BusinessId="")
         {
             string table = $@"select c.id,c.BusinessId,c.Name,b.BusinessName, c.Image,c.Mobile,c.CreationTime,c.Contact,c.Sort from TChainStore c
 left join TBusiness b on c.BusinessId = b.Id";
@@ -41,6 +43,8 @@ left join TBusiness b on c.BusinessId = b.Id";
             }
             if (!string.IsNullOrEmpty(storeName))
             { table += $" and c.Name like '%{storeName}%'"; }
+            if (!string.IsNullOrEmpty(BusinessId))
+            { table += $" and c.BusinessId = {BusinessId}"; }
             int total;
 
             DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
@@ -70,6 +74,23 @@ left join TBusiness b on c.BusinessId = b.Id";
             ViewData.Add("Business", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(dtoList, "Id", "BusinessName"));
             var dtos = await _AppService.GetByIdAsync((long)id);
             return PartialView("_Add", dtos);
+        }
+
+        [HttpPost]
+        public JsonResult GetAddressSlect(int id, int type)
+        {
+            string option = string.Empty;
+            switch (type)
+            {
+                case 0:
+                    option = AddressSelect.GetCity(id.ToString());
+                    break;
+                case 1:
+                    option = AddressSelect.GetDis(id.ToString());
+                    break;
+
+            }
+            return Json(new { succ = true, str = option });
         }
     }
 }

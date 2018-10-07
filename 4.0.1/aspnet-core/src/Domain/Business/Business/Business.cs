@@ -9,7 +9,7 @@ using Abp.Timing;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Dependency;
 using Abp.Runtime.Session;
-namespace UnionMall.Business.Buiness
+namespace UnionMall.Business.Business
 {
     [Table("TBusiness")]
     public class Business : Entity<long>, IHasCreationTime, IMustHaveTenant
@@ -22,11 +22,11 @@ namespace UnionMall.Business.Buiness
         public bool IsSystemBusiness { get; set; }
         public string Contact { get; set; }
         public string Tel { get; set; }
-        public DateTime DueTime { get; set; }
+        public DateTime DueTime{ get; set; }
         public int Sort { get; set; }
         public string Memo { get; set; }
         public string Introduce { get; set; }
         public DateTime CreationTime { get; set; }
-       
+
     }
 }

@@ -10,9 +10,10 @@
 @using X.PagedList
 @using UnionMall.Business.ChainStore
 @model PagedList<DataRow>
-<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
-<script src="~/lib/pager/jquery.unobtrusive-ajax.js"></script>
-<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js"></script>
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/lib/kindeditor/themes/default/default.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/lib/kindeditor/kindeditor-all-min.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -27,6 +28,12 @@
     </div>
 </div>
 
+<style>
+    .chosen-single {
+        font-size: 14px;
+        line-height:20px !important;
+    }
+</style>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
@@ -70,17 +77,22 @@
                     <div class="row">
                         <div class="col-sm-1">
                             <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
-                        </div>
+                        </div>               
+                        <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/chainstore/List" method="post">
 
-                        <div class="col-sm-2">
-                            <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/chainstore/List" method="post">
+                            <div class="col-sm-2">
+                                @Html.DropDownList("BusinessId", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control  chosen-select" })
+                            </div>
+                            <div class="col-sm-2">
+
                                 <div class="input-group">
                                     <input type="text" name="BusinessName" placeholder="@L("Name")" class="input-sm form-control"> <span class="input-group-btn">
                                         <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
                                     </span>
                                 </div>
-                            </form>
-                        </div>
+
+                            </div>
+                        </form>
                     </div>
 
                     <div id="table">
@@ -94,23 +106,30 @@
         @Html.Partial("_Add", new ChainStore())
     </div>
 </div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script src="~/lib/pager/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
 <script>
+
     function EditShow(data) {
         $("#CreateModal").modal("show");
     }
     function ProChange(Pro) {
-        $.post("/business/business/GetAddressSlect", { id: $(Pro).val(), type: 0 }, function (data) {
-            if (data.succ) {
-                $("#city").html(""); $("#city").html(data.str);
+
+        $.ajaxSettings.async = false;
+        $.post("/business/chainStore/GetAddressSlect", { id: $(Pro).val(), type: 0 }, function (data) {
+            if (data.result.succ) {
+
+                $("#city").html(""); $("#city").html(data.result.str);
                 CityChange($("#city"));
             }
         });
     }
-
     function CityChange(City) {
-        $.post("/business/business/GetAddressSlect", { id: $(City).val(), type: 1 }, function (data) {
-            if (data.succ) {
-                $("#dis").html(""); $("#dis").html(data.str);
+
+        $.ajaxSettings.async = false;
+        $.post("/business/chainStore/GetAddressSlect", { id: $(City).val(), type: 1 }, function (data) {
+            if (data.result.succ) {
+                $("#dis").html(""); $("#dis").html(data.result.str);
             }
         });
     }

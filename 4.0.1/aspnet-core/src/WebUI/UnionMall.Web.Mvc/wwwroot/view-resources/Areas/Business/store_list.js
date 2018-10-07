@@ -1,7 +1,5 @@
 ﻿(function () {
-
     $(function () {
-
         var storeService = abp.services.app.chainStore;
         var _$modal = $("#CreateModal");
         var _$form = _$modal.find("form");
@@ -19,10 +17,13 @@
             }).always(function (data) { });
         });
         _$modal.on("hidden.bs.modal", function () {
-            ////_$form.find("input[name='Title']").val('');
-            ////_$form.find("select[name='ParentId']").val('');
-            ////_$form.find("input[name='Sort']").val(0);
-            ////_$form.find("textarea[name='Note']").val('');
+            $("#formPost").find('input[type=text],textarea,input[type=hidden],input[type=number]').each(function () {
+                $(this).val('');
+            });
+            $("#formPost").find("select").each(function () {
+                $(this).val($(this).find("option").eq(0).attr("value"));
+            });
+            ProChange($("select[name='ProviceID']"));
         });
         $("#add").click(function () {
             $("#CreateModal").modal("show");

@@ -141,7 +141,7 @@
     <text name="LogList" value="日志监控" />
     <text name="BelongBusiness" value="所属商户" />
     <!--Action-->
-
+    <text name="Loading" value="加载中..." />
     <text name="Aduit" value="审核" />
     <text name="Reply" value="回复" />
     <!--Form-->

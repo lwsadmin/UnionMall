@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
-using UnionMall.Business.Buiness;
+using model = UnionMall.Business.Business;
 using UnionMall.Common;
 using UnionMall.Controllers;
 using X.PagedList;
+using UnionMall.Business.Business;
+
 namespace UnionMall.Web.Mvc.Areas.Business.Controllers
 {
     [Area("Business")]
@@ -17,11 +19,14 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
     public class BusinessController : UnionMallControllerBase
     {
         private readonly ICommonAppService _commonAppService;
+        private readonly IBusinessAppService _businessAppService;
         private readonly IAbpSession _AbpSession;
-        public BusinessController(ICommonAppService commonAppService, IAbpSession abpSession)
+        public BusinessController(ICommonAppService commonAppService, IAbpSession abpSession,
+            IBusinessAppService businessAppService)
         {
             _commonAppService = commonAppService;
             _AbpSession = abpSession;
+            _businessAppService = businessAppService;
         }
         public IActionResult List(int page = 1, int pageSize = 10, string BusinessName = "")
         {
@@ -40,6 +45,21 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
                 return View("_Table", pageList);
             }
             return View(pageList);
+        }
+
+        public async Task<IActionResult> Add(long? id)
+        {
+            if (id == null)
+            {
+                var s = new model.Business();
+                s.Id = 0;
+                s.TenantId = 0;
+                if (_AbpSession.TenantId != null && (int)AbpSession.TenantId > 0)
+                    s.TenantId = (int)_AbpSession.TenantId;
+                return PartialView("_Add", s);
+            }
+            var dtos = await _businessAppService.GetByIdAsync((long)id);
+            return PartialView("_Add", dtos);
         }
     }
 }

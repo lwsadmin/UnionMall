@@ -8,7 +8,7 @@ using Abp.Domain.Repositories;
 using UnionMall.Business.ChainStore;
 using UnionMall.IRepositorySql;
 
-namespace UnionMall.Business.Buiness
+namespace UnionMall.Business.Business
 {
     public class ChainStoreAppService : ApplicationService, IChainStoreAppService
     {

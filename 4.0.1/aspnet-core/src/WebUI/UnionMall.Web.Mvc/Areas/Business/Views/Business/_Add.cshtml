@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewData["Title"] = "_Add";
+    Layout = null;
+}
+@using System.Data
+@using UnionMall.Business.Business
+@using UnionMall.Core;
+@model Business
+
+
+<div class="modal inmodal fade in" id="CreateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h5 id="headTitle" class="modal-title">@(Model.Id <= 0 ? L("Add") : Model.BusinessName + "-")@L("Business")</h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <form method="post" id="formPost" class="form-horizontal">
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <input type="hidden" name="TenantId" value="@Model.TenantId" />
+                            <input type="hidden" name="AgentsId" value="@Model.AgentsId" />
+                            <input type="hidden" name="IsSystemBusiness" value="@Model.IsSystemBusiness" />
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">@L("Name")</label>
+                                        <div class="col-md-4">
+                                            <input type="text" name="BusinessName" value="@Model.BusinessName" class="form-control" required maxlength="100" />
+                                        </div>
+
+                                        <label class="col-md-2 control-label">@L("DueTime")</label>
+                                        <div class="col-md-4">
+                                            <input type="text" name="DueTime" value="@Model.DueTime.ToString("yyyy-mm-dd")" class="form-control" required maxlength="100" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">@L("Contact")</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="Contact" value="@Model.Contact" class="form-control" required maxlength="15">
+                                        </div>
+
+                                        <label class="col-sm-2 control-label">@L("PhoneNumber")</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="Tel" value="@Model.Tel" class="form-control" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">@L("Sort")</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
+                                            <span class="help-block m-b-none">@L("SortTip")</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">@L("Note")</label>
+
+                                        <div class="col-sm-10">
+                                            <textarea name="Memo" class="form-control" cols="5">@Model.Memo</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">@L("Introduce")</label>
+
+                                        <div class="col-sm-10">
+                                            <textarea style="width:100%;min-width:550px;" id="Introduce" name="Introduce" class="form-control" cols="5"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+                                <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/view-resources/Areas/Business/business_list.js"></script>
+<script>
+    var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
+    $("input[name='DueTime']").datepicker({
+        language: language,
+        autoclose: true,//选中之后自动隐藏日期选择框
+        clearBtn: true,//清除按钮
+        todayBtn: true,//今日按钮
+        format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
+    });
+
+        var editor
+        KindEditor.ready(function (K) {
+            editor = K.create('#Introduce',
+                {
+                    langType: language,
+                    width: '650px',
+                    height: '300px',
+                    uploadJson: '/Common/Upload',
+                    fileManagerJson: '/Common/Upload',
+                    allowFileManager: false,
+                    formatUploadUrl: false,
+                    items: [
+                        'undo', 'redo', '|', 'preview', 'print', 'cut', 'copy', 'paste',
+                        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                        'superscript', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+                        'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                        'anchor', 'link', 'unlink'
+                    ],
+                    afterBlur: function () { this.sync(); }
+                });
+        });
+
+
+</script>

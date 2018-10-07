@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using UnionMall.Business.ChainStore;
 
-namespace UnionMall.Business.Buiness
+namespace UnionMall.Business.Business
 {
     public interface IChainStoreAppService : IApplicationService
     {
