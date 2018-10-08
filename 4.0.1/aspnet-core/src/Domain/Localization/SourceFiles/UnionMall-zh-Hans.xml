@@ -79,7 +79,7 @@
     <text name="GoodsComment" value="商品评价" />
     <text name="GoodAsk" value="商品咨询" />
     <text name="BusinessName" value="商户名称"/>
-    <text name="Business" value="联盟商户"/>
+    <text name="UnionBusiness" value="联盟商户"/>
     <text name="OneJia" value="代理级别" />
     <text name="TwoJia" value="我的代理" />
     <text name="BusinessManage" value="商户管理" />
@@ -139,7 +139,11 @@
     <text name="SEO" value="SEO优化" />
     <text name="Cache" value="清除缓存" />
     <text name="LogList" value="日志监控" />
-    <text name="BelongBusiness" value="所属商户" />
+    <text name="Belong" value="所属" />
+    <text name="Business" value="商户"/>
+    <text name="Store" value="店铺"/>
+    <text name="Count" value="数量"/>
+
     <!--Action-->
     <text name="Loading" value="加载中..." />
     <text name="Aduit" value="审核" />
@@ -172,7 +176,7 @@
     <text name="DeleteConfirm{0}" value="确认删除【{0}】吗?" />
     <text name="NotExist" value="该条记录不存在,可能已经被删除!" />
     <text name="{0}AlreadyExist" value="已经存在名为{0}的记录!" />
-
+    <text name="ExistRecord{0}" value="存在相关的{0}记录，不能执行该操作!" />
     <text name="DeleteConfirm" value="确认删除吗?" />
     <text name="DeleteMsg" value="删除之后无法恢复!" />
     <text name="OK" value="确认" />

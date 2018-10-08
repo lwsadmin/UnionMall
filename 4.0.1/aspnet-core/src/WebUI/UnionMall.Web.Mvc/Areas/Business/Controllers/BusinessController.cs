@@ -30,7 +30,8 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
         }
         public IActionResult List(int page = 1, int pageSize = 10, string BusinessName = "")
         {
-            string table = $"select b.Id,b.Sort,b.StoreCount, b.Tel,b.BusinessName,b.Memo,b.DueTime,b.Contact from TBusiness b";
+            string table = $@"select b.Id,b.Sort,b.StoreCount, b.Tel,b.BusinessName,b.Memo,b.issystemBusiness,
+CONVERT(varchar(100), b.DueTime, 23) DueTime,b.Contact from TBusiness b";
             if (_AbpSession.TenantId != null)
             {
                 table += $" where TenantId={_AbpSession.TenantId}";
@@ -38,7 +39,7 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             if (!string.IsNullOrEmpty(BusinessName))
             { table += $" and b.BusinessName like '%{BusinessName}%'"; }
             int total;
-            DataSet ds = _commonAppService.GetPage(page, pageSize, table, "id desc", out total);
+            DataSet ds = _commonAppService.GetPage(page, pageSize, table, "sort desc, id desc", out total);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             if (Request.Headers.ContainsKey("x-requested-with"))
             {
@@ -60,6 +61,18 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             }
             var dtos = await _businessAppService.GetByIdAsync((long)id);
             return PartialView("_Add", dtos);
+        }
+
+        [HttpPost]
+        public JsonResult Delete(long id)
+        {
+            string msg = string.Empty;
+            var booler = _businessAppService.Delete(id, out msg);
+            if (msg == "ExistRecord")
+            {
+                return Json(new { succ = booler, msg = L("ExistRecord{0}", L("Store")) });
+            }
+            return Json(new { succ = booler, msg = L(msg) });
         }
     }
 }

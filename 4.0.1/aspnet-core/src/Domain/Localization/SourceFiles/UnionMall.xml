@@ -134,7 +134,7 @@
     <text name="GoodAsk" value="GoodAsk" />
 
     <text name="BusinessName" value="BusinessName"/>
-    <text name="Business" value="Business"/>
+    <text name="UnionBusiness" value="UnionBusiness"/>
     <text name="OneJia" value="OneJia" />
     <text name="TwoJia" value="TwoJia" />
     <text name="BusinessManage" value="BusinessManage" />
@@ -196,7 +196,7 @@
     <text name="LogList" value="LogList" />
 
     <!--Action-->
-    
+
     <text name="Loading" value="Loading..." />
     <text name="Aduit" value="Aduit" />
     <text name="Reply" value="Reply" />
@@ -208,7 +208,11 @@
     <text name="Selectable" value="Selectable" />
     <text name="Address" value="Address" />
     <text name="AddressPlace" value="Please input detailed address such as city, district, street." />
-    <text name="BelongBusiness" value="BelongBusiness" />
+    <text name="Belong" value="Belong" />
+    <text name="Business" value="Business"/>
+    <text name="Store" value="Store"/>
+    <text name="Count" value="Count"/>
+
     <!--Table-->
     <text name="Query" value="Query" />
     <text name="Search" value="Search" />
@@ -228,7 +232,7 @@
     <!--message-->
     <text name="NotExist" value="It does not exist. It may have been deleted!" />
     <text name="{0}AlreadyExist" value="The name {0} already exists!" />
-
+    <text name="ExistRecord{0}" value="{0} related records are not available." />
     <text name="DeleteConfirm" value="Do you want to delete it ?" />
     <text name="DeleteConfirm{0}" value="Do you want to delete 【{0}】 ?" />
     <text name="DeleteMsg" value="Cannot be restored after deletion" />

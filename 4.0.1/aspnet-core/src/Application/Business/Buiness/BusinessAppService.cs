@@ -74,10 +74,10 @@ namespace UnionMall.Business.Business
             var count = _storeRepository.GetAllList(c => c.BusinessId == id).Count;
             if (count > 0)
             {
-                msg = "HasChild";
+                msg = "ExistRecord";
                 return false;
             }
-            // _Repository.Delete(id);
+             _Repository.Delete(id);
             msg = "";
             return true;
         }

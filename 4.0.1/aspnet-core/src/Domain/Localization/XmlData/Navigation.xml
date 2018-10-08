@@ -48,7 +48,7 @@
   <First Name="BusinessManage"  Icon="glyphicon glyphicon-th">
     <Second Name="OneJia" Url="javascript:void(0);"></Second>
     <Second Name="TwoJia" Url="javascript:void(0);"></Second>
-    <Second Name="Business"  Url="/business/business/list">
+    <Second Name="UnionBusiness"  Url="/business/business/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />

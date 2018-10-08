@@ -1,6 +1,6 @@
 ﻿(function () {
     $(function () {
-        var storeService = abp.services.app.chainStore;
+        var _Service = abp.services.app.business;
         var _$modal = $("#CreateModal");
         var _$form = _$modal.find("form");
         $("#Save").click(function (e) {
@@ -9,7 +9,8 @@
                 return;
             }
             var EditDto = _$form.serializeFormToObject();
-            storeService.createOrEdit(EditDto).done(function (data) {
+            debugger;
+            _Service.createOrEdit(EditDto).done(function (data) {
                 _$modal.modal('hide');
                 _$form[0].reset();
                 $(".pagination .active a").click();
