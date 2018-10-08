@@ -39,12 +39,13 @@
                     <a data-ajax="true" data-ajax-method="GET"
                        data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
                        href="/Business/Business/Add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
-
-
-                    &nbsp;&nbsp;  &nbsp;&nbsp;
-                    <a data-title="@L("DeleteConfirm{0}",item["BusinessName"])" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                        <i class="fa fa-trash text-navy"></i>
-                    </a>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    @if (!Convert.ToBoolean(item["issystemBusiness"]))
+                    {
+                        <a data-title="@L("DeleteConfirm{0}", item["BusinessName"])" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                            <i class="fa fa-trash text-navy"></i>
+                        </a>
+                    }
 
                 </td>
             </tr>

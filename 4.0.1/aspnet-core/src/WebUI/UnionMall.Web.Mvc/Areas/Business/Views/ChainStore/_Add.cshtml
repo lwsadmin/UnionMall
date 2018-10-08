@@ -32,7 +32,7 @@
                                             <input type="text" name="Title" value="@Model.Name" class="form-control" required maxlength="50" />
                                         </div>
 
-                                        <label class="col-md-2 control-label">@L("BelongBusiness")</label>
+                                        <label class="col-md-2 control-label">@L("Belong")@L("Business")</label>
                                         <div class="col-md-4">
                                             @Html.DropDownListFor(c => c.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "form-control chosen-select" })
                                         </div>

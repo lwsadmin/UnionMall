@@ -13,7 +13,7 @@
         <tr>
             <th>@L("Name")</th>
             <th>@L("Image")</th>
-            <th>@L("BelongBusiness")</th>
+            <th>@L("Belong")@L("Business")</th>
             <th>@L("Contact")</th>
             <th>@L("PhoneNumber")</th>
             <th>@L("Sort")</th>
@@ -34,8 +34,8 @@
                     <a data-title="@L("DeleteConfirm{0}",item["BusinessName"])" data-ok="@L("OK")"
                        data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
                         <i class="fa fa-trash text-navy"></i>
-                    </a>    &nbsp;&nbsp;
-                    <a  data-ajax="true" data-ajax-method="GET"
+                    </a>    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a data-ajax="true" data-ajax-method="GET"
                        data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
                        href="/Business/ChainStore/Add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
                 </td>
