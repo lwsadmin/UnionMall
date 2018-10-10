@@ -29,5 +29,19 @@ namespace UnionMall.Business.Business
         {
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
+        public bool Delete(long id, out string msg)
+        {
+            var query = _Repository.FirstOrDefault(c => c.Id == id);
+            if (query == null||1==1)
+            {
+                msg = "NotExist";
+                return false;
+            }
+            var count = _Repository.GetAllList(c => c.BusinessId == id).Count;
+
+            _Repository.Delete(id);
+            msg = "";
+            return true;
+        }
     }
 }

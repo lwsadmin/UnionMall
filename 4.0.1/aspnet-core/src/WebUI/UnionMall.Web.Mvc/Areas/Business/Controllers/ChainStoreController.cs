@@ -92,5 +92,16 @@ left join TBusiness b on c.BusinessId = b.Id";
             }
             return Json(new { succ = true, str = option });
         }
+        [HttpPost]
+        public JsonResult Delete(long id)
+        {
+            string msg = string.Empty;
+            var booler = _businessAppService.Delete(id, out msg);
+            if (msg == "ExistRecord")
+            {
+                return Json(new { succ = booler, msg = L("ExistRecord{0}", L("Store")) });
+            }
+            return Json(new { succ = booler, msg = L(msg) });
+        }
     }
 }

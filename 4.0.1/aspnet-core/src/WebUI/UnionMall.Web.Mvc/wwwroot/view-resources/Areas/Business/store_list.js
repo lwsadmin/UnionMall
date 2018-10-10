@@ -30,3 +30,31 @@
         });
     });
 })();
+function Delete(btn) {
+    var Service = abp.services.app.chainStore;
+    var id = $(btn).attr("data-id");
+    var name = $(btn).attr("data-name");
+    swal({
+        title: $(btn).attr("data-title"),
+        text: '',
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonText: $(btn).attr("data-ok"),
+        cancelButtonText: $(btn).attr("data-cancle")
+    }).then(function (isConfirm) {
+        if (isConfirm.value == true) {
+
+            $.post("/business/chainstore/delete", { id: id }, function (data) {
+                if (data.result.succ) {
+                    $(".pagination .active a").click();
+                } else {
+                    swal(
+                        data.result.msg,
+                        '',
+                        'error'
+                    )
+                }
+            });
+        }
+    })
+}
