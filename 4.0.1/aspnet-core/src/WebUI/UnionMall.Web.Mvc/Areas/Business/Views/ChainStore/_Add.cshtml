@@ -27,9 +27,9 @@
                             <div class="row">
                                 <div class="col-md-11">
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">@L("Name")</label>
+                                        <label class="col-md-2 control-label">@L("Store")@L("Name")</label>
                                         <div class="col-md-4">
-                                            <input type="text" name="Title" value="@Model.Name" class="form-control" required maxlength="50" />
+                                            <input type="text" name="Name" value="@Model.Name" class="form-control" required maxlength="50" />
                                         </div>
 
                                         <label class="col-md-2 control-label">@L("Belong")@L("Business")</label>
@@ -49,7 +49,7 @@
 
                                         <label class="col-sm-2 control-label">@L("PhoneNumber")</label>
                                         <div class="col-sm-4">
-                                            <input type="text" name="Contact" value="@Model.Mobile" class="form-control" required />
+                                            <input type="text" name="Mobile" value="@Model.Mobile" class="form-control" required />
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                                         <label class="col-sm-2 control-label">@L("Introduce")</label>
 
                                         <div class="col-sm-10">
-                                            <textarea style="width:100%;min-width:550px;" id="Introduce" name="Introduce" class="form-control" cols="5"></textarea>
+                                            <textarea style="width:100%;min-width:550px;" id="Introduce" name="Introduce" class="form-control" cols="5">@Model.Introduce</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -116,8 +116,8 @@
 <script src="~/view-resources/Areas/Business/store_list.js"></script>
 <script>
     if ('@Model.ProvinceId' != '0' && '@Model.CityId' != '0' && '@Model.DistrictId' != '0') {
-        $("select[name='ProviceID']").val('@Model.ProvinceId');
-        ProChange($("select[name='ProviceID']"));
+        $("select[name='ProvinceID']").val('@Model.ProvinceId');
+        ProChange($("select[name='ProvinceID']"));
         $("select[name='CityID']").val('@Model.CityId');
         CityChange($("select[name='CityID']"));
         $("select[name='DistrictID']").val('@Model.DistrictId');

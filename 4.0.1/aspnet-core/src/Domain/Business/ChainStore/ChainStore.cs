@@ -29,7 +29,7 @@ namespace UnionMall.Business.ChainStore
         public string Address { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
-        public bool IsTakeOut { get; set; }
+        public bool IsTakeOut { get; set; } = false;
         public decimal AveragePrice { get; set; } = 0;
         public decimal TakeoutPrice { get; set; } = 0;
         public bool IsTakeoutSms { get; set; }
@@ -39,6 +39,6 @@ namespace UnionMall.Business.ChainStore
         public decimal SettlementMoney { get; set; } = 0;
         public int Sort { get; set; } = 0;
         public string Introduce { get; set; }
-        public DateTime CreationTime { get; set; }
+        public DateTime CreationTime { get; set; } = DateTime.Now;
     }
 }

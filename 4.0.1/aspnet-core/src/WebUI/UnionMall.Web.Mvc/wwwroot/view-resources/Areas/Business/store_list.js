@@ -23,7 +23,9 @@
             $("#formPost").find("select").each(function () {
                 $(this).val($(this).find("option").eq(0).attr("value"));
             });
-            ProChange($("select[name='ProviceID']"));
+            $("input[name='TenantId']").val(0);
+            $("input[name='Id']").val(0);
+            ProChange($("select[name='ProvinceID']"));
         });
         $("#add").click(function () {
             $("#CreateModal").modal("show");

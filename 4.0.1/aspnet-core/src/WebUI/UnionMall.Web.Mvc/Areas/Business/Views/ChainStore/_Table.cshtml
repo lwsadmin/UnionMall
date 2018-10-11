@@ -11,7 +11,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>@L("Name")</th>
+            <th>@L("Store")@L("Name")</th>
             <th>@L("Image")</th>
             <th>@L("Belong")@L("Business")</th>
             <th>@L("Contact")</th>
@@ -67,7 +67,7 @@
         }
 ))
 <script>
-    var txt = $("input[name='BusinessName']").val().trim();
+    var txt = $("input[name='storeName']").val().trim();
     if (txt.length > 0) {
         $(".title").each(function () {
             var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));

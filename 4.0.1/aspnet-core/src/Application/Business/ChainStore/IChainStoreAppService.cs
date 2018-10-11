@@ -12,6 +12,7 @@ namespace UnionMall.Business.Business
     {
         DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total);
         Task<ChainStore.ChainStore> GetByIdAsync(long Id);
+        Task CreateOrEditAsync(ChainStore.ChainStore store);
         bool Delete(long id, out string msg);
     }
 }

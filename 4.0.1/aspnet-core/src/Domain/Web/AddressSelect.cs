@@ -13,7 +13,7 @@ namespace UnionMall.Core
     public static class AddressSelect
     {
 
-        public static string GetPro(string ProID="1", string NameAttr = "ProviceID")
+        public static string GetPro(string ProID="1", string NameAttr = "ProvinceID")
         {
             XmlDocument Xml = new XmlData().ProvincesXml;
             StringBuilder sb = new StringBuilder();
