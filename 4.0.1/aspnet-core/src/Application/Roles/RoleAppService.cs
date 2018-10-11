@@ -136,6 +136,7 @@ namespace UnionMall.Roles
             };
         }
 
+        //lws---------------------------
 
         public DataSet GetRole(long id)
         {
@@ -149,7 +150,10 @@ namespace UnionMall.Roles
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
         public async Task<List<RoleDropDownDto>> GetDropDown()
+        {
             var query = await Repository.GetAllListAsync();
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+            {
                 query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
             }
             return query.MapTo<List<RoleDropDownDto>>();
