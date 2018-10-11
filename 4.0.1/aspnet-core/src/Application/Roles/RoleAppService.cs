@@ -17,6 +17,7 @@ using Abp.AutoMapper;
 using UnionMall.EntityFrameworkCore;
 using System.Data;
 using UnionMall.IRepositorySql;
+using Abp.Runtime.Session;
 
 namespace UnionMall.Roles
 {
@@ -26,13 +27,15 @@ namespace UnionMall.Roles
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
         private readonly ISqlExecuter _sqlExecuter;
-
-        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager, ISqlExecuter sqlExecuter)
+        public readonly IAbpSession _AbpSession;
+        public RoleAppService(IRepository<Role> repository, RoleManager roleManager,
+            UserManager userManager, ISqlExecuter sqlExecuter, IAbpSession AbpSession)
             : base(repository)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _sqlExecuter = sqlExecuter;
+            _AbpSession = AbpSession;
         }
 
         public override async Task<RoleDto> Create(CreateRoleDto input)
@@ -133,18 +136,23 @@ namespace UnionMall.Roles
             };
         }
 
+
         public DataSet GetRole(long id)
         {
             string sql = $"select r.id,r.TenantId,r.DisplayName from dbo.TUserRoles ur left join dbo.TRoles r on ur.RoleId=r.Id where ur.UserId={id}";
-            DataSet t1 = _sqlExecuter.ExecuteDataSet(sql, null);
-            DataTable t = _sqlExecuter.ExecuteDataSet(sql, null).Tables[0];
+            //DataSet t1 = _sqlExecuter.ExecuteDataSet(sql, null);
+            //DataTable t = _sqlExecuter.ExecuteDataSet(sql, null).Tables[0];
             return _sqlExecuter.ExecuteDataSet(sql, null);
         }
         public DataSet GetRolePage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
-            // int totalCount=0;
-          //  total = 0;
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+        }
+        public async Task<List<RoleDropDownDto>> GetDropDown()
+            var query = await Repository.GetAllListAsync();
+                query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
+            }
+            return query.MapTo<List<RoleDropDownDto>>();
         }
     }
 }

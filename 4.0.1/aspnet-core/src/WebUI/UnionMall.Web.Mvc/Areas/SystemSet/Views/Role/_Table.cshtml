@@ -26,30 +26,45 @@
                 <td>@item["CreationTime"]</td>
                 <td>
 
-                    <button type="button" class="btn btn-outline btn-primary btn-xs">编辑</button>
-                    &nbsp;&nbsp;
-                    <button type="button" class="btn btn-outline btn-danger btn-xs">删除</button>
+                    <a onclick="Edit(@item["Id"])" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                    &nbsp;&nbsp;  &nbsp;&nbsp;
+                    <a data-title="@L("DeleteConfirm{0}",item["DisplayName"])" data-ok="@L("OK")"
+                       data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                        <i class="fa fa-trash text-navy"></i>
+                    </a>
+
                 </td>
             </tr>
         }
 
     </tbody>
 </table>
-@Html.PagedListPager(Model, page => Url.Action("GetOnePageOfNames", new { page }),
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
     PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
         new PagedListRenderOptions {
             MaximumPageNumbersToDisplay = 10,
             DisplayPageCountAndCurrentLocation = true,
-            PageCountAndCurrentLocationFormat = "{1}pages{2}Records",
+            LinkToFirstPageFormat = L("FirstPage"),
+            LinkToLastPageFormat = L("LastPage"),
+            LinkToNextPageFormat = L("NextPage"),
+            PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+            LinkToPreviousPageFormat = L("PreviousPage"),
             UlElementClasses = new[] { "pagination col-md-8" },
             ContainerDivClasses = new[] { "row" } },
-
-
         new AjaxOptions()
         {
             DataForm = "searchForm",
-            OnBegin = "return Begin(this);",
             HttpMethod = "GET",
             UpdateTargetId = "table"
         }
 ))
+<script>
+
+    var txt = $("input[name='Title']").val().trim();
+    if (txt.length > 0) {
+        $(".title").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+</script>

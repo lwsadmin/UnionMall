@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -11,7 +12,7 @@ namespace UnionMall.Roles
         Task<ListResultDto<PermissionDto>> GetAllPermissions();
 
         Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input);
-
+        Task<List<RoleDropDownDto>> GetDropDown();
         DataSet GetRole(long id);
         DataSet GetRolePage(int pageIndex, int pageSize, string table, string orderBy, out int total);
     }

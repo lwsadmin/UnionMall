@@ -9,7 +9,14 @@
 @using System.Data
 @using X.PagedList
 @model PagedList<DataRow>
-
+<style>
+    .chosen-single {
+        font-size: 14px;
+        line-height: 20px !important;
+    }
+</style>
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
 <script src="~/view-resources/Views/Roles/Index.js"></script>
 <script src="~/js/jquery.unobtrusive.js"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -33,10 +40,32 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <button id="add" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i>&nbsp;新增</button>
-                </div>
+                @*<div class="ibox-title">
+                    <button id="add" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                </div>*@
+
+
                 <div class="ibox-content" id="table">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                        </div>
+                        <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/chainstore/List" method="post">
+
+                            <div class="col-sm-2">
+                                @Html.DropDownList("BusinessId", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control  chosen-select" })
+                            </div>
+                            <div class="col-sm-2">
+
+                                <div class="input-group">
+                                    <input type="text" name="storeName" placeholder="@L("Roles")@L("Name")" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
                     @Html.Partial("_Table", Model)
                 </div>
             </div>
@@ -46,3 +75,8 @@
 <div id="divEdit">
     @Html.Partial("_Add")
 </div>
+<script>
+    $(function () {
+        $('.chosen-select').chosen({ width: "100%" });
+    });
+</script>
