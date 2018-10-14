@@ -42,7 +42,7 @@
     <text value="用户名{0} 未激活，不能登录." name="UserIsNotActiveAndCanNotLogin"/>
     <text value="请输入登录信息" name="PleaseEnterLoginInformation"/>
     <text value="运营商户名称" name="Tenancyname"/>
-
+    <text name="Settings">设置</text>
     <text value="用户名或邮箱地址" name="UsernameOrEmail"/>
     <text value="密码" name="Password"/>
     <text value="用户名" name="UserName"/>
@@ -57,7 +57,7 @@
     <text value="修改资料" name="ModificationInformation"/>
     <text value="安全锁屏" name="LockScreen"/>
     <text value="菜单" name="Menu"/>
-
+    <text name="Permissions">权限</text>
     <text value="账号" name="TenancyName"/>
     <text name="Welcome, {0}" value="欢迎您 {0}" />
 
@@ -180,7 +180,7 @@
     <text name="DeleteConfirm" value="确认删除吗?" />
     <text name="DeleteMsg" value="删除之后无法恢复!" />
     <text name="OK" value="确认" />
-  
+
     <text name="HasChild" value="该类别下包括子级类别,请先移除子级类别!" />
   </texts>
 </localizationDictionary>

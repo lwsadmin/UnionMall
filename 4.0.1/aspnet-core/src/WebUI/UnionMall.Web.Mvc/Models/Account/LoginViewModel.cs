@@ -6,7 +6,7 @@ namespace UnionMall.Web.Models.Account
     public class LoginViewModel
     {
 
-        [Required]
+      //  [Required]
         public string TenancyName { get; set; }
 
         [Required]

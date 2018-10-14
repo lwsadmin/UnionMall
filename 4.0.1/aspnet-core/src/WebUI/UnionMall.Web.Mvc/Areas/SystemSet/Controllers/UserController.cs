@@ -13,6 +13,9 @@ using Castle.Core.Logging;
 using UnionMall.Roles.Dto;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using X.PagedList;
+using Abp.Application.Services.Dto;
+using UnionMall.Web.Models.Roles;
+
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
     [AbpMvcAuthorize("SystemSet.UsersManager")]
@@ -57,5 +60,7 @@ on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id where 1=1 ";
             ViewData.Add("Roles", new SelectList(dtoList, "Id", "DisplayName"));
             return View(pageList);
         }
+
+
     }
 }

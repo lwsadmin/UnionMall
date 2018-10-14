@@ -17,8 +17,8 @@
 </style>
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
-<script src="~/view-resources/Views/Roles/Index.js"></script>
-<script src="~/js/jquery.unobtrusive.js"></script>
+@*<script src="~/view-resources/Views/Roles/Index.js"></script>*@
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -41,14 +41,14 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 @*<div class="ibox-title">
-                    <button id="add" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
-                </div>*@
+                        <button id="add" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                    </div>*@
 
 
                 <div class="ibox-content" id="table">
                     <div class="row">
                         <div class="col-sm-1">
-                            <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                            <a class="btn btn-primary btn-sm m-b" href="/systemset/role/add"><i class="fa fa-plus"></i>&nbsp;@L("Add")</a>
                         </div>
                         <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/chainstore/List" method="post">
 
@@ -58,7 +58,7 @@
                             <div class="col-sm-2">
 
                                 <div class="input-group">
-                                    <input type="text" name="storeName" placeholder="@L("Roles")@L("Name")" class="input-sm form-control"> <span class="input-group-btn">
+                                    <input type="text" name="Name" placeholder="@L("Roles")@L("Name")" class="input-sm form-control"> <span class="input-group-btn">
                                         <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
                                     </span>
                                 </div>
@@ -72,9 +72,9 @@
         </div>
     </div>
 </div>
-<div id="divEdit">
-    @Html.Partial("_Add")
-</div>
+@*<div id="divEdit">
+        @Html.Partial("_Add")
+    </div>*@
 <script>
     $(function () {
         $('.chosen-select').chosen({ width: "100%" });

@@ -36,7 +36,7 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 
             int pageSize = 15;
             string table = $"select r.Id,r.CreationTime,r.Description,r.DisplayName,r.IsDefault from TRoles r ";
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId >=0)
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId >= 0)
             {
                 table += $" where TenantId={_AbpSession.TenantId}";
             }
@@ -55,18 +55,37 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 
         public async Task<ActionResult> Edit(int? roleId)
         {
-            if (roleId != null)
+            var permissions = (await _roleAppService.GetAllPermissions()).Items;
+            if (roleId == null)
             {
-
-                var output = await _roleAppService.GetRoleForEdit(new EntityDto((int)roleId));
-                var model = new EditRoleModalViewModel(output);
-                return View("_Add", model);
+                RoleDto dto = new RoleDto();
+                return View("_Add", dto);
             }
             else
             {
                 return View("_Add", new EditRoleModalViewModel(new GetRoleForEditOutput()));
             }
             //  AjaxPager s = new AjaxPager();
+        }
+        public async Task<ActionResult> Add(int? roleId)
+        {
+            var permissions = (await _roleAppService.GetAllPermissions()).Items;
+            if (roleId == null)
+            {
+
+                var roles = (await _roleAppService.GetAll(new PagedAndSortedResultRequestDto())).Items;
+                var model = new RoleListViewModel
+                {
+                    Roles = roles,
+                    Permissions = permissions
+                };
+                return View("Add", model);
+            }
+            else
+            {
+                return View("Add", new EditRoleModalViewModel(new GetRoleForEditOutput()));
+            }
+
         }
     }
 }

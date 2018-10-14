@@ -92,14 +92,7 @@ namespace UnionMall.Roles
             CheckErrors(await _roleManager.DeleteAsync(role));
         }
 
-        public Task<ListResultDto<PermissionDto>> GetAllPermissions()
-        {
-            var permissions = PermissionManager.GetAllPermissions();
 
-            return Task.FromResult(new ListResultDto<PermissionDto>(
-                ObjectMapper.Map<List<PermissionDto>>(permissions)
-            ));
-        }
 
         protected override IQueryable<Role> CreateFilteredQuery(PagedResultRequestDto input)
         {
@@ -137,7 +130,24 @@ namespace UnionMall.Roles
         }
 
         //lws---------------------------
+        public Task<ListResultDto<PermissionDto>> GetAllPermissions()
+        {
 
+            if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0)
+            {
+                //宿主登录，显示所有权限
+
+            }
+            else
+            {
+
+            }
+            var permissions = PermissionManager.GetAllPermissions();
+
+            return Task.FromResult(new ListResultDto<PermissionDto>(
+                ObjectMapper.Map<List<PermissionDto>>(permissions)
+            ));
+        }
         public DataSet GetRole(long id)
         {
             string sql = $"select r.id,r.TenantId,r.DisplayName from dbo.TUserRoles ur left join dbo.TRoles r on ur.RoleId=r.Id where ur.UserId={id}";
