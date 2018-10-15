@@ -6,7 +6,7 @@ namespace UnionMall.Web.Models.Account
     public class LoginViewModel
     {
 
-      //  [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "TenancyName is not empety")]
         public string TenancyName { get; set; }
 
         [Required]
