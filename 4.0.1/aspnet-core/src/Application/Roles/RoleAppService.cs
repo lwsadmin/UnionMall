@@ -18,6 +18,8 @@ using UnionMall.EntityFrameworkCore;
 using System.Data;
 using UnionMall.IRepositorySql;
 using Abp.Runtime.Session;
+using System.Xml;
+using System.IO;
 
 namespace UnionMall.Roles
 {
@@ -133,20 +135,63 @@ namespace UnionMall.Roles
         public Task<ListResultDto<PermissionDto>> GetAllPermissions()
         {
 
-            if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0)
+            if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0 || 1 == 1)
             {
                 //宿主登录，显示所有权限
 
+                XmlDocument NavigationXml = new XmlDocument();
+                string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.IgnoreComments = true; //忽略注释
+                XmlReader reader = XmlReader.Create(currentDirectory, settings);
+                NavigationXml.Load(reader);
+                XmlNodeList List = NavigationXml.SelectNodes("//Navigation//First");
+
+                List<PermissionDto> dtoList = new List<PermissionDto>();
+                foreach (XmlNode item in List)
+                {
+                    PermissionDto FirstMenudto = new PermissionDto();
+                    FirstMenudto.Name = item.Attributes["Name"].Value;
+                    FirstMenudto.DisplayName = item.Attributes["Name"].Value;
+                    dtoList.Add(FirstMenudto);
+                    if (item.ChildNodes != null && item.ChildNodes.Count > 0)
+                    {
+                        foreach (XmlNode subItem in item.ChildNodes)
+                        {
+                            PermissionDto secondMenudto = new PermissionDto();
+                            secondMenudto.Name = item.Attributes["Name"].Value + "." + subItem.Attributes["Name"].Value;
+                            secondMenudto.DisplayName = subItem.Attributes["Name"].Value;
+                            dtoList.Add(secondMenudto);
+                            if (subItem.ChildNodes.Count > 0)
+                            {
+                                foreach (XmlNode actionItem in subItem.ChildNodes)
+                                {
+                                    PermissionDto actionDto = new PermissionDto();
+                                    actionDto.Name = item.Attributes["Name"].Value + "." + 
+                                        subItem.Attributes["Name"].Value+"." + actionItem.Attributes["Name"].Value;
+                                    actionDto.DisplayName = actionItem.Attributes["Name"].Value;
+                                    dtoList.Add(actionDto);
+                                }
+           
+                            }
+                        }
+                    }
+                }
+                // var permissions = PermissionManager.GetAllPermissions();
+
+                return Task.FromResult(new ListResultDto<PermissionDto>(
+                    ObjectMapper.Map<List<PermissionDto>>(dtoList)
+                ));
             }
             else
             {
+                var permissions = PermissionManager.GetAllPermissions();
 
+                return Task.FromResult(new ListResultDto<PermissionDto>(
+                    ObjectMapper.Map<List<PermissionDto>>(permissions)
+                ));
             }
-            var permissions = PermissionManager.GetAllPermissions();
 
-            return Task.FromResult(new ListResultDto<PermissionDto>(
-                ObjectMapper.Map<List<PermissionDto>>(permissions)
-            ));
         }
         public DataSet GetRole(long id)
         {

@@ -35,7 +35,7 @@
                             @foreach (var permission in Model.Permissions)
                             {
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" value="@permission.Name" /> @permission.DisplayName
+                                    <input type="checkbox" value="@permission.Name" />@L(permission.DisplayName)
                                 </label>
                             }
                         </div>
