@@ -123,18 +123,18 @@
       </Third>
     </Second>
   </First>
-  <First Name="SystemMarketing" Icon="glyphicon glyphicon-certificate">
+  <!--<First Name="SystemMarketing" Icon="glyphicon glyphicon-certificate">
     <Second Name="Wheel" Title="大转盘" Url="">
       <Third Name="WheelList" Title="大转盘抽奖" Url="javascript:void(0);"></Third>
       <Third Name="NoteList" Title="参与记录" Url="javascript:void(0);"></Third>
       <Third Name="WineList" Title="中奖记录" Url="javascript:void(0);"></Third>
     </Second>
 
-    <!--<Second Name="RedPackage" Title="发红包" Url="">
+    <Second Name="RedPackage" Title="发红包" Url="">
       <Third Name="OneBuyResultList" Title="红包内容" Url="javascript:void(0);"></Third>
       <Third Name="OneBuyResultList" Title="参与记录" Url="javascript:void(0);"></Third>
       <Third Name="OneBuyResultList" Title="体现记录" Url="javascript:void(0);"></Third>
-    </Second>-->
+    </Second>
 
 
     <Second Name="CrowdFunding"   Url="">
@@ -142,7 +142,7 @@
       <Third Name="CrowdFundingNoteList"   Url="javascript:void(0);"></Third>
       <Third Name="CrowdFundingNoteSttices"   Url="javascript:void(0);"></Third>
     </Second>
-  </First>
+  </First>-->
   <First Name="Coupon"   Icon="glyphicon glyphicon-send">
     <Second Name="OperatorCoupon"  Url="/coupon/coupon/list">
       <Action Name="Add" />

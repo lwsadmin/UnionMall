@@ -46,7 +46,7 @@
     <text value="用户名或邮箱地址" name="UsernameOrEmail"/>
     <text value="密码" name="Password"/>
     <text value="用户名" name="UserName"/>
-    <text value="-请选择-" name="Select"/>
+    <text value="选择" name="Select"/>
     <text value="登录" name="LogIn"/>
     <text value="退出登录" name="Logout"/>
     <text value="登录失败!" name="LoginFailed"/>
