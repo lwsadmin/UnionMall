@@ -69,21 +69,18 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
         }
         public async Task<ActionResult> Add(int? roleId)
         {
-            var permissions = (await _roleAppService.GetAllPermissions()).Items;
+           // var permissions = (await _roleAppService.GetAllPermissions()).Items;
             if (roleId == null)
             {
-
-                var roles = (await _roleAppService.GetAll(new PagedAndSortedResultRequestDto())).Items;
-                var model = new RoleListViewModel
-                {
-                    Roles = roles,
-                    Permissions = permissions
-                };
+                var output = await _roleAppService.GetRoleForEdit(new EntityDto());
+                var model = new EditRoleModalViewModel(output);
                 return View("Add", model);
             }
             else
             {
-                return View("Add", new EditRoleModalViewModel(new GetRoleForEditOutput()));
+                var output = await _roleAppService.GetRoleForEdit(new EntityDto((int)roleId));
+                var model = new EditRoleModalViewModel(output);
+                return View("Add", model);
             }
 
         }

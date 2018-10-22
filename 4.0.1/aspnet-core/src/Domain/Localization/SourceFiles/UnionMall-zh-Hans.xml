@@ -99,6 +99,9 @@
     <text name="CityLife" value="同城生活"/>
     <text name="CityMessage" value="同城信息"/>
     <text name="ArticleInfo" value="行业资讯"/>
+    <text name="ArticleCategory" value="资讯分类"/>
+    <text name="Article" value="资讯信息"/>
+    <text name="ArticleComment" value="资讯评论"/>
     <text name="ActivityInfo" value="联盟活动"/>
     <text name="SystemMarketing" value="系统营销"/>
     <text name="Wheel" value="大转盘"/>

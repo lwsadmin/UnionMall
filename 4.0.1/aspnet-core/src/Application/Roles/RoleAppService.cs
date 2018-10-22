@@ -42,6 +42,10 @@ namespace UnionMall.Roles
 
         public override async Task<RoleDto> Create(CreateRoleDto input)
         {
+            if (string.IsNullOrEmpty(input.DisplayName))
+            {
+                input.DisplayName = input.Name;
+            }
             CheckCreatePermission();
 
             var role = ObjectMapper.Map<Role>(input);
@@ -115,26 +119,11 @@ namespace UnionMall.Roles
         {
             identityResult.CheckErrors(LocalizationManager);
         }
-
+        //lws---------------------------
         public async Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input)
         {
-            var permissions = PermissionManager.GetAllPermissions();
-            var role = await _roleManager.GetRoleByIdAsync(input.Id);
-            var grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
-            var roleEditDto = ObjectMapper.Map<RoleEditDto>(role);
-
-            return new GetRoleForEditOutput
-            {
-                Role = roleEditDto,
-                Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions).OrderBy(p => p.DisplayName).ToList(),
-                GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
-            };
-        }
-
-        //lws---------------------------
-        public Task<ListResultDto<PermissionDto>> GetAllPermissions()
-        {
-
+            var permissions = new List<PermissionDto>();
+            var role = new Role();
             if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0 || 1 == 1)
             {
                 //宿主登录，显示所有权限
@@ -167,30 +156,54 @@ namespace UnionMall.Roles
                                 foreach (XmlNode actionItem in subItem.ChildNodes)
                                 {
                                     PermissionDto actionDto = new PermissionDto();
-                                    actionDto.Name = item.Attributes["Name"].Value + "." + 
-                                        subItem.Attributes["Name"].Value+"." + actionItem.Attributes["Name"].Value;
+                                    actionDto.Name = item.Attributes["Name"].Value + "." +
+                                        subItem.Attributes["Name"].Value + "." + actionItem.Attributes["Name"].Value;
                                     actionDto.DisplayName = actionItem.Attributes["Name"].Value;
                                     dtoList.Add(actionDto);
                                 }
-           
+
                             }
                         }
                     }
                 }
-                // var permissions = PermissionManager.GetAllPermissions();
-
-                return Task.FromResult(new ListResultDto<PermissionDto>(
-                    ObjectMapper.Map<List<PermissionDto>>(dtoList)
-                ));
+                permissions = dtoList;
             }
             else
             {
-                var permissions = PermissionManager.GetAllPermissions();
-
-                return Task.FromResult(new ListResultDto<PermissionDto>(
-                    ObjectMapper.Map<List<PermissionDto>>(permissions)
-                ));
+                permissions = PermissionManager.GetAllPermissions() as List<PermissionDto>;
             }
+            if (input != null && input.Id > 0)
+
+                role = await _roleManager.GetRoleByIdAsync(input.Id);
+            else
+            {
+                role.Name = "";
+                role.Id = 0;
+                role.TenantId = AbpSession.TenantId;
+            }
+
+
+            //   var grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
+            var roleEditDto = ObjectMapper.Map<RoleEditDto>(role);
+
+            return new GetRoleForEditOutput
+            {
+                Role = roleEditDto,
+                Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions),
+                // GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
+            };
+        }
+
+
+        public Task<ListResultDto<PermissionDto>> GetAllPermissions()
+        {
+
+
+            var permissions = PermissionManager.GetAllPermissions();
+
+            return Task.FromResult(new ListResultDto<PermissionDto>(
+                ObjectMapper.Map<List<PermissionDto>>(permissions)
+            ));
 
         }
         public DataSet GetRole(long id)

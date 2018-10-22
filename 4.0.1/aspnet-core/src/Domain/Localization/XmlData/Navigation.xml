@@ -16,7 +16,7 @@
     <Second Name="PointRecharge"  Url="javascript:void(0);"></Second>
   </First>
   <First Name="OnlineGoods" Icon="glyphicon glyphicon-shopping-cart">
-    <Second Name="GoodsCategory" Url="/GoodsManage/Category/List">
+    <Second Name="GoodsCategory"  Url="/GoodsManage/Category/List">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
@@ -70,33 +70,30 @@
     <Second Name="CardInfo"  Url="javascript:void(0);"></Second>
   </First>
   <First Name="FlashSale"  Icon="glyphicon glyphicon-dashboard">
-
     <Second Name="FlashSaleList" Url="/groupbuy/groupbuy/list"></Second>
     <Second Name="FlashSaleImage"  Url="/groupbuy/image/list"></Second>
     <Second Name="FlashSaleOrder" Url="/groupbuy/rushorder/list"></Second>
     <Second Name="FlashSaleComment"  Url="/groupbuy/comment/list"></Second>
   </First>
 
-  <First Name="CityLife"  Icon="glyphicon glyphicon-tint">
-
-    <Second Name="ArticleInfo"  Icon="glyphicon glyphicon-align-justify" Url="">
-      <Third Name="ArticleCategory" Url="/articleinfo/articlecategory/list">
-        <Action Name="Add" />
-        <Action Name="Edit" />
-        <Action Name="Delete" />
-      </Third>
-      <Third Name="Article" Url="/articleinfo/article/list">
-        <Action Name="Add" />
-        <Action Name="Edit" />
-        <Action Name="Delete" />
-      </Third>
-      <Third Name="ArticleComment" Url="/articleinfo/comment/list">
-        <Action Name="Aduit"/>
-        <Action Name="Reply"  />
-        <Action Name="Delete" />
-      </Third>
+  <First Name="ArticleInfo"  Icon="glyphicon glyphicon-tint">
+    <Second Name="ArticleCategory"  Url="/articleinfo/articlecategory/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
     </Second>
-
+    <Second Name="Article" Url="/articleinfo/article/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
+    </Second>
+    <Second Name="ArticleComment" Url="/articleinfo/comment/list">
+      <Action Name="Aduit"/>
+      <Action Name="Reply"  />
+      <Action Name="Delete" />
+    </Second>
+  </First>
+  <!--<First Name="CityLife"  Icon="glyphicon glyphicon-tint">
     <Second Name="ActivityInfo" Url="">
       <Third Name="ActivityCategory"  Url="/CityLife/Activity/CategoryList">
         <Action Name="Add" />
@@ -122,7 +119,7 @@
         <Action Name="Delete" />
       </Third>
     </Second>
-  </First>
+  </First>-->
   <!--<First Name="SystemMarketing" Icon="glyphicon glyphicon-certificate">
     <Second Name="Wheel" Title="大转盘" Url="">
       <Third Name="WheelList" Title="大转盘抽奖" Url="javascript:void(0);"></Third>

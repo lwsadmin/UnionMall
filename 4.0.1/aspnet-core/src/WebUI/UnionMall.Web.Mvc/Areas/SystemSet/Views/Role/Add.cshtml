@@ -5,14 +5,15 @@
     ViewBag.FirstMenu = "SystemSet";
     ViewBag.SecondMenu = "ManagerRole";
 }
-@model UnionMall.Web.Models.Roles.RoleListViewModel
+@model UnionMall.Web.Models.Roles.EditRoleModalViewModel
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+
+
 <style>
     .checkbox {
         padding-top: 0 !important;
         min-height: 0 !important;
     }
-
 
     table tbody {
         display: block;
@@ -20,17 +21,18 @@
         overflow-y: scroll;
     }
 
+    body tr td {
+        border: none !important;
+    }
+
     table thead, tbody tr {
         display: table;
         width: 100%;
         table-layout: fixed;
+        border-top: 1px solid #e7eaec;
     }
 
-    body tr td:nth-child(1) {
-        width:10%;
-        max-width: 15%;
-    }
-    body tr td:nth-child(3) {
+    body tr td:nth-child(2) {
         width: 10%;
         max-width: 15%;
     }
@@ -43,36 +45,31 @@
                 <div class="ibox-tools"></div>
             </div>
             <div class="ibox-content">
-                <form method="get" class="form-horizontal">
+                <form method="post" class="form-horizontal" name="Role" action="javascript:void(0);">
+                    <input type="hidden" name="Id" value="@Model.Role.Id" />
+                    <input type="hidden" name="IsStatic" value="@(Model.Role.IsStatic.ToString())" />
+
                     <div class="form-group">
                         <label class="col-sm-1 control-label">@L("Roles")@L("Name")</label>
-                        <div class="col-sm-3"><input type="text" class="form-control"></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="Name" required maxlength="10" value="@Model.Role.Name" /></div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-1 control-label">@L("Introduce")</label>
 
                         <div class="col-sm-3">
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control">@Model.Role.Description</textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-1 control-label">@L("Permissions")</label>
-
                         <div class="col-sm-10">
-                            @*@foreach (var permission in Model.Permissions)
-                                {
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" value="@permission.Name" />@L(permission.DisplayName)
-                                    </label>
-                                }*@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>@L("Menu")</th>
-                                        <th>@L("Operate")</th>
-                                        <th>@L("Select")</th>
+                                        <th>@L("Menu")@L("Operate")</th>
+                                        <th style="width: 11.5%;max-width: 15%;">@L("Select")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,30 +77,27 @@
                                     @foreach (var first in Model.Permissions.Where(c => c.Name.IndexOf(".") <= 0))
                                     {
                                         <tr>
-                                            <td><strong>@L(first.DisplayName)</strong></td>
                                             <td>
                                                 <div class="checkbox checkbox-inline checkbox-success">
-                                                    <input id="@first.Name" type="checkbox" name="@first.Name" value="@first.Name">
-                                                    <label for="@first.Name">@L(first.DisplayName)</label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="checkbox checkbox-inline checkbox-success">
-                                                    <input type="checkbox" name="selectAll" value="">
-                                                    <label for="selectAll"></label>
+                                                    <input class="ck-first" id="@first.Name" type="checkbox" name="permission" value="@first.Name" />
+                                                    <label for="@first.Name"><strong>@L(first.DisplayName)</strong></label>
                                                 </div>
                                             </td>
                                         </tr>
                                         @foreach (var second in Model.Permissions.Where(c => c.Name.Contains(first.Name) &&
-                                     c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.Name.Length))
+c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.Name.Length))
                                         {
-                                            <tr>
-                                                <td>&nbsp;&nbsp;@L(second.DisplayName)</td>
+                                            <tr class="@first.Name">
                                                 <td>
-                                                    @foreach (var action in Model.Permissions.Where(c => c.Name.Contains(second.Name)))
+                                                    <div class="checkbox checkbox-inline checkbox-success">
+                                                        &nbsp;&nbsp;
+                                                        <input id="@second.Name" type="checkbox" name="permission" value="@second.Name">
+                                                        <label for="@second.Name">@L(second.DisplayName)</label>
+                                                    </div>
+                                                    @foreach (var action in Model.Permissions.Where(c => c.Name.Contains(second.Name + ".")))
                                                     {
                                                         <div class="checkbox checkbox-inline checkbox-success">
-                                                            <input id="@action.Name" class="styled" type="checkbox" name="@action.Name" value="@action.Name">
+                                                            <input id="@action.Name" class="styled" type="checkbox" name="permission" value="@action.Name">
                                                             <label for="@action.Name">@L(action.DisplayName)</label>
                                                         </div>
                                                     }
@@ -136,3 +130,6 @@
         </div>
     </div>
 </div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/view-resources/Areas/Set/Role.js"></script>
