@@ -48,7 +48,6 @@
                 <form method="post" class="form-horizontal" name="Role" action="javascript:void(0);">
                     <input type="hidden" name="Id" value="@Model.Role.Id" />
                     <input type="hidden" name="IsStatic" value="@(Model.Role.IsStatic.ToString())" />
-
                     <div class="form-group">
                         <label class="col-sm-1 control-label">@L("Roles")@L("Name")</label>
                         <div class="col-sm-3"><input type="text" class="form-control" name="Name" required maxlength="10" value="@Model.Role.Name" /></div>
@@ -58,7 +57,7 @@
                         <label class="col-sm-1 control-label">@L("Introduce")</label>
 
                         <div class="col-sm-3">
-                            <textarea class="form-control">@Model.Role.Description</textarea>
+                            <textarea class="form-control" name="Description">@Model.Role.Description</textarea>
                         </div>
                     </div>
 
@@ -79,7 +78,7 @@
                                         <tr>
                                             <td>
                                                 <div class="checkbox checkbox-inline checkbox-success">
-                                                    <input class="ck-first" id="@first.Name" type="checkbox" name="permission" value="@first.Name" />
+                                                    <input @(Model.HasPermission(first) ? "checked='checked'" : "") class="ck-first" id="@first.Name" type="checkbox" name="permission" value="@first.Name" />
                                                     <label for="@first.Name"><strong>@L(first.DisplayName)</strong></label>
                                                 </div>
                                             </td>
@@ -91,13 +90,13 @@ c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.N
                                                 <td>
                                                     <div class="checkbox checkbox-inline checkbox-success">
                                                         &nbsp;&nbsp;
-                                                        <input id="@second.Name" type="checkbox" name="permission" value="@second.Name">
+                                                        <input id="@second.Name" type="checkbox" @(Model.HasPermission(second) ? "checked='checked'" : "") name="permission" value="@second.Name">
                                                         <label for="@second.Name">@L(second.DisplayName)</label>
                                                     </div>
                                                     @foreach (var action in Model.Permissions.Where(c => c.Name.Contains(second.Name + ".")))
                                                     {
                                                         <div class="checkbox checkbox-inline checkbox-success">
-                                                            <input id="@action.Name" class="styled" type="checkbox" name="permission" value="@action.Name">
+                                                            <input @(Model.HasPermission(action) ? "checked='checked'" : "") id="@action.Name" class="styled" type="checkbox" name="permission" value="@action.Name">
                                                             <label for="@action.Name">@L(action.DisplayName)</label>
                                                         </div>
                                                     }
@@ -133,3 +132,20 @@ c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.N
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Set/Role.js"></script>
+<script>
+    function SaveSuccess() {
+        swal({
+            title: '@L("Save")@L("Success")！',
+            type: 'success',
+            timer: 2000
+        }).then(
+            function () { location.href = '/systemset/role/list'; },
+            // handling the promise rejection
+            function (dismiss) {
+                if (dismiss === 'timer') {
+                    location.href = '/systemset/role/list';
+                }
+            }
+        )
+    }
+</script>

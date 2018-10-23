@@ -69,6 +69,8 @@ $(function () {
     }
 
     function deleteRole(roleId, roleName) {
+        var s = abp.localization.localize('AreYouSureWantToDelete', 'UnionMall');
+        debugger;
         abp.message.confirm(
             abp.utils.formatString(abp.localization.localize('AreYouSureWantToDelete', 'UnionMall'), roleName),
             function (isConfirmed) {

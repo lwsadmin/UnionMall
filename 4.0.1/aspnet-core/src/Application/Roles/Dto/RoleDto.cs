@@ -10,15 +10,12 @@ namespace UnionMall.Roles.Dto
     [AutoMap(typeof(Role))]
     public class RoleDto : EntityDto<int>
     {
-
-        public string displayName { get; set; }
-
         [Required]
         [StringLength(AbpRoleBase.MaxNameLength)]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(AbpRoleBase.MaxDisplayNameLength)]
+        //[Required]
+        //[StringLength(AbpRoleBase.MaxDisplayNameLength)]
         public string DisplayName { get; set; }
 
         public string NormalizedName { get; set; }

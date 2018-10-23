@@ -183,7 +183,7 @@
     <text name="DeleteConfirm" value="确认删除吗?" />
     <text name="DeleteMsg" value="删除之后无法恢复!" />
     <text name="OK" value="确认" />
-
+    <text name="Success" value="成功" />
     <text name="HasChild" value="该类别下包括子级类别,请先移除子级类别!" />
   </texts>
 </localizationDictionary>

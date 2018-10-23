@@ -32,9 +32,9 @@ namespace UnionMall.Web.Startup
                         item.Attributes["Name"].Value,
                         L(item.Attributes["Name"].Value),
                         url: "",
-                        icon: item.Attributes["Icon"].Value
-                        //requiredPermissionName: item.Attributes["Name"].Value
-                        //requiresAuthentication:true
+                        icon: item.Attributes["Icon"].Value,
+                        requiredPermissionName: item.Attributes["Name"].Value,
+                        requiresAuthentication:true
                         );
 
                     if (item.ChildNodes != null && item.ChildNodes.Count > 0)
@@ -45,8 +45,8 @@ namespace UnionMall.Web.Startup
                                  subItem.Attributes["Name"].Value,
                                  L(subItem.Attributes["Name"].Value),
                                  url: subItem.Attributes["Url"].Value,
-                                 icon: ""
-                                 //requiredPermissionName: item.Attributes["Name"].Value+"."+ subItem.Attributes["Name"].Value
+                                 icon: "",
+                                 requiredPermissionName: item.Attributes["Name"].Value + "." + subItem.Attributes["Name"].Value
                                  );
                             first.AddItem(second);
                         }

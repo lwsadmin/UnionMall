@@ -239,6 +239,7 @@
     <text name="DeleteMsg" value="Cannot be restored after deletion" />
     <text name="OK" value="OK" />
     <text name="Add" value="Add" />
+    <text name="Success" value="Success" />
     <text name="HasChild" value="Below this category includes child class. Remove child class first." />
   </texts>
 </localizationDictionary>

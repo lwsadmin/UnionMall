@@ -16,7 +16,8 @@
         var _$form = $('form[name=Role]');
         var _roleService = abp.services.app.role;
         _$form.on('submit', function save() {
-   
+
+            var t = abp.localization.localize('Save', 'UnionMall');
             if (!_$form.valid()) {
                 return;
             }
@@ -29,34 +30,51 @@
                     role.permissions.push(_$permissionCheckbox.val());
                 }
             }
-            console.log(role);
-            debugger;
-            if (role.Id=="0") {
+            if (role.Id == "0") {
                 _roleService.create(role).done(function (data) {
-                    if (data.message != null && data.message != "") {
-                        sweetAlert(
-                            data.message,
-                            '',
-                            'error'
-                        )
-                    }
+                    //if (data.message != null && data.message != "") {
+                    //    sweetAlert(
+                    //        data.message,
+                    //        '',
+                    //        'error'
+                    //    )
+                    //}
+                    SaveSuccess();
+
                 }).fail(function (data) {
-                   // alert(data.result.error.message);
+                    // alert(data.result.error.message);
                 }).always(function () {
 
                 });
             } else {
-                _roleService.update(role).done(function () {
+                _roleService.update(role).done(function (data) {
+                    SaveSuccess();
 
                 }).always(function () {
 
                 });
             }
-
-
         });
 
 
     });
-
 })();
+function Delete(btn) {
+    var _roleService = abp.services.app.role;
+    var id = $(btn).attr("data-id");
+    var name = $(btn).attr("data-name");
+    swal({
+        title: $(btn).attr("data-title"),
+        text: '',
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonText: $(btn).attr("data-ok"),
+        cancelButtonText: $(btn).attr("data-cancle")
+    }).then(function (isConfirm) {
+        if (isConfirm.value == true) {
+            _roleService.deleteServices(id).done(function (data) {
+                $(".pagination .active a").click();
+            });
+        }
+    });
+}

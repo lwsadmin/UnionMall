@@ -7,12 +7,12 @@
 @using X.PagedList.Mvc.Core
 @model PagedList<DataRow>
 
-
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>@L("Name")</th>
-            <th>@L("Note")</th>
+            <th>@L("Introduce")</th>
             <th>@L("CreationTime")</th>
             <th>@L("Operate")</th>
         </tr>
@@ -21,17 +21,27 @@
         @foreach (DataRow item in Model)
         {
             <tr>
-                <td>@item["DisplayName"]</td>
+                <td class="title">@item["Name"]</td>
                 <td>@item["Description"]</td>
                 <td>@item["CreationTime"]</td>
                 <td>
 
-                    <a onclick="Edit(@item["Id"])" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
-                    &nbsp;&nbsp;  &nbsp;&nbsp;
-                    <a data-title="@L("DeleteConfirm{0}",item["DisplayName"])" data-ok="@L("OK")"
-                       data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                        <i class="fa fa-trash text-navy"></i>
-                    </a>
+                    @if (item["Name"].ToString().ToUpper() != "ADMIN")
+                    {
+                        if (IsGranted("SystemSet.ManagerRole.Edit"))
+                        {
+                            <a href="/systemset/role/add/@item["Id"]" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                        }
+
+                        if (IsGranted("SystemSet.ManagerRole.Delete"))
+                        {
+                            <a style="margin-left:15px;" data-title="@L("DeleteConfirm{0}", item["Name"])" data-ok="@L("OK")"
+                               data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                                <i class="fa fa-trash text-navy"></i>
+                            </a>
+                        }
+                    }
+
 
                 </td>
             </tr>

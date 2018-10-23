@@ -66,5 +66,5 @@ function Delete(btn) {
                 $(".pagination .active a").click();
             });
         }
-    })
+    });
 }

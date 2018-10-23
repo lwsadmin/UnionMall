@@ -18,7 +18,7 @@ using UnionMall.Web.Models.Roles;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
-    [AbpMvcAuthorize("SystemSet.UsersManager")]
+    [AbpMvcAuthorize("SystemSet.UserManager")]
     [Area("SystemSet")]
     public class UserController : UnionMallControllerBase
     {

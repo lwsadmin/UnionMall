@@ -23,7 +23,7 @@ using System.IO;
 
 namespace UnionMall.Roles
 {
-    [AbpAuthorize(PermissionNames.Pages_Roles)]
+    //[AbpAuthorize(PermissionNames.Pages_Roles)]
     public class RoleAppService : AsyncCrudAppService<Role, RoleDto, int, PagedResultRequestDto, CreateRoleDto, RoleDto>, IRoleAppService
     {
         private readonly RoleManager _roleManager;
@@ -65,6 +65,10 @@ namespace UnionMall.Roles
 
         public override async Task<RoleDto> Update(RoleDto input)
         {
+            if (string.IsNullOrEmpty(input.DisplayName))
+            {
+                input.DisplayName = input.Name;
+            }
             CheckUpdatePermission();
 
             var role = await _roleManager.GetRoleByIdAsync(input.Id);
@@ -97,7 +101,17 @@ namespace UnionMall.Roles
 
             CheckErrors(await _roleManager.DeleteAsync(role));
         }
-
+        public async Task DeleteServices(int Id)
+        {
+            CheckDeletePermission();
+            var role = await _roleManager.FindByIdAsync(Id.ToString());
+            var users = await _userManager.GetUsersInRoleAsync(role.NormalizedName);
+            foreach (var user in users)
+            {
+                CheckErrors(await _userManager.RemoveFromRoleAsync(user, role.NormalizedName));
+            }
+            CheckErrors(await _roleManager.DeleteAsync(role));
+        }
 
 
         protected override IQueryable<Role> CreateFilteredQuery(PagedResultRequestDto input)
@@ -124,56 +138,25 @@ namespace UnionMall.Roles
         {
             var permissions = new List<PermissionDto>();
             var role = new Role();
-            if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0 || 1 == 1)
+            if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0)
             {
                 //宿主登录，显示所有权限
-
-                XmlDocument NavigationXml = new XmlDocument();
-                string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
-                XmlReaderSettings settings = new XmlReaderSettings();
-                settings.IgnoreComments = true; //忽略注释
-                XmlReader reader = XmlReader.Create(currentDirectory, settings);
-                NavigationXml.Load(reader);
-                XmlNodeList List = NavigationXml.SelectNodes("//Navigation//First");
-
-                List<PermissionDto> dtoList = new List<PermissionDto>();
-                foreach (XmlNode item in List)
-                {
-                    PermissionDto FirstMenudto = new PermissionDto();
-                    FirstMenudto.Name = item.Attributes["Name"].Value;
-                    FirstMenudto.DisplayName = item.Attributes["Name"].Value;
-                    dtoList.Add(FirstMenudto);
-                    if (item.ChildNodes != null && item.ChildNodes.Count > 0)
-                    {
-                        foreach (XmlNode subItem in item.ChildNodes)
-                        {
-                            PermissionDto secondMenudto = new PermissionDto();
-                            secondMenudto.Name = item.Attributes["Name"].Value + "." + subItem.Attributes["Name"].Value;
-                            secondMenudto.DisplayName = subItem.Attributes["Name"].Value;
-                            dtoList.Add(secondMenudto);
-                            if (subItem.ChildNodes.Count > 0)
-                            {
-                                foreach (XmlNode actionItem in subItem.ChildNodes)
-                                {
-                                    PermissionDto actionDto = new PermissionDto();
-                                    actionDto.Name = item.Attributes["Name"].Value + "." +
-                                        subItem.Attributes["Name"].Value + "." + actionItem.Attributes["Name"].Value;
-                                    actionDto.DisplayName = actionItem.Attributes["Name"].Value;
-                                    dtoList.Add(actionDto);
-                                }
-
-                            }
-                        }
-                    }
-                }
-                permissions = dtoList;
+                permissions = GetPermissionDtos();
             }
-            else
+            if (permissions.Count == 0 && _AbpSession.UserId != null)
+            {
+                var user = _userManager.FindByIdAsync(_AbpSession.UserId.ToString());
+                if (user.Result.Name.ToUpper() == "ADMIN")// //运营商总部管理员登录，显示所有权限.后期可根据版本控制
+                {
+                    permissions = GetPermissionDtos();
+                }
+            }
+            if (permissions.Count == 0)
             {
                 permissions = PermissionManager.GetAllPermissions() as List<PermissionDto>;
+
             }
             if (input != null && input.Id > 0)
-
                 role = await _roleManager.GetRoleByIdAsync(input.Id);
             else
             {
@@ -182,16 +165,64 @@ namespace UnionMall.Roles
                 role.TenantId = AbpSession.TenantId;
             }
 
+            var hasPermission = new List<string>();
+            if (input.Id > 0)
+            {
+                var grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
+                hasPermission = grantedPermissions.Select(p => p.Name).ToList();
+            }
 
-            //   var grantedPermissions = (await _roleManager.GetGrantedPermissionsAsync(role)).ToArray();
             var roleEditDto = ObjectMapper.Map<RoleEditDto>(role);
 
             return new GetRoleForEditOutput
             {
                 Role = roleEditDto,
                 Permissions = ObjectMapper.Map<List<FlatPermissionDto>>(permissions),
-                // GrantedPermissionNames = grantedPermissions.Select(p => p.Name).ToList()
+                GrantedPermissionNames = hasPermission
             };
+        }
+
+        private List<PermissionDto> GetPermissionDtos()
+        {
+            XmlDocument NavigationXml = new XmlDocument();
+            string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreComments = true; //忽略注释
+            XmlReader reader = XmlReader.Create(currentDirectory, settings);
+            NavigationXml.Load(reader);
+            XmlNodeList List = NavigationXml.SelectNodes("//Navigation//First");
+
+            List<PermissionDto> dtoList = new List<PermissionDto>();
+            foreach (XmlNode item in List)
+            {
+                PermissionDto FirstMenudto = new PermissionDto();
+                FirstMenudto.Name = item.Attributes["Name"].Value;
+                FirstMenudto.DisplayName = item.Attributes["Name"].Value;
+                dtoList.Add(FirstMenudto);
+                if (item.ChildNodes != null && item.ChildNodes.Count > 0)
+                {
+                    foreach (XmlNode subItem in item.ChildNodes)
+                    {
+                        PermissionDto secondMenudto = new PermissionDto();
+                        secondMenudto.Name = item.Attributes["Name"].Value + "." + subItem.Attributes["Name"].Value;
+                        secondMenudto.DisplayName = subItem.Attributes["Name"].Value;
+                        dtoList.Add(secondMenudto);
+                        if (subItem.ChildNodes.Count > 0)
+                        {
+                            foreach (XmlNode actionItem in subItem.ChildNodes)
+                            {
+                                PermissionDto actionDto = new PermissionDto();
+                                actionDto.Name = item.Attributes["Name"].Value + "." +
+                                    subItem.Attributes["Name"].Value + "." + actionItem.Attributes["Name"].Value;
+                                actionDto.DisplayName = actionItem.Attributes["Name"].Value;
+                                dtoList.Add(actionDto);
+                            }
+
+                        }
+                    }
+                }
+            }
+            return dtoList;
         }
 
 
