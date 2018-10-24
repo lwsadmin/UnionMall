@@ -145,7 +145,9 @@ namespace UnionMall.Roles
             }
             if (permissions.Count == 0 && _AbpSession.UserId != null)
             {
+
                 var user = _userManager.FindByIdAsync(_AbpSession.UserId.ToString());
+                //   var role = _roleManager.GetRoleByIdAsync(user.);//需要改为根据Role判断
                 if (user.Result.Name.ToUpper() == "ADMIN")// //运营商总部管理员登录，显示所有权限.后期可根据版本控制
                 {
                     permissions = GetPermissionDtos();

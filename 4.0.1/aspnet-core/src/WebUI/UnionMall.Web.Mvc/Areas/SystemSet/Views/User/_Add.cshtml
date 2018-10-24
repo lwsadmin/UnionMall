@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+@using UnionMall.Web.Models.Common.Modals
+@model UnionMall.Web.Models.Users.EditUserModalViewModel
+<div class="modal inmodal fade in" id="roleCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title"></h4>
+                <small class="font-bold"></small>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>@L("LogIn")@L("Name")</label>
+                            <input type="text" name="UserName" value="@Model.User.UserName" class="form-control" required maxlength="32" minlength="2" />
+                        </div>
+                        <div class="form-group">
+                            <label>@L("Belong")@L("Roles")</label>
+
+                            <select name="role" class="form-control chosen-select">
+                                <option value="">-@L("Choose")-</option>
+                                @foreach (var role in Model.Roles)
+                                {
+                                    <option value="@role.NormalizedName">@role.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>@L("LogIn")@L("Name")</label>
+                            <input type="text" name="UserName" value="@Model.User.UserName" class="form-control" required maxlength="32" minlength="2" />
+                        </div>
+                        <div class="form-group">
+                            <label>@L("Belong")@L("Roles")</label>
+
+                            <select name="role" class="form-control chosen-select">
+                                <option value="">-@L("Choose")-</option>
+                                @foreach (var role in Model.Roles)
+                                {
+                                    <option value="@role.NormalizedName">@role.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">@L("Save")</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

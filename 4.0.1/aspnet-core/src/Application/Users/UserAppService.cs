@@ -16,29 +16,34 @@ using UnionMall.Authorization.Roles;
 using UnionMall.Authorization.Users;
 using UnionMall.Roles.Dto;
 using UnionMall.Users.Dto;
+using System.Data;
+using UnionMall.IRepositorySql;
 
 namespace UnionMall.Users
 {
-    [AbpAuthorize(PermissionNames.Pages_Users)]
+    //[AbpAuthorize(PermissionNames.Pages_Users)]
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly ISqlExecuter _sqlExecuter;
 
         public UserAppService(
             IRepository<User, long> repository,
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
-            IPasswordHasher<User> passwordHasher)
+            IPasswordHasher<User> passwordHasher,
+             ISqlExecuter sqlExecuter)
             : base(repository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
+            _sqlExecuter = sqlExecuter;
         }
 
         public override async Task<UserDto> Create(CreateUserDto input)
@@ -148,6 +153,18 @@ namespace UnionMall.Users
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
+        }
+
+        public DataSet GetUserPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "" )
+        {
+            if (string.IsNullOrEmpty(table))
+            {
+                table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,
+s.EmailAddress,ur.RoleId,r.Name as RoleName from TUsers s left join TUserRoles ur
+on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id where 1=1 ";
+            }
+            table += where;
+            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
     }
 }

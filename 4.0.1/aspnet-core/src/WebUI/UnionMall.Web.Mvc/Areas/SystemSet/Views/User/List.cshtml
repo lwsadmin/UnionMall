@@ -5,11 +5,13 @@
 
     ViewBag.FirstMenu = "SystemSet";
     ViewBag.SecondMenu = "UserManager";
+
+    EditUserModalViewModel s = ViewBag.EditUser;
 }
 
 @using System.Data
 @using X.PagedList
-@using X.PagedList.Mvc.Core
+@using UnionMall.Web.Models.Users
 @model PagedList<DataRow>
 
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -58,22 +60,19 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-sm-1">
+                        <div class="col-sm-1" style="width:auto;">
                             <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
                         </div>
                         <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/systemset/user/List" method="post">
-
                             <div class="col-sm-2">
-                                @Html.DropDownList("RoleId", (SelectList)ViewData["Roles"], L("Choose"), new { @class = "input-sm form-control",@style= "padding: 3px 5px;" })
+                                @Html.DropDownList("RoleId", (SelectList)ViewData["Roles"], L("Choose"), new { @class = "input-sm form-control", @style = "padding: 3px 5px;" })
                             </div>
                             <div class="col-sm-2">
-
                                 <div class="input-group">
                                     <input type="text" name="Name" placeholder="@L("UserName")" class="input-sm form-control"> <span class="input-group-btn">
                                         <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
                                     </span>
                                 </div>
-
                             </div>
                         </form>
                     </div>
@@ -85,7 +84,15 @@
         </div>
     </div>
 </div>
-<script src="~/js/jquery.unobtrusive.js"></script>
+<div id="DivAdd">
+    @Html.Partial("_Add", s)
+</div>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/view-resources/Areas/Set/User.js"></script>
 <script>
 
+
+    function EditShow(data) {
+        $("#CreateModal").modal("show");
+    }
 </script>

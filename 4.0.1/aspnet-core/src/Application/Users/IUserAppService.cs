@@ -1,3 +1,4 @@
+using System.Data;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -11,5 +12,7 @@ namespace UnionMall.Users
         Task<ListResultDto<RoleDto>> GetRoles();
 
         Task ChangeLanguage(ChangeUserLanguageDto input);
+
+        DataSet GetUserPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
     }
 }

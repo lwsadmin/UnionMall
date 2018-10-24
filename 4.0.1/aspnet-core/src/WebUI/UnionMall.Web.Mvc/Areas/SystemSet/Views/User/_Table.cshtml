@@ -11,6 +11,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
+            <th>@L("LogIn")@L("Name")</th>
             <th>@L("UserName")</th>
             <th>@L("Roles")@L("Name")</th>
             <th>@L("PhoneNumber")</th>
@@ -22,21 +23,22 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-            <tr>
-                <td class="title">@item["UserName"]</td>
-                <td>@item["DisplayName"]</td>
-                <td>@item["PhoneNumber"]</td>
-                <td>  <a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                <td>@item["EmailAddress"]</td>
-                <td>
-                    <a onclick="Edit(@item["Id"])" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
-                    &nbsp;&nbsp;  &nbsp;&nbsp;
-                    <a data-title="@L("DeleteConfirm{0}",item["UserName"])" data-ok="@L("OK")"
-                       data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                        <i class="fa fa-trash text-navy"></i>
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <td class="title">@item["UserName"]</td>
+            <td class="title">@item["Name"]</td>
+            <td>@item["RoleName"]</td>
+            <td>@item["PhoneNumber"]</td>
+            <td>  <a href="#"><i class="fa fa-check text-navy"></i></a></td>
+            <td>@item["EmailAddress"]</td>
+            <td>
+                <a onclick="Edit(@item["Id"])" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                &nbsp;&nbsp;  &nbsp;&nbsp;
+                <a data-title="@L("DeleteConfirm{0}",item["UserName"])" data-ok="@L("OK")"
+                   data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                    <i class="fa fa-trash text-navy"></i>
+                </a>
+            </td>
+        </tr>
         }
 
     </tbody>
