@@ -23,6 +23,10 @@ namespace UnionMall.Users.Dto
         public string Surname { get; set; }
 
         [Required]
+        [StringLength(20)]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         [EmailAddress]
         [StringLength(AbpUserBase.MaxEmailAddressLength)]
         public string EmailAddress { get; set; }

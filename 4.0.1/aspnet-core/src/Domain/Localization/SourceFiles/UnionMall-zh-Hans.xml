@@ -28,6 +28,9 @@
     <text value="删除" name="Delete"/>
     <text value="操作" name="Operate"/>
     <text value="角色" name="Roles"/>
+    <text value="正常" name="Normal" />
+    <text value="禁用" name="Disable" />
+
     <text name="LanguageSetting">语言设置</text>
     <text value="欢迎您" name="Welcome to"  />
     <text name="This system is for demonstration only" value="本系统仅供演示" />
@@ -158,6 +161,7 @@
     <text name="Selectable" value="可选" />
     <text name="Choose" value="-请选择-" />
     <text name="Address" value="地址" />
+    <text name="NoEditPwd" value="不填写则不修改密码" />
     <text name="AddressPlace" value="请输入详细地址 如 市, 区, 街道" />
     <!--Table-->
     <text name="Sort" value="排序" />

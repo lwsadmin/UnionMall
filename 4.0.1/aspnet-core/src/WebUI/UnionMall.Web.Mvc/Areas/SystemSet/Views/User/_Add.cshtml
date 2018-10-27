@@ -13,6 +13,7 @@
                 <small class="font-bold"></small>
             </div>
             <form action="javascript:void(0);" method="post" id="userAdd">
+                <input type="hidden" name="Id" value="@Model.User.Id" class="form-control" />
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -20,20 +21,36 @@
                                 <label>@L("LogIn")@L("Name")</label>
                                 <input type="text" name="UserName" value="@Model.User.UserName" class="form-control" required maxlength="32" minlength="2" />
                             </div>
+
+
+                            <div class="form-group">
+                                <label>@L("PhoneNumber")</label>
+                                <input type="text" name="PhoneNumber" value="@Model.User.PhoneNumber" class="form-control" required="" maxlength="20" minlength="5" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>@L("Password")</label>
+                                <input type="password" id="Password" name="Password" class="form-control"
+                                       placeholder="@L("NoEditPwd")" required="@(Model.User.Id == 0 ? "true":"false")" maxlength="32" />
+                            </div>
                             <div class="form-group">
                                 <label>@L("Belong")@L("Roles")</label>
-
-                                <select name="role" class="form-control chosen-select" required>
+                                <select class="input-sm form-control" id="role" name="role" required="true">
                                     <option value="">-@L("Choose")-</option>
                                     @foreach (var role in Model.Roles)
                                     {
-                                        <option value="@role.NormalizedName">@role.Name</option>
+                                        if (Model.UserIsInRole(role))
+                                        {
+                                            <option selected="selected" value="@role.NormalizedName">@role.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@role.NormalizedName">@role.Name</option>
+                                        }
+
                                     }
+
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label>@L("Password")</label>
-                                <input type="password" id="Password" name="Password" class="form-control" required="" maxlength="32" />
                             </div>
 
                         </div>
@@ -44,11 +61,27 @@
                             </div>
                             <div class="form-group">
                                 <label>@L("Email")</label>
-                                <input type="text" name="EmailAddress" value="@Model.User.EmailAddress" class="form-control" emai required maxlength="32" minlength="2" />
+                                <input type="text" name="EmailAddress" value="@Model.User.EmailAddress" class="form-control" email="true" required maxlength="32" minlength="2" />
                             </div>
                             <div class="form-group">
                                 <label>@L("OK")@L("Password")</label>
-                                <input type="password" id="confirm_password" name="confirm_password" class="form-control" equalTo="#Password" required maxlength="32">
+                                <input type="password" id="confirm_password" name="confirm_password" class="form-control"
+                                       placeholder="@L("NoEditPwd")" required="@(Model.User.Id == 0 ? "true":"false")" equalTo="#Password" maxlength="32">
+                            </div>
+                            <div class="form-group">
+                                <label>@L("Status")</label>
+
+                                <div style="padding-top:10px;">
+                                    <div class="radio radio-inline radio-success">
+                                        <input type="radio" id="active" value="true" name="IsActive" @(Model.User.IsActive ? "checked" : "") />
+                                        <label for="active">@L("Normal")</label>
+                                    </div>
+                                    <div class="radio radio-inline radio-success">
+                                        <input type="radio" id="Disable" value="false" name="IsActive" @(!Model.User.IsActive ? "checked" : "") />
+                                        <label for="Disable">@L("Disable")</label>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -64,5 +97,19 @@
 </div>
 <script>
     $("#userAdd").validate({});
+    $('#roleCreate').on("hidden.bs.modal", function () {
+        $("#userAdd").find("label[class='error']").fadeOut(0);
+        $("input[name='Id']").val(0);
+        $("#userAdd").find("input").removeClass("error").val('');
+        $("input[type='password']").attr("placeholder", "").attr("required","true");
+    });
+    $('#roleCreate').on("shown.bs.modal", function () {
+        if ('@Model.User.Id' == '0') {
+            $("input[type='password']").attr("placeholder", "").attr("required", "true");
+        } else {
+            $("input[type='password']").removeAttr("required");
+        }
+
+    });
 </script>
 

@@ -96,6 +96,7 @@ c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.N
                                                     @foreach (var action in Model.Permissions.Where(c => c.Name.Contains(second.Name + ".")))
                                                     {
                                                         <div class="checkbox checkbox-inline checkbox-success">
+
                                                             <input @(Model.HasPermission(action) ? "checked='checked'" : "") id="@action.Name" class="styled" type="checkbox" name="permission" value="@action.Name">
                                                             <label for="@action.Name">@L(action.DisplayName)</label>
                                                         </div>

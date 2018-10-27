@@ -5,14 +5,14 @@
         var _$modal = $('#UserCreateModal');
         var _$form = _$modal.find('form');
 
-        _$form.validate({
-            rules: {
-                Password: "required",
-                ConfirmPassword: {
-                    equalTo: "#Password"
-                }
-            }
-        });
+        //_$form.validate({
+        //    rules: {
+        //        Password: "required",
+        //        ConfirmPassword: {
+        //            equalTo: "#Password"
+        //        }
+        //    }
+        //});
 
         $('#RefreshButton').click(function () {
             refreshUserList();
@@ -43,9 +43,9 @@
         _$form.find('button[type="submit"]').click(function (e) {
             e.preventDefault();
 
-            if (!_$form.valid()) {
-                return;
-            }
+            //if (!_$form.valid()) {
+            //    return;
+            //}
 
             var user = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
             user.roleNames = [];
@@ -56,7 +56,8 @@
                     user.roleNames.push(_$roleCheckbox.val());
                 }
             }
-
+            debugger;
+            return;
             abp.ui.setBusy(_$modal);
             _userService.create(user).done(function () {
                 _$modal.modal('hide');

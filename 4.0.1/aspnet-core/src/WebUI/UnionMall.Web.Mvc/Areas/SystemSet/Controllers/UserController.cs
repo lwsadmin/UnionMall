@@ -67,9 +67,9 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             return View(pageList);
         }
 
-        public async Task<ActionResult> Add(long? id)
+        public async Task<ActionResult> Add(long? userId)
         {
-            var user = await _userAppService.Get(new EntityDto<long>((long)id));
+            var user = await _userAppService.Get(new EntityDto<long>((long)userId));
             var roles = (await _userAppService.GetRoles()).Items;
             var model = new EditUserModalViewModel
             {

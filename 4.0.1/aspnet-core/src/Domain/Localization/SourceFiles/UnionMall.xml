@@ -26,6 +26,7 @@
     <text name="NameSurname" value="Name surname" />
     <text name="UserName" value="User name" />
     <text name="Name" value="Name" />
+    <text name="NoEditPwd" value="LeaveTheBlankWithoutChangingThePassword" />
     <text name="Surname" value="Surname" />
     <text name="EmailAddress" value="Email address" />
     <text name="Tenants" value="Tenants" />
@@ -44,7 +45,8 @@
     <text name="TenantSelection_Detail" value="Please select one of the following tenants." />
     <text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
     <text name="DatabaseConnectionString" value="Database connection string" />
-    <text name="IsActive" value="Is active" />
+    <text name="Normal" value="Normal" />
+    <text name="Disable" value="Disable" />
     <text name="FullName" value="Full name" />
     <text value="Detail" name="Detail"/>
     <text value="Introduce" name="Introduce"/>

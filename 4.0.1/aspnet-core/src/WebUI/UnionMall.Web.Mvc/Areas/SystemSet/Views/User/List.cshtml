@@ -13,13 +13,14 @@
 @using X.PagedList
 @using UnionMall.Web.Models.Users
 @model PagedList<DataRow>
+
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 
 <script>
     language = $("#CurrentLanguage").attr("data-lan");
     if (language == "zh-Hans") {
         $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
-           // alert('done');
         });
     }
 </script>

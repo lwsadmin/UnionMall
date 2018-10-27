@@ -6,6 +6,7 @@ namespace UnionMall.Authorization.Users
 {
     public class User : AbpUser<User>
     {
+
         public const string DefaultPassword = "123qwe";
 
         public static string CreateRandomPassword()
@@ -18,7 +19,7 @@ namespace UnionMall.Authorization.Users
             var user = new User
             {
                 TenantId = tenantId,
-                UserName = AdminUserName,
+                UserName = "",//UserName姓氏，去掉
                 Name = AdminUserName,
                 Surname = AdminUserName,
                 EmailAddress = emailAddress

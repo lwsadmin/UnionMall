@@ -70,9 +70,16 @@ namespace UnionMall.Users
 
         public override async Task<UserDto> Update(UserDto input)
         {
+            input.UserName = input.Name;
+
+
             CheckUpdatePermission();
 
             var user = await _userManager.GetUserByIdAsync(input.Id);
+            if (string.IsNullOrEmpty(input.Password))
+            {
+                input.Password = user.PasswordResetCode;
+            }
 
             MapToEntity(input, user);
 
@@ -155,7 +162,7 @@ namespace UnionMall.Users
             identityResult.CheckErrors(LocalizationManager);
         }
 
-        public DataSet GetUserPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "" )
+        public DataSet GetUserPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
             {
