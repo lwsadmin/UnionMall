@@ -13,6 +13,16 @@
 @using X.PagedList
 @using UnionMall.Web.Models.Users
 @model PagedList<DataRow>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+
+<script>
+    language = $("#CurrentLanguage").attr("data-lan");
+    if (language == "zh-Hans") {
+        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
+           // alert('done');
+        });
+    }
+</script>
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
@@ -87,6 +97,8 @@
 <div id="DivAdd">
     @Html.Partial("_Add", s)
 </div>
+
+
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Set/User.js"></script>
 <script>

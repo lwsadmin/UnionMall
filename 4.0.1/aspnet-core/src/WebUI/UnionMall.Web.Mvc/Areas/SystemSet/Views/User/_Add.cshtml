@@ -12,54 +12,57 @@
                 <h4 class="modal-title">@L("Add")@L("Users")</h4>
                 <small class="font-bold"></small>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>@L("LogIn")@L("Name")</label>
-                            <input type="text" name="UserName" value="@Model.User.UserName" class="form-control" required maxlength="32" minlength="2" />
-                        </div>
-                        <div class="form-group">
-                            <label>@L("Belong")@L("Roles")</label>
+            <form action="javascript:void(0);" method="post" id="userAdd">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>@L("LogIn")@L("Name")</label>
+                                <input type="text" name="UserName" value="@Model.User.UserName" class="form-control" required maxlength="32" minlength="2" />
+                            </div>
+                            <div class="form-group">
+                                <label>@L("Belong")@L("Roles")</label>
 
-                            <select name="role" class="form-control chosen-select">
-                                <option value="">-@L("Choose")-</option>
-                                @foreach (var role in Model.Roles)
-                                {
-                                    <option value="@role.NormalizedName">@role.Name</option>
-                                }
-                            </select>
+                                <select name="role" class="form-control chosen-select" required>
+                                    <option value="">-@L("Choose")-</option>
+                                    @foreach (var role in Model.Roles)
+                                    {
+                                        <option value="@role.NormalizedName">@role.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>@L("Password")</label>
+                                <input type="password" id="Password" name="Password" class="form-control" required="" maxlength="32" />
+                            </div>
+
                         </div>
-                        <div class="form-group">
-                            <label>@L("Password")</label>
-                            <input type="password" id="Password" name="Password" class="form-control" required="" maxlength="32">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>@L("Users")@L("Name")</label>
-                            <input type="text" name="UserName" value="@Model.User.Name" class="form-control" required maxlength="32" minlength="2" />
-                        </div>
-                        <div class="form-group">
-                            <label>@L("Email")</label>
-                            <input type="text" name="EmailAddress" value="@Model.User.EmailAddress" class="form-control" required maxlength="32" minlength="2" />
-                        </div>
-                        <div class="form-group">
-                            <label>@L("OK")@L("Password")</label>
-                            <input type="password" name="Password" class="form-control" required="" maxlength="32">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>@L("Users")@L("Name")</label>
+                                <input type="text" name="Name" value="@Model.User.Name" class="form-control" required="" maxlength="32" minlength="2" />
+                            </div>
+                            <div class="form-group">
+                                <label>@L("Email")</label>
+                                <input type="text" name="EmailAddress" value="@Model.User.EmailAddress" class="form-control" emai required maxlength="32" minlength="2" />
+                            </div>
+                            <div class="form-group">
+                                <label>@L("OK")@L("Password")</label>
+                                <input type="password" id="confirm_password" name="confirm_password" class="form-control" equalTo="#Password" required maxlength="32">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">@L("Save")</button>
-                &nbsp;&nbsp;
-                <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
-
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">@L("Save")</button>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
+<script>
+    $("#userAdd").validate({});
+</script>
 
