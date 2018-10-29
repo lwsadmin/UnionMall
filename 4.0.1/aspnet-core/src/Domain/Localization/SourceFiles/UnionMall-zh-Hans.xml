@@ -30,7 +30,7 @@
     <text value="角色" name="Roles"/>
     <text value="正常" name="Normal" />
     <text value="禁用" name="Disable" />
-
+    <text value="管理" name="Manage"/>
     <text name="LanguageSetting">语言设置</text>
     <text value="欢迎您" name="Welcome to"  />
     <text name="This system is for demonstration only" value="本系统仅供演示" />

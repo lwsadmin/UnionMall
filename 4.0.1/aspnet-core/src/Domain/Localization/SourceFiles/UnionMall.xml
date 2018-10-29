@@ -51,7 +51,7 @@
     <text name="FullName" value="Full name" />
     <text value="Detail" name="Detail"/>
     <text value="Introduce" name="Introduce"/>
-
+    <text value="Manage" name="Manage"/>
     <text value="Parent" name="Parent"/>
     <text value="Email" name="Email"/>
     <text value="PhoneNumber" name="PhoneNumber"/>

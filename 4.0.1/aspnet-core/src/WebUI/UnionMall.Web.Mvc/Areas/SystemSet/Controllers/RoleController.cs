@@ -31,63 +31,34 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             _AbpSession = abpSession;
             _businessAppService = businessAppService;
         }
-        public async Task<IActionResult> List(int pageIndex = 1, string Name = "")
+        public async Task<IActionResult> List(int pageIndex = 1, int pageSize = 10, string Name = "")
         {
-
-            int pageSize = 15;
-            string table = $"select r.Id,r.CreationTime,r.Description,r.DisplayName,r.Name,r.IsDefault from TRoles r where IsDeleted=0 ";
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId >= 0)
-            {
-                table += $" and TenantId={_AbpSession.TenantId}";
-            }
-
+            string where = string.Empty;
             if (!string.IsNullOrEmpty(Name))
-            {
-                table += $" and Name like'%{Name}%'";
-            }
+                where += $" and Name like '%{Name}%'";
             int total;
 
-            DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, table, "id desc", out total);
+            DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, "id desc", out total, where);
             IPagedList page = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
             if (Request.Headers.ContainsKey("x-requested-with"))
             {
                 return View("_Table", page);
             }
             List<BusinessDropDownDto> dtoList = (await _businessAppService.GetDropDown());
-           // ViewData.Add("Business", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(dtoList, "Id", "BusinessName"));
             return View(page);
-        }
-
-        public async Task<ActionResult> Edit(int? roleId)
-        {
-            var permissions = (await _roleAppService.GetAllPermissions()).Items;
-            if (roleId == null)
-            {
-                RoleDto dto = new RoleDto();
-                return View("_Add", dto);
-            }
-            else
-            {
-                return View("_Add", new EditRoleModalViewModel(new GetRoleForEditOutput()));
-            }
-            //  AjaxPager s = new AjaxPager();
         }
         public async Task<ActionResult> Add(int? id)
         {
-            // var permissions = (await _roleAppService.GetAllPermissions()).Items;
-            if (id == null)
-            {
-                var output = await _roleAppService.GetRoleForEdit(new EntityDto());
-                var model = new EditRoleModalViewModel(output);
-                return View("Add", model);
-            }
-            else
-            {
-                var output = await _roleAppService.GetRoleForEdit(new EntityDto((int)id));
-                var model = new EditRoleModalViewModel(output);
-                return View("Add", model);
-            }
+            var output = await _roleAppService.GetRoleForEdit(new EntityDto());
+            var model = new EditRoleModalViewModel(output);
 
+            if (id != null)
+            {
+                output = await _roleAppService.GetRoleForEdit(new EntityDto((int)id));
+                model = new EditRoleModalViewModel(output);
+
+            }
+            return View("Add", model);
         }
     }
 }

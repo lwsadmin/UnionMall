@@ -1,4 +1,5 @@
-﻿(function () {
+﻿
+(function () {
     $(function () {
         $(".ck-first").on("change", function () {
             var ck = $(this);
@@ -23,6 +24,12 @@
             }
             var role = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
             role.permissions = [];
+            role.manageRole = '';
+            $("input[name='ManageRole']:checked").each(function () {
+                role.manageRole += $(this).val() + ',';
+            });
+            role.manageRole = String(role.manageRole).substring(0, role.manageRole.lastIndexOf(','));
+
             var _$permissionCheckboxes = $("input[name='permission']:checked:visible");
             if (_$permissionCheckboxes) {
                 for (var permissionIndex = 0; permissionIndex < _$permissionCheckboxes.length; permissionIndex++) {

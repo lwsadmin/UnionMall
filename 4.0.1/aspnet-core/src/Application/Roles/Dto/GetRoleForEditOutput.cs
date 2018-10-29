@@ -9,5 +9,7 @@ namespace UnionMall.Roles.Dto
         public List<FlatPermissionDto> Permissions { get; set; }
 
         public List<string> GrantedPermissionNames { get; set; }
+
+        public List<RoleDto> ManageRole { get; set; }
     }
 }

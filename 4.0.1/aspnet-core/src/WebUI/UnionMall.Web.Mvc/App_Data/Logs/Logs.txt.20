@@ -1,0 +1,1179 @@
+INFO  2018-10-29 12:34:29,519 [10   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-10-29 12:34:29,566 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 59.728ms
+DEBUG 2018-10-29 12:34:29,566 [10   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:34:29,567 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 66.9176ms 200 application/x-javascript
+INFO  2018-10-29 12:34:31,151 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/SystemSet/User/Add?userId=5 application/html 0
+DEBUG 2018-10-29 12:34:31,185 [10   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:34:31,185 [10   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:34:31,188 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:34:31,189 [10   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:34:31,189 [10   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:34:31,189 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "Add", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:34:31,189 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:34:31,189 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:34:31,189 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:34:31,189 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:34:31,190 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:34:31,190 [10   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:34:31,190 [10   ] .Antiforgery.Internal.DefaultAntiforgery - Antiforgery successfully validated a request.
+DEBUG 2018-10-29 12:34:31,192 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]' ...
+DEBUG 2018-10-29 12:34:31,193 [10   ] delBinding.Binders.SimpleTypeModelBinder - Attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId' in request data ...
+DEBUG 2018-10-29 12:34:31,193 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId'.
+DEBUG 2018-10-29 12:34:31,193 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]'.
+INFO  2018-10-29 12:34:31,194 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) with arguments (5) - Validation state: Valid
+ERROR 2018-10-29 12:34:31,211 [6    ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2018-10-29 12:34:31,212 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) in 22.5703ms
+ERROR 2018-10-29 12:34:31,214 [6    ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ExceptionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+DEBUG 2018-10-29 12:34:31,229 [6    ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:34:31,229 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 78.2212ms 500 text/html; charset=utf-8
+INFO  2018-10-29 12:34:40,373 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/SystemSet/User/list  
+DEBUG 2018-10-29 12:34:40,373 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:34:40,373 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:34:40,381 [6    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:34:40,381 [6    ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:34:40,381 [6    ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:34:40,382 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "List", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:34:40,382 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:34:40,382 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:34:40,382 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:34:40,382 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:34:40,382 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:34:40,382 [6    ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:34:40,384 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'page' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:34:40,384 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:34:40,384 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:34:40,384 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'page' of type 'System.Int32'.
+DEBUG 2018-10-29 12:34:40,385 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'pageSize' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:34:40,385 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:34:40,385 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:34:40,385 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'pageSize' of type 'System.Int32'.
+DEBUG 2018-10-29 12:34:40,385 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'RoleId' of type 'System.String' ...
+DEBUG 2018-10-29 12:34:40,385 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,385 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:34:40,385 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'RoleId' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,385 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'Name' of type 'System.String' ...
+DEBUG 2018-10-29 12:34:40,385 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,385 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:34:40,385 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'Name' of type 'System.String'.
+INFO  2018-10-29 12:34:40,385 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) with arguments (1, 10, , ) - Validation state: Valid
+INFO  2018-10-29 12:34:40,417 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 31.5876ms.
+DEBUG 2018-10-29 12:34:40,422 [14   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'List' in controller 'User'.
+INFO  2018-10-29 12:34:40,422 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+DEBUG 2018-10-29 12:34:40,422 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - The view path '/Areas/SystemSet/Views/User/List.cshtml' was found in 0.1144ms.
+DEBUG 2018-10-29 12:34:40,425 [14   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Table' in controller 'User'.
+DEBUG 2018-10-29 12:34:40,429 [14   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Add' in controller 'User'.
+DEBUG 2018-10-29 12:34:40,433 [14   ] .Antiforgery.Internal.DefaultAntiforgery - An antiforgery cookie token was reused.
+DEBUG 2018-10-29 12:34:40,436 [14   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent with arguments (SystemSet, UserManager).
+DEBUG 2018-10-29 12:34:40,512 [14   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent in 75.9723ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:34:40,512 [14   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/SideBarNav/Default' in controller 'User'.
+DEBUG 2018-10-29 12:34:40,514 [14   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent with arguments ().
+DEBUG 2018-10-29 12:34:40,518 [14   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent in 4.0982ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:34:40,518 [14   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/TopBar/TopBar' in controller 'User'.
+INFO  2018-10-29 12:34:40,520 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 97.8543ms.
+INFO  2018-10-29 12:34:40,520 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) in 138.1124ms
+DEBUG 2018-10-29 12:34:40,520 [14   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:34:40,520 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 147.6803ms 200 text/html; charset=utf-8
+INFO  2018-10-29 12:34:40,591 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636764132459925593  
+DEBUG 2018-10-29 12:34:40,593 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:34:40,593 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:34:40,601 [11   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:34:40,601 [11   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:34:40,601 [11   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:34:40,601 [11   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:34:40,601 [11   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:34:40,601 [11   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:34:40,602 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+DEBUG 2018-10-29 12:34:40,602 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:34:40,602 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:34:40,602 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:34:40,602 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:34:40,602 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter, Microsoft.AspNetCore.Mvc.ProducesAttribute (Order: 0)
+DEBUG 2018-10-29 12:34:40,603 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' ...
+DEBUG 2018-10-29 12:34:40,604 [11   ] elBinding.Binders.ComplexTypeModelBinder - Attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name '' in request data ...
+DEBUG 2018-10-29 12:34:40,604 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Type' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,604 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,604 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'UseCache' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:34:40,604 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:34:40,604 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Modules' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,605 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,605 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Controllers' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,605 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,605 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Actions' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,605 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:34:40,605 [11   ] elBinding.Binders.ComplexTypeModelBinder - Done attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name ''.
+DEBUG 2018-10-29 12:34:40,605 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel'.
+INFO  2018-10-29 12:34:40,606 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-10-29 12:34:40,624 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 17.7149ms.
+INFO  2018-10-29 12:34:40,624 [11   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-10-29 12:34:40,624 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 21.5746ms
+DEBUG 2018-10-29 12:34:40,624 [11   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:34:40,624 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32.9821ms 200 application/x-javascript
+INFO  2018-10-29 12:34:42,271 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/SystemSet/User/Add?userId=5 application/html 0
+DEBUG 2018-10-29 12:34:42,271 [10   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:34:42,271 [10   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:34:42,276 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:34:42,276 [10   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:34:42,276 [10   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:34:42,277 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "Add", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:34:42,277 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:34:42,277 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:34:42,277 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:34:42,277 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:34:42,277 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:34:42,278 [10   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:34:42,278 [10   ] .Antiforgery.Internal.DefaultAntiforgery - Antiforgery successfully validated a request.
+DEBUG 2018-10-29 12:34:42,280 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]' ...
+DEBUG 2018-10-29 12:34:42,280 [10   ] delBinding.Binders.SimpleTypeModelBinder - Attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId' in request data ...
+DEBUG 2018-10-29 12:34:42,280 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId'.
+DEBUG 2018-10-29 12:34:42,280 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]'.
+INFO  2018-10-29 12:34:42,281 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) with arguments (5) - Validation state: Valid
+ERROR 2018-10-29 12:34:42,297 [11   ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2018-10-29 12:34:42,298 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) in 20.9825ms
+ERROR 2018-10-29 12:34:42,301 [11   ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ExceptionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+DEBUG 2018-10-29 12:34:42,316 [11   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:34:42,317 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 45.6582ms 500 text/html; charset=utf-8
+INFO  2018-10-29 12:34:48,302 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/SystemSet/User/list  
+DEBUG 2018-10-29 12:34:48,302 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:34:48,302 [13   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:34:48,311 [13   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:34:48,311 [13   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:34:48,311 [13   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:34:48,312 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "List", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:34:48,312 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:34:48,312 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:34:48,312 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:34:48,312 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:34:48,312 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:34:48,314 [13   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:34:48,316 [13   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'page' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:34:48,316 [13   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:34:48,316 [13   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:34:48,316 [13   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'page' of type 'System.Int32'.
+DEBUG 2018-10-29 12:34:48,316 [13   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'pageSize' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:34:48,316 [13   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:34:48,316 [13   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:34:48,316 [13   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'pageSize' of type 'System.Int32'.
+DEBUG 2018-10-29 12:34:48,316 [13   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'RoleId' of type 'System.String' ...
+DEBUG 2018-10-29 12:34:48,316 [13   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,316 [13   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:34:48,316 [13   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'RoleId' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,316 [13   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'Name' of type 'System.String' ...
+DEBUG 2018-10-29 12:34:48,316 [13   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,316 [13   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:34:48,316 [13   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'Name' of type 'System.String'.
+INFO  2018-10-29 12:34:48,317 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) with arguments (1, 10, , ) - Validation state: Valid
+INFO  2018-10-29 12:34:48,350 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 33.0832ms.
+DEBUG 2018-10-29 12:34:48,355 [6    ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'List' in controller 'User'.
+INFO  2018-10-29 12:34:48,355 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+DEBUG 2018-10-29 12:34:48,355 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - The view path '/Areas/SystemSet/Views/User/List.cshtml' was found in 0.0872ms.
+DEBUG 2018-10-29 12:34:48,357 [6    ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Table' in controller 'User'.
+DEBUG 2018-10-29 12:34:48,362 [6    ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Add' in controller 'User'.
+DEBUG 2018-10-29 12:34:48,366 [6    ] .Antiforgery.Internal.DefaultAntiforgery - An antiforgery cookie token was reused.
+DEBUG 2018-10-29 12:34:48,369 [6    ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent with arguments (SystemSet, UserManager).
+DEBUG 2018-10-29 12:34:48,450 [6    ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent in 80.6045ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:34:48,450 [6    ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/SideBarNav/Default' in controller 'User'.
+DEBUG 2018-10-29 12:34:48,452 [6    ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent with arguments ().
+DEBUG 2018-10-29 12:34:48,457 [10   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent in 5.1166ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:34:48,457 [10   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/TopBar/TopBar' in controller 'User'.
+INFO  2018-10-29 12:34:48,459 [10   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 103.9628ms.
+INFO  2018-10-29 12:34:48,459 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) in 146.6261ms
+DEBUG 2018-10-29 12:34:48,459 [10   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:34:48,459 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 157.3203ms 200 text/html; charset=utf-8
+INFO  2018-10-29 12:34:48,504 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636764132459925593  
+DEBUG 2018-10-29 12:34:48,504 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:34:48,504 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:34:48,509 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:34:48,509 [10   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:34:48,509 [10   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:34:48,509 [10   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:34:48,509 [10   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:34:48,509 [10   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:34:48,510 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+DEBUG 2018-10-29 12:34:48,510 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:34:48,510 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:34:48,510 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:34:48,510 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:34:48,510 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter, Microsoft.AspNetCore.Mvc.ProducesAttribute (Order: 0)
+DEBUG 2018-10-29 12:34:48,511 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' ...
+DEBUG 2018-10-29 12:34:48,511 [10   ] elBinding.Binders.ComplexTypeModelBinder - Attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name '' in request data ...
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Type' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'UseCache' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Modules' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Controllers' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Actions' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:34:48,511 [10   ] elBinding.Binders.ComplexTypeModelBinder - Done attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name ''.
+DEBUG 2018-10-29 12:34:48,511 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel'.
+INFO  2018-10-29 12:34:48,512 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-10-29 12:34:48,528 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 16.5263ms.
+INFO  2018-10-29 12:34:48,532 [10   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-10-29 12:34:48,532 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 21.9688ms
+DEBUG 2018-10-29 12:34:48,532 [10   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:34:48,532 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.3556ms 200 application/x-javascript
+INFO  2018-10-29 12:35:04,356 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/SystemSet/User/list  
+DEBUG 2018-10-29 12:35:04,356 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:35:04,357 [11   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:35:04,365 [11   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:04,365 [11   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:04,365 [11   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:04,367 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "List", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:04,367 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:04,367 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:04,367 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:04,367 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:04,367 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:04,367 [11   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:04,369 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'page' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:35:04,369 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:04,369 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:35:04,369 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'page' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:04,369 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'pageSize' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:35:04,369 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:04,369 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:35:04,369 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'pageSize' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:04,369 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'RoleId' of type 'System.String' ...
+DEBUG 2018-10-29 12:35:04,369 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,369 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:35:04,369 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'RoleId' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,369 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'Name' of type 'System.String' ...
+DEBUG 2018-10-29 12:35:04,369 [11   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,369 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:35:04,369 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'Name' of type 'System.String'.
+INFO  2018-10-29 12:35:04,370 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) with arguments (1, 10, , ) - Validation state: Valid
+INFO  2018-10-29 12:35:04,403 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 32.2046ms.
+DEBUG 2018-10-29 12:35:04,408 [11   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'List' in controller 'User'.
+INFO  2018-10-29 12:35:04,408 [11   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+DEBUG 2018-10-29 12:35:04,408 [11   ] Core.Mvc.ViewFeatures.ViewResultExecutor - The view path '/Areas/SystemSet/Views/User/List.cshtml' was found in 0.1767ms.
+DEBUG 2018-10-29 12:35:04,410 [11   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Table' in controller 'User'.
+DEBUG 2018-10-29 12:35:04,415 [11   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Add' in controller 'User'.
+DEBUG 2018-10-29 12:35:04,487 [11   ] .Antiforgery.Internal.DefaultAntiforgery - An antiforgery cookie token was reused.
+DEBUG 2018-10-29 12:35:04,491 [11   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent with arguments (SystemSet, UserManager).
+DEBUG 2018-10-29 12:35:04,595 [13   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent in 104.2181ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:04,595 [13   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/SideBarNav/Default' in controller 'User'.
+DEBUG 2018-10-29 12:35:04,598 [13   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent with arguments ().
+DEBUG 2018-10-29 12:35:04,603 [6    ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent in 5.0399ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:04,603 [6    ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/TopBar/TopBar' in controller 'User'.
+INFO  2018-10-29 12:35:04,605 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 196.9358ms.
+INFO  2018-10-29 12:35:04,605 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) in 237.7576ms
+DEBUG 2018-10-29 12:35:04,605 [6    ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:04,605 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 248.726ms 200 text/html; charset=utf-8
+INFO  2018-10-29 12:35:04,712 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636764132459925593  
+DEBUG 2018-10-29 12:35:04,712 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:04,713 [6    ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:04,720 [6    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:04,720 [6    ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:04,721 [6    ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:35:04,721 [6    ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:04,721 [6    ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:04,721 [6    ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:04,721 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+DEBUG 2018-10-29 12:35:04,721 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:04,721 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:04,721 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:04,721 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:04,721 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter, Microsoft.AspNetCore.Mvc.ProducesAttribute (Order: 0)
+DEBUG 2018-10-29 12:35:04,722 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' ...
+DEBUG 2018-10-29 12:35:04,722 [6    ] elBinding.Binders.ComplexTypeModelBinder - Attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name '' in request data ...
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Type' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'UseCache' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Modules' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Controllers' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Actions' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:04,722 [6    ] elBinding.Binders.ComplexTypeModelBinder - Done attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name ''.
+DEBUG 2018-10-29 12:35:04,722 [6    ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel'.
+INFO  2018-10-29 12:35:04,723 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-10-29 12:35:04,730 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 7.1778ms.
+INFO  2018-10-29 12:35:04,730 [6    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-10-29 12:35:04,730 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 9.0011ms
+DEBUG 2018-10-29 12:35:04,730 [6    ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:35:04,731 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.495ms 200 application/x-javascript
+INFO  2018-10-29 12:35:10,175 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/SystemSet/User/list  
+DEBUG 2018-10-29 12:35:10,175 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:35:10,175 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:35:10,183 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:10,183 [10   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:10,183 [10   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:10,184 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "List", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:10,184 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:10,184 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:10,184 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:10,184 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:10,184 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:10,185 [10   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:10,186 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'page' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:35:10,186 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:10,187 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:35:10,187 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'page' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:10,187 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'pageSize' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:35:10,187 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:10,187 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:35:10,187 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'pageSize' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:10,187 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'RoleId' of type 'System.String' ...
+DEBUG 2018-10-29 12:35:10,187 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,187 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:35:10,187 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'RoleId' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,187 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'Name' of type 'System.String' ...
+DEBUG 2018-10-29 12:35:10,187 [10   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,187 [10   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:35:10,187 [10   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'Name' of type 'System.String'.
+INFO  2018-10-29 12:35:10,187 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) with arguments (1, 10, , ) - Validation state: Valid
+INFO  2018-10-29 12:35:10,214 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 26.2196ms.
+DEBUG 2018-10-29 12:35:10,219 [13   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'List' in controller 'User'.
+INFO  2018-10-29 12:35:10,219 [13   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+DEBUG 2018-10-29 12:35:10,219 [13   ] Core.Mvc.ViewFeatures.ViewResultExecutor - The view path '/Areas/SystemSet/Views/User/List.cshtml' was found in 0.1819ms.
+DEBUG 2018-10-29 12:35:10,222 [13   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Table' in controller 'User'.
+DEBUG 2018-10-29 12:35:10,226 [13   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Add' in controller 'User'.
+DEBUG 2018-10-29 12:35:10,230 [13   ] .Antiforgery.Internal.DefaultAntiforgery - An antiforgery cookie token was reused.
+DEBUG 2018-10-29 12:35:10,233 [13   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent with arguments (SystemSet, UserManager).
+DEBUG 2018-10-29 12:35:10,302 [6    ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent in 68.3546ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:10,302 [6    ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/SideBarNav/Default' in controller 'User'.
+DEBUG 2018-10-29 12:35:10,304 [6    ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent with arguments ().
+DEBUG 2018-10-29 12:35:10,307 [6    ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent in 3.7346ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:10,307 [6    ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/TopBar/TopBar' in controller 'User'.
+INFO  2018-10-29 12:35:10,309 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 90.0961ms.
+INFO  2018-10-29 12:35:10,309 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) in 125.1659ms
+DEBUG 2018-10-29 12:35:10,309 [6    ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:10,309 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 134.7848ms 200 text/html; charset=utf-8
+INFO  2018-10-29 12:35:10,357 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636764132459925593  
+DEBUG 2018-10-29 12:35:10,357 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:10,357 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:10,364 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:10,364 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:10,364 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:35:10,364 [16   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:10,364 [16   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:10,364 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:10,365 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+DEBUG 2018-10-29 12:35:10,365 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:10,365 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:10,365 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:10,365 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:10,365 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter, Microsoft.AspNetCore.Mvc.ProducesAttribute (Order: 0)
+DEBUG 2018-10-29 12:35:10,365 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' ...
+DEBUG 2018-10-29 12:35:10,365 [16   ] elBinding.Binders.ComplexTypeModelBinder - Attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name '' in request data ...
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Type' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'UseCache' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Modules' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Controllers' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Actions' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:10,365 [16   ] elBinding.Binders.ComplexTypeModelBinder - Done attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name ''.
+DEBUG 2018-10-29 12:35:10,365 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel'.
+INFO  2018-10-29 12:35:10,366 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-10-29 12:35:10,373 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 7.2159ms.
+INFO  2018-10-29 12:35:10,376 [16   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-10-29 12:35:10,379 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 13.5026ms
+DEBUG 2018-10-29 12:35:10,379 [16   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:35:10,379 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 22.2614ms 200 application/x-javascript
+INFO  2018-10-29 12:35:12,168 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/SystemSet/User/Add?userId=5 application/html 0
+DEBUG 2018-10-29 12:35:12,168 [16   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:12,168 [16   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:12,173 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:12,173 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:12,173 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:12,174 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "Add", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:12,175 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:12,175 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:12,175 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:12,175 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:12,175 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:12,176 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:12,176 [16   ] .Antiforgery.Internal.DefaultAntiforgery - Antiforgery successfully validated a request.
+DEBUG 2018-10-29 12:35:12,178 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]' ...
+DEBUG 2018-10-29 12:35:12,178 [16   ] delBinding.Binders.SimpleTypeModelBinder - Attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId' in request data ...
+DEBUG 2018-10-29 12:35:12,178 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId'.
+DEBUG 2018-10-29 12:35:12,178 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]'.
+INFO  2018-10-29 12:35:12,179 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) with arguments (5) - Validation state: Valid
+ERROR 2018-10-29 12:35:12,248 [6    ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2018-10-29 12:35:12,252 [6    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) in 77.619ms
+ERROR 2018-10-29 12:35:12,262 [6    ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ExceptionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+DEBUG 2018-10-29 12:35:12,299 [6    ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:12,300 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 132.059ms 500 text/html; charset=utf-8
+INFO  2018-10-29 12:35:13,165 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/SystemSet/User/Add?userId=5 application/html 0
+DEBUG 2018-10-29 12:35:13,166 [11   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:13,166 [11   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:13,170 [11   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:13,170 [11   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:13,170 [11   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:13,171 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "Add", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:13,171 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:13,171 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:13,171 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:13,171 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:13,171 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:13,171 [11   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:13,172 [11   ] .Antiforgery.Internal.DefaultAntiforgery - Antiforgery successfully validated a request.
+DEBUG 2018-10-29 12:35:13,175 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]' ...
+DEBUG 2018-10-29 12:35:13,175 [11   ] delBinding.Binders.SimpleTypeModelBinder - Attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId' in request data ...
+DEBUG 2018-10-29 12:35:13,175 [11   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId'.
+DEBUG 2018-10-29 12:35:13,175 [11   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]'.
+INFO  2018-10-29 12:35:13,176 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) with arguments (5) - Validation state: Valid
+ERROR 2018-10-29 12:35:13,230 [16   ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2018-10-29 12:35:13,232 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) in 60.9057ms
+ERROR 2018-10-29 12:35:13,237 [16   ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ExceptionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+DEBUG 2018-10-29 12:35:13,272 [16   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:35:13,272 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 106.5704ms 500 text/html; charset=utf-8
+INFO  2018-10-29 12:35:13,389 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/SystemSet/User/Add?userId=5 application/html 0
+DEBUG 2018-10-29 12:35:13,389 [16   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:13,389 [16   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:13,394 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:13,394 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:13,394 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:13,395 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "Add", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:13,395 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:13,395 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:13,395 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:13,395 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:13,395 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:13,396 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:13,396 [16   ] .Antiforgery.Internal.DefaultAntiforgery - Antiforgery successfully validated a request.
+DEBUG 2018-10-29 12:35:13,397 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]' ...
+DEBUG 2018-10-29 12:35:13,398 [16   ] delBinding.Binders.SimpleTypeModelBinder - Attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId' in request data ...
+DEBUG 2018-10-29 12:35:13,398 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId'.
+DEBUG 2018-10-29 12:35:13,398 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]'.
+INFO  2018-10-29 12:35:13,398 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) with arguments (5) - Validation state: Valid
+ERROR 2018-10-29 12:35:13,423 [16   ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2018-10-29 12:35:13,424 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) in 28.8068ms
+ERROR 2018-10-29 12:35:13,426 [16   ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ExceptionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+DEBUG 2018-10-29 12:35:13,440 [16   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:13,440 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.4858ms 500 text/html; charset=utf-8
+INFO  2018-10-29 12:35:13,774 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/SystemSet/User/Add?userId=5 application/html 0
+DEBUG 2018-10-29 12:35:13,774 [16   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:13,774 [16   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:13,778 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:13,778 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:13,778 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:13,779 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "Add", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:13,779 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:13,779 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:13,779 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:13,779 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:13,779 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:13,780 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:13,780 [16   ] .Antiforgery.Internal.DefaultAntiforgery - Antiforgery successfully validated a request.
+DEBUG 2018-10-29 12:35:13,782 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]' ...
+DEBUG 2018-10-29 12:35:13,782 [16   ] delBinding.Binders.SimpleTypeModelBinder - Attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId' in request data ...
+DEBUG 2018-10-29 12:35:13,782 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId'.
+DEBUG 2018-10-29 12:35:13,782 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]'.
+INFO  2018-10-29 12:35:13,783 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) with arguments (5) - Validation state: Valid
+ERROR 2018-10-29 12:35:13,799 [11   ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2018-10-29 12:35:13,800 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) in 21.0641ms
+ERROR 2018-10-29 12:35:13,802 [11   ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ExceptionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+DEBUG 2018-10-29 12:35:13,817 [11   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:35:13,818 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 43.7356ms 500 text/html; charset=utf-8
+INFO  2018-10-29 12:35:14,922 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/SystemSet/User/list  
+DEBUG 2018-10-29 12:35:14,922 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:35:14,924 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:35:14,929 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:14,929 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:14,929 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:14,931 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "List", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:14,931 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:14,931 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:14,931 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:14,931 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:14,931 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:14,933 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:14,935 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'page' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:35:14,935 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:14,935 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:35:14,935 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'page' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:14,935 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'pageSize' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:35:14,935 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:14,935 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:35:14,935 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'pageSize' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:14,935 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'RoleId' of type 'System.String' ...
+DEBUG 2018-10-29 12:35:14,935 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:35:14,935 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:35:14,935 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'RoleId' of type 'System.String'.
+DEBUG 2018-10-29 12:35:14,935 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'Name' of type 'System.String' ...
+DEBUG 2018-10-29 12:35:14,935 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:35:14,935 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:35:14,935 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'Name' of type 'System.String'.
+INFO  2018-10-29 12:35:14,936 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) with arguments (1, 10, , ) - Validation state: Valid
+INFO  2018-10-29 12:35:15,060 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 124.1755ms.
+DEBUG 2018-10-29 12:35:15,071 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'List' in controller 'User'.
+INFO  2018-10-29 12:35:15,071 [16   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+DEBUG 2018-10-29 12:35:15,071 [16   ] Core.Mvc.ViewFeatures.ViewResultExecutor - The view path '/Areas/SystemSet/Views/User/List.cshtml' was found in 0.2148ms.
+DEBUG 2018-10-29 12:35:15,077 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Table' in controller 'User'.
+DEBUG 2018-10-29 12:35:15,089 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Add' in controller 'User'.
+DEBUG 2018-10-29 12:35:15,101 [16   ] .Antiforgery.Internal.DefaultAntiforgery - An antiforgery cookie token was reused.
+DEBUG 2018-10-29 12:35:15,105 [16   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent with arguments (SystemSet, UserManager).
+DEBUG 2018-10-29 12:35:15,183 [16   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent in 78.1944ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:15,183 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/SideBarNav/Default' in controller 'User'.
+DEBUG 2018-10-29 12:35:15,185 [16   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent with arguments ().
+DEBUG 2018-10-29 12:35:15,189 [14   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent in 3.8192ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:15,189 [14   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/TopBar/TopBar' in controller 'User'.
+INFO  2018-10-29 12:35:15,191 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 120.0584ms.
+INFO  2018-10-29 12:35:15,191 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) in 259.9972ms
+DEBUG 2018-10-29 12:35:15,191 [14   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:15,192 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 269.5798ms 200 text/html; charset=utf-8
+INFO  2018-10-29 12:35:15,234 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636764132459925593  
+DEBUG 2018-10-29 12:35:15,234 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:15,234 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:15,239 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:15,239 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:15,240 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:35:15,241 [16   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:15,241 [16   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:15,241 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:15,242 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+DEBUG 2018-10-29 12:35:15,242 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:15,242 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:15,242 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:15,242 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:15,242 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter, Microsoft.AspNetCore.Mvc.ProducesAttribute (Order: 0)
+DEBUG 2018-10-29 12:35:15,243 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' ...
+DEBUG 2018-10-29 12:35:15,243 [16   ] elBinding.Binders.ComplexTypeModelBinder - Attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name '' in request data ...
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Type' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'UseCache' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Modules' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Controllers' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Actions' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:15,243 [16   ] elBinding.Binders.ComplexTypeModelBinder - Done attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name ''.
+DEBUG 2018-10-29 12:35:15,243 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel'.
+INFO  2018-10-29 12:35:15,244 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-10-29 12:35:15,251 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 6.6503ms.
+INFO  2018-10-29 12:35:15,251 [16   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-10-29 12:35:15,251 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 9.1544ms
+DEBUG 2018-10-29 12:35:15,251 [16   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:35:15,251 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.4223ms 200 application/x-javascript
+INFO  2018-10-29 12:35:48,885 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+DEBUG 2018-10-29 12:35:48,885 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path / does not match a supported file type
+DEBUG 2018-10-29 12:35:48,885 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path / does not match a supported file type
+DEBUG 2018-10-29 12:35:48,890 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:48,890 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:48,890 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:48,895 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Main", area = ""}. Executing action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:48,896 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:48,896 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:48,896 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:48,897 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:48,897 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:48,898 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-10-29 12:35:48,903 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) - Validation state: Valid
+INFO  2018-10-29 12:35:48,904 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.6736ms.
+DEBUG 2018-10-29 12:35:48,909 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache miss for view 'Index' in controller 'Main'.
+DEBUG 2018-10-29 12:35:48,915 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - Using precompiled view for '/Views/Main/Index.cshtml'.
+INFO  2018-10-29 12:35:48,916 [16   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+DEBUG 2018-10-29 12:35:48,916 [16   ] Core.Mvc.ViewFeatures.ViewResultExecutor - The view path '/Views/Main/Index.cshtml' was found in 7.1702ms.
+DEBUG 2018-10-29 12:35:48,937 [16   ] .Antiforgery.Internal.DefaultAntiforgery - An antiforgery cookie token was reused.
+DEBUG 2018-10-29 12:35:48,941 [16   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent with arguments (, ).
+DEBUG 2018-10-29 12:35:49,081 [16   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent in 140.3005ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:49,081 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache miss for view 'Components/SideBarNav/Default' in controller 'Main'.
+DEBUG 2018-10-29 12:35:49,082 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - Using precompiled view for '/Views/Shared/Components/SideBarNav/Default.cshtml'.
+DEBUG 2018-10-29 12:35:49,085 [16   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent with arguments ().
+DEBUG 2018-10-29 12:35:49,104 [16   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent in 18.902ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:49,104 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache miss for view 'Components/TopBar/TopBar' in controller 'Main'.
+DEBUG 2018-10-29 12:35:49,104 [16   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - Using precompiled view for '/Views/Shared/Components/TopBar/TopBar.cshtml'.
+INFO  2018-10-29 12:35:49,147 [19   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 238.0393ms.
+INFO  2018-10-29 12:35:49,147 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Controllers.MainController.Index (UnionMall.Web.Mvc) in 249.6707ms
+DEBUG 2018-10-29 12:35:49,147 [19   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:49,147 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 262.2774ms 200 text/html; charset=utf-8
+INFO  2018-10-29 12:35:49,316 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636764132459925593  
+DEBUG 2018-10-29 12:35:49,316 [19   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:49,316 [19   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:49,320 [19   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:49,321 [19   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:49,321 [19   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:35:49,321 [19   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:49,321 [19   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:49,321 [19   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:49,322 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+DEBUG 2018-10-29 12:35:49,322 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:49,322 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:49,322 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:49,322 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:49,322 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter, Microsoft.AspNetCore.Mvc.ProducesAttribute (Order: 0)
+DEBUG 2018-10-29 12:35:49,322 [19   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' ...
+DEBUG 2018-10-29 12:35:49,323 [19   ] elBinding.Binders.ComplexTypeModelBinder - Attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name '' in request data ...
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Type' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'UseCache' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Modules' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Controllers' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Actions' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:49,323 [19   ] elBinding.Binders.ComplexTypeModelBinder - Done attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name ''.
+DEBUG 2018-10-29 12:35:49,323 [19   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel'.
+INFO  2018-10-29 12:35:49,324 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-10-29 12:35:49,338 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 14.2314ms.
+INFO  2018-10-29 12:35:49,339 [19   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-10-29 12:35:49,339 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 17.306ms
+DEBUG 2018-10-29 12:35:49,339 [19   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:35:49,340 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 24.1606ms 200 application/x-javascript
+INFO  2018-10-29 12:35:51,356 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/SystemSet/User/list  
+DEBUG 2018-10-29 12:35:51,356 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:35:51,357 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:35:51,362 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:51,363 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:51,363 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:51,363 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "List", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:51,363 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:51,363 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:51,363 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:51,363 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:51,363 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:51,364 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:51,366 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'page' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:35:51,366 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:51,366 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:35:51,366 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'page' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:51,366 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'pageSize' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:35:51,366 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:51,366 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:35:51,366 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'pageSize' of type 'System.Int32'.
+DEBUG 2018-10-29 12:35:51,366 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'RoleId' of type 'System.String' ...
+DEBUG 2018-10-29 12:35:51,366 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,366 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:35:51,366 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'RoleId' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,366 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'Name' of type 'System.String' ...
+DEBUG 2018-10-29 12:35:51,366 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,366 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:35:51,366 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'Name' of type 'System.String'.
+INFO  2018-10-29 12:35:51,367 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) with arguments (1, 10, , ) - Validation state: Valid
+INFO  2018-10-29 12:35:51,386 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 18.5905ms.
+DEBUG 2018-10-29 12:35:51,391 [21   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'List' in controller 'User'.
+INFO  2018-10-29 12:35:51,391 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+DEBUG 2018-10-29 12:35:51,391 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - The view path '/Areas/SystemSet/Views/User/List.cshtml' was found in 0.0845ms.
+DEBUG 2018-10-29 12:35:51,393 [21   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Table' in controller 'User'.
+DEBUG 2018-10-29 12:35:51,397 [21   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Add' in controller 'User'.
+DEBUG 2018-10-29 12:35:51,402 [21   ] .Antiforgery.Internal.DefaultAntiforgery - An antiforgery cookie token was reused.
+DEBUG 2018-10-29 12:35:51,404 [21   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent with arguments (SystemSet, UserManager).
+DEBUG 2018-10-29 12:35:51,476 [21   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent in 71.6286ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:51,476 [21   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/SideBarNav/Default' in controller 'User'.
+DEBUG 2018-10-29 12:35:51,478 [21   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent with arguments ().
+DEBUG 2018-10-29 12:35:51,482 [21   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent in 3.7848ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:35:51,482 [21   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/TopBar/TopBar' in controller 'User'.
+INFO  2018-10-29 12:35:51,484 [21   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 92.7403ms.
+INFO  2018-10-29 12:35:51,484 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) in 120.28ms
+DEBUG 2018-10-29 12:35:51,484 [21   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:51,484 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 127.9351ms 200 text/html; charset=utf-8
+INFO  2018-10-29 12:35:51,568 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636764132459925593  
+DEBUG 2018-10-29 12:35:51,568 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:51,568 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:35:51,572 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:51,572 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:51,572 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:35:51,572 [16   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:51,572 [16   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:35:51,572 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:51,573 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+DEBUG 2018-10-29 12:35:51,573 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:51,573 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:51,573 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:51,573 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:51,573 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter, Microsoft.AspNetCore.Mvc.ProducesAttribute (Order: 0)
+DEBUG 2018-10-29 12:35:51,574 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' ...
+DEBUG 2018-10-29 12:35:51,574 [16   ] elBinding.Binders.ComplexTypeModelBinder - Attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name '' in request data ...
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Type' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Type' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'UseCache' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.UseCache' of type 'System.Boolean'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Modules' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Modules' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Controllers' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Controllers' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name 'Actions' for binding property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind property 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel.Actions' of type 'System.String'.
+DEBUG 2018-10-29 12:35:51,574 [16   ] elBinding.Binders.ComplexTypeModelBinder - Done attempting to bind model of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel' using the name ''.
+DEBUG 2018-10-29 12:35:51,574 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'model' of type 'Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel'.
+INFO  2018-10-29 12:35:51,575 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-10-29 12:35:51,582 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 7.419ms.
+INFO  2018-10-29 12:35:51,583 [16   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-10-29 12:35:51,583 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 9.6162ms
+DEBUG 2018-10-29 12:35:51,583 [16   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:35:51,583 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 15.1693ms 200 application/x-javascript
+INFO  2018-10-29 12:35:53,618 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/SystemSet/User/Add?userId=5 application/html 0
+DEBUG 2018-10-29 12:35:53,618 [16   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:53,618 [16   ] NetCore.StaticFiles.StaticFileMiddleware - POST requests are not supported
+DEBUG 2018-10-29 12:35:53,622 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:53,622 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:53,622 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:53,623 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "Add", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:53,624 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:53,624 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:53,624 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:53,624 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:53,624 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:53,624 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:53,624 [16   ] .Antiforgery.Internal.DefaultAntiforgery - Antiforgery successfully validated a request.
+DEBUG 2018-10-29 12:35:53,627 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]' ...
+DEBUG 2018-10-29 12:35:53,627 [16   ] delBinding.Binders.SimpleTypeModelBinder - Attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId' in request data ...
+DEBUG 2018-10-29 12:35:53,627 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId'.
+DEBUG 2018-10-29 12:35:53,627 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]'.
+INFO  2018-10-29 12:35:53,628 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) with arguments (5) - Validation state: Valid
+ERROR 2018-10-29 12:35:53,669 [21   ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2018-10-29 12:35:53,670 [21   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) in 45.8614ms
+ERROR 2018-10-29 12:35:53,671 [21   ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ExceptionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+DEBUG 2018-10-29 12:35:53,686 [21   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:53,686 [21   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 68.8115ms 500 text/html; charset=utf-8
+INFO  2018-10-29 12:35:55,940 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/toastr.js.map  
+DEBUG 2018-10-29 12:35:55,941 [19   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /toastr.js.map does not match an existing file
+DEBUG 2018-10-29 12:35:55,942 [19   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /toastr.js.map does not match an existing file
+DEBUG 2018-10-29 12:35:55,947 [19   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:55,947 [19   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:55,947 [19   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:35:55,947 [19   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=toastr.js.map, controller=Main, action=Index
+DEBUG 2018-10-29 12:35:55,947 [19   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=toastr.js.map, controller=Main, action=Index
+DEBUG 2018-10-29 12:35:55,947 [19   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'default' and template '{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:35:55,947 [19   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: controller=toastr.js.map, action=Index
+DEBUG 2018-10-29 12:35:55,948 [19   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: controller=toastr.js.map, action=Index
+DEBUG 2018-10-29 12:35:55,948 [19   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:55,948 [19   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" completed keep alive response.
+INFO  2018-10-29 12:35:55,948 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 7.8812ms 404 
+INFO  2018-10-29 12:35:59,781 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/SystemSet/User/Add?userId=5  
+DEBUG 2018-10-29 12:35:59,782 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/Add does not match a supported file type
+DEBUG 2018-10-29 12:35:59,782 [16   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/Add does not match a supported file type
+DEBUG 2018-10-29 12:35:59,791 [16   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:35:59,791 [16   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:35:59,791 [16   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+INFO  2018-10-29 12:35:59,791 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "Add", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:35:59,792 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:35:59,792 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:35:59,792 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:35:59,792 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:35:59,792 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:35:59,792 [16   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:35:59,794 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]' ...
+DEBUG 2018-10-29 12:35:59,794 [16   ] delBinding.Binders.SimpleTypeModelBinder - Attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId' in request data ...
+DEBUG 2018-10-29 12:35:59,794 [16   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Nullable`1[System.Int64]' using the name 'userId'.
+DEBUG 2018-10-29 12:35:59,794 [16   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'userId' of type 'System.Nullable`1[System.Int64]'.
+INFO  2018-10-29 12:35:59,795 [16   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) with arguments (5) - Validation state: Valid
+ERROR 2018-10-29 12:35:59,816 [20   ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+INFO  2018-10-29 12:35:59,819 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add (UnionMall.Web.Mvc) in 27.7291ms
+ERROR 2018-10-29 12:35:59,823 [20   ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: UnionMall.Authorization.Users.User, id: 5
+   at UnionMall.Users.UserAppService.GetEntityByIdAsync(Int64 id) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\Application\Users\UserAppService.cs:line 167
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Application.Services.AsyncCrudAppService`8.Get(TGetInput input)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction)
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithFinallyAndGetResult[T](Task`1 actualReturnValue, Action`1 finalAction)
+   at UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.Add(Nullable`1 userId) in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Mvc\Areas\SystemSet\Controllers\UserController.cs:line 72
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ExceptionContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at UnionMall.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in G:\杂项\Me\UnionMall\4.0.1\aspnet-core\src\WebUI\UnionMall.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+DEBUG 2018-10-29 12:35:59,840 [20   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:35:59,840 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 59.4898ms 500 text/html; charset=utf-8
+INFO  2018-10-29 12:36:57,230 [20   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/SystemSet/User/list  
+DEBUG 2018-10-29 12:36:57,230 [20   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:36:57,230 [20   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /SystemSet/User/list does not match a supported file type
+DEBUG 2018-10-29 12:36:57,231 [22   ] NetCore.Server.Kestrel.Transport.Sockets - Connection id "0HLHTAV2I0DE9" received FIN.
+DEBUG 2018-10-29 12:36:57,241 [22   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" disconnecting.
+DEBUG 2018-10-29 12:36:57,242 [20   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:36:57,242 [20   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:36:57,242 [20   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:36:57,242 [22   ] NetCore.Server.Kestrel.Transport.Sockets - Connection id "0HLHTAV2I0DE9" sending FIN.
+INFO  2018-10-29 12:36:57,243 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "SystemSet", action = "List", controller = "User"}. Executing action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc)
+DEBUG 2018-10-29 12:36:57,243 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of authorization filters (in the following order): Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter, Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter, Abp.AspNetCore.Mvc.Antiforgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter
+DEBUG 2018-10-29 12:36:57,243 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of resource filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter
+DEBUG 2018-10-29 12:36:57,243 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of action filters (in the following order): Microsoft.AspNetCore.Mvc.Internal.ControllerActionFilter (Order: -2147483648), Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter, Abp.AspNetCore.Mvc.Auditing.AbpAuditActionFilter, Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter, Abp.AspNetCore.Mvc.Uow.AbpUowActionFilter
+DEBUG 2018-10-29 12:36:57,243 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of exception filters (in the following order): Abp.AspNetCore.Mvc.ExceptionHandling.AbpExceptionFilter
+DEBUG 2018-10-29 12:36:57,243 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Execution plan of result filters (in the following order): Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter, Abp.AspNetCore.Mvc.Results.AbpResultFilter
+INFO  2018-10-29 12:36:57,244 [20   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+DEBUG 2018-10-29 12:36:57,246 [20   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'page' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:36:57,246 [20   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:36:57,246 [20   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:36:57,246 [20   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'page' of type 'System.Int32'.
+DEBUG 2018-10-29 12:36:57,246 [20   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'pageSize' of type 'System.Int32' ...
+DEBUG 2018-10-29 12:36:57,246 [20   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.Int32'.
+DEBUG 2018-10-29 12:36:57,246 [20   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.Int32' using the name ''.
+DEBUG 2018-10-29 12:36:57,246 [20   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'pageSize' of type 'System.Int32'.
+DEBUG 2018-10-29 12:36:57,246 [20   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'RoleId' of type 'System.String' ...
+DEBUG 2018-10-29 12:36:57,246 [20   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:36:57,246 [20   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:36:57,246 [20   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'RoleId' of type 'System.String'.
+DEBUG 2018-10-29 12:36:57,246 [20   ] NetCore.Mvc.ModelBinding.ParameterBinder - Attempting to bind parameter 'Name' of type 'System.String' ...
+DEBUG 2018-10-29 12:36:57,247 [20   ] delBinding.Binders.SimpleTypeModelBinder - Could not find a value in the request with name '' of type 'System.String'.
+DEBUG 2018-10-29 12:36:57,247 [20   ] delBinding.Binders.SimpleTypeModelBinder - Done attempting to bind model of type 'System.String' using the name ''.
+DEBUG 2018-10-29 12:36:57,247 [20   ] NetCore.Mvc.ModelBinding.ParameterBinder - Done attempting to bind parameter 'Name' of type 'System.String'.
+INFO  2018-10-29 12:36:57,247 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) with arguments (1, 10, , ) - Validation state: Valid
+DEBUG 2018-10-29 12:36:57,250 [19   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DE9" stopped.
+INFO  2018-10-29 12:36:57,284 [20   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 36.3886ms.
+DEBUG 2018-10-29 12:36:57,291 [20   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'List' in controller 'User'.
+INFO  2018-10-29 12:36:57,291 [20   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view List.
+DEBUG 2018-10-29 12:36:57,291 [20   ] Core.Mvc.ViewFeatures.ViewResultExecutor - The view path '/Areas/SystemSet/Views/User/List.cshtml' was found in 0.1434ms.
+DEBUG 2018-10-29 12:36:57,294 [20   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Table' in controller 'User'.
+DEBUG 2018-10-29 12:36:57,297 [20   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view '_Add' in controller 'User'.
+DEBUG 2018-10-29 12:36:57,302 [20   ] .Antiforgery.Internal.DefaultAntiforgery - An antiforgery cookie token was reused.
+DEBUG 2018-10-29 12:36:57,305 [20   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent with arguments (SystemSet, UserManager).
+DEBUG 2018-10-29 12:36:57,384 [31   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.SideBarNav.SideBarNavViewComponent in 79.1308ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:36:57,384 [31   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/SideBarNav/Default' in controller 'User'.
+DEBUG 2018-10-29 12:36:57,386 [31   ] ewComponents.DefaultViewComponentInvoker - Executing view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent with arguments ().
+DEBUG 2018-10-29 12:36:57,390 [19   ] ewComponents.DefaultViewComponentInvoker - Executed view component UnionMall.Web.Views.Shared.Components.TopBar.TopBarViewComponent in 3.7524ms and returned Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult
+DEBUG 2018-10-29 12:36:57,390 [19   ] oft.AspNetCore.Mvc.Razor.RazorViewEngine - View lookup cache hit for view 'Components/TopBar/TopBar' in controller 'User'.
+INFO  2018-10-29 12:36:57,392 [19   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view List executed in 100.3784ms.
+INFO  2018-10-29 12:36:57,392 [19   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action UnionMall.Web.Mvc.Areas.SystemSet.Controllers.UserController.List (UnionMall.Web.Mvc) in 148.9059ms
+DEBUG 2018-10-29 12:36:57,392 [19   ] Microsoft.AspNetCore.Server.Kestrel      - Connection id "0HLHTAV2I0DEA" completed keep alive response.
+INFO  2018-10-29 12:36:57,392 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 162.2584ms 200 text/html; charset=utf-8
+INFO  2018-10-29 12:36:57,503 [19   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636764132459925593  
+DEBUG 2018-10-29 12:36:57,504 [19   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:36:57,505 [19   ] NetCore.StaticFiles.StaticFileMiddleware - The request path /AbpServiceProxies/GetAll does not match a supported file type
+DEBUG 2018-10-29 12:36:57,508 [19   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was successfully authenticated.
+DEBUG 2018-10-29 12:36:57,508 [19   ] soft.AspNetCore.Builder.RouterMiddleware - Request did not match any routes.
+DEBUG 2018-10-29 12:36:57,508 [19   ] Microsoft.AspNetCore.Routing.RouteBase   - Request successfully matched the route with name 'defaultWithArea' and template '{area}/{controller=Main}/{action=Index}/{id?}'.
+DEBUG 2018-10-29 12:36:57,509 [19   ] t.AspNetCore.Mvc.Internal.ActionSelector - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index
+DEBUG 2018-10-29 12:36:57,509 [19   ] .AspNetCore.Mvc.Internal.MvcRouteHandler - No actions matched the current request. Route values: area=AbpServiceProxies, controller=GetAll, action=Index

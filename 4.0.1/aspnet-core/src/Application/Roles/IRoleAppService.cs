@@ -14,6 +14,6 @@ namespace UnionMall.Roles
         Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input);
         Task<List<RoleDropDownDto>> GetDropDown();
         DataSet GetRole(long id);
-        DataSet GetRolePage(int pageIndex, int pageSize, string table, string orderBy, out int total);
+        DataSet GetRolePage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
     }
 }
