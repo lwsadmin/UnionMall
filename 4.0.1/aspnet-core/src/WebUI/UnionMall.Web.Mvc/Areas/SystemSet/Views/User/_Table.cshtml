@@ -28,18 +28,26 @@
                 <td class="title">@item["Name"]</td>
                 <td>@item["RoleName"]</td>
                 <td>@item["PhoneNumber"]</td>
-                <td>@(Convert.ToBoolean(item["IsActive"])?L("Normal") :L("Disable"))</td>
+                <td>@(Convert.ToBoolean(item["IsActive"]) ? L("Normal") : L("Disable"))</td>
                 <td>@item["EmailAddress"]</td>
                 <td>
-
-                    <a  class="edit-user" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
-                    @if (item["UserName"].ToString().ToUpper() != "ADMIN")
+                    @if (IsGranted("SystemSet.UserManager.Edit"))
                     {
-                        <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["UserName"])" data-ok="@L("OK")"
-                           data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                            <i class="fa fa-trash text-navy"></i>
-                        </a>
+                        <a class="edit-user" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
                     }
+
+                    @if (IsGranted("SystemSet.UserManager.Delete"))
+                    {
+                        if (item["UserName"].ToString().ToUpper() != "ADMIN")
+                        {
+                            <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["UserName"])" data-ok="@L("OK")"
+                               data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                                <i class="fa fa-trash text-navy"></i>
+                            </a>
+                        }
+                    }
+
+
                 </td>
             </tr>
         }
@@ -66,6 +74,7 @@ HttpMethod = "GET",
 UpdateTargetId = "table"
 }
 ))
+<script src="~/view-resources/Areas/Set/User.js"></script>
 <script>
     var txt = $("input[name='Name']").val().trim();
     if (txt.length > 0) {

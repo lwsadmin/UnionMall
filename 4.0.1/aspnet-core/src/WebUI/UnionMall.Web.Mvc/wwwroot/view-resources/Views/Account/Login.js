@@ -47,10 +47,10 @@ $(function () {
                 success: function (data) {
                     if (data!=null) {
                         swal({
-                            title: '错误！',
+                            title: '',
                             text: data.msg,
                             type: 'error',
-                            confirmButtonText: '确定'
+                            confirmButtonText: 'OK'
                         })
                     }
                 }

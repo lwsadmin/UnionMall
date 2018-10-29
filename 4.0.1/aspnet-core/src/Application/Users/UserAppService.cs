@@ -18,6 +18,7 @@ using UnionMall.Roles.Dto;
 using UnionMall.Users.Dto;
 using System.Data;
 using UnionMall.IRepositorySql;
+using Abp.UI;
 
 namespace UnionMall.Users
 {
@@ -70,15 +71,20 @@ namespace UnionMall.Users
 
         public override async Task<UserDto> Update(UserDto input)
         {
-            input.UserName = input.Name;
+            // input.UserName = input.Name;
 
 
             CheckUpdatePermission();
 
             var user = await _userManager.GetUserByIdAsync(input.Id);
-            if (string.IsNullOrEmpty(input.Password))
+            if (!string.IsNullOrEmpty(input.Password))
             {
-                input.Password = user.PasswordResetCode;
+                input.Password = _passwordHasher.HashPassword(user, input.Password);
+                user.Password = input.Password;
+            }
+            else
+            {
+                input.Password = user.Password;
             }
 
             MapToEntity(input, user);
@@ -95,8 +101,17 @@ namespace UnionMall.Users
 
         public override async Task Delete(EntityDto<long> input)
         {
-            var user = await _userManager.GetUserByIdAsync(input.Id);
-            await _userManager.DeleteAsync(user);
+            try
+            {
+                var user = await _userManager.GetUserByIdAsync(input.Id);
+                await _userManager.DeleteAsync(user);
+            }
+            catch (System.Exception e)
+            {
+
+                throw new UserFriendlyException(e.Message+e.StackTrace); ;
+            }
+
         }
 
         public async Task<ListResultDto<RoleDto>> GetRoles()
@@ -168,7 +183,7 @@ namespace UnionMall.Users
             {
                 table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,
 s.EmailAddress,ur.RoleId,r.Name as RoleName from TUsers s left join TUserRoles ur
-on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id where 1=1 ";
+on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id where s.IsDeleted=0  ";
             }
             table += where;
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);

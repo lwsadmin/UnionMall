@@ -67,15 +67,19 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-sm-1">
-                            <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
-                        </div>
+                        @if (IsGranted("OnlineGoods.GoodsBrand.Add"))
+                        {
+                            <div class="col-sm-1">
+
+                                <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                            </div>
+                        }
 
                         <div class="col-sm-2">
                             <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/GoodsManage/Brand/List" method="post">
                                 <div class="input-group">
                                     <input type="text" name="Title" placeholder="@L("SearchPlaceholder")" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
+                                        <button type="submit" class="m-b btn btn-sm btn-primary">@L("Search")</button>
                                     </span>
                                 </div>
                             </form>
@@ -116,7 +120,7 @@
             return filename.replace('(', '_').replace(']', '_');
         }
     });
-  
+
     //选择文件后处理事件
     $("#input").on("filebatchselected", function (event, files) {
         //执行文件上传方法

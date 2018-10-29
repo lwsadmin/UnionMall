@@ -24,10 +24,7 @@ namespace UnionMall.Authorization.Roles
         public Role(int? tenantId, string name, string displayName)
             : base(tenantId, name, displayName)
         {
-            if (string.IsNullOrEmpty(displayName))
-            {
-                displayName = this.Name;
-            }
+
         }
         [StringLength(MaxDescriptionLength)]
         public string Description {get; set;}

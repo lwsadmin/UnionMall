@@ -28,11 +28,17 @@
                 <td>@item["Sort"]</td>
                 <td>@item["Note"]</td>
                 <td>
-                    <a class="btn btn-outline btn-primary btn-xs" data-ajax="true" data-ajax-method="GET"
-                       data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
-                       href="/GoodsManage/Category/Add/@item["id"]">@L("Edit")</a>
-                    &nbsp;&nbsp;
-                    <button type="button" data-name="@item["Title"]" data-id="@item["id"]" onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>
+                    @if (IsGranted("OnlineGoods.GoodsCategory.Edit"))
+                    {
+                        <a class="btn btn-outline btn-primary btn-xs" data-ajax="true" data-ajax-method="GET"
+                           data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
+                           href="/GoodsManage/Category/Add/@item["id"]">@L("Edit")</a>
+                    }
+                    &nbsp; &nbsp;
+                    @if (IsGranted("OnlineGoods.GoodsCategory.Delete"))
+                    {
+                        <button type="button"  onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>
+                    }
                 </td>
             </tr>
         }

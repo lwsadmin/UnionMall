@@ -98,37 +98,45 @@ namespace UnionMall.Web.Controllers
             {
                 returnUrl = returnUrl + returnUrlHash;
             }
-            var loginResult = await GetLoginResultAsync(loginModel.UsernameOrEmailAddress, loginModel.Password, loginModel.TenancyName);
-
-            switch (loginResult.Result)
+            try
             {
-                case AbpLoginResultType.Success:
-                    await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
-                    await UnitOfWorkManager.Current.SaveChangesAsync();
-                    return Json(new AjaxResponse { Success = true, TargetUrl = returnUrl });
-                //return Json(new { succ = true, TargetUrl = returnUrl });
-                case AbpLoginResultType.InvalidUserNameOrEmailAddress:
-                case AbpLoginResultType.InvalidPassword:
-                    return Json(new AjaxResponse { Success = false, Error = new ErrorInfo(string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword"))) });
-                //  return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword")) });
-                case AbpLoginResultType.InvalidTenancyName:
-                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("ThereIsNoTenantDefinedWithName{0}", loginModel.TenancyName)) });
-                case AbpLoginResultType.TenantIsNotActive:
-                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("TenantIsNotActive", loginModel.TenancyName)) });
+                var loginResult = await GetLoginResultAsync(loginModel.UsernameOrEmailAddress, loginModel.Password, loginModel.TenancyName);
 
-                case AbpLoginResultType.UserIsNotActive:
-                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserIsNotActiveAndCanNotLogin", loginModel.UsernameOrEmailAddress)) });
+                switch (loginResult.Result)
+                {
+                    case AbpLoginResultType.Success:
+                        await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
+                        await UnitOfWorkManager.Current.SaveChangesAsync();
+                        return Json(new AjaxResponse { Success = true, TargetUrl = returnUrl });
+                    //return Json(new { succ = true, TargetUrl = returnUrl });
+                    case AbpLoginResultType.InvalidUserNameOrEmailAddress:
+                    case AbpLoginResultType.InvalidPassword:
+                        return Json(new AjaxResponse { Success = false, Error = new ErrorInfo(string.Format(L("LoginFailed") + "," + L("InvalidUserNameOrPassword"))) });
+                    case AbpLoginResultType.InvalidTenancyName:
+                        return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("ThereIsNoTenantDefinedWithName{0}", loginModel.TenancyName)) });
+                    case AbpLoginResultType.TenantIsNotActive:
+                        return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("TenantIsNotActive", loginModel.TenancyName)) });
 
-                case AbpLoginResultType.UserEmailIsNotConfirmed:
-                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserEmailIsNotConfirmedAndCanNotLogin")) });
+                    case AbpLoginResultType.UserIsNotActive:
+                        return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserIsNotActiveAndCanNotLogin", loginModel.UsernameOrEmailAddress)) });
 
-                case AbpLoginResultType.LockedOut:
-                    return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserLockedOutMessage")) });
+                    case AbpLoginResultType.UserEmailIsNotConfirmed:
+                        return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserEmailIsNotConfirmedAndCanNotLogin")) });
 
-                default: // Can not fall to default actually. But other result types can be added in the future and we may forget to handle it
-                    Logger.Warn("Unhandled login fail reason: " + loginResult.Result);
-                    return Json(new { Success = false, msg = string.Format(L("LoginFailed")) });
+                    case AbpLoginResultType.LockedOut:
+                        return Json(new { Success = false, msg = string.Format(L("LoginFailed") + "," + L("UserLockedOutMessage")) });
+
+                    default: // Can not fall to default actually. But other result types can be added in the future and we may forget to handle it
+                        Logger.Warn("Unhandled login fail reason: " + loginResult.Result);
+                        return Json(new { Success = false, msg = string.Format(L("LoginFailed")) });
+                }
             }
+            catch (Exception e)
+            {
+
+                return Json(new { Success = false, msg = string.Format(e.Message+e.StackTrace) });
+            }
+          
         }
 
         public async Task<ActionResult> Logout()

@@ -179,6 +179,7 @@
     <text name="Search" value="搜索" />
     <text name="SearchPlaceholder" value="请输入标题" />
     <!--message-->
+    <text name="Hint" value="提示" />
     <text name="{0}不存在,可能已经被删除!" value="{0}editeNoExist" />
     <text name="DeleteConfirm{0}" value="确认删除【{0}】吗?" />
     <text name="NotExist" value="该条记录不存在,可能已经被删除!" />
@@ -189,5 +190,6 @@
     <text name="OK" value="确认" />
     <text name="Success" value="成功" />
     <text name="HasChild" value="该类别下包括子级类别,请先移除子级类别!" />
+    <text name="UserLockedOutMessage" value="该登录用户被禁用,请与管理员联系!" />
   </texts>
 </localizationDictionary>
