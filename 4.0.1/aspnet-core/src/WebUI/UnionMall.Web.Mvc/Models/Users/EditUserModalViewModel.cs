@@ -9,11 +9,11 @@ namespace UnionMall.Web.Models.Users
     {
         public UserDto User { get; set; }
 
-        public IReadOnlyList<RoleDto> Roles { get; set; }
+        public IReadOnlyList<RoleDropDownDto> Roles { get; set; }
 
-        public bool UserIsInRole(RoleDto role)
+        public bool UserIsInRole(RoleDropDownDto role)
         {
-            return User.RoleNames != null && User.RoleNames.Any(r => r == role.NormalizedName);
+            return User.RoleNames != null && User.RoleNames.Any(r => r == role.DisplayName);
         }
     }
 }

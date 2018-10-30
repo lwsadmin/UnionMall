@@ -20,6 +20,7 @@ using UnionMall.IRepositorySql;
 using Abp.Runtime.Session;
 using System.Xml;
 using System.IO;
+using System.Collections;
 
 namespace UnionMall.Roles
 {
@@ -147,14 +148,13 @@ namespace UnionMall.Roles
                 role.Id = 0;
                 role.TenantId = AbpSession.TenantId;
             }
-
+            //宿主，运营商管理员, 显示所有权限,
+            permissions = GetPermissionDtos();
             if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0)
             {
-                //宿主登录，显示所有权限,显示所有可管理角色
-                permissions = GetPermissionDtos();
-                ManageRole = _roleManager.Roles.Where(c => c.TenantId == (int)_AbpSession.TenantId && c.Id != role.Id && c.Name.ToUpper() != "ADMIN").MapTo<List<RoleDto>>();
+                ManageRole = _roleManager.Roles.MapTo<List<RoleDto>>();
             }
-            if (permissions.Count == 0 && _AbpSession.UserId != null)
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
             {
                 DataTable roleT = _sqlExecuter.ExecuteDataSet($"select id, Name,ManageRole from dbo.TRoles where id=" +
     $"(select RoleId from dbo.TUserRoles where UserId={_AbpSession.UserId})" +
@@ -162,29 +162,21 @@ namespace UnionMall.Roles
 
                 if (roleT.Rows[0]["Name"].ToString().ToUpper() == "ADMIN")// //运营商总部管理员角色登录，显示所有权限,可管理角色
                 {
-                    permissions = GetPermissionDtos();
                     ManageRole = _roleManager.Roles.Where(c => c.TenantId == (int)_AbpSession.TenantId && c.Id != role.Id && c.Name.ToUpper() != "ADMIN").MapTo<List<RoleDto>>();
                 }
                 else//其他角色登录，显示对应的权限，可管理角色
                 {
-                    string mrStr = roleT.Rows[0]["ManageRole"].ToString();
-                    var sns = PermissionManager.GetAllPermissions();
-
-                    //    permissions
-                    List<PermissionDto> listPer = new List<PermissionDto>();
-                    string perSql = $"select id, Name from dbo.TPermissions where RoleId ={roleT.Rows[0]["id"]}";
+                    permissions = GetPermissionDtos();
+                    string perSql = $"select Name from dbo.TPermissions where RoleId ={roleT.Rows[0]["id"]}";
+                    List<string> arraylist = new List<string>();
                     DataTable perso = _sqlExecuter.ExecuteDataSet(perSql).Tables[0];
                     foreach (DataRow item in perso.Rows)
                     {
-                        PermissionDto dto = new PermissionDto();
-                        dto.Id = (long)item["id"];
-                        dto.Name = item["Name"].ToString();
-                        dto.DisplayName= item["Name"].ToString();
-                        listPer.Add(dto);
+                        arraylist.Add(item[0].ToString());
                     }
-                    permissions = listPer;
+                    permissions = permissions.Where(c => arraylist.Contains(c.Name)).ToList();//权限过滤
 
-                    //   permissions =PermissionManager.GetAllPermissions() as List<PermissionDto>;
+                    string mrStr = roleT.Rows[0]["ManageRole"].ToString();//可管理角色
                     ManageRole = _roleManager.Roles.Where(c => mrStr.Contains(c.Id.ToString()) && c.Id != role.Id && c.Name.ToUpper() != "ADMIN").MapTo<List<RoleDto>>();
                 }
             }
@@ -292,9 +284,23 @@ namespace UnionMall.Roles
         public async Task<List<RoleDropDownDto>> GetDropDown()
         {
             var query = await Repository.GetAllListAsync();
+            if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0)
+            {
+                query = query.FindAll(c => c.Id > 0);
+            }
+
             if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
             {
                 query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
+
+                DataTable role = _sqlExecuter.ExecuteDataSet($"select Name,ManageRole from dbo.TRoles where id=" +
+$"(select RoleId from dbo.TUserRoles where UserId={_AbpSession.UserId} and TenantId ={ _AbpSession.TenantId})").Tables[0];
+
+                if (role.Rows[0]["Name"].ToString().ToUpper() != "ADMIN")// 
+                {
+                    string[] s = role.Rows[0]["ManageRole"].ToString().Split(",");
+                    query = query.FindAll(c => s.Contains(c.Id.ToString()));
+                }
             }
             return query.MapTo<List<RoleDropDownDto>>();
         }

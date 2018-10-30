@@ -62,7 +62,7 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 
             EditUserModalViewModel s = new EditUserModalViewModel();
             s.User = new UserDto();
-            s.Roles = (await _userAppService.GetRoles()).Items;
+            s.Roles = dtoList;
             ViewBag.EditUser = s;
             return View(pageList);
         }
@@ -70,11 +70,11 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
         public async Task<ActionResult> Add(long? userId)
         {
             var user = await _userAppService.Get(new EntityDto<long>((long)userId));
-            var roles = (await _userAppService.GetRoles()).Items;
+            List<RoleDropDownDto> dtoList = (await _roleAppService.GetDropDown());
             var model = new EditUserModalViewModel
             {
                 User = user,
-                Roles = roles
+                Roles = dtoList
             };
             return View("_Add", model);
         }

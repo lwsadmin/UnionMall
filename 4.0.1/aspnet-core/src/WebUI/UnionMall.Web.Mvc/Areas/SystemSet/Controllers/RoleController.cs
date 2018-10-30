@@ -18,6 +18,7 @@ using X.PagedList;
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
     [Area("SystemSet")]
+    [AbpMvcAuthorize("SystemSet.ManagerRole")]
     [AbpMvcAuthorize]
     public class RoleController : UnionMallControllerBase
     {
@@ -31,6 +32,8 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             _AbpSession = abpSession;
             _businessAppService = businessAppService;
         }
+
+
         public async Task<IActionResult> List(int pageIndex = 1, int pageSize = 10, string Name = "")
         {
             string where = string.Empty;

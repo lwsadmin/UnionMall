@@ -41,11 +41,11 @@
                                     {
                                         if (Model.UserIsInRole(role))
                                         {
-                                            <option selected="selected" value="@role.NormalizedName">@role.Name</option>
+                                            <option selected="selected" value="@role.NormalizedName">@role.DisplayName</option>
                                         }
                                         else
                                         {
-                                            <option value="@role.NormalizedName">@role.Name</option>
+                                            <option value="@role.NormalizedName">@role.DisplayName</option>
                                         }
 
                                     }

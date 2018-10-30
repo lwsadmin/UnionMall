@@ -31,6 +31,7 @@
     <text value="正常" name="Normal" />
     <text value="禁用" name="Disable" />
     <text value="管理" name="Manage"/>
+    <text value="信息" name="Info" />
     <text name="LanguageSetting">语言设置</text>
     <text value="欢迎您" name="Welcome to"  />
     <text name="This system is for demonstration only" value="本系统仅供演示" />
@@ -60,6 +61,7 @@
     <text value="修改资料" name="ModificationInformation"/>
     <text value="安全锁屏" name="LockScreen"/>
     <text value="菜单" name="Menu"/>
+    <text value="失败" name="Fail" />
     <text name="Permissions">权限</text>
     <text value="账号" name="TenancyName"/>
     <text name="Welcome, {0}" value="欢迎您 {0}" />
@@ -175,7 +177,9 @@
     <text name="Contact" value="联系人" />
     <text name="Image" value="展示图" />
     <text name="{1}pages{2}Records" value="共{1}页{2}记录" />
-
+    <text name="Locked" value="锁定" />
+    <text name="Screen" value="屏幕" />
+    <text name="Unlock" value="解锁" />
     <text name="Search" value="搜索" />
     <text name="SearchPlaceholder" value="请输入标题" />
     <!--message-->

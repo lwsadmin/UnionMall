@@ -27,6 +27,8 @@ using UnionMall.Identity;
 using UnionMall.MultiTenancy;
 using UnionMall.Sessions;
 using UnionMall.Web.Models.Account;
+using UnionMall.Sessions.Dto;
+using UnionMall.Authorization.Accounts;
 //using UnionMall.Web.Views.Shared.Components.TenantChange;
 
 namespace UnionMall.Web.Controllers
@@ -44,6 +46,7 @@ namespace UnionMall.Web.Controllers
         private readonly ISessionAppService _sessionAppService;
         private readonly ITenantCache _tenantCache;
         private readonly INotificationPublisher _notificationPublisher;
+        private readonly IAccountAppService _account;
 
         public AccountController(
             UserManager userManager,
@@ -56,8 +59,10 @@ namespace UnionMall.Web.Controllers
             UserRegistrationManager userRegistrationManager,
             ISessionAppService sessionAppService,
             ITenantCache tenantCache,
+            IAccountAppService account,
             INotificationPublisher notificationPublisher)
         {
+             _account= account;
             _userManager = userManager;
             _multiTenancyConfig = multiTenancyConfig;
             _tenantManager = tenantManager;
@@ -134,9 +139,9 @@ namespace UnionMall.Web.Controllers
             catch (Exception e)
             {
 
-                return Json(new { Success = false, msg = string.Format(e.Message+e.StackTrace) });
+                return Json(new { Success = false, msg = string.Format(e.Message + e.StackTrace) });
             }
-          
+
         }
 
         public async Task<ActionResult> Logout()
@@ -149,17 +154,15 @@ namespace UnionMall.Web.Controllers
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
-
             return loginResult;
-            switch (loginResult.Result)
-            {
-                case AbpLoginResultType.Success:
-                    return loginResult;
-                default:
+        }
 
-                    return null;
-                    // throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
-            }
+        public JsonResult UnLock()
+        {
+
+            string pawd = Request.Form["LockPwd"];
+            bool f = _account.Unlock(pawd);
+            return Json(new { succ = f });
         }
 
         #endregion

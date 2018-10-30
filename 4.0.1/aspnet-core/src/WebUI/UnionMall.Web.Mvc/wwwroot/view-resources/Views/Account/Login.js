@@ -3,7 +3,12 @@ $(function () {
     $('#ReturnUrlHash').val(location.hash);
 
     var $loginForm = $('#LoginForm');
-
+    if (localStorage.getItem("remmber")) {
+        $("#rememberme").prop("checked",true);
+        $("input[name='TenancyName']").val(localStorage.getItem("TenancyName"));
+        $("input[name='usernameOrEmailAddress']").val(localStorage.getItem("usernameOrEmailAddress"));
+        $("input[name='Password']").val(localStorage.getItem("Password"));
+    }
 
     $loginForm.validate({
         highlight: function (input) {
@@ -36,6 +41,14 @@ $(function () {
         if (!$loginForm.valid()) {
             return;
         }
+        if ($("#rememberme").is(":checked")) {
+            localStorage.setItem("remmber", $("#rememberme").val());
+            localStorage.setItem("TenancyName", $("input[name='TenancyName']").val());
+            localStorage.setItem("usernameOrEmailAddress", $("input[name='usernameOrEmailAddress']").val());
+            localStorage.setItem("Password", $("input[name='Password']").val());
+        } else {
+            localStorage.clear();
+        }
 
         abp.ui.setBusy(
             $('#LoginArea'),
@@ -45,7 +58,7 @@ $(function () {
                 url: $loginForm.attr('action'),
                 data: $loginForm.serialize(),
                 success: function (data) {
-                    if (data!=null) {
+                    if (data != null) {
                         swal({
                             title: '',
                             text: data.msg,

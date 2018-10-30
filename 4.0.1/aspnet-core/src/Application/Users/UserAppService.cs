@@ -30,6 +30,7 @@ namespace UnionMall.Users
         private readonly IRepository<Role> _roleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly ISqlExecuter _sqlExecuter;
+        public readonly IAbpSession _AbpSession;
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -37,7 +38,7 @@ namespace UnionMall.Users
             RoleManager roleManager,
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
-             ISqlExecuter sqlExecuter)
+             ISqlExecuter sqlExecuter, IAbpSession AbpSession)
             : base(repository)
         {
             _userManager = userManager;
@@ -45,6 +46,7 @@ namespace UnionMall.Users
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
             _sqlExecuter = sqlExecuter;
+            _AbpSession = AbpSession;
         }
 
         public override async Task<UserDto> Create(CreateUserDto input)
@@ -109,7 +111,7 @@ namespace UnionMall.Users
             catch (System.Exception e)
             {
 
-                throw new UserFriendlyException(e.Message+e.StackTrace); ;
+                throw new UserFriendlyException(e.Message + e.StackTrace); ;
             }
 
         }
@@ -184,6 +186,17 @@ namespace UnionMall.Users
                 table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,
 s.EmailAddress,ur.RoleId,r.Name as RoleName from TUsers s left join TUserRoles ur
 on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id where s.IsDeleted=0  ";
+            }
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+            {
+                table += $" and s.TenantId={_AbpSession.TenantId}";
+                DataTable role = _sqlExecuter.ExecuteDataSet($"select Name,ManageRole from dbo.TRoles where id=" +
+$"(select RoleId from dbo.TUserRoles where UserId={_AbpSession.UserId} and TenantId ={ _AbpSession.TenantId})").Tables[0];
+
+                if (role.Rows[0]["Name"].ToString().ToUpper() != "ADMIN")// 
+                {
+                    table += $" and RoleId in({role.Rows[0]["ManageRole"].ToString() ?? "0"})";
+                }
             }
             table += where;
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);

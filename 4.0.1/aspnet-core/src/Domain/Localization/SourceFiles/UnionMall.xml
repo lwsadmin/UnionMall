@@ -36,6 +36,10 @@
     <text name="AdminEmailAddress" value="Admin email address" />
     <text name="Save" value="Save" />
     <text name="Cancel" value="Cancel" />
+    <text name="Locked" value="Locked" />
+    <text name="Screen" value="Screen" />
+    <text name="Unlock" value="Unlock" />
+    <text name="Info" value="Info" />
     <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
     <text name="DefaultPasswordIs" value="Default password is {0}" />
     <text name="CanBeEmptyToLoginAsHost" value="Can be empty to login as host." />
@@ -243,6 +247,8 @@
     <text name="OK" value="OK" />
     <text name="Add" value="Add" />
     <text name="Success" value="Success" />
+    <text name="Fail" value="Fail" />
+
     <text name="HasChild" value="Below this category includes child class. Remove child class first." />
   </texts>
 </localizationDictionary>

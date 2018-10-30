@@ -1,19 +1,25 @@
 using System.Threading.Tasks;
 using Abp.Configuration;
+using Abp.Runtime.Session;
 using Abp.Zero.Configuration;
+using Microsoft.AspNetCore.Identity;
 using UnionMall.Authorization.Accounts.Dto;
 using UnionMall.Authorization.Users;
-
 namespace UnionMall.Authorization.Accounts
 {
     public class AccountAppService : UnionMallAppServiceBase, IAccountAppService
     {
         private readonly UserRegistrationManager _userRegistrationManager;
-
-        public AccountAppService(
-            UserRegistrationManager userRegistrationManager)
+        public readonly IAbpSession _AbpSession;
+        private readonly UserManager _userManager;
+        private readonly IPasswordHasher<User> _passwordHasher;
+        public AccountAppService(IPasswordHasher<User> passwordHasher,
+            UserRegistrationManager userRegistrationManager, IAbpSession AbpSession, UserManager userManager)
         {
             _userRegistrationManager = userRegistrationManager;
+            _AbpSession = AbpSession;
+            _userManager = userManager;
+            _passwordHasher = passwordHasher;
         }
 
         public async Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input)
@@ -49,6 +55,27 @@ namespace UnionMall.Authorization.Accounts
             {
                 CanLogin = user.IsActive && (user.IsEmailConfirmed || !isEmailConfirmationRequiredForLogin)
             };
+        }
+
+        public bool Unlock(string pwd)
+        {
+            if (_AbpSession.UserId != null)
+            {
+                var user = _userManager.GetUserByIdAsync((long)_AbpSession.UserId);
+                PasswordVerificationResult emuePwd = _passwordHasher.VerifyHashedPassword(user.Result, user.Result.Password, pwd);
+
+                if (emuePwd == PasswordVerificationResult.Success)
+                    return true;
+                else
+                    return false;
+
+            }
+            else
+            {
+
+                return false;
+            }
+
         }
     }
 }

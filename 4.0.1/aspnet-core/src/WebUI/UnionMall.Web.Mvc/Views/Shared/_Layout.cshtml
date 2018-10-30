@@ -34,7 +34,7 @@
 <body>
 
     <div id="wrapper">
-     
+
 
         @await Component.InvokeAsync(typeof(SideBarNavViewComponent), new { FirstMenu = ViewBag.FirstMenu, SecondMenu = ViewBag.SecondMenu })
         <div id="page-wrapper" class="gray-bg dashbard-1">
@@ -62,7 +62,7 @@
     </div>
     <!-- Mainly scripts -->
     <script src="/lib/admin/js/bootstrap.min.js" asp-append-version="true"></script>
-
+    <script src="/lib/admin/js/plugins/toastr/toastr.min.js" asp-append-version="true"></script>
 
     <script src="/lib/admin/js/inspinia.js" asp-append-version="true"></script>
     <script src="/lib/admin/js/plugins/metisMenu/jquery.metisMenu.js" asp-append-version="true"></script>
@@ -71,12 +71,12 @@
 
     <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
     <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
-    <script src="~/js/main.js"  asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
     <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript" asp-append-version="true"></script>
     @*<script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript" asp-append-version="true"></script>*@
     <script>
         window.onload = function () {
-           $("#loading").fadeOut(500);
+            $("#loading").fadeOut(500);
         }
     </script>
 </body>

@@ -9,5 +9,7 @@ namespace UnionMall.Authorization.Accounts
         Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input);
 
         Task<RegisterOutput> Register(RegisterInput input);
+
+        bool Unlock(string pwd);
     }
 }
