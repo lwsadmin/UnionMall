@@ -21,7 +21,7 @@ namespace UnionMall.Core
             //Xml.Load(path);
             XmlNodeList ProvinceNodeList = Xml.SelectNodes("//Province");
             StringBuilder strCity = new StringBuilder();
-            sb.Append("<select  class='form-control m-b' style='width:30%;float:left;' id='pro' name='" + NameAttr + "' onchange='ProChange(this)'>");
+            sb.Append("<select  class='form-control' style='width:31%;float:left;' id='pro' name='" + NameAttr + "' onchange='ProChange(this)'>");
             foreach (XmlNode node in ProvinceNodeList)
             {
                 if (node.Attributes["ID"].Value == ProID)
@@ -41,7 +41,7 @@ namespace UnionMall.Core
             //Xml.Load(path);
             XmlNodeList CityNodeList = Xml.SelectNodes("//City[@PID='" + ProID + "']");
             StringBuilder strCity = new StringBuilder();
-            strCity.Append("<select style='width:30%;float:left;margin-left:10px;' class='form-control m-b' id='city' name='" + NameAttr + "' onchange='CityChange(this)'>");
+            strCity.Append("<select style='width:31%;float:left;margin-left:10px;' class='form-control' id='city' name='" + NameAttr + "' onchange='CityChange(this)'>");
             foreach (XmlNode node in CityNodeList)
             {
                 if (node.Attributes["ID"].Value == CityID)
@@ -65,7 +65,7 @@ namespace UnionMall.Core
             //Xml.Load(path);
             XmlNodeList DisNodeList = Xml.SelectNodes("//District[@PID='" + CityID + "']");
             StringBuilder strCity = new StringBuilder();
-            strCity.Append("<select style='width:30%;float:left;margin-left:10px;' class='form-control m-b' id='dis' name='" + NameAttr + "'>");
+            strCity.Append("<select style='width:31%;float:left;margin-left:10px;' class='form-control' id='dis' name='" + NameAttr + "'>");
             foreach (XmlNode node in DisNodeList)
             {
                 if (node.Attributes["ID"].Value == DisID)

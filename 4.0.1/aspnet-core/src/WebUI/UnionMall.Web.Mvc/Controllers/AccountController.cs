@@ -62,7 +62,7 @@ namespace UnionMall.Web.Controllers
             IAccountAppService account,
             INotificationPublisher notificationPublisher)
         {
-             _account= account;
+            _account = account;
             _userManager = userManager;
             _multiTenancyConfig = multiTenancyConfig;
             _tenantManager = tenantManager;
@@ -164,6 +164,7 @@ namespace UnionMall.Web.Controllers
             bool f = _account.Unlock(pawd);
             return Json(new { succ = f });
         }
+
 
         #endregion
 

@@ -14,98 +14,77 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h5 id="headTitle" class="modal-title">@(Model.Id <= 0 ? L("Add") : Model.Name + "-")@L("ChainStore")</h5>
+                <h5 id="headTitle" class="modal-title">@(Model.Id <= 0 ? L("Add") : Model.Name)</h5>
             </div>
             <div class="modal-body">
+                <form method="post" id="formPost">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+                    <input type="hidden" name="TenantId" value="@Model.TenantId" />
+                    <input type="hidden" name="Longitude" value="@(Model.Longitude??"0")" />
+                    <input type="hidden" name="Latitude" value="@(Model.Latitude??"0")" />
 
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <form method="post" id="formPost" class="form-horizontal">
-                            <input type="hidden" name="Id" value="@Model.Id" />
-                            <input type="hidden" name="TenantId" value="@Model.TenantId" />
-                    
-                            <div class="row">
-                                <div class="col-md-11">
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">@L("Store")@L("Name")</label>
-                                        <div class="col-md-4">
-                                            <input type="text" name="Name" value="@Model.Name" class="form-control" required maxlength="50" />
-                                        </div>
-
-                                        <label class="col-md-2 control-label">@L("Belong")@L("Business")</label>
-                                        <div class="col-md-4">
-                                            @Html.DropDownListFor(c => c.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "form-control chosen-select" })
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>@L("Store")@L("Name")</label>
+                                <input type="text" name="Name" value="@Model.Name" class="form-control" required maxlength="50" />
                             </div>
-                            <div class="row">
-                                <div class="col-md-11">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">@L("Contact")</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="Contact" value="@Model.Contact" class="form-control" required maxlength="15">
-                                        </div>
-
-                                        <label class="col-sm-2 control-label">@L("PhoneNumber")</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="Mobile" value="@Model.Mobile" class="form-control" required />
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>@L("Belong")@L("Business")</label>
+                                @Html.DropDownListFor(c => c.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "form-control chosen-select" })
                             </div>
-                            <div class="row">
-                                <div class="col-md-11">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">@L("Sort")</label>
-                                        <div class="col-sm-9">
-                                            <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
-                                            <span class="help-block m-b-none">@L("SortTip")</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-11">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">@L("Address")</label>
-                                        <div class="col-sm-8">
-                                            @Html.GetAddress(c => c.ProvinceId, c => c.CityId, c => c.DistrictId, new { })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-11">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"></label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="Address" placeholder="@L("AddressPlace")" value="@Model.Address" class="form-control" maxlength="200" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="row">
-                                <div class="col-md-11">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">@L("Introduce")</label>
-
-                                        <div class="col-sm-10">
-                                            <textarea style="width:100%;min-width:550px;" id="Introduce" name="Introduce" class="form-control" cols="5">@Model.Introduce</textarea>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>@L("Contact")</label>
+                                <input type="text" name="Contact" value="@Model.Contact" class="form-control" required maxlength="15">
                             </div>
 
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
-                                <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>
+                            <div class="form-group">
+                                <label style="display: block;">@L("Address")</label>
+                                @Html.GetAddress(c => c.ProvinceId, c => c.CityId, c => c.DistrictId, new { })
                             </div>
-                        </form>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>@L("Sort")</label><span class="help-block m-b-none" style="display:inline;">&nbsp;&nbsp;(@L("SortTip"))</span>
+                                <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>@L("Image")</label>
+                                <input type="hidden" id="hiddenImg" name="Image" value="@Model.Image" />
+
+                                <input id="input" title="@Model.Image" name="File" value="@Model.Image" type="file" class="file" data-show-preview="false">
+                            </div>
+
+                            <div class="form-group">
+                                <label>@L("PhoneNumber")</label>
+                                <input type="text" name="Mobile" value="@Model.Mobile" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <input type="text" name="Address" placeholder="@L("AddressPlace")" value="@Model.Address" class="form-control" maxlength="200" />
+
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>@L("Introduce")</label>
+                                <textarea style="width:100%;min-width:550px;" id="Introduce" name="Introduce" class="form-control" cols="5">@Model.Introduce</textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+                        <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -122,32 +101,59 @@
         CityChange($("select[name='CityID']"));
         $("select[name='DistrictID']").val('@Model.DistrictId');
     }
+    $("#CreateModal").on('shown.bs.modal', function () {
 
+        $(".file-caption-name").val($("#hiddenImg").val());
+    });
     var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
         var editor
-        KindEditor.ready(function (K) {
+    KindEditor.ready(function (K) {
+
             editor = K.create('#Introduce',
                 {
                     langType: language,
-                    width: '650px',
                     height: '300px',
                     uploadJson: '/Common/Upload',
                     fileManagerJson: '/Common/Upload',
                     allowFileManager: false,
                     formatUploadUrl: false,
                     items: [
-                        'undo', 'redo', '|', 'preview', 'print', 'cut', 'copy', 'paste',
-                        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
-                        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
-                        'superscript', 'quickformat', 'selectall', '|', 'fullscreen', '/',
-                        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
-                        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
-                        'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
-                        'anchor', 'link', 'unlink'
+                        'justifyleft', 'justifycenter', 'justifyright',
+                        'justifyfull', '|', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
+                        'italic', 'underline', '|', 'image', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'link', '|',
+                        'quickformat','preview', 'fullscreen'
                     ],
                     afterBlur: function () { this.sync(); }
                 });
         });
+    $("#CreateModal").on('hidden.bs.modal', function () {
 
+        editor.html('');
+    });
 
+    // alert(language);
+    $("#input").fileinput({
+        language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es',
+        showRemove: false,
+        showUpload: false,
+        allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
+        showUploadedThumbs: false,
+        uploadUrl: "/Common/Upload",
+        showClose: false,
+        showCancel: false,
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+    //选择文件后处理事件
+    $("#input").on("filebatchselected", function (event, files) {
+        //执行文件上传方法
+        $("#input").fileinput("upload");
+    });
+    //上传成功后处理方法
+    $("#input").on("fileuploaded", function (event, data, previewId, index) {
+        var url = data.response.result.url;
+        $("input[name='Image']").val(url);
+        //$(".hid" + index).val(url).addClass(previewId);
+    });
 </script>

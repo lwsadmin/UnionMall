@@ -11,5 +11,6 @@ namespace UnionMall.Authorization.Accounts
         Task<RegisterOutput> Register(RegisterInput input);
 
         bool Unlock(string pwd);
+
     }
 }

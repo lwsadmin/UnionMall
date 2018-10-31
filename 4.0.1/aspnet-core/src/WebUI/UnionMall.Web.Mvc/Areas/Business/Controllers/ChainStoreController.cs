@@ -32,23 +32,16 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             _AbpSession = abpSession;
             _businessAppService = businessAppService;
         }
-        public async Task<IActionResult> List(int page = 1, int pageSize = 10, 
-            string storeName = "",string BusinessId="")
+        public async Task<IActionResult> List(int page = 1, int pageSize = 10,
+            string storeName = "", string BusinessId = "")
         {
-            string table = $@"select c.id,c.BusinessId,c.Name,b.BusinessName, c.Image,c.Mobile,c.CreationTime,c.Contact,c.Sort from TChainStore c
-left join TBusiness b on c.BusinessId = b.Id";
-            if (_AbpSession.TenantId != null)
-            {
-                table += $" where c.TenantId={_AbpSession.TenantId}";
-            }
+            string where = string.Empty;
             if (!string.IsNullOrEmpty(storeName))
-            { table += $" and c.Name like '%{storeName}%'"; }
+            { where = $" and c.Name like '%{storeName}%'"; }
             if (!string.IsNullOrEmpty(BusinessId))
-            { table += $" and c.BusinessId = {BusinessId}"; }
+            { where += $" and c.BusinessId = {BusinessId}"; }
             int total;
-
-            DataSet ds = _AppService.GetPage(page, pageSize, table, "id desc", out total);
-
+            DataSet ds = _AppService.GetPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             if (Request.Headers.ContainsKey("x-requested-with"))
             {
@@ -96,7 +89,7 @@ left join TBusiness b on c.BusinessId = b.Id";
         public JsonResult Delete(long id)
         {
             string msg = string.Empty;
-            var booler = _businessAppService.Delete(id, out msg);
+            var booler = _AppService.Delete(id, out msg);
             if (msg == "ExistRecord")
             {
                 return Json(new { succ = booler, msg = L("ExistRecord{0}", L("Store")) });

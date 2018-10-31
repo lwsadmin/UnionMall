@@ -138,24 +138,25 @@
                 <small class="font-bold"></small>
             </div>
             <form action="javascript:void(0);" method="post" id="userAddInfo">
+                <input type="hidden" name="user_info_id" value="@loginInfo.User.Id" />
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>@L("LogIn")@L("Name")</label>
-                                <input type="text" name="Info-UserName" value="" class="form-control" required maxlength="32" minlength="2" />
+                                <input type="text" name="Info-UserName" value="@loginInfo.User.UserName" class="form-control" required maxlength="32" minlength="2" />
                             </div>
 
 
                             <div class="form-group">
                                 <label>@L("PhoneNumber")</label>
-                                <input type="text" name="Info-PhoneNumber" value="" class="form-control" required="" maxlength="20" minlength="5" />
+                                <input type="text" name="Info-PhoneNumber" value="@loginInfo.User.PhoneNumber" class="form-control" required="" maxlength="20" minlength="5" />
                             </div>
 
                             <div class="form-group">
                                 <label>@L("Password")</label>
                                 <input type="password" id="Info-Password" name="Info-Password" class="form-control"
-                                       placeholder="@L("NoEditPwd")" required="" maxlength="32" />
+                                       placeholder="@L("NoEditPwd")" maxlength="32" />
                             </div>
 
 
@@ -163,11 +164,11 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>@L("Users")@L("Name")</label>
-                                <input type="text" name="Info-Name" value="" class="form-control" required="" maxlength="32" minlength="2" />
+                                <input type="text" name="Info-Name" value="@loginInfo.User.Name" class="form-control" required="" maxlength="32" minlength="2" />
                             </div>
                             <div class="form-group">
                                 <label>@L("Email")</label>
-                                <input type="text" name="Info-EmailAddress" value="" class="form-control" email="true" required maxlength="32" minlength="2" />
+                                <input type="text" name="Info-EmailAddress" value="@loginInfo.User.EmailAddress" class="form-control" email="true" required maxlength="32" minlength="2" />
                             </div>
                             <div class="form-group">
                                 <label>@L("OK")@L("Password")</label>
@@ -194,9 +195,9 @@
         sessionStorage.setItem("lock", "lock");
         $("#LockModal").modal("show");
 
-        //document.oncontextmenu = function () {
-        //    return false;
-        //}
+        document.oncontextmenu = function () {
+            return false;
+        }
         document.onkeydown = function () {
             if (event.keyCode == 122 || event.keyCode == 123 || event.keyCode == 116) {
                 event.keyCode = 0; event.returnValue = false;
@@ -219,6 +220,9 @@
         if (sessionStorage.getItem("lock") != undefined && sessionStorage.getItem("lock") != "") {
             LockScreen();
         }
+        $("#userAddInfo").on("submit", function () {
+            UserInfoSave();
+        });
     });
     function Unlock() {
         if ($("input[name='LockPwd']").val().length == 0) {
@@ -252,6 +256,30 @@
                 toastr.error('@L("Unlock")@L("Fail")','@L("Hint")');
             }
         });
+    }
+    function UserInfoSave() {
+        var _userService = abp.services.app.user;
+        var _$modal = $('#userInfoCreate');
+        var _$form = $("#userAddInfo");
+        //if (!_$form.valid()) {
+        //    return;
+        //}
+        var user = {};
+        user.Id = $("input[name='user_info_id']").val();
+        user.UserName = $("input[name='Info-UserName']").val();
+        user.Name = $("input[name='Info-Name']").val();
+        user.Surname = user.Name;
+        user.PhoneNumber = $("input[name='Info-PhoneNumber']").val();
+        user.EmailAddress = $("input[name='Info-EmailAddress']").val();
+        user.Password = $("input[name='Info-Password']").val();
+        user.IsActive = 1;
+            _userService.update(user).done(function () {
+                _$modal.modal('hide');
+                        toastr.success('@L("Save")@L("Success")','@L("Hint")');
+
+            }).always(function () {
+
+            });
     }
 
 </script>

@@ -6,60 +6,85 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
-using UnionMall.Business.ChainStore;
+using UnionMall.Business.Business;
+//using UnionMall.Business.ChainStore;
 using UnionMall.IRepositorySql;
 
-namespace UnionMall.Business.Business
+namespace UnionMall.Business.ChainStore
 {
     public class ChainStoreAppService : ApplicationService, IChainStoreAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
-        private readonly IRepository<ChainStore.ChainStore, long> _Repository;
+        private readonly IRepository<ChainStore, long> _Repository;
         public readonly IAbpSession _AbpSession;
         public ChainStoreAppService(ISqlExecuter sqlExecuter, IAbpSession AbpSession,
-            IRepository<ChainStore.ChainStore, long> Repository)
+            IRepository<ChainStore, long> Repository)
         {
             _Repository = Repository;
             _sqlExecuter = sqlExecuter;
             _AbpSession = AbpSession;
         }
 
-        public Task<ChainStore.ChainStore> GetByIdAsync(long Id)
+        public Task<ChainStore> GetByIdAsync(long Id)
         {
             return _Repository.GetAsync(Id);
         }
 
-        public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
+        public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
+            if (string.IsNullOrEmpty(table))
+            {
+                table = $@"select c.IsSystem, c.id,c.BusinessId,c.Name,b.BusinessName, c.Image,c.Mobile,c.CreationTime,c.Contact,c.Sort from TChainStore c
+left join TBusiness b on c.BusinessId = b.Id where 1=1 ";
+            }
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+            {
+                table += $"  and c.TenantId={_AbpSession.TenantId}";
+            }
+            if (!string.IsNullOrEmpty(where))
+            {
+                table += where;
+            }
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
         public bool Delete(long id, out string msg)
         {
             var query = _Repository.FirstOrDefault(c => c.Id == id);
-            if (query == null||1==1)
+            if (query == null)
             {
                 msg = "NotExist";
                 return false;
             }
-            var count = _Repository.GetAllList(c => c.BusinessId == id).Count;
+            // var count = _Repository.GetAllList(c => c.BusinessId == id).Count;
 
             _Repository.Delete(id);
             msg = "";
             return true;
         }
 
-        public async Task CreateOrEditAsync(ChainStore.ChainStore store)
+        public async Task CreateOrEditAsync(ChainStore store)
         {
-            if (store.Id > 0)
+            try
             {
-                await _Repository.UpdateAsync(store);
+                if (store.Id > 0)
+                {
+                    await _Repository.UpdateAsync(store);
+                }
+                else
+                {
+                    if (_AbpSession.TenantId != null)
+                    { store.TenantId = (int)_AbpSession.TenantId; }
+
+                    await _Repository.InsertAsync(store);
+
+                }
             }
-            else
+            catch (Exception e)
             {
-                if (_AbpSession.TenantId != null)
-                { store.TenantId = (int)_AbpSession.TenantId; }
-                await _Repository.InsertAsync(store);
+
+                throw new Abp.UI.UserFriendlyException(e.Message);
             }
+
         }
     }
 }

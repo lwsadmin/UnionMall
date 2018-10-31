@@ -9,6 +9,15 @@
 
 @using UnionMall.Goods.Brand
 @model PagedList<DataRow>
+
+
+<style>
+    #pic {
+        position: fixed;
+        display: none;
+        z-index: 10;
+    }
+</style>
 <link href="~/lib/fileinput/css/fileinput.min.css" rel="stylesheet" asp-append-version="true" />
 <script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
 <div class="row wrapper border-bottom white-bg page-heading">

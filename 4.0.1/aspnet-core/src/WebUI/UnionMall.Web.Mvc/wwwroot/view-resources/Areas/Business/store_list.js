@@ -9,11 +9,16 @@
                 return;
             }
             var EditDto = _$form.serializeFormToObject();
+
             storeService.createOrEdit(EditDto).done(function (data) {
+
                 _$modal.modal('hide');
                 _$form[0].reset();
-                $(".pagination .active a").click();
+                if ($(".pagination .active a").html() != undefined) {
+                    $(".pagination .active a").click();
+                } else { $("#searchForm").submit(); }
             }).fail(function (data) {
+                debugger;
             }).always(function (data) { });
         });
         _$modal.on("hidden.bs.modal", function () {
@@ -25,6 +30,8 @@
             });
             $("input[name='TenantId']").val(0);
             $("input[name='Id']").val(0);
+            $("#Introduce").val('');
+            $('#input').fileinput('reset');
             ProChange($("select[name='ProvinceID']"));
         });
         $("#add").click(function () {
@@ -48,7 +55,10 @@ function Delete(btn) {
 
             $.post("/business/chainstore/delete", { id: id }, function (data) {
                 if (data.result.succ) {
-                    $(".pagination .active a").click();
+                    if ($(".pagination .active a").html() != undefined) {
+                        $(".pagination .active a").click();
+                    } else { $("#searchForm").submit(); }
+
                 } else {
                     swal(
                         data.result.msg,

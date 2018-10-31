@@ -10,7 +10,7 @@ namespace UnionMall.Business.Business
 {
     public interface IChainStoreAppService : IApplicationService
     {
-        DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total);
+        DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
         Task<ChainStore.ChainStore> GetByIdAsync(long Id);
         Task CreateOrEditAsync(ChainStore.ChainStore store);
         bool Delete(long id, out string msg);
