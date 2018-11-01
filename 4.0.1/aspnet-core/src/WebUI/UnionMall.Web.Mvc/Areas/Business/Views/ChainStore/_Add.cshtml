@@ -113,7 +113,7 @@
                 {
                     langType: language,
                     height: '300px',
-                    uploadJson: '/Common/Upload',
+                    uploadJson: "/Common/EditorUpload",
                     fileManagerJson: '/Common/Upload',
                     allowFileManager: false,
                     formatUploadUrl: false,
@@ -123,7 +123,14 @@
                         'italic', 'underline', '|', 'image', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'link', '|',
                         'quickformat','preview', 'fullscreen'
                     ],
-                    afterBlur: function () { this.sync(); }
+                    afterBlur: function () { this.sync(); },
+                    afterUpload: function (url) {
+                        debugger;
+                        alert(url);
+                    },
+                    afterError: function (data) {
+                        debugger;
+                    }
                 });
         });
     $("#CreateModal").on('hidden.bs.modal', function () {

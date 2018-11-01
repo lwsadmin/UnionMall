@@ -24,7 +24,6 @@ namespace UnionMall.Web.Mvc.Controllers
         {
             var fileBase = Request.Form.Files["File"];
 
-
             //if (fileBase == null || fileBase.FileName == "")
             //{
             //    return Json(new { success = false, url = "请选择要上传的图片!" });
@@ -39,7 +38,26 @@ namespace UnionMall.Web.Mvc.Controllers
             //    return Json(new { success = false, url = "图片文件格式不正确!" });
             //}
             return _AppService.SaveSingleImg(fileBase, _AbpSession.TenantId != null ? (int)_AbpSession.TenantId : 0);
-          //  return Json(new { success = false, url = "" });
+
+        }
+
+        
+
+        [HttpPost]
+        public JsonResult EditorUpload(string dir = "")
+        {
+            Logger.Warn("cccccccccccccccccccccccccccccccccccc");
+            try
+            {
+                Logger.Warn("111111111111111111111111111111111111111111111111111111111");
+                return Json(new { });
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.StackTrace);
+            }
+
         }
     }
 }
