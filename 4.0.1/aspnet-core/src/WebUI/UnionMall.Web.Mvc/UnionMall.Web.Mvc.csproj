@@ -68,7 +68,6 @@
     <None Include="wwwroot\lib\fileinput\js\plugins\sortable.js" />
     <None Include="wwwroot\lib\fileinput\js\plugins\sortable.min.js" />
     <None Include="wwwroot\lib\kindeditor\asp.net\bin\LitJSON.dll" />
-    <None Include="wwwroot\lib\kindeditor\asp.net\demo.aspx" />
     <None Include="wwwroot\lib\kindeditor\asp.net\file_manager_json.ashx" />
     <None Include="wwwroot\lib\kindeditor\asp.net\upload_json.ashx" />
     <None Include="wwwroot\lib\kindeditor\kindeditor-all-min.js" />

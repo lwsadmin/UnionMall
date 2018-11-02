@@ -52,7 +52,7 @@ namespace UnionMall.Common
                 Directory.CreateDirectory(directoryPath);
             }
             Random r = new Random(Guid.NewGuid().GetHashCode());
-            string uploadFileName = DateTime.Now.ToString("MMddhhmmss") +
+            string uploadFileName = DateTime.Now.ToString("MMddHHmmss") +
                 DateTime.Now.Millisecond.ToString() +
                 r.Next(1000, 9999).ToString() + Path.GetExtension(file.FileName);
             directoryPath += uploadFileName;
@@ -60,12 +60,12 @@ namespace UnionMall.Common
             {
                 file.CopyTo(fs);
                 fs.Flush();
-                //fs.Dispose();
+                fs.Dispose();
             }
          //   FileStream fs = new FileStream(directoryPath, FileMode.Create);
           
             string url = path + uploadFileName;//返回的没有转换的相对路径到前端，前端传入后台存入数据库
-            return new JsonResult(new { succ = true, url = url });
+            return new JsonResult(new { error=0, succ = true, url = url });
         }
     }
 }

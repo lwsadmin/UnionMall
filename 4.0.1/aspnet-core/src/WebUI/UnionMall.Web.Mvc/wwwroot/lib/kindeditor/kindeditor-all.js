@@ -4293,7 +4293,7 @@ _extend(KUploadButton, {
 				self.options.afterUpload.call(self, data);
 			}
         });
-        debugger;
+ 
         try {
             self.form[0].submit();
         } catch (e) {
@@ -7292,8 +7292,10 @@ KindEditor.plugin('image', function(K) {
 							return;
 						}
 						dialog.showLoading(self.lang('uploadLoading'));
-						uploadbutton.submit();
-						localUrlBox.val('');
+                        uploadbutton.submit();
+                        debugger;
+                        localUrlBox.val('');
+                        debugger;
 						return;
 					}
 					var url = K.trim(urlBox.val()),
@@ -7368,9 +7370,10 @@ KindEditor.plugin('image', function(K) {
 			target : target,
 			width: 60,
 			afterUpload : function(data) {
-				dialog.hideLoading();
-				if (data.error === 0) {
-					var url = data.url;
+                dialog.hideLoading();
+                debugger;
+				if (data.error === 0||1==1) {
+                    var url = data.result.url;
 					if (formatUploadUrl) {
 						url = K.formatUrl(url, 'absolute');
 					}

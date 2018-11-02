@@ -41,23 +41,15 @@ namespace UnionMall.Web.Mvc.Controllers
 
         }
 
-        
 
         [HttpPost]
-        public JsonResult EditorUpload(string dir = "")
+        [IgnoreAntiforgeryToken]
+
+        public ActionResult EditorUpload(string dir = "")
         {
-            Logger.Warn("cccccccccccccccccccccccccccccccccccc");
-            try
-            {
-                Logger.Warn("111111111111111111111111111111111111111111111111111111111");
-                return Json(new { });
-            }
-            catch (Exception e)
-            {
+            var fileBase = Request.Form.Files["imgFile"];
 
-                throw new Exception(e.StackTrace);
-            }
-
+            return _AppService.SaveSingleImg(fileBase, _AbpSession.TenantId != null ? (int)_AbpSession.TenantId : 0);
         }
     }
 }
