@@ -11,7 +11,7 @@
 @using UnionMall.Business.ChainStore
 @model PagedList<DataRow>
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
-<link href="~/lib/kindeditor/themes/default/default.css" rel="stylesheet" asp-append-version="true" />
+
 
 <script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
@@ -94,7 +94,7 @@
                         </div>
                         <form class="form-inline m-b" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/chainstore/List" method="post">
                             <div class="col-sm-2">
-                                @Html.DropDownList("BusinessId", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control  chosen-select" })
+                                @Html.DropDownList("SeletedBusinessId", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control  chosen-select" })
                             </div>
                             <div class="col-sm-2">
 
@@ -137,6 +137,7 @@
             }
         });
     }
+
     function CityChange(City) {
 
         $.ajaxSettings.async = false;

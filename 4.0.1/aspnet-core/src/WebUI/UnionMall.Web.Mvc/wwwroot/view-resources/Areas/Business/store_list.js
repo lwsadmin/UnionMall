@@ -35,7 +35,9 @@
             ProChange($("select[name='ProvinceID']"));
         });
         $("#add").click(function () {
+
             $("#CreateModal").modal("show");
+           // $("#CreateModal").fadeIn("show");
         });
     });
 })();

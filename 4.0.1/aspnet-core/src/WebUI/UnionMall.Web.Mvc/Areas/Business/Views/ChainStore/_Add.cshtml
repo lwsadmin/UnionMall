@@ -9,7 +9,7 @@
 @model ChainStore
 
 
-<div class="modal inmodal fade in" id="CreateModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal inmodal fade in" id="CreateModal"  role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -134,8 +134,7 @@
                 });
         });
     $("#CreateModal").on('hidden.bs.modal', function () {
-
-        editor.html('');
+        editor.remove('#Introduce');
     });
 
     // alert(language);
