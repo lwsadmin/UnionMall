@@ -14,6 +14,7 @@
             <th>@L("LogIn")@L("Name")</th>
             <th>@L("UserName")</th>
             <th>@L("Roles")@L("Name")</th>
+            <th>@L("Belong")@L("Business")</th>
             <th>@L("PhoneNumber")</th>
             <th>@L("Status")</th>
             <th>@L("Email")</th>
@@ -23,33 +24,34 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-            <tr>
-                <td class="title">@item["UserName"]</td>
-                <td class="title">@item["Name"]</td>
-                <td>@item["RoleName"]</td>
-                <td>@item["PhoneNumber"]</td>
-                <td>@(Convert.ToBoolean(item["IsActive"]) ? L("Normal") : L("Disable"))</td>
-                <td>@item["EmailAddress"]</td>
-                <td>
-                    @if (IsGranted("SystemSet.UserManager.Edit"))
+        <tr>
+            <td class="title">@item["UserName"]</td>
+            <td class="title">@item["Name"]</td>
+            <td>@item["RoleName"]</td>
+            <td>@item["BusinessName"]</td>
+            <td>@item["PhoneNumber"]</td>
+            <td>@(Convert.ToBoolean(item["IsActive"]) ? L("Normal") : L("Disable"))</td>
+            <td>@item["EmailAddress"]</td>
+            <td>
+                @if (IsGranted("SystemSet.UserManager.Edit"))
+                {
+                    <a class="edit-user" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                }
+
+                @if (IsGranted("SystemSet.UserManager.Delete"))
+                {
+                    if (item["UserName"].ToString().ToUpper() != "ADMIN")
                     {
-                        <a class="edit-user" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                        <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["UserName"])" data-ok="@L("OK")"
+                           data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                            <i class="fa fa-trash text-navy"></i>
+                        </a>
                     }
-
-                    @if (IsGranted("SystemSet.UserManager.Delete"))
-                    {
-                        if (item["UserName"].ToString().ToUpper() != "ADMIN")
-                        {
-                            <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["UserName"])" data-ok="@L("OK")"
-                               data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                                <i class="fa fa-trash text-navy"></i>
-                            </a>
-                        }
-                    }
+                }
 
 
-                </td>
-            </tr>
+            </td>
+        </tr>
         }
 
     </tbody>

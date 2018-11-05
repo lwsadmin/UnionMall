@@ -183,9 +183,10 @@ namespace UnionMall.Users
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,
+                table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,b.BusinessName,
 s.EmailAddress,ur.RoleId,r.Name as RoleName from TUsers s left join TUserRoles ur
-on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id where s.IsDeleted=0  ";
+on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id  left join dbo.TBusiness b 
+on s.BusinessId=b.Id  where s.IsDeleted=0  ";
             }
             if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
             {

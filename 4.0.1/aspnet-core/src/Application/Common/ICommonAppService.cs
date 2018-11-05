@@ -13,5 +13,10 @@ namespace UnionMall.Common
     {
         JsonResult SaveSingleImg(IFormFile file, int tenandId);
         DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total);
+
+        string GetWhere();
+
+
+
     }
 }

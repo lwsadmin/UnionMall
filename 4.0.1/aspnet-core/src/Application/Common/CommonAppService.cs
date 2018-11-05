@@ -36,6 +36,30 @@ namespace UnionMall.Common
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
 
+        public string GetWhere()
+        {
+            string where = " 1=1 ";
+
+            if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId <= 0)
+            {
+                return where;
+            }
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+            {
+                where += $" and TenantId={_AbpSession.TenantId}";
+            }
+
+            DataTable role = _sqlExecuter.ExecuteDataSet($"select s.Id, s.BusinessId,s.ChainStoreId, r.Name RoleName,r.ManageRole from dbo.TUsers s " +
+                $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
+            if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
+            {
+                where += $" and BusinessId={role.Rows[0]["BusinessId"]}";
+            }
+            return where;
+
+
+        }
+
         public JsonResult SaveSingleImg(IFormFile file, int tenandId)
         {
             Tenant t = _Repository.Get(tenandId);
@@ -62,10 +86,10 @@ namespace UnionMall.Common
                 fs.Flush();
                 fs.Dispose();
             }
-         //   FileStream fs = new FileStream(directoryPath, FileMode.Create);
-          
+            //   FileStream fs = new FileStream(directoryPath, FileMode.Create);
+
             string url = path + uploadFileName;//返回的没有转换的相对路径到前端，前端传入后台存入数据库
-            return new JsonResult(new { error=0, succ = true, url = url });
+            return new JsonResult(new { error = 0, succ = true, url = url });
         }
     }
 }
