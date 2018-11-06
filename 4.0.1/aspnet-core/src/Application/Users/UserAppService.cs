@@ -183,21 +183,20 @@ namespace UnionMall.Users
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,b.BusinessName,
+                table = $@"select s.id,s.UserName,s.Name,s.PhoneNumber,s.IsActive,s.CreationTime,s.LastLoginTime,r.BusinessId,
 s.EmailAddress,ur.RoleId,r.Name as RoleName from TUsers s left join TUserRoles ur
-on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id  left join dbo.TBusiness b 
-on s.BusinessId=b.Id  where s.IsDeleted=0  ";
+on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id  where s.IsDeleted=0";
             }
             if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
             {
-                table += $" and s.TenantId={_AbpSession.TenantId}";
-                DataTable role = _sqlExecuter.ExecuteDataSet($"select Name,ManageRole from dbo.TRoles where id=" +
-$"(select RoleId from dbo.TUserRoles where UserId={_AbpSession.UserId} and TenantId ={ _AbpSession.TenantId})").Tables[0];
+                where += $" and s.TenantId={_AbpSession.TenantId}";
+            }
 
-                if (role.Rows[0]["Name"].ToString().ToUpper() != "ADMIN")// 
-                {
-                    table += $" and RoleId in({role.Rows[0]["ManageRole"].ToString() ?? "0"})";
-                }
+            DataTable role = _sqlExecuter.ExecuteDataSet($"select s.Id, r.Name RoleName,r.ManageRole,r.BusinessId from dbo.TUsers s " +
+                $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
+            if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
+            {
+                where += $" and r.BusinessId={role.Rows[0]["BusinessId"]} and ur.RoleId in({role.Rows[0]["ManageRole"]})";
             }
             table += where;
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);

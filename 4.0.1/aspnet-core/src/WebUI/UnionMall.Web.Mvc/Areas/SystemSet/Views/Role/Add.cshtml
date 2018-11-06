@@ -2,12 +2,15 @@
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
+    List<BusinessDropDownDto> select = ViewData["Business"] as List<BusinessDropDownDto>;
+
     ViewBag.FirstMenu = "SystemSet";
     ViewBag.SecondMenu = "ManagerRole";
 }
+@using UnionMall.Business.Business.Dto;
 @model UnionMall.Web.Models.Roles.EditRoleModalViewModel
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
-
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
 
 <style>
     .checkbox {
@@ -52,7 +55,30 @@
                         <label class="col-sm-1 control-label">@L("Roles")@L("Name")</label>
                         <div class="col-sm-3"><input type="text" class="form-control" name="Name" required maxlength="10" value="@Model.Role.Name" /></div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">@L("Belong")@L("Business")</label>
+                        <div class="col-sm-3">
+                            <select id="BusinessId" name="BusinessId" required>
 
+                                @foreach (BusinessDropDownDto item in select)
+                                {
+                                    if (Model.Role.BusinessId == item.Id)
+                                    {
+                                        <option selected="selected" value="@item.Id">@item.BusinessName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.BusinessName</option>
+                                    }
+
+                                }
+                            </select>
+
+                            @Html.DropDownListFor(c => c.Role.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control chosen-select", @name = "BusinessId", @style = "padding: 3px 5px;" })
+                        </div>
+
+
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-1 control-label">@L("Introduce")</label>
 
@@ -141,8 +167,8 @@ c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.N
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-2">
 
-                            <button class="btn btn-success" type="submit">@L("Save")</button>
-                            <button class="btn btn-white col-md-offset-2" type="button" onclick="javascript: history.back(-1);">@L("Cancel")</button>
+                            <button class="btn btn-primary" type="submit">@L("Save")</button>
+                            <button class="btn btn-white col-md-offset-1" type="button" onclick="javascript: history.back(-1);">@L("Cancel")</button>
                         </div>
                     </div>
                 </form>
@@ -152,6 +178,7 @@ c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.N
 </div>
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Set/Role.js"></script>
 <script>
     function SaveSuccess() {
@@ -169,4 +196,7 @@ c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.N
             }
         )
     }
+    $(function () {
+        $('.chosen-select').chosen({ width: "100%" });
+    });
 </script>

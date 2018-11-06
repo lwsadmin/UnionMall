@@ -17,6 +17,9 @@ using Abp.Application.Services.Dto;
 using UnionMall.Web.Models.Roles;
 using UnionMall.Web.Models.Users;
 using UnionMall.Users.Dto;
+using UnionMall.Business.Business;
+using UnionMall.Business.Business.Dto;
+using UnionMall.Common;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
@@ -26,28 +29,31 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
     {
 
         private readonly IRoleAppService _roleAppService;
-        private readonly IAbpSession _AbpSession;
         private readonly IUserAppService _userAppService;
         public readonly ILogger _logger;
-        public UserController(IRoleAppService roleAppService, IAbpSession abpSession,
+        private readonly IBusinessAppService _AppService;
+        private readonly ICommonAppService _comService;
+
+        public UserController(IRoleAppService roleAppService, ICommonAppService comService, IBusinessAppService AppService,
             IUserAppService userAppService, ILogger logger)
         {
             _roleAppService = roleAppService;
-            _AbpSession = abpSession;
+            _comService = comService;
             _userAppService = userAppService;
             _logger = logger;
+            _AppService = AppService;
         }
         public async Task<IActionResult> List(
-            int page = 1, int pageSize = 10, string RoleId = "", string Name = "")
+            int page = 1, int pageSize = 10, string RoleId = "", string Name = "",string BusinessId="")
         {
             string where = string.Empty;
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
-                where += $" and s.TenantId={_AbpSession.TenantId}";
+            //where += _comService.GetWhere();
             if (!string.IsNullOrEmpty(Name))
                 where += $" and s.UserName like '%{Name}%'";
             if (!string.IsNullOrEmpty(RoleId))
                 where += $" and RoleId = {RoleId}";
-
+            if (!string.IsNullOrEmpty(BusinessId))
+                where += $" and r.BusinessId = {BusinessId}";
             int total;
             DataSet ds = _userAppService.GetUserPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
@@ -59,7 +65,8 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             }
             List<RoleDropDownDto> dtoList = (await _roleAppService.GetDropDown());
             ViewData.Add("Roles", new SelectList(dtoList, "Id", "DisplayName"));
-
+            List<BusinessDropDownDto> businessdtoList = (await _AppService.GetDropDown());
+            ViewData.Add("Business", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(businessdtoList, "Id", "BusinessName"));
             EditUserModalViewModel s = new EditUserModalViewModel();
             s.User = new UserDto();
             s.Roles = dtoList;
@@ -76,6 +83,8 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
                 User = user,
                 Roles = dtoList
             };
+
+            EditUserModalViewModel s = new EditUserModalViewModel();
             return View("_Add", model);
         }
     }

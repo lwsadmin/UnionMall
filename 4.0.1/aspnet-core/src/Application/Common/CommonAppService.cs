@@ -38,7 +38,7 @@ namespace UnionMall.Common
 
         public string GetWhere()
         {
-            string where = " 1=1 ";
+            string where = string.Empty ;
 
             if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId <= 0)
             {
@@ -46,14 +46,14 @@ namespace UnionMall.Common
             }
             if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
             {
-                where += $" and TenantId={_AbpSession.TenantId}";
+                where += $" and *.TenantId={_AbpSession.TenantId}";
             }
 
-            DataTable role = _sqlExecuter.ExecuteDataSet($"select s.Id, s.BusinessId,s.ChainStoreId, r.Name RoleName,r.ManageRole from dbo.TUsers s " +
+            DataTable role = _sqlExecuter.ExecuteDataSet($"select s.Id, r.Name RoleName,r.ManageRole,r.BusinessId from dbo.TUsers s " +
                 $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
             if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
             {
-                where += $" and BusinessId={role.Rows[0]["BusinessId"]}";
+                where += $" and *.BusinessId={role.Rows[0]["BusinessId"]}";
             }
             return where;
 

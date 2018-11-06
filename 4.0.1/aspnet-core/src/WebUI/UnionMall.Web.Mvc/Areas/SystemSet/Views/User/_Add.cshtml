@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                                 <label>@L("Belong")@L("Roles")</label>
-                                <select class="input-sm form-control" id="role" name="role" required="true">
+                                <select class="input-sm form-control chosen-select" id="role" name="role" required="true">
                                     <option value="">-@L("Choose")-</option>
                                     @foreach (var role in Model.Roles)
                                     {
@@ -52,6 +52,8 @@
 
                                 </select>
                             </div>
+
+
 
                         </div>
                         <div class="col-sm-6">
@@ -159,5 +161,6 @@
             });
         }
     }
+    $('.chosen-select').chosen({ width: "100%" });
 </script>
 

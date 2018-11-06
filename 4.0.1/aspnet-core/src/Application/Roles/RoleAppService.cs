@@ -264,20 +264,10 @@ namespace UnionMall.Roles
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select r.Id,r.CreationTime,r.Description,r.DisplayName,r.Name,r.IsDefault from TRoles r where r.IsDeleted=0";
+                table = $@"select r.Id,r.CreationTime,r.Description,r.DisplayName,r.Name,r.IsDefault,b.BusinessName
+from TRoles r left join dbo.TBusiness b on r.BusinessId=b.Id where r.IsDeleted=0";
             }
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
-            {
-                table += $" and  r.TenantId={_AbpSession.TenantId}";
-                DataTable roleT = _sqlExecuter.ExecuteDataSet($"select Name,ManageRole from dbo.TRoles where id=" +
-                    $"(select RoleId from dbo.TUserRoles where UserId={_AbpSession.UserId})" +
-                    $" and TenantId={_AbpSession.TenantId}").Tables[0];
-
-                if (roleT.Rows[0]["Name"].ToString().ToUpper() != "ADMIN")// 不是宿主或者超管登录
-                {
-                    table += $" and  r.id in({roleT.Rows[0]["ManageRole"].ToString()})";
-                }
-            }
+            where = where.Replace("*", "r");
             table += where;
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }

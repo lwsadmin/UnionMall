@@ -9,6 +9,7 @@ using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Business.Business;
 using UnionMall.Business.Business.Dto;
+using UnionMall.Common;
 using UnionMall.Controllers;
 using UnionMall.Roles;
 using UnionMall.Roles.Dto;
@@ -23,22 +24,23 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
     public class RoleController : UnionMallControllerBase
     {
         private readonly IRoleAppService _roleAppService;
-        private readonly IAbpSession _AbpSession;
         private readonly IBusinessAppService _businessAppService;
-        public RoleController(IRoleAppService roleAppService, IAbpSession abpSession
+        private readonly ICommonAppService _comService;
+        public RoleController(IRoleAppService roleAppService, ICommonAppService comService
             , IBusinessAppService businessAppService)
         {
             _roleAppService = roleAppService;
-            _AbpSession = abpSession;
+            _comService = comService;
             _businessAppService = businessAppService;
         }
-
-
-        public async Task<IActionResult> List(int pageIndex = 1, int pageSize = 10, string Name = "")
+        public async Task<IActionResult> List(int pageIndex = 1, int pageSize = 10, string Name = "", string BusinessId = "")
         {
             string where = string.Empty;
+            where += _comService.GetWhere();
             if (!string.IsNullOrEmpty(Name))
                 where += $" and Name like '%{Name}%'";
+            if (!string.IsNullOrEmpty(BusinessId))
+                where += $" and *.BusinessId = {BusinessId}";
             int total;
 
             DataSet ds = _roleAppService.GetRolePage(pageIndex, pageSize, "id desc", out total, where);
@@ -47,6 +49,8 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             {
                 return View("_Table", page);
             }
+            List<BusinessDropDownDto> businessdtoList = (await _businessAppService.GetDropDown());
+            ViewData.Add("Business", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(businessdtoList, "Id", "BusinessName"));
             List<BusinessDropDownDto> dtoList = (await _businessAppService.GetDropDown());
             return View(page);
         }
@@ -61,6 +65,8 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
                 model = new EditRoleModalViewModel(output);
 
             }
+            List<BusinessDropDownDto> businessdtoList = (await _businessAppService.GetDropDown());
+            ViewData.Add("Business", businessdtoList);
             return View("Add", model);
         }
     }

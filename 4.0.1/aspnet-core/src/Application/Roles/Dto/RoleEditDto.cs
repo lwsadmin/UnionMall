@@ -18,6 +18,7 @@ namespace UnionMall.Roles.Dto
         [StringLength(Role.MaxDescriptionLength)]
         public string Description { get; set; }
 
+        public long BusinessId { get; set; }
         public bool IsStatic { get; set; }
         public string ManageRole { get; set; } = "";
     }

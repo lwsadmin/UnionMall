@@ -43,14 +43,14 @@
                     <div class="row">
                         @if (IsGranted("SystemSet.ManagerRole.Add"))
                         {
-                            <div class="col-sm-1">
+                            <div class="col-sm-1" style="width:auto;">
                                 <a class="btn btn-primary btn-sm m-b" href="/systemset/role/add"><i class="fa fa-plus"></i>&nbsp;@L("Add")</a>
                             </div>
                         }
                         <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/SystemSet/role/List" method="post">
-                            @*<div class="col-sm-2">
+                            <div class="col-sm-2">
                                 @Html.DropDownList("BusinessId", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control  chosen-select" })
-                            </div>*@
+                            </div>
                             <div class="col-sm-2">
                                 <div class="input-group">
                                     <input type="text" name="Name" placeholder="@L("Roles")@L("Name")" class="input-sm form-control"> <span class="input-group-btn">
@@ -64,7 +64,7 @@
                     <div id="table">
                         @Html.Partial("_Table", Model)
                     </div>
-         
+
                 </div>
             </div>
         </div>

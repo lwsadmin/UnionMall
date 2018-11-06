@@ -28,7 +28,7 @@ namespace UnionMall.Authorization.Roles
         }
         [StringLength(MaxDescriptionLength)]
         public string Description {get; set;}
-
+        public long BusinessId { get; set; }
         public string ManageRole { get; set; }
     }
 }

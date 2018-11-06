@@ -22,6 +22,7 @@ namespace UnionMall.Users.Dto
         [StringLength(AbpUserBase.MaxSurnameLength)]
         public string Surname { get; set; }
 
+
         public string Password { get; set; }
         [Required]
         [StringLength(20)]

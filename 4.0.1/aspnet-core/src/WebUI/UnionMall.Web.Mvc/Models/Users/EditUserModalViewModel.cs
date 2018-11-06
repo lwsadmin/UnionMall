@@ -13,7 +13,8 @@ namespace UnionMall.Web.Models.Users
 
         public bool UserIsInRole(RoleDropDownDto role)
         {
-            return User.RoleNames != null && User.RoleNames.Any(r => r == role.DisplayName);
+           
+            return User.RoleNames != null && User.RoleNames.Any(r => r == role.NormalizedName.ToUpper());
         }
     }
 }
