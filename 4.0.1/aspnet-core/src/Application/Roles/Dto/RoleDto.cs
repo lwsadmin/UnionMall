@@ -13,7 +13,7 @@ namespace UnionMall.Roles.Dto
         [Required]
         [StringLength(AbpRoleBase.MaxNameLength)]
         public string Name { get; set; }
-
+        public long BusinessId { get; set; }
         //[Required]
         //[StringLength(AbpRoleBase.MaxDisplayNameLength)]
         public string DisplayName { get; set; }

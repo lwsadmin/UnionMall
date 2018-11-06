@@ -91,7 +91,7 @@
     <text name="ChainStore" value="商户门店"/>
 
     <text name="Member" value="会员管理"/>
-    <text name="MemberCategory" value="会员级别" />
+    <text name="MemberLevel" value="会员级别" />
     <text name="MemberList" value="会员列表" />
     <text name="MemberRegister" value="会员办理" />
     <text name="CardInfo" value="卡务中心" />

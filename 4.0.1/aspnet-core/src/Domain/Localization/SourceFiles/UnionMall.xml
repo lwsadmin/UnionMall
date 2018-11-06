@@ -149,7 +149,7 @@
     <text name="ChainStore" value="ChainStore"/>
 
     <text name="Member" value="Member"/>
-    <text name="MemberCategory" value="MemberCategory" />
+    <text name="MemberLevel" value="MemberLevel" />
     <text name="MemberList" value="MemberList" />
     <text name="MemberRegister" value="MemberRegister" />
     <text name="CardInfo" value="CardInfo" />
