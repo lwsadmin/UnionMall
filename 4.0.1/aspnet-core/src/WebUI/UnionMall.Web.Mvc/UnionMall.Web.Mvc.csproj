@@ -10,33 +10,34 @@
     <RootNamespace>UnionMall.Web</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="App_Data\**" />
     <Compile Remove="Areas\Business\Data\**" />
     <Compile Remove="Areas\Business\Models\**" />
     <Compile Remove="Areas\GoodsManage\Data\**" />
     <Compile Remove="Areas\GoodsManage\Models\**" />
     <Compile Remove="Areas\SystemSet\Data\**" />
     <Compile Remove="Areas\SystemSet\Models\**" />
+    <Content Remove="App_Data\**" />
     <Content Remove="Areas\Business\Data\**" />
     <Content Remove="Areas\Business\Models\**" />
     <Content Remove="Areas\GoodsManage\Data\**" />
     <Content Remove="Areas\GoodsManage\Models\**" />
     <Content Remove="Areas\SystemSet\Data\**" />
     <Content Remove="Areas\SystemSet\Models\**" />
+    <EmbeddedResource Remove="App_Data\**" />
     <EmbeddedResource Remove="Areas\Business\Data\**" />
     <EmbeddedResource Remove="Areas\Business\Models\**" />
     <EmbeddedResource Remove="Areas\GoodsManage\Data\**" />
     <EmbeddedResource Remove="Areas\GoodsManage\Models\**" />
     <EmbeddedResource Remove="Areas\SystemSet\Data\**" />
     <EmbeddedResource Remove="Areas\SystemSet\Models\**" />
+    <None Remove="App_Data\**" />
     <None Remove="Areas\Business\Data\**" />
     <None Remove="Areas\Business\Models\**" />
     <None Remove="Areas\GoodsManage\Data\**" />
     <None Remove="Areas\GoodsManage\Models\**" />
     <None Remove="Areas\SystemSet\Data\**" />
     <None Remove="Areas\SystemSet\Models\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="App_Data\Logs\Logs.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -153,7 +154,6 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Logs\" />
     <Folder Include="wwwroot\lib\pager\" />
     <Folder Include="wwwroot\view-resources\Views\Shared\Components\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
