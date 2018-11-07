@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.FirstMenu = "Member";
+    ViewBag.SecondMenu = "MemberLevel";
+}
+
+@using System.Data
+@using X.PagedList
+@model PagedList<DataRow>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+
+<script>
+    language = $("#CurrentLanguage").attr("data-lan");
+    if (language == "zh-Hans") {
+        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
+        });
+    }
+</script>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("Member")</a>
+            </li>
+            <li class="active">
+                <strong>@L("MemberLevel")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("MemberLevel") </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">10/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a href="#">15/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a href="#">20/@L("Page")</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        @if (IsGranted("Member.MemberLevel.Add"))
+                        {
+                            <div class="col-sm-1" style="width:auto;">
+                                <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                            </div>
+                        }
+                    </div>
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="DivAdd">
+    @Html.Partial("_Add")
+</div>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/view-resources/Areas/Member/member_level.js"></script>

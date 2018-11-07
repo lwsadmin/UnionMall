@@ -3,6 +3,7 @@ using Abp.Zero.EntityFrameworkCore;
 using UnionMall.Authorization.Roles;
 using UnionMall.Authorization.Users;
 using UnionMall.MultiTenancy;
+using UnionMall.Member.MemberLevel;
 
 namespace UnionMall.EntityFrameworkCore
 {
@@ -13,6 +14,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<Goods.Brand.Brand> Brand { get; set; }
         public DbSet<Business.Business.Business> Business { get; set; }
         public DbSet<Business.ChainStore.ChainStore> ChainStore { get; set; }
+        public DbSet<MemberLevel> MemberLevel { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

@@ -235,6 +235,13 @@
     <text name="NextPage" value="NextPage" />
     <text name="Contact" value="Contact" />
     <text name="Image" value="Image" />
+    <text name="LowerLimit" value="LowerLimit" />
+    <text name="UpperLimit" value="UpperLimit" />
+    <text name="Integral" value="Integral" />
+    <text name="Init" value="Init" />
+    <text name="Price" value="Price" />
+    <text name="Sell" value="Sell" />
+    <text name="Page" value="Page" />
     <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
 
     <!--message-->

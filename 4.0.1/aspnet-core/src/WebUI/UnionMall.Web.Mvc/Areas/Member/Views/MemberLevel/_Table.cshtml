@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "_Table";
+    Layout = null;
+}
+@using X.PagedList
+@using System.Data
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Name")</th>
+            <th>@L("Integral")@L("LowerLimit")</th>
+            <th>@L("Integral")@L("UpperLimit")</th>
+            <th>@L("Sell")@L("Price")</th>
+            <th>@L("Init")@L("Integral")</th>
+            <th>@L("Operate")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr>
+                <td class="title">@item["title"]</td>
+                <td>@item["MinPoint"]</td>
+                <td>@item["MaxPoint"]</td>
+                <td>@item["SellPrice"]</td>
+                <td>@item["InitPoint"]</td>
+                <td>
+                    @if (IsGranted("Member.MemberLevel.Edit"))
+                    {
+                        <a class="edit-user" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                    }
+
+                    @if (IsGranted("Member.MemberLevel.Delete"))
+                    {
+                        if (item["UserName"].ToString().ToUpper() != "ADMIN")
+                        {
+                            <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["UserName"])" data-ok="@L("OK")"
+                               data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                                <i class="fa fa-trash text-navy"></i>
+                            </a>
+                        }
+                    }
+
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+new PagedListRenderOptions {
+MaximumPageNumbersToDisplay = 10,
+DisplayPageCountAndCurrentLocation = true,
+LinkToFirstPageFormat = L("FirstPage"),
+LinkToLastPageFormat = L("LastPage"),
+LinkToNextPageFormat = L("NextPage"),
+PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+LinkToPreviousPageFormat = L("PreviousPage"),
+UlElementClasses = new[] { "pagination col-md-8" },
+ContainerDivClasses = new[] { "row" } },
+new AjaxOptions()
+{
+DataForm = "searchForm",
+HttpMethod = "GET",
+UpdateTargetId = "table"
+}
+))
+

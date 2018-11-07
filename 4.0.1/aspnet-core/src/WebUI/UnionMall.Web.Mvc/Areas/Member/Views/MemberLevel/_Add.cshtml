@@ -1,0 +1,119 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="modal inmodal fade in" id="Create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">@L("Add")@L("MemberLevel")</h4>
+                <small class="font-bold"></small>
+            </div>
+            <form action="javascript:void(0);" method="post" id="Add">
+                <input type="hidden" name="Id" value="" class="form-control" />
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>@L("Name")</label>
+                                <input type="text" name="Title" value="" class="form-control" required maxlength="32" minlength="2" />
+                            </div>
+                            <div class="form-group">
+                                <label>@L("Integral")@L("LowerLimit")</label>
+                                <input type="number" name="MinPoint" value="" class="form-control" required maxlength="32" minlength="2" />
+                            </div>
+                            <div class="form-group">
+                                <label>@L("Init")@L("Integral")</label>
+                                <input type="number" name="InitPoint" value="" class="form-control" required maxlength="32" minlength="2" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>@L("Sell")@L("Price")</label>
+                                <input type="number" name="SellPrice" value="" class="form-control" required maxlength="32" minlength="2" />
+                            </div>
+                            <div class="form-group">
+                                <label>@L("Integral")@L("UpperLimit")</label>
+                                <input type="number" name="MaxPoint" value="" class="form-control" required maxlength="32" minlength="2" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">@L("Save")</button>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $("#userAdd").validate({});
+    $('#roleCreate').on("hidden.bs.modal", function () {
+        $("#userAdd").find("label[class='error']").fadeOut(0);
+        $("input[name='Id']").val(0);
+        $("#userAdd").find("input").removeClass("error").val('');
+        $("input[type='password']").attr("placeholder", "").attr("required","true");
+    });
+    $('#roleCreate').on("shown.bs.modal", function () {
+        toastr.options = {
+            "closeButton": false,//是否配置关闭按钮
+            "debug": false,//是否开启debug模式
+            "newestOnTop": false,//新消息是否排在最上层
+            "progressBar": true,//是否显示进度条
+            "timeOut": "2000",//1.5s后关闭消息框
+        }
+
+        if ('' == '0') {
+            $("input[type='password']").attr("placeholder", "").attr("required", "true");
+        } else {
+            $("input[type='password']").removeAttr("required");
+        }
+        $("#userAdd").on("submit",function () {
+            Save();
+        });
+
+    });
+    function Save() {
+        var _userService = abp.services.app.user;
+        var _$modal = $('#roleCreate');
+        var _$form = $("#userAdd");
+        if (!_$form.valid()) {
+            return;
+        }
+        var user = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
+        user.Surname = user.Name;
+        user.roleNames = [];
+
+        user.roleNames.push(user.role);
+        //var _$roleCheckboxes = $("input[name='role']:checked");
+        //if (_$roleCheckboxes) {
+        //    for (var roleIndex = 0; roleIndex < _$roleCheckboxes.length; roleIndex++) {
+        //        var _$roleCheckbox = $(_$roleCheckboxes[roleIndex]);
+        //        user.roleNames.push(_$roleCheckbox.val());
+        //    }
+        //}
+
+        if (user.Id == "0") {
+            _userService.create(user).done(function () {
+                _$modal.modal('hide');
+                    toastr.success('@L("Save")@L("Success")','@L("Hint")');
+                $(".pagination .active a").click();
+            }).always(function () {
+            });
+        } else {
+            _userService.update(user).done(function () {
+                _$modal.modal('hide');
+                        toastr.success('@L("Save")@L("Success")','@L("Hint")');
+                $(".pagination .active a").click();
+            }).always(function () {
+
+            });
+        }
+    }
+</script>
+

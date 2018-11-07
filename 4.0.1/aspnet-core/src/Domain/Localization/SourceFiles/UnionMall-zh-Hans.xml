@@ -182,6 +182,13 @@
     <text name="Unlock" value="解锁" />
     <text name="Search" value="搜索" />
     <text name="SearchPlaceholder" value="请输入标题" />
+    <text name="LowerLimit" value="下限" />
+    <text name="UpperLimit" value="上限" />
+    <text name="Integral" value="积分" />
+    <text name="Init" value="初始化" />
+    <text name="Price" value="价格" />
+    <text name="Sell" value="销售" />
+    <text name="Page" value="页" />
     <!--message-->
     <text name="Hint" value="提示" />
     <text name="{0}不存在,可能已经被删除!" value="{0}editeNoExist" />
