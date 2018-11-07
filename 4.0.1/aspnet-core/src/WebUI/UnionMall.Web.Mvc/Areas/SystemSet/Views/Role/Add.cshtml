@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <label class="col-sm-1 control-label">@L("Belong")@L("Business")</label>
                         <div class="col-sm-3">
-                            <select id="BusinessId" name="BusinessId" required>
+                            <select id="BusinessId" class="input-sm form-control chosen-select" name="BusinessId" required>
 
                                 @foreach (BusinessDropDownDto item in select)
                                 {
@@ -74,7 +74,7 @@
                                 }
                             </select>
 
-                            @Html.DropDownListFor(c => c.Role.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control chosen-select", @name = "BusinessId", @style = "padding: 3px 5px;" })
+                            
                         </div>
 
 
