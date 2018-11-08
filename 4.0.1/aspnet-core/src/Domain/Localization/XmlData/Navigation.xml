@@ -60,7 +60,11 @@
     </Second>
   </First>
   <First Name="Member" Icon="glyphicon glyphicon-user">
+<<<<<<< HEAD
     <Second Name="MemberLevel" Url="/Member/MemberLevel/list">
+=======
+    <Second Name="MemberLevel" Url="/Member/Membercategory/list">
+>>>>>>> 9c9df8549ffd1b56db3183e0c18e537bafd0bf4c
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
