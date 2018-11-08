@@ -17,8 +17,8 @@ using Abp.Application.Services.Dto;
 using UnionMall.Web.Models.Roles;
 using UnionMall.Web.Models.Users;
 using UnionMall.Users.Dto;
-using UnionMall.Business.Business;
-using UnionMall.Business.Business.Dto;
+using UnionMall.Business;
+using UnionMall.Business.Dto;
 using UnionMall.Common;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers

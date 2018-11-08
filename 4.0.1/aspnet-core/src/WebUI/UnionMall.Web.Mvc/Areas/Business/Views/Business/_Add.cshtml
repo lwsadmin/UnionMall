@@ -4,7 +4,7 @@
     Layout = null;
 }
 @using System.Data
-@using UnionMall.Business.Business
+@using UnionMall.Entity;
 @using UnionMall.Core;
 @model Business
 
@@ -116,30 +116,30 @@
         format: "yyyy-mm-dd"//日期格式，详见 http://bootstrap-datepicker.readthedocs.org/en/release/options.html#format
     });
 
-        var editor
-        KindEditor.ready(function (K) {
-            editor = K.create('#Introduce',
-                {
-                    langType: language,
-                    width: '650px',
-                    height: '300px',
-                    uploadJson: '/Common/Upload',
-                    fileManagerJson: '/Common/Upload',
-                    allowFileManager: false,
-                    formatUploadUrl: false,
-                    items: [
-                        'undo', 'redo', '|', 'preview', 'print', 'cut', 'copy', 'paste',
-                        'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
-                        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
-                        'superscript', 'quickformat', 'selectall', '|', 'fullscreen', '/',
-                        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
-                        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
-                        'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
-                        'anchor', 'link', 'unlink'
-                    ],
-                    afterBlur: function () { this.sync(); }
-                });
-        });
+    var editor
+    KindEditor.ready(function (K) {
+        editor = K.create('#Introduce',
+            {
+                langType: language,
+                width: '650px',
+                height: '300px',
+                uploadJson: '/Common/Upload',
+                fileManagerJson: '/Common/Upload',
+                allowFileManager: false,
+                formatUploadUrl: false,
+                items: [
+                    'undo', 'redo', '|', 'preview', 'print', 'cut', 'copy', 'paste',
+                    'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                    'superscript', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                    'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+                    'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                    'anchor', 'link', 'unlink'
+                ],
+                afterBlur: function () { this.sync(); }
+            });
+    });
 
 
 </script>

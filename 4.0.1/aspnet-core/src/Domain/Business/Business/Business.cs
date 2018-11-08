@@ -9,7 +9,7 @@ using Abp.Timing;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Dependency;
 using Abp.Runtime.Session;
-namespace UnionMall.Business.Business
+namespace UnionMall.Entity
 {
     [Table("TBusiness")]
     public class Business : Entity<long>, IHasCreationTime, IMustHaveTenant

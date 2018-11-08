@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
-using UnionMall.Member.MemberLevel;
+using UnionMall.Member;
 using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.Member.Controllers
@@ -15,8 +15,8 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
     [AbpMvcAuthorize("Member")]
     public class MemberLevelController : UnionMallControllerBase
     {
-        private readonly IMemverLevelAppService _AppService;
-        public MemberLevelController(IMemverLevelAppService AppService)
+        private readonly IMemberLevelAppService _AppService;
+        public MemberLevelController(IMemberLevelAppService AppService)
         {
             _AppService = AppService;
         }

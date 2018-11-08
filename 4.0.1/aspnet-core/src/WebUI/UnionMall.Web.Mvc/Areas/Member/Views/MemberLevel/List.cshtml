@@ -52,7 +52,10 @@
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="#">10/@L("Page")</a>
+                                <a data-ajax="true" data-ajax-form="searchForm"
+                                   data-ajax-loading="loading" data-ajax-loading-duration="2"
+                                   data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
+                                   href="/GoodsManage/Category/Table?page=1&pageSize=10">10/@L("Page")</a>
                             </li>
                             <li>
                                 <a href="#">15/@L("Page")</a>
@@ -75,6 +78,9 @@
                                 <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
                             </div>
                         }
+                            <form style="display:none;" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/member/memberlevel/List" method="post">
+                                <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
+                            </form>
                     </div>
                     <div id="table">
                         @Html.Partial("_Table", Model)
@@ -89,4 +95,8 @@
 </div>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/lib/pager/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Member/member_level.js"></script>
+<script>
+    $("#Add").validate({});
+</script>

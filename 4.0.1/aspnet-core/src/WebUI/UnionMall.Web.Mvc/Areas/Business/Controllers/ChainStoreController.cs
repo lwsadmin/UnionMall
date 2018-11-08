@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
-using UnionMall.Business.Business;
-using UnionMall.Business.Business.Dto;
-using UnionMall.Business.ChainStore;
+using UnionMall.Business;
+using UnionMall.Business.Dto;
 using UnionMall.Common;
 using UnionMall.Controllers;
 using UnionMall.Core;
+using UnionMall.Entity;
 using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.Business.Controllers

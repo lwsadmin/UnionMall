@@ -23,7 +23,4 @@
       <HintPath>System.Web</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Member\MemberLevel\Dto\" />
-  </ItemGroup>
 </Project>

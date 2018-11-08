@@ -208,6 +208,10 @@
     <text name="Loading" value="Loading..." />
     <text name="Aduit" value="Aduit" />
     <text name="Reply" value="Reply" />
+
+    <text name="Import" value="Import" />
+    <text name="Export" value="Export" />
+
     <!--Form-->
     <text name="SortTip" value="Descending from big to small" />
     <text name="Brand" value="Brand" />

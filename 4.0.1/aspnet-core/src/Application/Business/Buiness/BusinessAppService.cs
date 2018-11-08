@@ -7,20 +7,20 @@ using Abp.Application.Services;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
-using UnionMall.Business.Business.Dto;
+using UnionMall.Business.Dto;
 using UnionMall.IRepositorySql;
-
-namespace UnionMall.Business.Business
+using UnionMall.Entity;
+namespace UnionMall.Business
 {
     public class BusinessAppService : ApplicationService, IBusinessAppService
     {
-        private readonly IRepository<Business, long> _Repository;
-        private readonly IRepository<ChainStore.ChainStore, long> _storeRepository;
+        private readonly IRepository<Entity.Business, long> _Repository;
+        private readonly IRepository<Entity.ChainStore, long> _storeRepository;
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
         public BusinessAppService(ISqlExecuter sqlExecuter,
-            IRepository<Business, long> Repository,
-            IRepository<ChainStore.ChainStore, long> storeRepository,
+            IRepository<Entity.Business, long> Repository,
+            IRepository<Entity.ChainStore, long> storeRepository,
         IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
@@ -49,7 +49,7 @@ namespace UnionMall.Business.Business
             return query.MapTo<List<BusinessDropDownDto>>();
         }
 
-        public async Task CreateOrEditAsync(Business bus)
+        public async Task CreateOrEditAsync(Entity.Business bus)
         {
             if (bus.Id > 0)
             {
@@ -63,7 +63,7 @@ namespace UnionMall.Business.Business
             }
         }
 
-        public async Task<Business> GetByIdAsync(long Id)
+        public async Task<Entity.Business> GetByIdAsync(long Id)
         {
             var s = await _Repository.GetAsync(Id);
             return s;

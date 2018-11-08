@@ -156,6 +156,8 @@
     <text name="Loading" value="加载中..." />
     <text name="Aduit" value="审核" />
     <text name="Reply" value="回复" />
+    <text name="Import" value="导入" />
+    <text name="Export" value="导出" />
     <!--Form-->
     <text name="SortTip" value="从大到小降序展示" />
     <text name="Brand" value="品牌" />

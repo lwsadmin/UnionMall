@@ -18,7 +18,7 @@
             if (EditDto.ParentId == "") {
                 EditDto.ParentId = "0";
             }
-            debugger;
+
             categoryService.createOrEdit(EditDto).done(function (data) {
                 _$modal.modal('hide');
                 _$form[0].reset();

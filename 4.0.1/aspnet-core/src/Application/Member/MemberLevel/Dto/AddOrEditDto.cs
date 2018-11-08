@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Abp.Domain.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace UnionMall.Entity
+using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using UnionMall.Entity;
+using UnionMall.Member;
+namespace UnionMall.Member.Dto
 {
-    [Table("TMemberLevel")]
-    public class MemberLevel : Entity<long>
+    [AutoMapFrom(typeof(MemberLevel))]
+    public class AddOrEditDto : EntityDto<long>
     {
-        public int? TenantId { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "title can not be null")]
+        [Required(ErrorMessage = "title can not be null")]
         public string Title { get; set; }
 
+        public int TenantId { get; set; }
         public decimal InitPoint { get; set; }
 
         public decimal SellPrice { get; set; }

@@ -9,9 +9,8 @@ using Abp.Timing;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Dependency;
 using Abp.Runtime.Session;
-namespace UnionMall.Business.ChainStore
+namespace UnionMall.Entity
 {
-    //TChainStore
     [Table("TChainStore")]
     public class ChainStore : Entity<long>, IHasCreationTime, IMustHaveTenant
     {

@@ -64,6 +64,8 @@
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
+      <Action Name="Import" />
+      <Action Name="Export" />
     </Second>
     <Second Name="MemberList" Url="/member/member/list"></Second>
     <Second Name="MemberRegister"  Url="/member/memberreg/index"></Second>

@@ -31,18 +31,19 @@
                 <td>
                     @if (IsGranted("Member.MemberLevel.Edit"))
                     {
-                        <a class="edit-user" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                        <a class="edit" title="@L("Edit")" data-id="@item["Id"]"
+                           onclick="Edit('@item["Id"]','@item["Title"]','@item["TenantId"]','@item["MinPoint"]','@item["MaxPoint"]','@item["SellPrice"]','@item["InitPoint"]');">
+                            <i class="fa fa-edit text-navy"></i>
+                        </a>
                     }
 
                     @if (IsGranted("Member.MemberLevel.Delete"))
                     {
-                        if (item["UserName"].ToString().ToUpper() != "ADMIN")
-                        {
-                            <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["UserName"])" data-ok="@L("OK")"
-                               data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                                <i class="fa fa-trash text-navy"></i>
-                            </a>
-                        }
+                        <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["title"])" data-ok="@L("OK")"
+                           data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                            <i class="fa fa-trash text-navy"></i>
+                        </a>
+
                     }
 
 

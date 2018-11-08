@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
-using UnionMall.Business.Business;
-//using UnionMall.Business.ChainStore;
+using UnionMall.Business;
 using UnionMall.IRepositorySql;
+using UnionMall.Entity;
+using UnionMall.Business.Dto;
+using Abp.AutoMapper;
 
-namespace UnionMall.Business.ChainStore
+namespace UnionMall.Business
 {
     public class ChainStoreAppService : ApplicationService, IChainStoreAppService
     {
@@ -85,6 +87,21 @@ left join TBusiness b on c.BusinessId = b.Id where 1=1 ";
                 throw new Abp.UI.UserFriendlyException(e.Message);
             }
 
+        }
+        public async Task<List<StoreDropDownDto>> GetDropDown()
+        {
+            var query = await _Repository.GetAllListAsync();
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+            {
+                query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
+            }
+            DataTable role = _sqlExecuter.ExecuteDataSet($"select s.Id, r.Name RoleName,r.ManageRole,r.BusinessId from dbo.TUsers s " +
+    $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
+            if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
+            {
+                query = query.FindAll(c => c.Id == (long)role.Rows[0]["BusinessId"]);
+            }
+            return query.MapTo<List<StoreDropDownDto>>();
         }
     }
 }

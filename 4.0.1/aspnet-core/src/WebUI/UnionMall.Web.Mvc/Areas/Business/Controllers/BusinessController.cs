@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
-using model = UnionMall.Business.Business;
+using model = UnionMall.Entity;
 using UnionMall.Common;
 using UnionMall.Controllers;
 using X.PagedList;
-using UnionMall.Business.Business;
+using UnionMall.Business;
 
 namespace UnionMall.Web.Mvc.Areas.Business.Controllers
 {
