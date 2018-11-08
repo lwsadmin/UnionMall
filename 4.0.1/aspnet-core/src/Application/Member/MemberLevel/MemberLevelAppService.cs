@@ -71,6 +71,10 @@ cast(m.minPoint as float) minPoint,cast(m.maxPoint as float) maxPoint from tmemb
             {
                 query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
             }
+            if (query == null || query.Count == 0)
+            {
+                return new List<LevelDropDwonDto>();
+            }
             return query.MapTo<List<LevelDropDwonDto>>();
         }
 

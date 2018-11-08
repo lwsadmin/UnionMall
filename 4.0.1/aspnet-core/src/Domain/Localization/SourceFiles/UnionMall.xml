@@ -43,7 +43,6 @@
     <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
     <text name="DefaultPasswordIs" value="Default password is {0}" />
     <text name="CanBeEmptyToLoginAsHost" value="Can be empty to login as host." />
-    <text name="Register" value="Register" />
     <text name="OrLoginWith" value="Or login with" />
     <text name="WaitingForActivationMessage" value="Your account is waiting to be activated by system admin." />
     <text name="TenantSelection" value="Tenant Selection" />
@@ -246,6 +245,9 @@
     <text name="Price" value="Price" />
     <text name="Sell" value="Sell" />
     <text name="Page" value="Page" />
+    <text name="Level" value="Level" />
+    <text name="Time" value="Time" />
+    <text name="Register" value="Register" />
     <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
 
     <!--message-->

@@ -7,11 +7,12 @@ using Abp.Domain.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace UnionMall.Member.MemberLevel
+namespace UnionMall.Entity
 {
-    public class MemberLevel : Entity<long>, IMustHaveTenant
+    [Table("TMemberLevel")]
+    public class MemberLevel : Entity<long>
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
 
         [Required(ErrorMessage = "title can not be null")]
 

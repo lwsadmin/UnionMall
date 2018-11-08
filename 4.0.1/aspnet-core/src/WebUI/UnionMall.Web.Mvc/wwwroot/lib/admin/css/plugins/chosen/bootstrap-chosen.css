@@ -136,11 +136,12 @@
 }
 
     .chosen-container-single .chosen-single span {
-        display: block;
         margin-right: 26px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        vertical-align: middle;
+        display: inline-block;
     }
 
     .chosen-container-single .chosen-single abbr {

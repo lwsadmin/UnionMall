@@ -63,7 +63,7 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             ViewData.Add("Business", new SelectList(businessDropDown, "Id", "BusinessName"));
 
             var levelDropDown = (await _levelAppService.GetDropDown());
-            ViewData.Add("Level", new SelectList(businessDropDown, "Id", "Title"));
+            ViewData.Add("Level", new SelectList(levelDropDown, "Id", "Title"));
 
             var storeDropDown = (await _storeAppService.GetDropDown());
             ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
@@ -71,58 +71,3 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
         }
     }
 }
-
-//USE[UnionMallDb]
-//GO
-
-///****** Object:  Table [dbo].[TMember]    Script Date: 2018/11/8 17:57:20 ******/
-//set ansi_nulls on
-//go
-
-//set quoted_identifier on
-//go
-
-//create table[dbo].[TMember]
-//(
-
-//   [Id][bigint] identity(1,1) not null,
-//	[TenantId] [int] not null,
-//	[BusinessId] [bigint] not null,
-//	[LevelId] [bigint] not null,
-//	[ChainStoreId] [bigint] null,
-//	[CardID] [nvarchar] (200) null,
-//	[Name] [nvarchar] (100) null,
-//	[NickName] [nvarchar] (100) null,
-//	[PassWord] [nvarchar] (500) not null,
-//	[HeadImg] [nvarchar] (300) null,
-//	[Sex] [int] not null,
-//	[BirthDay] [datetime] null,
-//	[Mobile] [nvarchar] (50) null,
-//	[Email] [nvarchar] (100) null,
-//	[Profession] [nvarchar] (30) null,
-//	[ProvinceId] [int] not null,
-//	[CityId] [int] not null,
-//	[DistrictId] [int] not null,
-//	[Address] [nvarchar] (200) not null,
-//	[Integral] [decimal] (18, 2) not null,
-//	[Balance] [decimal] (18, 2) not null,
-//	[TotalConsumeCount] [int] not null,
-//	[LastConsumeTime] [datetime] null,
-//	[Status] [int] null,
-//	[RegTime] [datetime] not null,
-//	[RegSource] [int] null,
-//	[OpenID] [nvarchar] (100) null,
-//	[Memo] [nchar] (10) null,
-// constraint[PK_TMember_1] primary key clustered
-//(
-//   [Id] asc
-//)with(pad_index = off, statistics_norecompute = off, ignore_dup_key = off, allow_row_locks = on, allow_page_locks = on) on[PRIMARY]
-//) on[PRIMARY]
-
-//go
-
-//alter table[dbo].[TMember] add constraint[DF_TMember_Status]  default ((0)) for [Status]
-//go
-
-//exec sys.sp_addextendedproperty @name = N'MS_Description', @value=N'0正常  1 锁定  2 删除' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'TMember', @level2type=N'COLUMN',@level2name=N'Status'
-//go

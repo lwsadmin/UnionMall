@@ -88,7 +88,7 @@
     <text name="OneJia" value="代理级别" />
     <text name="TwoJia" value="我的代理" />
     <text name="BusinessManage" value="商户管理" />
-    <text name="ChainStore" value="商户门店"/>
+    <text name="ChainStore" value="门店"/>
 
     <text name="Member" value="会员管理"/>
     <text name="MemberLevel" value="会员级别" />
@@ -191,6 +191,9 @@
     <text name="Price" value="价格" />
     <text name="Sell" value="销售" />
     <text name="Page" value="页" />
+    <text name="Level" value="级别" />
+    <text name="Time" value="时间" />
+    <text name="Register" value="注册" />
     <!--message-->
     <text name="Hint" value="提示" />
     <text name="{0}不存在,可能已经被删除!" value="{0}editeNoExist" />

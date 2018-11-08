@@ -1,7 +1,117 @@
 ﻿
 @{
     ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.FirstMenu = "Member";
+    ViewBag.SecondMenu = "MemberList";
+
+
 }
 
-<h2>List</h2>
+@using System.Data
+@using X.PagedList
 
+@model PagedList<DataRow>
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js"></script>
+<script>
+    language = $("#CurrentLanguage").attr("data-lan");
+    if (language == "zh-Hans") {
+        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
+        });
+    }
+</script>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("Member")</a>
+            </li>
+            <li class="active">
+                <strong>@L("MemberList")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("MemberList") </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">选项 1</a>
+                            </li>
+                            <li>
+                                <a href="#">选项 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        @if (IsGranted("Member.MemberList.Add"))
+                        {
+                            <div class="col-sm-1" style="width:auto;">
+                                <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                            </div>
+                        }
+                        <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/systemset/user/List" method="post">
+                            <div class="col-sm-2">
+                                @Html.DropDownList("Level", (SelectList)ViewData["Level"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.DropDownList("Business", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.DropDownList("Store", (SelectList)ViewData["ChainStore"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input type="text" name="Name" placeholder="@L("Name")" class="m-b input-sm form-control"> <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="DivAdd">
+
+</div>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script>
+    function EditShow(data) {
+        $("#CreateModal").modal("show");
+    }
+    $('.chosen-select').chosen({ width: "100%" });
+</script>
