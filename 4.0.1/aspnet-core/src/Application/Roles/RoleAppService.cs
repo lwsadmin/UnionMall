@@ -267,8 +267,21 @@ namespace UnionMall.Roles
                 table = $@"select r.Id,r.CreationTime,r.Description,r.DisplayName,r.Name,r.IsDefault,b.BusinessName
 from TRoles r left join dbo.TBusiness b on r.BusinessId=b.Id where r.IsDeleted=0";
             }
-            where = where.Replace("*", "r");
-            table += where;
+
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+            {
+                table += $" and r.TenantId={_AbpSession.TenantId}";
+            }
+
+            DataTable role = _sqlExecuter.ExecuteDataSet($"select s.Id, r.Name RoleName,r.ManageRole,r.BusinessId from dbo.TUsers s " +
+                $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
+            if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
+            {
+                if(role.Rows[0]["ManageRole"].ToString()=="")
+                    table += $" and r.id=-1";
+                else
+                table += $" and r.id in({role.Rows[0]["ManageRole"]})";
+            }
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
         public async Task<List<RoleDropDownDto>> GetDropDown()

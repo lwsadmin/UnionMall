@@ -16,7 +16,7 @@ using UnionMall.Common;
 namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AbpMvcAuthorize("Member.MemberList")]
+    [AbpMvcAuthorize("Member")]
     public class MemberController : UnionMallControllerBase
     {
         private readonly IMemberAppService _AppService;
@@ -33,6 +33,8 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             _storeAppService = storeAppService;
             _comAppService = comAppService;
         }
+
+        [AbpMvcAuthorize("Member.MemberList")]
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string Level = "", string Name = "",
             string Business = "", string Store = "", string RegTimeFrom = "", string RegTimeTo = "")
         {

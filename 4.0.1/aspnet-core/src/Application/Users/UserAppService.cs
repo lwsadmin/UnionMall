@@ -196,7 +196,11 @@ on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id  where s.IsDeleted=0";
                 $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
             if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
             {
-                where += $" and r.BusinessId={role.Rows[0]["BusinessId"]} and ur.RoleId in({role.Rows[0]["ManageRole"]})";
+                where += $" and r.BusinessId={role.Rows[0]["BusinessId"]}";
+                if (role.Rows[0]["ManageRole"].ToString() == "")
+                    where += " and ur.RoleId =-1 ";
+                else
+                    where += $" and ur.RoleId in ({role.Rows[0]["ManageRole"]})";
             }
             table += where;
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);

@@ -54,7 +54,7 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
                 where += $" and RoleId = {RoleId}";
             if (!string.IsNullOrEmpty(BusinessId))
                 where += $" and r.BusinessId = {BusinessId}";
-            int total;
+            int total; 
             DataSet ds = _userAppService.GetUserPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
 
