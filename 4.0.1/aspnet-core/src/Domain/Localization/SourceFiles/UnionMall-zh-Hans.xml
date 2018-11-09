@@ -161,6 +161,7 @@
     <!--Form-->
     <text name="SortTip" value="从大到小降序展示" />
     <text name="Brand" value="品牌" />
+    <text name="FullName" value="姓名" />
     <text name="Selected" value="已选" />
     <text name="Selectable" value="可选" />
     <text name="Choose" value="-请选择-" />
