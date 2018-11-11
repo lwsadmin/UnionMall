@@ -165,9 +165,14 @@
     <text name="Selected" value="已选" />
     <text name="Selectable" value="可选" />
     <text name="Choose" value="-请选择-" />
+    <text name="Sex" value="性别" />
+    <text name="CardID" value="卡号" />
+    <text name="WeChat" value="微信" />
     <text name="Address" value="地址" />
     <text name="NoEditPwd" value="不填写则不修改密码" />
     <text name="AddressPlace" value="请输入详细地址 如 市, 区, 街道" />
+    <text name="Male" value="男士" />
+    <text name="Female" value="女士" />
     <!--Table-->
     <text name="Sort" value="排序" />
     <text name="legalPerson" value="法人" />

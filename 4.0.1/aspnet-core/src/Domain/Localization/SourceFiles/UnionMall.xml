@@ -201,7 +201,10 @@
     <text name="SEO" value="SEO" />
     <text name="Cache" value="Cache" />
     <text name="LogList" value="LogList" />
-
+    <text name="Sex" value="Sex" />
+    <text name="Male" value="Male" />
+    <text name="Female" value="Female" />
+    <text name="CardID" value="CardID" />
     <!--Action-->
 
     <text name="Loading" value="Loading..." />

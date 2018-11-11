@@ -27,7 +27,7 @@ namespace UnionMall.Member
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select m.id,m.name,m.TenantId,m.levelId,m.HeadImg,m.Sex,m.CardID,m.Mobile,m.Balance,m.Integral,
+                table = $@"select m.id,m.FullName,m.WechatName,m.TenantId,m.levelId,m.HeadImg,m.Sex,m.CardID,m.Mobile,m.Balance,m.Integral,
 m.RegTime,m.businessId,m.chainStoreId,l.Title,b.BusinessName,c.Name StoreName from dbo.TMember m
 left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TBusiness b on
 m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";

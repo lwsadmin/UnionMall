@@ -5,9 +5,21 @@
 
     ViewBag.FirstMenu = "Member";
     ViewBag.SecondMenu = "MemberRegister";
-
-
 }
+@using UnionMall.Entity;
+@using UnionMall.Member.Dto;
+@model Member
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" asp-append-version="true" rel="stylesheet" />
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
+<script>
+    language = $("#CurrentLanguage").attr("data-lan");
+    if (language == "zh-Hans") {
+        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
+        });
+    }
+</script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -36,22 +48,80 @@
 
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">@L("FullName")</label>
-                            <div class="col-lg-4">
-                                <input type="text" placeholder="" class="form-control input-sm" required minlength="2"  />
+                    <form class="form-horizontal" id="memberReg">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("FullName")</label>
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="" name="FullName" class="form-control input-sm" required minlength="2" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("PhoneNumber")</label>
+
+                                <div class="col-lg-6"><input type="number" name="Mobile" placeholder="" required maxlength="11" class="form-control"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("CardID")</label>
+
+                                <div class="col-lg-6"><input type="number" placeholder="" minlength="7" maxlength="11" class="form-control"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("Password")</label>
+
+                                <div class="col-lg-6">
+                                    <input id="Password" name="Password" type="password" placeholder="" required maxlength="32" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("MemberLevel")</label>
+                                <div class="col-lg-6">
+                                    <select class="input-sm form-control chosen-select" id="LevelId" name="LevelId" required>
+                                        <option value="">-@L("Choose")-</option>
+                                        @foreach (var item in ViewBag.Level)
+                                        {
+                                            <option value="@item.Id">@item.Title</option>
+
+                                        }
+
+                                    </select>
+                                  
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("Email")</label>
+
+                                <div class="col-lg-6"><input type="email" placeholder="" class="form-control"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("Sex")</label>
+
+                                <div class="col-lg-6">
+                                    <div class="radio radio-inline radio-success">
+                                        <input type="radio" id="active" value="true" name="IsActive" @(Model.Sex == 0 ? "checked" : "") />
+                                        <label for="active">@L("Male")</label>
+                                    </div>
+                                    <div class="radio radio-inline radio-success">
+                                        <input type="radio" id="Disable" value="false" name="IsActive" @(Model.Sex == 1 ? "checked" : "") />
+                                        <label for="Disable">@L("Female")</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("OK")@L("Password")</label>
+
+                                <div class="col-lg-6">
+                                    <input type="password" placeholder="" required equalTo="#Password" maxlength="32" class="form-control">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">@L("PhoneNumber")</label>
-
-                            <div class="col-lg-4"><input type="number" placeholder="" minlength="7" maxlength="11"  class="form-control"></div>
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-sm btn-white" type="submit">登录</button>
+                                <button class="btn btn-sm btn-white" type="submit">提交注册</button>
                             </div>
                         </div>
                     </form>
@@ -61,3 +131,10 @@
         </div>
     </div>
 </div>
+<script>
+    $(function () {
+        $("#memberReg").validate({});
+        $('.chosen-select').chosen({ width: "100%" });
+    });
+
+</script>

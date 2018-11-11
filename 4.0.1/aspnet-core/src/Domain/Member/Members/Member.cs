@@ -12,7 +12,7 @@ namespace UnionMall.Entity
     public class Member : Entity<long>
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "title can not be null")]
-        public string Name { get; set; }
+        public string FullName { get; set; }
         public int? TenantId { get; set; }
 
         public long BusinessId { get; set; }
@@ -20,14 +20,13 @@ namespace UnionMall.Entity
         public long ChainStoreId { get; set; }
         public long LevelId { get; set; }
         public string CardID { get; set; }
-        public string NickName { get; set; }
+        public string WeChatName { get; set; }
         public string PassWord { get; set; }
         public string HeadImg { get; set; }
         public int Sex { get; set; }
         public DateTime BirthDay { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
-        public string Profession { get; set; }
         public int ProvinceId { get; set; }
         public int CityId { get; set; }
         public int DistrictId { get; set; }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.Controllers;
 using UnionMall.Member;
-
+using UnionMall.Entity;
 namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 {
     [Area("Member")]
@@ -23,8 +23,10 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
         public async Task<IActionResult> Index()
         {
             var levelDropDown = (await _levelAppService.GetDropDown());
-            ViewData.Add("Level", new SelectList(levelDropDown, "Id", "Title"));
-            return View();
+            ViewBag.Level = levelDropDown;
+            Entity.Member meber = new Entity.Member();
+
+            return View(meber);
         }
     }
 }
