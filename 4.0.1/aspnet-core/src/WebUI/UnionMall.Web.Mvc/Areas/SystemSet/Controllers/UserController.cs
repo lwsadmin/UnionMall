@@ -47,7 +47,6 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             int page = 1, int pageSize = 10, string RoleId = "", string Name = "",string BusinessId="")
         {
             string where = string.Empty;
-            //where += _comService.GetWhere();
             if (!string.IsNullOrEmpty(Name))
                 where += $" and s.UserName like '%{Name}%'";
             if (!string.IsNullOrEmpty(RoleId))

@@ -7,8 +7,9 @@
     ViewBag.SecondMenu = "MemberRegister";
 }
 @using UnionMall.Entity;
+@using UnionMall.Enum;
 @using UnionMall.Member.Dto;
-@model Member
+@model RegDto
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" asp-append-version="true" rel="stylesheet" />
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
@@ -64,14 +65,21 @@
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">@L("CardID")</label>
 
-                                <div class="col-lg-6"><input type="number" placeholder="" minlength="7" maxlength="11" class="form-control"></div>
+                                <div class="col-lg-6"><input type="number" name="CardID" placeholder="" required class="form-control"></div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">@L("Password")</label>
 
                                 <div class="col-lg-6">
-                                    <input id="Password" name="Password" type="password" placeholder="" required maxlength="32" class="form-control">
+                                    <input id="Password" name="PassWord" type="password" placeholder="" required maxlength="32" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("Referrer")@L("CardID")</label>
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="" name="ReferrerID" class="form-control input-sm" />
                                 </div>
                             </div>
                         </div>
@@ -86,9 +94,7 @@
                                             <option value="@item.Id">@item.Title</option>
 
                                         }
-
                                     </select>
-                                  
                                 </div>
                             </div>
                             <div class="form-group">
@@ -101,12 +107,12 @@
 
                                 <div class="col-lg-6">
                                     <div class="radio radio-inline radio-success">
-                                        <input type="radio" id="active" value="true" name="IsActive" @(Model.Sex == 0 ? "checked" : "") />
-                                        <label for="active">@L("Male")</label>
+                                        <input type="radio" id="Male" value="@((int)Sex.Male)" name="Sex" @((Model == null ? 0 : Model.Sex) == (int)Sex.Male ? "checked" : "") />
+                                        <label for="Male">@L("Male")</label>
                                     </div>
                                     <div class="radio radio-inline radio-success">
-                                        <input type="radio" id="Disable" value="false" name="IsActive" @(Model.Sex == 1 ? "checked" : "") />
-                                        <label for="Disable">@L("Female")</label>
+                                        <input type="radio" id="Female" value="@((int)Sex.Female)" name="Sex" @((Model == null ? 0 : Model.Sex) == (int)Sex.Female ? "checked" : "") />
+                                        <label for="Female">@L("Female")</label>
                                     </div>
                                 </div>
                             </div>
@@ -115,13 +121,19 @@
                                 <label class="col-lg-2 control-label">@L("OK")@L("Password")</label>
 
                                 <div class="col-lg-6">
-                                    <input type="password" placeholder="" required equalTo="#Password" maxlength="32" class="form-control">
+                                    <input type="password" name="PassWord" placeholder="" class="form-control" required equalTo="#Password" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">@L("Referrer")@L("FullName")</label>
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="" class="form-control input-sm" />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-sm btn-white" type="submit">提交注册</button>
+                                <button class="btn btn-sm btn-white" type="submit">@L("Submit")@L("Save")</button>
                             </div>
                         </div>
                     </form>
@@ -131,9 +143,35 @@
         </div>
     </div>
 </div>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
 <script>
     $(function () {
-        $("#memberReg").validate({});
+
+        $("#memberReg").validate({
+
+            submitHandler: function (form) {
+                var dto = $("#memberReg").serializeFormToObject();
+                var _Service = abp.services.app.member;
+
+                _Service.submitReg(dto).done(function (data) {
+
+                    if (data.succ) {
+                        document.getElementById("memberReg").reset();
+
+                             toastr.options = {
+              "closeButton": true,//是否配置关闭按钮
+              "newestOnTop": false,//新消息是否排在最上层
+              "progressBar": true,//是否显示进度条
+              "timeOut": "2000",//1.5s后关闭消息框
+             }
+         toastr.success('@L("Save")@L("Success")','@L("Hint")');
+                    } else {
+                        swal(data.msg, '', 'error');
+                    }
+                }).fail(function (data) {
+                }).always(function (data) { });
+            }
+        });
         $('.chosen-select').chosen({ width: "100%" });
     });
 

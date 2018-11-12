@@ -18,6 +18,7 @@ namespace UnionMall.Member
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
+
         private readonly IRepository<MemberLevel, long> _Repository;
         public MemberLevelAppService(ISqlExecuter sqlExecuter, IRepository<MemberLevel, long> Repository, IAbpSession AbpSession)
         {

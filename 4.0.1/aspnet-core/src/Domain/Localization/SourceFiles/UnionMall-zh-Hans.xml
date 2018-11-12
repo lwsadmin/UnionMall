@@ -65,7 +65,7 @@
     <text name="Permissions">权限</text>
     <text value="账号" name="TenancyName"/>
     <text name="Welcome, {0}" value="欢迎您 {0}" />
-
+    <text name="Referrer" value="推荐人" />
     <text name="OffLineCashie" value="线下收款"/>
     <text name="QuickConsume" value="快速消费"/>
     <text name="GoodsConsume" value="商品消费" />
@@ -158,6 +158,7 @@
     <text name="Reply" value="回复" />
     <text name="Import" value="导入" />
     <text name="Export" value="导出" />
+    <text name="Balance" value="余额" />
     <!--Form-->
     <text name="SortTip" value="从大到小降序展示" />
     <text name="Brand" value="品牌" />
@@ -173,6 +174,7 @@
     <text name="AddressPlace" value="请输入详细地址 如 市, 区, 街道" />
     <text name="Male" value="男士" />
     <text name="Female" value="女士" />
+    <text name="Submit" value="提交" />
     <!--Table-->
     <text name="Sort" value="排序" />
     <text name="legalPerson" value="法人" />
@@ -202,6 +204,7 @@
     <text name="Register" value="注册" />
     <!--message-->
     <text name="Hint" value="提示" />
+    <text name="Exist{0}" value="已经存在 {0}!" />
     <text name="{0}不存在,可能已经被删除!" value="{0}editeNoExist" />
     <text name="DeleteConfirm{0}" value="确认删除【{0}】吗?" />
     <text name="NotExist" value="该条记录不存在,可能已经被删除!" />

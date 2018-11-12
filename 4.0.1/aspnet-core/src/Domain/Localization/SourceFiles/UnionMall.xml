@@ -62,7 +62,7 @@
     <text value="Operate" name="Operate"/>
     <text  name="Title" value="Title"/>
     <text name="Note" value="Note"/>
-
+    <text name="Balance" value="Balance" />
     <text name="CreateNewUser" value="Create new user" />
     <text name="Yes" value="Yes" />
     <text name="No" value="No" />
@@ -216,6 +216,7 @@
 
     <!--Form-->
     <text name="SortTip" value="Descending from big to small" />
+        <text name="Referrer" value="Referrer" />
     <text name="Brand" value="Brand" />
     <text name="Choose" value="-Choose-" />
     <text name="Selected" value="Selected" />
@@ -226,7 +227,7 @@
     <text name="Business" value="Business"/>
     <text name="Store" value="Store"/>
     <text name="Count" value="Count"/>
-
+        <text name="Submit" value="Submit" />
     <!--Table-->
     <text name="Query" value="Query" />
     <text name="Search" value="Search" />
@@ -255,6 +256,7 @@
 
     <!--message-->
     <text name="NotExist" value="It does not exist. It may have been deleted!" />
+    <text name="Exist{0}" value="Already exist {0}!" />
     <text name="{0}AlreadyExist" value="The name {0} already exists!" />
     <text name="ExistRecord{0}" value="{0} related records are not available." />
     <text name="DeleteConfirm" value="Do you want to delete it ?" />
