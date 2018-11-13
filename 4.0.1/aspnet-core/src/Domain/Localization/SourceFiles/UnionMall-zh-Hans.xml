@@ -88,7 +88,7 @@
     <text name="OneJia" value="代理级别" />
     <text name="TwoJia" value="我的代理" />
     <text name="BusinessManage" value="商户管理" />
-    <text name="ChainStore" value="门店"/>
+    <text name="ChainStore" value="商户门店"/>
 
     <text name="Member" value="会员管理"/>
     <text name="MemberLevel" value="会员级别" />
@@ -149,7 +149,7 @@
     <text name="LogList" value="日志监控" />
     <text name="Belong" value="所属" />
     <text name="Business" value="商户"/>
-    <text name="Store" value="店铺"/>
+    <text name="Store" value="门店"/>
     <text name="Count" value="数量"/>
 
     <!--Action-->

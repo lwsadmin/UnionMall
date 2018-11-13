@@ -36,6 +36,8 @@ namespace UnionMall.Users.Dto
 
         public string FullName { get; set; }
 
+        public long ChainStoreId { get; set; }
+
         public DateTime? LastLoginTime { get; set; }
 
         public DateTime CreationTime { get; set; }

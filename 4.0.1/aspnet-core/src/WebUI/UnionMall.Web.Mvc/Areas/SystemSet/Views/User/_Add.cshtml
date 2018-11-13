@@ -35,26 +35,29 @@
                             </div>
                             <div class="form-group">
                                 <label>@L("Belong")@L("Roles")</label>
-                                <select class="input-sm form-control chosen-select" id="role" name="role" required="true">
+                                <select class="input-sm form-control" id="role" name="role" required>
                                     <option value="">-@L("Choose")-</option>
                                     @foreach (var role in Model.Roles)
                                     {
                                         if (Model.UserIsInRole(role))
                                         {
-                                            <option selected="selected" value="@role.NormalizedName">@role.DisplayName</option>
+                                            <option data-bid="@role.BusinessId" selected="selected" value="@role.NormalizedName">@role.DisplayName</option>
                                         }
                                         else
                                         {
-                                            <option value="@role.NormalizedName">@role.DisplayName</option>
+                                            <option data-bid="@role.BusinessId" value="@role.NormalizedName">@role.DisplayName</option>
                                         }
-
                                     }
-
                                 </select>
                             </div>
 
+                            <div class="form-group">
+                                <label>@L("Belong")@L("Store")</label>
+                                <select class="input-sm form-control" id="ChainStoreId" name="ChainStoreId" required>
+                                  
 
-
+                                </select>
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -98,7 +101,11 @@
     </div>
 </div>
 <script>
-    $("#userAdd").validate({});
+    $("#userAdd").validate({
+        success: function (label) {
+
+        }
+    });
     $('#roleCreate').on("hidden.bs.modal", function () {
         $("#userAdd").find("label[class='error']").fadeOut(0);
         $("input[name='Id']").val(0);
@@ -161,6 +168,25 @@
             });
         }
     }
-    $('.chosen-select').chosen({ width: "100%" });
+    //$('.chosen-select').chosen({ width: "100%" });
+    $(function () {
+        var businessId = $("#role").find("option:selected").data("bid");
+        GetStore(businessId);
+    
+    });
+    $("#role").change(function () {
+        var bid = $(this).find("option:selected").data("bid");     
+        GetStore(bid);
+    });
+    function GetStore(businessId) {
+        if (businessId != undefined && businessId != "") {
+            $("#ChainStoreId").html("");
+            $.get("/systemset/user/DropDrowGetStore?businessID=" + businessId, {}, function (data) {
+                $(data.result.stores).each(function () {
+                    $("#ChainStoreId").append("<option value='" + this.id + "'>" + this.name + "</option>");
+                });
+            });
+        }
+    }
 </script>
 

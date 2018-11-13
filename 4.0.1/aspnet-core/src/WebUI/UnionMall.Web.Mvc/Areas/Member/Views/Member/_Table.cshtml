@@ -30,10 +30,9 @@
         {
             <tr>
                 <td class="title">
-                    <img style="width:20px;height:20px;    vertical-align: -5px;" onerror="this.src='/img/avatar-default.png'" src="@item["HeadImg"]" alt="Alternate Text" />
-                    <span>@item["WechatName"]</span>
+                    @item["WechatName"]
                 </td>
-                <td class="title"><span> @item["FullName"]</span></td>
+                <td class="title">@item["FullName"]</td>
                 <td>@item["Mobile"]</td>
                 <td>@item["CardID"]</td>
                 <td>@item["BusinessName"]</td>
@@ -44,8 +43,15 @@
                 <td>@item["RegTime"]</td>
                 <td>
 
+                    @if (IsGranted("Member.CardInfo"))
+                    {
+                        <a title="@L("Detail")" href="javascript:void(0);">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                    }
 
-                    @if (IsGranted("SystemSet.UserManager.Delete"))
+
+                    @if (IsGranted("Member.MemberList.Delete"))
                     {
 
                         <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["FullName"])" data-ok="@L("OK")"
@@ -54,6 +60,8 @@
                         </a>
 
                     }
+
+
 
 
                 </td>

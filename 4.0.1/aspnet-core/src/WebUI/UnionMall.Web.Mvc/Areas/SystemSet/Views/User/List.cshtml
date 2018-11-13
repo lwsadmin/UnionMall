@@ -105,14 +105,12 @@
 <div id="DivAdd">
     @Html.Partial("_Add", s)
 </div>
-
-
-<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
-
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
 <script>
     function EditShow(data) {
         $("#CreateModal").modal("show");
     }
-
+    $(function () {
+        $('.chosen-select').chosen({ width: "100%" });
+    });
 </script>

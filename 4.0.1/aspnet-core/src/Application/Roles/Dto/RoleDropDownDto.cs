@@ -9,12 +9,13 @@ using UnionMall.Authorization.Roles;
 
 namespace UnionMall.Roles.Dto
 {
-    [AutoMapTo(typeof(Role))]
-    public class RoleDropDownDto: EntityDto<long>
+    [AutoMapFrom(typeof(Role))]
+    public class RoleDropDownDto : EntityDto<long>
     {
         [Required]
         [StringLength(AbpRoleBase.MaxDisplayNameLength)]
         public string DisplayName { get; set; }
         public string NormalizedName { get; set; }
+        public long BusinessId { get; set; }
     }
 }

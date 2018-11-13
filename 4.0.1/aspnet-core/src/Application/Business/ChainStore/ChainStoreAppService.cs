@@ -11,6 +11,7 @@ using UnionMall.IRepositorySql;
 using UnionMall.Entity;
 using UnionMall.Business.Dto;
 using Abp.AutoMapper;
+using Abp.Runtime.Caching;
 
 namespace UnionMall.Business
 {
@@ -19,12 +20,15 @@ namespace UnionMall.Business
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<ChainStore, long> _Repository;
         public readonly IAbpSession _AbpSession;
+        private readonly ICacheManager _cacheManager;
+
         public ChainStoreAppService(ISqlExecuter sqlExecuter, IAbpSession AbpSession,
-            IRepository<ChainStore, long> Repository)
+            IRepository<ChainStore, long> Repository, ICacheManager cacheManager)
         {
             _Repository = Repository;
             _sqlExecuter = sqlExecuter;
             _AbpSession = AbpSession;
+            _cacheManager = cacheManager;
         }
 
         public Task<ChainStore> GetByIdAsync(long Id)
@@ -88,20 +92,27 @@ left join TBusiness b on c.BusinessId = b.Id where 1=1 ";
             }
 
         }
-        public async Task<List<StoreDropDownDto>> GetDropDown()
+        public async Task<List<StoreDropDownDto>> GetDropDown(long? businessID = null)
         {
             var query = await _Repository.GetAllListAsync();
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+            if (businessID == null)
             {
-                query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
+                DataTable role = _sqlExecuter.ExecuteDataSet($"select s.Id, r.Name RoleName,r.ManageRole,r.BusinessId from dbo.TUsers s " +
+$"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
+                if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
+                {
+                    query = query.FindAll(c => c.Id == (long)role.Rows[0]["BusinessId"]);
+
+                }
+
+                return query.MapTo<List<StoreDropDownDto>>();
             }
-            DataTable role = _sqlExecuter.ExecuteDataSet($"select s.Id, r.Name RoleName,r.ManageRole,r.BusinessId from dbo.TUsers s " +
-    $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
-            if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
+            else
             {
-                query = query.FindAll(c => c.Id == (long)role.Rows[0]["BusinessId"]);
+                query = query.FindAll(c => c.BusinessId == businessID);
+                return query.MapTo<List<StoreDropDownDto>>();
             }
-            return query.MapTo<List<StoreDropDownDto>>();
+
         }
     }
 }

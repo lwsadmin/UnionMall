@@ -60,7 +60,7 @@
     </Second>
   </First>
   <First Name="Member" Icon="glyphicon glyphicon-user">
-    <Second Name="MemberLevel" Url="/Member/MemberLevel/list">
+    <Second Name="MemberLevel" Url="/member/memberlevel/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
@@ -73,7 +73,7 @@
       <Action Name="Export" />
     </Second>
     <Second Name="MemberRegister"  Url="/member/memberreg/index"></Second>
-    <Second Name="CardInfo"  Url="javascript:void(0);"></Second>
+    <Second Name="CardInfo"  Url="/member/cardcore/index"></Second>
   </First>
   <First Name="FlashSale"  Icon="glyphicon glyphicon-dashboard">
     <Second Name="FlashSaleList" Url="/groupbuy/groupbuy/list"></Second>

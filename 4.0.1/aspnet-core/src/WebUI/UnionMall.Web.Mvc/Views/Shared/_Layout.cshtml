@@ -19,20 +19,37 @@
     <link href="/lib/admin/css/bootstrap.min.css" asp-append-version="true" rel="stylesheet">
     <link href="/lib/admin/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true" />
     <link href="/lib/admin/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="http://cn.inspinia.cn/html/inspiniaen/css/animate.css" rel="stylesheet" asp-append-version="true">
     <link href="/lib/admin/css/style.css" rel="stylesheet" asp-append-version="true">
-
     <script src="/lib/admin/js/jquery-3.1.1.min.js" asp-append-version="true"></script>
     <style>
         .spiner-example {
-            top: 40%;
-            position: absolute;
+            top: 45%;
+            position: fixed;
             z-index: 1;
-            width: 90%;
+            width: 100vw;
         }
     </style>
 </head>
 <body>
 
+    <div class="spiner-example" id="loading">
+        <div class="sk-spinner sk-spinner-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+        <p style="text-align:center;">@L("Loading")</p>
+    </div>
     <div id="wrapper">
 
 
@@ -40,23 +57,6 @@
         <div id="page-wrapper" class="gray-bg dashbard-1">
             @await Component.InvokeAsync(typeof(TopBarViewComponent))
 
-            <div class="spiner-example" id="loading">
-                <div class="sk-spinner sk-spinner-circle">
-                    <div class="sk-circle1 sk-circle"></div>
-                    <div class="sk-circle2 sk-circle"></div>
-                    <div class="sk-circle3 sk-circle"></div>
-                    <div class="sk-circle4 sk-circle"></div>
-                    <div class="sk-circle5 sk-circle"></div>
-                    <div class="sk-circle6 sk-circle"></div>
-                    <div class="sk-circle7 sk-circle"></div>
-                    <div class="sk-circle8 sk-circle"></div>
-                    <div class="sk-circle9 sk-circle"></div>
-                    <div class="sk-circle10 sk-circle"></div>
-                    <div class="sk-circle11 sk-circle"></div>
-                    <div class="sk-circle12 sk-circle"></div>
-                </div>
-                <p style="text-align:center;">@L("Loading")</p>
-            </div>
             @RenderBody()
         </div>
     </div>
@@ -76,8 +76,8 @@
     @*<script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript" asp-append-version="true"></script>*@
     <script>
         window.onload = function () {
-            $(".pagination").next(".col-md-2").find("button").css("border-radius","0");
-            $("#loading").fadeOut(500);
+            $(".pagination").next(".col-md-2").find("button").css("border-radius", "0");
+            $("#loading").fadeOut(300);
         }
     </script>
 </body>

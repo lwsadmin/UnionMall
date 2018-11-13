@@ -11,6 +11,9 @@
     <RootNamespace>UnionMall</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="NPOI" Version="2.4.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Domain\UnionMall.Core.csproj" />
     <ProjectReference Include="..\Infrastructure\UnionMall.EntityFrameworkCore\UnionMall.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Infrastructure\UnionMall.Migrator\UnionMall.Migrator.csproj" />

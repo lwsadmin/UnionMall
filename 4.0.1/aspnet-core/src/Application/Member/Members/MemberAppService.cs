@@ -81,7 +81,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
                 dto.BusinessId = (long)t.Rows[0]["businessId"];
                 dto.ChainStoreId = (long)t.Rows[0]["ChainStoreId"];
 
-               // await _Repository.InsertAsync(dto.MapTo<UnionMall.Entity.Member>());
+                 await _Repository.InsertAsync(dto.MapTo<UnionMall.Entity.Member>());
             }
             catch (Exception e)
             {
@@ -91,6 +91,18 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
             return new JsonResult(new { succ = true });
 
+        }
+
+        public async Task<JsonResult> Import(DataTable dt)
+        {
+           // msg = string.Empty;
+
+
+            for (int i = 0; i < 10; i++)
+            {
+
+            }
+            return new JsonResult(new { succ = true });
         }
     }
 }

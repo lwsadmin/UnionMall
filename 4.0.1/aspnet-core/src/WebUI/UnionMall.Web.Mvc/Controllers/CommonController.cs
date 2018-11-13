@@ -51,5 +51,7 @@ namespace UnionMall.Web.Mvc.Controllers
 
             return _AppService.SaveSingleImg(fileBase, _AbpSession.TenantId != null ? (int)_AbpSession.TenantId : 0);
         }
+
+
     }
 }

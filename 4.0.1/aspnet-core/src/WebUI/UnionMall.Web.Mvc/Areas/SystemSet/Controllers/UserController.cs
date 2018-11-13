@@ -32,19 +32,21 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
         private readonly IUserAppService _userAppService;
         public readonly ILogger _logger;
         private readonly IBusinessAppService _AppService;
+        private readonly IChainStoreAppService _storeAppService;
         private readonly ICommonAppService _comService;
 
         public UserController(IRoleAppService roleAppService, ICommonAppService comService, IBusinessAppService AppService,
-            IUserAppService userAppService, ILogger logger)
+            IUserAppService userAppService, IChainStoreAppService storeAppService, ILogger logger)
         {
             _roleAppService = roleAppService;
             _comService = comService;
             _userAppService = userAppService;
             _logger = logger;
             _AppService = AppService;
+            _storeAppService = storeAppService;
         }
         public async Task<IActionResult> List(
-            int page = 1, int pageSize = 10, string RoleId = "", string Name = "",string BusinessId="")
+            int page = 1, int pageSize = 10, string RoleId = "", string Name = "", string BusinessId = "")
         {
             string where = string.Empty;
             if (!string.IsNullOrEmpty(Name))
@@ -53,7 +55,7 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
                 where += $" and RoleId = {RoleId}";
             if (!string.IsNullOrEmpty(BusinessId))
                 where += $" and r.BusinessId = {BusinessId}";
-            int total; 
+            int total;
             DataSet ds = _userAppService.GetUserPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
 
@@ -85,6 +87,15 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 
             EditUserModalViewModel s = new EditUserModalViewModel();
             return View("_Add", model);
+        }
+
+        [IgnoreAntiforgeryToken]
+        [HttpGet]
+        public JsonResult DropDrowGetStore(long businessID)
+        {
+            List<StoreDropDownDto> s = _storeAppService.GetDropDown(businessID).Result;
+
+            return Json(new { stores = s });
         }
     }
 }

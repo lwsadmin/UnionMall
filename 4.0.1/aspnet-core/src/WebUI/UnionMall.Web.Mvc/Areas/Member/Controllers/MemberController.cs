@@ -71,5 +71,20 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
             return View(pageList);
         }
+
+
+        [IgnoreAntiforgeryToken]
+        public ActionResult ExportExcel()
+        {
+            var fileBase = Request.Form.Files["File"];
+            string msg = string.Empty; ;
+            DataTable dt = _comAppService.ExcelToDataTable(fileBase, out msg);
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                return Json(new { succ = false, msg = msg });
+            }
+            _AppService.Import(dt);
+            return Json(new { succ = true });
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace UnionMall.Member
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
 
         Task<JsonResult> SubmitRegAsync(RegDto dto);
+
+        Task<JsonResult> Import(DataTable dt);
     }
 }

@@ -126,19 +126,17 @@
                     ],
                     afterBlur: function () { this.sync(); },
                     afterUpload: function (url) {
-                        debugger;
-                        alert(url);
+                      
+                 
                     },
                     afterError: function (data) {
-                        debugger;
+                        
                     }
                 });
         });
     $("#CreateModal").on('hidden.bs.modal', function () {
-        editor.remove('#Introduce');
+        editor.html('');
     });
-
-    // alert(language);
     $("#input").fileinput({
         language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es',
         showRemove: false,
