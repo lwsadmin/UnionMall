@@ -200,8 +200,9 @@ function GoPage(btn) {
         input_page = $(btn).parent().siblings("input[type='number']").attr("max");
     }
     var $a = $(btn).parents(".col-md-2").siblings(".pagination ").find(".active a");
-    if ($a!=undefined) {
-        var href = $a.attr("href");
+    var href = $a.attr("href");
+    if (href!=undefined) {
+
         var html = $a.html();
         $a.attr("href", href.replace(html, input_page)).click();
     }

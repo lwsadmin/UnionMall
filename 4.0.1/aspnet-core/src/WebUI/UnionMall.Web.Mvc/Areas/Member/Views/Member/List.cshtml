@@ -187,6 +187,7 @@
                     "timeOut": "2000",//1.5s后关闭消息框
                 }
                 toastr.success("@L("Import")@L("Success")", '@L("Hint")');
+                $("#ImportModal").modal('hide');
                 $("#searchForm").submit();
             } else {
                 swal("@L("Fail")！", data.response.result.msg, "error")
