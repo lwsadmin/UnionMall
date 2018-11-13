@@ -4,6 +4,7 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Member.Dto;
 
@@ -15,6 +16,6 @@ namespace UnionMall.Member
 
         Task<JsonResult> SubmitRegAsync(RegDto dto);
 
-        Task<JsonResult> Import(DataTable dt);
+        JsonResult Import(IFormFile flie);
     }
 }

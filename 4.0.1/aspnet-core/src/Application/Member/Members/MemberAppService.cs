@@ -12,19 +12,26 @@ using UnionMall.IRepositorySql;
 using UnionMall.Entity;
 using UnionMall.Member.Dto;
 using Abp.UI;
+using Microsoft.AspNetCore.Http;
+using UnionMall.Common;
 
 namespace UnionMall.Member
 {
     public class MemberAppService : ApplicationService, IMemberAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
-        public readonly IAbpSession _AbpSession;
+        private readonly IAbpSession _AbpSession;
+        private readonly ICommonAppService _comServices;
         private readonly IRepository<UnionMall.Entity.Member, long> _Repository;
-        public MemberAppService(ISqlExecuter sqlExecuter, IRepository<UnionMall.Entity.Member, long> Repository, IAbpSession AbpSession)
+        public MemberAppService(ISqlExecuter sqlExecuter, IRepository<UnionMall.Entity.Member, long> Repository,
+            IAbpSession AbpSession, ICommonAppService comServices)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
+            _comServices = comServices;
+
+
         }
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
@@ -81,7 +88,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
                 dto.BusinessId = (long)t.Rows[0]["businessId"];
                 dto.ChainStoreId = (long)t.Rows[0]["ChainStoreId"];
 
-                 await _Repository.InsertAsync(dto.MapTo<UnionMall.Entity.Member>());
+                await _Repository.InsertAsync(dto.MapTo<UnionMall.Entity.Member>());
             }
             catch (Exception e)
             {
@@ -93,16 +100,55 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
         }
 
-        public async Task<JsonResult> Import(DataTable dt)
+        public JsonResult Import(IFormFile flie)
         {
-           // msg = string.Empty;
 
-
-            for (int i = 0; i < 10; i++)
+            string msg = string.Empty;
+            DataTable dt = _comServices.ExcelToDataTable(flie, out msg);
+            foreach (DataRow row in dt.Rows)
             {
+                Entity.Member member = new Entity.Member();
+                member.TenantId = _AbpSession.TenantId;
+                member.CardID = row["会员卡号"].ToString();
+                member.FullName = row["姓名"].ToString();
 
+                DataTable levelTable = _sqlExecuter.ExecuteDataSet($"select id from TMemberLevel l where l.TenantId={_AbpSession.TenantId}" +
+                     $" and l.Title='{row["会员等级"]}'").Tables[0];
+
+                member.LevelId = (long)levelTable.Rows[0][0];
+
+                DataTable storeTable = _sqlExecuter.ExecuteDataSet($"select id,BusinessId from TChainStore c where c.TenantId={_AbpSession.TenantId}" +
+     $" and c.Name='{row["归属门店"]}'").Tables[0];
+                member.ChainStoreId = (long)storeTable.Rows[0]["id"];
+                member.BusinessId = (long)storeTable.Rows[0]["BusinessId"];
+                if (row["性别"].ToString() == "男")
+                    member.Sex = 0;
+                else
+                    member.Sex = 1;
+
+
+                member.Integral = Convert.ToDecimal(row["可用积分"]);
+                member.Balance = Convert.ToDecimal(row["可用余额"]);
+                member.Mobile = row["手机号"].ToString();
+                member.PassWord = member.Mobile;
+                if (row["推荐人卡号"] != null && row["推荐人卡号"].ToString() != "")
+                {
+                    var m = _Repository.FirstOrDefault(c => c.CardID == row["推荐人卡号"].ToString() && c.TenantId == _AbpSession.TenantId);
+                    if (m != null)
+                    {
+                        member.ReferrerID = m.Id;
+                    }
+                }
+
+                member.RegTime = DateTime.Now;
+                member.Address = row["详细地址"].ToString();
+                member.Email = row["电子邮件"].ToString();
+
+                _Repository.Insert(member);
             }
-            return new JsonResult(new { succ = true });
+            return new JsonResult(new { succ = true, msg = msg });
+
+
         }
     }
 }

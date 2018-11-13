@@ -19,7 +19,7 @@ namespace UnionMall.Entity
         public long ChainStoreId { get; set; }
         public long LevelId { get; set; }
 
-        public int? ReferrerID { get; set; }
+        public long? ReferrerID { get; set; }
 
         public string CardID { get; set; }
         public string WeChatName { get; set; } = "";

@@ -36,19 +36,19 @@ namespace UnionMall.Common
 
         public DataTable ExcelToDataTable(IFormFile flie, out string msg)
         {
-            msg = "";
+            msg = "Success";
             try
             {
                 IWorkbook workbook = WorkbookFactory.Create(flie.OpenReadStream());  //新建IWorkbook对象  
                 ISheet sheet = workbook.GetSheetAt(0);
                 DataTable dt = new DataTable();
                 if (sheet == null)
-                { msg = ""; return dt; }
+                { msg = "dataTable sheet is null"; return dt; }
                 //默认，第一行是字段
                 IRow headRow = sheet.GetRow(0);
-                if (headRow == null || headRow.RowNum == 0)
+                if (headRow == null || headRow.Cells.Count == 0)
                 {
-                    msg = ""; return dt;
+                    msg = "headRow is null or headRow.RowNum==0"; return dt;
                 }
                 //设置datatable字段
                 for (int i = headRow.FirstCellNum, len = headRow.LastCellNum; i < len; i++)
