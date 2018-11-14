@@ -99,54 +99,127 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             return new JsonResult(new { succ = true });
 
         }
-
+        [Abp.Domain.Uow.UnitOfWork]
         public JsonResult Import(IFormFile flie)
         {
 
             string msg = string.Empty;
+            LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
             DataTable dt = _comServices.ExcelToDataTable(flie, out msg);
-            foreach (DataRow row in dt.Rows)
+            if (dt == null || dt.Rows.Count == 0)
             {
-                Entity.Member member = new Entity.Member();
-                member.TenantId = _AbpSession.TenantId;
-                member.CardID = row["会员卡号"].ToString();
-                member.FullName = row["姓名"].ToString();
-
-                DataTable levelTable = _sqlExecuter.ExecuteDataSet($"select id from TMemberLevel l where l.TenantId={_AbpSession.TenantId}" +
-                     $" and l.Title='{row["会员等级"]}'").Tables[0];
-
-                member.LevelId = (long)levelTable.Rows[0][0];
-
-                DataTable storeTable = _sqlExecuter.ExecuteDataSet($"select id,BusinessId from TChainStore c where c.TenantId={_AbpSession.TenantId}" +
-     $" and c.Name='{row["归属门店"]}'").Tables[0];
-                member.ChainStoreId = (long)storeTable.Rows[0]["id"];
-                member.BusinessId = (long)storeTable.Rows[0]["BusinessId"];
-                if (row["性别"].ToString() == "男")
-                    member.Sex = 0;
-                else
-                    member.Sex = 1;
-
-
-                member.Integral = Convert.ToDecimal(row["可用积分"]);
-                member.Balance = Convert.ToDecimal(row["可用余额"]);
-                member.Mobile = row["手机号"].ToString();
-                member.PassWord = member.Mobile;
-                if (row["推荐人卡号"] != null && row["推荐人卡号"].ToString() != "")
+                return new JsonResult(new { succ = false, msg = msg });
+            }
+            bool CoulmnCheck = true; string coulmnMsg = string.Empty;
+            if (!dt.Columns.Contains("会员卡号"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【会员卡号】");
+            }
+            if (!dt.Columns.Contains("微信名"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【微信名】");
+            }
+            if (!dt.Columns.Contains("姓名"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【姓名】");
+            }
+            if (!dt.Columns.Contains("会员等级"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【会员等级】");
+            }
+            if (!dt.Columns.Contains("归属门店"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【归属门店】");
+            }
+            if (!dt.Columns.Contains("性别"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【性别】");
+            }
+            if (!dt.Columns.Contains("可用积分"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【可用积分】");
+            }
+            if (!dt.Columns.Contains("可用余额"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【可用余额】");
+            }
+            if (!dt.Columns.Contains("推荐人卡号"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【推荐人卡号】");
+            }
+            if (!dt.Columns.Contains("详细地址"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【详细地址】");
+            }
+            if (!dt.Columns.Contains("电子邮件"))
+            {
+                CoulmnCheck = false; coulmnMsg += L("NotExist{0}", "【电子邮件】");
+            }
+            if (CoulmnCheck == false)
+            {
+                return new JsonResult(new { succ = false, msg = coulmnMsg });
+            }
+            try
+            {
+                foreach (DataRow row in dt.Rows)
                 {
-                    var m = _Repository.FirstOrDefault(c => c.CardID == row["推荐人卡号"].ToString() && c.TenantId == _AbpSession.TenantId);
-                    if (m != null)
+                    Entity.Member member = new Entity.Member();
+                    member.TenantId = _AbpSession.TenantId;
+                    member.CardID = row["会员卡号"].ToString();
+                    member.FullName = row["姓名"].ToString();
+                    member.WeChatName = row["微信名"].ToString();
+                    if (member.WeChatName == "")
                     {
+                        member.WeChatName = member.FullName;
+                    }
+                    DataTable levelTable = _sqlExecuter.ExecuteDataSet($"select id from TMemberLevel l where l.TenantId={_AbpSession.TenantId}" +
+                         $" and l.Title='{row["会员等级"]}'").Tables[0];
+                    if (levelTable.Rows.Count == 0)
+                    {
+                        msg += L("NotExist{0}", row["会员等级"].ToString());
+                        continue;
+                    }
+
+                    member.LevelId = (long)levelTable.Rows[0][0];
+
+                    DataTable storeTable = _sqlExecuter.ExecuteDataSet($"select id,BusinessId from TChainStore c where c.TenantId={_AbpSession.TenantId}" +
+            $" and c.Name='{row["归属门店"]}'").Tables[0];
+                    if (levelTable.Rows.Count == 0)
+                    {
+                        msg += L("NotExist{0}", row["归属门店"].ToString());
+                        continue;
+                    }
+                    member.ChainStoreId = (long)storeTable.Rows[0]["id"];
+                    member.BusinessId = (long)storeTable.Rows[0]["BusinessId"];
+                    if (row["性别"].ToString() == "男")
+                        member.Sex = 0;
+                    else
+                        member.Sex = 1;
+
+                    member.Integral = Convert.ToDecimal(row["可用积分"]);
+                    member.Balance = Convert.ToDecimal(row["可用余额"]);
+                    member.Mobile = row["手机号"].ToString();
+                    member.PassWord = "123";
+                    if (row["推荐人卡号"] != null && row["推荐人卡号"].ToString().Trim() != "")
+                    {
+                        var m = _Repository.FirstOrDefault(c => c.CardID == row["推荐人卡号"].ToString() && c.TenantId == _AbpSession.TenantId);
                         member.ReferrerID = m.Id;
                     }
+                    member.RegTime = DateTime.Now;
+                    member.Address = row["详细地址"].ToString();
+                    member.Email = row["电子邮件"].ToString();
+                    _Repository.Insert(member);
+
                 }
-
-                member.RegTime = DateTime.Now;
-                member.Address = row["详细地址"].ToString();
-                member.Email = row["电子邮件"].ToString();
-
-                _Repository.Insert(member);
+                return new JsonResult(new { succ = true, msg = msg });
             }
-            return new JsonResult(new { succ = true, msg = msg });
+            catch (Exception ex)
+            {
+
+                Logger.Warn("---------------------------" + ex.StackTrace);
+                return new JsonResult(new { succ = false, msg = ex.Message });
+            }
+
 
 
         }

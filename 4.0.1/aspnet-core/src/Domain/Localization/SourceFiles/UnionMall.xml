@@ -113,6 +113,8 @@
     <text value="List" name="List"/>
     <text value="CreationTime" name="CreationTime"/>
     <text name="UnionMall">UnionMall</text>
+    <text name="FollowStrictly" value="Follow the " />
+    <text name="Template" value="template" />
     <!--ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
     <text name="Logout" value="Logout" />
     <text value="PersonalInformation" name="PersonalInformation"/>
@@ -255,11 +257,10 @@
     <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
 
     <!--message-->
-    <text name="NotExist" value="It does not exist. It may have been deleted!" />
+    <text name="NotExist{0}" value="It does not exist!" />
     <text name="Exist{0}" value="Already exist {0}!" />
     <text name="{0}AlreadyExist" value="The name {0} already exists!" />
     <text name="ExistRecord{0}" value="{0} related records are not available." />
-    <text name="DeleteConfirm" value="Do you want to delete it ?" />
     <text name="DeleteConfirm{0}" value="Do you want to delete 【{0}】 ?" />
     <text name="DeleteMsg" value="Cannot be restored after deletion" />
     <text name="OK" value="OK" />

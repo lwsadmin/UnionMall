@@ -53,6 +53,7 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             if (!string.IsNullOrEmpty(RegTimeTo))
                 where += $" and RegTime<='{RegTimeTo} 23:59:59'";
 
+            ViewBag.PageSize = pageSize;
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);

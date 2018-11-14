@@ -74,8 +74,8 @@ namespace UnionMall.Business
             var query = _Repository.FirstOrDefault(c => c.Id == id);
             if (query == null)
             {
-                msg = "NotExist";
-                return false;
+               msg = "";
+                return true;
             }
             var count = _storeRepository.GetAllList(c => c.BusinessId == id).Count;
             if (count > 0)

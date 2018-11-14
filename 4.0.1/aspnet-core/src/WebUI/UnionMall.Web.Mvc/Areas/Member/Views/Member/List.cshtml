@@ -50,13 +50,17 @@
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="#">10/@L("Pages")</a>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/member/member/List?pageSize=10">10/@L("Page")</a>
                             </li>
                             <li>
-                                <a href="#">15/@L("Pages")</a>
+
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/member/member/List?pageSize=15">15/@L("Page")</a>
                             </li>
                             <li>
-                                <a href="#">20/@L("Pages")</a>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/member/member/List?pageSize=20">20/@L("Page")</a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -94,6 +98,7 @@
                         </div>
 
                         <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/member/member/list" method="post">
+                            <input type="hidden" name="pageSize" value="10" />
                             <div class="col-sm-2">
                                 @Html.DropDownList("Level", (SelectList)ViewData["Level"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
                             </div>
@@ -131,6 +136,10 @@
                 </div>
                 <div class="modal-body">
                     <input id="input" title="Excel" name="File" type="file" data-show-preview="false">
+                    <br />
+                    <p style="text-align:center;" class="text-muted">
+                        Excel@(L("FollowStrictly"))<a href="~/file/会员导入模板.xls">@L("Import")@L("Template")</a>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
@@ -178,7 +187,6 @@
             //var url = data.response.result.url;
 
             if (data.response.result.succ) {
-
                 toastr.options = {
                     "closeButton": false,//是否配置关闭按钮
                     "debug": false,//是否开启debug模式
@@ -189,6 +197,9 @@
                 toastr.success("@L("Import")@L("Success")", '@L("Hint")');
                 $("#ImportModal").modal('hide');
                 $("#searchForm").submit();
+                if (data.response.result.msg !='Success') {
+                    swal("@L("Hint")", data.response.result.msg, "error")
+                }
             } else {
                 swal("@L("Fail")！", data.response.result.msg, "error")
             }
@@ -204,4 +215,35 @@
     $("#ImportModal").on("hidden.bs.modal", function () {
         $('#input').fileinput('reset');
     });
+    function Delete(btn) {
+        var _Service = abp.services.app.member;
+        var id = $(btn).attr("data-id");
+        var name = $(btn).attr("data-name");
+        swal({
+            title: $(btn).attr("data-title"),
+            text: '',
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonText: $(btn).attr("data-ok"),
+            cancelButtonText: $(btn).attr("data-cancle")
+        }).then(function (isConfirm) {
+            if (isConfirm.value == true) {
+                _Service.delete(id).done(function (data) {
+
+
+                    if ($(".pagination .active a").html() != undefined) {
+                        $(".pagination .active a").click();
+                        toastr.options = {
+                            "closeButton": false,//是否配置关闭按钮
+                            "debug": false,//是否开启debug模式
+                            "newestOnTop": false,//新消息是否排在最上层
+                            "progressBar": true,//是否显示进度条
+                            "timeOut": "2000",//1.5s后关闭消息框
+                        }
+                         toastr.success("@L("Delete")@L("Success")", '@L("Hint")');
+                    } else { $("#searchForm").submit(); }
+                });
+            }
+        });
+    }
 </script>

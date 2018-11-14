@@ -40,6 +40,7 @@ namespace UnionMall.Common
             try
             {
                 IWorkbook workbook = WorkbookFactory.Create(flie.OpenReadStream());  //新建IWorkbook对象  
+
                 ISheet sheet = workbook.GetSheetAt(0);
                 DataTable dt = new DataTable();
                 if (sheet == null)
@@ -58,11 +59,15 @@ namespace UnionMall.Common
 
                 for (int i = (sheet.FirstRowNum + 1), len = sheet.LastRowNum + 1; i < len; i++)
                 {
+
                     IRow tempRow = sheet.GetRow(i);
+
                     DataRow dataRow = dt.NewRow();
                     //遍历一行的每一个单元格
+                    bool nullCell = false;
                     for (int r = 0, j = tempRow.FirstCellNum, len2 = tempRow.LastCellNum; j < len2; j++, r++)
                     {
+
                         ICell cell = tempRow.GetCell(j);
                         if (cell != null)
                         {
@@ -70,20 +75,30 @@ namespace UnionMall.Common
                             {
                                 case CellType.String:
                                     dataRow[r] = cell.StringCellValue;
+                                    nullCell = nullCell || true;
                                     break;
                                 case CellType.Numeric:
                                     dataRow[r] = cell.NumericCellValue;
+                                    nullCell = nullCell || true;
                                     break;
                                 case CellType.Boolean:
                                     dataRow[r] = cell.BooleanCellValue;
+                                    nullCell = nullCell || true;
+                                    break;
+                                case CellType.Blank:
+                                    nullCell = nullCell || false;
                                     break;
                                 default:
+                                    nullCell = nullCell || true;
                                     dataRow[r] = "ERROR";
                                     break;
                             }
                         }
+
                     }
-                    dt.Rows.Add(dataRow);
+                    if (nullCell)
+                    { dt.Rows.Add(dataRow); }
+                    else { break; }
                 }
                 return dt;
             }

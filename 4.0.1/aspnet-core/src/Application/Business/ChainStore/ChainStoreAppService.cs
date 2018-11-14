@@ -58,8 +58,8 @@ left join TBusiness b on c.BusinessId = b.Id where 1=1 ";
             var query = _Repository.FirstOrDefault(c => c.Id == id);
             if (query == null)
             {
-                msg = "NotExist";
-                return false;
+                msg = "";
+                return true;
             }
             // var count = _Repository.GetAllList(c => c.BusinessId == id).Count;
 

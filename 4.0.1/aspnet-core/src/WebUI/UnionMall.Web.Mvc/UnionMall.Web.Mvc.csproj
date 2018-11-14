@@ -159,6 +159,7 @@
     <Folder Include="wwwroot\lib\pager\" />
     <Folder Include="wwwroot\view-resources\Views\Shared\Components\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
+    <Folder Include="wwwroot\file\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="X.PagedList">

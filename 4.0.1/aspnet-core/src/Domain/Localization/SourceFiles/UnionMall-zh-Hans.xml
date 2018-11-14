@@ -199,18 +199,19 @@
     <text name="Price" value="价格" />
     <text name="Sell" value="销售" />
     <text name="Page" value="页" />
+    <text name="FollowStrictly" value="严格按照" />
+    <text name="Template" value="模板" />
     <text name="Level" value="级别" />
     <text name="Time" value="时间" />
     <text name="Register" value="注册" />
     <!--message-->
     <text name="Hint" value="提示" />
     <text name="Exist{0}" value="已经存在 {0}!" />
-    <text name="{0}不存在,可能已经被删除!" value="{0}editeNoExist" />
+    <text name="NotExist{0}" value="不存在{0}!" />
     <text name="DeleteConfirm{0}" value="确认删除【{0}】吗?" />
-    <text name="NotExist" value="该条记录不存在,可能已经被删除!" />
+
     <text name="{0}AlreadyExist" value="已经存在名为{0}的记录!" />
     <text name="ExistRecord{0}" value="存在相关的{0}记录，不能执行该操作!" />
-    <text name="DeleteConfirm" value="确认删除吗?" />
     <text name="DeleteMsg" value="删除之后无法恢复!" />
     <text name="OK" value="确认" />
     <text name="Success" value="成功" />

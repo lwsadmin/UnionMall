@@ -110,8 +110,8 @@ namespace UnionMall.Goods.GoodsCategory
             var query = _Repository.FirstOrDefault(c => c.Id == id);
             if (query == null)
             {
-                msg = "NotExist";
-                return false;
+                msg = "";
+                return true;
             }
             var count = _Repository.GetAllList(c => c.ParentId == id).Count;
             if (count > 0)
