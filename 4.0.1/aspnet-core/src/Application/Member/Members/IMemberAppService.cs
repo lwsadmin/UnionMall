@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
@@ -17,5 +18,7 @@ namespace UnionMall.Member
         Task<JsonResult> SubmitRegAsync(RegDto dto);
 
         JsonResult Import(IFormFile flie);
+
+        MemoryStream ExportToExcel(string where);
     }
 }

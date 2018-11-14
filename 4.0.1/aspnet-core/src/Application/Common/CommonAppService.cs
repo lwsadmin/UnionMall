@@ -34,6 +34,52 @@ namespace UnionMall.Common
             _sqlExecuter = sqlExecuter;
         }
 
+        public MemoryStream DataTableToExcel(DataTable dt)
+        {
+
+            XSSFWorkbook workbook = null;
+            MemoryStream ms = null;
+            ISheet sheet = null;
+            XSSFRow headerRow = null;
+            try
+            {
+
+                workbook = new XSSFWorkbook();
+                ms = new MemoryStream();
+                sheet = workbook.CreateSheet();
+                headerRow = (XSSFRow)sheet.CreateRow(0);
+                foreach (DataColumn column in dt.Columns)
+                    headerRow.CreateCell(column.Ordinal).SetCellValue(column.ColumnName);
+                int rowIndex = 1;
+                foreach (DataRow row in dt.Rows)
+                {
+                    XSSFRow dataRow = (XSSFRow)sheet.CreateRow(rowIndex);
+                    foreach (DataColumn column in dt.Columns)
+                        dataRow.CreateCell(column.Ordinal).SetCellValue(row[column].ToString());
+                    ++rowIndex;
+                }
+                //列宽自适应，只对英文和数字有效
+                for (int i = 0; i <= dt.Columns.Count; ++i)
+                    sheet.AutoSizeColumn(i);
+                workbook.Write(ms);
+                ms.Flush();
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex.Message);
+                Logger.Warn(ex.StackTrace);
+                //  return null;
+            }
+            finally
+            {
+                ms.Close();
+                sheet = null;
+                headerRow = null;
+                workbook = null;
+            }
+            return ms;
+        }
+
         public DataTable ExcelToDataTable(IFormFile flie, out string msg)
         {
             msg = "Success";
@@ -113,6 +159,7 @@ namespace UnionMall.Common
         {
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
+
 
         public string GetWhere()
         {

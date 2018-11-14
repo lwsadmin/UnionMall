@@ -14,6 +14,9 @@ using UnionMall.Member.Dto;
 using Abp.UI;
 using Microsoft.AspNetCore.Http;
 using UnionMall.Common;
+using System.IO;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
 
 namespace UnionMall.Member
 {
@@ -222,6 +225,60 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
 
 
+        }
+
+        public MemoryStream ExportToExcel(string where)
+        {
+            string sql = $@"select  m.FullName 姓名,m.WechatName 微信名,
+ case m.Sex  when 0 then '男' else '女' end 性别, m.CardID 卡号,m.Mobile 手机号,m.Balance 余额
+,m.Integral 积分,convert(nvarchar(100),m.RegTime,20)  注册时间,l.Title 等级,b.BusinessName 所属商户,
+c.Name  所属门店 from dbo.TMember m left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TBusiness b on
+m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
+
+            sql += where.Replace("*", "m");
+            int total;
+            DataTable dt = _sqlExecuter.GetPaged(1, int.MaxValue, sql, " 注册时间 desc ", out total).Tables[0];
+            XSSFWorkbook workbook = null;
+            MemoryStream ms = null;
+            ISheet sheet = null;
+            XSSFRow headerRow = null;
+            try
+            {
+
+                workbook = new XSSFWorkbook();
+                ms = new MemoryStream();
+                sheet = workbook.CreateSheet();
+                headerRow = (XSSFRow)sheet.CreateRow(0);
+                foreach (DataColumn column in dt.Columns)
+                    headerRow.CreateCell(column.Ordinal).SetCellValue(column.ColumnName);
+                int rowIndex = 1;
+                foreach (DataRow row in dt.Rows)
+                {
+                    XSSFRow dataRow = (XSSFRow)sheet.CreateRow(rowIndex);
+                    foreach (DataColumn column in dt.Columns)
+                        dataRow.CreateCell(column.Ordinal).SetCellValue(row[column].ToString());
+                    ++rowIndex;
+                }
+                //列宽自适应，只对英文和数字有效
+                for (int i = 0; i <= dt.Columns.Count; ++i)
+                    sheet.AutoSizeColumn(i);
+                workbook.Write(ms);
+                ms.Flush();
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex.Message);
+                Logger.Warn(ex.StackTrace);
+                //  return null;
+            }
+            finally
+            {
+                ms.Close();
+                sheet = null;
+                headerRow = null;
+                workbook = null;
+            }
+            return ms;
         }
     }
 }

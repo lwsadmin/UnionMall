@@ -12,6 +12,7 @@ using UnionMall.Member;
 using X.PagedList;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.Common;
+using System.IO;
 
 namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 {
@@ -75,12 +76,36 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 
 
         [IgnoreAntiforgeryToken]
-        public ActionResult ExportExcel()
+        public ActionResult ImportExcel()
         {
             var fileBase = Request.Form.Files["File"];
             string msg = string.Empty; ;
             var json = _AppService.Import(fileBase);
             return json;
+        }
+
+        [IgnoreAntiforgeryToken]
+        public FileResult ExportExcel(string Level = "", string Name = "",
+            string Business = "", string Store = "", string RegTimeFrom = "", string RegTimeTo = "")
+        {
+
+            string where = string.Empty;
+            where += _comAppService.GetWhere();
+            if (!string.IsNullOrEmpty(Level))
+                where += $" and levelId={Level}";
+            if (!string.IsNullOrEmpty(Name))
+                where += $" and (FullName like'%{Name}%' or WeChatName like '%{Name}%')";
+            if (!string.IsNullOrEmpty(Business))
+                where += $" and BusinessId={Business}";
+            if (!string.IsNullOrEmpty(Store))
+                where += $" and ChainStoreId={Store}";
+            if (!string.IsNullOrEmpty(RegTimeFrom))
+                where += $" and RegTime>='{RegTimeFrom} 00:00:00'";
+            if (!string.IsNullOrEmpty(RegTimeTo))
+                where += $" and RegTime<='{RegTimeTo} 23:59:59'";
+
+            MemoryStream ms = _AppService.ExportToExcel(where);
+            return File(ms.ToArray(), "application/vnd.ms-excel", "会员列表.xlsx");
         }
     }
 }

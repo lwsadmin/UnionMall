@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
@@ -14,7 +15,7 @@ namespace UnionMall.Common
         JsonResult SaveSingleImg(IFormFile file, int tenandId);
         DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total);
         DataTable ExcelToDataTable(IFormFile file, out string msg);
-
+        MemoryStream DataTableToExcel (DataTable table);
         string GetWhere();
 
 

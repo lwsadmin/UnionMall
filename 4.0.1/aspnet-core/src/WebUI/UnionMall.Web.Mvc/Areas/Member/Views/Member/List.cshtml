@@ -91,7 +91,7 @@
                             }
                             @if (IsGranted("Member.MemberList.Export"))
                             {
-                                <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-arrow-down"></i>&nbsp;@L("Export")</button>
+                                <button onclick="ExportExcel();" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-arrow-down"></i>&nbsp;@L("Export")</button>
 
                             }
 
@@ -157,9 +157,6 @@
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
 <script>
-    function EditShow(data) {
-        $("#CreateModal").modal("show");
-    }
     $(function () {
         $('.chosen-select').chosen({ width: "100%" });
         var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es';
@@ -169,23 +166,15 @@
             showUpload: false,
             allowedFileExtensions: ['xls', 'xlsx'],//接收的文件后缀
             showUploadedThumbs: false,
-            uploadUrl: "/Member/Member/ExportExcel",
+            uploadUrl: "/Member/Member/ImportExcel",
             showClose: false,
             showCancel: false,
             slugCallback: function (filename) {
                 return filename.replace('(', '_').replace(']', '_');
             }
         });
-
-        //选择文件后处理事件
-        $("#input").on("filebatchselected", function (event, files) {
-            //执行文件上传方法
-
-        });
         //上传成功后处理方法
         $("#input").on("fileuploaded", function (event, data, previewId, index) {
-            //var url = data.response.result.url;
-
             if (data.response.result.succ) {
                 toastr.options = {
                     "closeButton": false,//是否配置关闭按钮
@@ -245,5 +234,15 @@
                 });
             }
         });
+    }
+
+    function ExportExcel() {
+
+        var url = "/member/member/exportexcel";
+        url += "?Level=" + $("#Level").val();
+        url += "&Business=" + $("#Business").val();
+        url += "&Store=" + $("#Store").val();
+        url += "&Name=" + $("input[name='Name']").val();
+        location.href = url;
     }
 </script>
