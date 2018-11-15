@@ -69,5 +69,14 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             ViewData.Add("Business", businessdtoList);
             return View("Add", model);
         }
+
+        [IgnoreAntiforgeryToken]
+        public JsonResult GetRole(long bid)
+        {
+            List<RoleDropDownDto> dtoList = _roleAppService.GetDropDown(bid).Result;
+            return Json(new { dto= dtoList });
+        }
+
+
     }
 }

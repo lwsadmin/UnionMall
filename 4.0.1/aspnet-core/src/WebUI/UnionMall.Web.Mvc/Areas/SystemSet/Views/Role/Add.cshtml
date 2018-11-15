@@ -11,7 +11,7 @@
 @model UnionMall.Web.Models.Roles.EditRoleModalViewModel
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
-
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <style>
     .checkbox {
         padding-top: 0 !important;
@@ -74,7 +74,7 @@
                                 }
                             </select>
 
-                            
+
                         </div>
 
 
@@ -91,7 +91,7 @@
                     <div class="form-group">
                         <label class="col-sm-1 control-label">@L("Manage")@L("Roles")</label>
 
-                        <div class="col-sm-10">
+                        <div class="col-sm-10" id="mangeRole">
                             @if (Model.ManageRole != null && Model.ManageRole.Count() > 0)
                             {
                                 @foreach (var item in Model.ManageRole)
@@ -198,5 +198,28 @@ c.Name.IndexOf(".") == c.Name.LastIndexOf(".") && c.Name.IndexOf(".") == first.N
     }
     $(function () {
         $('.chosen-select').chosen({ width: "100%" });
+        $("#BusinessId").on("change", function () {
+            var bid = $(this).val();
+            if (bid == undefined || bid=="") {
+                return;
+            }
+            $("#mangeRole").html("");
+      
+            $.get("/systemset/role/getrole?bid=" + bid, function (data) {
+                
+                for (var i = 0; i < data.result.dto.length; i++) {
+                    if (data.result.dto[i].displayName == "Administrator") {
+                        continue;
+                    }
+                    var s = "<div class='checkbox checkbox-inline checkbox-success'>\
+                                        <input type='checkbox' id='role"+ data.result.dto[i].id + "' name='ManageRole' value='" + data.result.dto[i].id+"'>\
+                                        <label for='role"+ data.result.dto[i].id + "'>"+ data.result.dto[i].displayName+"</label>\
+                                    </div>";
+                    $("#mangeRole").append(s);
+                }
+            });
+        })
     });
+
+
 </script>

@@ -12,7 +12,7 @@ namespace UnionMall.Roles
         Task<ListResultDto<PermissionDto>> GetAllPermissions();
 
         Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input);
-        Task<List<RoleDropDownDto>> GetDropDown();
+        Task<List<RoleDropDownDto>> GetDropDown(long? businessId = null);
         DataSet GetRole(long id);
         DataSet GetRolePage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
     }

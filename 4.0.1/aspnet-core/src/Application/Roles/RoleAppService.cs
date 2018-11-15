@@ -277,16 +277,21 @@ from TRoles r left join dbo.TBusiness b on r.BusinessId=b.Id where r.IsDeleted=0
                 $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.RoleId = r.Id where s.id={_AbpSession.UserId}").Tables[0];
             if (role.Rows[0]["RoleName"].ToString().ToUpper() != "ADMIN")// 
             {
-                if(role.Rows[0]["ManageRole"].ToString()=="")
+                if (role.Rows[0]["ManageRole"].ToString() == "")
                     table += $" and r.id=-1";
                 else
-                table += $" and r.id in({role.Rows[0]["ManageRole"]})";
+                    table += $" and r.id in({role.Rows[0]["ManageRole"]})";
             }
             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
-        public async Task<List<RoleDropDownDto>> GetDropDown()
+        public async Task<List<RoleDropDownDto>> GetDropDown(long? businessId = null)
         {
             var query = await Repository.GetAllListAsync();
+            if (businessId != null)
+            {
+                query = query.FindAll(c => c.BusinessId == (long)businessId);
+                return query.MapTo<List<RoleDropDownDto>>();
+            }
             if (_AbpSession.TenantId == null || (int)_AbpSession.TenantId == 0)
             {
                 query = query.FindAll(c => c.Id > 0);
