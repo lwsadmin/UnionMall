@@ -15,6 +15,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<ChainStore> ChainStore { get; set; }
         public DbSet<MemberLevel> MemberLevel { get; set; }
         public DbSet<Member> Member { get; set; }
+        public DbSet<Log> Log { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

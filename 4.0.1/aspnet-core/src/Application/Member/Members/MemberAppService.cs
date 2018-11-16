@@ -17,6 +17,7 @@ using UnionMall.Common;
 using System.IO;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
+using UnionMall.SystemSet;
 
 namespace UnionMall.Member
 {
@@ -26,15 +27,15 @@ namespace UnionMall.Member
         private readonly IAbpSession _AbpSession;
         private readonly ICommonAppService _comServices;
         private readonly IRepository<UnionMall.Entity.Member, long> _Repository;
+        private readonly ILogAppService _log;
         public MemberAppService(ISqlExecuter sqlExecuter, IRepository<UnionMall.Entity.Member, long> Repository,
-            IAbpSession AbpSession, ICommonAppService comServices)
+            IAbpSession AbpSession, ICommonAppService comServices, ILogAppService log)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
             _comServices = comServices;
-
-
+            _log = log;
         }
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
@@ -264,6 +265,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
                     sheet.AutoSizeColumn(i);
                 workbook.Write(ms);
                 ms.Flush();
+                _log.WriteLog($"导出会员");
             }
             catch (Exception ex)
             {

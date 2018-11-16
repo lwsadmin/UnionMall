@@ -226,6 +226,6 @@
     <Second Name="PaySet"  Url="/SystemSet/pay/type"></Second>
     <Second Name="SEO"  Url="javascript:void(0);"></Second>
     <Second Name="Cache"  Url="javascript:void(0);"></Second>
-    <Second Name="LogList"  Url="/set/log/List"></Second>
+    <Second Name="LogList"  Url="/systemSet/log/List"></Second>
   </First>
 </Navigation>
