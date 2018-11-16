@@ -111,11 +111,11 @@ namespace UnionMall.Web.Controllers
                 switch (loginResult.Result)
                 {
                     case AbpLoginResultType.Success:
-       
+
                         await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
-      
+
                         await UnitOfWorkManager.Current.SaveChangesAsync();
-                       // _log.WriteLog($"{loginModel.UsernameOrEmailAddress}登录系统");
+                        await _log.WriteLog($"{loginModel.UsernameOrEmailAddress}登录系统");
                         return Json(new AjaxResponse { Success = true, TargetUrl = returnUrl });
                     //return Json(new { succ = true, TargetUrl = returnUrl });
                     case AbpLoginResultType.InvalidUserNameOrEmailAddress:
