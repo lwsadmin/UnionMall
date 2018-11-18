@@ -28,44 +28,32 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-        <tr>
-            <td class="title">
-                @item["WechatName"]
-            </td>
-            <td class="title">@item["FullName"]</td>
-            <td>@(item["Mobile"].ToString().Length >= 11 ? item["Mobile"].ToString().Substring(0, 8) + "****" : item["Mobile"])</td>
-            <td>@(item["CardID"].ToString().Length >= 11 ? item["CardID"].ToString().Substring(0, 8) + "****" : item["CardID"])</td>
-            <td>@item["BusinessName"]</td>
-            <td>@item["StoreName"]</td>
-            <td>@item["Title"]</td>
-            <td>@item["Integral"]</td>
-            <td>@item["Balance"]</td>
-            <td>@item["RegTime"]</td>
-            <td>
-
-                @if (IsGranted("Member.CardInfo"))
-                {
-                    <a title="@L("Detail")" href="/member/cardcore/index/ @item["id"]">
+            <tr>
+                <td class="title">
+                    @item["WechatName"]
+                </td>
+                <td class="title">@item["FullName"]</td>
+                <td>@item["Mobile"]</td>
+                <td>@item["CardID"]</td>
+                <td>@item["BusinessName"]</td>
+                <td>@item["StoreName"]</td>
+                <td>@item["Title"]</td>
+                <td>@item["Integral"]</td>
+                <td>@item["Balance"]</td>
+                <td>@item["RegTime"]</td>
+                <td>
+                    <a title="@L("Detail")" href="/member/cardcore/index/@item["id"]">
                         <i class="fa fa-eye"></i>
                     </a>
-                }
-
-
-                @if (IsGranted("Member.MemberList.Delete"))
-                {
-
-                    <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["FullName"])" data-ok="@L("OK")"
-                       data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                        <i class="fa fa-trash text-navy"></i>
-                    </a>
-
-                }
-
-
-
-
-            </td>
-        </tr>
+                    @if (IsGranted("Member.MemberList.Delete"))
+                    {
+                        <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["FullName"])" data-ok="@L("OK")"
+                           data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                            <i class="fa fa-trash text-navy"></i>
+                        </a>
+                    }
+                </td>
+            </tr>
         }
 
     </tbody>

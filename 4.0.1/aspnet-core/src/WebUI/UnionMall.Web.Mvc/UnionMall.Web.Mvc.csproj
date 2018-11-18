@@ -104,6 +104,10 @@
     <None Include="wwwroot\lib\kindeditor\plugins\table\table.js" />
     <None Include="wwwroot\lib\kindeditor\plugins\template\template.js" />
     <None Include="wwwroot\lib\kindeditor\plugins\wordpaste\wordpaste.js" />
+    <None Include="wwwroot\lib\My97DatePicker\calendar.js" />
+    <None Include="wwwroot\lib\My97DatePicker\lang\en.js" />
+    <None Include="wwwroot\lib\My97DatePicker\lang\zh-cn.js" />
+    <None Include="wwwroot\lib\My97DatePicker\WdatePicker.js" />
     <None Include="wwwroot\lib\treetable\script\jquery.js" />
     <None Include="wwwroot\lib\treetable\script\treeTable\jquery.treeTable.js" />
     <None Include="wwwroot\lib\treetable\script\treeTable\vsStyle\allbgs.psd" />

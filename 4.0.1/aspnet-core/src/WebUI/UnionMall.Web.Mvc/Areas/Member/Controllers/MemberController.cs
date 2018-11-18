@@ -35,7 +35,7 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             _comAppService = comAppService;
         }
 
-        [AbpMvcAuthorize("Member.MemberList")]
+        [AbpMvcAuthorize]
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string Level = "", string Name = "",
             string Business = "", string Store = "", string RegTimeFrom = "", string RegTimeTo = "")
         {

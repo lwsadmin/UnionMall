@@ -17,7 +17,7 @@ using UnionMall.Common;
 using System.IO;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
-using UnionMall.SystemSet;
+//using UnionMall.SystemSet;
 
 namespace UnionMall.Member
 {
@@ -27,21 +27,24 @@ namespace UnionMall.Member
         private readonly IAbpSession _AbpSession;
         private readonly ICommonAppService _comServices;
         private readonly IRepository<UnionMall.Entity.Member, long> _Repository;
-        private readonly ILogAppService _log;
+       // private readonly ILogAppService _log;
         public MemberAppService(ISqlExecuter sqlExecuter, IRepository<UnionMall.Entity.Member, long> Repository,
-            IAbpSession AbpSession, ICommonAppService comServices, ILogAppService log)
+            IAbpSession AbpSession, ICommonAppService comServices
+            //, ILogAppService log
+            )
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
             _comServices = comServices;
-            _log = log;
+           // _log = log;
         }
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select m.id,m.FullName,m.WechatName,m.TenantId,m.levelId,m.HeadImg,m.Sex,m.CardID,m.Mobile,m.Balance,m.Integral,
+                table = $@"select m.id,m.FullName,stuff(m.WechatName,2,1,'*') WechatName,m.TenantId,m.levelId,m.HeadImg,m.Sex,stuff(m.CardID,8,4,'****') CardID,
+stuff(m.Mobile,8,4,'****') Mobile,m.Balance,m.Integral,
 convert(nvarchar(100),m.RegTime,20) RegTime,m.businessId,m.chainStoreId,l.Title,b.BusinessName,c.Name StoreName from dbo.TMember m
 left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TBusiness b on
 m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
@@ -230,8 +233,8 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
         public MemoryStream ExportToExcel(string where)
         {
-            string sql = $@"select  m.FullName 姓名,m.WechatName 微信名,
- case m.Sex  when 0 then '男' else '女' end 性别, m.CardID 卡号,m.Mobile 手机号,m.Balance 余额
+            string sql = $@"select  m.FullName 姓名,stuff(m.WechatName,2,1,'*') 微信名,
+ case m.Sex  when 0 then '男' else '女' end 性别, stuff(m.CardID,8,4,'****') 卡号,stuff(m.Mobile,8,4,'****') 手机号,m.Balance 余额
 ,m.Integral 积分,convert(nvarchar(100),m.RegTime,20)  注册时间,l.Title 等级,b.BusinessName 所属商户,
 c.Name  所属门店 from dbo.TMember m left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TBusiness b on
 m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
@@ -265,7 +268,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
                     sheet.AutoSizeColumn(i);
                 workbook.Write(ms);
                 ms.Flush();
-                _log.WriteLog($"导出会员");
+               // _log.WriteLog($"导出会员");
             }
             catch (Exception ex)
             {

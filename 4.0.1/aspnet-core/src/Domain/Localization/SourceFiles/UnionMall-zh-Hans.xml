@@ -199,6 +199,7 @@
     <text name="Price" value="价格" />
     <text name="Sell" value="销售" />
     <text name="Page" value="页" />
+    <text name="To" value="至" />
     <text name="FollowStrictly" value="严格按照" />
     <text name="Template" value="模板" />
     <text name="Level" value="级别" />

@@ -30,7 +30,7 @@ using UnionMall.Web.Models.Account;
 using UnionMall.Sessions.Dto;
 using UnionMall.Authorization.Accounts;
 //using UnionMall.Web.Views.Shared.Components.TenantChange;
-using UnionMall.SystemSet;
+//using UnionMall.SystemSet;
 namespace UnionMall.Web.Controllers
 {
     public class AccountController : UnionMallControllerBase
@@ -47,7 +47,7 @@ namespace UnionMall.Web.Controllers
         private readonly ITenantCache _tenantCache;
         private readonly INotificationPublisher _notificationPublisher;
         private readonly IAccountAppService _account;
-        private readonly ILogAppService _log;
+        //    private readonly ILogAppService _log;
         public AccountController(
             UserManager userManager,
             IMultiTenancyConfig multiTenancyConfig,
@@ -60,7 +60,9 @@ namespace UnionMall.Web.Controllers
             ISessionAppService sessionAppService,
             ITenantCache tenantCache,
             IAccountAppService account,
-            INotificationPublisher notificationPublisher, ILogAppService log)
+            INotificationPublisher notificationPublisher
+            // , ILogAppService log
+            )
         {
             _account = account;
             _userManager = userManager;
@@ -74,7 +76,7 @@ namespace UnionMall.Web.Controllers
             _sessionAppService = sessionAppService;
             _tenantCache = tenantCache;
             _notificationPublisher = notificationPublisher;
-            _log = log;
+            //_log = log;
         }
 
         #region Login / Logout
@@ -115,7 +117,7 @@ namespace UnionMall.Web.Controllers
                         await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
 
                         await UnitOfWorkManager.Current.SaveChangesAsync();
-                        await _log.WriteLog($"{loginModel.UsernameOrEmailAddress}登录系统");
+                        //await _log.WriteLog($"{loginModel.UsernameOrEmailAddress}登录系统");
                         return Json(new AjaxResponse { Success = true, TargetUrl = returnUrl });
                     //return Json(new { succ = true, TargetUrl = returnUrl });
                     case AbpLoginResultType.InvalidUserNameOrEmailAddress:

@@ -14,10 +14,14 @@
     .swal2-container {
         z-index: 10000;
     }
+
+    .chosen-container {
+        margin-bottom: 15px;
+        min-width: 10vw;
+    }
 </style>
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" asp-append-version="true" rel="stylesheet" />
 <link href="~/lib/fileinput/css/fileinput.min.css" rel="stylesheet" asp-append-version="true" />
-
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -34,7 +38,6 @@
         </ol>
     </div>
 </div>
-
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
@@ -71,52 +74,52 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-12">
-
                             @if (IsGranted("Member.MemberList.Add"))
                             {
-
                                 <button onclick="location.href='/member/memberreg/index'" class="btn btn-primary btn-sm m-b" type="button">
                                     <i class="fa fa-plus"></i>&nbsp;@L("Add")
                                 </button>
-
                             }
                             @if (IsGranted("Member.MemberList.Import"))
                             {
-
                                 <button id="add" data-toggle="modal" data-target="#ImportModal" class="btn btn-primary btn-sm m-b" type="button">
                                     <i class="fa fa-arrow-up"></i>&nbsp;@L("Import")
                                 </button>
-
-
                             }
                             @if (IsGranted("Member.MemberList.Export"))
                             {
                                 <button onclick="ExportExcel();" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-arrow-down"></i>&nbsp;@L("Export")</button>
-
                             }
 
                         </div>
-
-                        <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/member/member/list" method="post">
-                            <input type="hidden" name="pageSize" value="10" />
-                            <div class="col-sm-2">
-                                @Html.DropDownList("Level", (SelectList)ViewData["Level"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
-                            </div>
-                            <div class="col-sm-2">
-                                @Html.DropDownList("Business", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
-                            </div>
-                            <div class="col-sm-2">
-                                @Html.DropDownList("Store", (SelectList)ViewData["ChainStore"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="input-group">
-                                    <input type="text" name="Name" placeholder="@L("FullName")/@L("WeChat")@L("Name")" class="m-b input-sm form-control"> <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
-                                    </span>
+                        <div class="col-sm-12">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/member/member/list" method="post">
+                                <input type="hidden" name="pageSize" value="10" />
+                                <div class="form-group">
+                                    @Html.DropDownList("Level", (SelectList)ViewData["Level"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
                                 </div>
-                            </div>
-                        </form>
+                                <div class="form-group">
+                                    @Html.DropDownList("Business", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.DropDownList("Store", (SelectList)ViewData["ChainStore"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="Name" placeholder="@L("FullName")/@L("WeChat")@L("Name")" class="m-b input-sm form-control">
+                                </div>
 
+                                <div class="form-group">
+                                    <input type="text" name="RegTimeFrom" placeholder="@L("Register")@L("Time")"
+                                           class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                    <span style="display: inline-block;vertical-align: 5px;">@L("To")</span>
+                                    <input type="text" name="RegTimeTo" placeholder="@L("Register")@L("Time")" class="m-b input-sm form-control"
+                                           onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div id="table">
                         @Html.Partial("_Table", Model)
@@ -155,6 +158,7 @@
 <script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
 <script src="~/lib/fileinput/js/locales/zh.js" asp-append-version="true"></script>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
 <script>
     $(function () {
@@ -218,8 +222,6 @@
         }).then(function (isConfirm) {
             if (isConfirm.value == true) {
                 _Service.delete(id).done(function (data) {
-
-
                     if ($(".pagination .active a").html() != undefined) {
                         $(".pagination .active a").click();
                         toastr.options = {
@@ -235,14 +237,11 @@
             }
         });
     }
-
     function ExportExcel() {
-
         var url = "/member/member/exportexcel";
-        url += "?Level=" + $("#Level").val();
-        url += "&Business=" + $("#Business").val();
-        url += "&Store=" + $("#Store").val();
-        url += "&Name=" + $("input[name='Name']").val();
+        url += "?Level=" + $("#Level").val() + "&Business=" + $("#Business").val() + "&Store=" + $("#Store").val() + "&Name=" + $("input[name='Name']").val();
+        url += "&RegTimeFrom=" + $("input[name='RegTimeFrom']").val();
+        url += "&RegTimeTo=" + $("input[name='RegTimeTo']").val();
         location.href = url;
     }
 </script>
