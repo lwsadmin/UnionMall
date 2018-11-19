@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Abp.Domain.Entities;
 
 namespace UnionMall.Entity
 {
+    [Table("TCouponUsedStatistics")]
     public class CouponUsedStatistics : Entity<long>, IMustHaveTenant
     {
         public int TenantId { get; set; }

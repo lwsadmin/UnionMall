@@ -17,6 +17,7 @@
     <text value="电话" name="PhoneNumber"/>
     <text value="状态" name="Status"/>
     <text value="标题" name="Title"/>
+    <text value="联盟" name="Union"/>
     <text value="名称" name="Name"/>
     <text value="用户列表" name="UserList"/>
     <text value="父级" name="Parent"/>
@@ -89,8 +90,8 @@
     <text name="TwoJia" value="我的代理" />
     <text name="BusinessManage" value="商户管理" />
     <text name="ChainStore" value="商户门店"/>
-
-    <text name="Member" value="会员管理"/>
+    <text name="UnionMember" value="联盟会员"/>
+    <text name="Member" value="会员"/>
     <text name="MemberLevel" value="会员级别" />
     <text name="MemberList" value="会员列表" />
     <text name="MemberRegister" value="会员办理" />
@@ -112,7 +113,7 @@
     <text name="Wheel" value="大转盘"/>
     <text name="CrowdFunding" value="众筹"/>
     <text name="Coupon" value="优惠券"/>
-    <text name="OperatorCoupon" value="联盟优惠券"/>
+    <text name="UnionCoupon" value="联盟优惠券"/>
     <text name="BusinessCoupon" value="商户优惠券" />
     <text name="CouponPackage" value="优惠券包"/>
     <text name="GiftCategory" value="礼品类别"/>
@@ -150,7 +151,8 @@
     <text name="Business" value="商户"/>
     <text name="Store" value="门店"/>
     <text name="Count" value="数量"/>
-
+    <text name="Total" value="总计"/>
+    <text name="GiftMall" value="积分商城"/>
     <!--Action-->
     <text name="Loading" value="加载中..." />
     <text name="Aduit" value="审核" />
@@ -176,6 +178,7 @@
     <text name="Submit" value="提交" />
     <!--Table-->
     <text name="Sort" value="排序" />
+    <text name="FaceValue" value="面值" />
     <text name="legalPerson" value="法人" />
     <text name="DueTime" value="到期时间" />
     <text name="Link" value="链接" />

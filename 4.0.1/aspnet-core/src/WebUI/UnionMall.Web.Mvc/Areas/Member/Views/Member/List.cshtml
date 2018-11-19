@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    ViewBag.FirstMenu = "Member";
+    ViewBag.FirstMenu = "UnionMember";
     ViewBag.SecondMenu = "MemberList";
 }
 
@@ -74,19 +74,19 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-12">
-                            @if (IsGranted("Member.MemberList.Add"))
+                            @if (IsGranted("UnionMember.MemberList.Add"))
                             {
                                 <button onclick="location.href='/member/memberreg/index'" class="btn btn-primary btn-sm m-b" type="button">
                                     <i class="fa fa-plus"></i>&nbsp;@L("Add")
                                 </button>
                             }
-                            @if (IsGranted("Member.MemberList.Import"))
+                            @if (IsGranted("UnionMember.MemberList.Import"))
                             {
                                 <button id="add" data-toggle="modal" data-target="#ImportModal" class="btn btn-primary btn-sm m-b" type="button">
                                     <i class="fa fa-arrow-up"></i>&nbsp;@L("Import")
                                 </button>
                             }
-                            @if (IsGranted("Member.MemberList.Export"))
+                            @if (IsGranted("UnionMember.MemberList.Export"))
                             {
                                 <button onclick="ExportExcel();" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-arrow-down"></i>&nbsp;@L("Export")</button>
                             }

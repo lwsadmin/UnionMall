@@ -29,7 +29,7 @@
                 <td>@item["SellPrice"]</td>
                 <td>@item["InitPoint"]</td>
                 <td>
-                    @if (IsGranted("Member.MemberLevel.Edit"))
+                    @if (IsGranted("UnionMember.MemberLevel.Edit"))
                     {
                         <a class="edit" title="@L("Edit")" data-id="@item["Id"]"
                            onclick="Edit('@item["Id"]','@item["Title"]','@item["TenantId"]','@item["MinPoint"]','@item["MaxPoint"]','@item["SellPrice"]','@item["InitPoint"]');">
@@ -37,7 +37,7 @@
                         </a>
                     }
 
-                    @if (IsGranted("Member.MemberLevel.Delete"))
+                    @if (IsGranted("UnionMember.MemberLevel.Delete"))
                     {
                         <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["title"])" data-ok="@L("OK")"
                            data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">

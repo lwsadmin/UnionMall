@@ -8,7 +8,7 @@ using Abp.Domain.Entities.Auditing;
 
 namespace UnionMall.Entity
 {
-    [Table("TCoupon")]
+    [Table("TCouponSendStatistics")]
     public class CouponSendStatistics : Entity<long>, IMustHaveTenant
     {
         public int TenantId { get; set; }

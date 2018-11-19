@@ -3,7 +3,7 @@
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    ViewBag.FirstMenu = "Member";
+    ViewBag.FirstMenu = "UnionMember";
     ViewBag.SecondMenu = "MemberLevel";
 }
 
@@ -78,7 +78,7 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        @if (IsGranted("Member.MemberLevel.Add"))
+                        @if (IsGranted("UnionMember.MemberLevel.Add"))
                         {
                             <div class="col-sm-1" style="width:auto;">
                                 <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>

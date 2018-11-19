@@ -5,6 +5,7 @@
     <text name="About" value="About" />
     <text value="Users" name="Users"/>
     <text value="UserList" name="UserList"/>
+    <text value="Union" name="Union"/>
     <text name="This system is for demonstration only" value="This system is for demonstration only" />
     <text name="Welcome to" value="Welcome" />
     <text name="Welcome, {0}" value="Welcome {0}" />
@@ -116,6 +117,7 @@
     <text name="UnionMall">UnionMall</text>
     <text name="FollowStrictly" value="Follow the " />
     <text name="Template" value="template" />
+    <text name="GiftMall" value="GiftMall"/>
     <!--ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
     <text name="Logout" value="Logout" />
     <text value="PersonalInformation" name="PersonalInformation"/>
@@ -128,7 +130,7 @@
     <text name="OffLineCashie" value="OffLineCashie"/>
     <text name="QuickConsume" value="QuickConsume"/>
     <text name="GoodsConsume" value="GoodsConsume" />
-    <text name="MemberRecharge" value="MemberRecharge"/>
+    <text name="MemberRecharge" value="Member"/>
     <text name="CouponConsume" value="CouponConsume" />
     <text name="GiftCash" value="GiftCash" />
     <text name="PointRecharge" value="PointRecharge" />
@@ -173,6 +175,8 @@
     <text name="BusinessCoupon" value="BusinessCoupon" />
     <text name="CouponPackage" value="CouponPackage"/>
     <text name="Gift" value="Gift"/>
+    <text name="Total" value="Total"/>
+    <text name="UnionMember" value="UnionMember"/>
     <text name="GiftCategory" value="GiftCategory"/>
     <text name="GiftList" value="GiftList"/>
     <text name="GiftOrder" value="GiftOrder" />
@@ -219,7 +223,7 @@
 
     <!--Form-->
     <text name="SortTip" value="Descending from big to small" />
-        <text name="Referrer" value="Referrer" />
+    <text name="Referrer" value="Referrer" />
     <text name="Brand" value="Brand" />
     <text name="Choose" value="-Choose-" />
     <text name="Selected" value="Selected" />
@@ -233,6 +237,7 @@
     <text name="Submit" value="Submit" />
     <!--Table-->
     <text name="Query" value="Query" />
+    <text name="FaceValue" value="FaceValue" />
     <text name="Search" value="Search" />
     <text name="SearchPlaceholder" value="Please input the title" />
     <text name="legalPerson" value="legalPerson" />

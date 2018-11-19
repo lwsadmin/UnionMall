@@ -11,7 +11,7 @@ using UnionMall.Member;
 namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AbpMvcAuthorize("Member.CardInfo")]
+    [AbpMvcAuthorize("UnionMember.CardInfo")]
     public class CardCoreController : UnionMallControllerBase
     {
         private readonly IMemberAppService _AppService;

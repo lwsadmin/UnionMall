@@ -13,7 +13,7 @@ using UnionMall.Member.Dto;
 namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AbpMvcAuthorize("Member")]
+    [AbpMvcAuthorize("UnionMember")]
     public class MemberRegController : UnionMallControllerBase
     {
         private readonly IMemberLevelAppService _levelAppService;

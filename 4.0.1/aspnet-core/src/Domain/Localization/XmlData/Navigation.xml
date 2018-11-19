@@ -59,7 +59,7 @@
       <Action Name="Delete" />
     </Second>
   </First>
-  <First Name="Member" Icon="glyphicon glyphicon-user">
+  <First Name="UnionMember" Icon="glyphicon glyphicon-user">
     <Second Name="MemberLevel" Url="/member/memberlevel/list">
       <Action Name="Add" />
       <Action Name="Edit" />
@@ -149,7 +149,7 @@
     </Second>
   </First>-->
   <First Name="Coupon"   Icon="glyphicon glyphicon-send">
-    <Second Name="UnionCoupon"  Url="/coupon/Coupon/list">
+    <Second Name="UnionCoupon"  Url="/coupon/coupon/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
@@ -165,7 +165,7 @@
       <Action Name="Delete" />
     </Second>
   </First>
-  <First Name="Gift"   Icon="glyphicon glyphicon-gift">
+  <First Name="GiftMall"   Icon="glyphicon glyphicon-gift">
     <Second Name="GiftCategory"   Url="/Gift/GiftCategory/List">
       <Action Name="Add" />
       <Action Name="Edit" />

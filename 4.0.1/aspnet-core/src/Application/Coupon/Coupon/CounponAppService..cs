@@ -39,11 +39,7 @@ namespace UnionMall.Coupon
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select c.Id,c.TenantId,c.businessId,c.Title,c.Status,c.Value,c.MemberReceiveCount,c.Image,c.TotalCount,
- b.BusinessName from dbo.TCoupon c left join dbo.TBusiness b on c.businessId=b.Id m where 1=1 ";
-            }
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
-            {
-                where += $" and m.TenantId={_AbpSession.TenantId}";
+ b.BusinessName from dbo.TCoupon c left join dbo.TBusiness b on c.businessId=b.Id  where 1=1 ";
             }
             where = where.Replace("*", "c");
             table += where;

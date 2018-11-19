@@ -17,7 +17,7 @@ using System.IO;
 namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AbpMvcAuthorize("Member")]
+    [AbpMvcAuthorize("UnionMember")]
     public class MemberController : UnionMallControllerBase
     {
         private readonly IMemberAppService _AppService;

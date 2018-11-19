@@ -11,6 +11,7 @@ using UnionMall.Controllers;
 using UnionMall.Coupon;
 using X.PagedList;
 using UnionMall.Coupon.Dto;
+using UnionMall.Common;
 
 namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
 {
@@ -20,15 +21,17 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
     {
         private readonly ICounponAppService _couponService;
         private readonly IBusinessAppService _AppService;
-        public CouponController(CounponAppService couponService, IBusinessAppService AppService)
+        private readonly ICommonAppService _comService;
+        public CouponController(CounponAppService couponService, IBusinessAppService AppService, ICommonAppService comService)
         {
             _couponService = couponService;
             _AppService = AppService;
+            _comService = comService;
         }
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string businessId = "", string title = "")
         {
 
-            string where = string.Empty;
+            string where = _comService.GetWhere();
             if (!string.IsNullOrEmpty(businessId))
                 where += $" and c.BusinessId = {businessId}";
             if (!string.IsNullOrEmpty(title))

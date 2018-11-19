@@ -45,7 +45,7 @@
                     <a title="@L("Detail")" href="/member/cardcore/index/@item["id"]">
                         <i class="fa fa-eye"></i>
                     </a>
-                    @if (IsGranted("Member.MemberList.Delete"))
+                    @if (IsGranted("UnionMember.MemberList.Delete"))
                     {
                         <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["FullName"])" data-ok="@L("OK")"
                            data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
