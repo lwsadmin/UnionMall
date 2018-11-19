@@ -1,0 +1,102 @@
+﻿
+@{
+
+    Layout = null;
+}
+@using System.Data
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Title")</th>
+            <th>@L("Image")</th>
+            <th>@L("Belong")@L("Business")</th>
+            <th>@L("Status")</th>
+            <th>@L("Value")</th>
+            <th>@L("TotalCount")</th>
+
+            <th>@L("BusinessName")</th>
+            <th>@L("MemberReceiveCount")</th>
+            <th>@L("Operate")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+        <tr>
+            <td class="title">
+                @item["Title"]
+            </td>
+            <td class="img"><img style="height:15px;" src="@item["Image"]" onerror="this.src='/img/nopic.png'" />  </td>
+            <td>@item["BusinessName"]</td>
+            <td>@item["Status"]</td>
+            <td>@item["Value"]</td>
+            <td>@item["TotalCount"]</td>
+
+            <td>@item["BusinessName"]</td>
+            <td>@item["MemberReceiveCount"]</td>
+            <td>
+                <a data-title="@L("DeleteConfirm{0}",item["name"])" data-ok="@L("OK")"
+                   data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                    <i class="fa fa-trash text-navy"></i>
+                </a>    &nbsp;&nbsp;&nbsp;&nbsp;
+                <a data-ajax="true" data-ajax-method="GET"
+                   data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
+                   href="/Business/ChainStore/Add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new PagedListRenderOptions {
+            MaximumPageNumbersToDisplay = 10,
+            DisplayPageCountAndCurrentLocation = true,
+            LinkToFirstPageFormat = L("FirstPage"),
+            LinkToLastPageFormat = L("LastPage"),
+            LinkToNextPageFormat = L("NextPage"),
+            PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+            LinkToPreviousPageFormat = L("PreviousPage"),
+            UlElementClasses = new[] { "pagination col-md-8" },
+            ContainerDivClasses = new[] { "row" } },
+
+
+        new AjaxOptions()
+        {
+            DataForm = "searchForm",
+            HttpMethod = "GET",
+            UpdateTargetId = "table"
+        }
+))
+<script>
+    var txt = $("input[name='storeName']").val().trim();
+    if (txt.length > 0) {
+        $(".title").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+    $(".img").hover(function () {
+        $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
+        $(".img").mousemove(function (e) {
+            var h = window.screen.height;
+            var showY = e.pageY;
+            if (e.pageY + $("#pic").height() + 100 >= h) {
+                showY = h - $("#pic").height() - 200;
+            }
+            $("#pic").css({
+                "top": (showY),
+                "left": (e.pageX + 15)
+            }).fadeIn("fast");
+
+        });
+    }, function () {
+        $("#pic").remove();
+    });
+</script>

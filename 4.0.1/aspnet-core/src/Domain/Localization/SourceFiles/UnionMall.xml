@@ -230,7 +230,7 @@
     <text name="Business" value="Business"/>
     <text name="Store" value="Store"/>
     <text name="Count" value="Count"/>
-        <text name="Submit" value="Submit" />
+    <text name="Submit" value="Submit" />
     <!--Table-->
     <text name="Query" value="Query" />
     <text name="Search" value="Search" />
@@ -256,7 +256,13 @@
     <text name="Time" value="Time" />
     <text name="Register" value="Register" />
     <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
-
+    <text name="Use" value="Use" />
+    <text name="Send" value="Send" />
+    <text name="Receive" value="Receive" />
+    <text name="Order" value="Order" />
+    <text name="Type" value="Type" />
+    <text name="Begin" value="Begin" />
+    <text name="End" value="End" />
     <!--message-->
     <text name="NotExist{0}" value="It does not exist!" />
     <text name="Exist{0}" value="Already exist {0}!" />

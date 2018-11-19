@@ -27,6 +27,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Coupon\ReceiveStatistics\Dto\" />
+    <Folder Include="Coupon\SendStatistics\Dto\" />
     <Folder Include="SystemSet\" />
   </ItemGroup>
 </Project>

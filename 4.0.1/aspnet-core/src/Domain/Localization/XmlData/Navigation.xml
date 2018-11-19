@@ -149,7 +149,7 @@
     </Second>
   </First>-->
   <First Name="Coupon"   Icon="glyphicon glyphicon-send">
-    <Second Name="OperatorCoupon"  Url="/coupon/coupon/list">
+    <Second Name="UnionCoupon"  Url="/coupon/Coupon/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />

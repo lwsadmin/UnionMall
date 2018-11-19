@@ -70,7 +70,7 @@
     <text name="QuickConsume" value="快速消费"/>
     <text name="GoodsConsume" value="商品消费" />
     <text name="MemberRecharge" value="会员充值"/>
-    <text name="CouponConsume" value="代金券消费" />
+    <text name="CouponConsume" value="优惠券消费" />
     <text name="GiftCash" value="礼品兑换" />
     <text name="PointRecharge" value="积分充值" />
 
@@ -111,11 +111,10 @@
     <text name="SystemMarketing" value="系统营销"/>
     <text name="Wheel" value="大转盘"/>
     <text name="CrowdFunding" value="众筹"/>
-    <text name="Coupon" value="代金券"/>
-    <text name="OperatorCoupon" value="联盟代金券"/>
-    <text name="BusinessCoupon" value="商户代金券" />
-    <text name="CouponPackage" value="代金券包"/>
-    <text name="Gift" value="积分商城"/>
+    <text name="Coupon" value="优惠券"/>
+    <text name="OperatorCoupon" value="联盟优惠券"/>
+    <text name="BusinessCoupon" value="商户优惠券" />
+    <text name="CouponPackage" value="优惠券包"/>
     <text name="GiftCategory" value="礼品类别"/>
     <text name="GiftList" value="礼品管理"/>
     <text name="GiftOrder" value="GiftOrder" />
@@ -131,7 +130,7 @@
     <text name="MemberRechargeStatistics" value="会员充值统计"/>
     <text name="MemberConsumeStatistics" value="会员消费统计"/>
     <text name="MemberPointStatistics" value="会员积分统计"/>
-    <text name="MemberGetCouponStatistics" value="代金券统计"/>
+    <text name="MemberGetCouponStatistics" value="优惠券统计"/>
     <text name="GiftCashStatistics" value="礼品兑换统计"/>
     <text name="WeChatSet" value="微信设置"/>
     <text name="PublicWeChatSet" value="公众号设置" />
@@ -205,6 +204,14 @@
     <text name="Level" value="级别" />
     <text name="Time" value="时间" />
     <text name="Register" value="注册" />
+    <text name="Use" value="使用" />
+    <text name="Send" value="发送" />
+    <text name="Receive" value="领取" />
+    <text name="Gift" value="礼品" />
+    <text name="Order" value="订单" />
+    <text name="Type" value="类型" />
+    <text name="Begin" value="开始" />
+    <text name="End" value="结束" />
     <!--message-->
     <text name="Hint" value="提示" />
     <text name="Exist{0}" value="已经存在 {0}!" />
