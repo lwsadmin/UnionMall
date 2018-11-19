@@ -10,7 +10,7 @@ namespace UnionMall.SystemSet
     public interface ILogAppService : IApplicationService
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
-        Task WriteLog (string content);
+        Task WriteLog (string content); 
 
     }
 }
