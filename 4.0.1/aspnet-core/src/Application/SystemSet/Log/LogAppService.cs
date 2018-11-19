@@ -42,7 +42,7 @@ cast(m.minPoint as float) minPoint,cast(m.maxPoint as float) maxPoint from tmemb
                 where += $" and m.TenantId={_AbpSession.TenantId}";
             }
             table += where;
-            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+             return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
         }
 
         public async Task WriteLog(string content)
