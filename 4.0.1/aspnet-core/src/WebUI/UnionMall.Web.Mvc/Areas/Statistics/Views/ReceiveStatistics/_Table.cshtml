@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+@using X.PagedList
+@using System.Data
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Coupon")@L("Title")</th>
+            <th>@L("WeChat")@L("Name")</th>
+            <th>@L("CardID")</th>
+            <th>@L("OverDueTime")</th>
+            <th>@L("Receive")@L("Count")</th>
+            <th>@L("Use")@L("Count")</th>
+            <th>@L("Receive")@L("Time")</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr>
+                <td class="title">
+                    @item["Title"]
+                </td>
+                <td>@item["WeChatName"]</td>
+                <td>@item["CardID"]</td>
+                <td>@item["CardID"]</td>
+                <td>@item["OverDueTime"]</td>
+                <td>@item["ReceiveCount"]</td>
+                <td>@item["UsedCount"]</td>
+                <td>@item["SendTime"]</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+new PagedListRenderOptions {
+MaximumPageNumbersToDisplay = 10,
+DisplayPageCountAndCurrentLocation = true,
+LinkToFirstPageFormat = L("FirstPage"),
+LinkToLastPageFormat = L("LastPage"),
+LinkToNextPageFormat = L("NextPage"),
+PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+LinkToPreviousPageFormat = L("PreviousPage"),
+UlElementClasses = new[] { "pagination col-md-8" },
+ContainerDivClasses = new[] { "row" } },
+new AjaxOptions()
+{
+DataForm = "searchForm",
+HttpMethod = "GET",
+UpdateTargetId = "table"
+}
+))
+
+<script>
+    var txt = $("input[name='title']").val().trim();
+    if (txt.length > 0) {
+        $(".title").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+    $("input[name='pageSize']").val(@ViewBag.PageSize);
+</script>

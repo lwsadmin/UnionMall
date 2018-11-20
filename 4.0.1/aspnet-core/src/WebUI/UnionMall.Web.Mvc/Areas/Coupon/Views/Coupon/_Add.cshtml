@@ -9,7 +9,7 @@
 @model CreateEditDto
 
 
-<div class="modal inmodal fade in" id="CreateModal"  role="dialog" aria-hidden="true">
+<div class="modal inmodal fade in" id="CreateModal" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -31,7 +31,7 @@
                                 @Html.DropDownListFor(c => c.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "form-control chosen-select" })
                             </div>
                             <div class="form-group">
-                                <label>@L("Value")</label>
+                                <label>@L("FaceValue")</label>
                                 <input type="number" name="Value" value="@Model.Value" class="form-control" required maxlength="15">
                             </div>
 
@@ -43,7 +43,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@L("TotalCount")</label><span class="help-block m-b-none" style="display:inline;">&nbsp;&nbsp;(@L("SortTip"))</span>
+                                <label>@L("Total")@L("Count")</label>
                                 <input type="number" name="TotalCount" value="@Model.TotalCount" class="form-control" required>
                             </div>
 
@@ -100,33 +100,33 @@
         $(".file-caption-name").val($("#hiddenImg").val());
     });
     var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
-        var editor
+    var editor
     KindEditor.ready(function (K) {
 
-            editor = K.create('#Introduce',
-                {
-                    langType: language,
-                    height: '300px',
-                    uploadJson: "/Common/EditorUpload",
-                    fileManagerJson: '/Common/Upload',
-                    allowFileManager: false,
-                    formatUploadUrl: false,
-                    items: [
-                        'justifyleft', 'justifycenter', 'justifyright',
-                        'justifyfull', '|', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
-                        'italic', 'underline', '|', 'image', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'link', '|',
-                        'quickformat','preview', 'fullscreen'
-                    ],
-                    afterBlur: function () { this.sync(); },
-                    afterUpload: function (url) {
-                      
-                 
-                    },
-                    afterError: function (data) {
-                        
-                    }
-                });
-        });
+        editor = K.create('#Introduce',
+            {
+                langType: language,
+                height: '300px',
+                uploadJson: "/Common/EditorUpload",
+                fileManagerJson: '/Common/Upload',
+                allowFileManager: false,
+                formatUploadUrl: false,
+                items: [
+                    'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', '|', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', '|', 'image', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'link', '|',
+                    'quickformat', 'preview', 'fullscreen'
+                ],
+                afterBlur: function () { this.sync(); },
+                afterUpload: function (url) {
+
+
+                },
+                afterError: function (data) {
+
+                }
+            });
+    });
     $("#CreateModal").on('hidden.bs.modal', function () {
         editor.html('');
     });

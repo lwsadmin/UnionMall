@@ -39,6 +39,7 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
             int total;
             DataSet ds = _couponService.GetPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
+            ViewBag.PageSize = pageSize;
             if (Request.Headers.ContainsKey("x-requested-with"))
             {
                 return View("_Table", pageList);

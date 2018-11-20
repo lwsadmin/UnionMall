@@ -64,6 +64,7 @@
     <text value="Operate" name="Operate"/>
     <text  name="Title" value="Title"/>
     <text name="Note" value="Note"/>
+    <text name="Records" value="Records" />
     <text name="Balance" value="Balance" />
     <text name="CreateNewUser" value="Create new user" />
     <text name="Yes" value="Yes" />
@@ -171,7 +172,7 @@
     <text name="Wheel" value="Wheel"/>
     <text name="CrowdFunding" value="CrowdFunding"/>
     <text name="Coupon" value="Coupon"/>
-    <text name="OperatorCoupon" value="OperatorCoupon"/>
+    <text name="UnionCoupon" value="UnionCoupon"/>
     <text name="BusinessCoupon" value="BusinessCoupon" />
     <text name="CouponPackage" value="CouponPackage"/>
     <text name="Gift" value="Gift"/>
@@ -185,6 +186,7 @@
     <text name="BusinessDivideSet" value="BusinessDivideSet"/>
     <text name="PointSet" value="PointSet"/>
     <text name="BusinessSettle" value="BusinessSettle"/>
+    <text name="StatisticsAnalysis" value="StatisticsAnalysis"/>
     <text name="Statistics" value="Statistics"/>
     <text name="ChainStorePointStatistics" value="ChainStorePointStatistics"/>
     <text name="ChainStoreValueStatistics" value="ChainStoreValueStatistics" />
@@ -192,7 +194,8 @@
     <text name="MemberRechargeStatistics" value="MemberRechargeStatistics"/>
     <text name="MemberConsumeStatistics" value="MemberConsumeStatistics"/>
     <text name="MemberPointStatistics" value="MemberPointStatistics"/>
-    <text name="MemberGetCouponStatistics" value="MemberGetCouponStatistics"/>
+    <text name="CouponReceiveStatistics" value="CouponReceiveStatistics"/>
+    <text name="CouponUseStatistics" value="CouponUseStatistics"/>
     <text name="GiftCashStatistics" value="GiftCashStatistics"/>
     <text name="WeChatSet" value="WeChatSet"/>
     <text name="WeChat" value="WeChatSet" />

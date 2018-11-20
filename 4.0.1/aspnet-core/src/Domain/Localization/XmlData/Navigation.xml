@@ -185,15 +185,15 @@
     <Second Name="BusinessSettle"   Url="/Settlement/StoreMoneyReport/List"></Second>
 
   </First>
-  <First Name="Statistics"  Icon="glyphicon glyphicon-signal">
+  <First Name="StatisticsAnalysis"  Icon="glyphicon glyphicon-signal">
     <Second Name="ChainStorePointStatistics" Url="/Statistics/StorePoint/List"></Second>
     <Second Name="ChainStoreValueStatistics"  Url="/Statistics/StoreValueNote/List"></Second>
     <Second Name="ChainStoreSmsStatistics"  Url="/Statistics/ChainStoreSmsNote/List"></Second>
     <Second Name="MemberRechargeStatistics"  Url="/Statistics/MemberRecharge/List"></Second>
     <Second Name="MemberConsumeStatistics"  Url="/Statistics/MemberConsume/List"></Second>
     <Second Name="MemberPointStatistics"  Url="/Statistics/MemberPoint/List"></Second>
-
-    <Second Name="MemberGetCouponStatistics" Url="/Statistics/Coupon/List"></Second>
+    <Second Name="CouponReceiveStatistics" Url="/statistics/receivestatistics/list"></Second>
+    <Second Name="CouponUseStatistics" Url="/statistics/couponuse/list"></Second>
     <Second Name="GiftCashStatistics"   Url="/Statistics/GiftExchangeNote/List"></Second>
   </First>
 

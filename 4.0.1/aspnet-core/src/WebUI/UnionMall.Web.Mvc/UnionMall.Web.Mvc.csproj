@@ -162,6 +162,8 @@
     <Folder Include="Areas\Coupon\Models\" />
     <Folder Include="Areas\Member\Data\" />
     <Folder Include="Areas\Member\Models\" />
+    <Folder Include="Areas\Statistics\Data\" />
+    <Folder Include="Areas\Statistics\Models\" />
     <Folder Include="wwwroot\lib\pager\" />
     <Folder Include="wwwroot\view-resources\Views\Shared\Components\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
@@ -203,6 +205,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Member\Views\Member\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Statistics\Views\ReceiveStatistics\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\_ViewImports.cshtml">

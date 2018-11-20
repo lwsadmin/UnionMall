@@ -20,13 +20,11 @@
         height: 34px !important;
         font-size: 14px;
     }
-
     #pic {
         position: fixed;
         display: none;
         z-index: 10;
     }
-
     #searchForm .chosen-single {
         font-size: 14px;
         line-height: 20px !important;
@@ -63,19 +61,19 @@
                                 <a data-ajax="true" data-ajax-form="searchForm"
                                    data-ajax-loading="loading" data-ajax-loading-duration="2"
                                    data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
-                                   href="/coupon/uioncoupon/list?page=1&pageSize=10">10</a>
+                                   href="/coupon/coupon/list?page=1&pageSize=10">10</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm"
                                    data-ajax-loading="loading" data-ajax-loading-duration="2"
                                    data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
-                                   href="/coupon/uioncoupon/list?page=1&pageSize=15">15</a>
+                                   href="/coupon/coupon/list?page=1&pageSize=15">15</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm"
                                    data-ajax-loading="loading" data-ajax-loading-duration="2"
                                    data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
-                                   href="/coupon/uioncoupon/list?page=1&pageSize=20">20</a>
+                                   href="/coupon/coupon/list?page=1&pageSize=20">20</a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -89,7 +87,8 @@
                         <div class="col-sm-1 m-b" style="width:auto;">
                             <button id="add" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
                         </div>
-                        <form class="form-inline m-b" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/chainstore/List" method="post">
+                        <form class="form-inline m-b" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/coupon/coupon/List" method="post">
+                            <input type="hidden" name="pageSize" value="10" />
                             <div class="col-sm-2">
                                 @Html.DropDownList("businessId", (SelectList)ViewData["Business"], L("Choose"), new { @class = "input-sm form-control  chosen-select" })
                             </div>
@@ -119,9 +118,9 @@
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script src="~/lib/pager/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/view-resources/Areas/Coupon/coupon_list.js"></script>
 <script>
     function EditShow(data) {
         $("#CreateModal").modal("show");
     }
-
 </script>

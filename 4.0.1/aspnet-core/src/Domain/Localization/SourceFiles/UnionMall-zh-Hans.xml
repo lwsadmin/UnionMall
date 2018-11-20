@@ -124,14 +124,16 @@
     <text name="BusinessDivideSet" value="门店结算设置"/>
     <text name="PointSet" value="门店资金结算"/>
     <text name="BusinessSettle" value="门店资金明细"/>
-    <text name="Statistics" value="统计分析"/>
+    <text name="StatisticsAnalysis" value="统计分析"/>
+    <text name="Statistics" value="统计"/>
     <text name="ChainStorePointStatistics" value="门店积分统计"/>
     <text name="ChainStoreValueStatistics" value="门店余额统计" />
     <text name="ChainStoreSmsStatistics" value="门店短信统计"/>
     <text name="MemberRechargeStatistics" value="会员充值统计"/>
     <text name="MemberConsumeStatistics" value="会员消费统计"/>
     <text name="MemberPointStatistics" value="会员积分统计"/>
-    <text name="MemberGetCouponStatistics" value="优惠券统计"/>
+    <text name="CouponReceiveStatistics" value="优惠券领取统计"/>
+    <text name="CouponUseStatistics" value="优惠券使用统计"/>
     <text name="GiftCashStatistics" value="礼品兑换统计"/>
     <text name="WeChatSet" value="微信设置"/>
     <text name="PublicWeChatSet" value="公众号设置" />
@@ -193,6 +195,7 @@
     <text name="Screen" value="屏幕" />
     <text name="Unlock" value="解锁" />
     <text name="Search" value="搜索" />
+    <text name="Records" value="记录" />
     <text name="SearchPlaceholder" value="请输入标题" />
     <text name="LowerLimit" value="下限" />
     <text name="UpperLimit" value="上限" />
