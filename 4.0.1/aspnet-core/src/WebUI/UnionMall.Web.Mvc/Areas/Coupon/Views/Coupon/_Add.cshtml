@@ -20,6 +20,7 @@
                 <form method="post" id="formPost">
                     <input type="hidden" name="Id" value="@Model.Id" />
                     <input type="hidden" name="TenantId" value="@Model.TenantId" />
+                    <input type="hidden" name="Type" value="0" />
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -36,8 +37,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label>@L("UseValueLimit")</label>
-                                <input type="number" name="UseValueLimit" value="@Model.UseValueLimit" class="form-control" required maxlength="15">
+                                <label>@L("Consume")@L("To")</label>
+                                <div class="input-group bootstrap-touchspin">
+                                    <input class="touchspin2 form-control" type="number" value="@Model.UseValueLimit" name="UseValueLimit" required maxlength="15" />
+                                    <span class="input-group-addon bootstrap-touchspin-postfix">@L("Yuan")</span>
+                                </div>
                             </div>
                         </div>
 
@@ -55,18 +59,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label>@L("SigleReceiveCount")</label>
+                                <label>@L("SigleCount")</label>
                                 <input type="text" name="SigleReceiveCount" value="@Model.SigleReceiveCount" class="form-control" required />
                             </div>
                             <div class="form-group">
-                                <label>&nbsp;</label>
-                                <input type="text" name="Address" placeholder="@L("Type")" value="@Model.Type" class="form-control" maxlength="200" />
-
-                            </div>
-                            <div class="form-group">
-                                <label>&nbsp;</label>
-                                <input type="text" name="Address" placeholder="@L("ValidityDay")" value="@Model.ValidityDay" class="form-control" maxlength="200" />
-
+                                <label>@L("OverDue")@L("Time")</label>
+                                <div class="input-group bootstrap-touchspin">
+                                    <input class="touchspin2 form-control" type="number" value="@Model.ValidityDay" name="ValidityDay" required maxlength="3" />
+                                    <span class="input-group-addon bootstrap-touchspin-postfix">@L("Day")</span>
+                                </div>
                             </div>
                         </div>
                     </div>

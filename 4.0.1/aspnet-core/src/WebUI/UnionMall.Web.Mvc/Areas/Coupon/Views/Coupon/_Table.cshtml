@@ -17,8 +17,6 @@
             <th>@L("Status")</th>
             <th>@L("FaceValue")</th>
             <th>@L("Total")@L("Count")</th>
-
-            <th>@L("BusinessName")</th>
             <th>@L("Receive")@L("Count")</th>
             <th>@L("Operate")</th>
         </tr>
@@ -35,8 +33,6 @@
                 <td>@item["Status"]</td>
                 <td>@item["Value"]</td>
                 <td>@item["TotalCount"]</td>
-
-                <td>@item["BusinessName"]</td>
                 <td>@item["MemberReceiveCount"]</td>
                 <td>
                     <a data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
@@ -91,11 +87,11 @@
             var showY = showY - $("#table").offset().top;
             var showX = e.pageX  - $("#table").offset().left;
             if (e.pageY + $("#pic").height() + 100 >= h) {
-                showY = h - $("#pic").height() - 200;
+                showY = h - $("#pic").height() -400;
             }
             $("#pic").css({
                 "top": showY,
-                "left": (showX + 30)
+                "left": (showX + 50)
             }).fadeIn(500);
 
         });

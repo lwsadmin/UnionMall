@@ -232,12 +232,14 @@
     <text name="Selected" value="Selected" />
     <text name="Selectable" value="Selectable" />
     <text name="Address" value="Address" />
+    <text name="SigleCount" value="SinglePersonLimit" />
     <text name="AddressPlace" value="Please input detailed address such as city, district, street." />
     <text name="Belong" value="Belong" />
     <text name="Business" value="Business"/>
     <text name="Store" value="Store"/>
     <text name="Count" value="Count"/>
     <text name="Submit" value="Submit" />
+    <text name="Consume" value="Consume" />
     <!--Table-->
     <text name="Query" value="Query" />
     <text name="FaceValue" value="FaceValue" />
@@ -271,6 +273,11 @@
     <text name="Type" value="Type" />
     <text name="Begin" value="Begin" />
     <text name="End" value="End" />
+    <text name="Day" value="Day" />
+    <text name="Hour" value="Hour" />
+    <text name="OverDue" value="OverDue" />
+    <text name="Effective" value="Effective" />
+    <text name="Yuan" value="Yuan" />
     <!--message-->
     <text name="NotExist{0}" value="It does not exist!" />
     <text name="Exist{0}" value="Already exist {0}!" />

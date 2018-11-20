@@ -31,7 +31,7 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string businessId = "", string title = "")
         {
 
-            string where = _comService.GetWhere();
+            string where = " and Type=0 " + _comService.GetWhere();
             if (!string.IsNullOrEmpty(businessId))
                 where += $" and c.BusinessId = {businessId}";
             if (!string.IsNullOrEmpty(title))

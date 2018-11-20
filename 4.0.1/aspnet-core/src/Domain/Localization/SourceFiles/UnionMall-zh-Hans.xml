@@ -171,6 +171,7 @@
     <text name="Choose" value="-请选择-" />
     <text name="Sex" value="性别" />
     <text name="CardID" value="卡号" />
+    <text name="SigleCount" value="单人限量" />
     <text name="WeChat" value="微信" />
     <text name="Address" value="地址" />
     <text name="NoEditPwd" value="不填写则不修改密码" />
@@ -218,6 +219,12 @@
     <text name="Type" value="类型" />
     <text name="Begin" value="开始" />
     <text name="End" value="结束" />
+    <text name="Consume" value="消费" />
+    <text name="Day" value="天" />
+    <text name="Hour" value="时" />
+    <text name="OverDue" value="过期" />
+    <text name="Effective" value="有效" />
+    <text name="Yuan" value="元" />
     <!--message-->
     <text name="Hint" value="提示" />
     <text name="Exist{0}" value="已经存在 {0}!" />
