@@ -37,7 +37,7 @@ on s.MemberId=m.Id left join  dbo.TCoupon c on s.CouponId=c.Id where 1=1 ";
             }
             where = where.Replace("*", "s");
             table += where;
-            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
     }
 }

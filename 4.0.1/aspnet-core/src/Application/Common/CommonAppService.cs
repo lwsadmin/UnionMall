@@ -157,7 +157,7 @@ namespace UnionMall.Common
 
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
-            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
 
 

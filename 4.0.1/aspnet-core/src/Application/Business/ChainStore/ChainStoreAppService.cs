@@ -40,7 +40,7 @@ namespace UnionMall.Business
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select c.IsSystem, c.id,c.BusinessId,c.Name,b.BusinessName, c.Image,c.Mobile,c.CreationTime,c.Contact,c.Sort from TChainStore c
+                table = $@"select c.id, c.IsSystem, c.id,c.BusinessId,c.Name,b.BusinessName, c.Image,c.Mobile,c.CreationTime,c.Contact,c.Sort from TChainStore c
 left join TBusiness b on c.BusinessId = b.Id where 1=1 ";
             }
             if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
@@ -51,7 +51,7 @@ left join TBusiness b on c.BusinessId = b.Id where 1=1 ";
             {
                 table += where;
             }
-            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
         public bool Delete(long id, out string msg)
         {

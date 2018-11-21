@@ -69,7 +69,7 @@ namespace UnionMall.Goods.Brand
 
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
-            DataSet ds = _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            DataSet ds = _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
             return ds;
         }
         public List<BrandSelectDto> GetMultiSelect()

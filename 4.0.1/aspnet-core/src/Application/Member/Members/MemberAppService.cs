@@ -50,7 +50,7 @@ left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TBusiness b on
 m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             }
             table += where.Replace("*", "m");
-            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
 
         public async Task CreateOrEditAsync(UnionMall.Entity.Member dto)
@@ -241,7 +241,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
             sql += where.Replace("*", "m");
             int total;
-            DataTable dt = _sqlExecuter.GetPaged(1, int.MaxValue, sql, " 注册时间 desc ", out total).Tables[0];
+            DataTable dt = _sqlExecuter.GetPagedList(1, int.MaxValue, sql, " 注册时间 desc ", out total).Tables[0];
             XSSFWorkbook workbook = null;
             MemoryStream ms = null;
             ISheet sheet = null;

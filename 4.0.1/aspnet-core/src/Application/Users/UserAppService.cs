@@ -204,7 +204,7 @@ on s.Id=ur.UserId left join TRoles r on ur.RoleId=r.Id left join dbo.TChainStore
                     where += $" and ur.RoleId in ({role.Rows[0]["ManageRole"]})";
             }
             table += where;
-            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
     }
 }

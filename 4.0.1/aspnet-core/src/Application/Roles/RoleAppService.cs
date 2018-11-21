@@ -282,7 +282,7 @@ from TRoles r left join dbo.TBusiness b on r.BusinessId=b.Id where r.IsDeleted=0
                 else
                     table += $" and r.id in({role.Rows[0]["ManageRole"]})";
             }
-            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
         public async Task<List<RoleDropDownDto>> GetDropDown(long? businessId = null)
         {
