@@ -43,7 +43,7 @@ namespace UnionMall.Coupon
             }
             where = where.Replace("*", "c");
             table += where;
-            return _sqlExecuter.GetPaged(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
 
         public Task CreateOrEditAsync(CreateEditDto dt)
