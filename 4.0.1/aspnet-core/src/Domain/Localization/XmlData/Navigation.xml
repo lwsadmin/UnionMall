@@ -193,7 +193,7 @@
     <Second Name="MemberConsumeStatistics"  Url="/Statistics/MemberConsume/List"></Second>
     <Second Name="MemberPointStatistics"  Url="/Statistics/MemberPoint/List"></Second>
     <Second Name="CouponReceiveStatistics" Url="/statistics/receivestatistics/list"></Second>
-    <Second Name="CouponUseStatistics" Url="/statistics/couponuse/list"></Second>
+    <Second Name="CouponUseStatistics" Url="/statistics/usedstatistics/list"></Second>
     <Second Name="GiftCashStatistics"   Url="/Statistics/GiftExchangeNote/List"></Second>
   </First>
 

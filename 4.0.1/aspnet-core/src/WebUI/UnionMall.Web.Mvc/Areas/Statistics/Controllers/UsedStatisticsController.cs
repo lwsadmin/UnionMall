@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using UnionMall.Business;
 using UnionMall.Common;
 using UnionMall.Controllers;
 using UnionMall.Coupon;
@@ -12,16 +15,19 @@ using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
 {
-
-
-    public class SendStatisticsController : UnionMallControllerBase
+    [AbpMvcAuthorize]
+    [AbpMvcAuthorize("StatisticsAnalysis.CouponUseStatistics")]
+    [Area("Statistics")]
+    public class UsedStatisticsController : UnionMallControllerBase
     {
-        private readonly IReceiveStatisticsAppService _appService;
+        private readonly IUsedStatisticsAppService _appService;
         private readonly ICommonAppService _comService;
-
-        public SendStatisticsController(IReceiveStatisticsAppService appService, ICommonAppService comService)
+        private readonly IChainStoreAppService _storeAppService;
+        public UsedStatisticsController(IUsedStatisticsAppService appService,
+            IChainStoreAppService storeAppService, ICommonAppService comService)
         {
             _appService = appService;
+            _storeAppService = storeAppService;
             _comService = comService;
         }
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string title = "",
@@ -40,9 +46,11 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
             ViewBag.PageSize = pageSize;
             if (Request.Headers.ContainsKey("x-requested-with"))
             {
-                return View("_Table", "");
+                return View("_Table", pageList);
             }
-            return View();
+            var storeDropDown = (await _storeAppService.GetDropDown());
+            ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
+            return View(pageList);
         }
     }
 }
