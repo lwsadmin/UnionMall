@@ -11,6 +11,5 @@ namespace UnionMall.SystemSet
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
         Task WriteLog (string content); 
-
     }
 }

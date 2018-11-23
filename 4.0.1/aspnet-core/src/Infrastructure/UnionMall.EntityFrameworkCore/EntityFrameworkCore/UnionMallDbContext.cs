@@ -20,6 +20,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<CouponSendStatistics> MemCouponSendStatisticsberLevel { get; set; }
         public DbSet<CouponUsedStatistics> CouponUsedStatistics { get; set; }
         public DbSet<Log> Log { get; set; }
+        public DbSet<Parameter> Parameter { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {
