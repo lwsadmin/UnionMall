@@ -12,8 +12,8 @@
     <thead>
         <tr>
             <th>@L("Title")</th>
-            <th>@L("Image")</th>
             <th>@L("Belong")@L("Business")</th>
+            <th>@L("Image")</th>
             <th>@L("Status")</th>
             <th>@L("FaceValue")</th>
             <th>@L("Total")@L("Count")</th>
@@ -24,26 +24,26 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-            <tr>
-                <td class="title">
-                    @item["Title"]
-                </td>
-                <td class="img"><img style="height:15px;" src="@item["Image"]" onerror="this.src='/img/nopic.png'" />  </td>
-                <td>@item["BusinessName"]</td>
-                <td>@item["Status"]</td>
-                <td>@item["Value"]</td>
-                <td>@item["TotalCount"]</td>
-                <td>@item["MemberReceiveCount"]</td>
-                <td>
-                    <a data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
-                       data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                        <i class="fa fa-trash text-navy"></i>
-                    </a>    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a data-ajax="true" data-ajax-method="GET"
-                       data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
-                       href="/coupon/coupon/Add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
-                </td>
-            </tr>
+        <tr>
+            <td class="title">
+                @item["Title"]
+            </td>
+            <td>@item["BusinessName"]</td>
+            <td class="img"><img style="height:15px;" src="@item["Image"]" onerror="this.src='/img/nopic.png'" />  </td>
+            <td>@item["Status"]</td>
+            <td>@item["Value"]</td>
+            <td>@item["TotalCount"]</td>
+            <td>@item["MemberReceiveCount"]</td>
+            <td>
+                <a data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
+                   data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                    <i class="fa fa-trash text-navy"></i>
+                </a>    &nbsp;&nbsp;&nbsp;&nbsp;
+                <a data-ajax="true" data-ajax-method="GET"
+                   data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
+                   href="/coupon/businesscoupon/Add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
+            </td>
+        </tr>
         }
 
     </tbody>

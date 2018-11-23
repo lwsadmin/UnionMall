@@ -20,10 +20,10 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
     public class BusinessCouponController : UnionMallControllerBase
     {
 
-        private readonly ICounponAppService _couponService;
+        private readonly ICouponAppService _couponService;
         private readonly IBusinessAppService _AppService;
         private readonly ICommonAppService _comService;
-        public BusinessCouponController(CounponAppService couponService, IBusinessAppService AppService, ICommonAppService comService)
+        public BusinessCouponController(CouponAppService couponService, IBusinessAppService AppService, ICommonAppService comService)
         {
             _couponService = couponService;
             _AppService = AppService;

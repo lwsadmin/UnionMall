@@ -19,10 +19,10 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
     [AbpMvcAuthorize("Coupon")]
     public class CouponController : UnionMallControllerBase
     {
-        private readonly ICounponAppService _couponService;
+        private readonly ICouponAppService _couponService;
         private readonly IBusinessAppService _AppService;
         private readonly ICommonAppService _comService;
-        public CouponController(CounponAppService couponService, IBusinessAppService AppService, ICommonAppService comService)
+        public CouponController(CouponAppService couponService, IBusinessAppService AppService, ICommonAppService comService)
         {
             _couponService = couponService;
             _AppService = AppService;
@@ -32,10 +32,8 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
         {
 
             string where = " and Type=0 " + _comService.GetWhere();
-            if (!string.IsNullOrEmpty(businessId))
-                where += $" and c.BusinessId = {businessId}";
             if (!string.IsNullOrEmpty(title))
-                where += $" and c.title like '%{title}%'";
+                where += $" and c.title like '%{title}%' ";
             int total;
             DataSet ds = _couponService.GetPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);

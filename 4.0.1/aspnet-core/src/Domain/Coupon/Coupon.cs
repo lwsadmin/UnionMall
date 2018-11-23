@@ -20,12 +20,12 @@ namespace UnionMall.Entity
         public int TotalCount { get; set; }
         public int SigleReceiveCount { get; set; }
         public int Status { get; set; }
-        public int ReceiveType { get; set; }
-        public string GoodsCategoryId { get; set; }
+        public int ReceiveType { get; set; } = 0;
+        public string GoodsCategoryId { get; set; } = "";
         public int ValidityDay { get; set; }
 
-        public int MemberReceiveCount { get; set; }
-        public int MemberUseCount { get; set; }
+        public int MemberReceiveCount { get; set; } = 0;
+        public int MemberUseCount { get; set; } = 0;
         public string Image { get; set; }
         public string Introduce { get; set; }
         public DateTime CreationTime { get; set; } = DateTime.Now;

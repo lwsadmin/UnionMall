@@ -8,7 +8,7 @@ using UnionMall.Entity;
 using UnionMall.Coupon.Dto;
 namespace UnionMall.Coupon
 {
-    public interface ICounponAppService : IApplicationService
+    public interface ICouponAppService : IApplicationService
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
         Task CreateOrEditAsync(CreateEditDto dt);

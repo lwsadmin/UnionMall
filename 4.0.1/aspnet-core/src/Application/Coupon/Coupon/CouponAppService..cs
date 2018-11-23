@@ -12,21 +12,19 @@ using Abp.AutoMapper;
 using UnionMall.IRepositorySql;
 namespace UnionMall.Coupon
 {
-    public class CounponAppService : ApplicationService, ICounponAppService
+    public class CouponAppService : ApplicationService, ICouponAppService
     {
 
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
 
         private readonly IRepository<Entity.Coupon, long> _Repository;
-        public CounponAppService(ISqlExecuter sqlExecuter, IRepository<Entity.Coupon, long> Repository, IAbpSession AbpSession)
+        public CouponAppService(ISqlExecuter sqlExecuter, IRepository<Entity.Coupon, long> Repository, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
-
-
         public async Task Delete(long id)
         {
             await _Repository.DeleteAsync(c => c.Id == id);
@@ -53,7 +51,7 @@ namespace UnionMall.Coupon
                 DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
                 dto.BusinessId = (long)dt.Rows[0][0];
             }
-            if (dto.Id > 0)
+            if (dto.Id <= 0)
             {
                 await _Repository.InsertAsync(dto.MapTo<Entity.Coupon>());
             }

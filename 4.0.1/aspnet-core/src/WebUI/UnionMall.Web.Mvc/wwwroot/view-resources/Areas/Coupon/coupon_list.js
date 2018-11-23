@@ -1,5 +1,4 @@
 ﻿(function () {
-
     $(function () {
         var couponService = abp.services.app.coupon;
         var _$modal = $("#CreateModal");
@@ -10,6 +9,7 @@
                 return;
             }
             var EditDto = _$form.serializeFormToObject();
+            debugger;
             couponService.createOrEdit(EditDto).done(function (data) {
                 _$modal.modal('hide');
                 _$form[0].reset();
@@ -21,7 +21,7 @@
             }).always(function (data) { });
         });
         _$modal.on("hidden.bs.modal", function () {
-            $("#formPost").find('input[type=text],textarea,input[type=hidden],input[type=number]').each(function () {
+            $("#formPost").find('input[type=text],textarea,input[type=number]').each(function () {
                 $(this).val('');
             });
             $("#formPost").find("select").each(function () {

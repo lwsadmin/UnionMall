@@ -25,12 +25,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>@L("Title")</label>
-                                <input type="text" name="Name" value="@Model.Title" class="form-control" required maxlength="50" />
+                                <input type="text" name="Title" value="@Model.Title" class="form-control" required maxlength="50" />
                             </div>
                             @*<div class="form-group">
-                                <label>@L("Belong")@L("Business")</label>
-                                @Html.DropDownListFor(c => c.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "form-control chosen-select" })
-                            </div>*@
+            <label>@L("Belong")@L("Business")</label>
+            @Html.DropDownListFor(c => c.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "form-control chosen-select" })
+        </div>*@
                             <div class="form-group">
                                 <label>@L("FaceValue")</label>
                                 <input type="number" name="Value" value="@Model.Value" class="form-control" required maxlength="15">
@@ -41,6 +41,13 @@
                                 <div class="input-group bootstrap-touchspin">
                                     <input class="touchspin2 form-control" type="number" value="@Model.UseValueLimit" name="UseValueLimit" required maxlength="15" />
                                     <span class="input-group-addon bootstrap-touchspin-postfix">@L("Yuan")</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>@L("OverDue")@L("Time")</label>
+                                <div class="input-group bootstrap-touchspin">
+                                    <input class="touchspin2 form-control" type="number" value="@Model.ValidityDay" name="ValidityDay" required maxlength="3" />
+                                    <span class="input-group-addon bootstrap-touchspin-postfix">@L("Day")</span>
                                 </div>
                             </div>
                         </div>
@@ -62,13 +69,7 @@
                                 <label>@L("SigleCount")</label>
                                 <input type="text" name="SigleReceiveCount" value="@Model.SigleReceiveCount" class="form-control" required />
                             </div>
-                            <div class="form-group">
-                                <label>@L("OverDue")@L("Time")</label>
-                                <div class="input-group bootstrap-touchspin">
-                                    <input class="touchspin2 form-control" type="number" value="@Model.ValidityDay" name="ValidityDay" required maxlength="3" />
-                                    <span class="input-group-addon bootstrap-touchspin-postfix">@L("Day")</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
@@ -77,12 +78,9 @@
                             <div class="form-group">
                                 <label>@L("Introduce")</label>
                                 <textarea style="width:100%;min-width:550px;" id="Introduce" name="Introduce" class="form-control" cols="5">@Model.Introduce</textarea>
-
                             </div>
                         </div>
                     </div>
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
                         <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>
@@ -92,6 +90,7 @@
         </div>
     </div>
 </div>
+<script src="~/view-resources/Areas/Coupon/coupon_list.js"></script>
 <script>
     $('.chosen-select').chosen({ width: "100%" });
 </script>

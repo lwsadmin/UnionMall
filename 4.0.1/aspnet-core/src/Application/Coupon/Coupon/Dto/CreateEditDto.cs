@@ -6,7 +6,7 @@ using Abp.AutoMapper;
 using UnionMall.Entity;
 namespace UnionMall.Coupon.Dto
 {
-    [AutoMapFrom(typeof(Entity.Coupon))]
+    [AutoMap(typeof(Entity.Coupon))]
     public class CreateEditDto : EntityDto<long>
     {
         public int TenantId { get; set; }
