@@ -8,6 +8,7 @@ using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using UnionMall.Coupon.Dto;
 using UnionMall.Entity;
+using Abp.AutoMapper;
 using UnionMall.IRepositorySql;
 namespace UnionMall.Coupon
 {
@@ -24,14 +25,11 @@ namespace UnionMall.Coupon
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
-        public Task CreateOrEditAsync(Entity.Coupon dto)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task Delete(long id)
+
+        public async Task Delete(long id)
         {
-            throw new NotImplementedException();
+            await _Repository.DeleteAsync(c => c.Id == id);
         }
 
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
@@ -46,9 +44,24 @@ namespace UnionMall.Coupon
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
 
-        public Task CreateOrEditAsync(CreateEditDto dt)
+        public async Task CreateOrEditAsync(CreateEditDto dto)
         {
-            throw new NotImplementedException();
+            dto.TenantId = _AbpSession.TenantId ?? 0;
+            if (dto.Type == 0)//通用代金券
+            {
+                string sql = $"select id from tbusiness where TenantId={_AbpSession.TenantId} and IsSystemBusiness=1";
+                DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+                dto.BusinessId = (long)dt.Rows[0][0];
+            }
+            if (dto.Id > 0)
+            {
+                await _Repository.InsertAsync(dto.MapTo<Entity.Coupon>());
+            }
+            else
+            {
+                await _Repository.UpdateAsync(dto.MapTo<Entity.Coupon>());
+            }
+
         }
 
         public async Task<CreateEditDto> GetByIdAsync(long Id)

@@ -189,6 +189,15 @@
     <Content Update="Areas\Business\Views\ChainStore\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\Coupon\Views\BusinessCoupon\List.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Coupon\Views\BusinessCoupon\_Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Coupon\Views\BusinessCoupon\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Coupon\Views\Coupon\List.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

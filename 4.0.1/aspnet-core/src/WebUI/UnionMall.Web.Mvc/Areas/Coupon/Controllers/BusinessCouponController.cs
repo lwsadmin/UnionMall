@@ -16,13 +16,14 @@ using UnionMall.Common;
 namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
 {
     [Area("Coupon")]
-    [AbpMvcAuthorize("Coupon")]
-    public class CouponController : UnionMallControllerBase
+    [AbpMvcAuthorize("Coupon.BusinessCoupon")]
+    public class BusinessCouponController : UnionMallControllerBase
     {
+
         private readonly ICounponAppService _couponService;
         private readonly IBusinessAppService _AppService;
         private readonly ICommonAppService _comService;
-        public CouponController(CounponAppService couponService, IBusinessAppService AppService, ICommonAppService comService)
+        public BusinessCouponController(CounponAppService couponService, IBusinessAppService AppService, ICommonAppService comService)
         {
             _couponService = couponService;
             _AppService = AppService;
@@ -30,8 +31,7 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
         }
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string businessId = "", string title = "")
         {
-
-            string where = " and Type=0 " + _comService.GetWhere();
+            string where = " and Type=1 " + _comService.GetWhere();
             if (!string.IsNullOrEmpty(businessId))
                 where += $" and c.BusinessId = {businessId}";
             if (!string.IsNullOrEmpty(title))
@@ -44,10 +44,11 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
             {
                 return View("_Table", pageList);
             }
-            //List<BusinessDropDownDto> businessdtoList = (await _AppService.GetDropDown());
-            //  ViewData.Add("Business", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(businessdtoList, "Id", "BusinessName"));
+            List<BusinessDropDownDto> businessdtoList = (await _AppService.GetDropDown());
+            ViewData.Add("Business", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(businessdtoList, "Id", "BusinessName"));
             return View(pageList);
         }
+
         public async Task<IActionResult> Add(long? id)
         {
             if (id == null)
@@ -57,8 +58,8 @@ namespace UnionMall.Web.Mvc.Areas.Coupon.Controllers
                 s.TenantId = 0;
                 return PartialView("_Add", s);
             }
-            // List<BusinessDropDownDto> dtoList = (await _AppService.GetDropDown());
-            //ViewData.Add("Business", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(dtoList, "Id", "BusinessName"));
+            List<BusinessDropDownDto> dtoList = (await _AppService.GetDropDown());
+            ViewData.Add("Business", new Microsoft.AspNetCore.Mvc.Rendering.SelectList(dtoList, "Id", "BusinessName"));
             var dtos = await _couponService.GetByIdAsync((long)id);
             return PartialView("_Add", dtos);
         }

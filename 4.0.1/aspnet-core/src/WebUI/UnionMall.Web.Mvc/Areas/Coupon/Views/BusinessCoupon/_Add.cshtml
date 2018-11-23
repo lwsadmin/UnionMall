@@ -20,17 +20,17 @@
                 <form method="post" id="formPost">
                     <input type="hidden" name="Id" value="@Model.Id" />
                     <input type="hidden" name="TenantId" value="@Model.TenantId" />
-                    <input type="hidden" name="Type" value="0" />
+                    <input type="hidden" name="Type" value="1" />
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>@L("Title")</label>
                                 <input type="text" name="Name" value="@Model.Title" class="form-control" required maxlength="50" />
                             </div>
-                            @*<div class="form-group">
+                            <div class="form-group">
                                 <label>@L("Belong")@L("Business")</label>
                                 @Html.DropDownListFor(c => c.BusinessId, (SelectList)ViewData["Business"], L("Choose"), new { @class = "form-control chosen-select" })
-                            </div>*@
+                            </div>
                             <div class="form-group">
                                 <label>@L("FaceValue")</label>
                                 <input type="number" name="Value" value="@Model.Value" class="form-control" required maxlength="15">
@@ -77,12 +77,9 @@
                             <div class="form-group">
                                 <label>@L("Introduce")</label>
                                 <textarea style="width:100%;min-width:550px;" id="Introduce" name="Introduce" class="form-control" cols="5">@Model.Introduce</textarea>
-
                             </div>
                         </div>
                     </div>
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
                         <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="zh-Hans">
   <texts>
-    <text value="联盟商城" name="UnionMall"/>
+    <text value="测试" name="UnionMall"/>
     <text value="未选择" name="NotSelected"/>
     <text value="更改商户" name="Changetenant"/>
     <text value="主页" name="HomePage"/>
@@ -17,7 +17,7 @@
     <text value="电话" name="PhoneNumber"/>
     <text value="状态" name="Status"/>
     <text value="标题" name="Title"/>
-    <text value="联盟" name="Union"/>
+    <text value="测试" name="Union"/>
     <text value="名称" name="Name"/>
     <text value="用户列表" name="UserList"/>
     <text value="父级" name="Parent"/>
