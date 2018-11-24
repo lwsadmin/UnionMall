@@ -85,7 +85,7 @@
   </First>
 
   <First Name="ArticleInfo"  Icon="glyphicon glyphicon-tint">
-    <Second Name="ArticleCategory"  Url="/articleinfo/articlecategory/list">
+    <Second Name="ArticleCategory"  Url="/articleinfo/category/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />

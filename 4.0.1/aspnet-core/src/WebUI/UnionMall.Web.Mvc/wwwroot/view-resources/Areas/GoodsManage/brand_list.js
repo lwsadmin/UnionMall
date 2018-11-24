@@ -15,9 +15,7 @@
                 if (data.succ) {
                     _$modal.modal('hide');
                     $(".pagination .active a").click();
-                } else {
-
-                }
+                } else {}
 
             }).fail(function (data) {
             }).always(function (data) { });

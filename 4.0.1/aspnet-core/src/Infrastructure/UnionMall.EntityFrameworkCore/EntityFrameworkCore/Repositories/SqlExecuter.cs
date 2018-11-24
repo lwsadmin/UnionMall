@@ -67,49 +67,53 @@ namespace UnionMall.EntityFrameworkCore.Repositories
             return ds;
         }
 
-        //public DataSet GetPaged(int pageIndex, int pageSize, string table, string orderBy, out int total)
-        //{
-        //    total = 0;
-        //    DataSet ds = new DataSet();
-
-        //    var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());
-        //    string connectionString = configuration.GetConnectionString(UnionMallConsts.ConnectionStringName);
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand comm = new SqlCommand("Global_GetPaged", conn);
-        //        comm.CommandTimeout = 60;
-        //        comm.CommandType = CommandType.StoredProcedure;
-        //        comm.Parameters.AddWithValue("@PageIndex", pageIndex);
-        //        comm.Parameters.AddWithValue("@PageSize", pageSize);
-        //        comm.Parameters.AddWithValue("@Table", table);
-        //        comm.Parameters.AddWithValue("@OrderBy", orderBy);
-        //        //comm.Parameters.AddWithValue("@Where", where);
-        //        comm.Parameters.Add("@TotalCount", SqlDbType.BigInt, 10);
-        //        comm.Parameters["@TotalCount"].Direction = ParameterDirection.Output;
-        //        comm.Parameters.Add("@Descript", SqlDbType.VarChar, 500);
-        //        comm.Parameters["@Descript"].Direction = ParameterDirection.Output;
-        //        SqlDataAdapter sda = new SqlDataAdapter(comm);
-        //        sda.Fill(ds);
-        //        if (comm.Parameters["@Descript"].Value.ToString() != "successful")
-        //        {
-        //            throw new Exception(comm.Parameters["@Descript"].Value.ToString());
-        //        }
-        //        int.TryParse(comm.Parameters["@TotalCount"].Value.ToString(), out total);
-        //    }
-        //    return ds;
-        //}
-
-        public DataSet GetPagedList(int pageIndex, int pageSize, string table, string orderBy, out int total)
+        public DataSet GetPaged(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
             total = 0;
             DataSet ds = new DataSet();
 
             var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());
             string connectionString = configuration.GetConnectionString(UnionMallConsts.ConnectionStringName);
-            string idSql = "";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand comm = new SqlCommand("Global_GetPaged", conn);
+                comm.CommandTimeout = 60;
+                comm.CommandType = CommandType.StoredProcedure;
+                comm.Parameters.AddWithValue("@PageIndex", pageIndex);
+                comm.Parameters.AddWithValue("@PageSize", pageSize);
+                comm.Parameters.AddWithValue("@Table", table);
+                comm.Parameters.AddWithValue("@OrderBy", orderBy);
+                //comm.Parameters.AddWithValue("@Where", where);
+                comm.Parameters.Add("@TotalCount", SqlDbType.BigInt, 10);
+                comm.Parameters["@TotalCount"].Direction = ParameterDirection.Output;
+                comm.Parameters.Add("@Descript", SqlDbType.VarChar, 500);
+                comm.Parameters["@Descript"].Direction = ParameterDirection.Output;
+                SqlDataAdapter sda = new SqlDataAdapter(comm);
+                sda.Fill(ds);
+                if (comm.Parameters["@Descript"].Value.ToString() != "successful")
+                {
+                    throw new Exception(comm.Parameters["@Descript"].Value.ToString());
+                }
+                int.TryParse(comm.Parameters["@TotalCount"].Value.ToString(), out total);
+            }
+            return ds;
+        }
+
+        public DataSet GetPagedList(int pageIndex, int pageSize, string table, string orderBy, out int total, string idSql = "")
+        {
+            total = 0;
+            DataSet ds = new DataSet();
+
+            var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder());
+            string connectionString = configuration.GetConnectionString(UnionMallConsts.ConnectionStringName);
+
             table = table.ToLower();
-            idSql = table.Replace(table.Substring(table.IndexOf(","), table.IndexOf("from") - 11), " ")
-                   .Replace("select ", "select count(").Replace("from", ") from");
+            if (idSql=="")
+            {
+                idSql = table.Replace(table.Substring(table.IndexOf(","), table.IndexOf("from") - 11), " ")
+       .Replace("select ", "select count(").Replace("from", ") from");
+            }
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand comm = new SqlCommand("Global_GetPagedList", conn);

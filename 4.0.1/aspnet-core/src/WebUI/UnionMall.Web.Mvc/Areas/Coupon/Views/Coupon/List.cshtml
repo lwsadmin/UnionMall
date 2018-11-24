@@ -14,7 +14,15 @@
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
 <link href="~/lib/fileinput/css/fileinput.min.css" rel="stylesheet" asp-append-version="true" />
 <script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
-<script src="~/lib/fileinput/js/locales/zh.js" asp-append-version="true"></script>
+<script>
+    language = $("#CurrentLanguage").attr("data-lan");
+    if (language == "zh-Hans") {
+        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
+        });
+        $.getScript('/lib/fileinput/js/locales/zh.js', function () {
+        });
+    }
+</script>
 <style>
     #formPost .chosen-single {
         height: 34px !important;

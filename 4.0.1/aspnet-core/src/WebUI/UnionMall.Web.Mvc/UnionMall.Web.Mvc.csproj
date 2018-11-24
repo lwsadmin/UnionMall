@@ -158,6 +158,8 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\ArticleInfo\Data\" />
+    <Folder Include="Areas\ArticleInfo\Models\" />
     <Folder Include="Areas\Coupon\Data\" />
     <Folder Include="Areas\Coupon\Models\" />
     <Folder Include="Areas\Member\Data\" />
@@ -183,6 +185,12 @@
     <TypeScriptCompile Include="wwwroot\Abp\Framework\scripts\libs\abp.signalr.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Areas\ArticleInfo\Views\Category\List.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ArticleInfo\Views\Category\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Business\Views\Business\_Add.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

@@ -58,10 +58,10 @@ namespace UnionMall.Common.Cateogory
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select c.title,c.id,c.sort,b.BusinessName from TCommonCategory c left join TBusiness b on c.businessid=b.id
+                table = $@"select c.id, c.title,c.id,c.sort,b.BusinessName from TCommonCategory c left join TBusiness b on c.businessid=b.id
 where 1=1 ";
             }
-            where = where.Replace(" *", "a");
+            where = where.Replace(" *", " c");
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }

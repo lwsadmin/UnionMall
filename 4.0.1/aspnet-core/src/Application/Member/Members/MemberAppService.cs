@@ -27,7 +27,7 @@ namespace UnionMall.Member
         private readonly IAbpSession _AbpSession;
         private readonly ICommonAppService _comServices;
         private readonly IRepository<UnionMall.Entity.Member, long> _Repository;
-       // private readonly ILogAppService _log;
+        // private readonly ILogAppService _log;
         public MemberAppService(ISqlExecuter sqlExecuter, IRepository<UnionMall.Entity.Member, long> Repository,
             IAbpSession AbpSession, ICommonAppService comServices
             //, ILogAppService log
@@ -37,7 +37,7 @@ namespace UnionMall.Member
             _Repository = Repository;
             _AbpSession = AbpSession;
             _comServices = comServices;
-           // _log = log;
+            // _log = log;
         }
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
@@ -222,13 +222,9 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             }
             catch (Exception ex)
             {
-
                 Logger.Warn("---------------------------" + ex.StackTrace);
                 return new JsonResult(new { succ = false, msg = ex.Message });
             }
-
-
-
         }
 
         public MemoryStream ExportToExcel(string where)
@@ -241,7 +237,9 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
             sql += where.Replace("*", "m");
             int total;
-            DataTable dt = _sqlExecuter.GetPagedList(1, int.MaxValue, sql, " 注册时间 desc ", out total).Tables[0];
+            string idSql = $@"select count( m.id) from dbo.tmember m left join dbo.tmemberlevel l on m.levelid=l.id left join dbo.tbusiness b on
+m.businessid = b.id left join dbo.tchainstore c on m.chainstoreid = c.id where 1 = 1" + where.Replace("*", "m");
+            DataTable dt = _sqlExecuter.GetPagedList(1, int.MaxValue, sql, " m.RegTime desc ", out total, idSql).Tables[0];
             XSSFWorkbook workbook = null;
             MemoryStream ms = null;
             ISheet sheet = null;
@@ -268,7 +266,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
                     sheet.AutoSizeColumn(i);
                 workbook.Write(ms);
                 ms.Flush();
-               // _log.WriteLog($"导出会员");
+                // _log.WriteLog($"导出会员");
             }
             catch (Exception ex)
             {

@@ -9,7 +9,7 @@
                 return;
             }
             var EditDto = _$form.serializeFormToObject();
-            debugger;
+
             couponService.createOrEdit(EditDto).done(function (data) {
                 _$modal.modal('hide');
                 _$form[0].reset();
@@ -17,7 +17,6 @@
                     $(".pagination .active a").click();
                 } else { $("#searchForm").submit(); }
             }).fail(function (data) {
-                debugger;
             }).always(function (data) { });
         });
         _$modal.on("hidden.bs.modal", function () {
@@ -27,6 +26,7 @@
             $("#formPost").find("select").each(function () {
                 $(this).val($(this).find("option").eq(0).attr("value"));
             });
+            $("#hiddenImg").val("");
             $("input[name='TenantId']").val(0);
             $("input[name='Id']").val(0);
             $("#Introduce").val('');
@@ -36,5 +36,22 @@
             $("#CreateModal").modal("show");
         });
     });
-
 })();
+function Delete(btn) {
+    var couponService = abp.services.app.coupon;
+    var id = $(btn).attr("data-id");
+    swal({
+        title: $(btn).attr("data-title"),
+        text: '',
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonText: $(btn).attr("data-ok"),
+        cancelButtonText: $(btn).attr("data-cancle")
+    }).then(function (isConfirm) {
+        if (isConfirm.value == true) {
+            couponService.delete(id).done(function (data) {
+                $(".pagination .active a").click();
+            });
+        }
+    });
+}

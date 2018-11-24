@@ -35,13 +35,20 @@
                 <td>@item["TotalCount"]</td>
                 <td>@item["MemberReceiveCount"]</td>
                 <td>
-                    <a data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
-                       data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                        <i class="fa fa-trash text-navy"></i>
-                    </a>    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a data-ajax="true" data-ajax-method="GET"
-                       data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
-                       href="/coupon/coupon/Add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
+                    @if (IsGranted("Coupon.UnionCoupon.Delete") && ((int)item["MemberReceiveCount"]) == 0)
+                    {
+                        <a data-title="@L("DeleteConfirm{0}", item["Title"])" data-ok="@L("OK")"
+                           data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                            <i class="fa fa-trash text-navy"></i>
+                        </a>
+                    }
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    @if (IsGranted("Coupon.UnionCoupon.Edit"))
+                    {
+                        <a data-ajax="true" data-ajax-method="GET"
+                           data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
+                           href="/coupon/coupon/Add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
+                    }
                 </td>
             </tr>
         }
