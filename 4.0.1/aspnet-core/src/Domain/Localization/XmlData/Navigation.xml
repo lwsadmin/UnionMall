@@ -74,7 +74,7 @@
     </Second>
     <Second Name="MemberRegister"  Url="/member/memberreg/index"></Second>
     <Second Name="CardInfo"  Url="/member/cardcore/index">
-      
+
     </Second>
   </First>
   <First Name="FlashSale"  Icon="glyphicon glyphicon-dashboard">
@@ -159,11 +159,11 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="CouponPackage"  Url="/Coupon/CouponPackage/List">
+    <!--<Second Name="CouponPackage"  Url="/Coupon/CouponPackage/List">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
-    </Second>
+    </Second>-->
   </First>
   <First Name="GiftMall"   Icon="glyphicon glyphicon-gift">
     <Second Name="GiftCategory"   Url="/Gift/GiftCategory/List">

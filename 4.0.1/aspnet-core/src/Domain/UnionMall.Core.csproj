@@ -43,6 +43,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Article\Comment\" />
     <Folder Include="Statistics\" />
   </ItemGroup>
 </Project>
