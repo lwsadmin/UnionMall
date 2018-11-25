@@ -12,6 +12,7 @@
         <tr>
             <th>@L("Title")</th>
             <th>@L("Sort")</th>
+            <th>@L("Belong")@L("Business")</th>
             <th>@L("Note")</th>
             <th>@L("Operate")</th>
         </tr>
@@ -25,18 +26,19 @@
                     @item["Title"]
                 </td>
                 <td>@item["Sort"]</td>
+                <td>@item["BusinessName"]</td>
                 <td>@item["Memo"]</td>
                 <td>
                     @if (IsGranted("ArticleInfo.ArticleCategory.Edit"))
                     {
-                        <a title="@L("Edite")" onclick="Edit();">
-                            <i class="fa fa-eye"></i>
+                        <a title="@L("Edite")" onclick="Edit('@item["id"]','@item["Title"]','@item["Sort"]','@item["Memo"]');">
+                            <i class="fa fa-edit text-navy"></i>
                         </a>
                     }
 
                     @if (IsGranted("ArticleInfo.ArticleCategory.Delete"))
                     {
-                        <a style="margin-left:20px;" data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
+                        <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
                            data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
                             <i class="fa fa-trash text-navy"></i>
                         </a>
@@ -69,7 +71,7 @@ UpdateTargetId = "table"
 ))
 
 <script>
-    var txt = $("input[name='Name']").val().trim();
+    var txt = $("input[name='title']").val().trim();
     if (txt.length > 0) {
         $(".title").each(function () {
             var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));

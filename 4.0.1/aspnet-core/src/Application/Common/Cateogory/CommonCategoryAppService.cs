@@ -29,14 +29,39 @@ namespace UnionMall.Common.Cateogory
             _HostingEnvironment = HostingEnvironment;
             _sqlExecuter = sqlExecuter;
         }
-        public Task CreateOrEditAsync(CommonCategory cat)
+        public async Task CreateOrEditAsync(CommonCategory cat)
         {
-            throw new NotImplementedException();
+            DataTable dt = _sqlExecuter.ExecuteDataSet($@"select c.BusinessId  from dbo.TUsers s 
+left join TChainStore c on s.ChainStoreId = c.Id").Tables[0];
+            cat.TenantId = _AbpSession.TenantId ?? 0;
+            cat.BusinessId = (long)dt.Rows[0][0];
+            if (cat.Id <= 0)
+            {
+                await _Repository.InsertAsync(cat);
+            }
+            else
+            {
+                await _Repository.UpdateAsync(cat);
+            }
         }
 
         public async Task Delete(long id)
         {
-            await _Repository.DeleteAsync(c => c.Id == id);
+            try
+            {
+                var query = _Repository.FirstOrDefault(c => c.Id == id);
+                if (query != null)
+                {
+                    await _Repository.DeleteAsync(query);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.StackTrace + e.Message);
+                throw;
+            }
+
+
         }
 
         public Task<List<CommonCategory>> GetAllListByParentIdAsync(long parentId)
@@ -58,7 +83,7 @@ namespace UnionMall.Common.Cateogory
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select c.id, c.title,c.id,c.sort,b.BusinessName from TCommonCategory c left join TBusiness b on c.businessid=b.id
+                table = $@"select c.id, c.title,c.id,c.Memo,c.sort,b.BusinessName from TCommonCategory c left join TBusiness b on c.businessid=b.id
 where 1=1 ";
             }
             where = where.Replace(" *", " c");

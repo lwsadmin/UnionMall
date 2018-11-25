@@ -25,7 +25,7 @@ namespace UnionMall.Web.Mvc.Areas.ArticleInfo.Controllers
         }
         public IActionResult List(int pageIndex = 1, int pageSize = 10, string title = "")
         {
-            string where = _comService.GetWhere();
+            string where = " and type= 0 " + _comService.GetWhere();
             if (!string.IsNullOrEmpty(title))
                 where += $" and c.title like '%{title}%' ";
             int total;
