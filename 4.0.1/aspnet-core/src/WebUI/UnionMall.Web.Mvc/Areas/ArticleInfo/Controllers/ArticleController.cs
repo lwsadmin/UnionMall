@@ -33,7 +33,7 @@ namespace UnionMall.Web.Mvc.Areas.ArticleInfo.Controllers
             if (!string.IsNullOrEmpty(categoryId))
                 where += $" and a.categoryId ={categoryId} ";
             int total;
-            DataSet ds = _AppService.GetPage(pageIndex, pageSize, "c.sort desc, c.id desc", out total, where);
+            DataSet ds = _AppService.GetPage(pageIndex, pageSize, "a.sort desc,a.id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
             ViewBag.PageSize = pageSize;
             if (Request.Headers.ContainsKey("x-requested-with"))

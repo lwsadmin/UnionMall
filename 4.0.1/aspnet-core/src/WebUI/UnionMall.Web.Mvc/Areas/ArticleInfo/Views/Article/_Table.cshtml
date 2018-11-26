@@ -18,6 +18,8 @@
             <th>@L("Status")</th>
             <th>@L("Click")</th>
             <th>@L("Sort")</th>
+            <th>@L("UserName")</th>
+            <th>@L("Create")@L("Time")</th>
             <th>@L("Operate")</th>
         </tr>
 
@@ -36,6 +38,8 @@
             <td>@item["Status"]</td>
             <td>@item["Click"]</td>
             <td>@item["Sort"]</td>
+            <td>@item["UserName"]</td>
+            <td>@item["CreationTime"]</td>
             <td>
                 @if (IsGranted("ArticleInfo.Article.Edit"))
                 {

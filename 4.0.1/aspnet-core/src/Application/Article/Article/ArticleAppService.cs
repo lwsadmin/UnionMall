@@ -45,7 +45,7 @@ namespace UnionMall.Article
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select a.id,a.title,a.sort,a.CreationTime,a.Source,a.Author,a.Status, a.smallimg,
-c.Title CTitle,
+c.Title CTitle,a.CreationTime,
 a.click,c.title,u.UserName from TArticle a left join TCommonCategory c on a.categoryId=c.Id
 left join TUsers u on a.userid=u.id left join TChainStore s on u.ChainStoreId=s.Id
 where 1=1";

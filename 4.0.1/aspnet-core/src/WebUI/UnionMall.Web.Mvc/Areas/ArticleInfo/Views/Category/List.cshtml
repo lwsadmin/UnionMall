@@ -68,19 +68,18 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-12">
-                            @if (IsGranted("ArticleInfo.ArticleCategory.Add"))
-                            {
-                                <button id="add" class="btn btn-primary btn-sm m-b" type="button">
-                                    <i class="fa fa-plus"></i>&nbsp;@L("Add")
-                                </button>
-                            }
-                        </div>
-                        <div class="col-sm-12">
                             <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/articleinfo/category/list" method="post">
                                 <input type="hidden" name="pageSize" value="10" />
-
+                                @if (IsGranted("ArticleInfo.ArticleCategory.Add"))
+                                {
+                                    <div class="form-group">
+                                        <button id="add" class="btn btn-primary btn-sm m-b" type="button">
+                                            <i class="fa fa-plus"></i>&nbsp;@L("Add")
+                                        </button>
+                                    </div>
+                                }
                                 <div class="form-group">
-                                    <input type="text" name="title" placeholder="@L("Title")" class="m-b input-sm form-control" />
+                                    <input type="text" name="title" placeholder="@L("ArticleCategory")@L("Title")" class="m-b input-sm form-control" />
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
