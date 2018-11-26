@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services;
+using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,7 @@ namespace UnionMall.Common.Cateogory
         public async Task CreateOrEditAsync(CommonCategory cat)
         {
             DataTable dt = _sqlExecuter.ExecuteDataSet($@"select c.BusinessId  from dbo.TUsers s 
-left join TChainStore c on s.ChainStoreId = c.Id").Tables[0];
+left join TChainStore c on s.ChainStoreId = c.Id where s.id={_AbpSession.UserId}").Tables[0];
             cat.TenantId = _AbpSession.TenantId ?? 0;
             cat.BusinessId = (long)dt.Rows[0][0];
             if (cat.Id <= 0)
@@ -74,9 +75,15 @@ left join TChainStore c on s.ChainStoreId = c.Id").Tables[0];
             throw new NotImplementedException();
         }
 
-        public List<CatDropDownDto> GetCategoryDropDownList(int? tenantId, long parentId = 0, int type = 0)
+        public async Task<List<CatDropDownDto>> GetCategoryDropDownList(long parentId = 0, int type = 0)
         {
-            throw new NotImplementedException();
+            var query = await _Repository.GetAllListAsync(c => c.Type == type && c.ParentId == parentId);
+            if (_AbpSession.TenantId != null || (int)_AbpSession.TenantId > 0)
+            {
+                query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
+            }
+
+            return query.MapTo<List<CatDropDownDto>>();
         }
 
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")

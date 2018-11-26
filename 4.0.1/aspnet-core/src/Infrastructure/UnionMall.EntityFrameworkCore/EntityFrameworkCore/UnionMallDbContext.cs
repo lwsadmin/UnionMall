@@ -22,6 +22,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<Log> Log { get; set; }
         public DbSet<Parameter> Parameter { get; set; }
         public DbSet<CommonCategory> CommonCategory { get; set; }
+        public DbSet<Article> Article { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

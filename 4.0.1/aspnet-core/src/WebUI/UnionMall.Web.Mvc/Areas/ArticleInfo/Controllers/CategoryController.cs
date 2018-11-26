@@ -13,7 +13,7 @@ using X.PagedList;
 namespace UnionMall.Web.Mvc.Areas.ArticleInfo.Controllers
 {
     [Area("ArticleInfo")]
-    [AbpMvcAuthorize]
+    [AbpMvcAuthorize("ArticleInfo.ArticleCategory")]
     public class CategoryController : UnionMallControllerBase
     {
         private readonly ICommonCategoryAppService _AppService;

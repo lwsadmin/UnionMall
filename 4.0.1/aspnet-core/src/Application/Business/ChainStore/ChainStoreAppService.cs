@@ -43,14 +43,7 @@ namespace UnionMall.Business
                 table = $@"select c.id, c.IsSystem, c.id,c.BusinessId,c.Name,b.BusinessName, c.Image,c.Mobile,c.CreationTime,c.Contact,c.Sort from TChainStore c
 left join TBusiness b on c.BusinessId = b.Id where 1=1 ";
             }
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
-            {
-                table += $"  and c.TenantId={_AbpSession.TenantId}";
-            }
-            if (!string.IsNullOrEmpty(where))
-            {
-                table += where;
-            }
+            table += where.Replace("*","c");
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
         public bool Delete(long id, out string msg)

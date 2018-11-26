@@ -35,7 +35,7 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
         public async Task<IActionResult> List(int page = 1, int pageSize = 10,
             string storeName = "", string BusinessId = "")
         {
-            string where = string.Empty;
+            string where =_commonAppService.GetWhere();
             if (!string.IsNullOrEmpty(storeName))
             { where = $" and c.Name like '%{storeName}%'"; }
             if (!string.IsNullOrEmpty(BusinessId))

@@ -18,18 +18,16 @@ namespace UnionMall.Entity
         public int TenantId { get; set; }
         public long CategoryId { get; set; }
         public string Title { get; set; }
-        public string Souce { get; set; }
-        public string author { get; set; }
+        public string Source { get; set; }
+        public string Author { get; set; }
         public int Sort { get; set; } = 0;
         public long UserId { get; set; }
-        public bool IsManager { get; set; }
         public string SmallImg { get; set; }
-        public int Status { get; set; }=0;
-        public string Target { get; set; }
-        public string Level { get; set; }
+        public int Status { get; set; } = 0;
+        public string Level { get; set; } = "";
         public string Describle { get; set; }
         public string Content { get; set; }
         public int Click { get; set; }
-        public DateTime CreationTime { get; set; }
+        public DateTime CreationTime { get; set; } = DateTime.Now;
     }
 }

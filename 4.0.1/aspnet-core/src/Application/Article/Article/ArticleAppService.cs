@@ -23,23 +23,53 @@ namespace UnionMall.Article
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
-        public async Task Delete(long id)
+        public async Task DeleteAsync(long id)
         {
-            await _Repository.DeleteAsync(c => c.Id == id);
+            try
+            {
+                var query = _Repository.FirstOrDefault(c => c.Id == id);
+                if (query != null)
+                {
+                    await _Repository.DeleteAsync(query);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.StackTrace + e.Message);
+                throw;
+            }
         }
 
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select a.id,a.title,a.sort,a.CreationTime,a.smallimg,a.click,c.title,u.UserName 
- from TArticle a left join TCommonCategory c on a.categoryId=c.Id
+                table = $@"select a.id,a.title,a.sort,a.CreationTime,a.Source,a.Author,a.Status, a.smallimg,
+c.Title CTitle,
+a.click,c.title,u.UserName from TArticle a left join TCommonCategory c on a.categoryId=c.Id
 left join TUsers u on a.userid=u.id left join TChainStore s on u.ChainStoreId=s.Id
 where 1=1";
             }
-            where = where.Replace(" *", "a");
+            where = where.Replace("*.BusinessId", "s.BusinessId").Replace(" *", " a");
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
+        }
+        public async Task<Entity.Article> GetByIdAsync(long id)
+        {
+            return await _Repository.FirstOrDefaultAsync(c => c.Id == id);
+        }
+        public async Task CreateOrEditAsync(Entity.Article model)
+        {
+            model.TenantId = _AbpSession.TenantId ?? 0;
+            if (model.Id <= 0)
+            {
+                model.UserId = _AbpSession.UserId ?? 0;
+                await _Repository.InsertAsync(model);
+            }
+            else
+            {
+                await _Repository.UpdateAsync(model);
+            }
         }
     }
 }

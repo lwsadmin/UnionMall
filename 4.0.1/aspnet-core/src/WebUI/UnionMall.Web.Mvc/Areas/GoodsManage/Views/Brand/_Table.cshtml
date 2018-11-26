@@ -30,18 +30,18 @@
                 <td>
                     @if (IsGranted("OnlineGoods.GoodsBrand.Edit"))
                     {
+                        <a onclick="Edit(@item["Id"])" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                    }
+                    &nbsp; &nbsp;
+                    @if (IsGranted("OnlineGoods.GoodsBrand.Delete"))
+                    {
+
                         <a data-title="@L("DeleteConfirm{0}", item["Title"])" data-ok="@L("OK")"
                            data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
                             <i class="fa fa-trash text-navy"></i>
                         </a>
                     }
-                    &nbsp; &nbsp;
-                    @if (IsGranted("OnlineGoods.GoodsBrand.Delete"))
-                    {
-                        <a onclick="Edit(@item["Id"])" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
-                    }
                 </td>
-
             </tr>
         }
     </tbody>

@@ -162,6 +162,7 @@
     <text name="Import" value="导入" />
     <text name="Export" value="导出" />
     <text name="Balance" value="余额" />
+    
     <!--Form-->
     <text name="SortTip" value="从大到小降序展示" />
     <text name="Brand" value="品牌" />
@@ -179,6 +180,9 @@
     <text name="Male" value="男士" />
     <text name="Female" value="女士" />
     <text name="Submit" value="提交" />
+    <text name="SetHot" value="热门" />
+    <text name="SetRec" value="推荐" />
+    <text name="SetTop" value="置顶" />
     <!--Table-->
     <text name="Sort" value="排序" />
     <text name="FaceValue" value="面值" />
@@ -225,6 +229,9 @@
     <text name="OverDue" value="过期" />
     <text name="Effective" value="有效" />
     <text name="Yuan" value="元" />
+    <text name="Source" value="来源" />
+    <text name="Author" value="作者" />
+    <text name="Click" value="点击量" />
     <!--message-->
     <text name="Hint" value="提示" />
     <text name="Exist{0}" value="已经存在 {0}!" />

@@ -1,0 +1,165 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "ArticleInfo";
+    ViewBag.SecondMenu = "Article";
+}
+@using System.Data
+@using X.PagedList
+
+@model PagedList<DataRow>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script>
+    language = $("#CurrentLanguage").attr("data-lan");
+    if (language == "zh-Hans") {
+        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
+        });
+    }
+</script>
+<style>
+    #formPost .chosen-single {
+        height: 34px !important;
+        font-size: 14px;
+    }
+
+    #pic {
+        position: fixed;
+        display: none;
+        z-index: 10;
+    }
+
+    #searchForm .chosen-single {
+        font-size: 14px;
+        line-height: 20px !important;
+    }
+</style>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("ArticleInfo")</a>
+            </li>
+            <li class="active">
+                <strong>@L("Article")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("Article") </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/articleinfo/article/list?pageSize=10">10/@L("Page")</a>
+                            </li>
+                            <li>
+
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/articleinfo/article/list?pageSize=15">15/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/articleinfo/article/list?pageSize=20">20/@L("Page")</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @if (IsGranted("ArticleInfo.Article.Add"))
+                            {
+                                <button  onclick="location.href='/articleinfo/article/add'" class="btn btn-primary btn-sm m-b" type="button">
+                                    <i class="fa fa-plus"></i>&nbsp;@L("Add")
+                                </button>
+                            }
+                        </div>
+                        <div class="col-sm-12">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/articleinfo/article/list" method="post">
+                                <input type="hidden" name="pageSize" value="10" />
+
+                                <div class="form-group">
+                                    <input type="text" name="title" placeholder="@L("Title")" class="m-b input-sm form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <select class="m-b input-sm form-control" id="categoryId" name="categoryId">
+                                        <option value="">-@L("ArticleCategory")-</option>
+                                        @foreach (var item in ViewBag.Category)
+                                        {
+
+                                            <option value="@item.Id">@item.Title</option>
+
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script>
+    function Delete(btn) {
+        var _Service = abp.services.app.article;
+        var id = $(btn).attr("data-id");
+        var name = $(btn).attr("data-name");
+        swal({
+            title: $(btn).attr("data-title"),
+            text: '',
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonText: $(btn).attr("data-ok"),
+            cancelButtonText: $(btn).attr("data-cancle")
+        }).then(function (isConfirm) {
+            if (isConfirm.value == true) {
+                debugger;
+                _Service.delete(id).done(function (data) {
+         
+                    if ($(".pagination .active a").html() != undefined) {
+                        $(".pagination .active a").click();
+                        toastr.options = {
+                            "closeButton": false,//是否配置关闭按钮
+                            "debug": false,//是否开启debug模式
+                            "newestOnTop": false,//新消息是否排在最上层
+                            "progressBar": true,//是否显示进度条
+                            "timeOut": "2000",//1.5s后关闭消息框
+                        }
+                        toastr.success($(btn).attr("data-msg"), '@L("Hint")');
+                    } else { $("#searchForm").submit(); }
+                });
+            }
+        });
+    }
+</script>

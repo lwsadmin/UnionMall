@@ -1,0 +1,186 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "ArticleInfo";
+    ViewBag.SecondMenu = "Article";
+}
+@model UnionMall.Entity.Article
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
+<link href="~/lib/fileinput/css/fileinput.min.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
+<script src="~/lib/fileinput/js/locales/zh.js" asp-append-version="true"></script>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("ArticleInfo")</a>
+            </li>
+            <li class="active">
+                <strong>@L("Article")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox-content">
+        <form method="post" id="formPost">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="hidden" name="TenantId" value="@Model.TenantId" />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>@L("Title")</label>
+                        <input type="text" name="Title" value="@Model.Title" class="form-control" required maxlength="50" />
+                    </div>
+                    <div class="form-group">
+                        <label>@L("ArticleCategory")</label>
+                        @Html.DropDownListFor(c => c.CategoryId, (SelectList)ViewData["Category"], L("Choose"), new { @class = "form-control chosen-select" })
+                    </div>
+                    <div class="form-group">
+                        <label>@L("Source")</label>
+                        <input type="text" name="Source" value="@Model.Source" class="form-control" required maxlength="15">
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>@L("Sort")</label><span class="help-block m-b-none" style="display:inline;">&nbsp;&nbsp;(@L("SortTip"))</span>
+                        <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>@L("Image")</label>
+                        <input type="hidden" id="hiddenImg" name="SmallImg" value="@Model.SmallImg" />
+                        <input id="input" title="@Model.SmallImg" name="File" value="@Model.SmallImg" type="file" data-show-preview="false">
+                    </div>
+                    <div class="form-group">
+                        <label>@L("Author")</label>
+                        <input type="text" name="Author" value="@Model.Author" class="form-control" required maxlength="15">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>@L("Level")&nbsp;</label>
+                        <div class="checkbox checkbox-inline checkbox-success">
+                            <input type="checkbox" id="Hot" name="Level" @(Model.Level.Contains("Hot") ? "checked='checked'" : "") value="Hot">
+                            <label for="Hot">@L("SetHot")</label>
+                        </div>
+                        <div class="checkbox checkbox-inline checkbox-success">
+                            <input type="checkbox" id="Rem" name="Level" @(Model.Level.Contains("Rec") ? "checked='checked'" : "") value="Rec">
+                            <label for="Rem">@L("SetRec")</label>
+                        </div>
+                        <div class="checkbox checkbox-inline checkbox-success">
+                            <input type="checkbox" id="Top" name="Level" @(Model.Level.Contains("Top") ? "checked='checked'" : "") value="Top">
+                            <label for="Top">@L("SetTop")</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>@L("Note")</label>
+                        <textarea id="Describle" name="Describle" class="form-control" cols="4">@Model.Describle</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>@L("Introduce")</label>
+                        <textarea style="width:100%;min-width:550px;" id="Content" name="Content" class="form-control" cols="5">@Model.Content</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer col-md-8" style="text-align:center;">
+                <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>&nbsp;
+                <button onclick="javascript: history.back(-1);" type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script>
+    $(function () {
+        $('.chosen-select').chosen({ width: "100%" });
+        $("#formPost").validate({});
+        $("#input").fileinput({
+            language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es',
+            showRemove: false,
+            showUpload: false,
+            allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
+            showUploadedThumbs: false,
+            uploadUrl: "/Common/Upload",
+            showClose: false,
+            showCancel: false,
+            slugCallback: function (filename) {
+                return filename.replace('(', '_').replace(']', '_');
+            }
+        });
+        //选择文件后处理事件
+        $("#input").on("filebatchselected", function (event, files) {
+            //执行文件上传方法
+            $("#input").fileinput("upload");
+        });
+        //上传成功后处理方法
+        $("#input").on("fileuploaded", function (event, data, previewId, index) {
+            var url = data.response.result.url;
+            $("input[name='SmallImg']").val(url);
+            //$(".hid" + index).val(url).addClass(previewId);
+        });
+
+        var _Service = abp.services.app.article;
+        $("#formPost").on("submit", function (e) {
+            e.preventDefault();
+            if (!$(this).valid()) {
+                return;
+            }
+            var EditDto = $(this).serializeFormToObject();
+            $("input[name='Level']:checked").each(function () {
+                EditDto.Level += $(this).val() + ',';
+            });
+            _Service.createOrEdit(EditDto).done(function (data) {
+
+                window.location.href = '/articleinfo/article/list';
+
+            }).fail(function (data) {
+            }).always(function (data) { });
+        });
+    });
+    var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
+    var editor
+    KindEditor.ready(function (K) {
+        editor = K.create('#Content',
+            {
+                langType: language,
+                height: '300px',
+                uploadJson: "/Common/EditorUpload",
+                fileManagerJson: '/Common/Upload',
+                allowFileManager: false,
+                formatUploadUrl: false,
+                items: [
+                    'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', '|', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', '|', 'image', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'link', '|',
+                    'quickformat', 'preview', 'fullscreen'
+                ],
+                afterBlur: function () { this.sync(); },
+                afterUpload: function (url) { },
+                afterError: function (data) { }
+            });
+    });
+
+</script>

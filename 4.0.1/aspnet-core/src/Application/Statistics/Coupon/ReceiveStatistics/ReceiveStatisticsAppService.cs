@@ -35,7 +35,7 @@ namespace UnionMall.Coupon.ReceiveStatistics
                 table = $@"select s.id, c.Title,m.WeChatName,m.CardID, dateadd(day,c.ValidityDay,s.SendTime) OverDueTime, s.ReceiveCount,s.UsedCount, s.SendTime from dbo.TCouponSendStatistics s left join dbo.TMember m 
 on s.MemberId=m.Id left join  dbo.TCoupon c on s.CouponId=c.Id where 1=1 ";
             }
-            where = where.Replace("*", "s");
+            where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "s");
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }

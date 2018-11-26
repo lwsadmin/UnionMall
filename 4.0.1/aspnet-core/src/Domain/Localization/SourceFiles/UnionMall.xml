@@ -240,6 +240,9 @@
     <text name="Count" value="Count"/>
     <text name="Submit" value="Submit" />
     <text name="Consume" value="Consume" />
+    <text name="SetHot" value="SetPopular" />
+    <text name="SetRec" value="SetRecommend" />
+    <text name="SetTop" value="RoofPlacement" />
     <!--Table-->
     <text name="Query" value="Query" />
     <text name="FaceValue" value="FaceValue" />
@@ -278,6 +281,9 @@
     <text name="OverDue" value="OverDue" />
     <text name="Effective" value="Effective" />
     <text name="Yuan" value="Yuan" />
+    <text name="Source" value="Source" />
+    <text name="Author" value="Author" />
+    <text name="Click" value="Click" />
     <!--message-->
     <text name="NotExist{0}" value="It does not exist!" />
     <text name="Exist{0}" value="Already exist {0}!" />

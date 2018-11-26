@@ -26,6 +26,6 @@ namespace UnionMall.Common
         Task<CommonCategory> GetByIdAsync(long Id);
         Task Delete(long id);
         Task<List<CommonCategory>> GetAllListByParentIdAsync(long parentId);
-        List<CatDropDownDto> GetCategoryDropDownList(int? tenantId, long parentId = 0, int type = 0);
+        Task<List<CatDropDownDto>> GetCategoryDropDownList(long parentId = 0, int type = 0);
     }
 }

@@ -185,6 +185,13 @@
     <TypeScriptCompile Include="wwwroot\Abp\Framework\scripts\libs\abp.signalr.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Areas\ArticleInfo\Views\Article\List.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\ArticleInfo\Views\Article\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\ArticleInfo\Views\Category\List.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

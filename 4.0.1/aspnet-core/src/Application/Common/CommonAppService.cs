@@ -33,7 +33,7 @@ namespace UnionMall.Common
             _HostingEnvironment = HostingEnvironment;
             _sqlExecuter = sqlExecuter;
         }
-
+        #region DataTableToExcel
         public MemoryStream DataTableToExcel(DataTable dt)
         {
 
@@ -79,7 +79,9 @@ namespace UnionMall.Common
             }
             return ms;
         }
+        #endregion
 
+        #region ExcelToDataTable
         public DataTable ExcelToDataTable(IFormFile flie, out string msg)
         {
             msg = "Success";
@@ -154,6 +156,8 @@ namespace UnionMall.Common
 
             }
         }
+        #endregion
+
 
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
