@@ -167,6 +167,9 @@
     <text name="CityLife" value="CityLife"/>
     <text name="CityMessage" value="CityMessage"/>
     <text name="ArticleInfo" value="ArticleInfo"/>
+    <text name="ArticleCategory" value="ArticleCategory"/>
+    <text name="Article" value="Article"/>
+    <text name="ArticleComment" value="ArticleComment"/>
     <text name="ActivityInfo" value="ActivityInfo"/>
     <text name="SystemMarketing" value="SystemMarketing"/>
     <text name="Wheel" value="Wheel"/>

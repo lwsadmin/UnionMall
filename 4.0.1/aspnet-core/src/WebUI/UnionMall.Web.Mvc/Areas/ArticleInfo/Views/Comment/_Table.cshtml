@@ -15,7 +15,7 @@
             {
                 <div class="feed-element">
                     <div class="pull-left" style="text-align:center;">
-                        <img alt="image" class="img-circle" src="@item["HeadImg"]">
+                        <img alt="image" class="img-circle" src="@item["HeadImg"]" onerror="this.src='/img/avatar-default.png'" />
                         <p><strong>@item["WeChatName"]</strong></p>
                     </div>
                     <div class="media-body ">
@@ -48,23 +48,15 @@
                         <p>@L("Comment") <strong class="title">"@item["Title"]"</strong></p>
                         @item["Content"]<br>
 
-                        <div class="photos" style="display:none;">
-                            <a target="_blank" href="http://24.media.tumblr.com/20a9c501846f50c1271210639987000f/tumblr_n4vje69pJm1st5lhmo1_1280.jpg"> <img alt="image" class="feed-photo" src="http://cn.inspinia.cn/html/inspiniaen/img/p1.jpg"></a>
-                            <a target="_blank" href="http://37.media.tumblr.com/9afe602b3e624aff6681b0b51f5a062b/tumblr_n4ef69szs71st5lhmo1_1280.jpg"> <img alt="image" class="feed-photo" src="http://cn.inspinia.cn/html/inspiniaen/img/p3.jpg"></a>
-                        </div>
+                        @*<div class="photos" style="display:none;">
+                                <a target="_blank" href="http://24.media.tumblr.com/20a9c501846f50c1271210639987000f/tumblr_n4vje69pJm1st5lhmo1_1280.jpg"> <img alt="image" class="feed-photo" src="http://cn.inspinia.cn/html/inspiniaen/img/p1.jpg"></a>
+                                <a target="_blank" href="http://37.media.tumblr.com/9afe602b3e624aff6681b0b51f5a062b/tumblr_n4ef69szs71st5lhmo1_1280.jpg"> <img alt="image" class="feed-photo" src="http://cn.inspinia.cn/html/inspiniaen/img/p3.jpg"></a>
+                            </div>*@
                         <small class="text-muted">@item["CreationTime"]</small>
                         <div class="actions">
                             <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> @L("Praise") @(item["Praise"])</a>
                             <a data-id="@item["id"]" data-count="@item["ReplyCount"]" onclick="GetReply(this);" class="btn btn-xs btn-white">@L("Reply")  @((item["ReplyCount"]))</a>
                         </div>
-                        @*<div class="well">
-                            <a class="text-info" href="#">木阳子:</a> 我需要三件东西：爱情友谊和图书。然而这三者之间何其相通！炽热的爱情可以充实图书的内容，图书又是人们最忠实的朋友。
-                        </div>
-                        <div class="pull-right">
-                            <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> 赞 </a>
-                            <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> 喜欢</a>
-                            <a class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> 信息</a>
-                        </div>*@
                     </div>
                 </div>
             }

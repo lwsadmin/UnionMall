@@ -22,14 +22,14 @@ namespace UnionMall.Web.Mvc.Areas.ArticleInfo.Controllers
             _comService = comService;
             _Service = Service;
         }
-        public async Task<IActionResult> List(int pageIndex = 1, int pageSize = 10, string title = "")
+        public async Task<IActionResult> List(int page = 1, int pageSize = 10, string title = "")
         {
             string where = _comService.GetWhere();
             if (!string.IsNullOrEmpty(title))
                 where += $" and a.title like '%{title}%' ";
             int total;
-            DataSet ds = _Service.GetPage(pageIndex, pageSize, "c.Praise desc,c.id desc", out total, where);
-            IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
+            DataSet ds = _Service.GetPage(page, pageSize, "c.Praise desc,c.id desc", out total, where);
+            IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             ViewBag.PageSize = pageSize;
             if (Request.Headers.ContainsKey("x-requested-with"))
             {
