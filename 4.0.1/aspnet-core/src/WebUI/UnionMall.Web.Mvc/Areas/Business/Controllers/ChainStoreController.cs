@@ -41,7 +41,7 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             if (!string.IsNullOrEmpty(BusinessId))
             { where += $" and c.BusinessId = {BusinessId}"; }
             int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, "id desc", out total, where);
+            DataSet ds = _AppService.GetPage(page, pageSize, "c.id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             if (Request.Headers.ContainsKey("x-requested-with"))
             {

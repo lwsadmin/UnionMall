@@ -156,14 +156,17 @@
     <text name="Total" value="总计"/>
     <text name="GiftMall" value="积分商城"/>
     <!--Action-->
+    <text name="Comment" value="评论" />
     <text name="Loading" value="加载中..." />
     <text name="Aduit" value="审核" />
     <text name="Reply" value="回复" />
     <text name="Import" value="导入" />
     <text name="Export" value="导出" />
     <text name="Balance" value="余额" />
-    
+
     <!--Form-->
+    <text name="Praise" value="赞" />
+    <text name="Ago" value="前" />
     <text name="SortTip" value="从大到小降序展示" />
     <text name="Brand" value="品牌" />
     <text name="FullName" value="姓名" />
@@ -224,8 +227,10 @@
     <text name="Begin" value="开始" />
     <text name="End" value="结束" />
     <text name="Consume" value="消费" />
+    <text name="Month" value="月" />
     <text name="Day" value="天" />
-    <text name="Hour" value="时" />
+    <text name="Hour" value="小时" />
+    <text name="Minutes" value="分钟" />
     <text name="OverDue" value="过期" />
     <text name="Effective" value="有效" />
     <text name="Yuan" value="元" />

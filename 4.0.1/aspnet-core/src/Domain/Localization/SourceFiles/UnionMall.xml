@@ -216,7 +216,7 @@
     <text name="Female" value="Female" />
     <text name="CardID" value="CardID" />
     <!--Action-->
-
+    <text name="Comment" value="Comment" />
     <text name="Loading" value="Loading..." />
     <text name="Aduit" value="Aduit" />
     <text name="Reply" value="Reply" />
@@ -244,6 +244,8 @@
     <text name="SetRec" value="SetRecommend" />
     <text name="SetTop" value="RoofPlacement" />
     <!--Table-->
+    <text name="Praise" value="Praise" />
+    <text name="Ago" value="Ago" />
     <text name="Query" value="Query" />
     <text name="FaceValue" value="FaceValue" />
     <text name="Search" value="Search" />
@@ -276,8 +278,10 @@
     <text name="Type" value="Type" />
     <text name="Begin" value="Begin" />
     <text name="End" value="End" />
+        <text name="Month" value="Month" />
     <text name="Day" value="Day" />
     <text name="Hour" value="Hour" />
+        <text name="Minutes" value="Minutes" />
     <text name="OverDue" value="OverDue" />
     <text name="Effective" value="Effective" />
     <text name="Yuan" value="Yuan" />

@@ -1,7 +1,164 @@
 ﻿
 @{
-    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "ArticleInfo";
+    ViewBag.SecondMenu = "ArticleComment";
 }
+@using System.Data
+@using X.PagedList
 
-<h2>List</h2>
+@model PagedList<DataRow>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script>
+    language = $("#CurrentLanguage").attr("data-lan");
+    if (language == "zh-Hans") {
+        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
+        });
+    }
+</script>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("ArticleInfo")</a>
+            </li>
+            <li class="active">
+                <strong>@L("ArticleComment")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("ArticleComment") </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/articleinfo/comment/list?pageSize=10">10/@L("Page")</a>
+                            </li>
+                            <li>
 
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/articleinfo/comment/list?pageSize=15">15/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/articleinfo/comment/list?pageSize=20">20/@L("Page")</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/articleinfo/comment/list" method="post">
+                                <input type="hidden" name="pageSize" value="10" />
+                                <div class="form-group">
+                                    <input type="text" name="title" placeholder="@L("Article")@L("Title")" class="m-b input-sm form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal inmodal" id="Modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">@L("Add")</h4>
+                </div>
+                <form class="form-horizontal" id="AddPost">
+                    <div class="modal-body">
+                        <input type="hidden" name="Id" value="0" />
+                        <input type="hidden" name="Type" value="0" />
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">@L("Title")</label>
+
+                            <div class="col-lg-10">
+                                <input type="text" name="Title" required maxlength="32" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">@L("Sort")</label>
+                            <div class="col-lg-10">
+                                <input type="number" name="Sort" required class="form-control" />
+                                <span class="help-block m-b-none">@L("SortTip")</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">@L("Note")</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" id="Memo" name="Memo"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+                        <button type="submit" class="btn btn-primary">@L("Save")</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script>
+    function GetReply(btn) {
+        var count = $(btn).attr("data-count");
+        if (count=="0") {
+            return;
+        }
+        var act = $(btn).parent(".actions").siblings(".well").html();
+        if (act != undefined) {
+            return;
+        }
+        abp.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            url: "/articleinfo/comment/get",
+            data: {id:$(btn).attr("data-id")},
+            success: function (data) {
+                if (data != null) {
+                    $.each(data.s, function () {
+                        var html = "<br/><div class='well'>\
+                            <a class='text-info' href= 'javascript:void(0);'>"+ this.memberName + ":</a>" + this.content+"\
+                        </div>\
+                            <div class='pull-right'>\
+                                <a class='btn btn-xs btn-white'><i class='fa fa-thumbs-up'></i> 赞 "+ this.praise+"</a>\
+                            </div>";
+                        $(btn).parent(".actions").after(html);
+                    });
+                }
+            }
+        })
+    }
+</script>

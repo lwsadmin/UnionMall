@@ -198,6 +198,9 @@
     <Content Update="Areas\ArticleInfo\Views\Category\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\ArticleInfo\Views\Comment\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Business\Views\Business\_Add.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
