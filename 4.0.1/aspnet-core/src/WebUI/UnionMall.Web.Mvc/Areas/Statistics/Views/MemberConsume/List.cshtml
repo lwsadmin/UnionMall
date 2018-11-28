@@ -1,0 +1,127 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.FirstMenu = "StatisticsAnalysis";
+    ViewBag.SecondMenu = "MemberConsumeStatistics";
+}
+
+@using System.Data
+@using X.PagedList
+
+@model PagedList<DataRow>
+<style>
+    .swal2-container {
+        z-index: 10000;
+    }
+
+    .chosen-container {
+        margin-bottom: 15px;
+        min-width: 10vw;
+    }
+</style>
+<script type="https://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>
+<script type="https://www.chartjs.org/samples/latest/utils.js"></script>
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" asp-append-version="true" rel="stylesheet" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("StatisticsAnalysis")</a>
+            </li>
+            <li class="active">
+                <strong>@L("MemberConsumeStatistics")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("MemberConsumeStatistics") </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/statistics/memberconsume/list?pageSize=10">10/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/statistics/memberconsume/list?pageSize=15">15/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/statistics/memberconsume/list?pageSize=20">20/@L("Page")</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/statistics/memberconsume/list" method="post">
+                                <input type="hidden" name="pageSize" value="10" />
+                                <div class="form-group">
+                                    <input type="text" name="orderNumber" placeholder="@L("Order")" class="m-b input-sm form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" name="timeFrom" placeholder="@L("Consume")@L("Time")"
+                                           class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                    <span style="display: inline-block;vertical-align: 5px;">@L("To")</span>
+                                    <input type="text" name="timeTo" placeholder="@L("Consume")@L("Time")" class="m-b input-sm form-control"
+                                           onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs" id="myTabs">
+                            <li class="active"><a data-toggle="tab" href="#first" aria-expanded="true">@L("MemberConsumeStatistics")</a></li>
+                            <li class=""><a data-toggle="tab" href="#second" aria-expanded="false">@L("Chart")@L("StatisticsAnalysis")</a></li>
+                        </ul>
+                        <div id="first" class="tab-pane fade active in" aria-labelledby="home-tab">
+                            <div class="panel-body">
+                                <div id="table">
+                                    @Html.Partial("_Table", Model)
+                                </div>
+                            </div>
+                        </div>
+                        <div id="second" class="tab-pane fade" aria-labelledby="point-tab">
+                            <div class="panel-body">
+                                @Html.Partial("_TableChat")
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script>
+    $('#myTabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    });
+</script>

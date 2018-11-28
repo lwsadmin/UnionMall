@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "_Table";
+    Layout = null;
+}
+@using X.PagedList
+@using System.Data
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Order")</th>
+            <th>@L("Consume")@L("Type")</th>
+            <th>@L("Consume")@L("Amount")</th>
+            <th>@L("Consume")@L("Store")</th>
+            <th>@L("Consume")@L("Time")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (DataRow item in Model)
+            {
+                <tr>
+                    <td>@item["title"]</td>
+                    <td>@item["MinPoint"]</td>
+                    <td>@item["MaxPoint"]</td>
+                    <td>@item["SellPrice"]</td>
+                    <td>@item["InitPoint"]</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+@if (Model != null)
+{
+    @Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+new PagedListRenderOptions {
+MaximumPageNumbersToDisplay = 10,
+DisplayPageCountAndCurrentLocation = true,
+LinkToFirstPageFormat = L("FirstPage"),
+LinkToLastPageFormat = L("LastPage"),
+LinkToNextPageFormat = L("NextPage"),
+PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+LinkToPreviousPageFormat = L("PreviousPage"),
+UlElementClasses = new[] { "pagination col-md-8" },
+ContainerDivClasses = new[] { "row" } },
+new AjaxOptions()
+{
+DataForm = "searchForm",
+HttpMethod = "GET",
+UpdateTargetId = "table"
+}
+))
+
+}
+

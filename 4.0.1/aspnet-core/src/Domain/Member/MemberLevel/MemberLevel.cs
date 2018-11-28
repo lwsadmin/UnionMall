@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Abp.Domain.Entities;
-
 using System.ComponentModel.DataAnnotations.Schema;
-
-
 namespace UnionMall.Entity
 {
     [Table("TMemberLevel")]

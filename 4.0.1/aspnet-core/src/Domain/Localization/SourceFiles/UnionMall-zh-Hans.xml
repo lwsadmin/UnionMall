@@ -14,7 +14,7 @@
     <text value="介绍" name="Introduce"/>
     <text value="用户" name="Users"/>
     <text value="邮箱" name="Email"/>
-    <text value="电话" name="PhoneNumber"/>
+    <text value="手机" name="PhoneNumber"/>
     <text value="状态" name="Status"/>
     <text value="标题" name="Title"/>
     <text value="测试" name="Union"/>
@@ -163,7 +163,7 @@
     <text name="Import" value="导入" />
     <text name="Export" value="导出" />
     <text name="Balance" value="余额" />
-
+    <text name="BirthDay" value="生日" />
     <!--Form-->
     <text name="Praise" value="赞" />
     <text name="Ago" value="前" />
@@ -188,6 +188,8 @@
     <text name="SetTop" value="置顶" />
     <!--Table-->
     <text name="Sort" value="排序" />
+    <text name="Chart" value="图表" />
+    <text name="Amount" value="金额" />
     <text name="FaceValue" value="面值" />
     <text name="legalPerson" value="法人" />
     <text name="DueTime" value="到期时间" />

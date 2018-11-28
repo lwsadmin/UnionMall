@@ -226,7 +226,7 @@
 
     <text name="Import" value="Import" />
     <text name="Export" value="Export" />
-
+    <text name="BirthDay" value="BirthDay" />
     <!--Form-->
     <text name="SortTip" value="Descending from big to small" />
     <text name="Referrer" value="Referrer" />
@@ -247,7 +247,9 @@
     <text name="SetRec" value="SetRecommend" />
     <text name="SetTop" value="RoofPlacement" />
     <!--Table-->
+    <text name="Chart" value="Chart" />
     <text name="Praise" value="Praise" />
+    <text name="Amount" value="Amount" />
     <text name="Ago" value="Ago" />
     <text name="Query" value="Query" />
     <text name="FaceValue" value="FaceValue" />

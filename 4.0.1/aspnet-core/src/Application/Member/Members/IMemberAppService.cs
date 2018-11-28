@@ -15,10 +15,13 @@ namespace UnionMall.Member
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
 
+        Task<Entity.Member> GetEntity(long id);
+        Task<Entity.Member> GetEntity(string cardId);
+        Task<CardCoreDto> GetCardCore(string cardId);
         Task<JsonResult> SubmitRegAsync(RegDto dto);
 
-        JsonResult Import(IFormFile flie);
+        Task<JsonResult> Import(IFormFile flie);
 
-        MemoryStream ExportToExcel(string where);
+        Task<MemoryStream> ExportToExcel(string where);
     }
 }

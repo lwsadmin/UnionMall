@@ -107,7 +107,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
         }
         [Abp.Domain.Uow.UnitOfWork]
-        public JsonResult Import(IFormFile flie)
+        public async Task<JsonResult> Import(IFormFile flie)
         {
 
             string msg = string.Empty;
@@ -215,7 +215,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
                     member.RegTime = DateTime.Now;
                     member.Address = row["详细地址"].ToString();
                     member.Email = row["电子邮件"].ToString();
-                    _Repository.Insert(member);
+                    await _Repository.InsertAsync(member);
 
                 }
                 return new JsonResult(new { succ = true, msg = msg });
@@ -227,7 +227,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             }
         }
 
-        public MemoryStream ExportToExcel(string where)
+        public async Task<MemoryStream> ExportToExcel(string where)
         {
             string sql = $@"select  m.FullName 姓名,stuff(m.WechatName,2,1,'*') 微信名,
  case m.Sex  when 0 then '男' else '女' end 性别, stuff(m.CardID,8,4,'****') 卡号,stuff(m.Mobile,8,4,'****') 手机号,m.Balance 余额
@@ -282,6 +282,30 @@ m.businessid = b.id left join dbo.tchainstore c on m.chainstoreid = c.id where 1
                 workbook = null;
             }
             return ms;
+        }
+
+        public async Task<Entity.Member> GetEntity(long id)
+        {
+            return await _Repository.FirstOrDefaultAsync(c => c.Id == id);
+        }
+        public async Task<Entity.Member> GetEntity(string cardId)
+        {
+            return await _Repository.FirstOrDefaultAsync(c => c.CardID == cardId);
+        }
+        public async Task<CardCoreDto> GetCardCore(string cardId)
+        {
+            var m = await _Repository.FirstOrDefaultAsync(c => c.CardID == cardId);
+            if (m==null)
+            {
+                return null;
+            }
+            CardCoreDto dto = m.MapTo<CardCoreDto>();
+            dto.BirthDay = m.BirthDay.ToString("yyyy-MM-dd");
+            dto.RegTime = m.RegTime.ToString("yyyy-MM-dd HH:MM");
+            dto.Level = _sqlExecuter.ExecuteDataSet
+                ($"select Title from dbo.TMemberLevel where Id={m.LevelId}")
+                .Tables[0].Rows[0][0].ToString();
+            return dto;
         }
     }
 }

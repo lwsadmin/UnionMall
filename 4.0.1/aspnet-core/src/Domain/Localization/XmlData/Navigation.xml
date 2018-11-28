@@ -190,7 +190,7 @@
     <Second Name="ChainStoreValueStatistics"  Url="/Statistics/StoreValueNote/List"></Second>
     <Second Name="ChainStoreSmsStatistics"  Url="/Statistics/ChainStoreSmsNote/List"></Second>
     <Second Name="MemberRechargeStatistics"  Url="/Statistics/MemberRecharge/List"></Second>
-    <Second Name="MemberConsumeStatistics"  Url="/Statistics/MemberConsume/List"></Second>
+    <Second Name="MemberConsumeStatistics"  Url="/Statistics/memberconsume/List"></Second>
     <Second Name="MemberPointStatistics"  Url="/Statistics/MemberPoint/List"></Second>
     <Second Name="CouponReceiveStatistics" Url="/statistics/receivestatistics/list"></Second>
     <Second Name="CouponUseStatistics" Url="/statistics/usedstatistics/list"></Second>

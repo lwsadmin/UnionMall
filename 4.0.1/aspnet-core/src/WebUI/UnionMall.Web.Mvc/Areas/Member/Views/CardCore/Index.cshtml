@@ -27,45 +27,76 @@
 <div class="wrapper wrapper-content animated fadeInRight">
 
     <div class="row">
-        <div class="col-lg-4">
-            <div class="contact-box">
-                <a href="profile.html">
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="http://cn.inspinia.cn/html/inspiniaen/img/a6.jpg">
-                            <div class="m-t-xs font-bold">超级CEO</div>
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="contact-box">
+                    <form class="form-inline" id="searchForm" method="post">
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="number" required name="CardID" placeholder="@L("Member")@L("CardID")" class="m-b input-sm form-control" />
+                                <span class="input-group-btn">
+                                    <button id="readBtn" type="button" class="btn btn-primary btn-sm">
+                                        @L("Search")
+                                    </button>
+                                </span>
+                            </div>
+
                         </div>
+                    </form>
+                    <br />
+                    <p>
+                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("Level")</button>
+                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("Store")</button>
+                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("CardID")</button>
+                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("Password")</button>
+                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Send")@L("Coupon")</button>
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-lg-6">
+            <div class="contact-box">
+                <div class="col-sm-2">
+                    <div class="text-center">
+                        <img id="HeadImg" alt="image" class="img-circle m-t-xs img-responsive" src="/img/avatar-default.png" onerror="this.src='/img/avatar-default.png'" />
+                        <div class="m-t-xs font-bold" id="Level"></div>
                     </div>
-                    <div class="col-sm-8">
-                        <h3><strong>小红</strong></h3>
-                        <p><i class="fa fa-map-marker"></i> 中国.北京 123/123</p>
-                        <address>
-                            <strong>企鹅公司</strong><br>
-                            北京市朝阳区某区某街道<br>
-                            企鹅 100000 <br>
-                            手机 18900000000 <br>
-                            邮编 100020 <br>
-                        </address>
-                    </div>
-                    <div class="clearfix"></div>
-                </a>
+                </div>
+                <div class="col-sm-4">
+                    <h3><strong>@L("WeChat")@L("Name"):<span id="WeChatName" class="text-success">-</span></strong></h3>
+                    <p>@L("CardID"):<span id="CardID" class="text-success">-</span></p>
+                    <p>@L("PhoneNumber"):<span id="Mobile" class="text-success">-</span></p>
+                    <p>@L("Sex"):<span id="Sex" class="text-success">-</span></p>
+                    <p>@L("BirthDay"):<span id="BirthDay" class="text-success">-</span> </p>
+                </div>
+                <div class="col-sm-4">
+                    <h3><strong>@L("FullName"):<span id="FullName" class="text-success"></span></strong></h3>
+                    <p>@L("Integral"):<span id="Integral" class="text-success">-</span></p>
+                    <p>@L("Balance"):<span id="Balance" class="text-success">-</span></p>
+                    <p>@L("Email"):<span id="Email" class="text-success">-</span></p>
+                    <p>@L("Register")@L("Time"):<span id="RegTime" class="text-success">-</span></p>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="tabs-container">
                 <ul class="nav nav-tabs" id="myTabs">
-                    <li class="active"><a data-toggle="tab" href="#home" aria-expanded="true">消费记录</a></li>
-                    <li class=""><a data-toggle="tab" href="#point" aria-expanded="false">积分记录</a></li>
-                    <li class=""><a data-toggle="tab" href="#value" aria-expanded="false">余额记录</a></li>
+                    <li class="active"><a data-toggle="tab" href="#home" aria-expanded="true">@L("Consume")@L("Records")</a></li>
+                    <li class=""><a data-toggle="tab" href="#point" aria-expanded="false">@L("Integral")@L("Records")</a></li>
+                    <li class=""><a data-toggle="tab" href="#value" aria-expanded="false">@L("Balance")@L("Records")</a></li>
                     <li class=""><a data-toggle="tab" href="#recive" aria-expanded="false">@L("Coupon")@L("Receive")@L("Records")</a></li>
                     <li class=""><a data-toggle="tab" href="#use" aria-expanded="false">@L("Coupon")@L("Use")@L("Records")</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade active in" aria-labelledby="home-tab">
                         <div class="panel-body">
-                            <p>1.近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技 术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视 和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                            @Html.Partial("_TableConsume", null)
                         </div>
                     </div>
                     <div id="point" class="tab-pane fade" aria-labelledby="point-tab">
@@ -89,15 +120,58 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
 </div>
 <script>
+    document.onkeydown = function () {
+        if (event.keyCode == 13 || event.keyCode == 123 || event.keyCode == 116) {
+            $("#readBtn").click();
+            event.keyCode = 0; event.returnValue = false;
+        }
+    }
+
+
     $('#myTabs a').click(function (e) {
         e.preventDefault()
         $(this).tab('show')
-    })
+    });
+    $("#readBtn").click(function () {
+        if ($("input[name='CardID']").val() == "") {
+            $("input[name='CardID']").focus();
+            return;
+        }
+        abp.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            url: "/member/cardcore/GetCardInfo",
+            data: { cardId: $("input[name='CardID']").val() },
+            success: function (data) {
+
+                if (data.succ) {
+                    $("#HeadImg").attr("src", data.member.headImg);
+                    $("#CardID").html(data.member.cardID);
+                    $("#Level").html(data.member.level);
+                    $("#WeChatName").html(data.member.weChatName);
+                    $("#Mobile").html(data.member.mobile);
+                    $("#Sex").html(data.member.sex=="0"?'@L("Male")':'@L("Female")');
+                    $("#BirthDay").html(data.member.birthDay);
+                    $("#Integral").html(data.member.integral);
+                    $("#Balance").html(data.member.balance);
+                    $("#Email").html(data.member.email);
+                    $("#RegTime").html(data.member.regTime);
+                    $("#FullName").html(data.member.fullName);
+                } else {
+                    toastr.options = {
+                        "closeButton": false,//是否配置关闭按钮
+                        "debug": false,//是否开启debug模式
+                        "newestOnTop": false,//新消息是否排在最上层
+                        "progressBar": true,//是否显示进度条
+                        "timeOut": "2000",//1.5s后关闭消息框
+                    }
+                   toastr.error("@L("NotExist{0}",L("CardID"))", "@L("Hint")");
+                }
+            }
+        })
+    });
 </script>

@@ -76,16 +76,16 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 
 
         [IgnoreAntiforgeryToken]
-        public ActionResult ImportExcel()
+        public async Task<ActionResult> ImportExcel()
         {
             var fileBase = Request.Form.Files["File"];
             string msg = string.Empty; ;
-            var json = _AppService.Import(fileBase);
+            var json = await _AppService.Import(fileBase);
             return json;
         }
 
         [IgnoreAntiforgeryToken]
-        public FileResult ExportExcel(string Level = "", string Name = "",
+        public async Task<FileResult> ExportExcel(string Level = "", string Name = "",
             string Business = "", string Store = "", string RegTimeFrom = "", string RegTimeTo = "")
         {
 
@@ -104,8 +104,8 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             if (!string.IsNullOrEmpty(RegTimeTo))
                 where += $" and RegTime<='{RegTimeTo} 23:59:59'";
 
-            MemoryStream ms = _AppService.ExportToExcel(where);
-            return File(ms.ToArray(), "application/vnd.ms-excel", "会员列表.xlsx");
+            MemoryStream ms = await _AppService.ExportToExcel(where);
+            return File(ms.ToArray(), "application/vnd.ms-excel", "" + L("MemberList") + ".xlsx");
         }
     }
 }
