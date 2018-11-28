@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Common;
+using UnionMall.ConsumeNote;
 using UnionMall.Controllers;
 using UnionMall.Member;
 using X.PagedList;
@@ -18,17 +19,28 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
     {
         private readonly IMemberAppService _AppService;
         private readonly ICommonAppService _comAppService;
-
-        public CardCoreController(IMemberAppService AppService, ICommonAppService comAppService)
+        private readonly IConsumeNoteAppService _consumeService;
+        public CardCoreController(IMemberAppService AppService, IConsumeNoteAppService consumeService, ICommonAppService comAppService)
         {
             _AppService = AppService;
+            _consumeService = consumeService;
             _comAppService = comAppService;
         }
 
         public async Task<IActionResult> Index()
         {
-         //   ViewBag.Page = new PagedList<DataRow>(null, 1, 1);
+            //   ViewBag.Page = new PagedList<DataRow>(null, 1, 1);
             return View();
+        }
+
+        public async Task<IActionResult> ConsumeList(int page = 1, int pageSize = 10, string orderNumber = "",
+   string timeFrom = "", string timeTo = "")
+        {
+            string where = " and 1=1";
+            int total;
+            DataSet ds = _consumeService.GetPage(page, pageSize, "CreationTime desc", out total, where);
+            IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
+            return View("_TableConsume", pageList);
         }
         [AbpMvcAuthorize("UnionMember.CardInfo")]
         public async Task<JsonResult> GetCardInfo(string cardId)
