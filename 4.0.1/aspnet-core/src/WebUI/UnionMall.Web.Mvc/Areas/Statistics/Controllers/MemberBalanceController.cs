@@ -5,27 +5,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UnionMall.BalanceNote;
 using UnionMall.Common;
-using UnionMall.ConsumeNote;
 using UnionMall.Controllers;
 using X.PagedList;
+
 namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
 {
     [AbpMvcAuthorize]
-    [AbpMvcAuthorize("StatisticsAnalysis.MemberConsumeStatistics")]
     [Area("Statistics")]
-    public class MemberConsumeController : UnionMallControllerBase
+    public class MemberBalanceController : UnionMallControllerBase
     {
-        private readonly IConsumeNoteAppService _appService;
+        private readonly IBalanceNoteAppService _appService;
         private readonly ICommonAppService _comService;
-        public MemberConsumeController(IConsumeNoteAppService appService, ICommonAppService comService)
+        public MemberBalanceController(IBalanceNoteAppService appService, ICommonAppService comService)
         {
             _appService = appService;
             _comService = comService;
         }
 
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string orderNumber = "",
-            string name = "",string timeFrom = "", string timeTo = "")
+            string name = "", string timeFrom = "", string timeTo = "")
         {
             string where = _comService.GetWhere();
             if (!string.IsNullOrEmpty(orderNumber))

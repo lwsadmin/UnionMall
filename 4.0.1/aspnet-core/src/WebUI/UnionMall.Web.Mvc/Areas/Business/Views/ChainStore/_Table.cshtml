@@ -89,9 +89,9 @@
                 showY = h - $("#pic").height() - 200;
             }
             $("#pic").css({
-                "top": (showY),
-                "left": (e.pageX + 15)
-            }).fadeIn("fast");
+                "top": (showY - $("#table").offset().top - 50),
+                "left": (e.pageX + 50 - $("#table").offset().left)
+            }).fadeIn(500);
 
         });
     }, function () {

@@ -7,15 +7,15 @@ using System.Data;
 using System.Text;
 using UnionMall.IRepositorySql;
 
-namespace UnionMall.ConsumeNote
+namespace UnionMall.BalanceNote
 {
-    public class ConsumeNoteAppService : ApplicationService, IConsumeNoteAppService
+    public class BalanceNoteAppService : ApplicationService, IBalanceNoteAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
 
-        private readonly IRepository<Entity.ConsumeNote, long> _Repository;
-        public ConsumeNoteAppService(ISqlExecuter sqlExecuter, IRepository<Entity.ConsumeNote, long> Repository, IAbpSession AbpSession)
+        private readonly IRepository<Entity.BalanceNote, long> _Repository;
+        public BalanceNoteAppService(ISqlExecuter sqlExecuter, IRepository<Entity.BalanceNote, long> Repository, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
@@ -25,17 +25,9 @@ namespace UnionMall.ConsumeNote
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select n.id, n.BillNumber,n.Type,cast(n.TotalPaid as float) TotalPaid,
-cast(n.wechatPay as float) WechatPay,
-cast(n.AliPay as float) AliPay,
-cast(n.CouponPay as float) CouponPay,
-cast(n.BalancePay as float) BalancePay,
-cast(n.IntegralPay as float) IntegralPay,
-cast(n.CashPay as float) CashPay,
- n.Status,n.UserAccount,n.CreationTime,
-c.Name,m.CardID,m.WeChatName,c.BusinessId
- from dbo.TConsumeNote n left join dbo.TMember m 
-on n.Memberid=m.id left join dbo.TChainStore c on n.ChainStoreId=c.Id where 1=1  ";
+                table = $@"select n.id,c.Name,m.WeChatName,m.CardID,n.Type,n.Way,n.BillNumber,cast( n.Balance as float) Balance,
+cast( n.Value as float) Value, n.CreationTime from dbo.TBalanceNote n left  join dbo.TMember m 
+on n.MemberId=m.id left join dbo.TChainStore c on n.ChainStoreId=c.id where 1=1  ";
             }
             where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n");
             table += where;

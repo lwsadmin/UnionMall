@@ -11,11 +11,17 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>@L("Order")</th>
-            <th>@L("Consume")@L("Type")</th>
-            <th>@L("Consume")@L("Amount")</th>
-            <th>@L("Consume")@L("Store")</th>
             <th>@L("Consume")@L("Time")</th>
+            <th>@L("Order")@L("Number")</th>
+            <th>@L("Status")</th>
+            <th>@L("Consume")@L("Store")</th>
+            <th>@L("Consume")@L("Amount")</th>
+            <th>@L("WeChat")@L("Pay")</th>
+            <th>@L("AliPay")@L("Pay")</th>
+            <th>@L("Balance")@L("Pay")</th>
+            <th>@L("Integral")@L("Pay")</th>
+            <th>@L("Coupon")@L("Pay")</th>
+            <th>@L("Cash")@L("Pay")</th>
         </tr>
     </thead>
     <tbody>
@@ -24,11 +30,30 @@
             @foreach (DataRow item in Model)
             {
                 <tr>
-                    <td>@item["title"]</td>
-                    <td>@item["MinPoint"]</td>
-                    <td>@item["MaxPoint"]</td>
-                    <td>@item["SellPrice"]</td>
-                    <td>@item["InitPoint"]</td>
+                    <td class="title">
+                        @item["CreationTime"]
+                    </td>
+                    <td>@item["BillNumber"]</td>
+                    @switch (item["Status"].ToString())
+                    {
+                        case "0":
+                            <td>@L("Normal")</td>
+                            break;
+                        case "-1":
+                            <td class="text-danger">@L("Revoke")</td>
+                            break;
+                        default:
+                            <td>@item["Status"]</td>
+                            break;
+                    }
+                    <td class="name">@item["Name"]</td>
+                    <td>@item["TotalPaid"]</td>
+                    <td>@item["WeChatPay"]</td>
+                    <td>@item["AliPay"]</td>
+                    <td>@item["BalancePay"]</td>
+                    <td>@item["IntegralPay"]</td>
+                    <td>@item["CouponPay"]</td>
+                    <td>@item["CashPay"]</td>
                 </tr>
             }
         }
@@ -37,7 +62,7 @@
 </table>
 @if (Model != null)
 {
-    @Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+    @Html.PagedListPager(Model, page => Url.Action("consumelist", new { page }),
 PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
 new PagedListRenderOptions {
 MaximumPageNumbersToDisplay = 10,
@@ -51,9 +76,9 @@ UlElementClasses = new[] { "pagination col-md-8" },
 ContainerDivClasses = new[] { "row" } },
 new AjaxOptions()
 {
-DataForm = "searchForm",
+DataForm = "consumeForm",
 HttpMethod = "GET",
-UpdateTargetId = "table"
+UpdateTargetId = "tableConsume"
 }
 ))
 

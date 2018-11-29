@@ -24,6 +24,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<Article> Article { get; set; }
         public DbSet<Comment> Comment { get; set; }
         public DbSet<ConsumeNote> ConsumeNote { get; set; }
+        public DbSet<BalanceNote> BalanceNote { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

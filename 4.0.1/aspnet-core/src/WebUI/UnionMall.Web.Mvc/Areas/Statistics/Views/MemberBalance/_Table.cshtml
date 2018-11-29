@@ -10,17 +10,13 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>@L("Consume")@L("Time")</th>
+            <th>@L("Operate")@L("Time")</th>
             <th>@L("Order")@L("Number")</th>
-            <th>@L("Status")</th>
-            <th>@L("Consume")@L("Store")</th>
-            <th>@L("Consume")@L("Amount")</th>
-            <th>@L("WeChat")@L("Pay")</th>
-            <th>@L("AliPay")@L("Pay")</th>
-            <th>@L("Balance")@L("Pay")</th>
-            <th>@L("Integral")@L("Pay")</th>
-            <th>@L("Coupon")@L("Pay")</th>
-            <th>@L("Cash")@L("Pay")</th>
+            <th>@L("Type")</th>
+            <th>@L("Store")</th>
+            <th>@L("Value")</th>
+            <th>@L("Balance")</th>
+
             <th>@L("CardID")</th>
             <th>@L("WeChat")@L("Name")</th>
         </tr>
@@ -34,7 +30,7 @@
                 @item["CreationTime"]
             </td>
             <td>@item["BillNumber"]</td>
-            @switch (item["Status"].ToString())
+            @switch (item["Type"].ToString())
             {
                 case "0":
                     <td>@L("Normal")</td>
@@ -43,17 +39,13 @@
                     <td class="text-danger">@L("Revoke")</td>
                     break;
                 default:
-                    <td>@item["Status"]</td>
+                    <td>@item["Type"]</td>
                     break;
             }
             <td class="name">@item["Name"]</td>
-            <td>@item["TotalPaid"]</td>
-            <td>@item["WeChatPay"]</td>
-            <td>@item["AliPay"]</td>
-            <td>@item["BalancePay"]</td>
-            <td>@item["IntegralPay"]</td>
-            <td>@item["CouponPay"]</td>
-            <td>@item["CashPay"]</td>
+
+            <td>@item["Value"]</td>
+            <td>@item["Balance"]</td>
 
 
 

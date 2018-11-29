@@ -52,6 +52,7 @@
     <text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
     <text name="DatabaseConnectionString" value="Database connection string" />
     <text name="Normal" value="Normal" />
+    <text value="Revoke" name="Revoke" />
     <text name="Disable" value="Disable" />
     <text name="FullName" value="Full name" />
     <text value="Detail" name="Detail"/>
@@ -60,6 +61,7 @@
     <text value="Parent" name="Parent"/>
     <text value="Email" name="Email"/>
     <text value="PhoneNumber" name="PhoneNumber"/>
+    <text value="Number" name="Number"/>
     <text value="Status" name="Status"/>
     <text value="Operate" name="Operate"/>
     <text  name="Title" value="Title"/>
@@ -126,8 +128,6 @@
     <text value="LockScreen" name="LockScreen"/>
 
     <!--ccccccccccccccccccccccccccccc-->
-
-
     <text name="OffLineCashie" value="OffLineCashie"/>
     <text name="QuickConsume" value="QuickConsume"/>
     <text name="GoodsConsume" value="GoodsConsume" />
@@ -135,7 +135,6 @@
     <text name="CouponConsume" value="CouponConsume" />
     <text name="GiftCash" value="GiftCash" />
     <text name="PointRecharge" value="PointRecharge" />
-
     <text name="OnlineGoods" value="OnlineGoods"/>
     <text name="GoodsCategory" value="GoodsCategory"/>
     <text name="GoodsBrand" value="GoodsBrand" />
@@ -197,6 +196,7 @@
     <text name="MemberRechargeStatistics" value="MemberRechargeStatistics"/>
     <text name="MemberConsumeStatistics" value="MemberConsumeStatistics"/>
     <text name="MemberPointStatistics" value="MemberPointStatistics"/>
+    <text name="MemberBalanceStatistics" value="MemberBalanceStatistics"/>
     <text name="CouponReceiveStatistics" value="CouponReceiveStatistics"/>
     <text name="CouponUseStatistics" value="CouponUseStatistics"/>
     <text name="GiftCashStatistics" value="GiftCashStatistics"/>
@@ -204,7 +204,6 @@
     <text name="WeChat" value="WeChatSet" />
     <text name="WeChatMenu" value="WeChatMenu" />
     <text name="WeChatMessage" value="WeChatMessage" />
-    <text name="Pay" value="PaySet" />
     <text name="PayCode" value="PayCode" />
     <text name="SystemSet" value="SystemSet" />
     <text name="UserManager" value="UserManager" />
@@ -293,6 +292,10 @@
     <text name="Source" value="Source" />
     <text name="Author" value="Author" />
     <text name="Click" value="Click" />
+
+    <text name="Pay" value="Pay" />
+    <text name="Cash" value="Cash" />
+    <text name="AliPay" value="AliPay" />
     <!--message-->
     <text name="NotExist{0}" value="It does not exist!" />
     <text name="Exist{0}" value="Already exist {0}!" />

@@ -191,7 +191,8 @@
     <Second Name="ChainStoreSmsStatistics"  Url="/Statistics/ChainStoreSmsNote/List"></Second>
     <Second Name="MemberRechargeStatistics"  Url="/Statistics/MemberRecharge/List"></Second>
     <Second Name="MemberConsumeStatistics"  Url="/Statistics/memberconsume/List"></Second>
-    <Second Name="MemberPointStatistics"  Url="/Statistics/MemberPoint/List"></Second>
+    <Second Name="MemberPointStatistics"  Url="/Statistics/memberintegral/List"></Second>
+    <Second Name="MemberBalanceStatistics"  Url="/Statistics/memberbalance/List"></Second>
     <Second Name="CouponReceiveStatistics" Url="/statistics/receivestatistics/list"></Second>
     <Second Name="CouponUseStatistics" Url="/statistics/usedstatistics/list"></Second>
     <Second Name="GiftCashStatistics"   Url="/Statistics/GiftExchangeNote/List"></Second>

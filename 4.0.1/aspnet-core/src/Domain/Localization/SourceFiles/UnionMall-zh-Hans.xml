@@ -15,6 +15,7 @@
     <text value="用户" name="Users"/>
     <text value="邮箱" name="Email"/>
     <text value="手机" name="PhoneNumber"/>
+    <text value="号" name="Number"/>
     <text value="状态" name="Status"/>
     <text value="标题" name="Title"/>
     <text value="测试" name="Union"/>
@@ -30,6 +31,7 @@
     <text value="操作" name="Operate"/>
     <text value="角色" name="Roles"/>
     <text value="正常" name="Normal" />
+    <text value="撤销" name="Revoke" />
     <text value="禁用" name="Disable" />
     <text value="管理" name="Manage"/>
     <text value="信息" name="Info" />
@@ -132,6 +134,7 @@
     <text name="MemberRechargeStatistics" value="会员充值统计"/>
     <text name="MemberConsumeStatistics" value="会员消费统计"/>
     <text name="MemberPointStatistics" value="会员积分统计"/>
+    <text name="MemberBalanceStatistics" value="会员余额统计"/>
     <text name="CouponReceiveStatistics" value="优惠券领取统计"/>
     <text name="CouponUseStatistics" value="优惠券使用统计"/>
     <text name="GiftCashStatistics" value="礼品兑换统计"/>
@@ -139,7 +142,7 @@
     <text name="PublicWeChatSet" value="公众号设置" />
     <text name="WeChatMenu" value="自定义菜单" />
     <text name="WeChatMessage" value="微信消息" />
-    <text name="Pay" value="支付设置" />
+
     <text name="PayCode" value="我的二维码" />
     <text name="SystemSet" value="系统设置" />
     <text name="UserManager" value="用户管理" />
@@ -239,6 +242,9 @@
     <text name="Source" value="来源" />
     <text name="Author" value="作者" />
     <text name="Click" value="点击量" />
+        <text name="Pay" value="支付" />
+    <text name="Cash" value="现金" />
+    <text name="AliPay" value="支付宝" />
     <!--message-->
     <text name="Hint" value="提示" />
     <text name="Exist{0}" value="已经存在 {0}!" />

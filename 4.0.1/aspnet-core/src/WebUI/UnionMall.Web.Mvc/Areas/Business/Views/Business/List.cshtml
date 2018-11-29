@@ -1,6 +1,5 @@
 ﻿
 @{
-    ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     ViewBag.FirstMenu = "BusinessManage";
@@ -10,10 +9,8 @@
 @using X.PagedList
 @using UnionMall.Entity;
 @model PagedList<DataRow>
-<link href="~/lib/admin/css/plugins/datapicker/datepicker3.css" rel="stylesheet" asp-append-version="true" />
 <link href="~/lib/kindeditor/themes/default/default.css" rel="stylesheet" asp-append-version="true" />
 <script src="~/lib/kindeditor/kindeditor-all-min.js" asp-append-version="true"></script>
-<script src="~/lib/admin/js/plugins/datapicker/bootstrap-datepicker.js" asp-append-version="true"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -70,16 +67,18 @@
                 <div class="ibox-content">
 
                     <div class="row">
-                        <div class="col-sm-1">
-                            <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
-                        </div>
-
-                        <div class="col-sm-2">
-                            <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/business/List" method="post">
-                                <div class="input-group">
-                                    <input type="text" name="BusinessName" placeholder="@L("BusinessName")" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
-                                    </span>
+                        <div class="col-sm-12 m-b">
+                            <form id="searchForm" class="form-inline" data-ajax="true" data-ajax-update="#table" action="/business/business/List" method="post">
+                                <input type="hidden" name="pageSize" value="10" />
+                                <div class="form-group">
+                                    <button id="add" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" name="BusinessName" placeholder="@L("BusinessName")" class="input-sm form-control"> <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
+                                        </span>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -96,6 +95,8 @@
 <div id="DivAdd">
     @Html.Partial("_Add", new Business())
 </div>
+
+<script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script src="~/lib/pager/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>

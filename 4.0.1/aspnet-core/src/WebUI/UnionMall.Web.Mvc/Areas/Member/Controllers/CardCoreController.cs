@@ -33,14 +33,21 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ConsumeList(int page = 1, int pageSize = 10, string orderNumber = "",
-   string timeFrom = "", string timeTo = "")
+        public async Task<IActionResult> ConsumeList(int page = 1, int pageSize = 10, string memberId = "")
         {
-            string where = " and 1=1";
+            string where = $" and Memberid={memberId}";
             int total;
             DataSet ds = _consumeService.GetPage(page, pageSize, "CreationTime desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             return View("_TableConsume", pageList);
+        }
+        public async Task<IActionResult> BalanceList(int page = 1, int pageSize = 10, string memberId = "")
+        {
+            string where = $" and Memberid={memberId}";
+            int total;
+            DataSet ds = _consumeService.GetPage(page, pageSize, "CreationTime desc", out total, where);
+            IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
+            return View("_TableBalance", pageList);
         }
         [AbpMvcAuthorize("UnionMember.CardInfo")]
         public async Task<JsonResult> GetCardInfo(string cardId)

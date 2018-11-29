@@ -33,15 +33,15 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             _businessAppService = businessAppService;
         }
         public async Task<IActionResult> List(int page = 1, int pageSize = 10,
-            string storeName = "", string BusinessId = "")
+            string storeName = "", string businessId = "")
         {
             string where =_commonAppService.GetWhere();
             if (!string.IsNullOrEmpty(storeName))
             { where = $" and c.Name like '%{storeName}%'"; }
-            if (!string.IsNullOrEmpty(BusinessId))
-            { where += $" and c.BusinessId = {BusinessId}"; }
+            if (!string.IsNullOrEmpty(businessId))
+            { where += $" and c.BusinessId = {businessId}"; }
             int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, "c.id desc", out total, where);
+            DataSet ds = _AppService.GetPage(page, pageSize, "c.sort desc, c.id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             if (Request.Headers.ContainsKey("x-requested-with"))
             {
