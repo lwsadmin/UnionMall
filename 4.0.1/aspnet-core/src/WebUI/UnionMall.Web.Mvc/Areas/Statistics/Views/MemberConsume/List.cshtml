@@ -76,6 +76,9 @@
                             <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/statistics/memberconsume/list" method="post">
                                 <input type="hidden" name="pageSize" value="10" />
                                 <div class="form-group">
+                                    @Html.DropDownList("type", ViewBag.ConsumeType, L("Choose"), new { @class = "m-b input-sm form-control", @style = "    font-size: 12px;" })
+                                </div>
+                                <div class="form-group">
                                     <input type="text" name="orderNumber" placeholder="@L("Order")@L("Number")" class="m-b input-sm form-control">
                                 </div>
                                 <div class="form-group">

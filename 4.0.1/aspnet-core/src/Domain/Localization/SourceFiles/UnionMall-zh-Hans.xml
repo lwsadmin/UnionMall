@@ -74,7 +74,7 @@
     <text name="GoodsConsume" value="商品消费" />
     <text name="MemberRecharge" value="会员充值"/>
     <text name="CouponConsume" value="优惠券消费" />
-    <text name="GiftCash" value="礼品兑换" />
+    <text name="GiftExchange" value="礼品兑换" />
     <text name="PointRecharge" value="积分充值" />
 
     <text name="OnlineGoods" value="线上商城"/>

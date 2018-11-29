@@ -13,6 +13,7 @@
             <th>@L("Consume")@L("Time")</th>
             <th>@L("Order")@L("Number")</th>
             <th>@L("Status")</th>
+            <th>@L("Consume")@L("Type")</th>
             <th>@L("Consume")@L("Store")</th>
             <th>@L("Consume")@L("Amount")</th>
             <th>@L("WeChat")@L("Pay")</th>
@@ -29,37 +30,35 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-        <tr>
-            <td class="title">
-                @item["CreationTime"]
-            </td>
-            <td>@item["BillNumber"]</td>
-            @switch (item["Status"].ToString())
-            {
-                case "0":
-                    <td>@L("Normal")</td>
-                    break;
-                case "-1":
-                    <td class="text-danger">@L("Revoke")</td>
-                    break;
-                default:
-                    <td>@item["Status"]</td>
-                    break;
-            }
-            <td class="name">@item["Name"]</td>
-            <td>@item["TotalPaid"]</td>
-            <td>@item["WeChatPay"]</td>
-            <td>@item["AliPay"]</td>
-            <td>@item["BalancePay"]</td>
-            <td>@item["IntegralPay"]</td>
-            <td>@item["CouponPay"]</td>
-            <td>@item["CashPay"]</td>
-
-
-
-            <td>@item["CardID"]</td>
-            <td>@item["WeChatName"]</td>
-        </tr>
+            <tr>
+                <td class="title">
+                    @item["CreationTime"]
+                </td>
+                <td>@item["BillNumber"]</td>
+                @switch (item["Status"].ToString())
+                {
+                    case "0":
+                        <td>@L("Normal")</td>
+                        break;
+                    case "-1":
+                        <td class="text-danger">@L("Revoke")</td>
+                        break;
+                    default:
+                        <td>@item["Status"]</td>
+                        break;
+                }
+                <td>@L(Enum.GetName(typeof(UnionMall.Entity.ConsumeType), item["Type"]))</td>
+                <td class="name">@item["Name"]</td>
+                <td>@item["TotalPaid"]</td>
+                <td>@item["WeChatPay"]</td>
+                <td>@item["AliPay"]</td>
+                <td>@item["BalancePay"]</td>
+                <td>@item["IntegralPay"]</td>
+                <td>@item["CouponPay"]</td>
+                <td>@item["CashPay"]</td>
+                <td>@item["CardID"]</td>
+                <td>@item["WeChatName"]</td>
+            </tr>
         }
 
     </tbody>

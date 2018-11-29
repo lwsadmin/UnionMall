@@ -12,45 +12,49 @@
         <tr>
             <th>@L("Operate")@L("Time")</th>
             <th>@L("Order")@L("Number")</th>
-            <th>@L("Type")</th>
-            <th>@L("Store")</th>
+            <th>@L("Operate")</th>
+            <th>@L("Store")@L("Name")</th>
+            <td>@L("Type")</td>
             <th>@L("Amount")</th>
             <th>@L("Balance")</th>
             <th>@L("CardID")</th>
             <th>@L("WeChat")@L("Name")</th>
+            <th>@L("Note")</th>
         </tr>
 
     </thead>
     <tbody>
         @foreach (DataRow item in Model)
         {
-            <tr>
-                <td class="title">
-                    @item["CreationTime"]
-                </td>
-                <td>@item["BillNumber"]</td>
-                @switch (item["Type"].ToString())
-                {
-                    case "0":
-                        <td>@L("Increase")</td>
-                        break;
-                    case "1":
-                        <td>@L("Deduction")</td>
-                        break;
-                    default:
-                        <td>@item["Type"]</td>
-                        break;
-                }
-                <td class="name">@item["Name"]</td>
+        <tr>
+            <td class="title">
+                @item["CreationTime"]
+            </td>
+            <td>@item["BillNumber"]</td>
+            @switch (item["Type"].ToString())
+            {
+                case "0":
+                    <td>@L("Deduction")</td>
+                    break;
+                case "1":
+                    <td>@L("Increase")</td>
+                    break;
+                default:
+                    <td>@item["Type"]</td>
+                    break;
+            }
+            <td class="name">@item["Name"]</td>
 
-                <td>@item["Value"]</td>
-                <td>@item["Balance"]</td>
+            <td>@L(Enum.GetName(typeof(UnionMall.Entity.ConsumeType), item["Way"]))</td>
+            <td>@item["Value"]</td>
+            <td>@item["Balance"]</td>
 
 
 
-                <td>@item["CardID"]</td>
-                <td>@item["WeChatName"]</td>
-            </tr>
+            <td>@item["CardID"]</td>
+            <td>@item["WeChatName"]</td>
+            <td>@item["Memo"]</td>
+        </tr>
         }
 
     </tbody>

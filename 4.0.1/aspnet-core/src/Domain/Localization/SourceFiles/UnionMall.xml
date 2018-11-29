@@ -133,7 +133,7 @@
     <text name="GoodsConsume" value="GoodsConsume" />
     <text name="MemberRecharge" value="Member"/>
     <text name="CouponConsume" value="CouponConsume" />
-    <text name="GiftCash" value="GiftCash" />
+    <text name="GiftExchange" value="GiftExchange" />
     <text name="PointRecharge" value="PointRecharge" />
     <text name="OnlineGoods" value="OnlineGoods"/>
     <text name="GoodsCategory" value="GoodsCategory"/>

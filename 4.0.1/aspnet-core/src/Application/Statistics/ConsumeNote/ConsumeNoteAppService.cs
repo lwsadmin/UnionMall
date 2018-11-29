@@ -32,7 +32,7 @@ cast(n.CouponPay as float) CouponPay,
 cast(n.BalancePay as float) BalancePay,
 cast(n.IntegralPay as float) IntegralPay,
 cast(n.CashPay as float) CashPay,
- n.Status,n.UserAccount,n.CreationTime,
+ n.Status,n.UserAccount,CONVERT(nvarchar(100), n.CreationTime,120) CreationTime,
 c.Name,m.CardID,m.WeChatName,c.BusinessId
  from dbo.TConsumeNote n left join dbo.TMember m 
 on n.Memberid=m.id left join dbo.TChainStore c on n.ChainStoreId=c.Id where 1=1  ";
