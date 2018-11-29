@@ -229,6 +229,9 @@
     <!--Form-->
     <text name="SortTip" value="Descending from big to small" />
     <text name="Referrer" value="Referrer" />
+    <text name="Increase" value="Increase" />
+    <text name="Reduce" value="Reduce" />
+    <text name="Deduction" value="Deduction" />
     <text name="Brand" value="Brand" />
     <text name="Choose" value="-Choose-" />
     <text name="Selected" value="Selected" />

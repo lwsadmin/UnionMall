@@ -43,7 +43,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>@L("MemberConsumeStatistics") </h5>
+                    <h5>@L("MemberBalanceStatistics") </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -54,15 +54,15 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/statistics/memberconsume/list?pageSize=10">10/@L("Page")</a>
+                                   data-ajax-update="#table" href="/statistics/memberbalance/list?pageSize=10">10/@L("Page")</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/statistics/memberconsume/list?pageSize=15">15/@L("Page")</a>
+                                   data-ajax-update="#table" href="/statistics/memberbalance/list?pageSize=15">15/@L("Page")</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/statistics/memberconsume/list?pageSize=20">20/@L("Page")</a>
+                                   data-ajax-update="#table" href="/statistics/memberbalance/list?pageSize=20">20/@L("Page")</a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -73,19 +73,22 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/statistics/memberconsume/list" method="post">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/statistics/memberbalance/list" method="post">
                                 <input type="hidden" name="pageSize" value="10" />
                                 <div class="form-group">
                                     <input type="text" name="orderNumber" placeholder="@L("Order")@L("Number")" class="m-b input-sm form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="name" placeholder="@L("Consume")@L("Store")@L("Name")" class="m-b input-sm form-control">
+                                    <input type="text" name="cardid" placeholder="@L("Member")@L("CardID")" class="m-b input-sm form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="timeFrom" placeholder="@L("Consume")@L("Time")"
+                                    <input type="text" name="name" placeholder="@L("Store")@L("Name")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="timeFrom" placeholder="@L("Operate")@L("Time")"
                                            class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
                                     <span style="display: inline-block;vertical-align: 5px;">@L("To")</span>
-                                    <input type="text" name="timeTo" placeholder="@L("Consume")@L("Time")" class="m-b input-sm form-control"
+                                    <input type="text" name="timeTo" placeholder="@L("Operate")@L("Time")" class="m-b input-sm form-control"
                                            onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
                                 </div>
                                 <div class="form-group">

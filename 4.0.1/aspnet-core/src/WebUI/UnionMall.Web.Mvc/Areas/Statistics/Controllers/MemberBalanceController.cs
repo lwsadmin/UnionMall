@@ -25,13 +25,15 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
         }
 
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string orderNumber = "",
-            string name = "", string timeFrom = "", string timeTo = "")
+            string name = "",string cardid = "", string timeFrom = "", string timeTo = "")
         {
             string where = _comService.GetWhere();
             if (!string.IsNullOrEmpty(orderNumber))
                 where += $" and billNumber like '%{orderNumber}%'";
             if (!string.IsNullOrEmpty(name))
                 where += $" and Name like '%{name}%'";
+            if (!string.IsNullOrEmpty(cardid))
+                where += $" and cardid like '%{cardid}%'";
             if (!string.IsNullOrEmpty(timeFrom))
                 where += $" and CreationTime>='{timeFrom} 00:00:00'";
             if (!string.IsNullOrEmpty(timeTo))

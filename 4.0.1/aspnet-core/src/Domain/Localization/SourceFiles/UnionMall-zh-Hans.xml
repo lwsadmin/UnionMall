@@ -197,6 +197,9 @@
     <text name="legalPerson" value="法人" />
     <text name="DueTime" value="到期时间" />
     <text name="Link" value="链接" />
+    <text name="Increase" value="增加" />
+    <text name="Reduce" value="减少" />
+    <text name="Deduction" value="扣除" />
     <text name="FirstPage" value="首页" />
     <text name="LastPage" value="尾页" />
     <text name="PreviousPage" value="上一页" />
