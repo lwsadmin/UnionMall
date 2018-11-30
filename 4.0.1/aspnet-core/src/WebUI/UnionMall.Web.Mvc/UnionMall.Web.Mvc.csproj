@@ -162,11 +162,14 @@
     <Folder Include="Areas\ArticleInfo\Models\" />
     <Folder Include="Areas\Coupon\Data\" />
     <Folder Include="Areas\Coupon\Models\" />
+    <Folder Include="Areas\GiftMall\Data\" />
+    <Folder Include="Areas\GiftMall\Models\" />
     <Folder Include="Areas\Member\Data\" />
     <Folder Include="Areas\Member\Models\" />
     <Folder Include="Areas\Statistics\Data\" />
     <Folder Include="Areas\Statistics\Models\" />
     <Folder Include="wwwroot\lib\pager\" />
+    <Folder Include="wwwroot\view-resources\Areas\GiftMall\Gift\" />
     <Folder Include="wwwroot\view-resources\Views\Shared\Components\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
     <Folder Include="wwwroot\file\" />
@@ -225,6 +228,23 @@
     <Content Update="Areas\Coupon\Views\Coupon\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\GiftMall\Views\GiftCategory\List.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\GiftMall\Views\GiftCategory\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\GiftMall\Views\Gift\Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\GiftMall\Views\Gift\List.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\GiftMall\Views\Gift\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\GoodsManage\Views\Category\_Add.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -232,6 +252,17 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Member\Views\Member\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Statistics\Views\IntegralStatistics\List.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Statistics\Views\IntegralStatistics\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Statistics\Views\IntegralStatistics\_TableChat.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Statistics\Views\MemberBalance\List.cshtml">

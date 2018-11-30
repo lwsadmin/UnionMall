@@ -6,17 +6,17 @@
 @using System.Data
 @using X.PagedList.Mvc.Core
 @model PagedList<DataRow>
-
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>@L("Operate")@L("Time")</th>
             <th>@L("Order")@L("Number")</th>
-            <th>@L("Operate")</th>
+
             <th>@L("Store")@L("Name")</th>
             <th>@L("Type")</th>
-            <th>@L("Amount")</th>
-            <th>@L("Balance")</th>
+            <th>@L("Operate")</th>
+            <th>@L("Integral")</th>
+            <th>@L("Usable")@L("Integral")</th>
             <th>@L("CardID")</th>
             <th>@L("WeChat")@L("Name")</th>
             <th>@L("Note")</th>
@@ -31,6 +31,9 @@
                 @item["CreationTime"]
             </td>
             <td>@item["BillNumber"]</td>
+
+            <td class="name">@item["Name"]</td>
+            <td>@L(Enum.GetName(typeof(UnionMall.Entity.ConsumeType), item["Way"]))</td>
             @switch (item["Type"].ToString())
             {
                 case "0":
@@ -43,14 +46,8 @@
                     <td>@item["Type"]</td>
                     break;
             }
-            <td class="name">@item["Name"]</td>
-
-            <td>@L(Enum.GetName(typeof(UnionMall.Entity.ConsumeType), item["Way"]))</td>
-            <td>@item["Value"]</td>
+            <td>@item["Point"]</td>
             <td>@item["Balance"]</td>
-
-
-
             <td>@item["CardID"]</td>
             <td>@item["WeChatName"]</td>
             <td>@item["Memo"]</td>

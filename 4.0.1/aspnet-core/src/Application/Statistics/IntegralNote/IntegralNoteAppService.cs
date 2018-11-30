@@ -7,9 +7,9 @@ using System.Data;
 using System.Text;
 using UnionMall.IRepositorySql;
 
-namespace UnionMall.BalanceNote
+namespace UnionMall.IntegralNote
 {
-    public class IntegralNoteAppService : ApplicationService, IBalanceNoteAppService
+    public class IntegralNoteAppService : ApplicationService, IIntegralNoteAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
@@ -25,7 +25,8 @@ namespace UnionMall.BalanceNote
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select n.id,c.Name,m.WeChatName,m.CardID,n.Type,n.Way,n.BillNumber,n.Balance,n.Point, n.CreationTime from dbo.tIntegralNote n left  join dbo.TMember m 
+                table = $@"select n.id,c.Name,m.WeChatName,m.CardID,n.Type,n.Way,n.BillNumber,
+cast( n.Balance as float) Balance ,cast( n.Point as float) Point, n.CreationTime,n.Memo  from dbo.tIntegralNote n left  join dbo.TMember m 
 on n.MemberId=m.id left join dbo.TChainStore c on n.ChainStoreId=c.id where 1=1  ";
             }
             where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n");

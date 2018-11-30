@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+<input id="input-imgs" name="File" type="file"   multiple data-browse-on-zone-click="true">
+<script>
+    var ImaArray = [];
+    $(function () {
+        $("#input-imgs").fileinput({
+            language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es', //设置语言
+            uploadUrl: "/Common/Upload",
+            maxFileCount: 5,
+            validateInitialCount: true,
+            showUpload: true,
+            uploadAsync: true,
+            dropZoneEnabled: true,
+            showClose: false,
+            layoutTemplates: {
+                actionDrag: '',//去除上传预览缩略图中移动，因为功能未能实现；
+            },
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            initialPreview: ImaArray,
+            initialPreviewConfig: [],
+            maxFileSize: 1024,
+            maxFileCount: 5,
+            allowedFileTypes: ['image'],
+            slugCallback: function (filename) {
+                return filename.replace('(', '_').replace(']', '_');
+            }
+        });
+    });
+
+    //选择文件后处理事件
+    $("#input-imgs").on("filebatchselected", function (event, files) {
+        //  $("#file-1").fileinput("upload");
+
+        alert(1);
+        var filesCount = $('#file-1').fileinput('getFilesCount');
+    });
+    //上传成功后处理方法
+    $("#input-imgs").on("fileuploaded", function (event, data, previewId, index) {
+        var url = data.response.url;
+        $(".hid" + index).val(url).addClass(previewId);
+    });
+
+    //图片上传成功后，预览图点击删除按钮的回调函数
+    $("#input-imgs").on("filesuccessremove", function (event, data, previewId) {
+        if (previewId < 0) {
+            previewId = $("#zoom-" + data).attr("data-fileindex");
+        }
+        var url = $(".hid" + previewId).val();
+        $.post("/common/common/UploadedImageDelete", { url: url }, function (data) {
+            parent.layer.closeAll('dialog'); //关闭信息框
+            if (data.success) {
+                $(".hid" + previewId).val("");
+            } else {
+                parent.layer.alert(data.msg, { title: "提示", icon: 5, time: 5000 });
+                return true;
+            }
+
+        })
+    });
+</script>
+

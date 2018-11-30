@@ -166,17 +166,17 @@
     </Second>-->
   </First>
   <First Name="GiftMall"   Icon="glyphicon glyphicon-gift">
-    <Second Name="GiftCategory"   Url="/Gift/GiftCategory/List">
+    <Second Name="GiftCategory"   Url="/giftmall/giftcategory/List">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="GiftList" Url="/Gift/Gift/List">
+    <Second Name="GiftList" Url="/giftmall/gift/List">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="GiftOrder"   Url="javascript:void(0);"></Second>
+    <Second Name="GiftOrder"   Url="/giftmall/giftorder/list"></Second>
   </First>
   <First Name="FundSettle"   Icon="glyphicon glyphicon-usd">
     <Second Name="AllSettleSet"  Url="/Settlement/Global/Index"></Second>
@@ -191,7 +191,7 @@
     <Second Name="ChainStoreSmsStatistics"  Url="/Statistics/ChainStoreSmsNote/List"></Second>
     <Second Name="MemberRechargeStatistics"  Url="/Statistics/MemberRecharge/List"></Second>
     <Second Name="MemberConsumeStatistics"  Url="/Statistics/memberconsume/List"></Second>
-    <Second Name="MemberPointStatistics"  Url="/Statistics/memberintegral/List"></Second>
+    <Second Name="MemberIntegralStatistics"  Url="/Statistics/integralstatistics/List"></Second>
     <Second Name="MemberBalanceStatistics"  Url="/Statistics/memberbalance/List"></Second>
     <Second Name="CouponReceiveStatistics" Url="/statistics/receivestatistics/list"></Second>
     <Second Name="CouponUseStatistics" Url="/statistics/usedstatistics/list"></Second>

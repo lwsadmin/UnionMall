@@ -14,7 +14,7 @@ namespace UnionMall.Entity
         public int TenantId { get; set; }
         public long ParentId { get; set; } = 0;
         /// <summary>
-        /// 分类 类型:1 资讯  2  礼品  3..... 
+        /// 分类 类型:0 资讯  1  礼品  2..... 
         /// </summary>
         public int Type { get; set; }
         public long BusinessId { get; set; }

@@ -8,12 +8,11 @@
         });
         $('#Modal').on('hidden.bs.modal', function (e) {
             // do something...
-            $("#AddPost").find("input").each(function () {
-                $(this).val("");
-            });
             $(".modal-title").html('');
             $("#Memo").val('');
-            $("input[name='Id']").val(0); $("input[name='Type']").val(0);
+            $("input[name='Id']").val(0);
+            $("input[name='Sort']").val("");
+            $("input[name='Title']").val("");
         });
 
         $("#AddPost").on("submit", function (e) {

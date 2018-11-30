@@ -42,6 +42,7 @@
     <text name="Screen" value="Screen" />
     <text name="Unlock" value="Unlock" />
     <text name="Info" value="Info" />
+    <text value="Stock" name="Stock" />
     <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
     <text name="DefaultPasswordIs" value="Default password is {0}" />
     <text name="CanBeEmptyToLoginAsHost" value="Can be empty to login as host." />
@@ -179,6 +180,7 @@
     <text name="CouponPackage" value="CouponPackage"/>
     <text name="Gift" value="Gift"/>
     <text name="Total" value="Total"/>
+    <text name="Usable" value="Usable"/>
     <text name="UnionMember" value="UnionMember"/>
     <text name="GiftCategory" value="GiftCategory"/>
     <text name="GiftList" value="GiftList"/>
@@ -195,7 +197,7 @@
     <text name="ChainStoreSmsStatistics" value="ChainStoreSmsStatistics"/>
     <text name="MemberRechargeStatistics" value="MemberRechargeStatistics"/>
     <text name="MemberConsumeStatistics" value="MemberConsumeStatistics"/>
-    <text name="MemberPointStatistics" value="MemberPointStatistics"/>
+    <text name="MemberIntegralStatistics" value="MemberIntegralStatistics"/>
     <text name="MemberBalanceStatistics" value="MemberBalanceStatistics"/>
     <text name="CouponReceiveStatistics" value="CouponReceiveStatistics"/>
     <text name="CouponUseStatistics" value="CouponUseStatistics"/>
@@ -232,6 +234,7 @@
     <text name="Increase" value="Increase" />
     <text name="Reduce" value="Reduce" />
     <text name="Deduction" value="Deduction" />
+    <text name="SpellGroupOrder" value="SpellGroupOrder" />
     <text name="Brand" value="Brand" />
     <text name="Choose" value="-Choose-" />
     <text name="Selected" value="Selected" />

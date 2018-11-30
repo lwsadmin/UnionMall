@@ -35,6 +35,7 @@
     <text value="禁用" name="Disable" />
     <text value="管理" name="Manage"/>
     <text value="信息" name="Info" />
+    <text value="库存" name="Stock" />
     <text name="LanguageSetting">语言设置</text>
     <text value="欢迎您" name="Welcome to"  />
     <text name="This system is for demonstration only" value="本系统仅供演示" />
@@ -120,7 +121,7 @@
     <text name="CouponPackage" value="优惠券包"/>
     <text name="GiftCategory" value="礼品类别"/>
     <text name="GiftList" value="礼品管理"/>
-    <text name="GiftOrder" value="GiftOrder" />
+    <text name="GiftOrder" value="礼品订单" />
     <text name="FundSettle" value="资金结算"/>
     <text name="AllSettleSet" value="全局结算设置"/>
     <text name="BusinessDivideSet" value="门店结算设置"/>
@@ -133,7 +134,7 @@
     <text name="ChainStoreSmsStatistics" value="门店短信统计"/>
     <text name="MemberRechargeStatistics" value="会员充值统计"/>
     <text name="MemberConsumeStatistics" value="会员消费统计"/>
-    <text name="MemberPointStatistics" value="会员积分统计"/>
+    <text name="MemberIntegralStatistics" value="会员积分统计"/>
     <text name="MemberBalanceStatistics" value="会员余额统计"/>
     <text name="CouponReceiveStatistics" value="优惠券领取统计"/>
     <text name="CouponUseStatistics" value="优惠券使用统计"/>
@@ -157,7 +158,8 @@
     <text name="Store" value="门店"/>
     <text name="Count" value="数量"/>
     <text name="Total" value="总计"/>
-    <text name="GiftMall" value="积分商城"/>
+    <text name="Usable" value="可用"/>
+    <text name="GiftMall" value="礼品商城"/>
     <!--Action-->
     <text name="Comment" value="评论" />
     <text name="Loading" value="加载中..." />
@@ -171,6 +173,7 @@
     <text name="Praise" value="赞" />
     <text name="Ago" value="前" />
     <text name="SortTip" value="从大到小降序展示" />
+    <text name="SpellGroupOrder" value="拼团订单" />
     <text name="Brand" value="品牌" />
     <text name="FullName" value="姓名" />
     <text name="Selected" value="已选" />

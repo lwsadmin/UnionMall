@@ -41,7 +41,7 @@ namespace UnionMall.Entity
     public enum ConsumeType
     {
         GoodsOrder = 0,
-        拼团下单 = 1,
+        SpellGroupOrder = 1,
         FlashSale = 2,
         GiftExchange = 3,
         QuickConsume = 4,
