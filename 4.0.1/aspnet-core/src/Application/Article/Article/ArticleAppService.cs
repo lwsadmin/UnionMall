@@ -53,13 +53,13 @@ namespace UnionMall.Article
             //    _sqlExecuter.Execute(sql);
             //}
 
-            DataTable dt2 = _sqlExecuter.ExecuteDataSet("select * from TGiftOrderItem").Tables[0];
-            foreach (DataRow item in dt2.Rows)
-            {
-                int sid = store[new Random().Next(0, store.Length)];
-                string sql = $" update TGiftOrderItem set GiftId={new Random().Next(1, 25)},GiftOrderId={new Random().Next(1, 47)} where id={item["id"]}";
-                _sqlExecuter.Execute(sql);
-            }
+            //DataTable dt2 = _sqlExecuter.ExecuteDataSet("select * from TGiftOrderItem").Tables[0];
+            //foreach (DataRow item in dt2.Rows)
+            //{
+            //    int sid = store[new Random().Next(0, store.Length)];
+            //    string sql = $" update TGiftOrderItem set GiftId={new Random().Next(1, 25)},GiftOrderId={new Random().Next(1, 47)} where id={item["id"]}";
+            //    _sqlExecuter.Execute(sql);
+            //}
 
             if (string.IsNullOrEmpty(table))
             {
