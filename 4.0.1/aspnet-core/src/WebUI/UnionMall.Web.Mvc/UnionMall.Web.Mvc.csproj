@@ -17,6 +17,7 @@
     <Compile Remove="Areas\GoodsManage\Models\**" />
     <Compile Remove="Areas\SystemSet\Data\**" />
     <Compile Remove="Areas\SystemSet\Models\**" />
+    <Compile Remove="wwwroot\Upload\**" />
     <Content Remove="App_Data\**" />
     <Content Remove="Areas\Business\Data\**" />
     <Content Remove="Areas\Business\Models\**" />
@@ -24,6 +25,7 @@
     <Content Remove="Areas\GoodsManage\Models\**" />
     <Content Remove="Areas\SystemSet\Data\**" />
     <Content Remove="Areas\SystemSet\Models\**" />
+    <Content Remove="wwwroot\Upload\**" />
     <EmbeddedResource Remove="App_Data\**" />
     <EmbeddedResource Remove="Areas\Business\Data\**" />
     <EmbeddedResource Remove="Areas\Business\Models\**" />
@@ -31,6 +33,7 @@
     <EmbeddedResource Remove="Areas\GoodsManage\Models\**" />
     <EmbeddedResource Remove="Areas\SystemSet\Data\**" />
     <EmbeddedResource Remove="Areas\SystemSet\Models\**" />
+    <EmbeddedResource Remove="wwwroot\Upload\**" />
     <None Remove="App_Data\**" />
     <None Remove="Areas\Business\Data\**" />
     <None Remove="Areas\Business\Models\**" />
@@ -38,6 +41,7 @@
     <None Remove="Areas\GoodsManage\Models\**" />
     <None Remove="Areas\SystemSet\Data\**" />
     <None Remove="Areas\SystemSet\Models\**" />
+    <None Remove="wwwroot\Upload\**" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -164,6 +168,7 @@
     <Folder Include="Areas\Coupon\Models\" />
     <Folder Include="Areas\GiftMall\Data\" />
     <Folder Include="Areas\GiftMall\Models\" />
+    <Folder Include="Areas\GiftMall\Views\GiftOrder\" />
     <Folder Include="Areas\Member\Data\" />
     <Folder Include="Areas\Member\Models\" />
     <Folder Include="Areas\Statistics\Data\" />

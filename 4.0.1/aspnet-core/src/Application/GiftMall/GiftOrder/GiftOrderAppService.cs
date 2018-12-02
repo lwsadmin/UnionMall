@@ -13,13 +13,13 @@ using UnionMall.Common;
 
 namespace UnionMall.Gift
 {
-    public class GiftAppService : ApplicationService, IGiftAppService
+    public class GiftOrderAppService : ApplicationService, IGiftOrderAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
         private readonly IRepository<Entity.Gift, long> _Repository;
         private readonly IImageAppService _imgService;
-        public GiftAppService(ISqlExecuter sqlExecuter, IImageAppService imgService,
+        public GiftOrderAppService(ISqlExecuter sqlExecuter, IImageAppService imgService,
     IRepository<Entity.Gift, long> Repository, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;

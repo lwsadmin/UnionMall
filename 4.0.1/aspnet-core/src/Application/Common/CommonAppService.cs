@@ -192,7 +192,8 @@ namespace UnionMall.Common
         public JsonResult SaveSingleImg(IFormFile file, int tenandId)
         {
             Tenant t = _Repository.Get(tenandId);
-
+            long size = file.Length;
+            string name = file.FileName;
             string path = string.Format("/Upload/{0}/Images/{1}/", t.TenancyName, DateTime.Now.Year.ToString());
             string directoryPath = _HostingEnvironment.WebRootPath + path;
 
@@ -218,7 +219,7 @@ namespace UnionMall.Common
             //   FileStream fs = new FileStream(directoryPath, FileMode.Create);
 
             string url = path + uploadFileName;//返回的没有转换的相对路径到前端，前端传入后台存入数据库
-            return new JsonResult(new { error = 0, succ = true, url = url });
+            return new JsonResult(new { error = 0, succ = true, url = url, size = size, name = name });
         }
     }
 }

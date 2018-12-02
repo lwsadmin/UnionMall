@@ -176,7 +176,9 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="GiftOrder"   Url="/giftmall/giftorder/list"></Second>
+    <Second Name="GiftOrder"   Url="/giftmall/giftorder/List">
+      <Action Name="Export" />
+    </Second>
   </First>
   <First Name="FundSettle"   Icon="glyphicon glyphicon-usd">
     <Second Name="AllSettleSet"  Url="/Settlement/Global/Index"></Second>

@@ -4,7 +4,7 @@
     ViewBag.FirstMenu = "GiftMall";
     ViewBag.SecondMenu = "GiftList";
 }
-@model UnionMall.Entity.Gift
+@model UnionMall.GiftMall.Dto.CreateOrEditDto
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
 <script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
@@ -32,7 +32,10 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content">
         <form method="post" id="formPost">
-            <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="hidden" name="Id" value="@Model.Gift.Id" />
+            <input type="hidden" name="TenantId" value="@Model.Gift.TenantId" />
+            <input type="hidden" name="BusinessId" value="@Model.Gift.BusinessId" />
+            <input type="hidden" name="ExchangeType" value="@Model.Gift.ExchangeType" />
             <div class="tabs-container">
                 <ul class="nav nav-tabs" id="myTabs">
                     <li class="active"><a data-toggle="tab" href="#basic" aria-expanded="true">@L("Gift")@L("Info")</a></li>
@@ -45,31 +48,39 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>@L("Name")</label>
-                                        <input type="text" name="Title" value="@Model.Name" class="form-control" required maxlength="50" />
+                                        <input type="text" name="Name" value="@Model.Gift.Name" class="form-control" required maxlength="50" />
                                     </div>
                                     <div class="form-group">
                                         <label>@L("GiftCategory")</label>
-                                        @Html.DropDownListFor(c => c.CategoryId, (SelectList)ViewData["Category"], L("Choose"), new { @class = "form-control chosen-select" })
+                                        @Html.DropDownListFor(c => c.Gift.CategoryId, (SelectList)ViewData["Category"], L("Choose"), new { @class = "form-control chosen-select" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("SigleCount")</label>
+                                        <input type="text" name="SingleReceiveCount" value="@Model.Gift.SingleReceiveCount" class="form-control" required maxlength="15">
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Integral")</label>
-                                        <input type="text" name="Source" value="@Model.Integral" class="form-control" required maxlength="15">
+                                        <input type="text" name="Integral" value="@Model.Gift.Integral" class="form-control" required maxlength="15">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>@L("Sort")</label><span class="help-block m-b-none" style="display:inline;">&nbsp;&nbsp;(@L("SortTip"))</span>
-                                        <input type="number" name="Sort" value="@Model.Sort" class="form-control" required>
+                                        <input type="number" name="Sort" value="@Model.Gift.Sort" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label>@L("Image")</label>
-                                        <input type="hidden" id="hiddenImg" name="SmallImg" value="@Model.Img" />
-                                        <input id="input" title="@Model.Img" name="File" value="@Model.Img" type="file" data-show-preview="false">
+                                        <input type="hidden" id="hiddenImg" name="Img" value="@Model.Gift.Img" />
+                                        <input id="input" title="@Model.Gift.Img" name="File" value="@Model.Gift.Img" type="file" data-show-preview="false">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("Total")@L("Count")</label>
+                                        <input type="text" name="StockCount" value="@Model.Gift.StockCount" class="form-control" required maxlength="15">
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Receive")@L("Address")</label>
-                                        <input type="text" name="Author" value="@Model.ExchangeAddress" class="form-control" required maxlength="15">
+                                        <input type="text" name="ExchangeAddress" value="@Model.Gift.ExchangeAddress" class="form-control" required maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +89,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>@L("Note")</label>
-                                        <textarea id="Describle" name="Describle" class="form-control" cols="4">@Model.Memo</textarea>
+                                        <textarea name="Memo" class="form-control" cols="4">@Model.Gift.Memo</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +98,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>@L("Introduce")</label>
-                                        <textarea style="width:100%;min-width:550px;" id="Content" name="Content" class="form-control" cols="5">@Model.ExchangeNotes</textarea>
+                                        <textarea style="width:100%;min-width:550px;" id="ExchangeNotes" name="ExchangeNotes" class="form-control" cols="5">@Model.Gift.ExchangeNotes</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -95,16 +106,16 @@
                     </div>
                     <div id="images" class="tab-pane fade" aria-labelledby="images-tab">
                         <div class="panel-body">
-                            @Html.Partial("_AddImage")
+                            @Html.Partial("_AddImage", Model)
                         </div>
                     </div>
                 </div>
             </div>
             <br /><br />
-                  <div class="col-md-8" style="text-align:center;">
-                      <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>&nbsp;&nbsp;&nbsp;
-                      <button onclick="javascript: history.back(-1);" type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
-                  </div>
+            <div class="col-md-8" style="text-align:center;">
+                <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>&nbsp;&nbsp;&nbsp;
+                <button onclick="javascript: history.back(-1);" type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+            </div>
             <br /><br />
         </form>
     </div>
@@ -126,6 +137,7 @@
             allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
             showUploadedThumbs: false,
             uploadUrl: "/Common/Upload",
+            initialPreview:['@Model.Gift.Img'],
             showClose: false,
             showCancel: false,
             slugCallback: function (filename) {
@@ -140,23 +152,46 @@
         //上传成功后处理方法
         $("#input").on("fileuploaded", function (event, data, previewId, index) {
             var url = data.response.result.url;
-            $("input[name='SmallImg']").val(url);
+            debugger;
+            $("input[name='Img']").val(url);
             //$(".hid" + index).val(url).addClass(previewId);
         });
 
-        var _Service = abp.services.app.article;
+        var _Service = abp.services.app.gift;
         $("#formPost").on("submit", function (e) {
             e.preventDefault();
             if (!$(this).valid()) {
                 return;
             }
-            var EditDto = $(this).serializeFormToObject();
-            $("input[name='Level']:checked").each(function () {
-                EditDto.Level += $(this).val() + ',';
-            });
+            var gift = $(this).serializeFormToObject();
+            gift.categoryId= $("#Gift_CategoryId").val();
+            var EditDto = {};
+            EditDto.gift = gift;
+            var imgArray = [];
+            for (var i = 0; i < 7; i++) {
+                if ($("#Url" + i).val() == "") {
+                    continue;
+                }
+                imgArray.push({
+                    tenantId: $("input[name='TenantId']").val(),
+                    businessId: $("input[name='BusinessId']").val(),
+                    objectId: $("input[name='Id']").val(),
+                    type:1,
+                    id: $("#id" + i).val(),
+                    size: $("#Size" + i).val(),
+                    url: $("#Url" + i).val(),
+                    name:$("#Name"+i).val()
+                });
+            }
+            EditDto.imageList = imgArray;
             _Service.createOrEdit(EditDto).done(function (data) {
-
-                window.location.href = '/articleinfo/article/list';
+                var url = localStorage.getItem("page");
+                if (url != "" && url != undefined) {
+                    localStorage.removeItem("page");
+                    window.location.href = url;
+                } else {
+                    window.location.href = '/giftmall/gift/list';
+                }
 
             }).fail(function (data) {
             }).always(function (data) { });
@@ -165,7 +200,7 @@
     var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
     var editor
     KindEditor.ready(function (K) {
-        editor = K.create('#Content',
+        editor = K.create('#ExchangeNotes',
             {
                 langType: language,
                 height: '300px',

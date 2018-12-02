@@ -2,28 +2,42 @@
 @{
     Layout = null;
 }
-<input id="input-imgs" name="File" type="file"   multiple data-browse-on-zone-click="true">
+
+@model UnionMall.GiftMall.Dto.CreateOrEditDto
+
+<div id="imgDiv">
+    @for (int i = 0; i < 7; i++)
+    {
+        <input type="hidden" id="id@(i)" value="@(i>=Model.ImageList.Count?0:Model.ImageList[i].Id)" />
+        <input type="hidden" id="Size@(i)" value="@(i>=Model.ImageList.Count?0:Model.ImageList[i].Size)" />
+        <input type="hidden" class="id@(i>=Model.ImageList.Count?0:Model.ImageList[i].Id)" id="Url@(i)" value="@(i>=Model.ImageList.Count?"":Model.ImageList[i].Url)" />
+        <input type="hidden" id="Name@(i)" value="@(i>=Model.ImageList.Count?"" : Model.ImageList[i].Name)" />
+    }
+</div>
+<input id="input-imgs" name="File" type="file" multiple data-browse-on-zone-click="true">
 <script>
     var ImaArray = [];
     $(function () {
         $("#input-imgs").fileinput({
             language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es', //设置语言
             uploadUrl: "/Common/Upload",
+            deleteUrl:'/Common/Delete',
             maxFileCount: 5,
             validateInitialCount: true,
             showUpload: true,
             uploadAsync: true,
-            dropZoneEnabled: true,
             showClose: false,
             layoutTemplates: {
+                //控制预览图下面的上传，删除，拖拽等小部件
                 actionDrag: '',//去除上传预览缩略图中移动，因为功能未能实现；
+                actionUpload:'',
             },
             overwriteInitial: false,
             initialPreviewAsData: true,
-            initialPreview: ImaArray,
-            initialPreviewConfig: [],
+            initialPreview: [@Html.Raw(ViewBag.Images)],
+            initialPreviewConfig: [@Html.Raw(ViewBag.Config)],
             maxFileSize: 1024,
-            maxFileCount: 5,
+            maxFileCount: 6,
             allowedFileTypes: ['image'],
             slugCallback: function (filename) {
                 return filename.replace('(', '_').replace(']', '_');
@@ -33,33 +47,29 @@
 
     //选择文件后处理事件
     $("#input-imgs").on("filebatchselected", function (event, files) {
-        //  $("#file-1").fileinput("upload");
-
-        alert(1);
-        var filesCount = $('#file-1').fileinput('getFilesCount');
     });
     //上传成功后处理方法
     $("#input-imgs").on("fileuploaded", function (event, data, previewId, index) {
-        var url = data.response.url;
-        $(".hid" + index).val(url).addClass(previewId);
-    });
-
-    //图片上传成功后，预览图点击删除按钮的回调函数
-    $("#input-imgs").on("filesuccessremove", function (event, data, previewId) {
-        if (previewId < 0) {
-            previewId = $("#zoom-" + data).attr("data-fileindex");
-        }
-        var url = $(".hid" + previewId).val();
-        $.post("/common/common/UploadedImageDelete", { url: url }, function (data) {
-            parent.layer.closeAll('dialog'); //关闭信息框
-            if (data.success) {
-                $(".hid" + previewId).val("");
-            } else {
-                parent.layer.alert(data.msg, { title: "提示", icon: 5, time: 5000 });
-                return true;
+        for (var i = 0; i < 7; i++) {
+            if ($("#Url" + i).val() != "") {
+                continue;
             }
+            $("#Size" + i).val(data.response.result.size);
+            $("#Name" + i).val(data.response.result.name);
+            $("#Url" + i).val(data.response.result.url);
+            break;
+        }
+    });
+    $('#input-imgs').on('filepreremove', function (event, file, previewId, index, reader) {
 
-        })
+    });
+    $('#input-imgs').on('filebeforedelete', function (event, key, data) {
+        $(".id" + key).val("");
+        $("input[value='" + key + "']").val(0);
+    });
+    //图片上传成功后，预览图点击删除按钮的回调函数
+    $("#input-imgs").on("filesuccessremove", function (event, data, previewId, index) {
+        var filesCount = $('#input-imgs').fileinput('getFilesCount');
     });
 </script>
 
