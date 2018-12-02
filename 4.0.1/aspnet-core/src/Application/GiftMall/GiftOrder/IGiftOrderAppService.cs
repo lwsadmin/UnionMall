@@ -14,5 +14,5 @@ namespace UnionMall.Gift
         Task CreateOrEditAsync(CreateOrEditDto model);
         Task<Entity.Gift> GetByIdAsync(long Id);
         Task DeleteAsync(long id);
-    }
+    } 
 }
