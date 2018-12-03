@@ -168,7 +168,6 @@
     <Folder Include="Areas\Coupon\Models\" />
     <Folder Include="Areas\GiftMall\Data\" />
     <Folder Include="Areas\GiftMall\Models\" />
-    <Folder Include="Areas\GiftMall\Views\GiftOrder\" />
     <Folder Include="Areas\Member\Data\" />
     <Folder Include="Areas\Member\Models\" />
     <Folder Include="Areas\Statistics\Data\" />
@@ -238,6 +237,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\GiftMall\Views\GiftCategory\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\GiftMall\Views\GiftOrder\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\GiftMall\Views\Gift\Add.cshtml">

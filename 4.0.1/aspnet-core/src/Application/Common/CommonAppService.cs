@@ -34,7 +34,7 @@ namespace UnionMall.Common
             _sqlExecuter = sqlExecuter;
         }
         #region DataTableToExcel
-        public MemoryStream DataTableToExcel(DataTable dt)
+        public async Task<MemoryStream> DataTableToExcel(DataTable dt)
         {
 
             XSSFWorkbook workbook = null;
@@ -157,6 +157,8 @@ namespace UnionMall.Common
             }
         }
         #endregion
+
+
 
 
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)

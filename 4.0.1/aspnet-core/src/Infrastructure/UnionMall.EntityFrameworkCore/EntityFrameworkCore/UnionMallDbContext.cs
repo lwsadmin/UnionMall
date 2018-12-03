@@ -27,6 +27,8 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<BalanceNote> BalanceNote { get; set; }
         public DbSet<IntegralNote> IntegralNote { get; set; }
         public DbSet<Gift> Gift { get; set; }
+        public DbSet<GiftOrder> GiftOrder { get; set; }
+        public DbSet<GiftOrderItem> GiftOrderItem { get; set; }
         public DbSet<Image> Image { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)

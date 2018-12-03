@@ -27,6 +27,7 @@ namespace UnionMall.Member
         private readonly IAbpSession _AbpSession;
         private readonly ICommonAppService _comServices;
         private readonly IRepository<UnionMall.Entity.Member, long> _Repository;
+
         // private readonly ILogAppService _log;
         public MemberAppService(ISqlExecuter sqlExecuter, IRepository<UnionMall.Entity.Member, long> Repository,
             IAbpSession AbpSession, ICommonAppService comServices
@@ -254,52 +255,8 @@ c.Name  所属门店 from dbo.TMember m left join dbo.TMemberLevel l on m.levelI
 m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
             sql += where.Replace("*", "m");
-            int total;
-            string idSql = $@"select count( m.id) from dbo.tmember m left join dbo.tmemberlevel l on m.levelid=l.id left join dbo.tbusiness b on
-m.businessid = b.id left join dbo.tchainstore c on m.chainstoreid = c.id where 1 = 1" + where.Replace("*", "m");
-            DataTable dt = _sqlExecuter.GetPagedList(1, int.MaxValue, sql, " m.RegTime desc ", out total, idSql).Tables[0];
-            XSSFWorkbook workbook = null;
-            MemoryStream ms = null;
-            ISheet sheet = null;
-            XSSFRow headerRow = null;
-            try
-            {
-
-                workbook = new XSSFWorkbook();
-                ms = new MemoryStream();
-                sheet = workbook.CreateSheet();
-                headerRow = (XSSFRow)sheet.CreateRow(0);
-                foreach (DataColumn column in dt.Columns)
-                    headerRow.CreateCell(column.Ordinal).SetCellValue(column.ColumnName);
-                int rowIndex = 1;
-                foreach (DataRow row in dt.Rows)
-                {
-                    XSSFRow dataRow = (XSSFRow)sheet.CreateRow(rowIndex);
-                    foreach (DataColumn column in dt.Columns)
-                        dataRow.CreateCell(column.Ordinal).SetCellValue(row[column].ToString());
-                    ++rowIndex;
-                }
-                //列宽自适应，只对英文和数字有效
-                for (int i = 0; i <= dt.Columns.Count; ++i)
-                    sheet.AutoSizeColumn(i);
-                workbook.Write(ms);
-                ms.Flush();
-                // _log.WriteLog($"导出会员");
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn(ex.Message);
-                Logger.Warn(ex.StackTrace);
-                //  return null;
-            }
-            finally
-            {
-                ms.Close();
-                sheet = null;
-                headerRow = null;
-                workbook = null;
-            }
-            return ms;
+            DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            return await _comServices.DataTableToExcel(dt);
         }
 
         public async Task<Entity.Member> GetEntity(long id)

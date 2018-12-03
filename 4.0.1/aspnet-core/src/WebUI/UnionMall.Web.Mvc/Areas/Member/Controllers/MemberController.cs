@@ -46,9 +46,9 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             if (!string.IsNullOrEmpty(Name))
                 where += $" and (FullName like'%{Name}%' or WeChatName like '%{Name}%')";
             if (!string.IsNullOrEmpty(Business))
-                where += $" and BusinessId={Business}";
+                where += $" and m.BusinessId={Business}";
             if (!string.IsNullOrEmpty(Store))
-                where += $" and ChainStoreId={Store}";
+                where += $" and m.ChainStoreId={Store}";
             if (!string.IsNullOrEmpty(RegTimeFrom))
                 where += $" and RegTime>='{RegTimeFrom} 00:00:00'";
             if (!string.IsNullOrEmpty(RegTimeTo))
@@ -96,9 +96,9 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             if (!string.IsNullOrEmpty(Name))
                 where += $" and (FullName like'%{Name}%' or WeChatName like '%{Name}%')";
             if (!string.IsNullOrEmpty(Business))
-                where += $" and BusinessId={Business}";
+                where += $" and m.BusinessId={Business}";
             if (!string.IsNullOrEmpty(Store))
-                where += $" and ChainStoreId={Store}";
+                where += $" and m.ChainStoreId={Store}";
             if (!string.IsNullOrEmpty(RegTimeFrom))
                 where += $" and RegTime>='{RegTimeFrom} 00:00:00'";
             if (!string.IsNullOrEmpty(RegTimeTo))

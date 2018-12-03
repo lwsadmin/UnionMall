@@ -5,14 +5,21 @@
 }
 @using System.Data
 @using X.PagedList
-
 @model PagedList<DataRow>
+<link href="~/lib/treetable/script/treeTable/default/jquery.treeTable.css" rel="stylesheet" asp-append-version="true" />
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
-
-
-
-<link href="~/lib/admin/css/plugins/footable/footable.core.css" rel="stylesheet" />
-<script src="~/lib/admin/js/plugins/footable/footable.all.min.js"></script>
+<style>
+    .order-item {
+        padding-left: 20px !important;
+        color: #333;
+        font-family: 'Microsoft YaHei';
+    }
+        .order-item p {
+            display: inline-block;
+            width: 33%;
+            margin: 0;
+        }
+</style>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -29,14 +36,12 @@
         </ol>
     </div>
 </div>
-
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Foo表格与行切换器,排序和分页</h5>
-
+                    <h5>@L("GiftOrder")</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -46,10 +51,16 @@
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="#">选项 1</a>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/giftmall/giftorder/List?pageSize=10">10/@L("Page")</a>
                             </li>
                             <li>
-                                <a href="#">选项 2</a>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/giftmall/giftorder/List?pageSize=15">15/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/giftmall/giftorder/List?pageSize=20">20/@L("Page")</a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -58,189 +69,53 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    @*table table-bordered table-hover*@
-                    <table class="footable table table-bordered table-hover toggle-arrow-tiny">
-                        <thead>
-                            <tr>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/giftmall/giftorder/List" method="post">
+                                <input type="hidden" name="pageSize" value="10">
 
-                                <th data-toggle="true">项目</th>
-                                <th>名称</th>
-                                <th>电话</th>
-                                <th data-hide="all">公司</th>
-                                <th data-hide="all">已完成</th>
-                                <th data-hide="all">任务</th>
-                                <th data-hide="all">数据</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>项目例子1</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">0.52/1.561</span></td>
-                                <td>20%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-
-                            </tr>
-                            <tr>
-                                <td>项目例子2</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">6,9</span></td>
-                                <td>40%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子3</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td> 
-                                <td>乐高公司</td>
-                                <td><span class="pie">3,1</span></td>
-                                <td>75%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子4</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">4,9</span></td>
-                                <td>18%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子5</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">6,9</span></td>
-                                <td>40%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    项目例子6
-                                    <small>标注</small>
-                                </td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">0.52/1.561</span></td>
-                                <td>20%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子7</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">4,9</span></td>
-                                <td>18%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    项目例子8
-                                    <small>标注</small>
-                                </td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">0.52/1.561</span></td>
-                                <td>20%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子9</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">6,9</span></td>
-                                <td>40%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子10</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">3,1</span></td>
-                                <td>75%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子11</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">4,9</span></td>
-                                <td>18%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子12</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">6,9</span></td>
-                                <td>40%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    项目例子13
-                                    <small>标注</small>
-                                </td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">0.52/1.561</span></td>
-                                <td>20%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>项目例子14</td>
-                                <td>高达</td>
-                                <td>86 1234 5678</td>
-                                <td>乐高公司</td>
-                                <td><span class="pie">4,9</span></td>
-                                <td>18%</td>
-                                <td>2017年12月12日</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="5">
-                                    <ul class="pagination pull-right"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-
+                                <div class="form-group">
+                                    <input type="text" name="orderNumber" placeholder="@L("Order")@L("Number")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="name" placeholder="@L("Store")@L("Name")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="cardId" placeholder="@L("Member")@L("CardID")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="timeFrom" placeholder="@L("Order")@L("Time")" class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                    <span style="display: inline-block;vertical-align: 5px;">至</span>
+                                    <input type="text" name="timeTo" placeholder="@L("Order")@L("Time")" class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-primary m-b">搜索</button>
+                                </div>
+                                @if (IsGranted("GiftMall.GiftOrder.Export"))
+                                {
+                                    <button onclick="ExportExcel();" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-arrow-down"></i>&nbsp;@L("Export")</button>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/treetable/script/treeTable/jquery.treeTable.js" asp-append-version="true"></script>
 <script>
-    $(document).ready(function () {
-        $('.footable').footable();
-    });
+    function ExportExcel() {
+        var url = "/giftmall/giftorder/exportexcel";
+        url += "?orderNumber=" + $("input[name='orderNumber']").val() + "&name=" + $("input[name='name']").val() + "&Store=" + $("#Store").val() + "&Name=" + $("input[name='Name']").val();
+        url += "&cardId=" + $("input[name='cardId']").val();
+        url += "&timeFrom=" + $("input[name='timeFrom']").val();
+        url += "&timeTo=" + $("input[name='timeTo']").val();
+        location.href = url;
+    }
 </script>
