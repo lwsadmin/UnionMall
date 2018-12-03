@@ -34,7 +34,7 @@ namespace UnionMall.Common
             _sqlExecuter = sqlExecuter;
         }
         #region DataTableToExcel
-        public async Task<MemoryStream> DataTableToExcel(DataTable dt)
+        public async Task<MemoryStream> DataTableToExcel(string sql)
         {
 
             XSSFWorkbook workbook = null;
@@ -43,7 +43,7 @@ namespace UnionMall.Common
             XSSFRow headerRow = null;
             try
             {
-
+                DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
                 workbook = new XSSFWorkbook();
                 ms = new MemoryStream();
                 sheet = workbook.CreateSheet();

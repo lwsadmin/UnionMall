@@ -255,8 +255,8 @@ c.Name  所属门店 from dbo.TMember m left join dbo.TMemberLevel l on m.levelI
 m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
             sql += where.Replace("*", "m");
-            DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
-            return await _comServices.DataTableToExcel(dt);
+           // DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            return await _comServices.DataTableToExcel(sql);
         }
 
         public async Task<Entity.Member> GetEntity(long id)

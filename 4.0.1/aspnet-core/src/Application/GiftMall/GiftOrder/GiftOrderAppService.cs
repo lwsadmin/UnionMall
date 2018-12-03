@@ -88,8 +88,8 @@ for xml path('')),1,1,'') 礼品信息,
 o.OperateTime 领取时间,o.Memo 备注,c.Name 门店,stuff(m.CardID,8,4,'****') 会员卡号,m.WeChatName 微信名 from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
 left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             sql += where.Replace("*", "c");
-            DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
-            return await _comService.DataTableToExcel(dt);
+         
+            return await _comService.DataTableToExcel(sql);
         }
     }
 }
