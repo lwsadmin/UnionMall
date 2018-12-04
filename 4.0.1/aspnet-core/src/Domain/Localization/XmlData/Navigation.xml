@@ -78,10 +78,20 @@
     </Second>
   </First>
   <First Name="FlashSale"  Icon="glyphicon glyphicon-dashboard">
-    <Second Name="FlashSaleList" Url="/groupbuy/groupbuy/list"></Second>
-    <Second Name="FlashSaleImage"  Url="/groupbuy/image/list"></Second>
-    <Second Name="FlashSaleOrder" Url="/groupbuy/rushorder/list"></Second>
-    <Second Name="FlashSaleComment"  Url="/groupbuy/comment/list"></Second>
+    <Second Name="FlashSaleList" Url="/flashsale/goods/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
+      <Action Name="Import" />
+      <Action Name="Export" />
+    </Second>
+    <!--><Second Name="FlashSaleImage"  Url="/groupbuy/image/list"></Second><-->
+    <Second Name="FlashSaleOrder" Url="/flashsale/goodsorder/list">
+      <Action Name="Export" />
+    </Second>
+    <Second Name="FlashSaleComment"  Url="/flashsale/comment/list">
+      <Action Name="Delete" />
+    </Second>
   </First>
 
   <First Name="ArticleInfo"  Icon="glyphicon glyphicon-tint">

@@ -8,34 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Entity;
 using UnionMall.IRepositorySql;
-using UnionMall.GiftMall.Dto;
+using UnionMall.FlashSale.Dto;
 using UnionMall.Common;
-using System.IO;
-using NPOI.XSSF.UserModel;
-using NPOI.SS.UserModel;
-using System.Drawing;
 
-namespace UnionMall.Gift
+namespace UnionMall.FlashSale
 {
-    public class GiftOrderAppService : ApplicationService, IFlashSaleOrderAppService
+    public class FlashSaleOrderItemAppService : ApplicationService, IFlashSaleOrderItemAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
-        private readonly IRepository<Entity.GiftOrder, long> _Repository;
+        private readonly IRepository<Entity.FlashSaleOrderItem, long> _Repository;
         private readonly IImageAppService _imgService;
-        private readonly ICommonAppService _comService;
-
-        public GiftOrderAppService(ISqlExecuter sqlExecuter, IImageAppService imgService,
-            ICommonAppService comService,
-    IRepository<Entity.GiftOrder, long> Repository, IAbpSession AbpSession)
+        public FlashSaleOrderItemAppService(ISqlExecuter sqlExecuter, IImageAppService imgService,
+    IRepository<Entity.FlashSaleOrderItem, long> Repository,
+    IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
             _imgService = imgService;
-            _comService = comService;
         }
-        public async Task CreateOrEditAsync(GiftOrder model)
+        public async Task CreateOrEditAsync(FlashSaleOrderItem model)
         {
             if (model.Id >= 0)
             {
@@ -58,7 +51,7 @@ namespace UnionMall.Gift
             }
         }
 
-        public async Task<Entity.GiftOrder> GetByIdAsync(long Id)
+        public async Task<Entity.FlashSaleOrderItem> GetByIdAsync(long Id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
         }
@@ -68,7 +61,7 @@ namespace UnionMall.Gift
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select o.Id, convert(nvarchar(100),o.CreationTime,120) CreationTime,cast(o.Point as float) Point,
-o.BillNumber,o.Status,o.OperateTime,o.Way,o.Memo,c.Name,stuff(m.CardID,8,4,'****') CardID,stuff(m.WechatName,2,1,'*') WeChatName from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
+o.BillNumber,o.Status,o.OperateTime,o.Way,o.Memo,c.Name,m.CardID,m.WeChatName from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
 left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             }
             where = where.Replace("*.BusinessId", "c.BusinessId").Replace(" *", " o");
@@ -76,20 +69,33 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
 
-        public async Task<MemoryStream> ExportToExcel(string where)
-        {
 
-            string sql = $@"select convert(nvarchar(100),o.CreationTime,120)  下单时间,cast(o.Point as float) 支付积分,
-o.BillNumber 订单号,stuff((select  g.Name  +'   ￥'+convert(nvarchar,cast(i.Point as float)) +'×'+convert(nvarchar, i.Count) +'；' 
- from dbo.TGiftOrderItem i
- left join dbo.TGift g on i.GiftId=g.Id
-where i.GiftOrderId =o.Id
-for xml path('')),1,1,'') 礼品信息,
-o.OperateTime 领取时间,o.Memo 备注,c.Name 门店,stuff(m.CardID,8,4,'****') 会员卡号,m.WeChatName 微信名 from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
-left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
-            sql += where.Replace("*", "c");
-         
-            return await _comService.DataTableToExcel(sql);
+
+        public async Task<List<OrderDetail>> GetOrderDetail(long orderId)
+        {
+            List<OrderDetail> d = new List<OrderDetail>();
+
+            try
+            {
+                List<FlashSaleOrderItem> itemList = _Repository.GetAllList(c => c.OrderId == orderId);
+                foreach (FlashSaleOrderItem item in itemList)
+                {
+                    OrderDetail o = new OrderDetail();
+                    o.Count = 1;
+                    o.Price = 1;
+                    o.GoodsName = _sqlExecuter.
+                        ExecuteDataSet($"select Name from tgift where id={item.OrderId}")
+                        .Tables[0].Rows[0][0].ToString();
+                    d.Add(o);
+                }
+                return d;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.StackTrace + e.Message);
+            }
+
         }
     }
 }

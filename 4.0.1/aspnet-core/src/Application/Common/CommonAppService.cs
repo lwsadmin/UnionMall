@@ -158,14 +158,10 @@ namespace UnionMall.Common
         }
         #endregion
 
-
-
-
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
 
         public string GetWhere()
         {

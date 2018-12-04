@@ -2,19 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using UnionMall.GiftMall.Dto;
+using UnionMall.FlashSale.Dto;
 
-namespace UnionMall.Gift
+namespace UnionMall.FlashSale
 {
-    public interface IFlashSaleOrderAppService : IApplicationService
+    public interface IFlashSaleAppService : IApplicationService
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
-        Task CreateOrEditAsync(Entity.GiftOrder model);
-        Task<Entity.GiftOrder> GetByIdAsync(long Id);
+        Task CreateOrEditAsync(CreateOrEditDto model);
+        Task<Entity.FlashSale> GetByIdAsync(long Id);
         Task DeleteAsync(long id);
-        Task<MemoryStream> ExportToExcel(string where);
-    } 
+    }
 }

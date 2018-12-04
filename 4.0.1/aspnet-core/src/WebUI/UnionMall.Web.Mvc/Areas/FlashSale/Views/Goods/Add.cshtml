@@ -1,0 +1,210 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "FlashSale";
+    ViewBag.SecondMenu = "FlashSaleList";
+}
+@model UnionMall.FlashSale.Dto.CreateOrEditDto
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
+<link href="~/lib/fileinput/css/fileinput.min.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
+<script src="~/lib/fileinput/js/locales/zh.js" asp-append-version="true"></script>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("FlashSaleMall")</a>
+            </li>
+            <li class="active">
+                <strong>@L("FlashSaleList")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox-content">
+        <form method="post" id="formPost">
+            <input type="hidden" name="Id" value="@Model.FlashSale.Id" />
+            <input type="hidden" name="TenantId" value="@Model.FlashSale.TenantId" />
+            <input type="hidden" name="BusinessId" value="@Model.FlashSale.BusinessId" />
+            <div class="tabs-container">
+                <ul class="nav nav-tabs" id="myTabs">
+                    <li class="active"><a data-toggle="tab" href="#basic" aria-expanded="true">@L("FlashSale")@L("Info")</a></li>
+                    <li class=""><a data-toggle="tab" href="#images" aria-expanded="false">@L("Detail")@L("Image")</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="basic" class="tab-pane fade active in" aria-labelledby="basic-tab">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>@L("Name")</label>
+                                        <input type="text" name="Title" value="@Model.FlashSale.Title" class="form-control" required maxlength="50" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>@L("SigleCount")</label>
+                                        <input type="text" name="SingleReceiveCount" value="@Model.FlashSale.SingleLimit" class="form-control" required maxlength="15">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("Price")</label>
+                                        <input type="text" name="Integral" value="@Model.FlashSale.Price" class="form-control" required maxlength="15">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>@L("Sort")</label><span class="help-block m-b-none" style="display:inline;">&nbsp;&nbsp;(@L("SortTip"))</span>
+                                        <input type="number" name="Sort" value="@Model.FlashSale.Sort" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>@L("Image")</label>
+                                        <input type="hidden" id="hiddenImg" name="Img" value="@Model.FlashSale.Img" />
+                                        <input id="input" title="@Model.FlashSale.Img" name="File" value="@Model.FlashSale.Img" type="file" data-show-preview="false">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("Total")@L("Count")</label>
+                                        <input type="text" name="StockCount" value="@Model.FlashSale.TotalCount" class="form-control" required maxlength="15">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("MarketPrice")@L("Price")</label>
+                                        <input type="text" name="MarketPrice" value="@Model.FlashSale.MarketPrice" class="form-control" required maxlength="50">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>@L("Introduce")</label>
+                                        <textarea style="width:100%;min-width:550px;" id="ExchangeNotes" name="ExchangeNotes" class="form-control" cols="5">@Model.FlashSale.Introduce</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="images" class="tab-pane fade" aria-labelledby="images-tab">
+                        <div class="panel-body">
+                            @Html.Partial("_AddImage", Model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+            <div class="col-md-8" style="text-align:center;">
+                <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>&nbsp;&nbsp;&nbsp;
+                <button onclick="javascript: history.back(-1);" type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+            </div>
+            <br /><br />
+        </form>
+    </div>
+</div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script>
+    $('#myTabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    });
+    $(function () {
+        $('.chosen-select').chosen({ width: "100%" });
+        $("#formPost").validate({});
+        $("#input").fileinput({
+            language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es',
+            showRemove: false,
+            showUpload: false,
+            allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
+            showUploadedThumbs: false,
+            uploadUrl: "/Common/Upload",
+            initialPreview:['@Model.FlashSale.Img'],
+            showClose: false,
+            showCancel: false,
+            slugCallback: function (filename) {
+                return filename.replace('(', '_').replace(']', '_');
+            }
+        });
+        //选择文件后处理事件
+        $("#input").on("filebatchselected", function (event, files) {
+            //执行文件上传方法
+            $("#input").fileinput("upload");
+        });
+        //上传成功后处理方法
+        $("#input").on("fileuploaded", function (event, data, previewId, index) {
+            var url = data.response.result.url;
+            debugger;
+            $("input[name='Img']").val(url);
+            //$(".hid" + index).val(url).addClass(previewId);
+        });
+
+        var _Service = abp.services.app.FlashSale;
+        $("#formPost").on("submit", function (e) {
+            e.preventDefault();
+            if (!$(this).valid()) {
+                return;
+            }
+            var FlashSale = $(this).serializeFormToObject();
+            FlashSale.categoryId= $("#FlashSale_CategoryId").val();
+            var EditDto = {};
+            EditDto.FlashSale = FlashSale;
+            var imgArray = [];
+            for (var i = 0; i < 7; i++) {
+                if ($("#Url" + i).val() == "") {
+                    continue;
+                }
+                imgArray.push({
+                    tenantId: $("input[name='TenantId']").val(),
+                    businessId: $("input[name='BusinessId']").val(),
+                    objectId: $("input[name='Id']").val(),
+                    type:1,
+                    id: $("#id" + i).val(),
+                    size: $("#Size" + i).val(),
+                    url: $("#Url" + i).val(),
+                    name:$("#Name"+i).val()
+                });
+            }
+            EditDto.imageList = imgArray;
+            _Service.createOrEdit(EditDto).done(function (data) {
+                var url = localStorage.getItem("page");
+                if (url != "" && url != undefined) {
+                    localStorage.removeItem("page");
+                    window.location.href = url;
+                } else {
+                    window.location.href = '/FlashSalemall/FlashSale/list';
+                }
+
+            }).fail(function (data) {
+            }).always(function (data) { });
+        });
+    });
+    var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
+    var editor
+    KindEditor.ready(function (K) {
+        editor = K.create('#ExchangeNotes',
+            {
+                langType: language,
+                height: '300px',
+                uploadJson: "/Common/EditorUpload",
+                fileManagerJson: '/Common/Upload',
+                allowFileManager: false,
+                formatUploadUrl: false,
+                items: [
+                    'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', '|', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', '|', 'image', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'link', '|',
+                    'quickformat', 'preview', 'fullscreen'
+                ],
+                afterBlur: function () { this.sync(); },
+                afterUpload: function (url) { },
+                afterError: function (data) { }
+            });
+    });
+
+</script>

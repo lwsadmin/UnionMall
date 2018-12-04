@@ -30,6 +30,9 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<GiftOrder> GiftOrder { get; set; }
         public DbSet<GiftOrderItem> GiftOrderItem { get; set; }
         public DbSet<Image> Image { get; set; }
+        public DbSet<FlashSale> FlashSale { get; set; }
+        public DbSet<FlashSaleOrder> FlashSaleOrder { get; set; }
+        public DbSet<FlashSaleOrderItem> FlashSaleOrderItem { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

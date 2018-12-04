@@ -8,26 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Entity;
 using UnionMall.IRepositorySql;
-using UnionMall.GiftMall.Dto;
 using UnionMall.Common;
 using System.IO;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 using System.Drawing;
 
-namespace UnionMall.Gift
+namespace UnionMall.FlashSale
 {
-    public class GiftOrderAppService : ApplicationService, IFlashSaleOrderAppService
+    public class FlashSaleOrderAppService : ApplicationService, IFlashSaleOrderAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
-        private readonly IRepository<Entity.GiftOrder, long> _Repository;
+        private readonly IRepository<Entity.FlashSaleOrder, long> _Repository;
         private readonly IImageAppService _imgService;
         private readonly ICommonAppService _comService;
 
-        public GiftOrderAppService(ISqlExecuter sqlExecuter, IImageAppService imgService,
+        public FlashSaleOrderAppService(ISqlExecuter sqlExecuter, IImageAppService imgService,
             ICommonAppService comService,
-    IRepository<Entity.GiftOrder, long> Repository, IAbpSession AbpSession)
+    IRepository<Entity.FlashSaleOrder, long> Repository, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
@@ -35,7 +34,7 @@ namespace UnionMall.Gift
             _imgService = imgService;
             _comService = comService;
         }
-        public async Task CreateOrEditAsync(GiftOrder model)
+        public async Task CreateOrEditAsync(FlashSaleOrder model)
         {
             if (model.Id >= 0)
             {
@@ -58,7 +57,7 @@ namespace UnionMall.Gift
             }
         }
 
-        public async Task<Entity.GiftOrder> GetByIdAsync(long Id)
+        public async Task<Entity.FlashSaleOrder> GetByIdAsync(long Id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
         }

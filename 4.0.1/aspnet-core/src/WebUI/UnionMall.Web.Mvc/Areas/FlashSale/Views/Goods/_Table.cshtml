@@ -1,0 +1,123 @@
+﻿
+@{
+    Layout = null;
+}
+@using X.PagedList
+@using System.Data
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Title")</th>
+
+            <th>@L("Image")</th>
+            <th>@L("Belong")@L("Business")</th>
+            <th>@L("Status")</th>
+            <th>@L("Sort")</th>
+            <th>@L("Price")</th>
+            <th>@L("Stock")@L("Count")</th>
+            <th>@L("Operate")</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr>
+                <td class="title">
+                    @item["Title"]
+                </td>
+                <td class="img"><img style="height:15px;" src="@item["Img"]" onerror="this.src='/img/nopic.png'" />  </td>
+                <td>@item["BusinessName"]</td>
+                <td>@item["Status"]</td>
+
+                <td>@item["Sort"]</td>
+                <td>@item["Price"]</td>
+                <td>@item["TotalCount"]</td>
+
+                <td>
+                    @if (IsGranted("FlashSale.FlashSaleList.Edit"))
+                    {
+                        <a onclick="return SetPage();" href="/flashsale/goods/add/@item["Id"]" title="@L("Edit")">
+                            <i class="fa fa-edit text-navy"></i>
+                        </a>
+                    }
+
+                    @if (IsGranted("FlashSale.FlashSaleList.Delete"))
+                    {
+                        <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
+                           data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                            <i class="fa fa-trash text-navy"></i>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, pageIndex => Url.Action("List", new { pageIndex }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+new PagedListRenderOptions {
+MaximumPageNumbersToDisplay = 10,
+DisplayPageCountAndCurrentLocation = true,
+LinkToFirstPageFormat = L("FirstPage"),
+LinkToLastPageFormat = L("LastPage"),
+LinkToNextPageFormat = L("NextPage"),
+PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+LinkToPreviousPageFormat = L("PreviousPage"),
+UlElementClasses = new[] { "pagination col-md-8" },
+ContainerDivClasses = new[] { "row" } },
+new AjaxOptions()
+{
+DataForm = "searchForm",
+HttpMethod = "GET",
+UpdateTargetId = "table"
+}
+))
+
+<script>
+    var txt = $("input[name='title']").val().trim();
+    if (txt.length > 0) {
+        $(".title").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+    $("input[name='pageSize']").val(@ViewBag.PageSize);
+    $(".img").hover(function () {
+        $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
+        $(".img").mousemove(function (e) {
+
+            var h = window.screen.height;
+            var showY = showY - $("#table").offset().top;
+            var showX = e.pageX - $("#table").offset().left;
+            if (e.pageY + $("#pic").height() + 100 >= h) {
+                showY = h - $("#pic").height() - 400;
+            }
+            $("#pic").css({
+                "top": showY,
+                "left": (showX + 50)
+            }).fadeIn(500);
+
+        });
+    }, function () {
+        $("#pic").remove();
+        });
+
+    function SetPage() {
+        var url = "/flashsale/goods/list?pageIndex=" + $(".pagination ").find(".active").find("a").html();
+        if ($("input[name='title']").val().trim().length!=0) {
+            url += "&title=" + $("input[name='title']").val().trim();
+        }
+        if ($("#business").val()!="") {
+            url += "&business=" + $("#business").val().trim();
+        }
+
+        localStorage.setItem("page", url);
+        return true;
+    }
+</script>

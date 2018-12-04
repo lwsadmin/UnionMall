@@ -93,8 +93,10 @@
                         <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/business/chainstore/List" method="post">
                             <input type="hidden" name="pageSize" value="10" />
                             <div class="form-group" style="min-width:10vw;">
-                                @Html.DropDownList("businessId", (SelectList)ViewData["Business"],  "-"+L("Belong")+L("Business")+"-", new { @class = "input-sm form-control  chosen-select" })
-                            </div>
+                                <div class="m-b">
+                                    @Html.DropDownList("businessId", (SelectList)ViewData["Business"],  "-"+L("Belong")+L("Business")+"-", new { @class = "input-sm form-control  chosen-select" })
+                                        </div>
+                                </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" name="storeName" placeholder="@L("Store")@L("Name")" class="input-sm form-control"> <span class="input-group-btn">

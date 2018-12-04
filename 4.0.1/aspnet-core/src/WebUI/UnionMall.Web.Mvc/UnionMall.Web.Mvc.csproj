@@ -166,6 +166,8 @@
     <Folder Include="Areas\ArticleInfo\Models\" />
     <Folder Include="Areas\Coupon\Data\" />
     <Folder Include="Areas\Coupon\Models\" />
+    <Folder Include="Areas\FlashSale\Data\" />
+    <Folder Include="Areas\FlashSale\Models\" />
     <Folder Include="Areas\GiftMall\Data\" />
     <Folder Include="Areas\GiftMall\Models\" />
     <Folder Include="Areas\Member\Data\" />
@@ -230,6 +232,19 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Coupon\Views\Coupon\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\FlashSale\Views\Goods\Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\FlashSale\Views\Goods\List.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\FlashSale\Views\Goods\_AddImage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\FlashSale\Views\Goods\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\GiftMall\Views\GiftCategory\List.cshtml">

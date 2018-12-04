@@ -8,23 +8,23 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Common;
 using UnionMall.Controllers;
-using UnionMall.Gift;
+using UnionMall.FlashSale;
 using X.PagedList;
 
-namespace UnionMall.Web.Mvc.Areas.GiftMall.Controllers
+namespace UnionMall.Web.Mvc.Areas.FlashSaleMall.Controllers
 {
-    [Area("GiftMall")]
-    [AbpMvcAuthorize("GiftMall.GiftOrder")]
-    public class GiftOrderController : UnionMallControllerBase
+    [Area("FlashSale")]
+    [AbpMvcAuthorize("FlashSale.FlashSaleOrder")]
+    public class FlashSaleOrderController : UnionMallControllerBase
     {
         private readonly ICommonCategoryAppService _catAppService;
         private readonly IImageAppService _imgAppService;
         private readonly IFlashSaleOrderAppService _AppService;
-        private readonly IGiftOrderItemAppService _itemAppService;
+        private readonly IFlashSaleOrderItemAppService _itemAppService;
         private readonly ICommonAppService _comService;
-        public GiftOrderController(ICommonCategoryAppService catAppService,
+        public FlashSaleOrderController(ICommonCategoryAppService catAppService,
             ICommonAppService comService, IFlashSaleOrderAppService AppService,
-            IGiftOrderItemAppService itemAppService,
+            IFlashSaleOrderItemAppService itemAppService,
             IImageAppService imgAppService)
         {
             _catAppService = catAppService;
@@ -83,7 +83,7 @@ namespace UnionMall.Web.Mvc.Areas.GiftMall.Controllers
                 where += $" and o.CreationTime<='{timeTo} 23:59:59'";
 
             MemoryStream ms = await _AppService.ExportToExcel(where);
-            return File(ms.ToArray(), "application/vnd.ms-excel", "" + L("GiftOrder") + ".xlsx");
+            return File(ms.ToArray(), "application/vnd.ms-excel", "" + L("FlashSaleOrder") + ".xlsx");
         }
     }
 }
