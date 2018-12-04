@@ -25,7 +25,7 @@ namespace UnionMall.Entity
         public int Sort { get; set; }
         public DateTime CreationTime { get; set; }
         public int SingleLimit { get; set; }
-        public DateTime BeginDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime BeginDate { get; set; }= DateTime.Now;
+        public DateTime EndDate { get; set; } = DateTime.Now;
     }
 }

@@ -9,6 +9,7 @@ using UnionMall.Business;
 using UnionMall.Business.Dto;
 using UnionMall.Common;
 using UnionMall.Controllers;
+using UnionMall.Entity;
 using UnionMall.FlashSale;
 using UnionMall.FlashSale.Dto;
 using X.PagedList;
@@ -33,15 +34,17 @@ namespace UnionMall.Web.Mvc.Areas.FlashSaleMall.Controllers
             _comService = comService;
             _imgAppService = imgAppService;
         }
-        public async Task<IActionResult> List(string businessId, string title, int pageIndex = 1, int pageSize = 10)
+        public async Task<IActionResult> List(string businessId, string title,string status, int pageIndex = 1, int pageSize = 10)
         {
             string where = _comService.GetWhere();
             if (!string.IsNullOrEmpty(title))
                 where += $" and f.title like '%{title}%' ";
             if (!string.IsNullOrEmpty(businessId))
             { where += $" and f.BusinessId = {businessId}"; }
+            if (!string.IsNullOrEmpty(status))
+            { where += $" and f.status = {status}"; }
             int total;
-            DataSet ds = _AppService.GetPage(pageIndex, pageSize, "f.id desc", out total, where);
+            DataSet ds = _AppService.GetPage(pageIndex, pageSize, "f.sort desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
             ViewBag.PageSize = pageSize;
             if (Request.Headers.ContainsKey("x-requested-with"))
@@ -60,7 +63,7 @@ namespace UnionMall.Web.Mvc.Areas.FlashSaleMall.Controllers
             if (id != null)
             {
                 a = await _AppService.GetByIdAsync((long)id);
-                imageList = await _imgAppService.GetList(c => c.ObjectId == id);
+                imageList = await _imgAppService.GetList(c => c.ObjectId == id && c.Type == (int)ImageType.限时抢购);
                 string imgs = "", config = "";
                 for (int i = 0; i < imageList.Count; i++)
                 {

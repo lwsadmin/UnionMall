@@ -64,6 +64,8 @@
     <text value="PhoneNumber" name="PhoneNumber"/>
     <text value="Number" name="Number"/>
     <text value="Status" name="Status"/>
+    <text value="UnShelve" name="UnShelve"/>
+    <text value="Shelve" name="Shelve"/>
     <text value="Operate" name="Operate"/>
     <text  name="Title" value="Title"/>
     <text name="Note" value="Note"/>
@@ -275,6 +277,7 @@
     <text name="Integral" value="Integral" />
     <text name="Init" value="Init" />
     <text name="Price" value="Price" />
+    <text name="RackRate" value="RackRate" />
     <text name="Sell" value="Sell" />
     <text name="Page" value="Page" />
     <text name="Level" value="Level" />

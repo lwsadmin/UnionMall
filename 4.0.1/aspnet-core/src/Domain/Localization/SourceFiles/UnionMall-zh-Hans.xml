@@ -17,6 +17,8 @@
     <text value="手机" name="PhoneNumber"/>
     <text value="号" name="Number"/>
     <text value="状态" name="Status"/>
+    <text value="下架" name="UnShelve"/>
+    <text value="上架" name="Shelve"/>
     <text value="标题" name="Title"/>
     <text value="测试" name="Union"/>
     <text value="名称" name="Name"/>
@@ -36,6 +38,7 @@
     <text value="管理" name="Manage"/>
     <text value="信息" name="Info" />
     <text value="库存" name="Stock" />
+
     <text name="LanguageSetting">语言设置</text>
     <text value="欢迎您" name="Welcome to"  />
     <text name="This system is for demonstration only" value="本系统仅供演示" />
@@ -77,7 +80,7 @@
     <text name="CouponConsume" value="优惠券消费" />
     <text name="GiftExchange" value="礼品兑换" />
     <text name="PointRecharge" value="积分充值" />
-
+    <text name="RackRate" value="门市价" />
     <text name="OnlineGoods" value="线上商城"/>
     <text name="GoodsCategory" value="商品类别"/>
     <text name="GoodsBrand" value="商品品牌" />

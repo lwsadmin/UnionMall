@@ -20,7 +20,7 @@
                 <a href="/">@L("HomePage")</a>
             </li>
             <li>
-                <a>@L("FlashSaleMall")</a>
+                <a>@L("FlashSale")</a>
             </li>
             <li class="active">
                 <strong>@L("FlashSaleList")</strong>
@@ -49,14 +49,33 @@
                                         <label>@L("Name")</label>
                                         <input type="text" name="Title" value="@Model.FlashSale.Title" class="form-control" required maxlength="50" />
                                     </div>
+                                    <div class="form-group">
+                                        <label>@L("Status")</label>
 
+                                        <div style="padding-top:10px;">
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" id="s0" value="0" name="Status" @(Model.FlashSale.Status==0 ? "checked" : "") />
+                                                <label for="s0">@L("Shelve")</label>
+                                            </div>
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" id="s1" value="1" name="Status" @(Model.FlashSale.Status==1 ? "checked" : "") />
+                                                <label for="s1">@L("UnShelve")</label>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>@L("Price")</label>
+                                        <input type="text" name="Integral" value="@Model.FlashSale.Price" class="form-control" required maxlength="15">
+                                    </div>
                                     <div class="form-group">
                                         <label>@L("SigleCount")</label>
                                         <input type="text" name="SingleReceiveCount" value="@Model.FlashSale.SingleLimit" class="form-control" required maxlength="15">
                                     </div>
                                     <div class="form-group">
-                                        <label>@L("Price")</label>
-                                        <input type="text" name="Integral" value="@Model.FlashSale.Price" class="form-control" required maxlength="15">
+                                        <label>@L("Begin")@L("Time")</label>
+                                        <input type="text" name="BeginDate" value="@Model.FlashSale.BeginDate" class="form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -70,13 +89,18 @@
                                         <input type="hidden" id="hiddenImg" name="Img" value="@Model.FlashSale.Img" />
                                         <input id="input" title="@Model.FlashSale.Img" name="File" value="@Model.FlashSale.Img" type="file" data-show-preview="false">
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>@L("RackRate")</label>
+                                        <input type="text" name="MarketPrice" value="@Model.FlashSale.MarketPrice" class="form-control" required maxlength="50">
+                                    </div>
                                     <div class="form-group">
                                         <label>@L("Total")@L("Count")</label>
                                         <input type="text" name="StockCount" value="@Model.FlashSale.TotalCount" class="form-control" required maxlength="15">
                                     </div>
                                     <div class="form-group">
-                                        <label>@L("MarketPrice")@L("Price")</label>
-                                        <input type="text" name="MarketPrice" value="@Model.FlashSale.MarketPrice" class="form-control" required maxlength="50">
+                                        <label>@L("End")@L("Time")</label>
+                                        <input type="text" name="EndDate" value="@Model.FlashSale.EndDate" class="form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });" required>
                                     </div>
                                 </div>
                             </div>
@@ -109,6 +133,7 @@
 </div>
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
 <script>
     $('#myTabs a').click(function (e) {
         e.preventDefault()
@@ -163,7 +188,7 @@
                     tenantId: $("input[name='TenantId']").val(),
                     businessId: $("input[name='BusinessId']").val(),
                     objectId: $("input[name='Id']").val(),
-                    type:1,
+                    type:3,
                     id: $("#id" + i).val(),
                     size: $("#Size" + i).val(),
                     url: $("#Url" + i).val(),
@@ -199,7 +224,7 @@
                     'justifyleft', 'justifycenter', 'justifyright',
                     'justifyfull', '|', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
                     'italic', 'underline', '|', 'image', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'link', '|',
-                    'quickformat', 'preview', 'fullscreen'
+                    'quickformat','removeformat', 'preview', 'fullscreen'
                 ],
                 afterBlur: function () { this.sync(); },
                 afterUpload: function (url) { },

@@ -63,7 +63,8 @@ namespace UnionMall.FlashSale
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select f.id,f.status, f.title,f.img,f.price,f.marketprice,f.sellcount,f.totalcount,f.img,f.sort,f.singlelimit,b.BusinessName from tflashsale f  left join dbo.TBusiness b
+                table = $@"select f.id,f.status, f.title,f.img,cast( f.price as float) price,
+cast( f.marketprice as float) marketprice,f.sellcount,f.totalcount,f.img,f.sort,f.singlelimit,b.BusinessName from tflashsale f  left join dbo.TBusiness b
 on f.businessid=b.id
 where 1=1";
             }

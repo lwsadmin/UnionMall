@@ -17,6 +17,9 @@
             <th>@L("Status")</th>
             <th>@L("Sort")</th>
             <th>@L("Price")</th>
+            <th>@L("RackRate")</th>
+            <th>@L("Sell")@L("Count")</th>
+            <th>@L("SigleCount")</th>
             <th>@L("Stock")@L("Count")</th>
             <th>@L("Operate")</th>
         </tr>
@@ -31,12 +34,25 @@
                 </td>
                 <td class="img"><img style="height:15px;" src="@item["Img"]" onerror="this.src='/img/nopic.png'" />  </td>
                 <td>@item["BusinessName"]</td>
-                <td>@item["Status"]</td>
+                @switch (item["Status"].ToString())
+                {
+                    case "0":
+                        <td>@L("Shelve")</td>
+                        break;
+                    case "1":
+                        <td>@L("UnShelve")</td>
+                        break;
+                    default:
+                        <td>@item["Status"]</td>
+                        break;
 
+                }
                 <td>@item["Sort"]</td>
                 <td>@item["Price"]</td>
+                <td>@item["marketprice"]</td>
+                <td>@item["SellCount"]</td>
+                <td>@item["SingleLimit"]</td>
                 <td>@item["TotalCount"]</td>
-
                 <td>
                     @if (IsGranted("FlashSale.FlashSaleList.Edit"))
                     {
@@ -72,8 +88,8 @@ LinkToPreviousPageFormat = L("PreviousPage"),
 UlElementClasses = new[] { "pagination col-md-8" },
 ContainerDivClasses = new[] { "row" } },
 new AjaxOptions()
-{
-DataForm = "searchForm",
+                {
+                    DataForm = "searchForm",
 HttpMethod = "GET",
 UpdateTargetId = "table"
 }
@@ -83,23 +99,23 @@ UpdateTargetId = "table"
     var txt = $("input[name='title']").val().trim();
     if (txt.length > 0) {
         $(".title").each(function () {
-            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+                    var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
             $(this).html(newTxt);
-        });
+                });
     }
     $("input[name='pageSize']").val(@ViewBag.PageSize);
     $(".img").hover(function () {
         $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
         $(".img").mousemove(function (e) {
 
-            var h = window.screen.height;
-            var showY = showY - $("#table").offset().top;
-            var showX = e.pageX - $("#table").offset().left;
-            if (e.pageY + $("#pic").height() + 100 >= h) {
-                showY = h - $("#pic").height() - 400;
-            }
+                        var h = window.screen.height;
+                        var showY = showY - $("#table").offset().top;
+                        var showX = e.pageX - $("#table").offset().left;
+                        if (e.pageY + $("#pic").height() + 100 >= h) {
+                            showY = h - $("#pic").height() - 400;
+                        }
             $("#pic").css({
-                "top": showY,
+                            "top": showY,
                 "left": (showX + 50)
             }).fadeIn(500);
 

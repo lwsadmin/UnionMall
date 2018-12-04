@@ -101,6 +101,13 @@
                                 <div class="form-group">
                                     <input type="text" name="title" placeholder="@L("Title")" class="m-b input-sm form-control" />
                                 </div>
+                                <div class="form-group">
+                                    <select name="status" placeholder="" class="m-b input-sm form-control" style="font-size: 1px;">
+                                        <option value="">-@L("Select")@L("Status")-</option>
+                                        <option value="0">@L("Shelve")</option>
+                                        <option value="1">@L("UnShelve")</option>
+                                    </select>
+                                </div>
                                 <div class="form-group" style="min-width:10vw;">
                                     <div class="m-b">
                                         @Html.DropDownList("businessId", (SelectList)ViewData["Business"], "-" + L("Belong") + L("Business") + "-", new { @class = "input-sm form-control  chosen-select" })
@@ -110,8 +117,8 @@
                                     <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
                                 </div>
                             </form>
-                            </div>
                         </div>
+                    </div>
                     <div id="table">
                         @Html.Partial("_Table", Model)
                     </div>
@@ -120,7 +127,7 @@
         </div>
     </div>
 
-    
+
 </div>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
@@ -142,7 +149,7 @@
             if (isConfirm.value == true) {
                 debugger;
                 _Service.delete(id).done(function (data) {
-         
+
                     if ($(".pagination .active a").html() != undefined) {
                         $(".pagination .active a").click();
                         toastr.options = {
