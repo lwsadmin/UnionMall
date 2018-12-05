@@ -33,7 +33,9 @@
     <text value="操作" name="Operate"/>
     <text value="角色" name="Roles"/>
     <text value="正常" name="Normal" />
-    <text value="撤销" name="Revoke" />
+    <text value="已撤销" name="Revoked" />
+    <text value="未付款" name="Unpaid" />
+    <text value="已付款" name="Paid" />
     <text value="禁用" name="Disable" />
     <text value="管理" name="Manage"/>
     <text value="信息" name="Info" />
@@ -251,7 +253,7 @@
     <text name="Source" value="来源" />
     <text name="Author" value="作者" />
     <text name="Click" value="点击量" />
-        <text name="Pay" value="支付" />
+    <text name="Pay" value="支付" />
     <text name="Cash" value="现金" />
     <text name="AliPay" value="支付宝" />
     <!--message-->

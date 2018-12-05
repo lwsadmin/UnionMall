@@ -53,7 +53,9 @@
     <text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
     <text name="DatabaseConnectionString" value="Database connection string" />
     <text name="Normal" value="Normal" />
-    <text value="Revoke" name="Revoke" />
+    <text value="Revoked" name="Revoked" />
+    <text name="Unpaid" value="Unpaid" />
+    <text value="Paid" name="Paid" />
     <text name="Disable" value="Disable" />
     <text name="FullName" value="Full name" />
     <text value="Detail" name="Detail"/>

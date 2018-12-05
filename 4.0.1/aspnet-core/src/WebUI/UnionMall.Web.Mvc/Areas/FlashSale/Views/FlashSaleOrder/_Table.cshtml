@@ -30,33 +30,36 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-        <tr id="@(item["id"])" hasChild="true">
-            <td controller="true">
-                @item["CreationTime"]
-            </td>
-            <td>@item["OrderNumber"]</td>
-            @switch (item["Status"].ToString())
-            {
-                case "0":
-                    <td>@L("Normal")</td>
-                    break;
-                case "-1":
-                    <td class="text-danger">@L("Revoke")</td>
-                    break;
-                default:
-                    <td>@item["Status"]</td>
-                    break;
-            }
-            <td class="name">@item["Name"]</td>
-            <td>@item["TotalPay"]</td>
-            <td>@item["WeChatPay"]</td>
-            <td>@item["AliPay"]</td>
-            <td>@item["BalancePay"]</td>
-            <td>@item["IntegralPay"]</td>
-            <td>@item["CouponPay"]</td>
-            <td>@item["CardID"]</td>
-            <td>@item["WeChatName"]</td>
-        </tr>
+            <tr id="@(item["id"])" hasChild="true">
+                <td controller="true">
+                    @item["CreationTime"]
+                </td>
+                <td>@item["OrderNumber"]</td>
+                @switch (item["Status"].ToString())
+                {
+                    case "0":
+                        <td>@L("Paid")</td>
+                        break;
+                    case "-1":
+                        <td class="text-info">@L("Unpaid")</td>
+                        break;
+                    case "2":
+                        <td class="text-danger">@L("Revoked")</td>
+                        break;
+                    default:
+                        <td>@item["Status"]</td>
+                        break;
+                }
+                <td class="name">@item["Name"]</td>
+                <td>@item["TotalPay"]</td>
+                <td>@item["WeChatPay"]</td>
+                <td>@item["AliPay"]</td>
+                <td>@item["BalancePay"]</td>
+                <td>@item["IntegralPay"]</td>
+                <td>@item["CouponPay"]</td>
+                <td>@item["CardID"]</td>
+                <td>@item["WeChatName"]</td>
+            </tr>
         }
 
     </tbody>
@@ -108,7 +111,7 @@ UpdateTargetId = "table"
                 //这里的html可以是ajax请求
 
                 $.post("/flashsale/flashsaleorder/getorderitem", { orderId: id }, function (data) {
-                    var str = "<tr pId='" + id + "'><td class='order-item' colspan='9'>";
+                    var str = "<tr pId='" + id + "'><td class='order-item' colspan='12'>";
                     for (var i = 0; i < data.result.data.result.length; i++) {
                         str += "<p>" + data.result.data.result[i].goodsName + "</p>";
                         str += "<p>￥" + data.result.data.result[i].price + "</p>";

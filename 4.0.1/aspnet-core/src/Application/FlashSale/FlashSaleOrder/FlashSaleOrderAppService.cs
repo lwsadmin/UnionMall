@@ -83,15 +83,23 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
         public async Task<MemoryStream> ExportToExcel(string where)
         {
 
-            string sql = $@"select convert(nvarchar(100),o.CreationTime,120)  下单时间,cast(o.Point as float) 支付积分,
-o.BillNumber 订单号,stuff((select  g.Name  +'   ￥'+convert(nvarchar,cast(i.Point as float)) +'×'+convert(nvarchar, i.Count) +'；' 
- from dbo.TGiftOrderItem i
- left join dbo.TGift g on i.GiftId=g.Id
-where i.GiftOrderId =o.Id
-for xml path('')),1,1,'') 礼品信息,
-o.OperateTime 领取时间,o.Memo 备注,c.Name 门店,stuff(m.CardID,8,4,'****') 会员卡号,m.WeChatName 微信名 from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
+            string sql = $@"select convert(nvarchar(100),o.CreationTime,120)  下单时间,
+case  o.status when 0  then '已付款'
+ when -1 then '未付款' when 2 then '已撤销'  end 状态,
+ cast(o.TotalPay as float) 总计支付,
+  cast(o.WeChatPay as float) 微信支付,
+    cast(o.AliPay as float) 支付宝支付,
+	    cast(o.BalancePay as float) 余额支付,
+ cast(o.IntegralPay as float) 支付积分,
+  cast(o.CouponPay as float) 优惠券积分,
+o.OrderNumber 订单号,stuff((select  f.Title  +'   ￥'+convert(nvarchar,cast(i.Price as float)) +'×'+convert(nvarchar, i.Count) +'；' 
+ from dbo.TFlashSaleOrderItem i
+ left join dbo.TFlashSale f on i.FlashSaleId=f.Id
+where i.OrderId =o.Id
+for xml path('')),1,1,'') 商品信息,c.Name 门店,stuff(m.CardID,8,4,'****') 会员卡号,
+m.WeChatName 微信名 from dbo.TFlashSaleOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
 left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
-            sql += where.Replace("*", "c");
+            sql += where.Replace("*", "o");
          
             return await _comService.DataTableToExcel(sql);
         }
