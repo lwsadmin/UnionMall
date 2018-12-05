@@ -234,6 +234,13 @@
     <Content Update="Areas\Coupon\Views\Coupon\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\FlashSale\Views\Comment\List.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\FlashSale\Views\Comment\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\FlashSale\Views\FlashSaleOrder\List.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
