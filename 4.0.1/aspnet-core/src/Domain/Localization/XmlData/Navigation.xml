@@ -86,7 +86,7 @@
       <Action Name="Export" />
     </Second>
     <!--><Second Name="FlashSaleImage"  Url="/groupbuy/image/list"></Second><-->
-    <Second Name="FlashSaleOrder" Url="/flashsale/goodsorder/list">
+    <Second Name="FlashSaleOrder" Url="/flashsale/flashsaleorder/list">
       <Action Name="Export" />
     </Second>
     <Second Name="FlashSaleComment"  Url="/flashsale/comment/list">

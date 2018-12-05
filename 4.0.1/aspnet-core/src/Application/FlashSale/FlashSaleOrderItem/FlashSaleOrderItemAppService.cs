@@ -10,7 +10,7 @@ using UnionMall.Entity;
 using UnionMall.IRepositorySql;
 using UnionMall.FlashSale.Dto;
 using UnionMall.Common;
-
+using Abp.UI;
 namespace UnionMall.FlashSale
 {
     public class FlashSaleOrderItemAppService : ApplicationService, IFlashSaleOrderItemAppService
@@ -81,10 +81,10 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
                 foreach (FlashSaleOrderItem item in itemList)
                 {
                     OrderDetail o = new OrderDetail();
-                    o.Count = 1;
-                    o.Price = 1;
+                    o.Count = item.Count;
+                    o.Price = item.Price;
                     o.GoodsName = _sqlExecuter.
-                        ExecuteDataSet($"select Name from tgift where id={item.OrderId}")
+                        ExecuteDataSet($"select Title from tflashsale where id={item.FlashSaleId}")
                         .Tables[0].Rows[0][0].ToString();
                     d.Add(o);
                 }
@@ -93,7 +93,7 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             catch (Exception e)
             {
 
-                throw new Exception(e.StackTrace + e.Message);
+                throw new UserFriendlyException(e.StackTrace + e.Message);
             }
 
         }

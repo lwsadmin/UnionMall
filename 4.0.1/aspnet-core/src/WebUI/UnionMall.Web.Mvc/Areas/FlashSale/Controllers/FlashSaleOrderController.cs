@@ -41,7 +41,7 @@ namespace UnionMall.Web.Mvc.Areas.FlashSaleMall.Controllers
             if (!string.IsNullOrEmpty(name))
                 where += $" and name like '%{name}%' ";
             if (!string.IsNullOrEmpty(orderNumber))
-                where += $" and billNumber = '{orderNumber}' ";
+                where += $" and orderNumber = '{orderNumber}' ";
             if (!string.IsNullOrEmpty(cardId))
                 where += $" and cardId like '%{cardId}%' ";
             if (!string.IsNullOrEmpty(timeFrom))

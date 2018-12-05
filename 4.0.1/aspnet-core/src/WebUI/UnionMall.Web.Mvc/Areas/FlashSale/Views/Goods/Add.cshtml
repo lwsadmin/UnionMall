@@ -54,28 +54,27 @@
 
                                         <div style="padding-top:10px;">
                                             <div class="radio radio-inline radio-success">
-                                                <input type="radio" id="s0" value="0" name="Status" @(Model.FlashSale.Status==0 ? "checked" : "") />
+                                                <input type="radio" id="s0" value="0" name="Status" @(Model.FlashSale.Status == 0 ? "checked" : "") />
                                                 <label for="s0">@L("Shelve")</label>
                                             </div>
                                             <div class="radio radio-inline radio-success">
-                                                <input type="radio" id="s1" value="1" name="Status" @(Model.FlashSale.Status==1 ? "checked" : "") />
+                                                <input type="radio" id="s1" value="1" name="Status" @(Model.FlashSale.Status == 1 ? "checked" : "") />
                                                 <label for="s1">@L("UnShelve")</label>
                                             </div>
                                         </div>
-                                       
                                     </div>
-
                                     <div class="form-group">
                                         <label>@L("Price")</label>
-                                        <input type="text" name="Integral" value="@Model.FlashSale.Price" class="form-control" required maxlength="15">
+                                        <input type="text" name="Price" value="@Model.FlashSale.Price" class="form-control" required maxlength="15">
                                     </div>
                                     <div class="form-group">
                                         <label>@L("SigleCount")</label>
-                                        <input type="text" name="SingleReceiveCount" value="@Model.FlashSale.SingleLimit" class="form-control" required maxlength="15">
+                                        <input type="text" name="SingleLimit" value="@Model.FlashSale.SingleLimit" class="form-control" required maxlength="15">
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Begin")@L("Time")</label>
-                                        <input type="text" name="BeginDate" value="@Model.FlashSale.BeginDate" class="form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });" required>
+                                        <input type="text" name="BeginDate" value="@Model.FlashSale.BeginDate.ToString("yyyy-MM-dd HH:MM")" class="form-control"
+                                               onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en',dateFmt:'yyyy-MM-dd HH:MM' });" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -96,11 +95,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Total")@L("Count")</label>
-                                        <input type="text" name="StockCount" value="@Model.FlashSale.TotalCount" class="form-control" required maxlength="15">
+                                        <input type="text" name="TotalCount" value="@Model.FlashSale.TotalCount" class="form-control" required maxlength="15">
                                     </div>
                                     <div class="form-group">
                                         <label>@L("End")@L("Time")</label>
-                                        <input type="text" name="EndDate" value="@Model.FlashSale.EndDate" class="form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });" required>
+                                        <input type="text" name="EndDate" value="@Model.FlashSale.EndDate.ToString("yyyy-MM-dd HH:MM")" class="form-control"
+                                               onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en',dateFmt:'yyyy-MM-dd HH:MM' });" required>
                                     </div>
                                 </div>
                             </div>
@@ -142,6 +142,11 @@
     $(function () {
         $('.chosen-select').chosen({ width: "100%" });
         $("#formPost").validate({});
+
+        var img = [];
+        if ('@Model.FlashSale.Img'!='') {
+            img.push('@Model.FlashSale.Img');
+        }
         $("#input").fileinput({
             language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es',
             showRemove: false,
@@ -149,34 +154,28 @@
             allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
             showUploadedThumbs: false,
             uploadUrl: "/Common/Upload",
-            initialPreview:['@Model.FlashSale.Img'],
+            initialPreview:img,
             showClose: false,
             showCancel: false,
             slugCallback: function (filename) {
                 return filename.replace('(', '_').replace(']', '_');
             }
         });
-        //选择文件后处理事件
         $("#input").on("filebatchselected", function (event, files) {
-            //执行文件上传方法
             $("#input").fileinput("upload");
         });
-        //上传成功后处理方法
         $("#input").on("fileuploaded", function (event, data, previewId, index) {
             var url = data.response.result.url;
-            debugger;
             $("input[name='Img']").val(url);
-            //$(".hid" + index).val(url).addClass(previewId);
         });
 
-        var _Service = abp.services.app.FlashSale;
+        var _Service = abp.services.app.flashSale;
         $("#formPost").on("submit", function (e) {
             e.preventDefault();
             if (!$(this).valid()) {
                 return;
             }
             var FlashSale = $(this).serializeFormToObject();
-            FlashSale.categoryId= $("#FlashSale_CategoryId").val();
             var EditDto = {};
             EditDto.FlashSale = FlashSale;
             var imgArray = [];
@@ -196,15 +195,15 @@
                 });
             }
             EditDto.imageList = imgArray;
+            debugger;
             _Service.createOrEdit(EditDto).done(function (data) {
                 var url = localStorage.getItem("page");
                 if (url != "" && url != undefined) {
                     localStorage.removeItem("page");
                     window.location.href = url;
                 } else {
-                    window.location.href = '/FlashSalemall/FlashSale/list';
+                    window.location.href = '/flashsale/goods/list';
                 }
-
             }).fail(function (data) {
             }).always(function (data) { });
         });

@@ -16,7 +16,6 @@ namespace UnionMall.Entity
         public long FlashSaleId { get; set; }
         public long MemberId { get; set; }
         public string OrderNumber { get; set; }
-        public int Count { get; set; }
         public decimal TotalMoney { get; set; }
         public decimal TotalPay { get; set; }
         public decimal BalancePay { get; set; }

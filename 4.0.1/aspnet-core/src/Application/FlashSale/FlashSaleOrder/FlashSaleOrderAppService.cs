@@ -39,12 +39,10 @@ namespace UnionMall.FlashSale
             if (model.Id >= 0)
             {
                 await _Repository.UpdateAsync(model);
-
             }
             else
             {
                 await _Repository.InsertAsync(model);
-
             }
         }
 
@@ -66,8 +64,15 @@ namespace UnionMall.FlashSale
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select o.Id, convert(nvarchar(100),o.CreationTime,120) CreationTime,cast(o.Point as float) Point,
-o.BillNumber,o.Status,o.OperateTime,o.Way,o.Memo,c.Name,stuff(m.CardID,8,4,'****') CardID,stuff(m.WechatName,2,1,'*') WeChatName from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
+                table = $@"select o.Id, convert(nvarchar(100),o.CreationTime,120) CreationTime,cast(o.TotalMoney as float) TotalMoney,
+cast(o.TotalPay as float) TotalPay,
+cast(o.WeChatPay as float) WeChatPay,
+cast(o.AliPay as float) AliPay,
+cast(o.BalancePay as float) BalancePay,
+cast(o.IntegralPay as float) IntegralPay,
+cast(o.CouponPay as float) CouponPay,
+o.OrderNumber,o.Status,c.Name,stuff(m.CardID,8,4,'****') CardID,
+stuff(m.WechatName,2,1,'*') WeChatName from dbo.TFlashSaleOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
 left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             }
             where = where.Replace("*.BusinessId", "c.BusinessId").Replace(" *", " o");
