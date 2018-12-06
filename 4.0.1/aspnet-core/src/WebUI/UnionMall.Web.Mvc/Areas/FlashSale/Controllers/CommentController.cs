@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using UnionMall.Common;
 using UnionMall.Controllers;
 using X.PagedList;
-using UnionMall.Comment;
+using UnionMall.FlashSale;
 namespace UnionMall.Web.Mvc.Areas.FlashSaleMall.Controllers
 {
     [Area("FlashSale")]
@@ -25,7 +25,7 @@ namespace UnionMall.Web.Mvc.Areas.FlashSaleMall.Controllers
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string title = "")
         {
 
-            string where = $" and type={   Entity.CommentType.抢购评论}" + _comService.GetWhere();
+            string where = $" and type={(int)Entity.CommentType.抢购评论}" + _comService.GetWhere();
             if (!string.IsNullOrEmpty(title))
                 where += $" and a.title like '%{title}%' ";
             int total;

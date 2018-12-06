@@ -94,6 +94,30 @@
                         </li>
                     </ul>
                 </li>*@
+            <li class="landing_link">
+                <a target="_blank" href="javascript:void(0);">
+                    <i class="fa fa-star"></i>
+                    <span class="nav-label">一元云购</span> <span class="label label-warning pull-right">开发中</span>
+                </a>
+            </li>
+            <li class="landing_link">
+                <a target="_blank" href="javascript:void(0);">
+                    <i class="fa fa-star"></i>
+                    <span class="nav-label">多人拼团</span> <span class="label label-warning pull-right">开发中</span>
+                </a>
+            </li>
+            <li class="landing_link">
+                <a target="_blank" href="javascript:void(0);">
+                    <i class="fa fa-star"></i>
+                    <span class="nav-label">小程序设置</span> <span class="label label-warning pull-right">开发中</span>
+                </a>
+            </li>
+            <li class="landing_link">
+                <a target="_blank" href="javascript:void(0);">
+                    <i class="fa fa-star"></i>
+                    <span class="nav-label">APP设置</span> <span class="label label-warning pull-right">开发中</span>
+                </a>
+            </li>
 
             <li class="special_link">
                 <a href="javascript:void(0);">
@@ -190,6 +214,10 @@
 </div>
 
 <script type="text/javascript">
+
+    $(".landing_link").click(function () {
+        alert("该模块正在开发中...");
+    });
     function LockScreen() {
 
         sessionStorage.setItem("lock", "lock");

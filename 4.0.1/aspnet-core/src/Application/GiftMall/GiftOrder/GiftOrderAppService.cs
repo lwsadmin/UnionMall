@@ -17,7 +17,7 @@ using System.Drawing;
 
 namespace UnionMall.Gift
 {
-    public class GiftOrderAppService : ApplicationService, IFlashSaleOrderAppService
+    public class GiftOrderAppService : ApplicationService, IGiftOrderAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;

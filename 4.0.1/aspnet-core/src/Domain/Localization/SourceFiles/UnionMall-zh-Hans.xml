@@ -128,10 +128,12 @@
     <text name="GiftList" value="礼品管理"/>
     <text name="GiftOrder" value="礼品订单" />
     <text name="FundSettle" value="资金结算"/>
-    <text name="AllSettleSet" value="全局结算设置"/>
-    <text name="BusinessDivideSet" value="门店结算设置"/>
-    <text name="PointSet" value="门店资金结算"/>
-    <text name="BusinessSettle" value="门店资金明细"/>
+    <text name="AllSettleSet" value="全局设置"/>
+    <text name="BusinessDivideSet" value="门店结算"/>
+    <text name="PointSet" value="门店资金"/>
+    <text name="BusinessSettle" value="资金明细"/>
+    <text name="BusinessWithDrawCash" value="商户提现"/>
+    <text name="MemberWithDrawCash" value="会员提现"/>
     <text name="StatisticsAnalysis" value="统计分析"/>
     <text name="Statistics" value="统计"/>
     <text name="ChainStorePointStatistics" value="门店积分统计"/>
@@ -144,11 +146,13 @@
     <text name="CouponReceiveStatistics" value="优惠券领取统计"/>
     <text name="CouponUseStatistics" value="优惠券使用统计"/>
     <text name="GiftCashStatistics" value="礼品兑换统计"/>
+    <text name="MobileTerminalSet" value="移动端设置"/>
+    <text name="AdvertSet" value="广告图"/>
+    <text name="WeChatDocking" value="微信对接"/>
     <text name="WeChatSet" value="微信设置"/>
     <text name="PublicWeChatSet" value="公众号设置" />
-    <text name="WeChatMenu" value="自定义菜单" />
+    <text name="WeChatMenu" value="公众号菜单" />
     <text name="WeChatMessage" value="微信消息" />
-
     <text name="PayCode" value="我的二维码" />
     <text name="SystemSet" value="系统设置" />
     <text name="UserManager" value="用户管理" />

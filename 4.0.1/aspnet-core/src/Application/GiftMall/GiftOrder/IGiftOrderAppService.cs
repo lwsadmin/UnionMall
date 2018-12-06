@@ -9,7 +9,7 @@ using UnionMall.GiftMall.Dto;
 
 namespace UnionMall.Gift
 {
-    public interface IFlashSaleOrderAppService : IApplicationService
+    public interface IGiftOrderAppService : IApplicationService
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
         Task CreateOrEditAsync(Entity.GiftOrder model);

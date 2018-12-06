@@ -19,11 +19,11 @@ namespace UnionMall.Web.Mvc.Areas.GiftMall.Controllers
     {
         private readonly ICommonCategoryAppService _catAppService;
         private readonly IImageAppService _imgAppService;
-        private readonly IFlashSaleOrderAppService _AppService;
+        private readonly IGiftOrderAppService _AppService;
         private readonly IGiftOrderItemAppService _itemAppService;
         private readonly ICommonAppService _comService;
         public GiftOrderController(ICommonCategoryAppService catAppService,
-            ICommonAppService comService, IFlashSaleOrderAppService AppService,
+            ICommonAppService comService, IGiftOrderAppService AppService,
             IGiftOrderItemAppService itemAppService,
             IImageAppService imgAppService)
         {

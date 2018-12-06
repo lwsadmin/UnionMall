@@ -194,6 +194,8 @@
     <text name="BusinessDivideSet" value="BusinessDivideSet"/>
     <text name="PointSet" value="PointSet"/>
     <text name="BusinessSettle" value="BusinessSettle"/>
+    <text name="BusinessWithDrawCash" value="BusinessWithDrawCash"/>
+    <text name="MemberWithDrawCash" value="MemberWithDrawCash"/>
     <text name="StatisticsAnalysis" value="StatisticsAnalysis"/>
     <text name="Statistics" value="Statistics"/>
     <text name="ChainStorePointStatistics" value="ChainStorePointStatistics"/>
@@ -206,8 +208,11 @@
     <text name="CouponReceiveStatistics" value="CouponReceiveStatistics"/>
     <text name="CouponUseStatistics" value="CouponUseStatistics"/>
     <text name="GiftCashStatistics" value="GiftCashStatistics"/>
+    <text name="MobileTerminalSet" value="MobileTerminalSet"/>
+    <text name="AdvertSet" value="AdvertSet"/>
+    <text name="WeChatDocking" value="WeChatDocking"/>
     <text name="WeChatSet" value="WeChatSet"/>
-    <text name="WeChat" value="WeChatSet" />
+    <text name="WeChat" value="WeChat" />
     <text name="WeChatMenu" value="WeChatMenu" />
     <text name="WeChatMessage" value="WeChatMessage" />
     <text name="PayCode" value="PayCode" />
