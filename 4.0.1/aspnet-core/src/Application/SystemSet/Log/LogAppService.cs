@@ -34,15 +34,11 @@ namespace UnionMall.SystemSet
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select m.id,m.tenantid,m.title, cast(m.initpoint as float) initpoint,cast(m.sellprice as float) sellprice,
-cast(m.minPoint as float) minPoint,cast(m.maxPoint as float) maxPoint from tmemberlevel m where 1=1 ";
+                table = $@"select l.id, l.Content,l.UserAcccount,l.IPAddress,l.CreationTime from TLog l where 1=1 ";
             }
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
-            {
-                where += $" and m.TenantId={_AbpSession.TenantId}";
-            }
+            where = where.Replace(" *", " l");
             table += where;
-             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
 
         public async Task WriteLog(string content)

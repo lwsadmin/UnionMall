@@ -41,6 +41,7 @@
     <text name="Locked" value="Locked" />
     <text name="Screen" value="Screen" />
     <text name="Unlock" value="Unlock" />
+    <text name="Content" value="Content" />
     <text name="Info" value="Info" />
     <text value="Stock" name="Stock" />
     <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />

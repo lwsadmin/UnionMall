@@ -160,7 +160,7 @@
     <text name="Industry" value="运营行业" />
     <text name="PaySet" value="支付设置"/>
     <text name="SEO" value="SEO优化" />
-    <text name="Cache" value="清除缓存" />
+    <text name="Cache" value="缓存" />
     <text name="LogList" value="日志监控" />
     <text name="Belong" value="所属" />
     <text name="Business" value="商户"/>
@@ -224,6 +224,7 @@
     <text name="Unlock" value="解锁" />
     <text name="Search" value="搜索" />
     <text name="Records" value="记录" />
+    <text name="Content" value="内容" />
     <text name="SearchPlaceholder" value="请输入标题" />
     <text name="LowerLimit" value="下限" />
     <text name="UpperLimit" value="上限" />

@@ -11,7 +11,9 @@ namespace UnionMall.Entity
     public class Parameter : Entity<long>, IMustHaveTenant
     {
         public int TenantId { get; set; }
+        public string Title { get; set; }
         public string KeyName { get; set; }
         public string Value { get; set; }
+        public string Memo { get; set; }
     }
 }
