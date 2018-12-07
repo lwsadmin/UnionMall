@@ -25,7 +25,7 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
         }
         public async Task<IActionResult> List(string timeFrom, string timeTo, string content, int page = 1, int pageSize = 10)
         {
-            string where = _comService.GetWhere();
+            string where = string.Empty;
             if (!string.IsNullOrEmpty(content))
                 where += $" and content like '%{content}%' ";
             if (!string.IsNullOrEmpty(timeFrom))
@@ -33,7 +33,7 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             if (!string.IsNullOrEmpty(timeTo))
                 where += $" and o.CreationTime<='{timeTo} 23:59:59'";
             int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, "l.CreationTime desc", out total, where);
+            DataSet ds = _AppService.GetPage(page, pageSize, "l.id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             ViewBag.PageSize = pageSize;
             if (Request.Headers.ContainsKey("x-requested-with"))

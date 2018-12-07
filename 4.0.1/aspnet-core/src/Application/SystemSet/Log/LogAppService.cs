@@ -36,7 +36,10 @@ namespace UnionMall.SystemSet
             {
                 table = $@"select l.id, l.Content,l.UserAcccount,l.IPAddress,l.CreationTime from TLog l where 1=1 ";
             }
-            where = where.Replace(" *", " l");
+            if (AbpSession.TenantId != null && (int)AbpSession.TenantId > 0)
+            {
+                table += $" and TenantId={AbpSession.TenantId}";
+            }
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
