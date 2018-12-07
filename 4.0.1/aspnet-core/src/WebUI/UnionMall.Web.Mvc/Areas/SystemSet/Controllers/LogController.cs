@@ -23,15 +23,17 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             _AppService = AppService;
             _comService = comService;
         }
-        public async Task<IActionResult> List(string timeFrom, string timeTo, string content, int page = 1, int pageSize = 10)
+        public async Task<IActionResult> List(string timeFrom, string timeTo,string user, string content, int page = 1, int pageSize = 10)
         {
             string where = string.Empty;
             if (!string.IsNullOrEmpty(content))
                 where += $" and content like '%{content}%' ";
+            if (!string.IsNullOrEmpty(user))
+                where += $" and UserAcccount like '%{user}%' ";
             if (!string.IsNullOrEmpty(timeFrom))
-                where += $" and o.CreationTime>='{timeFrom} 00:00:00'";
+                where += $" and CreationTime>='{timeFrom} 00:00:00'";
             if (!string.IsNullOrEmpty(timeTo))
-                where += $" and o.CreationTime<='{timeTo} 23:59:59'";
+                where += $" and CreationTime<='{timeTo} 23:59:59'";
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, "l.id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
