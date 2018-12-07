@@ -172,6 +172,9 @@
     <Folder Include="Areas\GiftMall\Models\" />
     <Folder Include="Areas\Member\Data\" />
     <Folder Include="Areas\Member\Models\" />
+    <Folder Include="Areas\MobileTerminal\Data\" />
+    <Folder Include="Areas\MobileTerminal\Models\" />
+    <Folder Include="Areas\MobileTerminal\Views\" />
     <Folder Include="Areas\Statistics\Data\" />
     <Folder Include="Areas\Statistics\Models\" />
     <Folder Include="wwwroot\lib\pager\" />
