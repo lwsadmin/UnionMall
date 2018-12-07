@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "SystemSet";
+    ViewBag.SecondMenu = "LogList";
+}
+@using System.Data
+@using X.PagedList
+@model PagedList<DataRow>
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("SystemSet")</a>
+            </li>
+            <li class="active">
+                <strong>@L("LogList")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("LogList")</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/systemSet/log/list?pageSize=10">10/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/systemSet/log/list?pageSize=15">15/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/systemSet/log/list?pageSize=20">20/@L("Page")</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/systemSet/log/list" method="post">
+                                <input type="hidden" name="pageSize" value="10">
+                                <div class="form-group">
+                                    <input type="text" name="content" placeholder="@L("Records")@L("Content")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="user" placeholder="@L("Users")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="timeFrom" placeholder="@L("Records")@L("Time")" class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                    <span style="display: inline-block;vertical-align: 5px;">至</span>
+                                    <input type="text" name="timeTo" placeholder="@L("Records")@L("Time")" class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-primary m-b">搜索</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+
