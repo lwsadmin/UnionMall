@@ -23,21 +23,25 @@ namespace UnionMall.SystemSet
             _AbpSession = AbpSession;
         }
 
-        public Task<Parameter> GetParameter(string key)
+        public async Task<string> GetParameter(string key)
         {
-            return _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId) ??
-            _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0);
+            var s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId);
+            if (s != null)
+            {
+                return s.Value;
+            }
+            return (await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0)).Value;
         }
 
-        public void SaveParameter(Parameter p)
+        public async void SaveParameter(Parameter p)
         {
             if (_Repository.FirstOrDefaultAsync(c => c.KeyName == p.KeyName && c.TenantId == (_AbpSession.TenantId ?? 0)) == null)
             {
-                _Repository.Insert(p);
+                await _Repository.InsertAsync(p);
             }
             else
             {
-                _Repository.Update(p);
+                await _Repository.UpdateAsync(p);
             }
         }
     }

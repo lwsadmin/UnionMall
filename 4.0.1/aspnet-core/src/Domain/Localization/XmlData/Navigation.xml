@@ -212,6 +212,7 @@
   </First>
   <First Name="MobileTerminalSet"  Icon="glyphicon glyphicon-phone">
     <Second Name="PaySet"  Url="/mobileterminal/payset/index"></Second>
+    <Second Name="PayType"  Url="/mobileterminal/paytype/index"></Second>
     <Second Name="AdvertSet"  Url="/mobileterminal/advert/list"></Second>
   </First>
   <First Name="WeChatSet"  Icon="fa fa-wechat">

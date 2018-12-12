@@ -230,6 +230,8 @@
     <text name="Female" value="Female" />
     <text name="CardID" value="CardID" />
     <!--Action-->
+    <text name="PayType" value="PayType" />
+    <text name="Set" value="Set" />
     <text name="Comment" value="Comment" />
     <text name="Loading" value="Loading..." />
     <text name="Aduit" value="Aduit" />

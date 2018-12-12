@@ -170,6 +170,8 @@
     <text name="Usable" value="可用"/>
     <text name="GiftMall" value="礼品商城"/>
     <!--Action-->
+    <text name="PayType" value="支付方式" />
+    <text name="Set" value="设置" />
     <text name="Comment" value="评论" />
     <text name="Loading" value="加载中..." />
     <text name="Aduit" value="审核" />
