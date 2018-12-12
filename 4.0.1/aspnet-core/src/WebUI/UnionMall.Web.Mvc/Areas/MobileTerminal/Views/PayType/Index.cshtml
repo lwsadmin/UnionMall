@@ -1,0 +1,155 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "MobileTerminalSet";
+    ViewBag.SecondMenu = "PayType";
+}
+@using System.Data
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("MobileTerminalSet")</a>
+            </li>
+            <li class="active">
+                <strong>@L("PayType")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="modal-body">
+        <!-- BEGIN FORM-->
+        <form class="form-horizontal" id="form" method="post">
+            <input type="hidden" name="Id" value="@ViewBag.P.Id" />
+            <input type="hidden" name="TenantId" value="@ViewBag.P.TenantId" />
+            <input type="hidden" name="Title" value="@ViewBag.P.Title" />
+            <input type="hidden" name="Memo" value="@ViewBag.P.Memo" />
+            <input type="hidden" name="KeyName" value="@ViewBag.P.KeyName" />
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">
+                            </label>
+                            <div class="col-sm-3">
+                                <div class="checkbox checkbox-inline checkbox-success">
+                                    <input type="checkbox" id="WeChat" name="PayType" @(ViewData["PayType"].ToString().Contains("WeChat") ? "checked='checked'" : "") value="WeChat">
+                                    <label for="WeChat">@L("WeChat")@L("Pay")</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">
+                            </label>
+                            <div class="col-sm-3">
+                                <div class="checkbox checkbox-inline checkbox-success">
+                                    <input type="checkbox" id="AliPay" name="PayType" @(ViewData["PayType"].ToString().Contains("AliPay") ? "checked='checked'" : "") value="AliPay">
+                                    <label for="AliPay">@L("AliPay")@L("Pay")</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">
+                            </label>
+                            <div class="col-sm-3">
+                                <div class="checkbox checkbox-inline checkbox-success">
+                                    <input type="checkbox" id="Balance" name="PayType" @(ViewData["PayType"].ToString().Contains("Balance") ? "checked='checked'" : "") value="Balance">
+                                    <label for="Balance">@L("Balance")@L("Pay")</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">
+                            </label>
+                            <div class="col-sm-3">
+                                <div class="checkbox checkbox-inline checkbox-success">
+                                    <input type="checkbox" id="Integral" name="PayType" @(ViewData["PayType"].ToString().Contains("Integral") ? "checked='checked'" : "") value="Integral">
+                                    <label for="Integral">@L("Integral")@L("Pay")</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">
+                            </label>
+                            <div class="col-sm-3">
+                                <div class="checkbox checkbox-inline checkbox-success">
+                                    <input type="checkbox" id="Coupon" name="PayType" @(ViewData["PayType"].ToString().Contains("Coupon") ? "checked='checked'" : "") value="Coupon">
+                                    <label for="Coupon">@L("Coupon")@L("Pay")</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-5">
+                            </label>
+                            <div class="col-sm-3">
+                                <div class="checkbox checkbox-inline checkbox-success">
+                                    <input type="checkbox" id="Cash" name="PayType" @(ViewData["PayType"].ToString().Contains("Cash") ? "checked='checked'" : "") value="Cash">
+                                    <label for="Cash">@L("Cash")@L("Pay")</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="row">
+                        <div class="col-md-offset-5 col-sm-7">
+                            <input type="submit" value="保存" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+</div>
+<script>
+    $(function myfunction() {
+        var _Service = abp.services.app.parameter;
+
+        $("#form").on("submit", function (e) {
+        e.preventDefault();
+            debugger;
+            var EditDto = $(this).serializeFormToObject();
+            var ck = " ";
+            $("input[name='PayType']:checked").each(function () {
+                ck+= $(this).val() + ',';
+            });
+            EditDto.value = ck;
+            _Service.saveParameter(EditDto).done(function (data) {
+            toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+
+        }).fail(function (data) {
+        }).always(function (data) { });
+    });
+    });
+
+
+
+</script>
