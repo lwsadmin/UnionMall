@@ -62,7 +62,7 @@ namespace UnionMall.SystemSet
             var query = _Repository.FirstOrDefault(c => c.Id == id);
             if (query != null)
             {
-                await _Repository.DeleteAsync(id);
+              //  await _Repository.DeleteAsync(id);
             }
         }
     }
