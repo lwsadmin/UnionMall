@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
 using UnionMall.SystemSet;
@@ -9,6 +10,7 @@ using UnionMall.SystemSet;
 namespace UnionMall.Web.Mvc.Areas.MobileTerminal.Controllers
 {
     [Area("MobileTerminal")]
+    [AbpMvcAuthorize("MobileTerminalSet.PayType")]
     public class PayTypeController : UnionMallControllerBase
     {
         private readonly IParameterAppService _appService;

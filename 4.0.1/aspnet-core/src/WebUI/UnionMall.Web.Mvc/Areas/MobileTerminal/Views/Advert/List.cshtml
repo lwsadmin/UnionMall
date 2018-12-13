@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "MobileTerminalSet";
+    ViewBag.SecondMenu = "AdvertSet";
+}
+@using UnionMall.Entity
+@using System.Data
+@using X.PagedList
+@model PagedList<DataRow>
+<style>
+    #pic {
+        position: fixed;
+        display: none;
+        z-index: 10;
+    }
+
+</style>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("MobileTerminalSet")</a>
+            </li>
+            <li class="active">
+                <strong>@L("AdvertSet")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("AdvertSet")</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm"
+                                   data-ajax-loading="loading" data-ajax-loading-duration="2"
+                                   data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
+                                   href="/mobileterminal/advert/list?page=1&pageSize=10">10</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm"
+                                   data-ajax-loading="loading" data-ajax-loading-duration="2"
+                                   data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
+                                   href="/mobileterminal/advert/list?page=1&pageSize=15">15</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm"
+                                   data-ajax-loading="loading" data-ajax-loading-duration="2"
+                                   data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
+                                   href="/mobileterminal/advert/list?page=1&pageSize=20">20</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form id="searchForm" data-ajax="true" data-ajax-update="#table" action="/GoodsManage/Brand/List" method="post">
+                        <input type="hidden" name="pageSize" value="10" />
+                    </form>
+
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="DivAdd">
+    @Html.Partial("_Add", new Advert())
+</div>
+
+<script src="~/lib/pager/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/view-resources/Areas/GoodsManage/brand_list.js"></script>
+<script src="~/lib/fileinput/js/locales/zh.js" asp-append-version="true"></script>
+
+<script>
+    var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es';
+    // alert(language);
+    $("#input").fileinput({
+        language: language,
+        showRemove: false,
+        showUpload: false,
+        allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
+        showUploadedThumbs: false,
+        uploadUrl: "/Common/Upload",
+        showClose: false,
+        showCancel: false,
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+
+    //选择文件后处理事件
+    $("#input").on("filebatchselected", function (event, files) {
+        //执行文件上传方法
+        $("#input").fileinput("upload");
+    });
+    //上传成功后处理方法
+    $("#input").on("fileuploaded", function (event, data, previewId, index) {
+        var url = data.response.result.url;
+        $("input[name='Logo']").val(url);
+        //$(".hid" + index).val(url).addClass(previewId);
+    });
+</script>
