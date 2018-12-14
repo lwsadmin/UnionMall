@@ -85,12 +85,4 @@
     }, function () {
         $("#pic").remove();
         });
-
-    var txt = $("input[name='Title']").val().trim();
-    if (txt.length > 0) {
-        $(".title").each(function () {
-            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
-            $(this).html(newTxt);
-        });
-    }
 </script>
