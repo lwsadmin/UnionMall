@@ -11,10 +11,8 @@
     <thead>
         <tr>
             <th>@L("Title")</th>
-            <th>Logo</th>
-            <th>@L("Link")</th>
-            <th>@L("Sort")</th>
-            <th>@L("Note")</th>
+            <th>@L("Content")</th>
+            <th>@L("Status")</th>
             <th>@L("Operate")</th>
         </tr>
     </thead>
@@ -23,25 +21,26 @@
         {
             <tr>
                 <td class="title">@item["Title"]</td>
-                <td class="img"><img style="height:15px;" src="@item["Logo"]" onerror="this.src='/img/nopic.png'" />  </td>
-                <td><a href="@item["Url"]" target="_blank">@item["Url"]</a></td>
-                <td>@item["Sort"]</td>
-                <td>@item["Note"]</td>
-                <td>
-                    @if (IsGranted("OnlineGoods.GoodsBrand.Edit"))
-                    {
-                        <a onclick="Edit(@item["Id"])" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
-                    }
-                    &nbsp; &nbsp;
-                    @if (IsGranted("OnlineGoods.GoodsBrand.Delete"))
-                    {
 
-                        <a data-title="@L("DeleteConfirm{0}", item["Title"])" data-ok="@L("OK")"
-                           data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
-                            <i class="fa fa-trash text-navy"></i>
-                        </a>
-                    }
-                </td>
+                <td>@item["Content"]</td>
+                @if (Convert.ToBoolean(item["isOpen"]))
+                {
+                    <td class="text-info">@L("Open")</td>
+                }
+                else
+                {
+                    <td class="text-danger">@L("Close")</td>
+                }
+                    <td>
+                        @if (Convert.ToBoolean(item["isOpen"]))
+                        {
+                            <a onclick="change(@item["Id"])" title="@L("Close")"><i class="fa fa-toggle-on fa-lg" aria-hidden="true"></i></a>
+                        }
+                        else
+                        {
+                            <a onclick="change(@item["Id"])" title="@L("Open")"><i class="fa fa-toggle-off fa-lg" aria-hidden="true"></i></a>
+                        }
+                    </td>
             </tr>
         }
     </tbody>
@@ -67,25 +66,7 @@
         }
 ))
 <script>
-    $(".img").hover(function () {
-        $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
-        $(".img").mousemove(function (e) {
-            var h = window.screen.height;
-            var showY = e.pageY;
-            if (e.pageY + $("#pic").height() + 100 >= h) {
-                showY = h - $("#pic").height() - 200;
-            }
-            $("#pic").css({
-                "top": (showY - $("#table").offset().top-50),
-                "left": (e.pageX + 50 - $("#table").offset().left)
-            }).fadeIn(500);
-
-        });
-    }, function () {
-        $("#pic").remove();
-    });
-
-    var txt = $("input[name='Title']").val().trim();
+    var txt = $("input[name='title']").val().trim();
     if (txt.length > 0) {
         $(".title").each(function () {
             var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
