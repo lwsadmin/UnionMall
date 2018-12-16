@@ -26,7 +26,6 @@ namespace UnionMall.SystemSet
         public async Task<Parameter> GetParameter(string key)
         {
             var s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId);
-            var f = _Repository.GetAllList(c => c.Id > 0);
             if (s != null)
             {
                 return s;
@@ -34,33 +33,33 @@ namespace UnionMall.SystemSet
             return (await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0));
         }
 
-        //public async void SaveParameter(string key, string value)
-        //{
-        //    try
-        //    {
-        //        var p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == (_AbpSession.TenantId ?? 0));
-        //        p.Value = value ?? "";
-        //        await _Repository.UpdateAsync(p);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Logger.Warn("11111111111111111111111111" + e.Message + "-----------------" + e.StackTrace);
-        //        throw new UserFriendlyException(e.Message);
-
-        //    }
-
-        //}
-
+        public async Task SaveParameterValue(string key, string value)
+        {
+            var p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == (_AbpSession.TenantId ?? 0));
+            p.Value = value ?? "";
+            await _Repository.UpdateAsync(p);
+        }
+        public async Task<string> GetParameterValue(string key)
+        {
+            var s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId);
+            if (s != null)
+            {
+                return s.Value;
+            }
+            return (await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0)).Value;
+        }
         public async Task SaveParameter(Parameter p)
         {
-            if (p.Id<= 0)
+            if (p.Id <= 0)
             {
-              await  _Repository.InsertAsync(p);
+                await _Repository.InsertAsync(p);
             }
             else
             {
                 await _Repository.UpdateAsync(p);
             }
         }
+
+
     }
 }

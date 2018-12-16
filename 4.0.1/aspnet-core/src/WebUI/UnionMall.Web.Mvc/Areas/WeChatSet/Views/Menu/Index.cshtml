@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "WeChatSet";
+    ViewBag.SecondMenu = "WeChatMenu";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("WeChatSet")</a>
+            </li>
+            <li class="active">
+                <strong>@L("WeChatMenu")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="modal-body">
+        <!-- BEGIN FORM-->
+        <form class="form-horizontal" id="form" method="post">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-body">
+
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="row">
+                        <div class="col-md-offset-5 col-sm-7">
+                            <button type="submit" class="btn btn-primary">@L("Save")</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+</div>

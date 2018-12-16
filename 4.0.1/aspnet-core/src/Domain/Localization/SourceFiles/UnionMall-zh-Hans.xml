@@ -236,6 +236,11 @@
     <text name="Sell" value="销售" />
     <text name="Page" value="页" />
     <text name="To" value="至" />
+    <text name="Development" value="开发" />
+    <text name="Pattern" value="模式" />
+    <text name="Attention" value="关注" />
+    <text name="Close" value="关闭" />
+    <text name="Open" value="开启" />
     <text name="FollowStrictly" value="严格按照" />
     <text name="Template" value="模板" />
     <text name="Level" value="级别" />

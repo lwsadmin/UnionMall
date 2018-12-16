@@ -1,8 +1,10 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Entity;
@@ -15,11 +17,13 @@ namespace UnionMall.SystemSet
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<Advert, long> _Repository;
         public readonly IAbpSession _AbpSession;
-        public AdvertAppService(ISqlExecuter sqlExecuter, IRepository<Advert, long> Repository,
+        private readonly IHostingEnvironment _HostingEnvironment;
+        public AdvertAppService(ISqlExecuter sqlExecuter, IRepository<Advert, long> Repository, IHostingEnvironment HostingEnvironment,
             IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
+            _HostingEnvironment = HostingEnvironment;
             _AbpSession = AbpSession;
         }
 
@@ -59,10 +63,16 @@ namespace UnionMall.SystemSet
 
         public async Task DeleteAsync(long id)
         {
-            var query = _Repository.FirstOrDefault(c => c.Id == id);
-            if (query != null)
+            var query = await _Repository.FirstOrDefaultAsync(c => c.Id == id);
+            if (query != null && !string.IsNullOrEmpty(query.Image))
             {
-              //  await _Repository.DeleteAsync(id);
+                if (File.Exists(_HostingEnvironment.WebRootPath + query.Image))
+                {
+                    File.Delete(_HostingEnvironment.WebRootPath + query.Image);
+                }
+                query.Image = "";
+                await _Repository.UpdateAsync(query);
+
             }
         }
     }

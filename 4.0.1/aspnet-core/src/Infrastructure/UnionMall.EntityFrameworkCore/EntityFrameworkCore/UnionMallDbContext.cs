@@ -18,9 +18,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<Coupon> Coupon { get; set; }
         public DbSet<CouponSendStatistics> MemCouponSendStatisticsberLevel { get; set; }
         public DbSet<CouponUsedStatistics> CouponUsedStatistics { get; set; }
-        public DbSet<Log> Log { get; set; }
-        public DbSet<Parameter> Parameter { get; set; }
-        public DbSet<Advert> Advert { get; set; }
+
         public DbSet<CommonCategory> CommonCategory { get; set; }
         public DbSet<Article> Article { get; set; }
         public DbSet<Comment> Comment { get; set; }
@@ -34,6 +32,10 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<FlashSale> FlashSale { get; set; }
         public DbSet<FlashSaleOrder> FlashSaleOrder { get; set; }
         public DbSet<FlashSaleOrderItem> FlashSaleOrderItem { get; set; }
+        public DbSet<Log> Log { get; set; }
+        public DbSet<Parameter> Parameter { get; set; }
+        public DbSet<Advert> Advert { get; set; }
+        public DbSet<WechatMessage> WechatMessage { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

@@ -10,7 +10,9 @@ namespace UnionMall.SystemSet
     public interface IParameterAppService : IApplicationService
     {
         Task<Parameter> GetParameter(string key);
-       // void SaveParameter(string key, string value);
+        Task<string> GetParameterValue(string key);
+        // void SaveParameter(string key, string value);
         Task SaveParameter(Parameter p);
+        Task SaveParameterValue(string key, string value);
     }
 }

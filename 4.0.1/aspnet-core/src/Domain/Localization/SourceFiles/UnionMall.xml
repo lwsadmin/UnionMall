@@ -29,6 +29,11 @@
     <text name="Name" value="Name" />
     <text name="To" value="To" />
     <text name="Hint" value="Hint" />
+    <text name="Close" value="Close" />
+    <text name="Open" value="Open" />
+    <text name="Attention" value="Attention" />
+    <text name="Development" value="Development" />
+    <text name="Pattern" value="Pattern" />
     <text name="NoEditPwd" value="LeaveTheBlankWithoutChangingThePassword" />
     <text name="Surname" value="Surname" />
     <text name="EmailAddress" value="Email address" />

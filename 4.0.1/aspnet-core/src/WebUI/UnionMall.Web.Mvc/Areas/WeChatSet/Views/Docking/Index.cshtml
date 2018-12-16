@@ -1,0 +1,158 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "WeChatSet";
+    ViewBag.SecondMenu = "WeChatDocking";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("WeChatSet")</a>
+            </li>
+            <li class="active">
+                <strong>@L("WeChatDocking")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="modal-body">
+        <!-- BEGIN FORM-->
+        <form class="form-horizontal" id="form" method="post">
+            @*<input type="hidden" name="Id" value="@ViewBag.P.Id" />
+                <input type="hidden" name="TenantId" value="@ViewBag.P.TenantId" />
+                <input type="hidden" name="Title" value="@ViewBag.P.Title" />
+                <input type="hidden" name="Memo" value="@ViewBag.P.Memo" />
+                <input type="hidden" name="KeyName" value="@ViewBag.P.KeyName" />*@
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    APPID
+                                </label>
+                                <div class="col-sm-4">
+                                    <input type="text" aria-describedby="inputSuccess3Status" class="form-control  input-sm input-large" value="@ViewData["appID"]" id="appID" name="AppID">
+                                </div>
+                                <div class="col-sm-5">
+                                    <span id="helpBlock" class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    Appsecret
+                                </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control input-sm  input-large" value="@ViewData["appsecret"]" id="Appsecret" name="Appsecret">
+                                </div>
+                                <div class="col-sm-4">
+                                    <span class="help-Block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="row">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    @L("Development")@L("Pattern")
+                                </label>
+                                <div class="col-sm-4">
+                                    <select class="form-control input-sm" id="WeiXinKefu" name="WeiXinKefu">
+                                        <option value="true">@L("Open")</option>
+                                        <option value="false">@L("Close")</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-sm-4">
+                                    <span class="help-Block"></span>
+                                </div>
+                            </div>
+                        </div>*@
+                        @*<div class="row">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    URL
+                                </label>
+                                <div class="col-sm-4">
+                                    <input style="cursor:default;" type="text" disabled="disabled" class="form-control input-sm  
+                                      " value="@ViewData["Url"]" id="url" name="url">
+                                </div>
+                                <div class="col-sm-4">
+                                    <span class="help-Block"></span>
+                                </div>
+                            </div>
+                        </div>*@
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    Token
+                                </label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control input-sm" value="@ViewData["Token"]" id="Token" name="Token">
+                                </div>
+                                @*<div class="col-sm-1">
+                                    <span class="help-inline"><a class="btn btn-success btn-sm" title="" onclick="RandToken();">生成 </a></span>
+                                </div>*@
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">
+                                    @L("WeChat")@L("Attention")@L("Reply")
+                                </label>
+                                <div class="col-sm-4">
+                                    <textarea maxlength="500" class="form-control" id="AttentionReply" name="AttentionReply" rows="5">@ViewData["AttentionReply"]</textarea>
+                                </div>
+                                <div class="col-sm-4">
+                                    <span class="help-Block"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="row">
+                        <div class="col-md-offset-5 col-sm-7">
+                            <button type="submit" class="btn btn-primary">@L("Save")</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+</div>
+<script>
+    $(function () {
+        var _Service = abp.services.app.parameter;
+        $("#form").on("submit", function (e) {
+        e.preventDefault();
+            $("#form").find("input[type='text'],textarea").each(function () {
+                _Service.saveParameterValue($(this).attr("name"), $(this).val())
+                    .done(function (data) { })
+                    .fail(function (data) { })
+                    .always(function (data) { });
+            });
+                 toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+    });
+    });
+
+
+
+</script>

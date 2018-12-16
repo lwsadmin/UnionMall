@@ -176,6 +176,8 @@
     <Folder Include="Areas\MobileTerminal\Models\" />
     <Folder Include="Areas\Statistics\Data\" />
     <Folder Include="Areas\Statistics\Models\" />
+    <Folder Include="Areas\WeChatSet\Data\" />
+    <Folder Include="Areas\WeChatSet\Models\" />
     <Folder Include="wwwroot\lib\pager\" />
     <Folder Include="wwwroot\view-resources\Areas\GiftMall\Gift\" />
     <Folder Include="wwwroot\view-resources\Views\Shared\Components\" />
@@ -338,6 +340,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\SystemSet\Views\Log\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\WeChatSet\Views\Message\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\_ViewImports.cshtml">

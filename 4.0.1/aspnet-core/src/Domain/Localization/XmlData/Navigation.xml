@@ -219,9 +219,9 @@
     </Second>
   </First>
   <First Name="WeChatSet"  Icon="fa fa-wechat">
-    <Second Name="WeChatDocking"   Url="/set/admin/list"></Second>
-    <Second Name="WeChatMenu"  Url="/set/admin/list"></Second>
-    <Second Name="WeChatMessage"  Url="/set/role/list"></Second>
+    <Second Name="WeChatDocking"   Url="/wechatset/docking/index"></Second>
+    <Second Name="WeChatMenu"  Url="/wechatset/menu/index"></Second>
+    <Second Name="WeChatMessage"  Url="/wechatset/message/list"></Second>
   </First>
   <First Name="SystemSet"   Icon="glyphicon glyphicon-wrench">
     <Second Name="UserManager"  Url="/SystemSet/User/list">

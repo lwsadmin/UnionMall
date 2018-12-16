@@ -21,8 +21,6 @@
             $("#formPost").find('input[type=text],textarea,input[type=hidden],input[type=number]').each(function () {
                 $(this).val('');
             });
-
-
         });
         $("#add").click(function () {
             $("#CreateModal").modal("show");
