@@ -4,6 +4,8 @@
     ViewBag.SecondMenu = "PaySet";
 }
 @using System.Data
+<link href="~/lib/fileinput/css/fileinput.min.css" rel="stylesheet" asp-append-version="true" />
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -39,60 +41,57 @@
                                     <div class="row">
                                         <div class="form-group">
                                             <label class="control-label col-sm-3">
-                                                总部微信商户号
+                                                @L("WeChat")@L("Business")@L("Number")
                                             </label>
                                             <div class="col-sm-3">
                                                 <input type="text" class="form-control input-sm"
                                                        value="1230258902" id="mch_id" name="mch_id">
                                             </div>
-                                            <span class="help-block">微信支付商户后台"账户预览"中查询</span>
+                                            <span class="help-block">--</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group">
                                             <label class="control-label col-sm-3">
-                                                微信支付API密钥
+                                                @L("WeChat")@L("Pay")API @L("SecretKey")
                                             </label>
                                             <div class="col-sm-3">
                                                 <input type="text" class="form-control input-sm" value="198*************************5816" id="payKey" name="payKey">
                                             </div>
-                                            <span class="help-block">如果开启商户独立收款，服务商支付密钥和总部微信商户号密钥保持一致</span>
+                                            @*<span class="help-block">如果开启商户独立收款，服务商支付密钥和总部微信商户号密钥保持一致</span>*@
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group">
                                             <label class="control-label col-sm-3">
-                                                微信证书上传
+                                                @L("WeChat")@L("Certificate")@L("Upload")
                                             </label>
                                             <div class="col-sm-3">
-                                                <div class="input-group">
-                                                    <input class="form-control input-sm" style="height: 25px;" id="fileTxt" name="WeiXinLEC" readonly="readonly" type="text" value="">
-                                                    <span class="input-group-btn">
-                                                        <input type="button" id="uploadButton" value="上传证书" />
-                                                    </span>
+                                                <input type="hidden" name="Certificate" value="" />
+                                                <input id="input" title="@L("Upload")" name="File" type="file" data-show-preview="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="row">
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-3">
+                                                    微信支付费率
+                                                </label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control input-sm" value="0.006" name="WeiXinPaidRates">
                                                 </div>
+                                                <span class="help-block">设置后与商户结算金额，自动扣除费率</span>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3">
-                                                微信支付费率
-                                            </label>
-                                            <div class="col-sm-3">
-                                                <input type="text" class="form-control input-sm" value="0.006" name="WeiXinPaidRates">
-                                            </div>
-                                            <span class="help-block">设置后与商户结算金额，自动扣除费率</span>
-                                        </div>
-                                    </div>
+                                        </div>*@
 
 
 
                                 </form>
+                                <br />
                                 <div class="form-actions">
                                     <div class="row">
-                                        <div class="col-md-offset-5 col-sm-7">
-                                            <input type="button" value="保存" class="btn btn-primary" onclick="SaveValueParameterPaySet('formValueParameter2')" />
+                                        <div class="col-md-offset-3 col-sm-7">
+                                            <input type="button" value="@L("Save")" class="btn btn-primary" onclick="SaveValueParameterPaySet('formValueParameter2')" />
                                         </div>
                                     </div>
                                 </div>
@@ -114,42 +113,42 @@
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control  input-inline input-large" value="2088911732453562" id="partner" name="partner">
                                                 </div>
-                                                <span class="help-block">支付宝合作者身份ID</span>
+                                                @*<span class="help-block">支付宝合作者身份ID</span>*@
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="form-group">
                                                 <label class="control-label col-sm-3">
-                                                    支付宝当面付应用id
+                                                    @L("AliPay")@L("FacePay") id
                                                 </label>
                                                 <div class="col-sm-3">
                                                     <input type="text" class="form-control  input-inline input-large" value="2015092100306975" name="merchant_private_appid">
                                                 </div>
-                                                <span class="help-block">支付宝当面付应用id</span>
+                                                <span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
                                                 <label class="control-label col-sm-3">
-                                                    RSA密钥
+                                                    RSA@(L("SecretKey"))
                                                 </label>
                                                 <div class="col-sm-5">
                                                     <textarea class="form-control" id="merchant_private_key" name="merchant_private_key" rows="9">MIICXQIBAAKBg*************************FbP8lsxNaLFl6ljOuswF425Os+qbGIMT1L2CCq4TlgbDSpT6og46DIl9URFjrFNyjAc9+L9opQf6I/osRAKrSypRB/FEzhSEwmBUl3/2Fe1OURK+S8bDmLFpkA0Q+yAibA0zb78JDIoYdtccpmYwIDAQABAoGBAK3djgKaXTMRCUfKFul9uVd8Vzk6G4VKhfv5g30RKvfEc6BnNih1SDJ6Wo1pDfQA85kvo/O1WOmaKQD9vBJCyBstc9UWcR0Z2w6Gf0Xr5PUGoL+I8DYHxroiEbg5Kos6CDwWO8F3zFqC+ZDPToJJNLPYXhU4u1+O/gtQSVGi63SBAkEA79gMyUGkjQ3zZTX3L5mxdthXE51pCoBcvLpORcvDWGOxugT8i024Q7ZIFXj0DjET6m3mAmYQSDAoJV8jqm3l8wJBAOTezgRE0lX29OdUdqTKoK7wO9eEFknx0KNUg9o5aVLcgKgks7O8QPU3TQ8eTtHT795nfWHC1TdaHzE7rwV7adECQDCl5OoJe4P02XKlAI9SIFHXzcm3uu+bW7QYIfo8O1I5Xno5urPSvtZVKcfZMb+TKtP5GJdR9ml+AxaZdpWCFwsCQQCluGb4VFTxBhajAle+TzI2OaE7FluFQ2FNQr8OXo/S/fLyzVCJjoCCjn5vugRcjtea9Nim1wrIP6tiXNMIZyphAkBFRnVF22dWWNeDVoFoVwI0YIS4BIXgfBs/QNwxAQsvjwvq+8TcvQnWDpxw6DNGlHMtacXNNEy4xepfXrPc2Hwh</textarea>
                                                 </div>
-                                                <span class="help-block"><a onclick="window.open('https://openhome.alipay.com/doc/docIndex.htm?url=https://openhome.alipay.com/doc/viewKbDoc.htm?key=236615_428849&type=info','','height=500,width=611,scrollbars=yes,status =yes')">支付宝私钥，没有转PKCS8</a></span>
+                                                <span class="help-block"><a onclick="window.open('https://openhome.alipay.com/doc/docIndex.htm?url=https://openhome.alipay.com/doc/viewKbDoc.htm?key=236615_428849&type=info','','height=500,width=611,scrollbars=yes,status =yes')">@L("Detail")@L("To")@L("AliPay")</a></span>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="form-group">
                                                 <label class="control-label col-sm-3">
-                                                    RSA密钥PKCS8格式
+                                                    RSA@(L("SecretKey"))PKCS8@(L("Type"))
                                                 </label>
                                                 <div class="col-sm-5">
                                                     <textarea class="form-control" id="private_key" name="private_key" rows="9">MIICdwIBADANB*************************JdAgEAAoGBANZtKcIvIhN0PMf10bsm4YVbAVs/yWzE1osWXqWM66zAXjbk6z6psYgxPUvYIKrhOWBsNKlPqiDjoMiX1REWOsU3KMBz34v2ilB/oj+ixEAqtLKlEH8UTOFITCYFSXf/YV7U5REr5LxsOYsWmQDRD7ICJsDTNvvwkMihh21xymZjAgMBAAECgYEArd2OAppdMxEJR8oW6X25V3xXOTobhUqF+/mDfREq98RzoGc2KHVIMnpajWkN9ADzmS+j87VY6ZopAP28EkLIGy1z1RZxHRnbDoZ/Revk9Qagv4jwNgfGuiIRuDkqizoIPBY7wXfMWoL5kM9Ogkk0s9heFTi7X47+C1BJUaLrdIECQQDv2AzJQaSNDfNlNfcvmbF22FcTnWkKgFy8uk5Fy8NYY7G6BPyLTbhDtkgVePQOMRPqbeYCZhBIMCglXyOqbeXzAkEA5N7OBETSVfb051R2pMqgrvA714QWSfHQo1SD2jlpUtyAqCSzs7xA9TdNDx5O0dPv3md9YcLVN1ofMTuvBXtp0QJAMKXk6gl7g/TZcqUAj1IgUdfNybe675tbtBgh+jw7Ujleejm6s9K+1lUpx9kxv5Mq0/kYl1H2aX4DFpl2lYIXCwJBAKW4ZvhUVPEGFqMCV75PMjY5oTsWW4VDYU1Cvw5ej9L98vLNUImOgIKOfm+6BFyO15r02KbXCsg/q2Jc0whnKmECQEVGdUXbZ1ZY14NWgWhXAjRghLgEheB8Gz9A3DEBCy+PC+r7xNy9CdYOnHDoM0aUcy1pxc00TLjF6l9es9zYfCE=</textarea>
                                                 </div>
-                                                <span class="help-block"><a onclick="window.open('https://openhome.alipay.com/doc/docIndex.htm?url=https://openhome.alipay.com/doc/viewKbDoc.htm?key=236615_428849&type=info','','height=500,width=611,scrollbars=yes,status =yes')">支付宝私钥转PKCS8格式</a></span>
+                                                <span class="help-block"><a onclick="window.open('https://openhome.alipay.com/doc/docIndex.htm?url=https://openhome.alipay.com/doc/viewKbDoc.htm?key=236615_428849&type=info','','height=500,width=611,scrollbars=yes,status =yes')">@L("Detail")@L("To")@L("AliPay")PKCS8</a></span>
                                             </div>
                                         </div>
 
@@ -158,7 +157,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-5 col-sm-7">
-                                            <input type="button" value="保存" class="btn btn-primary" onclick="SaveValueParameterPaySet('formValueParameter2')" />
+                                            <input type="button" value="@L("Save")" class="btn btn-primary" onclick="SaveValueParameterPaySet('formValueParameter2')" />
                                         </div>
                                     </div>
                                 </div>
@@ -170,9 +169,44 @@
         </div>
     </div>
 </div>
+<script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
+<script src="~/lib/fileinput/js/locales/zh.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
 <script>
     $('#myTabs a').click(function (e) {
         e.preventDefault()
         $(this).tab('show')
     });
+
+    var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es';
+    $("#input").fileinput({
+        language: language,
+        showRemove: false,
+        showUpload: false,
+        allowedFileExtensions: ['stc'],
+        showUploadedThumbs: false,
+        uploadUrl: "/Common/Upload",
+        showClose: false,
+        showCancel: false,
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+    $("#input").on("filebatchselected", function (event, files) {
+        $("#input").fileinput("upload");
+    });
+    $("#input").on("fileuploaded", function (event, data, previewId, index) {
+        var url = data.response.result.url;
+        $("input[name='Certificate']").val(url);
+        //$(".hid" + index).val(url).addClass(previewId);
+    });
+    function SaveValueParameterPaySet() {
+                    swal(
+            '@L("Hint")',
+            '@L("noWechatTip")',
+            'warning'
+        )
+        return false;
+    }
+
 </script>

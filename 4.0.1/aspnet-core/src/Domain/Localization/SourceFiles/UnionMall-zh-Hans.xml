@@ -170,6 +170,8 @@
     <text name="Usable" value="可用"/>
     <text name="GiftMall" value="礼品商城"/>
     <!--Action-->
+    <text name="FacePay" value="当面付" />
+    <text name="Upload" value="上传" />
     <text name="PayType" value="支付方式" />
     <text name="Set" value="设置" />
     <text name="Comment" value="评论" />
@@ -184,6 +186,7 @@
     <text name="Praise" value="赞" />
     <text name="Ago" value="前" />
     <text name="SortTip" value="从大到小降序展示" />
+    <text name="noWechatTip" value="对不起，尚未接入微信平台，无法进行该操作!" />
     <text name="SpellGroupOrder" value="拼团订单" />
     <text name="Brand" value="品牌" />
     <text name="FullName" value="姓名" />
@@ -204,6 +207,8 @@
     <text name="SetRec" value="推荐" />
     <text name="SetTop" value="置顶" />
     <!--Table-->
+    <text name="Certificate" value="证书" />
+    <text name="SecretKey" value="密钥" />
     <text name="Sort" value="排序" />
     <text name="Chart" value="图表" />
     <text name="Amount" value="金额" />
@@ -211,6 +216,8 @@
     <text name="legalPerson" value="法人" />
     <text name="DueTime" value="到期时间" />
     <text name="Link" value="链接" />
+    <text name="ScanCode" value="扫码" />
+    <text name="SmlPro" value="小程序" />
     <text name="Increase" value="增加" />
     <text name="Reduce" value="减少" />
     <text name="Deduction" value="扣除" />

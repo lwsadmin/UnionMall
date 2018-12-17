@@ -139,7 +139,10 @@
     <text value="LockScreen" name="LockScreen"/>
 
     <!--ccccccccccccccccccccccccccccc-->
+    <text name="FacePay" value="FaceToFacePay" />
+    <text name="Upload" value="Upload" />
     <text name="OffLineCashie" value="OffLineCashie"/>
+    <text name="Certificate" value="Certificate" />
     <text name="QuickConsume" value="QuickConsume"/>
     <text name="GoodsConsume" value="GoodsConsume" />
     <text name="MemberRecharge" value="Member"/>
@@ -241,12 +244,12 @@
     <text name="Loading" value="Loading..." />
     <text name="Aduit" value="Aduit" />
     <text name="Reply" value="Reply" />
-
     <text name="Import" value="Import" />
     <text name="Export" value="Export" />
     <text name="BirthDay" value="BirthDay" />
     <!--Form-->
     <text name="SortTip" value="Descending from big to small" />
+    <text name="noWechatTip" value="Sorry, we have not accessed the Wechat platform yet. We can't do this operation!" />
     <text name="Referrer" value="Referrer" />
     <text name="Increase" value="Increase" />
     <text name="Reduce" value="Reduce" />
@@ -269,6 +272,7 @@
     <text name="SetRec" value="SetRecommend" />
     <text name="SetTop" value="RoofPlacement" />
     <!--Table-->
+    <text name="SecretKey" value="SecretKey" />
     <text name="Chart" value="Chart" />
     <text name="Praise" value="Praise" />
     <text name="Amount" value="Amount" />
@@ -281,6 +285,8 @@
     <text name="Sort" value="Sort" />
     <text name="DueTime" value="DueTime" />
     <text name="Link" value="Link" />
+    <text name="ScanCode" value="ScanningCode" />
+    <text name="SmlPro" value="SmallProgram" />
     <text value="FirstPage" name="FirstPage"/>
     <text value="LastPage" name="LastPage"/>
     <text name="PreviousPage" value="PreviousPage" />

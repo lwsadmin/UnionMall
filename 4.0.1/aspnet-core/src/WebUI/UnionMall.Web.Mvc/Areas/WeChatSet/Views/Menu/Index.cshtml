@@ -4,7 +4,11 @@
     ViewBag.FirstMenu = "WeChatSet";
     ViewBag.SecondMenu = "WeChatMenu";
 }
-
+@using UnionMall.SystemSet
+@model Menu
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
+<link href="~/view-resources/Areas/Set/menu.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/view-resources/Areas/Set/menu.js" asp-append-version="true"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -22,25 +26,248 @@
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
-
     <div class="modal-body">
-        <!-- BEGIN FORM-->
-        <form class="form-horizontal" id="form" method="post">
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="form-body">
-
+        <div id="body" class="body page_menu_index">
+            <div id="js_container_box" class="container_box cell_layout side_l">
+                <div class="col_main">
+                    <div class="main_hd js_menuSetting ">
+                        <h2>@L("WeChatMenu")</h2>
                     </div>
-                    <div class="hr-line-dashed"></div>
-                    <div class="row">
-                        <div class="col-md-offset-5 col-sm-7">
-                            <button type="submit" class="btn btn-primary">@L("Save")</button>
+                    <div class="main_bd">
+                        <div class="menu_setting_box js_menuBox dn" style="display: block;">
+                            <div class="highlight_box border icon_wrap menu_setting_msg js_menustatus dn" id="menustatus_2" style="display:@(Model == null || Model.button == null || Model.button.Count == 0 ? "block" : "") ;">
+                                <i class="icon icon_msg_small info"></i>
+                                <p class="title">@L("Menu")@L("Create")</p>
+                                <p class="desc">@L("WeChatMenu")</p>
+                            </div>
+                            <div class="menu_setting_area js_editBox">
+                                <div class="mobile_menu_preview">
+                                    <div class="mobile_hd tc"></div>
+                                    <ul class="pre_menu_list" id="menuList" style="margin-bottom: 0px;">
+                                        @if (Model != null && Model.button != null && Model.button.Count > 0)
+                                        {
+                                            for (int i = 0; i < Model.button.Count(); i++)
+                                            {
+
+                                                <li class="FirstMenu" data-name="@Model.button[i].name" data-url="@Model.button[i].url" data-key="@Model.button[i].key" data-type="@Model.button[i].type" id="menu_@(i)"
+                                                    data-appid="@Model.button[i].appid"
+                                                    data-pagepath='@Model.button[i].pagepath'
+                                                    onclick="FisrtMenuClick(this);">
+                                                    <a href="javascript:void(0);">
+                                                        <span class="firstTitle">@Model.button[i].name</span>
+                                                    </a>
+                                                    <ul class="sub_subBox" style="display: none;">
+                                                        @for (int j = 0; j < Model.button[i].sub_button.Count; j++)
+                                                        {
+
+                                                            <li data-name="@Model.button[i].sub_button[j].name" data-url="@Model.button[i].sub_button[j].url" data-key="@Model.button[i].sub_button[j].key" data-type="@Model.button[i].sub_button[j].type"
+                                                                data-appid="@Model.button[i].sub_button[j].appid"
+                                                                data-pagepath='@Model.button[i].sub_button[j].pagepath'
+                                                                class="subMenu" onclick="SubMenuClick(this);">
+                                                                <a href="javascript:void(0);"><span class="subTitle">@Model.button[i].sub_button[j].name</span></a>
+
+                                                            </li>
+
+                                                        }
+                                                        <i class="arrow arrow_out"></i>
+                                                        <i class="arrow arrow_in"></i>
+                                                    </ul>
+
+                                                </li>
+                                            }
+
+                                        }
+
+                                    </ul>
+                                </div>
+                                <div class="menu_form_area">
+                                    <div id="js_rightBox" class="portable_editor to_left" style="display: block;">
+                                        <div class="editor_inner">
+                                            <div class="global_mod float_layout menu_form_hd js_second_title_bar">
+                                                <h4 class="global_info" style="display: inline-block;"></h4>
+                                                <a style="float: right;" href="javascript:void(0);" id="jsDelBt" onclick="Delete();">@L("Delete")</a>
+                                            </div>
+                                            <div class="menu_form_bd" id="view">
+                                                <div id="js_innerNone" style="display: none;" class="msg_sender_tips tips_global"></div>
+                                                <div class="frm_control_group">
+                                                    <label for="" class="frm_label"><strong class="title js_menuTitle">@L("Menu")@L("Name")</strong>                                </label>
+                                                    <div class="frm_controls">
+                                                        <input type="text" class="input-sm form-control" id="txtMenuName" onblur="SetHtmlData();" oninput="SetHtmlData();">
+                                                    </div>
+                                                </div>
+                                                <div class="frm_control_group">
+                                                    <label for="" class="frm_label"><strong class="title js_menuContent">@L("Content")</strong>                                </label>
+
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="Link" value="view" name="MenuType" data-div="urlDiv" />
+                                                        <label for="Link">@L("Link")</label>
+                                                    </div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="Send" value="click" name="MenuType" data-div="msgDiv" />
+                                                        <label for="Send">@L("Send")@L("WeChatMessage")</label>
+                                                    </div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="ScanCode" value="scancode_push" name="MenuType" data-div="saoDiv" />
+                                                        <label for="ScanCode">@L("ScanCode")</label>
+                                                    </div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="labelsmPro" value="miniprogram" name="MenuType" data-div="smPro" />
+                                                        <label for="labelsmPro">@L("SmlPro")</label>
+                                                    </div>
+
+                                                </div>
+                                                <div class="menu_content_container">
+                                                    <div class="menu_content send jsMain" id="msgDiv" style="height: 30%; padding: 16px 20px; display: none;">
+                                                        <form id="msgForm" onsubmit="return false;">
+                                                            <p class="menu_content_tips tips_global"></p>
+                                                            <div class="frm_control_group">
+                                                                <label for="" class="frm_label">@L("Content")</label>
+                                                                <div class="frm_controls">
+                                                                    <textarea rows="4" class="input-sm form-control" cols="60" disabled="disabled" readonly="readonly" id="MsgContent" onblur="" oninput="">qrcode</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="menu_content url jsMain" id="urlDiv" style="display: none;">
+                                                        <form id="urlForm" onsubmit="return false;">
+                                                            <p class="menu_content_tips tips_global">(http://)</p>
+                                                            <div class="frm_control_group">
+                                                                <label for="" class="frm_label">@L("Link")</label>
+                                                                <div class="frm_controls">
+                                                                    <span class="frm_input_box" style="width: 100%;">
+                                                                        <textarea class="form-control" rows="4" id="urlText" cols="60" oninput="SetHtmlData();" onblur="SetHtmlData();" onfocus="UrlFocus();">http://</textarea>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="menu_content url jsMain" id="smPro" style="display: none;">
+                                                        <div class="frm_control_group">
+                                                            <label class="frm_label">APPID</label>
+                                                            <div class="frm_controls">
+                                                                <span class="frm_input_box" style="width: 100%;">
+                                                                    <input type="text" id="appid" name="appid" oninput="SetHtmlData();" class="form-control" value="@ViewData["WXA_authorizer_appid"]" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <br />
+                                                        <div class="frm_control_group">
+                                                            <label for="" class="frm_label">@L("SmlPro")@L("Link")</label>
+                                                            <div class="frm_controls">
+                                                                <span class="frm_input_box" style="width: 100%;">
+                                                                    <input id="wxaPath" type="text" class="form-control" name="wxaPath" value="pages/common/index/index" oninput="SetHtmlData();" onblur="SetHtmlData();" placeholder="小程序路径" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="hr-line-dashed"></div>
+                            <div class="row">
+                                <div class="col-md-offset-5 col-sm-7">
+                                    <button type="submit" onclick="return FormPost();" class="btn btn-primary">@L("Save")</button>
+                                    <br />    <br />    <br />
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
-        <!-- END FORM-->
+        </div>
+        <input type="hidden" />
     </div>
 </div>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script type="text/javascript">
+
+    var defaulName = "@L("Menu")@L("Name")";
+    $(function () {
+        Init();
+        $(".FirstMenu").eq(0).click();
+    });
+
+    function UrlFocus() {
+        if ($("#urlText").val().trim().length == 0) {
+            $("#urlText").val("http://");
+        }
+    }
+    function Show() {
+        $("#TableDiv").modal('show');
+    }
+    function FormPost() {
+
+        var menu = {};
+        menu.button = [];
+        $(".FirstMenu").each(function () {
+            var txtMenuName = $(this).find(".firstTitle").html();
+            if (txtMenuName != undefined && txtMenuName != "") {
+                var button = {};
+                button.sub_button = [];
+                button.name = txtMenuName;
+                if ($(this).find(".subMenu").length == 1)//没有有二级菜单,只包含一个+
+                {
+                    button.type = $(this).attr("data-type"); //一级菜单仅仅支持view跳转
+                    button.url = $(this).attr("data-url");
+                    if (button.type == "click") {
+                        button.key = "qrcode";
+                    }
+                    if (button.type == "scancode_push") {
+                        button.key = "rselfmenu_0_1";
+                    }
+                    if (button.type == "miniprogram") {
+                        button.appid = $(this).attr("data-appid");
+                        button.url = $("#SecPath").val();
+                        button.pagepath = $(this).attr("data-pagepath");
+                    }
+                } else//组合二级菜单
+                {
+
+                    $(this).find(".sub_subBox").find(".subMenu").each(function () {
+
+                        if ($(this).attr("data-type") == undefined || $(this).attr("data-type") == "" || $(this).attr("data-name") == "") {
+                            return;
+                        }
+                        var sub_button = {};
+
+                        sub_button.name = $(this).attr("data-name");
+                        sub_button.type = $(this).attr("data-type");
+                        switch (sub_button.type) {
+                            case "view":
+                                sub_button.url = $(this).attr("data-url");
+                                break;
+                            case "click":
+                                sub_button.key = "qrcode";
+                                break;
+                            case "scancode_push":
+                                sub_button.type = "scancode_push";
+                                sub_button.key = "rselfmenu_0_1";
+                                break;
+                            case "miniprogram":
+                                sub_button.appid = $(this).attr("data-appid");
+                                sub_button.url = $("#SecPath").val();
+                                sub_button.pagepath = $(this).attr("data-pagepath");
+                                break;
+                            default:
+                                break;
+                        }
+                        button.sub_button.push(sub_button);
+                    });
+                }
+                menu.button.push(button);
+            }
+        });
+        swal(
+            '@L("Hint")',
+            '@L("noWechatTip")',
+            'warning'
+        )
+        return false;
+
+    }
+</script>

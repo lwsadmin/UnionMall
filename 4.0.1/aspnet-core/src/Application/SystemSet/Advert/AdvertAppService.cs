@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Application.Services;
+using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Hosting;
 using System;
@@ -12,7 +13,7 @@ using UnionMall.IRepositorySql;
 
 namespace UnionMall.SystemSet
 {
-    public class AdvertAppService : IAdvertAppService
+    public class AdvertAppService : ApplicationService,IAdvertAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<Advert, long> _Repository;
