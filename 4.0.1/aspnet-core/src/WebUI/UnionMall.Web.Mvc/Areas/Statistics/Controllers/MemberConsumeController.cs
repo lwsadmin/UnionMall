@@ -40,7 +40,7 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
             if (!string.IsNullOrEmpty(timeTo))
                 where += $" and n.CreationTime<='{timeTo} 23:59:59'";
             int total;
-            DataSet ds = _appService.GetPage(page, pageSize, "CreationTime desc", out total, where);
+            DataSet ds = _appService.GetPage(page, pageSize, "n.CreationTime desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             ViewBag.PageSize = pageSize;
             if (Request.Headers.ContainsKey("x-requested-with"))
@@ -59,6 +59,37 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
             }
             ViewBag.ConsumeType = listItem;
             return View(pageList);
+        }
+
+        public async Task<IActionResult> TableChat(string orderNumber, string name, string type, string timeFrom, string timeTo)
+        {
+            string where = _comService.GetWhere();
+            if (!string.IsNullOrEmpty(orderNumber))
+                where += $" and billNumber like '%{orderNumber}%'";
+            if (!string.IsNullOrEmpty(name))
+                where += $" and Name like '%{name}%'";
+            if (!string.IsNullOrEmpty(type))
+                where += $" and type ={type}";
+            if (!string.IsNullOrEmpty(timeFrom))
+                where += $" and n.CreationTime>='{timeFrom} 00:00:00'";
+            if (!string.IsNullOrEmpty(timeTo))
+                where += $" and n.CreationTime<='{timeTo} 23:59:59'";
+
+            DataTable dt = _appService.GetTotalData(where).Tables[0];
+            Array values = System.Enum.GetValues(typeof(Entity.ConsumeType));
+            string str = "";
+            foreach (int item in values)
+            {
+                var f = "0";
+                if (dt.Select($" type={item}").Count() > 0)
+                {
+                    f = dt.Select($" type={item}")[0]["TotalPaid"].ToString();
+                }
+                str += $"['{L(System.Enum.GetName(typeof(Entity.ConsumeType), item))}',{f}],";
+            }
+            ViewBag.Str = str;
+            return View("_TableChat");
+
         }
     }
 }

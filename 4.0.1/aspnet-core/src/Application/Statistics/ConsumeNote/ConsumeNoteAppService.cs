@@ -33,13 +33,23 @@ cast(n.BalancePay as float) BalancePay,
 cast(n.IntegralPay as float) IntegralPay,
 cast(n.CashPay as float) CashPay,
  n.Status,n.UserAccount,CONVERT(nvarchar(100), n.CreationTime,120) CreationTime,
-c.Name,m.CardID,m.WeChatName,c.BusinessId
+c.Name,stuff(m.CardID,8,4,'****') CardID,stuff(m.WeChatName,2,1,'*') WeChatName,c.BusinessId
  from dbo.TConsumeNote n left join dbo.TMember m 
 on n.Memberid=m.id left join dbo.TChainStore c on n.ChainStoreId=c.Id where 1=1  ";
             }
             where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n");
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
+        }
+        public DataSet GetTotalData(string where)
+        {
+
+            string table = $@"select n.Type, cast(sum( TotalPaid) as float) TotalPaid
+ from dbo.TConsumeNote n left join dbo.TMember m 
+on n.Memberid=m.id left join dbo.TChainStore c on n.ChainStoreId=c.Id where 1=1 and n.Status!=-1
+{  where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n")}
+group by n.Type";
+            return _sqlExecuter.ExecuteDataSet(table);
         }
     }
 }
