@@ -42,7 +42,7 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
             if (!string.IsNullOrEmpty(timeTo))
                 where += $" and n.CreationTime<='{timeTo} 23:59:59'";
             int total;
-            DataSet ds = _appService.GetPage(page, pageSize, "CreationTime desc", out total, where);
+            DataSet ds = _appService.GetPage(page, pageSize, "n.CreationTime desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             ViewBag.PageSize = pageSize;
             if (Request.Headers.ContainsKey("x-requested-with"))
