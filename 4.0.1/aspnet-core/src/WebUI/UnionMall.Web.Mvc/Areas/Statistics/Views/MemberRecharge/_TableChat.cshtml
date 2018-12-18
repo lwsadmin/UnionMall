@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "_TableChat";
+    Layout = null;
+}
+
+<div id="container" style="min-width:400px;height:400px"></div>
+<input type="hidden" id="title" value="@L("MemberRechargeStatistics")" />
+<input type="hidden" id="ytitle" value="@L("Total") (@L("Yuan"))" />
+<input type="hidden" id="xT" value="@L("Total")" />
+<script>
+    var chart = Highcharts.chart('container', {
+        chart: { type: 'bar'},
+        title: {text: $("#title").val()},
+        subtitle: {text: '' },
+        xAxis: {
+            categories: [@Html.Raw(ViewBag.Cat)],
+            title: { text: ''}
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: $("#ytitle").val(),
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify',
+                  style: { color: 'black', fontSize: '14px' }
+            }
+        }, credits: {
+            enabled: false // 禁用版权信息
+        },
+        tooltip: {
+            valueSuffix: '',
+            style: { color: 'black', fontSize: '16px' },
+            shadow: false      
+        },
+        plotOptions: { 
+            bar: {
+                dataLabels: {
+                    enabled: true,
+                    allowOverlap: true // 允许数据标签重叠
+                },
+                series: {
+                    pointWidth: 1
+                }
+            }
+        },
+        series: [{
+            name: '￥',
+            color: 'rgb(144, 238, 126)',
+            data: [@ViewBag.Data]
+        }]
+    });
+</script>

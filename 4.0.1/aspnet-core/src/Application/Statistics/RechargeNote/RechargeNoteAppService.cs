@@ -25,13 +25,29 @@ namespace UnionMall.Statistics
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select n.id,c.Name,m.WeChatName,m.CardID,n.Type,n.Way,n.BillNumber,
-cast( n.Balance as float) Balance ,cast( n.Point as float) Point, n.CreationTime,n.Memo  from dbo.tIntegralNote n left  join dbo.TMember m 
-on n.MemberId=m.id left join dbo.TChainStore c on n.ChainStoreId=c.id where 1=1  ";
+                table = $@"select n.id,n.BillNumber,cast( n.TotalPaid as float) TotalPaid,
+cast( n.CashPay as float) CashPay, cast( n.WeChatPay as float) WeChatPay,
+cast( n.AliPay as float) AliPay,cast( n.Value as float) Value,cast( n.Balance as float) Balance,n.UserAccount
+,CONVERT(nvarchar,n.CreationTime,120) CreationTime,c.Name,stuff(m.CardID,8,4,'****') CardID,stuff(m.WeChatName,2,1,'*') WeChatName from TMemberRechargeNote n left join TChainStore c
+on n.ChainStoreId=c.id left join TMember m on n.MemberId=m.Id where 1=1";
             }
             where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n");
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
+        }
+
+        public DataSet GetTotalData(string where)
+        {
+
+            string table = $@"select isnull( cast(sum( TotalPaid) as float),0) TotalPaid,
+isnull( cast(sum( AliPay) as float),0) AliPay,
+isnull(cast(sum( WeChatPay) as float),0) WeChatPay,
+isnull(cast(sum( CashPay) as float),0) CashPay
+ from dbo.TMemberRechargeNote n left join TChainStore c on n.ChainStoreId=c.id 
+ left join TMember m on n.MemberId=m.Id
+where 1=1 
+{  where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n")}";
+            return _sqlExecuter.ExecuteDataSet(table);
         }
     }
 }
