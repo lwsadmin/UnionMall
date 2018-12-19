@@ -62,5 +62,42 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
             ViewBag.ConsumeType = listItem;
             return View(pageList);
         }
+
+        public async Task<IActionResult> TableChat(string orderNumber, string way,
+            string name, string cardid)
+        {
+            string where = _comService.GetWhere();
+            if (!string.IsNullOrEmpty(orderNumber))
+                where += $" and billNumber like '%{orderNumber}%'";
+            if (!string.IsNullOrEmpty(name))
+                where += $" and Name like '%{name}%'";
+            if (!string.IsNullOrEmpty(cardid))
+                where += $" and cardid like '%{cardid}%'";
+            if (!string.IsNullOrEmpty(way))
+                where += $" and way ={way}";
+            DataTable addDt = _appService.GetStatisticsData(where + " and n.type=1").Tables[0];
+            DataTable redDt = _appService.GetStatisticsData(where + " and n.type=0").Tables[0];
+            string str = string.Empty;
+            string addStr = string.Empty;
+            string redStr = string.Empty;
+            for (int i = 11; i >= 0; i--)
+            {
+                if (addDt.Select($" Time={DateTime.Now.AddMonths(-i).ToString("yyyyMM")}").Count() <= 0)
+                    addStr += "0,";
+                else
+                    addStr += $"{addDt.Select($" Time={DateTime.Now.AddMonths(-i).ToString("yyyyMM")}")[0]["TotalValue"]},";
+
+                if (redDt.Select($" Time={DateTime.Now.AddMonths(-i).ToString("yyyyMM")}").Count() <= 0)
+                    redStr += "0,";
+                else
+                    redStr += $"{redDt.Select($" Time={DateTime.Now.AddMonths(-i).ToString("yyyyMM")}")[0]["TotalValue"]},";
+
+                str += $"'{DateTime.Now.AddMonths(-i).ToString("yyyy-MM")}',";
+            }
+            ViewBag.Months = str;
+            ViewBag.addStr = addStr;
+            ViewBag.redStr = redStr;
+            return View("_TableChat");
+        }
     }
 }

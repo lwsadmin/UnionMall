@@ -47,5 +47,7 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
             }
             return View(pageList);
         }
+
+
     }
 }

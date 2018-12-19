@@ -89,7 +89,6 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
             }
             ViewBag.Str = str;
             return View("_TableChat");
-
         }
     }
 }

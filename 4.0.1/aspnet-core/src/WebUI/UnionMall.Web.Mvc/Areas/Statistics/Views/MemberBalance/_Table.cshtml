@@ -20,6 +20,7 @@
             <th>@L("CardID")</th>
             <th>@L("WeChat")@L("Name")</th>
             <th>@L("Note")</th>
+            <th>@L("Users")</th>
         </tr>
 
     </thead>
@@ -44,16 +45,13 @@
                     break;
             }
             <td class="name">@item["Name"]</td>
-
             <td>@L(Enum.GetName(typeof(UnionMall.Entity.ConsumeType), item["Way"]))</td>
             <td>@item["Value"]</td>
             <td>@item["Balance"]</td>
-
-
-
             <td>@item["CardID"]</td>
             <td>@item["WeChatName"]</td>
             <td>@item["Memo"]</td>
+            <td>@item["UserAccount"]</td>
         </tr>
         }
 
