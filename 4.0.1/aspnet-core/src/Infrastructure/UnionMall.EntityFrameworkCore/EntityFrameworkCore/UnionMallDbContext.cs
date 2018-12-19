@@ -37,6 +37,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<Advert> Advert { get; set; }
         public DbSet<WechatMessage> WechatMessage { get; set; }
         public DbSet<RechargeNote> RechargeNote { get; set; }
+        public DbSet<LevelUpdate> LevelUpdate { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

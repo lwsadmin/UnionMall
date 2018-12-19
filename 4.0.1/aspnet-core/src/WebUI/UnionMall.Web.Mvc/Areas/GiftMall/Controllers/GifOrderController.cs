@@ -35,11 +35,13 @@ namespace UnionMall.Web.Mvc.Areas.GiftMall.Controllers
         }
 
         public async Task<IActionResult> List(string timeFrom, string timeTo, string orderNumber, string cardId,
-            string name, int page = 1, int pageSize = 10)
+            string name, string status, int page = 1, int pageSize = 10)
         {
             string where = _comService.GetWhere();
             if (!string.IsNullOrEmpty(name))
                 where += $" and name like '%{name}%' ";
+            if (!string.IsNullOrEmpty(status))
+                where += $" and o.Status={status} ";
             if (!string.IsNullOrEmpty(orderNumber))
                 where += $" and billNumber = '{orderNumber}' ";
             if (!string.IsNullOrEmpty(cardId))
@@ -67,12 +69,14 @@ namespace UnionMall.Web.Mvc.Areas.GiftMall.Controllers
             return Json(new { data = catList });
         }
         public async Task<FileResult> ExportExcel(string timeFrom, string timeTo, string orderNumber, string cardId,
-            string name)
+            string name, string status)
         {
 
             string where = _comService.GetWhere();
             if (!string.IsNullOrEmpty(name))
                 where += $" and name like '%{name}%' ";
+            if (!string.IsNullOrEmpty(status))
+                where += $" and o.Status={status} ";
             if (!string.IsNullOrEmpty(orderNumber))
                 where += $" and billNumber = '{orderNumber}' ";
             if (!string.IsNullOrEmpty(cardId))

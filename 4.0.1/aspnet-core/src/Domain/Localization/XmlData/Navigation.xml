@@ -202,13 +202,14 @@
     <Second Name="ChainStorePointStatistics" Url="/Statistics/StorePoint/List"></Second>
     <Second Name="ChainStoreValueStatistics"  Url="/Statistics/StoreValueNote/List"></Second>
     <Second Name="ChainStoreSmsStatistics"  Url="/Statistics/ChainStoreSmsNote/List"></Second>
+    <Second Name="MemberBuyCardStatistics"  Url="/statistics/levelupdate/list"></Second>
     <Second Name="MemberRechargeStatistics"  Url="/statistics/memberrecharge/list"></Second>
     <Second Name="MemberConsumeStatistics"  Url="/Statistics/memberconsume/List"></Second>
     <Second Name="MemberIntegralStatistics"  Url="/Statistics/integralstatistics/List"></Second>
     <Second Name="MemberBalanceStatistics"  Url="/Statistics/memberbalance/List"></Second>
     <Second Name="CouponReceiveStatistics" Url="/statistics/receivestatistics/list"></Second>
     <Second Name="CouponUseStatistics" Url="/statistics/usedstatistics/list"></Second>
-    <Second Name="GiftCashStatistics"   Url="/Statistics/GiftExchangeNote/List"></Second>
+
   </First>
   <First Name="MobileTerminalSet"  Icon="glyphicon glyphicon-phone">
     <Second Name="PaySet"  Url="/mobileterminal/payset/index"></Second>

@@ -68,7 +68,7 @@ namespace UnionMall.Gift
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select o.Id, convert(nvarchar(100),o.CreationTime,120) CreationTime,cast(o.Point as float) Point,
-o.BillNumber,o.Status,o.OperateTime,o.Way,o.Memo,c.Name,stuff(m.CardID,8,4,'****') CardID,stuff(m.WechatName,2,1,'*') WeChatName from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
+o.BillNumber,o.Status,o.ReceiveTime,o.Memo,c.Name,stuff(m.CardID,8,4,'****') CardID,stuff(m.WechatName,2,1,'*') WeChatName from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
 left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             }
             where = where.Replace("*.BusinessId", "c.BusinessId").Replace(" *", " o");
@@ -85,7 +85,7 @@ o.BillNumber 订单号,stuff((select  g.Name  +'   ￥'+convert(nvarchar,cast(i.
  left join dbo.TGift g on i.GiftId=g.Id
 where i.GiftOrderId =o.Id
 for xml path('')),1,1,'') 礼品信息,
-o.OperateTime 领取时间,o.Memo 备注,c.Name 门店,stuff(m.CardID,8,4,'****') 会员卡号,m.WeChatName 微信名 from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
+o.ReceiveTime 领取时间,o.Memo 备注,c.Name 门店,stuff(m.CardID,8,4,'****') 会员卡号,m.WeChatName 微信名 from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
 left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             sql += where.Replace("*", "c");
          

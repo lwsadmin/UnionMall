@@ -31,6 +31,7 @@
     <text value="编辑" name="Edit"/>
     <text value="删除" name="Delete"/>
     <text value="操作" name="Operate"/>
+    <text value="购卡" name="BuyCard"/>
     <text value="角色" name="Roles"/>
     <text value="正常" name="Normal" />
     <text value="已撤销" name="Revoked" />
@@ -69,6 +70,7 @@
     <text value="个人信息" name="PersonalInformation"/>
     <text value="修改资料" name="ModificationInformation"/>
     <text value="安全锁屏" name="LockScreen"/>
+    <text value="当前" name="Current"/>
     <text value="菜单" name="Menu"/>
     <text value="失败" name="Fail" />
     <text name="Permissions">权限</text>
@@ -139,13 +141,13 @@
     <text name="ChainStorePointStatistics" value="门店积分统计"/>
     <text name="ChainStoreValueStatistics" value="门店余额统计" />
     <text name="ChainStoreSmsStatistics" value="门店短信统计"/>
+    <text name="MemberBuyCardStatistics" value="会员购卡统计"/>
     <text name="MemberRechargeStatistics" value="会员充值统计"/>
     <text name="MemberConsumeStatistics" value="会员消费统计"/>
     <text name="MemberIntegralStatistics" value="会员积分统计"/>
     <text name="MemberBalanceStatistics" value="会员余额统计"/>
     <text name="CouponReceiveStatistics" value="优惠券领取统计"/>
     <text name="CouponUseStatistics" value="优惠券使用统计"/>
-    <text name="GiftCashStatistics" value="礼品兑换统计"/>
     <text name="MobileTerminalSet" value="移动端设置"/>
     <text name="AdvertSet" value="广告图"/>
     <text name="WeChatDocking" value="微信对接"/>

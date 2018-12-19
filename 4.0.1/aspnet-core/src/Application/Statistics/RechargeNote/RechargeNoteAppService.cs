@@ -25,7 +25,7 @@ namespace UnionMall.Statistics
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select n.id,n.BillNumber,cast( n.TotalPaid as float) TotalPaid,
+                table = $@"select n.id,n.BillNumber,cast( n.TotalPay as float) TotalPaid,
 cast( n.CashPay as float) CashPay, cast( n.WeChatPay as float) WeChatPay,
 cast( n.AliPay as float) AliPay,cast( n.Value as float) Value,cast( n.Balance as float) Balance,n.UserAccount
 ,CONVERT(nvarchar,n.CreationTime,120) CreationTime,c.Name,stuff(m.CardID,8,4,'****') CardID,stuff(m.WeChatName,2,1,'*') WeChatName from TMemberRechargeNote n left join TChainStore c
@@ -39,7 +39,7 @@ on n.ChainStoreId=c.id left join TMember m on n.MemberId=m.Id where 1=1";
         public DataSet GetTotalData(string where)
         {
 
-            string table = $@"select isnull( cast(sum( TotalPaid) as float),0) TotalPaid,
+            string table = $@"select isnull( cast(sum( TotalPay) as float),0) TotalPay,
 isnull( cast(sum( AliPay) as float),0) AliPay,
 isnull(cast(sum( WeChatPay) as float),0) WeChatPay,
 isnull(cast(sum( CashPay) as float),0) CashPay

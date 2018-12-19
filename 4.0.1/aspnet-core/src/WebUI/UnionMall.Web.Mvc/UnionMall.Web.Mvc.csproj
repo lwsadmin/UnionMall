@@ -310,6 +310,9 @@
     <Content Update="Areas\Statistics\Views\IntegralStatistics\_TableChat.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\Statistics\Views\LevelUpdate\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Statistics\Views\MemberBalance\List.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>

@@ -1,8 +1,9 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
     ViewBag.FirstMenu = "StatisticsAnalysis";
-    ViewBag.SecondMenu = "MemberBalanceStatistics";
+    ViewBag.SecondMenu = "MemberBuyCardStatistics";
 }
 @using System.Data
 @using X.PagedList
@@ -11,13 +12,11 @@
     .swal2-container {
         z-index: 10000;
     }
-
     .chosen-container {
         margin-bottom: 15px;
         min-width: 10vw;
     }
 </style>
-
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" asp-append-version="true" rel="stylesheet" />
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
@@ -30,7 +29,7 @@
                 <a>@L("StatisticsAnalysis")</a>
             </li>
             <li class="active">
-                <strong>@L("MemberBalanceStatistics")</strong>
+                <strong>@L("MemberBuyCardStatistics")</strong>
             </li>
         </ol>
     </div>
@@ -40,7 +39,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>@L("MemberBalanceStatistics") </h5>
+                    <h5>@L("MemberBuyCardStatistics") </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -51,15 +50,15 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/statistics/memberbalance/list?pageSize=10">10/@L("Page")</a>
+                                   data-ajax-update="#table" href="/statistics/levelupdate/list?pageSize=10">10/@L("Page")</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/statistics/memberbalance/list?pageSize=15">15/@L("Page")</a>
+                                   data-ajax-update="#table" href="/statistics/levelupdate/list?pageSize=15">15/@L("Page")</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/statistics/memberbalance/list?pageSize=20">20/@L("Page")</a>
+                                   data-ajax-update="#table" href="/statistics/levelupdate/list?pageSize=20">20/@L("Page")</a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -70,25 +69,16 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/statistics/memberbalance/list" method="post">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/statistics/levelupdate/list" method="post">
                                 <input type="hidden" name="pageSize" value="10" />
-                                <div class="form-group">
-                                    @Html.DropDownList("way", ViewBag.ConsumeType, L("Choose"), new { @class = "m-b input-sm form-control", @style = "    font-size: 12px;" })
-                                </div>
                                 <div class="form-group">
                                     <input type="text" name="orderNumber" placeholder="@L("Order")@L("Number")" class="m-b input-sm form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="cardid" placeholder="@L("Member")@L("CardID")" class="m-b input-sm form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="name" placeholder="@L("Store")@L("Name")" class="m-b input-sm form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="timeFrom" placeholder="@L("Operate")@L("Time")"
+                                    <input type="text" name="timeFrom" placeholder="@L("BuyCard")@L("Time")"
                                            class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
                                     <span style="display: inline-block;vertical-align: 5px;">@L("To")</span>
-                                    <input type="text" name="timeTo" placeholder="@L("Operate")@L("Time")" class="m-b input-sm form-control"
+                                    <input type="text" name="timeTo" placeholder="@L("BuyCard")@L("Time")" class="m-b input-sm form-control"
                                            onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
                                 </div>
                                 <div class="form-group">
@@ -97,23 +87,8 @@
                             </form>
                         </div>
                     </div>
-                    <div class="tabs-container">
-                        <ul class="nav nav-tabs" id="myTabs">
-                            <li class="active"><a data-toggle="tab" href="#first" aria-expanded="true">@L("MemberBalanceStatistics")</a></li>
-                            <li class=""><a data-toggle="tab" href="#second" aria-expanded="false">@L("Chart")@L("StatisticsAnalysis")</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="first" class="tab-pane fade active in" aria-labelledby="first-tab">
-                                <div class="panel-body" id="table">
-                                    @Html.Partial("_Table", Model)
-                                </div>
-                            </div>
-                            <div id="second" class="tab-pane fade" aria-labelledby="second-tab">
-                                <div class="panel-body">
-                                    @Html.Partial("_TableChat")
-                                </div>
-                            </div>
-                        </div>
+                    <div class="panel-body" id="table">
+                        @Html.Partial("_Table", Model)
                     </div>
                 </div>
             </div>
@@ -122,9 +97,4 @@
 </div>
 <script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
-<script>
-    $('#myTabs a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-    });
-</script>
+

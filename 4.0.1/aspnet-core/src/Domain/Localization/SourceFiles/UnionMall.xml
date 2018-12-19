@@ -48,6 +48,8 @@
     <text name="Unlock" value="Unlock" />
     <text name="Content" value="Content" />
     <text name="Info" value="Info" />
+    <text value="Current" name="Current"/>
+    <text value="BuyCard" name="BuyCard"/>
     <text value="Stock" name="Stock" />
     <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
     <text name="DefaultPasswordIs" value="Default password is {0}" />
@@ -210,13 +212,13 @@
     <text name="ChainStorePointStatistics" value="ChainStorePointStatistics"/>
     <text name="ChainStoreValueStatistics" value="ChainStoreValueStatistics" />
     <text name="ChainStoreSmsStatistics" value="ChainStoreSmsStatistics"/>
+    <text name="MemberBuyCardStatistics" value="MemberBuyCardStatistics"/>
     <text name="MemberRechargeStatistics" value="MemberRechargeStatistics"/>
     <text name="MemberConsumeStatistics" value="MemberConsumeStatistics"/>
     <text name="MemberIntegralStatistics" value="MemberIntegralStatistics"/>
     <text name="MemberBalanceStatistics" value="MemberBalanceStatistics"/>
     <text name="CouponReceiveStatistics" value="CouponReceiveStatistics"/>
     <text name="CouponUseStatistics" value="CouponUseStatistics"/>
-    <text name="GiftCashStatistics" value="GiftCashStatistics"/>
     <text name="MobileTerminalSet" value="MobileTerminalSet"/>
     <text name="AdvertSet" value="AdvertSet"/>
     <text name="WeChatDocking" value="WeChatDocking"/>

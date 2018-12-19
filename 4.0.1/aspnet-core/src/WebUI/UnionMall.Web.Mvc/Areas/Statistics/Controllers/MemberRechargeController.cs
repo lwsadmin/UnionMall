@@ -64,7 +64,7 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
             string str = $"'{L("Total")}','{L("WeChat")}','{L("AliPay")}','{L("Cash")}'";
 
             ViewBag.Cat = str;
-            ViewBag.Data= $"{dt.Rows[0]["TotalPaid"]},{dt.Rows[0]["WeChatPay"]},{dt.Rows[0]["AliPay"]},{dt.Rows[0]["CashPay"]}";
+            ViewBag.Data= $"{dt.Rows[0]["TotalPay"]},{dt.Rows[0]["WeChatPay"]},{dt.Rows[0]["AliPay"]},{dt.Rows[0]["CashPay"]}";
             return View("_TableChat");
 
         }

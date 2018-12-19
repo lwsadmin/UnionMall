@@ -78,8 +78,13 @@
                                     <input type="text" name="orderNumber" placeholder="@L("Order")@L("Number")" class="m-b input-sm form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="name" placeholder="@L("Store")@L("Name")" class="m-b input-sm form-control">
+                                    <select class="m-b input-sm form-control" id="status" name="status" style="    font-size: 12px;">
+                                        <option value="">@L("Choose")</option>
+                                        <option value="0">@L("Normal")</option>
+                                        <option value="1">@L("Receive")</option>
+                                    </select>
                                 </div>
+
                                 <div class="form-group">
                                     <input type="text" name="cardId" placeholder="@L("Member")@L("CardID")" class="m-b input-sm form-control">
                                 </div>
@@ -112,7 +117,8 @@
 <script>
     function ExportExcel() {
         var url = "/giftmall/giftorder/exportexcel";
-        url += "?orderNumber=" + $("input[name='orderNumber']").val() + "&name=" + $("input[name='name']").val() + "&Store=" + $("#Store").val() + "&Name=" + $("input[name='Name']").val();
+        url += "?orderNumber=" + $("input[name='orderNumber']").val();
+        url += "&status=" + $("#status").val();
         url += "&cardId=" + $("input[name='cardId']").val();
         url += "&timeFrom=" + $("input[name='timeFrom']").val();
         url += "&timeTo=" + $("input[name='timeTo']").val();
