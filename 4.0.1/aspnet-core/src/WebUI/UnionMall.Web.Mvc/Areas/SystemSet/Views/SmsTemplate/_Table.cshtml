@@ -1,0 +1,76 @@
+﻿@{
+
+    Layout = null;
+}
+@using System.Data
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover footable">
+    <thead>
+        <tr>
+            <th>@L("Title")</th>
+            <th>@L("Content")</th>
+            <th>@L("Status")</th>
+            <th>@L("Operate")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr>
+                <td class="title">@item["Title"]</td>
+
+                <td>@item["Template"]</td>
+                @if (Convert.ToBoolean(item["isEnable"]))
+                {
+                    <td class="text-info">@L("Open")</td>
+                }
+                else
+                {
+                    <td class="text-danger">@L("Close")</td>
+                }
+                    <td>
+                        @if (Convert.ToBoolean(item["isEnable"]))
+                        {
+                            <a onclick="change(@item["Id"])" title="@L("Close")"><i class="fa fa-toggle-on fa-lg" aria-hidden="true"></i></a>
+                        }
+                        else
+                        {
+                            <a onclick="change(@item["Id"])" title="@L("Open")"><i class="fa fa-toggle-off fa-lg" aria-hidden="true"></i></a>
+                        }
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new PagedListRenderOptions {
+            MaximumPageNumbersToDisplay = 10,
+            DisplayPageCountAndCurrentLocation = true,
+            LinkToFirstPageFormat = L("FirstPage"),
+            LinkToLastPageFormat = L("LastPage"),
+            LinkToNextPageFormat = L("NextPage"),
+            PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+            LinkToPreviousPageFormat = L("PreviousPage"),
+            UlElementClasses = new[] { "pagination col-md-8" },
+            ContainerDivClasses = new[] { "row" } },
+        new AjaxOptions()
+        {
+            DataForm = "searchForm",
+            HttpMethod = "GET",
+            UpdateTargetId = "table"
+        }
+))
+<script>
+    var txt = $("input[name='title']").val().trim();
+    if (txt.length > 0) {
+        $(".title").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+</script>

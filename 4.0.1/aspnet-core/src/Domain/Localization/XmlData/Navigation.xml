@@ -199,9 +199,8 @@
     <Second Name="BusinessWithDrawCash"   Url="javascript:void(0);"></Second>
   </First>
   <First Name="StatisticsAnalysis"  Icon="glyphicon glyphicon-signal">
-    <Second Name="ChainStorePointStatistics" Url="/Statistics/StorePoint/List"></Second>
-    <Second Name="ChainStoreValueStatistics"  Url="/Statistics/StoreValueNote/List"></Second>
-    <Second Name="ChainStoreSmsStatistics"  Url="/Statistics/ChainStoreSmsNote/List"></Second>
+    <Second Name="WeChatIncomeStatistics" Url="/statistics/wechatincome/list"></Second>
+    <Second Name="AliPayIncomeStatistics"  Url="/statistics/alipayincome/list"></Second>
     <Second Name="MemberBuyCardStatistics"  Url="/statistics/levelupdate/list"></Second>
     <Second Name="MemberRechargeStatistics"  Url="/statistics/memberrecharge/list"></Second>
     <Second Name="MemberConsumeStatistics"  Url="/Statistics/memberconsume/List"></Second>
@@ -209,7 +208,6 @@
     <Second Name="MemberBalanceStatistics"  Url="/Statistics/memberbalance/List"></Second>
     <Second Name="CouponReceiveStatistics" Url="/statistics/receivestatistics/list"></Second>
     <Second Name="CouponUseStatistics" Url="/statistics/usedstatistics/list"></Second>
-
   </First>
   <First Name="MobileTerminalSet"  Icon="glyphicon glyphicon-phone">
     <Second Name="PaySet"  Url="/mobileterminal/payset/index"></Second>
@@ -245,7 +243,7 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="SEO"  Url="javascript:void(0);"></Second>
+    <Second Name="SmsTemplate"  Url="/systemSet/smstemplate/list"></Second>
     <Second Name="LogList"  Url="/systemSet/log/list"></Second>
   </First>
 </Navigation>

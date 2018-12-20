@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.FirstMenu = "SystemSet";
-    ViewBag.SecondMenu = "LogList";
+    ViewBag.SecondMenu = "SmsTemplate";
 }
 @using System.Data
 @using X.PagedList
@@ -18,7 +18,7 @@
                 <a>@L("SystemSet")</a>
             </li>
             <li class="active">
-                <strong>@L("LogList")</strong>
+                <strong>@L("SmsTemplate")</strong>
             </li>
         </ol>
     </div>
@@ -28,7 +28,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>@L("LogList")</h5>
+                    <h5>@L("SmsTemplate")</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -39,15 +39,15 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/systemSet/log/list?pageSize=10">10/@L("Page")</a>
+                                   data-ajax-update="#table" href="/systemSet/smstemplate/list?pageSize=10">10/@L("Page")</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/systemSet/log/list?pageSize=15">15/@L("Page")</a>
+                                   data-ajax-update="#table" href="/systemSet/smstemplate/list?pageSize=15">15/@L("Page")</a>
                             </li>
                             <li>
                                 <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
-                                   data-ajax-update="#table" href="/systemSet/log/list?pageSize=20">20/@L("Page")</a>
+                                   data-ajax-update="#table" href="/systemSet/smstemplate/list?pageSize=20">20/@L("Page")</a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -58,18 +58,10 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/systemSet/log/list" method="post">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/systemSet/smstemplate/list" method="post">
                                 <input type="hidden" name="pageSize" value="10">
                                 <div class="form-group">
-                                    <input type="text" name="content" placeholder="@L("Records")@L("Content")" class="m-b input-sm form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="user" placeholder="@L("Users")" class="m-b input-sm form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="timeFrom" placeholder="@L("Records")@L("Time")" class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
-                                    <span style="display: inline-block;vertical-align: 5px;">@L("To")</span>
-                                    <input type="text" name="timeTo" placeholder="@L("Records")@L("Time")" class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                    <input type="text" name="title" placeholder="@L("Title")" class="m-b input-sm form-control">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
@@ -85,6 +77,29 @@
         </div>
     </div>
 </div>
-<script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 
+<script>
+
+    function change(id) {
+        var _Service = abp.services.app.smsTemplate;
+        _Service.changeStatus(id)
+            .done(function (data) {
+                if ($(".pagination .active a").html() != undefined) {
+                    $(".pagination .active a").click();
+                } else { $("#searchForm").submit(); }
+                                 toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+             })
+            .fail(function (data) { })
+            .always(function (data) { });
+    }
+
+
+</script>

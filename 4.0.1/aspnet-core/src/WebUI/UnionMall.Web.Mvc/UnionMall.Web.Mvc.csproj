@@ -360,6 +360,13 @@
     <Content Update="Areas\SystemSet\Views\Log\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\SystemSet\Views\SmsTemplate\List.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\SystemSet\Views\SmsTemplate\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\WeChatSet\Views\Message\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

@@ -63,8 +63,8 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
                 return View("_Table", pageList);
             }
 
-            var businessDropDown = (await _businessAppService.GetDropDown());
-            ViewData.Add("Business", new SelectList(businessDropDown, "Id", "BusinessName"));
+            //var businessDropDown = (await _businessAppService.GetDropDown());
+            //ViewData.Add("Business", new SelectList(businessDropDown, "Id", "BusinessName"));
 
             var levelDropDown = (await _levelAppService.GetDropDown());
             ViewData.Add("Level", new SelectList(levelDropDown, "Id", "Title"));

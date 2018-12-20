@@ -36,6 +36,9 @@
                         <div class="panel-body">
                             <div class="modal-body">
                                 <!-- BEGIN FORM-->
+                                <div class="alert alert-danger">
+                                    本系统尚未接入微信支付,有关信息请参阅 <a class="alert-link" target="_blank" href="https://pay.weixin.qq.com/static/applyment_guide/applyment_index.shtml">微信支付商户平台</a>.
+                                </div>
                                 <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formValueParameter2" method="post">
 
                                     <div class="row">
@@ -91,7 +94,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-sm-7">
-                                            <input type="button" value="@L("Save")" class="btn btn-primary" onclick="SaveValueParameterPaySet('formValueParameter2')" />
+                                            <input disabled="disabled" type="button" value="@L("Save")" class="btn btn-primary" onclick="SaveValueParameterPaySet('formValueParameter2')" />
                                         </div>
                                     </div>
                                 </div>
@@ -103,6 +106,9 @@
                         <!-- BEGIN FORM-->
                         <div class="panel-body">
                             <div class="modal-body">
+                                <div class="alert alert-danger">
+                                    本系统尚未接入支付宝支付,有关信息请参阅 <a class="alert-link" target="_blank" href="https://b.alipay.com/?ynsrc=zhuzhanA">支付宝商家中心</a>.
+                                </div>
                                 <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formValueParameter" method="post">
                                     <div class="form-body">
                                         <div class="row">
@@ -157,7 +163,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-5 col-sm-7">
-                                            <input type="button" value="@L("Save")" class="btn btn-primary" onclick="SaveValueParameterPaySet('formValueParameter2')" />
+                                            <input disabled="disabled" type="button" value="@L("Save")" class="btn btn-primary" onclick="SaveValueParameterPaySet('formValueParameter2')" />
                                         </div>
                                     </div>
                                 </div>

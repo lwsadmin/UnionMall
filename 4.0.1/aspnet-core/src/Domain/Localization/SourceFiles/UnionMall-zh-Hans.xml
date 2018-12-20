@@ -140,7 +140,8 @@
     <text name="Statistics" value="统计"/>
     <text name="ChainStorePointStatistics" value="门店积分统计"/>
     <text name="ChainStoreValueStatistics" value="门店余额统计" />
-    <text name="ChainStoreSmsStatistics" value="门店短信统计"/>
+    <text name="WeChatIncomeStatistics" value="微信收款统计"/>
+    <text name="AliPayIncomeStatistics" value="支付宝收款统计"/>
     <text name="MemberBuyCardStatistics" value="会员购卡统计"/>
     <text name="MemberRechargeStatistics" value="会员充值统计"/>
     <text name="MemberConsumeStatistics" value="会员消费统计"/>
@@ -161,8 +162,9 @@
     <text name="ManagerRole" value="角色权限" />
     <text name="Industry" value="运营行业" />
     <text name="PaySet" value="支付设置"/>
-    <text name="SEO" value="SEO优化" />
+
     <text name="Cache" value="缓存" />
+    <text name="SmsTemplate" value="短信模板" />
     <text name="LogList" value="日志监控" />
     <text name="Belong" value="所属" />
     <text name="Business" value="商户"/>

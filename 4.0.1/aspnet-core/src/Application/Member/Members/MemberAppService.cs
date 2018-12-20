@@ -62,11 +62,10 @@ namespace UnionMall.Member
 
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select m.id,stuff(m.FullName,2,1,'*') FullName,stuff(m.WechatName,2,1,'*') WechatName,m.TenantId,m.levelId,m.HeadImg,m.Sex,stuff(m.CardID,8,4,'****') CardID,
+                table = $@"select m.id,stuff(m.FullName,2,1,'*') FullName,stuff(m.WechatName,2,1,'*') WechatName,m.HeadImg,m.Sex,stuff(m.CardID,8,4,'****') CardID,
 stuff(m.Mobile,8,4,'****') Mobile,m.Balance,m.Integral,
-convert(nvarchar(100),m.RegTime,20) RegTime,m.businessId,m.chainStoreId,l.Title,b.BusinessName,c.Name StoreName from dbo.TMember m
-left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TBusiness b on
-m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
+convert(nvarchar(100),m.RegTime,20) RegTime,l.Title,c.Name StoreName from dbo.TMember m
+left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             }
             table += where.Replace("*", "m");
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);

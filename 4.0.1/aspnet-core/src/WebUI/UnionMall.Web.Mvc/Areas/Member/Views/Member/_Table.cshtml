@@ -15,7 +15,7 @@
             <th>@L("FullName")</th>
             <th>@L("PhoneNumber")</th>
             <th>@L("CardID")</th>
-            <th>@L("Belong")@L("Business")</th>
+            <th>@L("Sex")</th>
             <th>@L("Belong")@L("ChainStore")</th>
             <th>@L("Belong")@L("Level")</th>
             <th>@L("Integral")</th>
@@ -35,7 +35,7 @@
                 <td class="title">@item["FullName"]</td>
                 <td>@item["Mobile"]</td>
                 <td>@item["CardID"]</td>
-                <td>@item["BusinessName"]</td>
+                <td>@(item["Sex"].ToString() == "0" ? L("Male") : L("Female"))</td>
                 <td>@item["StoreName"]</td>
                 <td>@item["Title"]</td>
                 <td>@item["Integral"]</td>

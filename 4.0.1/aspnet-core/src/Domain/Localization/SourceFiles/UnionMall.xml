@@ -211,7 +211,8 @@
     <text name="Statistics" value="Statistics"/>
     <text name="ChainStorePointStatistics" value="ChainStorePointStatistics"/>
     <text name="ChainStoreValueStatistics" value="ChainStoreValueStatistics" />
-    <text name="ChainStoreSmsStatistics" value="ChainStoreSmsStatistics"/>
+    <text name="WeChatIncomeStatistics" value="WeChatIncomeStatistics"/>
+    <text name="AliPayIncomeStatistics" value="AliPayIncomeStatistics"/>
     <text name="MemberBuyCardStatistics" value="MemberBuyCardStatistics"/>
     <text name="MemberRechargeStatistics" value="MemberRechargeStatistics"/>
     <text name="MemberConsumeStatistics" value="MemberConsumeStatistics"/>
@@ -232,8 +233,8 @@
     <text name="ManagerRole" value="RoleManage" />
     <text name="Industry" value="Industry" />
     <text name="PaySet" value="PaySet"/>
-    <text name="SEO" value="SEO" />
     <text name="Cache" value="Cache" />
+    <text name="SmsTemplate" value="SmsTemplate" />
     <text name="LogList" value="LogList" />
     <text name="Sex" value="Sex" />
     <text name="Male" value="Male" />
