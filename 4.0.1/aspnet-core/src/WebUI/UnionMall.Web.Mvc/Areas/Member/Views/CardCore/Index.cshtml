@@ -34,7 +34,7 @@
 
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="number" required name="CardID" placeholder="@L("Member")@L("CardID")" class="m-b input-sm form-control" />
+                                <input type="number" value="@ViewBag.CarId" required name="CardID" placeholder="@L("Member")@L("CardID")" class="m-b input-sm form-control" />
                                 <span class="input-group-btn">
                                     <button id="readBtn" type="button" class="btn btn-primary btn-sm">
                                         @L("Search")
@@ -86,15 +86,28 @@
     <form class="form-inline" id="consumeForm" data-ajax="true" data-ajax-update="#tableConsume" action="/member/cardcore/consumelist" method="post">
         <input type="hidden" name="memberId" value="0" />
     </form>
+    <form class="form-inline" id="balanceForm" data-ajax="true" data-ajax-update="#tableBalance" action="/member/cardcore/BalanceList" method="post">
+        <input type="hidden" name="memberId" value="0" />
+    </form>
+    <form class="form-inline" id="integralForm" data-ajax="true" data-ajax-update="#tableIntegral" action="/member/cardcore/IntegralList" method="post">
+        <input type="hidden" name="memberId" value="0" />
+    </form>
+    <form class="form-inline" id="orderForm" data-ajax="true" data-ajax-update="#tableOrder" action="/member/cardcore/orderlist" method="post">
+        <input type="hidden" name="memberId" value="0" />
+    </form>
+    <form class="form-inline" id="couponForm" data-ajax="true" data-ajax-update="#tableCoupon" action="/member/cardcore/couponlist" method="post">
+        <input type="hidden" name="memberId" value="0" />
+    </form>
     <div class="row">
         <div class="col-lg-12">
             <div class="tabs-container">
                 <ul class="nav nav-tabs" id="myTabs">
                     <li class="active"><a data-toggle="tab" href="#home" aria-expanded="true">@L("Consume")@L("Records")</a></li>
-                    <li class=""><a data-toggle="tab" href="#point" aria-expanded="false">@L("Integral")@L("Records")</a></li>
+
                     <li class=""><a data-toggle="tab" href="#value" aria-expanded="false">@L("Balance")@L("Records")</a></li>
-                    <li class=""><a data-toggle="tab" href="#recive" aria-expanded="false">@L("Coupon")@L("Receive")@L("Records")</a></li>
-                    <li class=""><a data-toggle="tab" href="#use" aria-expanded="false">@L("Coupon")@L("Use")@L("Records")</a></li>
+                    <li class=""><a data-toggle="tab" href="#point" aria-expanded="false">@L("Integral")@L("Records")</a></li>
+                    <li class=""><a data-toggle="tab" href="#order" aria-expanded="false">@L("Order")@L("Records")</a></li>
+                    <li class=""><a data-toggle="tab" href="#coupon" aria-expanded="false">@L("Coupon")@L("Use")@L("Records")</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade active in" aria-labelledby="home-tab">
@@ -102,24 +115,24 @@
                             @Html.Partial("_TableConsume", null)
                         </div>
                     </div>
-                    <div id="point" class="tab-pane fade" aria-labelledby="point-tab">
-                        <div class="panel-body">
-                            <p>2.近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技 术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视 和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                    <div id="value" class="tab-pane fade" aria-labelledby="point-tab">
+                        <div class="panel-body" id="tableBalance">
+                            @Html.Partial("_TableBalance", null)
                         </div>
                     </div>
-                    <div id="value" class="tab-pane fade" aria-labelledby="value-tab">
-                        <div class="panel-body">
-                            <p>3.近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技 术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视 和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                    <div id="point" class="tab-pane fade" aria-labelledby="value-tab">
+                        <div class="panel-body" id="tableIntegral">
+                            @Html.Partial("_TableIntegral", null)
                         </div>
                     </div>
-                    <div id="recive" class="tab-pane fade" aria-labelledby="value-tab">
+                    <div id="order" class="tab-pane fade" aria-labelledby="value-tab">
                         <div class="panel-body">
                             <p>4.近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技 术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视 和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
                         </div>
                     </div>
-                    <div id="use" class="tab-pane fade" aria-labelledby="value-tab">
-                        <div class="panel-body">
-                            <p>5.近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技 术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视 和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                    <div id="coupon" class="tab-pane fade" aria-labelledby="value-tab">
+                        <div class="panel-body" id="tableCoupon">
+                            @Html.Partial("_TableCoupon", null)
                         </div>
                     </div>
                 </div>
@@ -169,6 +182,9 @@
                         $(this).val(data.member.id);
                     });
                     $("#consumeForm").submit();
+                    $("#balanceForm").submit();
+                    $("#integralForm").submit();
+                    $("#couponForm").submit();
                 } else {
                     toastr.options = {
                         "closeButton": false,//是否配置关闭按钮
@@ -181,5 +197,9 @@
                 }
             }
         })
+    });
+
+    $(function () {
+        if ($("input[name='CardID']").val() != "") { $("#readBtn").click();}
     });
 </script>

@@ -64,7 +64,7 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
         }
 
         public async Task<IActionResult> TableChat(string orderNumber, string way,
-            string name, string cardid)
+            string name, string cardid, string timeFrom, string timeTo)
         {
             string where = _comService.GetWhere();
             if (!string.IsNullOrEmpty(orderNumber))
@@ -75,6 +75,10 @@ namespace UnionMall.Web.Mvc.Areas.Statistics.Controllers
                 where += $" and cardid like '%{cardid}%'";
             if (!string.IsNullOrEmpty(way))
                 where += $" and way ={way}";
+            if (!string.IsNullOrEmpty(timeFrom))
+                where += $" and n.CreationTime>='{timeFrom} 00:00:00'";
+            if (!string.IsNullOrEmpty(timeTo))
+                where += $" and n.CreationTime<='{timeTo} 23:59:59'";
             DataTable addDt = _appService.GetStatisticsData(where + " and n.type=1").Tables[0];
             DataTable redDt = _appService.GetStatisticsData(where + " and n.type=0").Tables[0];
             string str = string.Empty;

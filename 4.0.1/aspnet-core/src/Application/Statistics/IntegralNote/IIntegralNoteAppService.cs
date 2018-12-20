@@ -9,5 +9,6 @@ namespace UnionMall.IntegralNote
     public interface IIntegralNoteAppService : IApplicationService
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
+        DataSet GetStatisticsData(string where);
     }
 }

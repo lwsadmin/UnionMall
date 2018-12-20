@@ -33,5 +33,14 @@ on n.MemberId=m.id left join dbo.TChainStore c on n.ChainStoreId=c.id where 1=1 
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
+        public DataSet GetStatisticsData(string where)
+        {
+            string table = $@"select  SUBSTRING( CONVERT(varchar(100),n.CreationTime, 112),0,7) [Time], 
+cast(sum(Point) as float) TotalValue
+ from dbo.TIntegralNote n left join dbo.TChainStore c on n.ChainStoreId=c.Id where DATEADD(YEAR,1,n.CreationTime)>=GETDATE()  
+{  where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n")}
+group by  SUBSTRING( CONVERT(varchar(100), n.CreationTime, 112),0,7)";
+            return _sqlExecuter.ExecuteDataSet(table);
+        }
     }
 }

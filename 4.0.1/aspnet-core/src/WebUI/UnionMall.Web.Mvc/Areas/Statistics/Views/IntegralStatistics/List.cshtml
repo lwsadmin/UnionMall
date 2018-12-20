@@ -22,6 +22,10 @@
 </style>
 
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" asp-append-version="true" rel="stylesheet" />
+<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/data.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/series-label.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/oldie.js"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -109,7 +113,7 @@
                                 </div>
                             </div>
                             <div id="second" class="tab-pane fade" aria-labelledby="second-tab">
-                                <div class="panel-body">
+                                <div class="panel-body" id="tableChat">
                                     @Html.Partial("_TableChat")
                                 </div>
                             </div>
@@ -127,4 +131,19 @@
         e.preventDefault()
         $(this).tab('show')
     });
+
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        // e.target // newly activated tab
+        if (String(e.target).indexOf("second") != -1) {
+            $("#searchForm").attr("data-ajax-update", "#tableChat");
+            $("#searchForm").attr("action", "/statistics/integralstatistics/tablechat");
+            $("#searchForm").submit();
+            // GetChartData();
+        } else {
+            $("#searchForm").attr("data-ajax-update", "#table");
+            $("#searchForm").attr("action", "/statistics/integralstatistics/list");
+            $("#searchForm").submit();
+        }
+        // e.relatedTarget // previous active tab
+    })
 </script>
