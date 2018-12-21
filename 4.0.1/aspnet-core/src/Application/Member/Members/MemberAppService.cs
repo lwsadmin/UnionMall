@@ -59,7 +59,6 @@ namespace UnionMall.Member
             //        $",memberid={member[new Random().Next(0, 100)]}  where id={item["id"]}";
             //    _sqlExecuter.Execute(s);
             //}
-
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select m.id,stuff(m.FullName,2,1,'*') FullName,stuff(m.WechatName,2,1,'*') WechatName,m.HeadImg,m.Sex,stuff(m.CardID,8,4,'****') CardID,
@@ -254,7 +253,7 @@ c.Name  所属门店 from dbo.TMember m left join dbo.TMemberLevel l on m.levelI
 m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
             sql += where.Replace("*", "m");
-           // DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            // DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
             return await _comServices.DataTableToExcel(sql);
         }
 

@@ -162,7 +162,8 @@
     <text name="ManagerRole" value="角色权限" />
     <text name="Industry" value="运营行业" />
     <text name="PaySet" value="支付设置"/>
-
+    <text name="OperateSet" value="运营设置"/>
+    <text name="OperateModule" value="功能组件"/>
     <text name="Cache" value="缓存" />
     <text name="SmsTemplate" value="短信模板" />
     <text name="LogList" value="日志监控" />

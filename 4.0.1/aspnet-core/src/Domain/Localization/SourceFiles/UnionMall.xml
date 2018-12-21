@@ -233,6 +233,7 @@
     <text name="ManagerRole" value="RoleManage" />
     <text name="Industry" value="Industry" />
     <text name="PaySet" value="PaySet"/>
+    <text name="OperateSet" value="OperateSet"/>
     <text name="Cache" value="Cache" />
     <text name="SmsTemplate" value="SmsTemplate" />
     <text name="LogList" value="LogList" />
@@ -329,6 +330,7 @@
     <text name="Pay" value="Pay" />
     <text name="Cash" value="Cash" />
     <text name="AliPay" value="AliPay" />
+    <text name="OperateModule" value="OperateModule"/>
     <!--message-->
     <text name="NotExist{0}" value="It does not exist!" />
     <text name="Exist{0}" value="Already exist {0}!" />

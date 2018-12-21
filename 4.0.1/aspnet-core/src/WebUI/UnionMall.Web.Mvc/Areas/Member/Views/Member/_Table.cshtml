@@ -29,8 +29,9 @@
         @foreach (DataRow item in Model)
         {
             <tr>
-                <td class="title">
-                    @item["WechatName"]
+                <td>
+                    @*<img style="width:20px;" alt="image" class="img-circle" src="@item["HeadImg"]" onerror="this.src='/img/avatar-default.png'">*@
+                    <span class="title">@item["WechatName"]</span>
                 </td>
                 <td class="title">@item["FullName"]</td>
                 <td>@item["Mobile"]</td>

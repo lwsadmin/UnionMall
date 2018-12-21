@@ -32,10 +32,11 @@ namespace UnionMall.Web.Mvc.Areas.Business.Controllers
             _AbpSession = abpSession;
             _businessAppService = businessAppService;
         }
+        [AbpMvcAuthorize]
         public async Task<IActionResult> List(int page = 1, int pageSize = 10,
-            string storeName = "", string businessId = "")
+             string storeName = "", string businessId = "")
         {
-            string where =_commonAppService.GetWhere();
+            string where = _commonAppService.GetWhere();
             if (!string.IsNullOrEmpty(storeName))
             { where = $" and c.Name like '%{storeName}%'"; }
             if (!string.IsNullOrEmpty(businessId))

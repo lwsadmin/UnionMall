@@ -234,15 +234,15 @@
       <Action Name="Delete" />
     </Second>
     <Second Name="Tenants"   Url="/SystemSet/Tenants/list">
-      <Action Name="Add" />
-      <Action Name="Edit" />
-      <Action Name="Delete" />
+
     </Second>
     <Second Name="Industry"   Url="/SystemSet/industry/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
+    <Second Name="OperateSet"  Url="/systemSet/operateset/index"></Second>
+    <Second Name="OperateModule"  Url="/systemSet/module/list"></Second>
     <Second Name="SmsTemplate"  Url="/systemSet/smstemplate/list"></Second>
     <Second Name="LogList"  Url="/systemSet/log/list"></Second>
   </First>
