@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<div id="container" style="min-width:400px;height:400px"></div>
+<input type="hidden" id="title" value="@L("WeChatIncomeStatistics")" />
+<input type="hidden" id="ytitle" value="@L("Total") (@L("Yuan"))" />
+<input type="hidden" id="xT" value="@L("Total")" />
+<input type="hidden" id="add" value="@L("Amount")" />
+<input type="hidden" id="reduce" value="@L("Pay")" />
+<script>
+ 
+            var chart = Highcharts.chart('container', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: $("#title").val()
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: [@Html.Raw(ViewBag.Months)]
+                },
+                yAxis: {
+                    title: {
+                        text: $("#xT").val()
+                    }
+                }, credits: {
+                    enabled: false // 禁用版权信息
+                }, tooltip: {
+                    valueSuffix: '',
+                    style: { color: 'black', fontSize: '16px' },
+                    shadow: false
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            // 开启数据标签
+                            enabled: true
+                        },
+                        // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+                        enableMouseTracking: true
+                    }
+                },
+                series: [{
+                    name: $("#add").val(),
+                    color:'#62b900',
+                    data: [@ViewBag.Line]
+                }]
+            });
+</script>

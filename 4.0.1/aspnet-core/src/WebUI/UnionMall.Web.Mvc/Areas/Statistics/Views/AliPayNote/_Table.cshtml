@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+@using X.PagedList
+@using System.Data
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Records")@L("Time")</th>
+            <th>@L("Order")@L("Number")</th>
+            <th>@L("Pay")@L("Amount")</th>
+            <th>@L("Note")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr>
+                <td>
+                    @item["CreationTime"]
+                </td>
+                <td>@item["BillNumber"]</td>
+                <td>@item["Amount"]</td>
+                <td>@item["Memo"]</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+new PagedListRenderOptions {
+MaximumPageNumbersToDisplay = 10,
+DisplayPageCountAndCurrentLocation = true,
+LinkToFirstPageFormat = L("FirstPage"),
+LinkToLastPageFormat = L("LastPage"),
+LinkToNextPageFormat = L("NextPage"),
+PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+LinkToPreviousPageFormat = L("PreviousPage"),
+UlElementClasses = new[] { "pagination col-md-8" },
+ContainerDivClasses = new[] { "row" } },
+new AjaxOptions()
+{
+DataForm = "searchForm",
+HttpMethod = "GET",
+UpdateTargetId = "table"
+}
+))
+
+<script>
+    var txt = $("input[name='orderNumber']").val().trim();
+    if (txt.length > 0) {
+        $(".title").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+    $("input[name='pageSize']").val(@ViewBag.PageSize);
+</script>

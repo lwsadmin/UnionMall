@@ -199,8 +199,8 @@
     <Second Name="BusinessWithDrawCash"   Url="javascript:void(0);"></Second>
   </First>
   <First Name="StatisticsAnalysis"  Icon="glyphicon glyphicon-signal">
-    <Second Name="WeChatIncomeStatistics" Url="/statistics/wechatincome/list"></Second>
-    <Second Name="AliPayIncomeStatistics"  Url="/statistics/alipayincome/list"></Second>
+    <Second Name="WeChatIncomeStatistics" Url="/statistics/wechatpaynote/list"></Second>
+    <Second Name="AliPayIncomeStatistics"  Url="/statistics/alipaynote/list"></Second>
     <Second Name="MemberBuyCardStatistics"  Url="/statistics/levelupdate/list"></Second>
     <Second Name="MemberRechargeStatistics"  Url="/statistics/memberrecharge/list"></Second>
     <Second Name="MemberConsumeStatistics"  Url="/Statistics/memberconsume/List"></Second>
