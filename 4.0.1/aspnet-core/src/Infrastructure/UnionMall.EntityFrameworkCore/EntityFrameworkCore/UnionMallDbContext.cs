@@ -40,6 +40,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<SmsTemplate> SmsTemplate { get; set; }
         public DbSet<AliPayNote> AliPayNote { get; set; }
         public DbSet<WeChatPayNote> WeChatPayNote { get; set; }
+        public DbSet<OperateModule> OperateModule { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

@@ -1,7 +1,9 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.MultiTenancy;
+using static UnionMall.MultiTenancy.Tenant;
 
 namespace UnionMall.MultiTenancy.Dto
 {
@@ -15,8 +17,15 @@ namespace UnionMall.MultiTenancy.Dto
 
         [Required]
         [StringLength(AbpTenantBase.MaxNameLength)]
-        public string Name { get; set; }        
-        
-        public bool IsActive {get; set;}
+        public string Name { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public VersionType Version { get; set; }
+        public DateTime DueTime { get; set; }
+        public DateTime CreationTime { get; set; }
+        public string License { get; set; }
+        public string LegalPerson { get; set; }
+        public string Tel { get; set; }
     }
 }

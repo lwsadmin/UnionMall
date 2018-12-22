@@ -5,6 +5,7 @@ using Abp.AspNetCore.Mvc.Authorization;
 using UnionMall.Authorization;
 using UnionMall.Controllers;
 using UnionMall.MultiTenancy;
+using Abp.Runtime.Session;
 
 namespace UnionMall.Web.Controllers
 {
@@ -12,10 +13,11 @@ namespace UnionMall.Web.Controllers
     public class TenantsController : UnionMallControllerBase
     {
         private readonly ITenantAppService _tenantAppService;
-
-        public TenantsController(ITenantAppService tenantAppService)
+        private readonly IAbpSession _AbpSession;
+        public TenantsController(ITenantAppService tenantAppService, IAbpSession AbpSession)
         {
             _tenantAppService = tenantAppService;
+            _AbpSession = AbpSession;
         }
 
         public async Task<ActionResult> Index()

@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "SystemSet";
+    ViewBag.SecondMenu = "Tenants";
+}
+@using Abp.MultiTenancy
+@using UnionMall.MultiTenancy.Dto
+@using UnionMall.Web.Models.Common.Modals
+@model TenantDto
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("SystemSet")</a>
+            </li>
+            <li class="active">
+                @L("Tenants")
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+
+        <div class="col-lg-8 col-md-offset-2">
+            <div class="contact-box">
+                <div class="row">
+                    <div class="col-xs-6 col-md-12">
+                        <a href="javascript:void(0);" class="thumbnail">
+                            <img src="https://f12.baidu.com/it/u=2592695909,265754479&fm=72" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <p> <h3> @L("Tenants")@L("Name"):<span class="text-info">@Model.Name</span></h3></p>
+                    <p> <h3> @L("Create")@L("Time"):<span class="text-info">@Model.CreationTime</span>  </h3></p>
+                    <p> <h3> @L("Version"):<span class="text-info">@Model.Version</span> </h3></p>
+
+                    <p> <h3> @L("legalPerson"):<span class="text-info">@Model.LegalPerson</span> </h3></p>
+
+                    <p> <h3> @L("PhoneNumber"):<span class="text-info">@Model.Tel</span> </h3></p>
+                    <p> <h3> @L("DueTime"):<span class="text-danger">@Model.DueTime</span> </h3></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function change(id) {
+        var _Service = abp.services.app.operateModule;
+        _Service.changeStatus(id)
+            .done(function (data) {
+                if ($(".pagination .active a").html() != undefined) {
+                    $(".pagination .active a").click();
+                } else { $("#searchForm").submit(); }
+                                 toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+             })
+            .fail(function (data) { })
+            .always(function (data) { });
+    }
+
+
+</script>

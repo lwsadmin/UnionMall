@@ -220,6 +220,7 @@
     <text name="FaceValue" value="面值" />
     <text name="legalPerson" value="法人" />
     <text name="DueTime" value="到期时间" />
+    <text name="Version" value="版本" />
     <text name="Link" value="链接" />
     <text name="ScanCode" value="扫码" />
     <text name="SmlPro" value="小程序" />

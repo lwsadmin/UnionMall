@@ -2,20 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
+using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
+using UnionMall.MultiTenancy;
 
 namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
 {
     [Area("SystemSet")]
-    [AbpMvcAuthorize("SystemSet.LogList")]
+    [AbpMvcAuthorize("SystemSet.Tenants")]
     public class TenantsController : UnionMallControllerBase
     {
-        public IActionResult Index()
+        private readonly ITenantAppService _tenantAppService;
+        private readonly IAbpSession _AbpSession;
+        public TenantsController(ITenantAppService tenantAppService, IAbpSession AbpSession)
         {
-
-            return View();
+            _tenantAppService = tenantAppService;
+            _AbpSession = AbpSession;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var tenantDto = await _tenantAppService.Get(new EntityDto((int)_AbpSession.TenantId));
+            return View(tenantDto);
         }
     }
 }

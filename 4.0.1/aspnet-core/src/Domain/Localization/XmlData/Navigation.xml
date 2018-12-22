@@ -233,7 +233,7 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="Tenants"   Url="/SystemSet/Tenants/list">
+    <Second Name="Tenants"   Url="/SystemSet/Tenants/index">
 
     </Second>
     <Second Name="Industry"   Url="/SystemSet/industry/list">
