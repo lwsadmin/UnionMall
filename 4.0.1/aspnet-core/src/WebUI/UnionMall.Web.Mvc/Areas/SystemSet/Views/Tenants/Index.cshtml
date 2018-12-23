@@ -38,16 +38,32 @@
                         </a>
                     </div>
                 </div>
-
-                <div class="col-sm-4">
-                    <p> <h3> @L("Tenants")@L("Name"):<span class="text-info">@Model.Name</span></h3></p>
-                    <p> <h3> @L("Create")@L("Time"):<span class="text-info">@Model.CreationTime</span>  </h3></p>
-                    <p> <h3> @L("Version"):<span class="text-info">@Model.Version</span> </h3></p>
-
-                    <p> <h3> @L("legalPerson"):<span class="text-info">@Model.LegalPerson</span> </h3></p>
-
-                    <p> <h3> @L("PhoneNumber"):<span class="text-info">@Model.Tel</span> </h3></p>
-                    <p> <h3> @L("DueTime"):<span class="text-danger">@Model.DueTime</span> </h3></p>
+                <div class="col-sm-4 col-md-offset-5">
+                    <p>
+                        <span>@L("Tenants")@L("Name"):</span>
+                        <strong class="text-info">@Model.Name</strong>
+                    </p>
+                    <p>
+                        <span>@L("Create")@L("Time"):</span>
+                        <strong class="text-info">@Model.CreationTime</strong>
+                    </p>
+                    <p>
+                        <span>@L("Version"):</span>
+                        <strong class="text-info">@L(Model.Version.ToString())</strong>
+                    </p>
+                    <p>
+                        <span>@L("legalPerson"):</span>
+                        <strong class="text-info">@Model.LegalPerson</strong>
+                    </p>
+                    <p>
+                        <span>@L("PhoneNumber"):</span>
+                        <strong class="text-info">@Model.Tel</strong>
+                    </p>
+                    <div class="hr-line-dashed"></div>
+                    <p>
+                        <span>@L("DueTime"):</span>
+                        <strong class="text-danger">@Model.DueTime</strong>
+                    </p>
                 </div>
                 <div class="clearfix"></div>
             </div>
