@@ -158,6 +158,8 @@
     <text name="GoodsCategory" value="GoodsCategory"/>
     <text name="GoodsBrand" value="GoodsBrand" />
     <text name="GoodsManage" value="GoodsManage" />
+    <text name="Auto" value="Auto" />
+    <text name="Default" value="Default" />
     <text name="GoodsOrder" value="GoodsOrder" />
     <text name="GoodsAttr" value="GoodsAttr" />
     <text name="GoodsSpec" value="GoodsSpec" />
@@ -175,8 +177,9 @@
     <text name="MemberLevel" value="MemberLevel" />
     <text name="MemberList" value="MemberList" />
     <text name="MemberRegister" value="MemberRegister" />
+    <text name="Captcha" value="Captcha" />
     <text name="CardInfo" value="CardInfo" />
-
+    <text name="RegisterSet" value="RegisterSet" />
     <text name="FlashSale" value="FlashSale"/>
     <text name="FlashSaleList" value="FlashSaleList"/>
     <text name="FlashSaleImage" value="FlashSaleImage"/>
@@ -244,6 +247,7 @@
     <text name="Male" value="Male" />
     <text name="Female" value="Female" />
     <text name="CardID" value="CardID" />
+    <text name="Other" value="Other" />
     <!--Action-->
     <text name="PayType" value="PayType" />
     <text name="Set" value="Set" />
@@ -311,6 +315,7 @@
     <text name="Level" value="Level" />
     <text name="Time" value="Time" />
     <text name="Register" value="Register" />
+    <text name="Agreement" value="Agreement" />
     <text name="{1}pages{2}Records" value="{1}pages{2}Records" />
     <text name="Use" value="Use" />
     <text name="Send" value="Send" />

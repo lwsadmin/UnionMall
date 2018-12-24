@@ -106,11 +106,13 @@
     <text name="ChainStore" value="商户门店"/>
     <text name="UnionMember" value="联盟会员"/>
     <text name="Member" value="会员"/>
-    <text name="MemberLevel" value="会员级别" />
+    <text name="Captcha" value="验证码" />
+    <text name="MemberLevel" value="会员等级" />
     <text name="MemberList" value="会员列表" />
     <text name="MemberRegister" value="会员办理" />
     <text name="CardInfo" value="卡务中心" />
-
+    <text name="RegisterSet" value="注册设置" />
+    <text name="Auto" value="自动" />
     <text name="FlashSale" value="限时抢购"/>
     <text name="FlashSaleList" value="抢购管理"/>
     <text name="FlashSaleImage" value="抢购图库"/>
@@ -191,6 +193,7 @@
     <text name="Export" value="导出" />
     <text name="Balance" value="余额" />
     <text name="BirthDay" value="生日" />
+    <text name="Other" value="其他" />
     <!--Form-->
     <text name="Praise" value="赞" />
     <text name="Ago" value="前" />
@@ -263,6 +266,7 @@
     <text name="Level" value="级别" />
     <text name="Time" value="时间" />
     <text name="Register" value="注册" />
+    <text name="Agreement" value="协议" />
     <text name="Use" value="使用" />
     <text name="Send" value="发送" />
     <text name="Receive" value="领取" />
@@ -285,6 +289,7 @@
     <text name="Pay" value="支付" />
     <text name="Cash" value="现金" />
     <text name="AliPay" value="支付宝" />
+    <text name="Default" value="默认" />
     <!--message-->
     <text name="Hint" value="提示" />
     <text name="Exist{0}" value="已经存在 {0}!" />

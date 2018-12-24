@@ -74,7 +74,6 @@
     </Second>
     <Second Name="MemberRegister"  Url="/member/memberreg/index"></Second>
     <Second Name="CardInfo"  Url="/member/cardcore/index">
-
     </Second>
   </First>
   <First Name="FlashSale"  Icon="glyphicon glyphicon-dashboard">

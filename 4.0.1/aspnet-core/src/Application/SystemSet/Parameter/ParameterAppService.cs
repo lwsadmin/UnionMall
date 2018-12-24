@@ -30,26 +30,30 @@ namespace UnionMall.SystemSet
 
         public async Task<Parameter> GetParameter(string key)
         {
-            var s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId);
-            if (s != null)
+            using (_unitOfWorkManager.Current.DisableFilter(AbpDataFilters.MayHaveTenant))
             {
-                return s;
+                var s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId);
+                if (s != null)
+                {
+                    return s;
+                }
+                return (await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0));
             }
-            return (await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0));
+
         }
 
         public async Task SaveParameterValue(string key, string value)
         {
             using (_unitOfWorkManager.Current.DisableFilter(AbpDataFilters.MayHaveTenant))
             {
-                var p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == (_AbpSession.TenantId ?? 0));
-                if (p==null)
+                var p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId);
+                if (p == null)
                 {
-                    p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId==0);
+                    p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0);
                     Parameter newP = new Parameter();
                     newP.Title = p.Title;
                     newP.KeyName = p.KeyName;
-                    newP.Value = value;
+                    newP.Value = value ?? "";
                     newP.TenantId = _AbpSession.TenantId;
                     newP.Memo = p.Memo;
                     await _Repository.InsertAsync(newP);
@@ -60,16 +64,20 @@ namespace UnionMall.SystemSet
                     await _Repository.UpdateAsync(p);
                 }
             }
- 
+
         }
         public async Task<string> GetParameterValue(string key)
         {
-            var s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId);
-            if (s != null)
+            using (_unitOfWorkManager.Current.DisableFilter(AbpDataFilters.MayHaveTenant))
             {
-                return s.Value;
+                var s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == _AbpSession.TenantId);
+                if (s != null)
+                {
+                    return s.Value;
+                }
+                return (await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0)).Value;
             }
-            return (await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == 0)).Value;
+
         }
         public async Task SaveParameter(Parameter p)
         {

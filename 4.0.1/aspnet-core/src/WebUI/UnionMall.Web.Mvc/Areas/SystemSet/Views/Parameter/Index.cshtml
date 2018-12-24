@@ -5,7 +5,7 @@
 }
 @using System.Data
 
-<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -22,3 +22,205 @@
         </ol>
     </div>
 </div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs" id="myTabs">
+                    <li class="active"><a data-toggle="tab" href="#reg" aria-expanded="true">@L("RegisterSet")</a></li>
+                    <li class=""><a data-toggle="tab" href="#com" aria-expanded="false">@L("Consume")@L("Set")</a></li>
+                    <li class=""><a data-toggle="tab" href="#other" aria-expanded="false">@L("Other")@L("Set")</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="reg" class="tab-pane fade active in" aria-labelledby="reg-tab">
+                        <div class="panel-body">
+                            <div class="modal-body">
+                                <!-- BEGIN FORM-->
+                                <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formReg" method="post">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">@L("Auto")@L("Register")</label>
+                                            <div class="col-sm-3">
+                                                <div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="active" value="true" name="AutoReg" @(ViewData["AutoReg"].ToString().ToUpper() == "TRUE" ? "checked" : "") />
+                                                        <label for="active">@L("Open")</label>
+                                                    </div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="Disable" value="false" name="AutoReg" @(ViewData["AutoReg"].ToString().ToUpper() == "FALSE" ? "checked" : "") />
+                                                        <label for="Disable">@L("Close")</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <span id="helpBlock" class="help-block"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">@L("Default")@L("Level")</label>
+                                            <div class="col-sm-3">
+                                                <select class="input-sm form-control chosen-select" id="MemberDefaultGroup" name="MemberDefaultGroup" required>
+                                                    @foreach (var item in ViewBag.Level)
+                                                    {
+                                                        if (Convert.ToInt64(ViewData["MemberDefaultGroup"]) == item.Id)
+                                                        {
+                                                            <option selected="selected" value="@item.Id">@item.Title</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@item.Id">@item.Title</option>
+                                                        }
+
+
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <span class="help-Block"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">@L("Default")@L("Password")</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control input-sm" value="@ViewData["MemberDefaultPassword"]"  name="MemberDefaultPassword">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">@L("Register")@L("Captcha")</label>
+                                            <div class="col-sm-3">
+                                                <div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="active1" value="true" name="RegSmsCode" @(ViewData["RegSmsCode"].ToString().ToUpper() == "TRUE" ? "checked" : "") />
+                                                        <label for="active1">@L("Open")</label>
+                                                    </div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="Disable1" value="false" name="RegSmsCode" @(ViewData["RegSmsCode"].ToString().ToUpper() == "FALSE" ? "checked" : "") />
+                                                        <label for="Disable1">@L("Close")</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                @L("Register")@L("Agreement")
+                                            </label>
+                                            <div class="col-sm-6">
+                                                <textarea maxlength="500" class="form-control" id="agt" name="RegAgreement" rows="5">@ViewData["RegAgreement"]</textarea>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <span class="help-Block"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-sm-6">
+                                            <input id="btnReg" type="button" value="@L("Save")" class="btn btn-primary"  />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END FORM-->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="com" class="tab-pane fade" aria-labelledby="com-tab">
+                        <!-- BEGIN FORM-->
+                        <div class="panel-body">
+                            <div class="modal-body">
+
+                                <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formCom" method="post"></form>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-sm-6">
+                                            <input disabled="disabled" type="button" value="@L("Save")" class="btn btn-primary"  />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="other" class="tab-pane fade" aria-labelledby="other-tab">
+                        <!-- BEGIN FORM-->
+                        <div class="panel-body">
+                            <div class="modal-body">
+                                <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formother" method="post"></form>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-sm-6">
+                                            <input disabled="disabled" type="button" value="@L("Save")" class="btn btn-primary"  />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
+<script>
+    $('#myTabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    });
+
+    $(function () {
+        var _Service = abp.services.app.parameter;
+        $("#btnReg").on("click", function (e) {
+        e.preventDefault();
+            $("#formReg").find("input[type='text'],input[type='radio']:checked,textarea,select").each(function () {
+                if ($(this).attr("name") != "" && $(this).attr("name") != undefined) {
+                    _Service.saveParameterValue($(this).attr("name"), $(this).val())
+                        .done(function (data) { })
+                        .fail(function (data) { })
+                        .always(function (data) { });
+                }
+
+            });
+                 toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+    });
+    });
+    var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
+    var editor
+    KindEditor.ready(function (K) {
+        editor = K.create('#agt',
+            {
+                langType: language,
+                height: '250px',
+                uploadJson: "/Common/EditorUpload",
+                fileManagerJson: '/Common/Upload',
+                allowFileManager: false,
+                formatUploadUrl: false,
+                items: [
+                    'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', '|', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', '|', 'hr', 'emoticons', 'link', '|',
+                    'quickformat', 'preview', 'fullscreen'
+                ],
+                afterBlur: function () { this.sync(); },
+                afterUpload: function (url) { },
+                afterError: function (data) { }
+            });
+    });
+</script>

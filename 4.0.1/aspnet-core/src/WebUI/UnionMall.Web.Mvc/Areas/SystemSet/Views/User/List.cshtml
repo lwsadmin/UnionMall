@@ -13,10 +13,10 @@
 @using X.PagedList
 @using UnionMall.Web.Models.Users
 @model PagedList<DataRow>
-<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
 <script>
     language = $("#CurrentLanguage").attr("data-lan");
     if (language == "zh-Hans") {
