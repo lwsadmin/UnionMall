@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using UnionMall.Entity;
 using UnionMall.IRepositorySql;
 using Abp.UI;
+using Abp.Domain.Uow;
+
 namespace UnionMall.SystemSet
 {
     public class ParameterAppService : ApplicationService, IParameterAppService
@@ -16,11 +18,14 @@ namespace UnionMall.SystemSet
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<Parameter, long> _Repository;
         public readonly IAbpSession _AbpSession;
-        public ParameterAppService(ISqlExecuter sqlExecuter, IRepository<Parameter, long> Repository, IAbpSession AbpSession)
+        public readonly IUnitOfWorkManager _unitOfWorkManager;
+        public ParameterAppService(ISqlExecuter sqlExecuter,
+            IRepository<Parameter, long> Repository, IAbpSession AbpSession, IUnitOfWorkManager unitOfWorkManager)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
+            _unitOfWorkManager = unitOfWorkManager;
         }
 
         public async Task<Parameter> GetParameter(string key)
@@ -35,9 +40,27 @@ namespace UnionMall.SystemSet
 
         public async Task SaveParameterValue(string key, string value)
         {
-            var p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == (_AbpSession.TenantId ?? 0));
-            p.Value = value ?? "";
-            await _Repository.UpdateAsync(p);
+            using (_unitOfWorkManager.Current.DisableFilter(AbpDataFilters.MayHaveTenant))
+            {
+                var p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId == (_AbpSession.TenantId ?? 0));
+                if (p==null)
+                {
+                    p = await _Repository.FirstOrDefaultAsync(c => c.KeyName == key && c.TenantId==0);
+                    Parameter newP = new Parameter();
+                    newP.Title = p.Title;
+                    newP.KeyName = p.KeyName;
+                    newP.Value = value;
+                    newP.TenantId = _AbpSession.TenantId;
+                    newP.Memo = p.Memo;
+                    await _Repository.InsertAsync(newP);
+                }
+                else
+                {
+                    p.Value = value ?? "";
+                    await _Repository.UpdateAsync(p);
+                }
+            }
+ 
         }
         public async Task<string> GetParameterValue(string key)
         {

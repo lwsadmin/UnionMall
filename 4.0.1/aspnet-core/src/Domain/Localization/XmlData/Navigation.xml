@@ -237,7 +237,7 @@
 
     </Second>
 
-    <Second Name="OperateSet"  Url="/systemSet/operateset/index"></Second>
+    <Second Name="OperateSet"  Url="/systemset/parameter/index"></Second>
     <Second Name="OperateModule"  Url="/systemSet/module/list"></Second>
     <Second Name="SmsTemplate"  Url="/systemSet/smstemplate/list"></Second>
     <Second Name="LogList"  Url="/systemSet/log/list"></Second>

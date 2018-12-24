@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "SystemSet";
+    ViewBag.SecondMenu = "OperateSet";
+}
+@using System.Data
+
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("SystemSet")</a>
+            </li>
+            <li class="active">
+                <strong>@L("OperateSet")</strong>
+            </li>
+        </ol>
+    </div>
+</div>

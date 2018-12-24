@@ -8,9 +8,9 @@ using Abp.Domain.Entities;
 namespace UnionMall.Entity
 {
     [Table("TParameter")]
-    public class Parameter : Entity<long>, IMustHaveTenant
+    public class Parameter : Entity<long>, IMayHaveTenant
     {
-        public int TenantId { get; set; }
+        public int? TenantId { get; set; }
         public string Title { get; set; }
         public string KeyName { get; set; }
         public string Value { get; set; }
