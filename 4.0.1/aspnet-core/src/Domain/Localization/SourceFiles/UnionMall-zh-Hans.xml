@@ -81,6 +81,7 @@
     <text value="账号" name="TenancyName"/>
     <text name="Welcome, {0}" value="欢迎您 {0}" />
     <text name="Referrer" value="推荐人" />
+    <text name="SignIn" value="签到" />
     <text name="OffLineCashie" value="线下收款"/>
     <text name="QuickConsume" value="快速消费"/>
     <text name="GoodsConsume" value="商品消费" />
@@ -207,6 +208,7 @@
     <text name="Choose" value="-请选择-" />
     <text name="Sex" value="性别" />
     <text name="CardID" value="卡号" />
+    <text name="Join" value="加盟" />
     <text name="SigleCount" value="单人限量" />
     <text name="WeChat" value="微信" />
     <text name="Address" value="地址" />

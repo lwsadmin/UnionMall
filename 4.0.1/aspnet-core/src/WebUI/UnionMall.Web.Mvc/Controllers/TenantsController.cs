@@ -9,7 +9,7 @@ using Abp.Runtime.Session;
 
 namespace UnionMall.Web.Controllers
 {
-    [AbpMvcAuthorize]
+    //[AbpMvcAuthorize]
     public class TenantsController : UnionMallControllerBase
     {
         private readonly ITenantAppService _tenantAppService;

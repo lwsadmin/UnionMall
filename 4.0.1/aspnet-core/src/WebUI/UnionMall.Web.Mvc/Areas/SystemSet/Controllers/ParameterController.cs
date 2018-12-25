@@ -35,6 +35,13 @@ namespace UnionMall.Web.Mvc.Areas.SystemSet.Controllers
             ViewData["AutoReg"] = await _appService.GetParameterValue("AutoReg"); ;
             ViewData["RegSmsCode"] = await _appService.GetParameterValue("RegSmsCode");
 
+            ViewData["PointPaidPercentLimit"] = await _appService.GetParameterValue("PointPaidPercentLimit");
+            ViewData["PointPayPwd"] = await _appService.GetParameterValue("PointPayPwd");
+            ViewData["ValuePayPwd"] = await _appService.GetParameterValue("ValuePayPwd");
+
+
+            ViewData["MemberSignPoint"] = await _appService.GetParameterValue("MemberSignPoint");
+            ViewData["BusinessAgreement"] = await _appService.GetParameterValue("BusinessAgreement");
             var levelDropDown = (await _levelAppService.GetDropDown());
             ViewBag.Level = levelDropDown;
             return View();

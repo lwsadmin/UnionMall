@@ -87,7 +87,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-2">@L("Default")@L("Password")</label>
                                             <div class="col-sm-3">
-                                                <input type="text" class="form-control input-sm" value="@ViewData["MemberDefaultPassword"]"  name="MemberDefaultPassword">
+                                                <input type="text" class="form-control input-sm" value="@ViewData["MemberDefaultPassword"]" name="MemberDefaultPassword">
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@
                                                 @L("Register")@L("Agreement")
                                             </label>
                                             <div class="col-sm-6">
-                                                <textarea maxlength="500" class="form-control" id="agt" name="RegAgreement" rows="5">@ViewData["RegAgreement"]</textarea>
+                                                <textarea   class="form-control" id="agt" name="RegAgreement" rows="5">@ViewData["RegAgreement"]</textarea>
                                             </div>
                                             <div class="col-sm-4">
                                                 <span class="help-Block"></span>
@@ -125,7 +125,7 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-sm-6">
-                                            <input id="btnReg" type="button" value="@L("Save")" class="btn btn-primary"  />
+                                            <input id="btnReg" type="button" value="@L("Save")" class="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>
@@ -137,12 +137,58 @@
                         <!-- BEGIN FORM-->
                         <div class="panel-body">
                             <div class="modal-body">
+                                <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formCom" method="post">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">@L("Integral")@L("Pay")@L("UpperLimit")</label>
+                                            <div class="col-sm-3">
+                                                <div class="input-group bootstrap-touchspin">
+                                                    <input class="touchspin2 form-control" type="text" value="@ViewData["PointPaidPercentLimit"]" name="PointPaidPercentLimit" style="display: block;">
+                                                    <span class="input-group-addon bootstrap-touchspin-postfix">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">@L("Integral")@L("Pay")@L("Password")</label>
+                                            <div class="col-sm-3">
+                                                <div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="PointPayPwd1" value="true" name="PointPayPwd" @(ViewData["PointPayPwd"].ToString().ToUpper() == "TRUE" ? "checked" : "") />
+                                                        <label for="PointPayPwd1">@L("Open")</label>
+                                                    </div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="PointPayPwd2" value="false" name="PointPayPwd" @(ViewData["PointPayPwd"].ToString().ToUpper() == "FALSE" ? "checked" : "") />
+                                                        <label for="PointPayPwd2">@L("Close")</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formCom" method="post"></form>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">@L("Balance")@L("Pay")@L("Password")</label>
+                                            <div class="col-sm-3">
+                                                <div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="ValuePayPwd1" value="true" name="ValuePayPwd" @(ViewData["ValuePayPwd"].ToString().ToUpper() == "TRUE" ? "checked" : "") />
+                                                        <label for="ValuePayPwd1">@L("Open")</label>
+                                                    </div>
+                                                    <div class="radio radio-inline radio-success">
+                                                        <input type="radio" id="ValuePayPwd2" value="false" name="ValuePayPwd" @(ViewData["ValuePayPwd"].ToString().ToUpper() == "FALSE" ? "checked" : "") />
+                                                        <label for="ValuePayPwd2">@L("Close")</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-sm-6">
-                                            <input disabled="disabled" type="button" value="@L("Save")" class="btn btn-primary"  />
+                                            <input id="comBtn" type="button" value="@L("Save")" class="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>
@@ -154,11 +200,37 @@
                         <!-- BEGIN FORM-->
                         <div class="panel-body">
                             <div class="modal-body">
-                                <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formother" method="post"></form>
+                                <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formother" method="post">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">@L("Member")@L("SignIn")</label>
+                                            <div class="col-sm-3">
+                                                <div class="input-group bootstrap-touchspin">
+                                                    <input class="touchspin2 form-control" type="text" value="@ViewData["PointPaidPercentLimit"]" name="PointPaidPercentLimit" style="display: block;">
+                                                    <span class="input-group-addon bootstrap-touchspin-postfix">@L("Integral")</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">
+                                                @L("Business")@L("Join")@L("Agreement")
+                                            </label>
+                                            <div class="col-sm-6">
+                                                <textarea   class="form-control" id="busRgt" name="BusinessAgreement" rows="5">@ViewData["BusinessAgreement"]</textarea>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <span class="help-Block"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-3 col-sm-6">
-                                            <input disabled="disabled" type="button" value="@L("Save")" class="btn btn-primary"  />
+                                            <input id="btnOther" type="button" value="@L("Save")" class="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +271,53 @@
                 "timeOut": "2000",//1.5s后关闭消息框
             }
             toastr.success('@L("Save")@L("Success")', '@L("Hint")');
-    });
+        });
+
+        $("#comBtn").on("click", function (e) {
+        e.preventDefault();
+          $("#formCom").find("input[type='text'],input[type='radio']:checked").each(function () {
+                if ($(this).attr("name") != "" && $(this).attr("name") != undefined) {
+                    _Service.saveParameterValue($(this).attr("name"), $(this).val())
+                        .done(function (data) { })
+                        .fail(function (data) { })
+                        .always(function (data) { });
+                }
+
+            });
+                 toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+        });
+
+        $("#btnOther").on("click", function (e) {
+          e.preventDefault();
+            $("#formother").find("input[type='text'],input[type='radio']:checked").each(function () {
+                if ($(this).attr("name") != "" && $(this).attr("name") != undefined) {
+                    _Service.saveParameterValue($(this).attr("name"), $(this).val())
+                        .done(function (data) { })
+                        .fail(function (data) { })
+                        .always(function (data) { });
+                }
+            });
+            var p = {};
+            p.value = $("textarea[name='BusinessAgreement']").val();
+            p.keyName = 'BusinessAgreement';
+            _Service.saveParameter(p).done(function (data) {
+            toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+                toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+            })
+         });
     });
     var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
     var editor
@@ -208,6 +326,28 @@
             {
                 langType: language,
                 height: '250px',
+                uploadJson: "/Common/EditorUpload",
+                fileManagerJson: '/Common/Upload',
+                allowFileManager: false,
+                formatUploadUrl: false,
+                items: [
+                    'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', '|', 'fontname', 'fontsize', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', '|', 'hr', 'emoticons', 'link', '|',
+                    'quickformat', 'preview', 'fullscreen'
+                ],
+                afterBlur: function () { this.sync(); },
+                afterUpload: function (url) { },
+                afterError: function (data) { }
+            });
+    });
+
+    KindEditor.ready(function (K) {
+        editor = K.create('#busRgt',
+            {
+                langType: language,
+                height: '250px',
+                width: '500px',
                 uploadJson: "/Common/EditorUpload",
                 fileManagerJson: '/Common/Upload',
                 allowFileManager: false,

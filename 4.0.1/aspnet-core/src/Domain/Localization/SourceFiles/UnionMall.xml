@@ -84,6 +84,7 @@
     <text name="Note" value="Note"/>
     <text name="Records" value="Records" />
     <text name="Balance" value="Balance" />
+    <text name="SignIn" value="SignIn" />
     <text name="CreateNewUser" value="Create new user" />
     <text name="Yes" value="Yes" />
     <text name="No" value="No" />
@@ -150,7 +151,7 @@
     <text name="Certificate" value="Certificate" />
     <text name="QuickConsume" value="QuickConsume"/>
     <text name="GoodsConsume" value="GoodsConsume" />
-    <text name="MemberRecharge" value="Member"/>
+    <text name="MemberRecharge" value="MemberRecharge"/>
     <text name="CouponConsume" value="CouponConsume" />
     <text name="GiftExchange" value="GiftExchange" />
     <text name="PointRecharge" value="PointRecharge" />
@@ -172,7 +173,7 @@
     <text name="TwoJia" value="TwoJia" />
     <text name="BusinessManage" value="BusinessManage" />
     <text name="ChainStore" value="ChainStore"/>
-
+    <text name="Join" value="Join" />
     <text name="Member" value="Member"/>
     <text name="MemberLevel" value="MemberLevel" />
     <text name="MemberList" value="MemberList" />

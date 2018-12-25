@@ -81,13 +81,25 @@ namespace UnionMall.SystemSet
         }
         public async Task SaveParameter(Parameter p)
         {
-            if (p.Id <= 0)
+            using (_unitOfWorkManager.Current.DisableFilter(AbpDataFilters.MayHaveTenant))
             {
-                await _Repository.InsertAsync(p);
-            }
-            else
-            {
-                await _Repository.UpdateAsync(p);
+                var s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == p.KeyName && c.TenantId == _AbpSession.TenantId);
+                if (s == null)
+                {
+                    s = await _Repository.FirstOrDefaultAsync(c => c.KeyName == p.KeyName && c.TenantId == 0);
+                    Parameter newP = new Parameter();
+                    newP.Title = s.Title;
+                    newP.KeyName = s.KeyName;
+                    newP.Value = s.Value ?? "";
+                    newP.TenantId = _AbpSession.TenantId;
+                    newP.Memo = s.Memo;
+                    await _Repository.InsertAsync(newP);
+                }
+                else
+                {
+                    s.Value = p.Value ?? "";
+                    await _Repository.UpdateAsync(s);
+                }
             }
         }
 
