@@ -35,6 +35,8 @@ namespace UnionMall.Web.Mvc.Areas.GiftMall.Controllers
         public async Task<IActionResult> List(int pageIndex = 1, int pageSize = 10, string categoryId = "", string title = "")
         {
             string where = _comService.GetWhere();
+            ViewBag.Title = title;
+            ViewBag.Cat = categoryId;
             if (!string.IsNullOrEmpty(title))
                 where += $" and g.name like '%{title}%' ";
             if (!string.IsNullOrEmpty(categoryId))

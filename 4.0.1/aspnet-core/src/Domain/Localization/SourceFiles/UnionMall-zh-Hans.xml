@@ -93,7 +93,7 @@
     <text name="CouponConsume" value="优惠券消费" />
     <text name="GiftExchange" value="礼品兑换" />
     <text name="PointRecharge" value="积分充值" />
-    <text name="RackRate" value="门市价" />
+    <text name="RetailPrice" value="门市价" />
     <text name="OnlineGoods" value="线上商城"/>
     <text name="GoodsCategory" value="商品类别"/>
     <text name="GoodsBrand" value="商品品牌" />

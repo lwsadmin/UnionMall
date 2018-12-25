@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.Business;
 using UnionMall.Common;
 using UnionMall.Controllers;
+using UnionMall.Entity;
 using UnionMall.Goods;
 using UnionMall.Goods.Dto;
 using X.PagedList;
@@ -26,9 +27,10 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         private readonly IGoodsCategoryAppService _catAppService;
         private readonly IBrandAppService _brandAppService;
         private readonly IChainStoreAppService _storeAppService;
+        private readonly IImageAppService _imgAppService;
         public GoodsController(IGoodsAppService AppService,
             ICommonAppService comService, IAbpSession abpSession,
-            IGoodsCategoryAppService catAppService, IBrandAppService brandAppService,
+            IGoodsCategoryAppService catAppService, IBrandAppService brandAppService, IImageAppService imgAppService,
             IChainStoreAppService storeAppService)
         {
             _AppService = AppService;
@@ -37,8 +39,9 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             _catAppService = catAppService;
             _brandAppService = brandAppService;
             _storeAppService = storeAppService;
+            _imgAppService = imgAppService;
         }
-        public async Task<IActionResult> List(string goodsName, string businessId, string categoryId,
+        public async Task<IActionResult> List(string goodsName, string storeId, string categoryId,
           string brandId, string type, string status, int page = 1, int pageSize = 10)
         {
             string where = _comService.GetWhere();
@@ -48,8 +51,8 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             { where += $" and g.categoryId = {categoryId}"; }
             if (!string.IsNullOrEmpty(brandId))
             { where += $" and g.brandId = {brandId}"; }
-            if (!string.IsNullOrEmpty(businessId))
-            { where += $" and g.BusinessId = {businessId}"; }
+            if (!string.IsNullOrEmpty(storeId))
+            { where += $" and g.ChinStoreId = {storeId}"; }
             if (!string.IsNullOrEmpty(type))
             { where += $" and g.type = {type}"; }
             if (!string.IsNullOrEmpty(status))
@@ -63,15 +66,54 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             {
                 return View("_Table", pageList);
             }
-            List<DropDownDto> dtoList = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
-            ViewData.Add("cat", new SelectList(dtoList, "Id", "Title"));
 
-            List<BrandSelectDto> t = _brandAppService.GetMultiSelect();
-            ViewData.Add("brand", t);
+            ViewBag.Category = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
+            ViewBag.Brand = _brandAppService.GetMultiSelect();
+            ViewBag.Store = (await _storeAppService.GetDropDown());
 
-            var storeDropDown = (await _storeAppService.GetDropDown());
-            ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
             return View(pageList);
+        }
+
+        public async Task<IActionResult> Add(long? id)
+        {
+            CreateOrEditDto s = new CreateOrEditDto();
+            List<Entity.Image> imageList = new List<Entity.Image>();
+            Entity.Goods a = new Entity.Goods();
+            if (id != null)
+            {
+                a = await _AppService.GetByIdAsync((long)id);
+                imageList = await _imgAppService.GetList(c => c.ObjectId == id && c.Type == (int)ImageType.商品图片);
+                string imgs = "", config = "";
+                for (int i = 0; i < imageList.Count; i++)
+                {
+                    imgs += $"\'{imageList[i].Url.ToString()}\',";
+                    //config += string.Format("{" + "key: 'item{0}',url:'{1}',size:{2}" + "}",
+                    //    imageList[i].ToString(), imageList[i].Url, imageList[i].Size);
+                    config += "{img:'" + imageList[i].Url + "', key: '" + imageList[i].Id.ToString() + "',url:'/common/deleteimg'},";
+                }
+                ViewBag.Images = imgs;
+                ViewBag.Config = config;
+            }
+            s.Goods = a;
+            s.ImageList = imageList;
+
+            var cat = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
+            ViewData.Add("Category", new SelectList(cat, "Id", "Title"));
+            var b = _brandAppService.GetMultiSelect();
+            ViewData.Add("Brand", new SelectList(b, "Id", "Title"));
+
+            IList<SelectListItem> listItem = new List<SelectListItem>();
+            Array values = System.Enum.GetValues(typeof(Entity.GoodsType));
+            foreach (int item in values)
+            {
+                listItem.Add(new SelectListItem
+                {
+                    Value = item.ToString(),
+                    Text = L(System.Enum.GetName(typeof(Entity.GoodsType), item))
+                });
+            }
+            ViewData.Add("GoodsType", new SelectList(listItem, "Value", "Text"));
+            return View(s);
         }
     }
 }

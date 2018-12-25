@@ -290,6 +290,20 @@
     <Content Update="Areas\GoodsManage\Views\Category\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\GoodsManage\Views\Goods\Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\GoodsManage\Views\Goods\List.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\GoodsManage\Views\Goods\_AddImage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\GoodsManage\Views\Goods\_Table.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Member\Views\CardCore\_TableCoupon.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

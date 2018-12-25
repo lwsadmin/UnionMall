@@ -1,11 +1,11 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.FirstMenu = "GiftMall";
-    ViewBag.SecondMenu = "GiftList";
+    ViewBag.FirstMenu = "OnlineGoods";
+    ViewBag.SecondMenu = "GoodsManage";
 }
-@model UnionMall.GiftMall.Dto.CreateOrEditDto
-<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+@model UnionMall.Goods.Dto.CreateOrEditDto
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
 <script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
@@ -20,25 +20,28 @@
                 <a href="/">@L("HomePage")</a>
             </li>
             <li>
-                <a>@L("GiftMall")</a>
+                <a>@L("GoodsManage")</a>
             </li>
             <li class="active">
-                <strong>@L("GiftList")</strong>
+                <strong>@L("GoodsManage")</strong>
             </li>
         </ol>
     </div>
 </div>
-
+<style>
+    .chosen-container {
+        line-height: 22px;
+    }
+</style>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content">
         <form method="post" id="formPost">
-            <input type="hidden" name="Id" value="@Model.Gift.Id" />
-            <input type="hidden" name="TenantId" value="@Model.Gift.TenantId" />
-            <input type="hidden" name="BusinessId" value="@Model.Gift.BusinessId" />
-            <input type="hidden" name="ExchangeType" value="@Model.Gift.ExchangeType" />
+            <input type="hidden" name="Id" value="@Model.Goods.Id" />
+            <input type="hidden" name="TenantId" value="@Model.Goods.TenantId" />
+            <input type="hidden" name="ChainStoreId" value="@Model.Goods.ChainStoreId" />
             <div class="tabs-container">
                 <ul class="nav nav-tabs" id="myTabs">
-                    <li class="active"><a data-toggle="tab" href="#basic" aria-expanded="true">@L("Gift")@L("Info")</a></li>
+                    <li class="active"><a data-toggle="tab" href="#basic" aria-expanded="true">@L("Goods")@L("Info")</a></li>
                     <li class=""><a data-toggle="tab" href="#images" aria-expanded="false">@L("Detail")@L("Image")</a></li>
                 </ul>
                 <div class="tab-content">
@@ -48,39 +51,56 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>@L("Name")</label>
-                                        <input type="text" name="Name" value="@Model.Gift.Name" class="form-control" required maxlength="50" />
+                                        <input type="text" name="Name" value="@Model.Goods.Name" class="form-control" required maxlength="50" />
                                     </div>
                                     <div class="form-group">
-                                        <label>@L("GiftCategory")</label>
-                                        @Html.DropDownListFor(c => c.Gift.CategoryId, (SelectList)ViewData["Category"], L("Choose"), new { @class = "form-control chosen-select" })
+                                        <label>@L("GoodsCategory")</label>
+                                        @Html.DropDownListFor(c => c.Goods.CategoryId, (SelectList)ViewData["Category"], L("Choose"), new { @class = "form-control chosen-select" })
                                     </div>
                                     <div class="form-group">
-                                        <label>@L("SigleCount")</label>
-                                        <input type="text" name="SingleReceiveCount" value="@Model.Gift.SingleReceiveCount" class="form-control" required maxlength="15">
+                                        <label>@L("Belong")@L("Brand")</label>
+                                        @Html.DropDownListFor(c => c.Goods.BrandId, (SelectList)ViewData["Brand"], L("Choose"), new { @class = "form-control chosen-select" })
                                     </div>
                                     <div class="form-group">
-                                        <label>@L("Integral")</label>
-                                        <input type="text" name="Integral" value="@Model.Gift.Integral" class="form-control" required maxlength="15">
+                                        <label>@L("Belong")@L("Type")</label>
+                                        @Html.DropDownListFor(c => c.Goods.Type, (SelectList)ViewData["GoodsType"], L("Choose"), new { @class = "form-control chosen-select" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("RetailPrice")</label>
+                                        <input type="text" name="Price" value="@Model.Goods.RetailPrice" class="form-control" required maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>@L("Sort")</label><span class="help-block m-b-none" style="display:inline;">&nbsp;&nbsp;(@L("SortTip"))</span>
-                                        <input type="number" name="Sort" value="@Model.Gift.Sort" class="form-control" required>
+                                        <input type="number" name="Sort" value="@Model.Goods.Sort" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label>@L("Image")</label>
-                                        <input type="hidden" id="hiddenImg" name="Img" value="@Model.Gift.Img" />
-                                        <input id="input" title="@Model.Gift.Img" name="File" value="@Model.Gift.Img" type="file" data-show-preview="false">
+                                        <input type="hidden" id="hiddenImg" name="Img" value="@Model.Goods.Image" />
+                                        <input id="input" title="@Model.Goods.Image" name="File" value="@Model.Goods.Image" type="file" data-show-preview="false">
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Total")@L("Count")</label>
-                                        <input type="text" name="StockCount" value="@Model.Gift.StockCount" class="form-control" required maxlength="15">
+                                        <input type="number" name="StockCount" value="@Model.Goods.Stock" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>@L("Receive")@L("Address")</label>
-                                        <input type="text" name="ExchangeAddress" value="@Model.Gift.ExchangeAddress" class="form-control" required maxlength="50">
+                                        <label>@L("Status")</label>
+                                        <div style="padding-top:10px;">
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" id="s0" value="0" name="Status" @(Model.Goods.Status == 0 ? "checked" : "") />
+                                                <label for="s0">@L("Shelve")</label>
+                                            </div>
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" id="s1" value="1" name="Status" @(Model.Goods.Status == 1 ? "checked" : "") />
+                                                <label for="s1">@L("UnShelve")</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("Price")</label>
+                                        <input type="text" name="Price" value="@Model.Goods.Price" class="form-control" required maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +109,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>@L("Note")</label>
-                                        <textarea name="Memo" class="form-control" cols="4">@Model.Gift.Memo</textarea>
+                                        <textarea name="Memo" class="form-control" cols="4">@Model.Goods.Remark</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -97,8 +117,8 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label>@L("Introduce")</label>
-                                        <textarea style="width:100%;min-width:550px;" id="ExchangeNotes" name="ExchangeNotes" class="form-control" cols="5">@Model.Gift.ExchangeNotes</textarea>
+                                        <label>@L("Detail")</label>
+                                        <textarea style="width:100%;min-width:550px;" id="Detail" name="Detail" class="form-control" cols="5">@Model.Goods.Detail</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -128,13 +148,13 @@
         $(this).tab('show')
     });
     $(function () {
-        $('.chosen-select').chosen({ width: "100%" });
-        $("#formPost").validate({});
-         var imgArray = [];
-        var img = '@Model.Gift.Img';
+        var imgArray = [];
+        var img = '@Model.Goods.Image';
         if (img != '') {
             imgArray.push(img);
         }
+        $('.chosen-select').chosen({ width: "100%" });
+        $("#formPost").validate({});
         $("#input").fileinput({
             language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es',
             showRemove: false,
@@ -142,7 +162,7 @@
             allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
             showUploadedThumbs: false,
             uploadUrl: "/Common/Upload",
-            initialPreview:imgArray,
+            initialPreview: imgArray,
             showClose: false,
             showCancel: false,
             slugCallback: function (filename) {
@@ -169,7 +189,7 @@
                 return;
             }
             var gift = $(this).serializeFormToObject();
-            gift.categoryId= $("#Gift_CategoryId").val();
+            gift.categoryId= $("#Goods_CategoryId").val();
             var EditDto = {};
             EditDto.gift = gift;
             var imgArray = [];
@@ -204,7 +224,7 @@
     var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh-CN' : 'en';
     var editor
     KindEditor.ready(function (K) {
-        editor = K.create('#ExchangeNotes',
+        editor = K.create('#Detail',
             {
                 langType: language,
                 height: '300px',

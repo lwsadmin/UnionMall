@@ -118,8 +118,7 @@ UpdateTargetId = "table"
         if ($("#categoryId").val()!="") {
             url += "&categoryId=" + $("#categoryId").val().trim();
         }
-
-        localStorage.setItem("page", url);
+        sessionStorage.setItem("page", url);
         return true;
     }
 </script>

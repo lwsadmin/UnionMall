@@ -93,13 +93,13 @@
                                 <div class="form-group">
                                     @if (IsGranted("GiftMall.GiftCategory.Add"))
                                     {
-                                    <button style="margin-right:20%;" onclick="location.href='/giftmall/gift/add'" class="btn btn-primary btn-sm m-b" type="button">
-                                        <i class="fa fa-plus"></i>&nbsp;@L("Add")
-                                    </button>
+                                        <button style="margin-right:20%;" onclick="location.href='/giftmall/gift/add'" class="btn btn-primary btn-sm m-b" type="button">
+                                            <i class="fa fa-plus"></i>&nbsp;@L("Add")
+                                        </button>
                                     }
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="title" placeholder="@L("Title")" class="m-b input-sm form-control" />
+                                    <input type="text" name="title" placeholder="@L("Title")" class="m-b input-sm form-control" value="@ViewBag.Title" />
                                 </div>
                                 <div class="form-group">
                                     <div class="m-b">
@@ -107,20 +107,20 @@
                                             <option value="">-@L("GiftCategory")-</option>
                                             @foreach (var item in ViewBag.Category)
                                             {
-
                                                 <option value="@item.Id">@item.Title</option>
-
                                             }
                                         </select>
                                     </div>
-
+                                    <script>
+                                        $("#categoryId").val('@ViewBag.Cat')
+                                    </script>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
                                 </div>
                             </form>
-                            </div>
                         </div>
+                    </div>
                     <div id="table">
                         @Html.Partial("_Table", Model)
                     </div>
@@ -129,7 +129,7 @@
         </div>
     </div>
 
-    
+
 </div>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
@@ -151,7 +151,7 @@
             if (isConfirm.value == true) {
                 debugger;
                 _Service.delete(id).done(function (data) {
-         
+
                     if ($(".pagination .active a").html() != undefined) {
                         $(".pagination .active a").click();
                         toastr.options = {
