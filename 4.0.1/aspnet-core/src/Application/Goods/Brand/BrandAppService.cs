@@ -8,10 +8,10 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
-using UnionMall.Goods.Brand.Dto;
 using UnionMall.IRepositorySql;
-
-namespace UnionMall.Goods.Brand
+using UnionMall.Entity;
+using UnionMall.Goods.Dto;
+namespace UnionMall.Goods
 {
     public class BrandAppService : ApplicationService, IBrandAppService
     {

@@ -27,6 +27,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Goods\Goods\Dtos\" />
     <Folder Include="Statistics\Coupon\ReceiveStatistics\Dto\" />
     <Folder Include="Statistics\Coupon\UsedStatistics\Dto\" />
   </ItemGroup>

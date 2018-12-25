@@ -7,10 +7,8 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
-using UnionMall.Goods.Brand;
-using UnionMall.Goods.Brand.Dto;
-using UnionMall.Goods.GoodsCategory;
-using UnionMall.Goods.GoodsCategory.Dto;
+using UnionMall.Goods;
+using UnionMall.Goods.Dto;
 using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers

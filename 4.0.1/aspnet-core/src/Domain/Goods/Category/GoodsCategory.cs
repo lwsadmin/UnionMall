@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Abp.Domain.Entities;
 
-namespace UnionMall.Goods.Category
+namespace UnionMall.Entity
 {
     [System.ComponentModel.DataAnnotations.Schema.Table("TGoodsCategory")]
     public class GoodsCategory : Entity<long>, IMustHaveTenant

@@ -7,10 +7,10 @@ using Abp.AutoMapper;
 using Abp.Dependency;
 using Abp.Runtime.Session;
 using Abp.Timing;
-using model = UnionMall.Goods.Category;
-namespace UnionMall.Goods.GoodsCategory.Dto
+using UnionMall.Entity;
+namespace UnionMall.Goods.Dto
 {
-    [AutoMap(typeof(model.GoodsCategory))]
+    [AutoMap(typeof(Entity.GoodsCategory))]
     public class CategoryEditDto : EntityDto<long>
     {
         public int? TenantId { get; set; }

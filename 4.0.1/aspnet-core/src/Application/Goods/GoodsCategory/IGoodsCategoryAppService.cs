@@ -4,8 +4,9 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
-using UnionMall.Goods.GoodsCategory.Dto;
-namespace UnionMall.Goods.GoodsCategory
+using UnionMall.Goods.Dto;
+using UnionMall.Entity;
+namespace UnionMall.Goods
 {
     public interface IGoodsCategoryAppService : IApplicationService
     {

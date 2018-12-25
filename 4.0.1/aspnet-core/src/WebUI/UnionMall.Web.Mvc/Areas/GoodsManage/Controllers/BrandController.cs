@@ -7,13 +7,14 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
-using UnionMall.Goods.Brand;
+using UnionMall.Goods;
+using UnionMall.Entity;
 using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
 {
     [Area("GoodsManage")]
-    [AbpMvcAuthorize]
+    [AbpMvcAuthorize("OnlineGoods.GoodsBrand")]
     public class BrandController : UnionMallControllerBase
     {
         private readonly IBrandAppService _AppService;

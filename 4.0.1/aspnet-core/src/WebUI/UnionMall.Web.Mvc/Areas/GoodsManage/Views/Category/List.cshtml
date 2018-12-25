@@ -1,14 +1,12 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
     ViewBag.FirstMenu = "OnlineGoods";
     ViewBag.SecondMenu = "GoodsCategory";
 }
 @using System.Data
 @using X.PagedList
-@using UnionMall.Goods.GoodsCategory.Dto
+@using UnionMall.Goods.Dto
 @model PagedList<DataRow>
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
 <link href="~/lib/treetable/script/treeTable/vsStyle/jquery.treeTable.css" rel="stylesheet" />

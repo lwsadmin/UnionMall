@@ -9,18 +9,18 @@ using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using Abp.UI;
 using UnionMall.EntityFrameworkCore;
-using UnionMall.Goods.GoodsCategory.Dto;
+using UnionMall.Goods.Dto;
 using UnionMall.IRepositorySql;
-using model = UnionMall.Goods.Category;
-namespace UnionMall.Goods.GoodsCategory
+using UnionMall.Entity;
+namespace UnionMall.Goods
 {
     public class GoodsCategoryAppService : ApplicationService, IGoodsCategoryAppService
     {
         private readonly ISqlExecuter _sqlExecuter;
-        private readonly IRepository<model.GoodsCategory, long> _Repository;
+        private readonly IRepository<GoodsCategory, long> _Repository;
         public readonly IAbpSession _AbpSession;
         public GoodsCategoryAppService(ISqlExecuter sqlExecuter,
-            IRepository<model.GoodsCategory, long> Repository, IAbpSession AbpSession)
+            IRepository<GoodsCategory, long> Repository, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
@@ -38,13 +38,13 @@ namespace UnionMall.Goods.GoodsCategory
             {
                 if (dto.Id > 0)
                 {
-                    await _Repository.UpdateAsync(dto.MapTo<model.GoodsCategory>());
+                    await _Repository.UpdateAsync(dto.MapTo<GoodsCategory>());
                 }
                 else
                 {
                     if (_AbpSession.TenantId != null)
                     { dto.TenantId = (int)_AbpSession.TenantId; }
-                    await _Repository.InsertAsync(dto.MapTo<model.GoodsCategory>());
+                    await _Repository.InsertAsync(dto.MapTo<GoodsCategory>());
                 }
             }
             catch (Exception e)
@@ -127,7 +127,7 @@ namespace UnionMall.Goods.GoodsCategory
         public async Task<List<CategoryEditDto>> GetAllListByParentIdAsync(long parentId)
         {
             var query = await _Repository.GetAllListAsync(c => c.ParentId == parentId);
-            return query.MapTo<List<CategoryEditDto>>(); 
+            return query.MapTo<List<CategoryEditDto>>();
         }
     }
 }

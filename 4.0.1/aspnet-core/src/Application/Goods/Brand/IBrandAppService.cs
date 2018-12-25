@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Microsoft.AspNetCore.Mvc;
-using UnionMall.Goods.Brand;
-using UnionMall.Goods.Brand.Dto;
-
-namespace UnionMall.Goods.Brand
+using UnionMall.Goods.Dto;
+using UnionMall.Entity;
+namespace UnionMall.Goods
 {
     public interface IBrandAppService : IApplicationService
     {

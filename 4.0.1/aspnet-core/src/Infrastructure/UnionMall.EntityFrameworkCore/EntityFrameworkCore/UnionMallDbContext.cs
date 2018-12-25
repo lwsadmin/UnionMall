@@ -9,9 +9,12 @@ namespace UnionMall.EntityFrameworkCore
     public class UnionMallDbContext : AbpZeroDbContext<Tenant, Role, User, UnionMallDbContext>
     {
         /* Define a DbSet for each entity of the application */
-        public DbSet<Goods.Category.GoodsCategory> GoodsCategory { get; set; }
-        public DbSet<Goods.Brand.Brand> Brand { get; set; }
+        public DbSet<GoodsCategory> GoodsCategory { get; set; }
+        public DbSet<Brand> Brand { get; set; }
         public DbSet<Business> Business { get; set; }
+
+        public DbSet<Goods> Goods { get; set; }
+        public DbSet<CommonAttribute> CommonAttribute { get; set; }
         public DbSet<ChainStore> ChainStore { get; set; }
         public DbSet<MemberLevel> MemberLevel { get; set; }
         public DbSet<Member> Member { get; set; }

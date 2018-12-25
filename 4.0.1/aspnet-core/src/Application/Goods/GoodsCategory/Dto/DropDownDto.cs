@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Abp.Application.Services.Dto;
 
-namespace UnionMall.Goods.GoodsCategory.Dto
+namespace UnionMall.Goods.Dto
 {
     public class DropDownDto: EntityDto<long>
     {
