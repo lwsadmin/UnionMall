@@ -51,6 +51,10 @@
     <text name="Unlock" value="Unlock" />
     <text name="Content" value="Content" />
     <text name="Info" value="Info" />
+    <text name="Wait" value="Wait" />
+    <text name="GoodsSW" value="MaterialObject" />
+    <text name="GoodsXN" value="Fictitious" />
+    <text name="StockOut" value="StockOut" />
     <text value="Current" name="Current"/>
     <text value="BuyCard" name="BuyCard"/>
     <text value="Stock" name="Stock" />

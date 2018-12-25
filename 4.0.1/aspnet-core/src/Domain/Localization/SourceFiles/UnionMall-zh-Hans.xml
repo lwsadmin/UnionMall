@@ -50,6 +50,8 @@
     <text value="欢迎您" name="Welcome to"  />
     <text name="This system is for demonstration only" value="本系统仅供演示" />
     <text value="商品" name="Goods"/>
+    <text name="GoodsSW" value="实物商品" />
+    <text name="GoodsXN" value="虚拟商品" />
     <text value="关于我们" name="About"/>
     <text value="欢迎使用" name="WellcomeMessage"/>
     <text value="部分输入信息不符合要求，请检查并改正.." name="FormIsNotValidMessage"/>
@@ -82,6 +84,8 @@
     <text name="Welcome, {0}" value="欢迎您 {0}" />
     <text name="Referrer" value="推荐人" />
     <text name="SignIn" value="签到" />
+    <text name="StockOut" value="缺货" />
+    <text name="Wait" value="等待" />
     <text name="OffLineCashie" value="线下收款"/>
     <text name="QuickConsume" value="快速消费"/>
     <text name="GoodsConsume" value="商品消费" />
@@ -177,7 +181,7 @@
     <text name="Belong" value="所属" />
     <text name="Business" value="商户"/>
     <text name="Store" value="门店"/>
-    <text name="Count" value="数量"/>
+    <text name="Count" value="数量"/>s
     <text name="Total" value="总计"/>
     <text name="Usable" value="可用"/>
     <text name="GiftMall" value="礼品商城"/>

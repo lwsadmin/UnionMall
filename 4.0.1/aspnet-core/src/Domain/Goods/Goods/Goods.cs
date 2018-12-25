@@ -8,7 +8,7 @@ using System.Text;
 namespace UnionMall.Entity
 {
     [Table("TGoods")]
-    public class Goods: Entity<long>, IMustHaveTenant
+    public class Goods : Entity<long>, IMustHaveTenant
     {
         public int TenantId { get; set; }
         public long CategoryId { get; set; }
@@ -27,5 +27,18 @@ namespace UnionMall.Entity
         public int Sort { get; set; }
         public string Remark { get; set; }
         public string Detail { get; set; }
+    }
+    public enum GoodsType
+    {
+        //materialObject fictitiousGoodss
+        GoodsSW = 0,
+        GoodsXN = 1
+    }
+    public enum GoodsState
+    {
+        Shelve = 0,
+        UnShelve = 1,
+        Aduit = 2,
+        StockOut = 3
     }
 }
