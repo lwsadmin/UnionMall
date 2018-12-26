@@ -102,6 +102,9 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             var b = _brandAppService.GetMultiSelect();
             ViewData.Add("Brand", new SelectList(b, "Id", "Title"));
 
+            var storeDropDown = (await _storeAppService.GetDropDown());
+            ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
+
             IList<SelectListItem> listItem = new List<SelectListItem>();
             Array values = System.Enum.GetValues(typeof(Entity.GoodsType));
             foreach (int item in values)

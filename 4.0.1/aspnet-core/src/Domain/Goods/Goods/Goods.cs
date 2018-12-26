@@ -17,7 +17,7 @@ namespace UnionMall.Entity
         public string Name { get; set; }
         public int Status { get; set; }
         public int Type { get; set; }
-        public string RecommendType { get; set; }
+        public string RecommendType { get; set; } = "";
         public string Image { get; set; }
         public int Click { get; set; }
         public int Stock { get; set; }
@@ -25,7 +25,8 @@ namespace UnionMall.Entity
         public decimal RetailPrice { get; set; }
         public decimal Price { get; set; }
         public int Sort { get; set; }
-        public string Remark { get; set; }
+        public int Commission { get; set; } = 0;
+        public string Remark { get; set; } = "";
         public string Detail { get; set; }
     }
     public enum GoodsType

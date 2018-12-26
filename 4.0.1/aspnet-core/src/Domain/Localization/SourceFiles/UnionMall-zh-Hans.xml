@@ -50,6 +50,7 @@
     <text value="欢迎您" name="Welcome to"  />
     <text name="This system is for demonstration only" value="本系统仅供演示" />
     <text value="商品" name="Goods"/>
+    <text value="分销" name="Dtb"/>
     <text name="GoodsSW" value="实物商品" />
     <text name="GoodsXN" value="虚拟商品" />
     <text value="关于我们" name="About"/>

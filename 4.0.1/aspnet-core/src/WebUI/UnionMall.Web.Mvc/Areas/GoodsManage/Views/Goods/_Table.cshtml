@@ -44,7 +44,7 @@
             <td>
                 @if (IsGranted("OnlineGoods.GoodsManage.Edit"))
                 {
-                    <a href="/articleinfo/article/add/@item["Id"]" title="@L("Edit")">
+                    <a onclick="return SetPage();" href="/goodsmanage/goods/add/@item["Id"]" title="@L("Edit")">
                         <i class="fa fa-edit text-navy"></i>
                     </a>
                 }
@@ -111,4 +111,15 @@ UpdateTargetId = "table"
     }, function () {
         $("#pic").remove();
     });
+    function SetPage() {
+        var url = "/goodsmanage/goods/list?pageIndex=" + $(".pagination ").find(".active").find("a").html();
+        if ($("input[name='title']").val().trim().length != 0) {
+            url += "&title=" + $("input[name='title']").val().trim();
+        }
+        if ($("#categoryId").val() != "") {
+            url += "&categoryId=" + $("#categoryId").val().trim();
+        }
+        sessionStorage.setItem("page", url);
+        return true;
+    }
 </script>

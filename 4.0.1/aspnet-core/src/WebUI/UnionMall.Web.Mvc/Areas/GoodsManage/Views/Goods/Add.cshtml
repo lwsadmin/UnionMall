@@ -7,11 +7,7 @@
 @model UnionMall.Goods.Dto.CreateOrEditDto
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
-<script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
-<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
 <link href="~/lib/fileinput/css/fileinput.min.css" rel="stylesheet" asp-append-version="true" />
-<script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
-<script src="~/lib/fileinput/js/locales/zh.js" asp-append-version="true"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -69,6 +65,35 @@
                                         <label>@L("RetailPrice")</label>
                                         <input type="text" name="Price" value="@Model.Goods.RetailPrice" class="form-control" required maxlength="50">
                                     </div>
+                                    <div class="form-group">
+                                        <label>@L("Status")</label>
+                                        <div style="padding-top:10px;">
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" id="s0" value="0" name="Status" @(Model.Goods.Status == 0 ? "checked" : "") />
+                                                <label for="s0">@L("Shelve")</label>
+                                            </div>
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" id="s1" value="1" name="Status" @(Model.Goods.Status == 1 ? "checked" : "") />
+                                                <label for="s1">@L("UnShelve")</label>
+                                            </div>
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" id="Aduit" value="2" name="Status" @(Model.Goods.Status == 2 ? "checked" : "") />
+                                                <label for="Aduit">@L("Aduit")</label>
+                                            </div>
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" id="StockOut" value="3" name="Status" @(Model.Goods.Status == 3 ? "checked" : "") />
+                                                <label for="StockOut">@L("StockOut")</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("Dtb")@L("Amount")</label>
+                                        <div class="input-group bootstrap-touchspin">
+                                            <input type="text" name="Commission" value="@Model.Goods.Commission" class="form-control" required maxlength="7">
+                                            <span class="input-group-addon bootstrap-touchspin-postfix">%</span>
+                                        </div>
+                                       
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -86,21 +111,29 @@
                                         <input type="number" name="StockCount" value="@Model.Goods.Stock" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>@L("Status")</label>
-                                        <div style="padding-top:10px;">
-                                            <div class="radio radio-inline radio-success">
-                                                <input type="radio" id="s0" value="0" name="Status" @(Model.Goods.Status == 0 ? "checked" : "") />
-                                                <label for="s0">@L("Shelve")</label>
-                                            </div>
-                                            <div class="radio radio-inline radio-success">
-                                                <input type="radio" id="s1" value="1" name="Status" @(Model.Goods.Status == 1 ? "checked" : "") />
-                                                <label for="s1">@L("UnShelve")</label>
-                                            </div>
-                                        </div>
+                                        <label>@L("Belong")@L("Store")</label>
+                                        @Html.DropDownListFor(c => c.Goods.ChainStoreId, (SelectList)ViewData["ChainStore"], L("Choose"), new { @class = "form-control chosen-select" })
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Price")</label>
                                         <input type="text" name="Price" value="@Model.Goods.Price" class="form-control" required maxlength="50">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@L("SetRec")@L("Type")</label>
+                                        <div style="padding-top:10px;">
+                                            <div class="checkbox checkbox-inline checkbox-success">
+                                                <input type="checkbox" id="Hot" name="RecommendType" @(Model.Goods.RecommendType.Contains("Hot") ? "checked='checked'" : "") value="Hot">
+                                                <label for="Hot">@L("SetHot")</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline checkbox-success">
+                                                <input type="checkbox" id="Rem" name="RecommendType" @(Model.Goods.RecommendType.Contains("Rec") ? "checked='checked'" : "") value="Rec">
+                                                <label for="Rem">@L("SetRec")</label>
+                                            </div>
+                                            <div class="checkbox checkbox-inline checkbox-success">
+                                                <input type="checkbox" id="Top" name="RecommendType" @(Model.Goods.RecommendType.Contains("Top") ? "checked='checked'" : "") value="Top">
+                                                <label for="Top">@L("SetTop")</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -142,6 +175,18 @@
 </div>
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+<script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
+<script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
+<script>
+    language = $("#CurrentLanguage").attr("data-lan");
+    if (language == "zh-Hans") {
+        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
+        });
+        $.getScript('/lib/fileinput/js/locales/zh.js', function () {
+        });
+    }
+</script>
 <script>
     $('#myTabs a').click(function (e) {
         e.preventDefault()
@@ -182,16 +227,19 @@
             //$(".hid" + index).val(url).addClass(previewId);
         });
 
-        var _Service = abp.services.app.gift;
+        var _Service = abp.services.app.goods;
         $("#formPost").on("submit", function (e) {
             e.preventDefault();
             if (!$(this).valid()) {
                 return;
             }
-            var gift = $(this).serializeFormToObject();
-            gift.categoryId= $("#Goods_CategoryId").val();
+            var goods = $(this).serializeFormToObject();
+            goods.categoryId = $("#Goods_CategoryId").val();
+            goods.brandId = $("#Goods_BrandId").val();
+            goods.chainStoreId = $("#Goods_ChainStoreId").val();
+            goods.type = $("#Goods_Type").val();
             var EditDto = {};
-            EditDto.gift = gift;
+            EditDto.goods = goods;
             var imgArray = [];
             for (var i = 0; i < 7; i++) {
                 if ($("#Url" + i).val() == "") {
@@ -199,7 +247,6 @@
                 }
                 imgArray.push({
                     tenantId: $("input[name='TenantId']").val(),
-                    businessId: $("input[name='BusinessId']").val(),
                     objectId: $("input[name='Id']").val(),
                     type:1,
                     id: $("#id" + i).val(),
@@ -214,7 +261,7 @@
                 if (url != "" && url != undefined) {
                     window.location.href = url;
                 } else {
-                    window.location.href = '/giftmall/gift/list';
+                    window.location.href = '/goodsmanage/goods/list';
                 }
 
             }).fail(function (data) {

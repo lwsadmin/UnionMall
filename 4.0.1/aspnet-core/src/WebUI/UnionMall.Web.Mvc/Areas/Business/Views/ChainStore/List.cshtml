@@ -131,7 +131,6 @@
         $.ajaxSettings.async = false;
         $.post("/business/chainStore/GetAddressSlect", { id: $(Pro).val(), type: 0 }, function (data) {
             if (data.result.succ) {
-
                 $("#city").html(""); $("#city").html(data.result.str);
                 CityChange($("#city"));
             }

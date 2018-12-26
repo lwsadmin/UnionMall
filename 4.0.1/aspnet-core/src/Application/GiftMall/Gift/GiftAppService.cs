@@ -29,10 +29,9 @@ namespace UnionMall.Gift
         }
         public async Task CreateOrEditAsync(CreateOrEditDto model)
         {
-            if (model.Gift.Id >= 0)
+            if (model.Gift.Id > 0)
             {
                 await _Repository.UpdateAsync(model.Gift);
-
             }
             else
             {

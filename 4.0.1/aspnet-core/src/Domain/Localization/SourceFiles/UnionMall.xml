@@ -29,6 +29,7 @@
     <text name="Name" value="Name" />
     <text name="To" value="To" />
     <text name="Hint" value="Hint" />
+    <text value="Distribution" name="Dtb"/>
     <text name="Close" value="Close" />
     <text name="Open" value="Open" />
     <text name="Attention" value="Attention" />
