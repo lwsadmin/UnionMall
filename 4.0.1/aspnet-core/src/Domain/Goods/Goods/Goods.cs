@@ -28,6 +28,16 @@ namespace UnionMall.Entity
         public int Commission { get; set; } = 0;
         public string Remark { get; set; } = "";
         public string Detail { get; set; }
+        public string Parameter1 { get; set; } = "";
+        public string Parameter2 { get; set; } = "";
+        public string Parameter3 { get; set; } = "";
+        public string Parameter4 { get; set; } = "";
+        public string Parameter5 { get; set; } = "";
+        public string Parameter6 { get; set; } = "";
+        public string Parameter7 { get; set; } = "";
+        public string Parameter8 { get; set; } = "";
+        public string Parameter9 { get; set; } = "";
+        public string Parameter10 { get; set; } = "";
     }
     public enum GoodsType
     {
