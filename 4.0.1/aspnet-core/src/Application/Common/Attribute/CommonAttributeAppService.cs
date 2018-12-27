@@ -24,9 +24,17 @@ namespace UnionMall.Common.Attribute
             _AbpSession = AbpSession;
             _sqlExecuter = sqlExecuter;
         }
-        public Task CreateOrEditAsync(CommonAttribute cat)
+        public async Task CreateOrEditAsync(CommonAttribute cat)
         {
-            throw new NotImplementedException();
+            cat.TenantId = (int)AbpSession.TenantId;
+            if (cat.Id <= 0)
+            {
+                await _Repository.InsertAsync(cat);
+            }
+            else
+            {
+                await _Repository.UpdateAsync(cat);
+            }
         }
 
         public async Task Delete(long id)

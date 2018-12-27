@@ -294,6 +294,9 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\GoodsManage\Views\GoodsAttr\_Add.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\GoodsManage\Views\GoodsAttr\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

@@ -200,6 +200,11 @@
     <text name="Balance" value="余额" />
     <text name="BirthDay" value="生日" />
     <text name="Other" value="其他" />
+    <text name="Textbox" value="文本框" />
+    <text name="Checkbox" value="复选框" />
+    <text name="Radio" value="单选框" />
+    <text name="TextArea" value="多行文本框" />
+    <text name="OptionTip" value="选项之间用,隔开" />
     <!--Form-->
     <text name="Praise" value="赞" />
     <text name="Ago" value="前" />

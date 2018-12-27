@@ -11,11 +11,11 @@
     <thead>
         <tr>
             <th>@L("Name")</th>
-            <th>@L("Title")@L("Name")</th>
             <th>@L("Type")</th>
             <th>@L("Default")</th>
             <th>@L("GoodsCategory")</th>
             <th>@L("Selectable")</th>
+            <th>@L("Operate")</th>
         </tr>
 
     </thead>
@@ -26,11 +26,27 @@
             <td class="title">
                 @item["Name"]
             </td>
-            <td>@item["ValueName"]</td>
             <td>@item["DataType"]</td>
             <td>@item["DefultValue"]</td>
             <td>@item["Title"]</td>
             <td>@item["Options"]</td>
+
+            <td>
+                @if (IsGranted("OnlineGoods.OnlineGoods.Edit"))
+                {
+                    <a title="@L("Edite")" onclick="Edit('@item["id"]','@item["CategoryId"]','@item["Name"]','@item["DataType"]','@item["Title"]','@item["Options"]');">
+                        <i class="fa fa-edit text-navy"></i>
+                    </a>
+                }
+                &nbsp; &nbsp;
+                @if (IsGranted("OnlineGoods.OnlineGoods.Delete"))
+                {
+                    <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
+                       data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
+                        <i class="fa fa-trash text-navy"></i>
+                    </a>
+                }
+            </td>
         </tr>
         }
 
@@ -58,13 +74,6 @@ UpdateTargetId = "table"
 ))
 
 <script>
-    var txt = $("input[name='orderNumber']").val().trim();
-    if (txt.length > 0) {
-        $(".title").each(function () {
-            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
-            $(this).html(newTxt);
-        });
-    }
     var txt = $("input[name='name']").val().trim();
     if (txt.length > 0) {
         $(".name").each(function () {

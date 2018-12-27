@@ -28,6 +28,11 @@
     <text name="UserName" value="User name" />
     <text name="Name" value="Name" />
     <text name="To" value="To" />
+    <text name="Textbox" value="Textbox" />
+    <text name="Checkbox" value="CheckBox" />
+    <text name="Radio" value="Radio" />
+    <text name="TextArea" value="TextArea" />
+    <text name="OptionTip" value="Selections are separated by ," />
     <text name="Hint" value="Hint" />
     <text value="Distribution" name="Dtb"/>
     <text name="Close" value="Close" />
@@ -330,10 +335,10 @@
     <text name="Type" value="Type" />
     <text name="Begin" value="Begin" />
     <text name="End" value="End" />
-        <text name="Month" value="Month" />
+    <text name="Month" value="Month" />
     <text name="Day" value="Day" />
     <text name="Hour" value="Hour" />
-        <text name="Minutes" value="Minutes" />
+    <text name="Minutes" value="Minutes" />
     <text name="OverDue" value="OverDue" />
     <text name="Effective" value="Effective" />
     <text name="Yuan" value="Yuan" />

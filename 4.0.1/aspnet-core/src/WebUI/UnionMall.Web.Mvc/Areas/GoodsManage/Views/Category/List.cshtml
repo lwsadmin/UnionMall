@@ -87,10 +87,10 @@
     @Html.Partial("_Add", new CategoryEditDto())
 </div>
 
-<script src="~/lib/pager/jquery.unobtrusive-ajax.js"></script>
-<script src="~/lib/treetable/script/treeTable/jquery.treeTable.js" rel="stylesheet"></script>
+<script src="~/lib/pager/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
+<script src="~/lib/treetable/script/treeTable/jquery.treeTable.js" rel="stylesheet" asp-append-version="true"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-<script src="~/lib/admin/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js"></script>
+<script src="~/lib/admin/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js" asp-append-version="true"></script>
 <script>
     $("#add").click(function () {
         $("#headTitle").html('@L("Add")@L("GoodsCategory")');

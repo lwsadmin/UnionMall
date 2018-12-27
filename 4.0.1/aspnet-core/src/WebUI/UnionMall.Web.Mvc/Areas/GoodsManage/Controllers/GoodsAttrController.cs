@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.Common;
 using UnionMall.Common.Attribute;
 using UnionMall.Controllers;
@@ -41,7 +42,8 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             {
                 return View("_Table", pageList);
             }
-            ViewBag.Category = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
+            var cat = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
+            ViewData.Add("Category", new SelectList(cat, "Id", "Title"));
             return View(pageList);
         }
     }
