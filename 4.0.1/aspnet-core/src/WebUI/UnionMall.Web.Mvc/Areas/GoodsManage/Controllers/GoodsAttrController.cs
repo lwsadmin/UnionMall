@@ -27,11 +27,11 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             _AppService = AppService;
             _catAppService = catAppService;
         }
-        public async Task<IActionResult> List(string title,string categoryId, int page = 1, int pageSize = 10)
+        public async Task<IActionResult> List(string name,string categoryId, int page = 1, int pageSize = 10)
         {
             string where =string.Empty;
-            if (!string.IsNullOrEmpty(title))
-            { where = $" and a.Name like '%{title}%'"; }
+            if (!string.IsNullOrEmpty(name))
+            { where = $" and a.Name like '%{name}%'"; }
             if (!string.IsNullOrEmpty(categoryId))
             { where = $" and a.categoryId = '{categoryId}'"; }
             int total;

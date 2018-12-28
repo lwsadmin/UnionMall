@@ -19,6 +19,7 @@
                     <div class="ibox-content">
                         <form method="post" id="AddPost" class="form-horizontal">
                             <input type="hidden" name="Id" value="0" />
+                            <input type="hidden" name="ValueName" value="" />
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("Name")</label>
                                 <div class="col-sm-9"><input type="text" name="Name" value="" class="form-control" required maxlength="10"></div>
@@ -43,7 +44,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("Default")</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="DefaultValue" value="" class="form-control" required maxlength="10">
+                                    <input type="text" name="DefaultValue" value="" class="form-control" />
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>

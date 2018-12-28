@@ -11,9 +11,10 @@
     <thead>
         <tr>
             <th>@L("Name")</th>
+            <th>@L("GoodsCategory")</th>
             <th>@L("Type")</th>
             <th>@L("Default")</th>
-            <th>@L("GoodsCategory")</th>
+
             <th>@L("Selectable")</th>
             <th>@L("Operate")</th>
         </tr>
@@ -23,25 +24,24 @@
         @foreach (DataRow item in Model)
         {
         <tr>
-            <td class="title">
-                @item["Name"]
-            </td>
-            <td>@item["DataType"]</td>
-            <td>@item["DefultValue"]</td>
+            <td class="name">@item["Name"]</td>
             <td>@item["Title"]</td>
+            <td>@L(item["DataType"].ToString())</td>
+            <td>@item["DefaultValue"]</td>
+
             <td>@item["Options"]</td>
 
             <td>
-                @if (IsGranted("OnlineGoods.OnlineGoods.Edit"))
+                @if (IsGranted("OnlineGoods.GoodsAttr.Edit"))
                 {
-                    <a title="@L("Edite")" onclick="Edit('@item["id"]','@item["CategoryId"]','@item["Name"]','@item["DataType"]','@item["Title"]','@item["Options"]');">
+                    <a title="@L("Edite")" onclick="Edit('@item["id"]','@item["CategoryId"]','@item["Name"]','@item["ValueName"]','@item["DataType"]','@item["DefaultValue"]','@item["Options"]');">
                         <i class="fa fa-edit text-navy"></i>
                     </a>
                 }
                 &nbsp; &nbsp;
-                @if (IsGranted("OnlineGoods.OnlineGoods.Delete"))
+                @if (IsGranted("OnlineGoods.GoodsAttr.Delete"))
                 {
-                    <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
+                    <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["Name"])" data-ok="@L("OK")"
                        data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
                         <i class="fa fa-trash text-navy"></i>
                     </a>

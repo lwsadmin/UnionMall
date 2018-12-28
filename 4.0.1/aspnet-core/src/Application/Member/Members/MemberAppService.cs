@@ -63,7 +63,7 @@ namespace UnionMall.Member
             {
                 table = $@"select m.id,stuff(m.FullName,2,1,'*') FullName,stuff(m.WechatName,2,1,'*') WechatName,m.HeadImg,m.Sex,stuff(m.CardID,8,4,'****') CardID,
 stuff(m.Mobile,8,4,'****') Mobile,m.Balance,m.Integral,
-convert(nvarchar(100),m.RegTime,20) RegTime,l.Title,c.Name StoreName from dbo.TMember m
+convert(nvarchar(100),m.RegTime,20) RegTime,l.Title,c.Name StoreName from dbo.TMemberData m
 left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             }
             table += where.Replace("*", "m");

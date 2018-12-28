@@ -27,8 +27,20 @@ namespace UnionMall.Common.Attribute
         public async Task CreateOrEditAsync(CommonAttribute cat)
         {
             cat.TenantId = (int)AbpSession.TenantId;
+            cat.Type = 0;
             if (cat.Id <= 0)
             {
+                string sql = $@"select isnull(stuff((select  cast( ValueName as nvarchar(200))+',' from dbo.TCommonAttribute 
+ where CategoryId={cat.CategoryId} for xml path('')),1,0,''),'')  ";
+                string allValueName = _sqlExecuter.ExecuteDataSet(sql).Tables[0].Rows[0][0].ToString();
+                for (int i = 1; i <= 10; i++)
+                {
+                    if (!allValueName.Contains($"Parameter{i}"))
+                    {
+                        cat.ValueName = $"Parameter{i}";
+                        break;
+                    }
+                }
                 await _Repository.InsertAsync(cat);
             }
             else
@@ -55,7 +67,7 @@ namespace UnionMall.Common.Attribute
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select a.Id,a.Name,a.ValueName,a.DataType,a.DefultValue,a.Options, c.Title from TCommonAttribute a left join TGoodsCategory c
+                table = $@"select a.Id,a.Name,a.CategoryId, a.ValueName,a.DataType,a.DefaultValue,a.Options, c.Title from TCommonAttribute a left join TGoodsCategory c
 on a.CategoryId=c.Id
 where a.TenantId={AbpSession.TenantId}";
             }

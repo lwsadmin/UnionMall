@@ -10,12 +10,12 @@ namespace UnionMall.Entity
     public class CommonAttribute : Entity<long>, IMustHaveTenant
     {
         public int TenantId { get; set; }
-        public int CategoryId { get; set; }
+        public long CategoryId { get; set; }
         public string DataType { get; set; }
         public string Name { get; set; }
-        public string ValueName { get; set; }
-        public string DefultValue { get; set; }
-        public string Options { get; set; }
+        public string ValueName { get; set; } = "";
+        public string DefaultValue { get; set; } = "";
+        public string Options { get; set; } = "";
 
         /// <summary>
         /// 0 商品(默认)  1
