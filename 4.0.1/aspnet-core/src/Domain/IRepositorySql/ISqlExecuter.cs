@@ -20,6 +20,6 @@ namespace UnionMall.IRepositorySql
 
         DataSet GetPaged(int pageIndex, int pageSize, string table, string orderBy, out int total);
 
-        DataSet GetPagedList(int pageIndex, int pageSize, string table, string orderBy, out int total, string idSql = "");
+        DataSet GetPagedList(int pageIndex, int pageSize, string table, string orderBy, out int total, string idSql = "", string pageTable = "");
     }
 }

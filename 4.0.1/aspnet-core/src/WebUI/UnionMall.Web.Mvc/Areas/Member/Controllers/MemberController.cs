@@ -42,17 +42,17 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 
             string where = string.Empty; where += _comAppService.GetWhere();
             if (!string.IsNullOrEmpty(Level))
-                where += $" and levelId={Level}";
+                where += $" and *.levelId={Level}";
             if (!string.IsNullOrEmpty(Name))
                 where += $" and (FullName like'%{Name}%' or WeChatName like '%{Name}%')";
             if (!string.IsNullOrEmpty(Business))
-                where += $" and m.BusinessId={Business}";
+                where += $" and *.BusinessId={Business}";
             if (!string.IsNullOrEmpty(Store))
-                where += $" and m.ChainStoreId={Store}";
+                where += $" and *.ChainStoreId={Store}";
             if (!string.IsNullOrEmpty(RegTimeFrom))
-                where += $" and RegTime>='{RegTimeFrom} 00:00:00'";
+                where += $" and *.RegTime>='{RegTimeFrom} 00:00:00'";
             if (!string.IsNullOrEmpty(RegTimeTo))
-                where += $" and RegTime<='{RegTimeTo} 23:59:59'";
+                where += $" and *.RegTime<='{RegTimeTo} 23:59:59'";
 
             ViewBag.PageSize = pageSize;
             int total;

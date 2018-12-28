@@ -44,13 +44,14 @@ namespace UnionMall.Member
         {
 
 
-            //int[] chainstore = { 6, 16, 17, 18, 19, 20, 21 };
+            //  int[] chainstore = { 6, 16, 17, 18, 19, 20, 21 };
             //int[] member = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
             //    18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
             //    36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
             //    56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76,
             //    77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
             //    91, 92, 93, 94, 95, 96, 97, 98, 99, 100 };
+
 
             //DataTable t = _sqlExecuter.ExecuteDataSet("select * from tbalancenote").Tables[0];
             //foreach (DataRow item in t.Rows)
@@ -61,13 +62,30 @@ namespace UnionMall.Member
             //}
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select m.id,stuff(m.FullName,2,1,'*') FullName,stuff(m.WechatName,2,1,'*') WechatName,m.HeadImg,m.Sex,stuff(m.CardID,8,4,'****') CardID,
-stuff(m.Mobile,8,4,'****') Mobile,m.Balance,m.Integral,
-convert(nvarchar(100),m.RegTime,20) RegTime,l.Title,c.Name StoreName from dbo.TMemberData m
-left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
+
+                table = $@"select m.id,stuff(m.FullName,2,1,'*') FullName,stuff(m.WechatName,2,1,'*') WechatName,
+                 m.HeadImg,m.Sex,stuff(m.CardID,8,4,'****') CardID,
+                stuff(m.Mobile,8,4,'****') Mobile,m.Balance,m.Integral,
+                convert(nvarchar(100),m.RegTime,20) RegTime,l.Title,c.Name StoreName from dbo.TMember  m
+                left join dbo.TMemberLevel l on m.levelId=l.id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
+
+                //                table = $@"select m.id,stuff(m.FullName,2,1,'*') FullName,stuff(m.WechatName,2,1,'*') WechatName,
+                //m.HeadImg,m.Sex,stuff(m.CardID,8,4,'****') CardID,
+                // stuff(m.Mobile,8,4,'****') Mobile,m.Balance,m.Integral,
+                // convert(nvarchar(100),m.RegTime,20) RegTime,l.Title,c.Name StoreName from dbo.TMember  m
+                //,dbo.TMemberLevel l ,dbo.TChainStore c  where 1=1  and m.chainstoreId=c.id and m.levelid=l.id";
             }
+            string pageTable = $@"select T.*,l.Title,c.Name StoreName from (
+select m.id,m.TenantId, m.FullName,m.WechatName,m.HeadImg,m.Sex,m.CardID,m.chainstoreid,m.levelid,
+ m.Mobile,m.Balance,m.Integral, convert(nvarchar(100),m.RegTime,20) RegTime
+  from dbo.TMember  m where id in(
+select id from tmeMber order by id OFFSET {(pageIndex-1)*pageSize} ROW FETCH NEXT {pageSize} ROWS only
+)
+) T
+left join dbo.TMemberLevel l on T.levelId=l.id 
+left join dbo.TChainStore c on T.chainstoreId=c.id where 1=1 {where.Replace("*", "T")} ";
             table += where.Replace("*", "m");
-            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total,"", pageTable);
         }
 
         public async Task CreateOrEditAsync(UnionMall.Entity.Member dto)

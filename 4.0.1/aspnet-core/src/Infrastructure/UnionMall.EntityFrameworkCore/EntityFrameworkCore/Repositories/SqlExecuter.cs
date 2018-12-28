@@ -99,7 +99,7 @@ namespace UnionMall.EntityFrameworkCore.Repositories
             return ds;
         }
 
-        public DataSet GetPagedList(int pageIndex, int pageSize, string table, string orderBy, out int total, string idSql = "")
+        public DataSet GetPagedList(int pageIndex, int pageSize, string table, string orderBy, out int total, string idSql = "", string pageTable = "")
         {
             total = 0;
             DataSet ds = new DataSet();
@@ -108,7 +108,7 @@ namespace UnionMall.EntityFrameworkCore.Repositories
             string connectionString = configuration.GetConnectionString(UnionMallConsts.ConnectionStringName);
 
             table = table.ToLower();
-            if (idSql=="")
+            if (idSql == "")
             {
                 idSql = table.Replace(table.Substring(table.IndexOf(","), table.IndexOf("from") - 11), " ")
        .Replace("select ", "select count(").Replace("from", ") from");
@@ -122,6 +122,7 @@ namespace UnionMall.EntityFrameworkCore.Repositories
                 comm.Parameters.AddWithValue("@PageIndex", pageIndex);
                 comm.Parameters.AddWithValue("@PageSize", pageSize);
                 comm.Parameters.AddWithValue("@Table", table);
+                comm.Parameters.AddWithValue("@PageTable", pageTable);
                 comm.Parameters.AddWithValue("@OrderBy", orderBy);
                 comm.Parameters.AddWithValue("@IdSql", idSql);
                 comm.Parameters.Add("@TotalCount", SqlDbType.BigInt, 10);
