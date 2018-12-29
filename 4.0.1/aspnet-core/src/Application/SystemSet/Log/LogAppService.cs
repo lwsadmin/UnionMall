@@ -34,14 +34,20 @@ namespace UnionMall.SystemSet
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select l.id, l.Content,l.UserAcccount,l.IPAddress,l.CreationTime from TLog l where 1=1 ";
+                table = $@"select l.id, l.Content,l.UserAcccount,l.IPAddress,l.CreationTime from TLog l where id in(
+select id from TLog order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only)";
             }
             if (AbpSession.TenantId != null && (int)AbpSession.TenantId > 0)
             {
                 table += $" and TenantId={AbpSession.TenantId}";
             }
             table += where;
-            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
+            string idSql = "";
+            if (where == "")
+            {
+                idSql = $"SELECT rows FROM sysindexes WHERE id = OBJECT_ID('dbo.TLOG') AND indid < 2";
+            }
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total, idSql, table);
         }
 
         public async Task WriteLog(string content)

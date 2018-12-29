@@ -85,8 +85,11 @@ select id from tmeMber order by id OFFSET {(pageIndex-1)*pageSize} ROW FETCH NEX
 left join dbo.TMemberLevel l on T.levelId=l.id 
 left join dbo.TChainStore c on T.chainstoreId=c.id where 1=1 {where.Replace("*", "T")} ";
             table += where.Replace("*", "m");
-            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total,"", pageTable);
+            string idsql = $"SELECT rows FROM sysindexes WHERE id = OBJECT_ID('dbo.TMember') AND indid < 2";
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total, idsql, pageTable);
         }
+
+ 
 
         public async Task CreateOrEditAsync(UnionMall.Entity.Member dto)
         {
