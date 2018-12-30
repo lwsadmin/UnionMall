@@ -28,6 +28,7 @@ namespace UnionMall.Member
         }
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
+
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select m.id,m.tenantid,m.title, cast(m.initpoint as float) initpoint,cast(m.sellprice as float) sellprice,

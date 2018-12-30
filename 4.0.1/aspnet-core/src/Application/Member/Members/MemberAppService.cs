@@ -43,7 +43,12 @@ namespace UnionMall.Member
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
 
-
+            string idSql = string.Empty;
+            if (where == "" || where.IndexOf("c.") <= 0)
+            {
+                idSql = $"SELECT rows FROM sysindexes WHERE id = OBJECT_ID('dbo.TMember') AND indid < 2";
+            }
+            where = where.Replace("*.", "m.").Replace("c.", "m.");
             //  int[] chainstore = { 6, 16, 17, 18, 19, 20, 21 };
             //int[] member = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
             //    18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
@@ -76,20 +81,21 @@ namespace UnionMall.Member
                 //,dbo.TMemberLevel l ,dbo.TChainStore c  where 1=1  and m.chainstoreId=c.id and m.levelid=l.id";
             }
             string pageTable = $@"select T.*,l.Title,c.Name StoreName from (
-select m.id,m.TenantId, m.FullName,m.WechatName,m.HeadImg,m.Sex,m.CardID,m.chainstoreid,m.levelid,
- m.Mobile,m.Balance,m.Integral, convert(nvarchar(100),m.RegTime,20) RegTime
+select m.id,m.TenantId,stuff(m.FullName,2,1,'*') FullName,stuff(m.WechatName,2,1,'*') WechatName,m.HeadImg,
+m.Sex,stuff(m.CardID,8,4,'****') CardID,m.chainstoreid,m.levelid,
+ stuff(m.Mobile,8,4,'****') Mobile,m.Balance,m.Integral, convert(nvarchar(100),m.RegTime,20) RegTime
   from dbo.TMember  m where id in(
-select id from tmeMber order by id OFFSET {(pageIndex-1)*pageSize} ROW FETCH NEXT {pageSize} ROWS only
+select m.id from tmeMber m where 1=1  {where} order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only
 )
 ) T
 left join dbo.TMemberLevel l on T.levelId=l.id 
-left join dbo.TChainStore c on T.chainstoreId=c.id where 1=1 {where.Replace("*", "T")} ";
+left join dbo.TChainStore c on T.chainstoreId=c.id";
             table += where.Replace("*", "m");
-            string idsql = $"SELECT rows FROM sysindexes WHERE id = OBJECT_ID('dbo.TMember') AND indid < 2";
-            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total, idsql, pageTable);
+
+            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total, idSql, pageTable);
         }
 
- 
+
 
         public async Task CreateOrEditAsync(UnionMall.Entity.Member dto)
         {

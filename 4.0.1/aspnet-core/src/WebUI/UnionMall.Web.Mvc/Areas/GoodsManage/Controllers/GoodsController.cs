@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.Business;
 using UnionMall.Common;
+using UnionMall.Common.Attribute;
 using UnionMall.Controllers;
 using UnionMall.Entity;
 using UnionMall.Goods;
@@ -28,10 +29,12 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         private readonly IBrandAppService _brandAppService;
         private readonly IChainStoreAppService _storeAppService;
         private readonly IImageAppService _imgAppService;
+        private readonly ICommonAttributeAppService _attrAppService;
+
         public GoodsController(IGoodsAppService AppService,
             ICommonAppService comService, IAbpSession abpSession,
             IGoodsCategoryAppService catAppService, IBrandAppService brandAppService, IImageAppService imgAppService,
-            IChainStoreAppService storeAppService)
+            IChainStoreAppService storeAppService, ICommonAttributeAppService attrAppService)
         {
             _AppService = AppService;
             _AbpSession = abpSession;
@@ -40,6 +43,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             _brandAppService = brandAppService;
             _storeAppService = storeAppService;
             _imgAppService = imgAppService;
+            _attrAppService = attrAppService;
         }
         public async Task<IActionResult> List(string goodsName, string storeId, string categoryId,
           string brandId, string type, string status, int page = 1, int pageSize = 10)
@@ -117,6 +121,13 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             }
             ViewData.Add("GoodsType", new SelectList(listItem, "Value", "Text"));
             return View(s);
+        }
+
+        public async Task<IActionResult> GetAttr(long catid)
+        {
+            ViewBag.Attr = await _attrAppService.GetHtmlAttr(catid);
+
+            return View("_AddAttr");
         }
     }
 }

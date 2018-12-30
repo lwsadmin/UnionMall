@@ -63,6 +63,69 @@ namespace UnionMall.Common.Attribute
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
         }
 
+        public async Task<string> GetHtmlAttr(long categoryId)
+        {
+
+            var query = await _Repository.GetAllListAsync(c => c.CategoryId == categoryId);
+            if (query.Count == 0)
+            {
+                return "";
+            }
+            // Type t = msg.GetType();
+            StringBuilder str = new StringBuilder();
+            foreach (var item in query)
+            {
+                switch (item.DataType)
+                {
+                    case "Textbox":
+                        str.Append($@"<div class='form-group'>
+                                <label class='col-sm-2 control-label'>{item.Name}</label>
+                                <div class='col-sm-5'><input type = 'text' name='{item.ValueName}' value='' class='form-control' required></div>
+                            </div>");
+                        break;
+                    case "Radio":
+                        str.Append($@"<div class='form-group'>
+                                <label class='col-sm-2 control-label'>{item.Name}</label>
+                                <div class='col-sm-5'>");
+                        string[] radio = item.Options.Split(',');
+                        for (int i = 0; i < radio.Length; i++)
+                        {
+                            str.Append($@"<div class='radio radio-inline radio-success'>
+                                                <input type='radio' id ='{radio[i]}' value ='' name ='{item.ValueName}' checked= '' >
+                                                <label for='{radio[i]}' >{radio[i]}</label >
+                                             </div> ");
+                        }
+                        str.Append($@"</div>
+                            </div>");
+                        break;
+                    case "Checkbox":
+                        str.Append($@"<div class='form-group'>
+                                <label class='col-sm-2 control-label'>{item.Name}</label>
+                                <div class='col-sm-5'>");
+                        string[] checkbox = item.Options.Split(',');
+                        for (int i = 0; i < checkbox.Length; i++)
+                        {
+                            str.Append($@"<div class='checkbox checkbox-inline checkbox-success'>
+                                                <input type='checkbox' id ='{checkbox[i]}' value ='' name ='{item.ValueName}' checked= '' >
+                                                <label for='{checkbox[i]}' >{checkbox[i]}</label>
+                                             </div> ");
+                        }
+                        str.Append($@"</div>
+                            </div>");
+                        break;
+                    case "TextArea":
+                        str.Append($@"<div class='form-group'>
+                                < label class='col-sm-2 control-label'>{item.Name}</label>
+                                <div class='col-sm-5'><textarea name='{item.ValueName}'  class='form-control' cols='5'></textarea></div>
+                            </div>");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return str.ToString();
+        }
+
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))

@@ -30,6 +30,7 @@
     }
 </style>
 <div class="wrapper wrapper-content animated fadeInRight">
+    <form class="form-inline" id="attrForm" data-ajax="true" data-ajax-update="#attrTable" action="/goodsmanage/goods/GetAttr" method="post"></form>
     <div class="ibox-content">
         <form method="post" id="formPost">
             <input type="hidden" name="Id" value="@Model.Goods.Id" />
@@ -39,6 +40,8 @@
                 <ul class="nav nav-tabs" id="myTabs">
                     <li class="active"><a data-toggle="tab" href="#basic" aria-expanded="true">@L("Goods")@L("Info")</a></li>
                     <li class=""><a data-toggle="tab" href="#images" aria-expanded="false">@L("Detail")@L("Image")</a></li>
+                    <li class=""><a data-toggle="tab" href="#GoodsAttr" aria-expanded="false">@L("GoodsAttr")</a></li>
+                    <li class=""><a data-toggle="tab" href="#GoodsSpec" aria-expanded="false">@L("GoodsSpec")</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="basic" class="tab-pane fade active in" aria-labelledby="basic-tab">
@@ -92,7 +95,7 @@
                                             <input type="text" name="Commission" value="@Model.Goods.Commission" class="form-control" required maxlength="7">
                                             <span class="input-group-addon bootstrap-touchspin-postfix">%</span>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -162,6 +165,16 @@
                             @Html.Partial("_AddImage", Model)
                         </div>
                     </div>
+                    <div id="GoodsAttr" class="tab-pane fade" aria-labelledby="GoodsAttr-tab">
+                        <div class="panel-body" id="attrTable">
+                            @Html.Partial("_AddAttr")
+                        </div>
+                    </div>
+                    <div id="GoodsSpec" class="tab-pane fade" aria-labelledby="GoodsSpec-tab">
+                        <div class="panel-body">
+                            @Html.Partial("GoodsSpec")
+                        </div>
+                    </div>
                 </div>
             </div>
             <br /><br />
@@ -173,6 +186,7 @@
         </form>
     </div>
 </div>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
 <script src="~/lib/kindeditor/kindeditor-all.js" asp-append-version="true"></script>
@@ -188,10 +202,20 @@
     }
 </script>
 <script>
-    $('#myTabs a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-    });
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        // e.target // newly activated tab
+        if (String(e.target).indexOf("GoodsAttr") != -1) {
+            if ($("#Goods_CategoryId").val()!="") {
+                //$("#searchForm").attr("data-ajax-update", "#tableChat");
+                $("#attrForm").attr("action", "/goodsmanage/goods/GetAttr?catid=" + $("#Goods_CategoryId").val());
+                $("#attrForm").submit();
+                // GetChartData();
+           //     alert(1);
+            }
+
+        }
+        // e.relatedTarget // previous active tab
+    })
     $(function () {
         var imgArray = [];
         var img = '@Model.Goods.Image';
