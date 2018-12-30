@@ -44,7 +44,7 @@ namespace UnionMall.Member
         {
 
             string idSql = string.Empty;
-            if (where == "" || where.IndexOf("c.") <= 0)
+            if ((where == "" || where.IndexOf("c.") <= 0) && where.IndexOf("BusinessId") < 0)
             {
                 idSql = $"SELECT rows FROM sysindexes WHERE id = OBJECT_ID('dbo.TMember') AND indid < 2";
             }

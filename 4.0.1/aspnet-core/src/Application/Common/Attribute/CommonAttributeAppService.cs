@@ -63,7 +63,7 @@ namespace UnionMall.Common.Attribute
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
         }
 
-        public async Task<string> GetHtmlAttr(long categoryId)
+        public async Task<string> GetHtmlAttr(long categoryId, long goodsid = 0, int type = 0)
         {
 
             var query = await _Repository.GetAllListAsync(c => c.CategoryId == categoryId);
@@ -72,6 +72,15 @@ namespace UnionMall.Common.Attribute
                 return "";
             }
             // Type t = msg.GetType();
+
+            DataTable dtGoods = null;
+            if (goodsid > 0 && type == 0)
+            {
+                string goodsSql = $@"select Parameter1, Parameter2, Parameter3, Parameter4, Parameter5, Parameter6,
+ Parameter7, Parameter8, Parameter9, Parameter10 from TGoods where id={goodsid}";
+                dtGoods = _sqlExecuter.ExecuteDataSet(goodsSql).Tables[0];
+
+            }
             StringBuilder str = new StringBuilder();
             foreach (var item in query)
             {
@@ -80,7 +89,8 @@ namespace UnionMall.Common.Attribute
                     case "Textbox":
                         str.Append($@"<div class='form-group'>
                                 <label class='col-sm-2 control-label'>{item.Name}</label>
-                                <div class='col-sm-5'><input type = 'text' name='{item.ValueName}' value='' class='form-control' required></div>
+                                <div class='col-sm-5'><input type = 'text' name='{item.ValueName}' 
+value='{(dtGoods == null ? "" : dtGoods.Rows[0][item.ValueName].ToString())}' class='form-control' required></div>
                             </div>");
                         break;
                     case "Radio":
@@ -90,10 +100,22 @@ namespace UnionMall.Common.Attribute
                         string[] radio = item.Options.Split(',');
                         for (int i = 0; i < radio.Length; i++)
                         {
-                            str.Append($@"<div class='radio radio-inline radio-success'>
-                                                <input type='radio' id ='{radio[i]}' value ='' name ='{item.ValueName}' checked= '' >
-                                                <label for='{radio[i]}' >{radio[i]}</label >
+                            if (goodsid > 0)
+                            {
+                                str.Append($@"<div class='radio radio-inline radio-success'>
+                                                <input type='radio' id ='{radio[i]}' value ='{radio[i]}' name='{item.ValueName}'
+{(radio[i] == (dtGoods == null ? "" : dtGoods.Rows[0][item.ValueName].ToString()) ? "checked= 'checked'" : "")} >
+                                                <label for='{radio[i]}'>{radio[i]}</label >
                                              </div> ");
+                            }
+                            else
+                            {
+                                str.Append($@"<div class='radio radio-inline radio-success'>
+                                                <input type='radio' id='{radio[i]}' value ='{radio[i]}' name='{item.ValueName}' {(i == 0 ? "checked= ''" : "")} >
+                                                <label for='{radio[i]}'>{radio[i]}</label >
+                                             </div> ");
+                            }
+
                         }
                         str.Append($@"</div>
                             </div>");
@@ -105,10 +127,22 @@ namespace UnionMall.Common.Attribute
                         string[] checkbox = item.Options.Split(',');
                         for (int i = 0; i < checkbox.Length; i++)
                         {
-                            str.Append($@"<div class='checkbox checkbox-inline checkbox-success'>
+                            if (goodsid > 0)
+                            {
+                                str.Append($@"<div class='checkbox checkbox-inline checkbox-success'>
+                                                <input type='checkbox' id ='{checkbox[i]}' value ='{checkbox[i]}' name ='{item.ValueName}' 
+{(checkbox[i] == (dtGoods == null ? "" : dtGoods.Rows[0][item.ValueName].ToString()) ? "checked= 'checked'" : "")}>
+                                                <label for='{checkbox[i]}' >{checkbox[i]}</label>
+                                             </div> ");
+                            }
+                            else
+                            {
+                                str.Append($@"<div class='checkbox checkbox-inline checkbox-success'>
                                                 <input type='checkbox' id ='{checkbox[i]}' value ='' name ='{item.ValueName}' checked= '' >
                                                 <label for='{checkbox[i]}' >{checkbox[i]}</label>
                                              </div> ");
+                            }
+
                         }
                         str.Append($@"</div>
                             </div>");
@@ -116,7 +150,7 @@ namespace UnionMall.Common.Attribute
                     case "TextArea":
                         str.Append($@"<div class='form-group'>
                                 < label class='col-sm-2 control-label'>{item.Name}</label>
-                                <div class='col-sm-5'><textarea name='{item.ValueName}'  class='form-control' cols='5'></textarea></div>
+                                <div class='col-sm-5'><textarea name='{item.ValueName}'  class='form-control' cols='5'>{(dtGoods == null ? "" : dtGoods.Rows[0][item.ValueName].ToString())}</textarea></div>
                             </div>");
                         break;
                     default:

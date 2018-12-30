@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>@L("RetailPrice")</label>
-                                        <input type="text" name="Price" value="@Model.Goods.RetailPrice" class="form-control" required maxlength="50">
+                                        <input type="text" name="RetailPrice" value="@Model.Goods.RetailPrice" class="form-control" required maxlength="50">
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Status")</label>
@@ -106,7 +106,7 @@
 
                                     <div class="form-group">
                                         <label>@L("Image")</label>
-                                        <input type="hidden" id="hiddenImg" name="Img" value="@Model.Goods.Image" />
+                                        <input type="hidden" id="hiddenImg" name="Image" value="@Model.Goods.Image" />
                                         <input id="input" title="@Model.Goods.Image" name="File" value="@Model.Goods.Image" type="file" data-show-preview="false">
                                     </div>
                                     <div class="form-group">
@@ -207,7 +207,7 @@
         if (String(e.target).indexOf("GoodsAttr") != -1) {
             if ($("#Goods_CategoryId").val()!="") {
                 //$("#searchForm").attr("data-ajax-update", "#tableChat");
-                $("#attrForm").attr("action", "/goodsmanage/goods/GetAttr?catid=" + $("#Goods_CategoryId").val());
+                $("#attrForm").attr("action", "/goodsmanage/goods/GetAttr?goodsId="+$("input[name='Id']").val()+"&catid=" + $("#Goods_CategoryId").val());
                 $("#attrForm").submit();
                 // GetChartData();
            //     alert(1);
@@ -247,7 +247,7 @@
         $("#input").on("fileuploaded", function (event, data, previewId, index) {
             var url = data.response.result.url;
             debugger;
-            $("input[name='Img']").val(url);
+            $("input[name='Image']").val(url);
             //$(".hid" + index).val(url).addClass(previewId);
         });
 
@@ -272,7 +272,7 @@
                 imgArray.push({
                     tenantId: $("input[name='TenantId']").val(),
                     objectId: $("input[name='Id']").val(),
-                    type:1,
+                    type:0,
                     id: $("#id" + i).val(),
                     size: $("#Size" + i).val(),
                     url: $("#Url" + i).val(),
@@ -280,6 +280,8 @@
                 });
             }
             EditDto.imageList = imgArray;
+            //debugger;
+            //return;
             _Service.createOrEdit(EditDto).done(function (data) {
                 var url = sessionStorage.getItem("page");
                 if (url != "" && url != undefined) {

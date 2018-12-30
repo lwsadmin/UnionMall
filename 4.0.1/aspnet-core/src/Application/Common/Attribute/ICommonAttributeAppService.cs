@@ -14,6 +14,6 @@ namespace UnionMall.Common.Attribute
         Task CreateOrEditAsync(CommonAttribute cat);
         Task<CommonAttribute> GetByIdAsync(long Id);
         Task Delete(long id);
-        Task<string> GetHtmlAttr(long categoryId);
+        Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0);
     }
 }

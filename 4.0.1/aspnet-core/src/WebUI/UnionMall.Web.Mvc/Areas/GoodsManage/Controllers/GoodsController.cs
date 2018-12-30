@@ -123,9 +123,9 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             return View(s);
         }
 
-        public async Task<IActionResult> GetAttr(long catid)
+        public async Task<IActionResult> GetAttr(long catid, long goodsId)
         {
-            ViewBag.Attr = await _attrAppService.GetHtmlAttr(catid);
+            ViewBag.Attr = await _attrAppService.GetHtmlAttr(catid, goodsId);
 
             return View("_AddAttr");
         }
