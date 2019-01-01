@@ -37,7 +37,7 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsSpec"  Url="javascript:void(0);">
+    <Second Name="GoodsSpec"  Url="/goodsmanage/goodsspec/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />

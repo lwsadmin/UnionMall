@@ -75,6 +75,18 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             ViewBag.Brand = _brandAppService.GetMultiSelect();
             ViewBag.Store = (await _storeAppService.GetDropDown());
 
+            IList<SelectListItem> listItem = new List<SelectListItem>();
+            Array values = System.Enum.GetValues(typeof(Entity.GoodsState));
+            foreach (int item in values)
+            {
+                listItem.Add(new SelectListItem
+                {
+                    Value = item.ToString(),
+                    Text = L(System.Enum.GetName(typeof(Entity.GoodsState), item))
+                });
+            }
+            ViewData.Add("GoodsType", new SelectList(listItem, "Value", "Text"));
+
             return View(pageList);
         }
 

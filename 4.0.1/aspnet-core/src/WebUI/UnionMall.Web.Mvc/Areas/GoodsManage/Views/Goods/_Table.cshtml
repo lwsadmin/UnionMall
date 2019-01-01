@@ -19,6 +19,7 @@
             <th>@L("Price")</th>
             <th>@L("RetailPrice")</th>
             <th>@L("Click")</th>
+            <th>@L("Sell")@L("Count")</th>
             <th>@L("Sort")</th>
             <th>@L("Operate")</th>
         </tr>
@@ -35,11 +36,12 @@
             <td class="img"><img style="height:15px;" src="@item["Image"]" onerror="this.src='/img/nopic.png'" />  </td>
             <td>@item["StoreName"]</td>
             <td>@item["BTitle"]</td>
-            <td>@item["Status"]</td>
+            <td>@L(System.Enum.GetName(typeof(UnionMall.Entity.GoodsState), item["Status"]))</td>
 
             <td>@item["Price"]</td>
             <td>@item["RetailPrice"]</td>
             <td>@item["Click"]</td>
+            <td>@item["SellCount"]</td>
             <td>@item["Sort"]</td>
             <td>
                 @if (IsGranted("OnlineGoods.GoodsManage.Edit"))
@@ -51,7 +53,7 @@
 
                 @if (IsGranted("OnlineGoods.GoodsManage.Delete"))
                 {
-                    <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["Title"])" data-ok="@L("OK")"
+                    <a style="margin-left:20px;" data-msg="@L("Delete")@L("Success")" data-title="@L("DeleteConfirm{0}",item["Name"])" data-ok="@L("OK")"
                        data-cancle="@L("Cancel")" data-id="@item["id"]" onclick="Delete(this);" title="@L("Delete")" href="javascript:void(0);">
                         <i class="fa fa-trash text-navy"></i>
                     </a>

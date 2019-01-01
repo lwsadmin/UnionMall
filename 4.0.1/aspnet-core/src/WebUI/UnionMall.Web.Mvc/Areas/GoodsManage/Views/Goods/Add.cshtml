@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Total")@L("Count")</label>
-                                        <input type="number" name="StockCount" value="@Model.Goods.Stock" class="form-control" required>
+                                        <input type="number" name="Stock" value="@Model.Goods.Stock" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Belong")@L("Store")</label>
@@ -217,13 +217,18 @@
         // e.relatedTarget // previous active tab
     })
     $(function () {
+        if ($("input[name='Id']").val()!="0") {
+            $("#attrForm").attr("action", "/goodsmanage/goods/GetAttr?goodsId=" + $("input[name='Id']").val() + "&catid=" + $("#Goods_CategoryId").val());
+            $("#attrForm").submit();
+        }
+
         var imgArray = [];
         var img = '@Model.Goods.Image';
         if (img != '') {
             imgArray.push(img);
         }
         $('.chosen-select').chosen({ width: "100%" });
-        $("#formPost").validate({});
+        $("#formPost").validate({ ignore:""});
         $("#input").fileinput({
             language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es',
             showRemove: false,
@@ -255,6 +260,22 @@
         $("#formPost").on("submit", function (e) {
             e.preventDefault();
             if (!$(this).valid()) {
+                return;
+            }
+            if ($("#Goods_CategoryId").val() == "") {
+                $("#Goods_CategoryId").trigger("chosen:open");
+                return;
+            }
+            if ($("#Goods_BrandId").val() == "") {
+                $("#Goods_BrandId").trigger("chosen:open");
+                return;
+            }
+            if ($("#Goods_ChainStoreId").val() == "") {
+                $("#Goods_ChainStoreId").trigger("chosen:open");
+                return;
+            }
+            if ($("#Goods_Type").val() == "") {
+                $("#Goods_Type").trigger("chosen:open");
                 return;
             }
             var goods = $(this).serializeFormToObject();
