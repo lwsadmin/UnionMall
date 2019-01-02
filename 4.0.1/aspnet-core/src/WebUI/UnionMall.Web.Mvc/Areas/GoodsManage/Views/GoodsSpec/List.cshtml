@@ -7,25 +7,24 @@
 }
 @using System.Data
 @using X.PagedList
+@using UnionMall.Common.Dto
 @model PagedList<DataRow>
 <style>
-    .swal2-container {
-        z-index: 10000;
+    .tag-list a {
+        cursor: default;
     }
 
-    .chosen-container {
-        margin-bottom: 15px;
-        min-width: 10vw;
+    .tag-list li {
+        position: relative;
+        margin-left: 10px;
+    }
+
+    .tag-list .close {
+        position: absolute;
+        top: -5px;
+        right: -5px;
     }
 </style>
-<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" asp-append-version="true" rel="stylesheet" />
-<script>
-    language = $("#CurrentLanguage").attr("data-lan");
-    if (language == "zh-Hans") {
-        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
-        });
-    }
-</script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -106,70 +105,60 @@
     </div>
 </div>
 <div id="DivAdd">
-    @Html.Partial("_Add")
+    @Html.Partial("_Add", new CreateOrEdit())
 </div>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
-<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script>
-    (function () {
-        $(function () {
-            $('.chosen-select').chosen({ width: "100%" });
-            $("#AddPost").validate({});
-            var _Service = abp.services.app.commonAttribute;
-
-            $("#add").click(function () {
-                $("#Modal").modal('show');
-            });
-            $('#Modal').on('hidden.bs.modal', function (e) {
-                // do something...
-                $(".modal-title").html('');
-                $("#CategoryId").val('');
-                $("#CategoryId").trigger("chosen:updated"); 
-                $("#Options").val('');
-                $("input[name='Id']").val(0);
-                $("input[name='DefaultValue']").val("");
-                $("input[name='Name']").val("");
-            });
-
-            $("#AddPost").on("submit", function (e) {
-                e.preventDefault();
-
-                if (!$(this).valid()) {
-                    return;
-                }
-                if ($("#CategoryId").val() == "") {
-                    $("#CategoryId").trigger("chosen:open"); 
-                    return;
-                }
-                var EditDto = $(this).serializeFormToObject();
-                _Service.createOrEdit(EditDto).done(function (data) {
-                    $("#Modal").modal('hide');
-                    if ($(".pagination .active a").html() != undefined) {
-                        $(".pagination .active a").click();
-                    } else { $("#searchForm").submit(); }
-
-                }).fail(function (data) {
-                }).always(function (data) { });
-            });
+    $(function () {
+        var _Service = abp.services.app.commonSpec;
+        $("#add").click(function () {
+            $("#Modal").modal('show');
         });
-    })();
+        $('#Modal').on('hidden.bs.modal', function (e) {
+            // do something...
+            $(".modal-title").html('');
+            $("#Memo").val('');
+            $("input[name='Id']").val(0);
+            $("input[name='Name']").val("");
+        });
+    });
+    var Save = function (e) {
+        if ($("input[name='Name']").val().trim() == "") {
+            $("input[name='Name']").focus();
+            e.preventDefault();
+            return;
+        }
+        var _Service = abp.services.app.commonSpec;
+        var spec = $("#AddPost").serializeFormToObject();
+        var EditDto = {};
+        var valueList = [];
+        EditDto.spec = spec;
+        EditDto.valueList = valueList;
+        _Service.createOrEdit(EditDto).done(function (data) {
+            $("#searchForm").submit();
+           // $("#Modal").modal('hide');
+            //if ($(".pagination .active a").html() != undefined) {
+            //    $(".pagination .active a").click();
+            //} else { $("#searchForm").submit(); }
 
-
-    function Edit(Id, CategoryId, Name, ValueName, DataType, DefaultValue, Options) {
-
-        $("input[name='Id']").val(Id);
-        $("input[name='Name']").val(Name);
-        $("input[name='ValueName']").val(ValueName);
-        $("input[name='DefaultValue']").val(DefaultValue);
-        $("#CategoryId").val(CategoryId);
-        $("#CategoryId").trigger("chosen:updated"); 
-        $("#DataType").val(DataType);
-        $("#Options").val(Options);
-        $("#Modal").modal('show');
+        }).fail(function (data) {
+        }).always(function (data) { });
     }
 
+
+    function Edit(data) {
+        $("#Modal").modal("show");
+    }
+    $("#setValue").click(function () {
+        if ($("input[name='Text']").val().trim() == "") {
+            $("input[name='Text']").focus();
+            return;
+        }
+        $("#ul_li").append("<li><a href='javascript:void(0);'>" + $("input[name='Text']").val() + "</a><button type='button' class='close'>\
+            <span aria-hidden='true' >×</span><span class='sr-only'>Close</span></button></li>");
+
+    });
     function Delete(btn) {
         var _Service = abp.services.app.commonAttribute;
         var id = $(btn).attr("data-id");

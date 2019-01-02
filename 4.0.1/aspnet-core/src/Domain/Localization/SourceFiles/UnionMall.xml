@@ -25,6 +25,7 @@
     <text name="LogIn" value="Log in" />
     <text name="LoginFailed" value="Login failed!" />
     <text name="NameSurname" value="Name surname" />
+    <text name="SpecValue" value="Spec" />
     <text name="UserName" value="User name" />
     <text name="Name" value="Name" />
     <text name="To" value="To" />

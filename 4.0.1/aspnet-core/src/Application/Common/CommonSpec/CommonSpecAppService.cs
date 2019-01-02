@@ -8,7 +8,7 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Common.Attribute;
-using UnionMall.Common.Dtos;
+using UnionMall.Common.Dto;
 using UnionMall.Entity;
 using UnionMall.IRepositorySql;
 
@@ -19,17 +19,29 @@ namespace UnionMall.Common.CommonSpec
         private readonly IRepository<Entity.CommonSpec, long> _Repository;
         private readonly IAbpSession _AbpSession;
         private readonly ISqlExecuter _sqlExecuter;
+        private readonly ISpecValueAppService _valueExecuter;
         public CommonSpecAppService(IRepository<Entity.CommonSpec, long> Repository, IAbpSession AbpSession,
-            ISqlExecuter sqlExecuter)
+            ISqlExecuter sqlExecuter, ISpecValueAppService valueExecuter)
 
         {
             _Repository = Repository;
             _AbpSession = AbpSession;
             _sqlExecuter = sqlExecuter;
+            _valueExecuter = valueExecuter;
         }
-        public Task CreateOrEditAsync(Entity.CommonSpec cat)
+
+
+        public async Task CreateOrEditAsync(CreateOrEdit cat)
         {
-            throw new NotImplementedException();
+            cat.Spec.TenantId = AbpSession.TenantId ?? 0;
+            if (cat.Spec.Id > 0)
+            {
+                await _Repository.UpdateAsync(cat.Spec);
+            }
+            else
+            {
+                await _Repository.InsertAsync(cat.Spec);
+            }
         }
 
         public Task Delete(long id)
@@ -37,16 +49,19 @@ namespace UnionMall.Common.CommonSpec
             throw new NotImplementedException();
         }
 
-        public Task<Entity.CommonSpec> GetByIdAsync(long Id)
+        public async Task<CreateOrEdit> GetByIdAsync(long Id)
         {
-            throw new NotImplementedException();
+            CreateOrEdit s = new CreateOrEdit();
+            s.Spec = await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
+            s.ValueList = await _valueExecuter.GetBySpecId(Id);
+            return s;
         }
 
-        public async Task<List<SpecDropDown>> GetDropDown()
+        public async Task<List<Entity.CommonSpec>> GetDropDown()
         {
             var query = await _Repository.GetAllListAsync();
             //  query = query.FindAll(c => c.BusinessId == businessID);
-            return query.MapTo<List<SpecDropDown>>();
+            return query;
         }
 
         public Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
@@ -58,8 +73,8 @@ namespace UnionMall.Common.CommonSpec
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select s.Id,s.Name,
-stuff((select  i.Name +','  from dbo.TCommonSpecValue i
+                table = $@"select s.Id,s.Name,s.Memo,
+stuff((select  i.Text +','  from dbo.TCommonSpecValue i
  left join dbo.TCommonSpec f on i.SpecId=f.Id
  where s.Id=f.Id
 for xml path('')),1,1,'') VName
@@ -68,6 +83,11 @@ where s.TenantId={AbpSession.TenantId} {where}  order by id OFFSET {(pageIndex -
             }
             string idSql = $@"select count(id) from TCommonSpec  where tenantid={AbpSession.TenantId} {where.Replace("s.", "")}";
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, "1", orderBy, out total, idSql, table);
+        }
+
+        Task<List<SpecDropDown>> ICommonSpecAppService.GetDropDown()
+        {
+            throw new NotImplementedException();
         }
     }
 }

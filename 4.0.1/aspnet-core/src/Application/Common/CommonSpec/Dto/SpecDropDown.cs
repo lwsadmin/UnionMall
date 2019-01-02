@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnionMall.Common.Dtos
+namespace UnionMall.Common.Dto
 {
     [AutoMapFrom(typeof(Entity.CommonSpec))]
     public class SpecDropDown : EntityDto<long>

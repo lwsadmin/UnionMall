@@ -40,5 +40,16 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
             return View(pageList);
         }
+
+        public async Task<IActionResult> Add(long? id)
+        {
+            if (id == null)
+            {
+                var s = _AppService.GetByIdAsync((long)id);
+                return PartialView("_Add", s);
+            }
+            var dtos = await _AppService.GetByIdAsync((long)id);
+            return PartialView("_Add", dtos);
+        }
     }
 }

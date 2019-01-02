@@ -26,9 +26,12 @@
             <td>
                 @if (IsGranted("OnlineGoods.GoodsSpec.Edit"))
                 {
-                    <a title="@L("Edite")" onclick="Edit('@item["id"]','@item["Name"]','@item["Name"]');">
+                    @*<a title="@L("Edite")" onclick="Edit('@item["id"]','@item["Name"]','@item["Memo"]');">
                         <i class="fa fa-edit text-navy"></i>
-                    </a>
+                    </a>*@
+                    <a data-ajax="true" data-ajax-method="GET"
+                       data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="Edit"
+                       href="/goodsmanage/goodsspec/add/@item["id"]"><i class="fa fa-edit text-navy"></i></a>
                 }
                 &nbsp; &nbsp;
                 @if (IsGranted("OnlineGoods.GoodsSpec.Delete"))
@@ -74,4 +77,5 @@ UpdateTargetId = "table"
         });
     }
     $("input[name='pageSize']").val(@ViewBag.PageSize);
+
 </script>

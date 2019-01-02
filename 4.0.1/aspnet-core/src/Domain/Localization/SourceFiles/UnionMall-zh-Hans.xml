@@ -102,6 +102,7 @@
     <text name="GoodsOrder" value="商品订单" />
     <text name="GoodsAttr" value="商品属性" />
     <text name="GoodsSpec" value="商品规格" />
+    <text name="SpecValue" value="规格值" />
     <text name="GoodsComment" value="商品评价" />
     <text name="GoodAsk" value="商品咨询" />
     <text name="BusinessName" value="商户名称"/>

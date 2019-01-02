@@ -9,8 +9,8 @@ namespace UnionMall.Common.CommonSpec
 {
     public interface ISpecValueAppService : IApplicationService
     {
-        Task<List<ValueItemDto>> GetSelect();
-
+        Task<List<Entity.CommonSpecValue>> GetSelect();
+        Task<List<Entity.CommonSpecValue>> GetBySpecId(long id);
         Task Delete(long id);
     }
 }

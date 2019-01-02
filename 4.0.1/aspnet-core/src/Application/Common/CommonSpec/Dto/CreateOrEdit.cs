@@ -2,12 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UnionMall.Common.Dto;
-namespace UnionMall.Common.CommonSpecValue.Dto
+namespace UnionMall.Common.Dto
 {
     public class CreateOrEdit : EntityDto<long>
     {
         public Entity.CommonSpec Spec { get; set; }
-        public List<ValueItemDto> ValueList { get; set; }
+        public List<Entity.CommonSpecValue> ValueList { get; set; }
     }
 }

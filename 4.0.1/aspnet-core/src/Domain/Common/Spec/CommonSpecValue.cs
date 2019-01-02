@@ -11,7 +11,6 @@ namespace UnionMall.Entity
     {
         public int TenantId { get; set; }
         public long SpecId { get; set; }
-        public string Name { get; set; }
-        public string Memo { get; set; } = "";
+        public string Text { get; set; }
     }
 }

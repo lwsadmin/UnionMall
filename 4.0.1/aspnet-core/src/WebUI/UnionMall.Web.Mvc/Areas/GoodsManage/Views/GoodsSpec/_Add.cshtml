@@ -5,7 +5,8 @@
     SelectList list = ViewData["Category"] as SelectList;
 }
 @using System.Data
-
+@using UnionMall.Common.Dto
+@model CreateOrEdit
 <div class="modal inmodal fade in" id="Modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -14,40 +15,69 @@
                 <h5 id="headTitle" class="modal-title"></h5>
             </div>
             <div class="modal-body">
-
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
                         <form method="post" id="AddPost" class="form-horizontal">
-                            <input type="hidden" name="Id" value="0" />
-                            <input type="hidden" name="ValueName" value="" />
+                            <input type="hidden" name="Id" value="@(Model.Spec!=null?Model.Spec.Id:0)" />
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("Name")</label>
-                                <div class="col-sm-9"><input type="text" name="Name" value="" class="form-control" required maxlength="10"></div>
+                                <div class="col-sm-9"><input type="text" name="Name" value="@(Model.Spec!=null?Model.Spec.Name:"")" class="form-control"></div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">@L("Default")</label>
+                                <label class="col-sm-2 control-label">@L("SpecValue")</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="DefaultValue" value="" class="form-control" />
+                                    <div class="input-group">
+                                        <input type="text" name="Text" value="" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button type="button" id="setValue" class="btn btn-primary">  <i class="fa fa-plus"></i></button>
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-9">
+                                    <ul class="tag-list" id="ul_li" style="padding: 0">
+                                        @*<li>
+                                                <a href="">家庭</a>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                                </button>
+                                            </li>
+                                            <li><a href="">工作</a></li>
+                                            <li><a href="">家庭</a></li>
+                                            <li><a href="">孩子</a></li>
+                                            <li><a href="">假期</a></li>
+                                            <li><a href="">音乐</a></li>
+                                            <li><a href="">摄影</a></li>
+                                            <li><a href="">电影</a></li>*@
+                                    </ul>
                                 </div>
                             </div>
+
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">@L("Selectable")</label>
+                                <label class="col-sm-2 control-label">@L("Note")</label>
                                 <div class="col-sm-9">
-                                    <textarea name="Options" id="Options" class="form-control" cols="5"></textarea>
-                                    <span class="help-block m-b-none">@L("OptionTip")</span>
+                                    <textarea name="Memo" id="Memo" class="form-control" cols="5">@(Model.Spec!=null? Model.Spec.Memo:"")</textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                                <button id="Save" type="submit" class="btn btn-primary">提交保存</button>
+                                <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+                                <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
+<script>
+        $("#AddPost").on("submit", function (e) {
+        Save(e);
+    });
+</script>

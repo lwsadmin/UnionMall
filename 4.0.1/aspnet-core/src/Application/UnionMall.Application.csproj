@@ -28,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\CommonSpecObject\" />
+    <Folder Include="Common\CommonSpecValue\Dto\" />
     <Folder Include="Statistics\Coupon\ReceiveStatistics\Dto\" />
     <Folder Include="Statistics\Coupon\UsedStatistics\Dto\" />
   </ItemGroup>

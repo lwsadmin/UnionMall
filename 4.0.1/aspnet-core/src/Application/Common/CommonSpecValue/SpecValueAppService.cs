@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Common.Dto;
+using UnionMall.Entity;
 using UnionMall.IRepositorySql;
 
 namespace UnionMall.Common.CommonSpec
@@ -34,10 +35,15 @@ namespace UnionMall.Common.CommonSpec
             }
         }
 
-        public async Task<List<ValueItemDto>> GetSelect()
+        public async Task<List<CommonSpecValue>> GetBySpecId(long id)
+        {
+            return await _Repository.GetAllListAsync(c => c.SpecId == id);
+        }
+
+        public async Task<List<Entity.CommonSpecValue>> GetSelect()
         {
             var query = await _Repository.GetAllListAsync();
-            return query.MapTo<List<ValueItemDto>>();
+            return query;
         }
     }
 }
