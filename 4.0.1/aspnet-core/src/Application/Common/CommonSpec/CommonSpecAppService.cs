@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services;
+using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using System;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Common.Attribute;
+using UnionMall.Common.Dtos;
 using UnionMall.Entity;
 using UnionMall.IRepositorySql;
 
@@ -40,6 +42,13 @@ namespace UnionMall.Common.CommonSpec
             throw new NotImplementedException();
         }
 
+        public async Task<List<SpecDropDown>> GetDropDown()
+        {
+            var query = await _Repository.GetAllListAsync();
+            //  query = query.FindAll(c => c.BusinessId == businessID);
+            return query.MapTo<List<SpecDropDown>>();
+        }
+
         public Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
         {
             throw new NotImplementedException();
@@ -57,7 +66,7 @@ for xml path('')),1,1,'') VName
 from TCommonSpec s
 where s.TenantId={AbpSession.TenantId} {where}  order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only";
             }
-            string idSql = $@"select count(id) from TCommonSpec  where tenantid={AbpSession.TenantId} {where.Replace("s.","")}";
+            string idSql = $@"select count(id) from TCommonSpec  where tenantid={AbpSession.TenantId} {where.Replace("s.", "")}";
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, "1", orderBy, out total, idSql, table);
         }
     }
