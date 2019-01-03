@@ -141,5 +141,12 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
 
             return View("_AddAttr");
         }
+
+        public async Task<IActionResult> GetSpec(long catid, long goodsId)
+        {
+            ViewBag.Attr = await _attrAppService.GetHtmlAttr(catid, goodsId);
+
+            return View("_AddSpec");
+        }
     }
 }

@@ -90,12 +90,12 @@ namespace UnionMall.Common.CommonSpec
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select s.Id,s.Name,s.Memo,
+                table = $@"select s.Id,s.Name,c.Title,s.Memo,
 stuff((select  i.Text +','  from dbo.TCommonSpecValue i
  left join dbo.TCommonSpec f on i.SpecId=f.Id
  where s.Id=f.Id
 for xml path('')),1,0,'') VName
-from TCommonSpec s
+from TCommonSpec s left join TGoodsCategory c on s.CategoryId=c.Id
 where s.TenantId={AbpSession.TenantId} {where}  order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only";
             }
             string idSql = $@"select count(id) from TCommonSpec  where tenantid={AbpSession.TenantId} {where.Replace("s.", "")}";

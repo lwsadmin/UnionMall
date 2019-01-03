@@ -97,7 +97,6 @@ UpdateTargetId = "table"
     $(".img").hover(function () {
         $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
         $(".img").mousemove(function (e) {
-
             var h = window.screen.height;
             var showY = showY - $("#table").offset().top;
             var showX = e.pageX;
@@ -108,7 +107,6 @@ UpdateTargetId = "table"
                 "top": e.pageY,
                 "left": (showX)
             }).fadeIn(500);
-
         });
     }, function () {
         $("#pic").remove();

@@ -28,9 +28,62 @@
     .chosen-container {
         line-height: 22px;
     }
+    .dim {
+        box-shadow: none !important;
+        font-weight:normal !important;
+    }
+
+    input {
+        text-align: center;
+    }
+
+    .goodsAdd {
+        width: 100%;
+    }
+
+        .goodsAdd .goodsType {
+            width: 100%;
+        }
+
+            .goodsAdd .goodsType .goodsTypeItem {
+                width: 100%;
+                height: 35px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+                .goodsAdd .goodsType .goodsTypeItem button {
+                    margin-left: 10px;
+                    background-color: #DDDDDD;
+                    height: 32px;
+                    line-height: 16px;
+                    border: none;
+                    border-radius: 2px;
+                    padding: 10px;
+                }
+
+                .goodsAdd .goodsType .goodsTypeItem .active {
+                    background-color: #449D44;
+                    color: #fff;
+                }
+
+        .goodsAdd .goodsLists {
+            border-collapse: collapse;
+        }
+
+            .goodsAdd .goodsLists td, .goodsAdd .goodsLists th {
+                border: 1px solid #f4f4f4;
+            }
+
+        .goodsAdd .submit {
+            position: fixed;
+            right: 10%;
+            top: 50%;
+        }
 </style>
 <div class="wrapper wrapper-content animated fadeInRight">
     <form class="form-inline" id="attrForm" data-ajax="true" data-ajax-update="#attrTable" action="/goodsmanage/goods/GetAttr" method="post"></form>
+    <form class="form-inline" id="specForm" data-ajax="true" data-ajax-update="#specTable" action="/goodsmanage/goods/GetSpec" method="post"></form>
     <div class="ibox-content">
         <form method="post" id="formPost">
             <input type="hidden" name="Id" value="@Model.Goods.Id" />
@@ -171,8 +224,8 @@
                         </div>
                     </div>
                     <div id="GoodsSpec" class="tab-pane fade" aria-labelledby="GoodsSpec-tab">
-                        <div class="panel-body">
-                            @Html.Partial("GoodsSpec")
+                        <div class="panel-body" id="specTable" style="min-height:60vh;">
+                            @Html.Partial("_AddSpec")
                         </div>
                     </div>
                 </div>
@@ -209,17 +262,22 @@
                 //$("#searchForm").attr("data-ajax-update", "#tableChat");
                 $("#attrForm").attr("action", "/goodsmanage/goods/GetAttr?goodsId="+$("input[name='Id']").val()+"&catid=" + $("#Goods_CategoryId").val());
                 $("#attrForm").submit();
-                // GetChartData();
-           //     alert(1);
             }
-
         }
-        // e.relatedTarget // previous active tab
+        if (String(e.target).indexOf("GoodsSpec") != -1) {
+            if ($("#Goods_CategoryId").val() != "") {
+                $("#specForm").attr("action", "/goodsmanage/goods/GetSpec?goodsId=" + $("input[name='Id']").val() + "&catid=" + $("#Goods_CategoryId").val());
+                $("#specForm").submit();
+            }
+        }
     })
     $(function () {
         if ($("input[name='Id']").val()!="0") {
             $("#attrForm").attr("action", "/goodsmanage/goods/GetAttr?goodsId=" + $("input[name='Id']").val() + "&catid=" + $("#Goods_CategoryId").val());
             $("#attrForm").submit();
+
+            $("#specForm").attr("action", "/goodsmanage/goods/GetSpec?goodsId=" + $("input[name='Id']").val() + "&catid=" + $("#Goods_CategoryId").val());
+            $("#specForm").submit();
         }
 
         var imgArray = [];

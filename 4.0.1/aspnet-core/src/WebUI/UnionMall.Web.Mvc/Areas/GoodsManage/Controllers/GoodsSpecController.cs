@@ -26,11 +26,13 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             _valueAppService = valueAppService;
             _catAppService = catAppService;
         }
-        public async Task<IActionResult> List(string name, int page = 1, int pageSize = 10)
+        public async Task<IActionResult> List(string name, string CategoryId, int page = 1, int pageSize = 10)
         {
             string where = string.Empty;
             if (!string.IsNullOrEmpty(name))
             { where = $" and s.Name like '%{name}%'"; }
+            if (!string.IsNullOrEmpty(CategoryId))
+            { where = $" and s.CategoryId={CategoryId}"; }
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, " ", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
@@ -39,8 +41,6 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             {
                 return View("_Table", pageList);
             }
-            //var storeDropDown = (await _valueAppService.GetSelect());
-            //ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
 
             ViewBag.Category = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
             return View(pageList);
@@ -48,6 +48,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
 
         public async Task<IActionResult> Add(long? id)
         {
+            ViewBag.Category = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
             if (id == null)
             {
                 var s = _AppService.GetByIdAsync((long)id);

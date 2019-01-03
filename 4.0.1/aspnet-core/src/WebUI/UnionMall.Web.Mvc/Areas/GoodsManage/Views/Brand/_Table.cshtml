@@ -73,14 +73,26 @@
             var h = window.screen.height;
             var showY = e.pageY;
             if (e.pageY + $("#pic").height() + 100 >= h) {
-                showY = h - $("#pic").height() - 200;
+                showY = h - $("#pic").height() - 150;
             }
             $("#pic").css({
-                "top": (showY - $("#table").offset().top-50),
-                "left": (e.pageX + 50 - $("#table").offset().left)
+                "top": (showY),
+                "left":e.pageX
             }).fadeIn(500);
 
         });
+        //$(".img").mousemove(function (e) {
+        //    var h = window.screen.height;
+        //    var showY = showY - $("#table").offset().top;
+        //    var showX = e.pageX;
+        //    if (e.pageY + $("#pic").height() + 100 >= h) {
+        //        showY = h - $("#pic").height() - 100;
+        //    }
+        //    $("#pic").css({
+        //        "top": e.pageY,
+        //        "left": (showX)
+        //    }).fadeIn(500);
+        //});
     }, function () {
         $("#pic").remove();
     });

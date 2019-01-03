@@ -24,8 +24,17 @@
                                 <div class="col-sm-9"><input type="text" name="Name" value="@(Model.Spec!=null?Model.Spec.Name:"")" class="form-control" required></div>
                             </div>
                             <div class="form-group">
-                                <label>@L("GoodsCategory")</label>
-                                @Html.DropDownListFor(c => c.Spec.CategoryId, (SelectList)ViewData["Category"], L("Choose"), new { @class = "form-control chosen-select" })
+                                <label class="col-sm-2 control-label">@L("GoodsCategory")</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control chosen-select" id="CategoryId" name="CategoryId">
+                                        <option value="" selected="selected">-@L("GoodsCategory")-</option>
+                                        @foreach (var item in ViewBag.Category)
+                                        {
+                                            <option value="@item.Id">@item.Title</option>
+                                        }
+                                    </select>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("SpecValue")</label>
@@ -46,18 +55,18 @@
                                     <ul class="tag-list" id="ul_li" style="padding: 0">
                                         @Html.Raw(ViewBag.Spec)
                                         @*<li>
-                        <a href="">家庭</a>
-                        <button type="button" class="close">
-                            <span aria-hidden="true">×</span><span class="sr-only">Close</span>
-                        </button>
-                    </li>
-                    <li><a href="">工作</a></li>
-                    <li><a href="">家庭</a></li>
-                    <li><a href="">孩子</a></li>
-                    <li><a href="">假期</a></li>
-                    <li><a href="">音乐</a></li>
-                    <li><a href="">摄影</a></li>
-                    <li><a href="">电影</a></li>*@
+                                                <a href="">家庭</a>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                                </button>
+                                            </li>
+                                            <li><a href="">工作</a></li>
+                                            <li><a href="">家庭</a></li>
+                                            <li><a href="">孩子</a></li>
+                                            <li><a href="">假期</a></li>
+                                            <li><a href="">音乐</a></li>
+                                            <li><a href="">摄影</a></li>
+                                            <li><a href="">电影</a></li>*@
                                     </ul>
                                 </div>
                             </div>
@@ -85,4 +94,7 @@
     $("#Save").on("click", function (e) {
         Save(e);
     });
+    $('.chosen-select').chosen({ width: "100%" });
+    $("#CategoryId").val('@(Model.Spec==null?0: Model.Spec.CategoryId)');
+    $("#CategoryId").trigger("chosen:updated");
 </script>

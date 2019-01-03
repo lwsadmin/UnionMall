@@ -89,18 +89,16 @@
     $(".img").hover(function () {
         $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
         $(".img").mousemove(function (e) {
-
             var h = window.screen.height;
             var showY = showY - $("#table").offset().top;
-            var showX = e.pageX  - $("#table").offset().left;
+            var showX = e.pageX;
             if (e.pageY + $("#pic").height() + 100 >= h) {
-                showY = h - $("#pic").height() -400;
+                showY = h - $("#pic").height() - 100;
             }
             $("#pic").css({
-                "top": showY,
-                "left": (showX + 50)
+                "top": e.pageY,
+                "left": (showX)
             }).fadeIn(500);
-
         });
     }, function () {
         $("#pic").remove();
