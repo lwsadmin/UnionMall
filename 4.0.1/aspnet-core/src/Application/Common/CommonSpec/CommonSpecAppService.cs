@@ -19,41 +19,58 @@ namespace UnionMall.Common.CommonSpec
         private readonly IRepository<Entity.CommonSpec, long> _Repository;
         private readonly IAbpSession _AbpSession;
         private readonly ISqlExecuter _sqlExecuter;
-        private readonly ISpecValueAppService _valueExecuter;
+        private readonly IRepository<Entity.CommonSpecValue, long> _valueRepository;
         public CommonSpecAppService(IRepository<Entity.CommonSpec, long> Repository, IAbpSession AbpSession,
-            ISqlExecuter sqlExecuter, ISpecValueAppService valueExecuter)
+            ISqlExecuter sqlExecuter, IRepository<Entity.CommonSpecValue, long> valueRepository)
 
         {
             _Repository = Repository;
             _AbpSession = AbpSession;
             _sqlExecuter = sqlExecuter;
-            _valueExecuter = valueExecuter;
+            _valueRepository = valueRepository;
         }
 
 
         public async Task CreateOrEditAsync(CreateOrEdit cat)
         {
             cat.Spec.TenantId = AbpSession.TenantId ?? 0;
+            long id = 0;
             if (cat.Spec.Id > 0)
             {
+                id = cat.Spec.Id;
                 await _Repository.UpdateAsync(cat.Spec);
             }
             else
             {
-                await _Repository.InsertAsync(cat.Spec);
+                id = await _Repository.InsertAndGetIdAsync(cat.Spec);
             }
+            if (cat.ValueList.Count > 0)
+            {
+                await _valueRepository.DeleteAsync(c => c.SpecId == id);
+                foreach (var item in cat.ValueList)
+                {
+                    item.SpecId = id;
+                    await _valueRepository.InsertAsync(item);
+                }
+            }
+
         }
 
-        public Task Delete(long id)
+        public async Task Delete(long id)
         {
-            throw new NotImplementedException();
+            var query = _Repository.FirstOrDefault(c => c.Id == id);
+            if (query != null)
+            {
+                await _valueRepository.DeleteAsync(c => c.SpecId == id);
+                await _Repository.DeleteAsync(query);
+            }
         }
 
         public async Task<CreateOrEdit> GetByIdAsync(long Id)
         {
             CreateOrEdit s = new CreateOrEdit();
             s.Spec = await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
-            s.ValueList = await _valueExecuter.GetBySpecId(Id);
+            s.ValueList = await _valueRepository.GetAllListAsync(c=>c.SpecId== Id);
             return s;
         }
 
@@ -77,7 +94,7 @@ namespace UnionMall.Common.CommonSpec
 stuff((select  i.Text +','  from dbo.TCommonSpecValue i
  left join dbo.TCommonSpec f on i.SpecId=f.Id
  where s.Id=f.Id
-for xml path('')),1,1,'') VName
+for xml path('')),1,0,'') VName
 from TCommonSpec s
 where s.TenantId={AbpSession.TenantId} {where}  order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only";
             }

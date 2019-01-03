@@ -26,6 +26,18 @@ namespace UnionMall.Common.CommonSpec
             _sqlExecuter = sqlExecuter;
         }
 
+        public async Task AddOrEdit(CommonSpecValue value)
+        {
+            if (value.Id > 0)
+            {
+                await _Repository.UpdateAsync(value);
+            }
+            else
+            {
+                await _Repository.InsertAsync(value);
+            }
+        }
+
         public async Task Delete(long id)
         {
             var query = _Repository.FirstOrDefault(c => c.Id == id);

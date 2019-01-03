@@ -11,6 +11,7 @@ namespace UnionMall.Common.CommonSpec
     {
         Task<List<Entity.CommonSpecValue>> GetSelect();
         Task<List<Entity.CommonSpecValue>> GetBySpecId(long id);
+        Task AddOrEdit(Entity.CommonSpecValue value);
         Task Delete(long id);
     }
 }

@@ -46,9 +46,21 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             if (id == null)
             {
                 var s = _AppService.GetByIdAsync((long)id);
+
                 return PartialView("_Add", s);
             }
             var dtos = await _AppService.GetByIdAsync((long)id);
+            var list = await _valueAppService.GetBySpecId((long)id);
+            string str = string.Empty;
+            foreach (var item in list)
+            {
+                str += $@"<li><a href='javascript:void(0);'>{item.Text}</a>
+                                                <button onclick='RemoveItem(this);' type='button' class='close'>
+                                                    <span aria-hidden= 'true' >×</span><span class='sr-only'>Close</span>
+                                                </button>
+                                            </li>";
+            }
+            ViewBag.Spec = str ?? "";
             return PartialView("_Add", dtos);
         }
     }
