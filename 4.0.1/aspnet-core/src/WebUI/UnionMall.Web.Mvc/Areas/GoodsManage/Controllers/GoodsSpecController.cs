@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.Common.CommonSpec;
 using UnionMall.Controllers;
+using UnionMall.Goods;
 using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
@@ -17,11 +18,13 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
     public class GoodsSpecController : UnionMallControllerBase
     {
         private readonly ICommonSpecAppService _AppService;
+        private readonly IGoodsCategoryAppService _catAppService;
         private readonly ISpecValueAppService _valueAppService;
-        public GoodsSpecController(ICommonSpecAppService AppService, ISpecValueAppService valueAppService)
+        public GoodsSpecController(ICommonSpecAppService AppService, ISpecValueAppService valueAppService, IGoodsCategoryAppService catAppService)
         {
             _AppService = AppService;
             _valueAppService = valueAppService;
+            _catAppService = catAppService;
         }
         public async Task<IActionResult> List(string name, int page = 1, int pageSize = 10)
         {
@@ -36,8 +39,10 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             {
                 return View("_Table", pageList);
             }
-            var storeDropDown = (await _valueAppService.GetSelect());
-            ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
+            //var storeDropDown = (await _valueAppService.GetSelect());
+            //ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
+
+            ViewBag.Category = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
             return View(pageList);
         }
 

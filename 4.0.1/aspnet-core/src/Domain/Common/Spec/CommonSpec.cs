@@ -10,7 +10,11 @@ namespace UnionMall.Entity
     public class CommonSpec : Entity<long>, IMustHaveTenant
     {
         public int TenantId { get; set; }
+        public long CategoryId { get; set; }
         public string Name { get; set; }
+        /// 0 商品(默认)  1
+        /// </summary>
+        public int Type { get; set; } = 0;
         public string Memo { get; set; } = "";
     }
 }
