@@ -20,17 +20,18 @@ namespace UnionMall.Common.CommonSpec
         private readonly IAbpSession _AbpSession;
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<Entity.CommonSpecValue, long> _valueRepository;
+        private readonly IRepository<Entity.CommonSpecObject, long> _objectRepository;
         public CommonSpecAppService(IRepository<Entity.CommonSpec, long> Repository, IAbpSession AbpSession,
-            ISqlExecuter sqlExecuter, IRepository<Entity.CommonSpecValue, long> valueRepository)
+            ISqlExecuter sqlExecuter, IRepository<Entity.CommonSpecValue, long> valueRepository,
+            IRepository<Entity.CommonSpecObject, long> objectRepository)
 
         {
             _Repository = Repository;
             _AbpSession = AbpSession;
             _sqlExecuter = sqlExecuter;
             _valueRepository = valueRepository;
+            _objectRepository = objectRepository;
         }
-
-
         public async Task CreateOrEditAsync(CreateOrEdit cat)
         {
             cat.Spec.TenantId = AbpSession.TenantId ?? 0;
@@ -70,7 +71,7 @@ namespace UnionMall.Common.CommonSpec
         {
             CreateOrEdit s = new CreateOrEdit();
             s.Spec = await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
-            s.ValueList = await _valueRepository.GetAllListAsync(c=>c.SpecId== Id);
+            s.ValueList = await _valueRepository.GetAllListAsync(c => c.SpecId == Id);
             return s;
         }
 
@@ -81,9 +82,32 @@ namespace UnionMall.Common.CommonSpec
             return query;
         }
 
-        public Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
+        public async Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            string sql = $@"select s.Id,s.Name,
+stuff((select  cast(i.id as nvarchar)+'|', i.Text +','  from dbo.TCommonSpecValue i
+ left join dbo.TCommonSpec f on i.SpecId=f.Id
+ where s.Id=f.Id
+for xml path('')),1,0,'') VName
+from TCommonSpec s  
+where s.CategoryId={categoryId}";
+            DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            foreach (DataRow item in dt.Rows)
+            {
+                sb.Append($@"<div class='goodsTypeItem'>
+                <b>{item["Name"]}：</b>");
+                for (int i = 0; i < item["VName"].ToString().Split(',').Length; i++)
+                {
+                    if (item["VName"].ToString().Split(',')[i] == "")
+                        continue;
+                    sb.Append($@"&nbsp;<span class='simple_tag' data-specid='{item["Id"]}' data-objid='{item["VName"].ToString().Split(',')[i].Split('|')[0]}'
+onclick=""select(this,'{item["Name"]}','{item["VName"].ToString().Split(',')[i].Split('|')[0]}');"">{item["VName"].ToString().Split(',')[i].Split('|')[1]}</span>");
+                }
+                sb.Append($@"</div>");
+            }
+
+            return sb.ToString();
         }
 
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")

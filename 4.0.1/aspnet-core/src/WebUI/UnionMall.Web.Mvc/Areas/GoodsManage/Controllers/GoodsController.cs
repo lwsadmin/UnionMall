@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.Business;
 using UnionMall.Common;
 using UnionMall.Common.Attribute;
+using UnionMall.Common.CommonSpec;
 using UnionMall.Controllers;
 using UnionMall.Entity;
 using UnionMall.Goods;
@@ -30,11 +31,11 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         private readonly IChainStoreAppService _storeAppService;
         private readonly IImageAppService _imgAppService;
         private readonly ICommonAttributeAppService _attrAppService;
-
+        private readonly ICommonSpecAppService _specAppService;
         public GoodsController(IGoodsAppService AppService,
             ICommonAppService comService, IAbpSession abpSession,
             IGoodsCategoryAppService catAppService, IBrandAppService brandAppService, IImageAppService imgAppService,
-            IChainStoreAppService storeAppService, ICommonAttributeAppService attrAppService)
+            IChainStoreAppService storeAppService, ICommonAttributeAppService attrAppService, ICommonSpecAppService specAppService)
         {
             _AppService = AppService;
             _AbpSession = abpSession;
@@ -44,6 +45,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             _storeAppService = storeAppService;
             _imgAppService = imgAppService;
             _attrAppService = attrAppService;
+            _specAppService = specAppService;
         }
         public async Task<IActionResult> List(string goodsName, string storeId, string categoryId,
           string brandId, string type, string status, int page = 1, int pageSize = 10)
@@ -144,7 +146,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
 
         public async Task<IActionResult> GetSpec(long catid, long goodsId)
         {
-            ViewBag.Attr = await _attrAppService.GetHtmlAttr(catid, goodsId);
+            ViewBag.Spec = await _specAppService.GetHtmlAttr(catid, goodsId);
 
             return View("_AddSpec");
         }

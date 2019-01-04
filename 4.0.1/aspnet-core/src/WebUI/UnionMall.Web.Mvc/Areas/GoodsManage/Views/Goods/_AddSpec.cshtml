@@ -3,99 +3,80 @@
     Layout = null;
 }
 <div class="form-horizontal">
-    <div class="form-group">
-        <label class="col-sm-2 control-label">机身颜色</label>
-        <div class="col-sm-10">
-            <button type="button" onclick="select(this,'机身颜色','玫瑰金')" class="btn btn-default dim btn-sm">玫瑰金</button>
-            <button type="button" onclick="select(this,'机身颜色','土豪金')" class="btn btn-default dim btn-sm">土豪金</button>
-            <button type="button" onclick="select(this,'机身颜色','梦幻紫')" class="btn btn-default dim btn-sm">梦幻紫</button>
+    <div class="goodsAdd">
+        <div class="goodsType">
+            @Html.Raw(ViewBag.Spec)
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">内存</label>
-        <div class="col-sm-10">
-            <button type="button" onclick="select(this,'内存','4G')" class="btn btn-default dim btn-sm">4G</button>
-            <button type="button" onclick="select(this,'内存','6G')"  class="btn btn-default dim btn-sm">6G</button>
-            <button type="button" onclick="select(this,'内存','8G')" class="btn btn-default dim btn-sm">8G</button>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">存储空间</label>
-        <div class="col-sm-10">
-            <button type="button" onclick="select(this,'存储空间','16G')" class="btn btn-default dim btn-sm">16G</button>
-            <button type="button" onclick="select(this,'存储空间','64G')" class="btn btn-default dim btn-sm">64G</button>
-            <button type="button" onclick="select(this,'存储空间','128G')" class="btn btn-default dim btn-sm">128G</button>
-        </div>
+        <div class="hr-line-dashed"></div>
+        <table class="goodsLists table"></table>
+        <label onclick="submit()" type="button" class="submit">提交</label>
     </div>
 </div>
 <script>
-    /* 传入的JSON格式数据 */
-    var goodsTypeData = {
-        "颜色": ["红色", "绿色", "黄色", "蓝色"],
-        "尺码": ["S", "M", "L"],
-        "布料": ["蚕丝", "纯棉", "羽绒"],
-        "产地": ["广州", "浙江", "绵阳"]
-    };
 
     /* 提交数据 */
     function submit() {
         var result = [];
-        var th = document.querySelectorAll('th');
-        var thName = [];
-        th.forEach(function (e) {
-            thName.push(e.innerText);
-        })
-        var tr = document.querySelectorAll('tr');
-        for (var i = 1, len = tr.length; i < len; i++) {
-            var td = tr[i].children;
-            var jsonStr = "{";
-            for (var j = 0, length = td.length; j < length; j++) {
-
-                if (j < th.length - 3) {
-                    jsonStr += '"' + thName[j] + '":"' + td[j].innerText + '",'
-                } else {
-                    jsonStr += '"' + thName[j] + '":"' + td[j].children[0].value + '",'
-                }
-
+        $(".goodsLists").find("tr").each(function () {
+            var tr = $(this);
+            if (tr.find("td").html() != undefined) {
+                var objValue = {
+                    objectId: $("input[name='Id']").val(),
+                    type: 0,
+                    image: '',
+                    price: tr.find("input[name='price']").val(),
+                    retailPrice: tr.find("input[name='RetailPrice']").val(),
+                    stock: tr.find("input[name='Stock']").val(),
+                    sPU: tr.find("input[name='SPU']").val(),
+                };
+                $(this).find("td").each(function () {
+                    var valueText = "";
+                    if ($(this).attr("data-value") != undefined) {
+                       
+                    }
+                });
+                result.push(objValue);
             }
-            jsonStr = jsonStr.substr(0, jsonStr.length - 1)
-            jsonStr += "}"
-            result.push(JSON.parse(jsonStr))
-        }
-
+        });
         console.log(result)
+        //var th = document.querySelectorAll('th');
+        //var thName = [];
+        //th.forEach(function (e) {
+        //    thName.push(e.innerText);
+        //})
+        //var tr = document.querySelectorAll('tr');
+        //for (var i = 1, len = tr.length; i < len; i++) {
+        //    var td = tr[i].children;
+        //    var jsonStr = "{";
+        //    for (var j = 0, length = td.length; j < length; j++) {
+
+        //        if (j < th.length - 3) {
+        //            jsonStr += '"' + thName[j] + '":"' + td[j].innerText + '",'
+        //        } else {
+        //            jsonStr += '"' + thName[j] + '":"' + td[j].children[0].value + '",'
+        //        }
+
+        //    }
+        //    jsonStr = jsonStr.substr(0, jsonStr.length - 1)
+        //    jsonStr += "}"
+        //    result.push(JSON.parse(jsonStr))
+        //}
+
+
     }
-
-
-
-
     var subData = {};
     var showData = [];
     var goodsType = document.querySelector(".goodsType");
     var goodTypeStr = "";
-    //renderType();
-
-
-    /* 把类型数据渲染出来 */
-    //function renderType() {
-    //    for (var e in goodsTypeData) {
-    //        var str = "<b>" + e + ": </b>";
-    //        for (var i = 0, len = goodsTypeData[e].length; i < len; i++) {
-    //            str += "<button onclick=select(this,'" + e + "','" + goodsTypeData[e][i] + "')>" + goodsTypeData[e][i] + "</button>"
-    //        }
-    //        goodsType.innerHTML += "<div class='goodsTypeItem'>" + str + "</div>";
-    //    }
-    //}
 
     //点击商品类型效果
     function select(ele, e, val) {
-        debugger;
-        if (ele.className == "") {
-            ele.className = "active";
-            typeAdd(e, val);
-        } else if (ele.className == "active") {
-            ele.className = "";
+        if ($(ele).hasClass("active")) {
+            $(ele).removeClass("active");
             typeDel(e, val);
+        } else {
+            $(ele).addClass("active");
+            typeAdd(e, val);
         }
     }
 
@@ -161,20 +142,18 @@
 
         var th = "<tr>";
         var showArr = [];
+
         for (var i = 0, len = showData.length; i < len; i++) {
             th += "<th>" + showData[i].key + "</th>";
             showArr.push(showData[i].val);
         }
-        th += "<th>价格</th><th>数量</th><th>SKU</th> </tr>";
-
-
-
+        th += "<th>@L("Price")</th><th>@L("RetailPrice")</th><th>@L("Count")</th><th>SKU</th> </tr>";
         /* 将商品转换为dom节点 */
         for (var i = 0, len = showData.length; i < len; i++) {
             var data = showData[i].val;
             showData[i].dom = [];
             for (var j = 0, length = data.length; j < length; j++) {
-                var str = "<td >" + data[j] + "</td>";
+                var str = "<td data-value='" + data[j] + "'>" + $("span[data-objid='" + data[j]+"']").html() + "</td>";
                 showData[i].dom.push(str);
             }
         }
@@ -184,15 +163,13 @@
         for (var i = 1, len = showData.length; i < len; i++) {
             doms = matching(doms, showData[i].dom)
         }
-
-
         var tbody = "";
         for (var i = 0, len = doms.length; i < len; i++) {
-            var str = "<tr>" + doms[i] + "<td><input type='number' /></td><td><input type='number' /></td><td><input type='text' /></td>" + "</tr>";
+            var str = "<tr>" + doms[i] + "<td><input type='number' name='price' /></td>\
+                <td> <input type='number' name='RetailPrice' /></td>\
+                <td> <input type='number'name='Stock' /></td> <td><input type='text' name=SKU /></td>" + "</tr > ";
             tbody += str;
         }
-
-
         var goodsLists = document.querySelector(".goodsLists");
         goodsLists.innerHTML = th + tbody;
 
@@ -210,4 +187,3 @@
         return arr;
     }
 </script>
-
