@@ -14,10 +14,10 @@ namespace UnionMall.Common.CommonSpec
 {
     public class SpecValueAppService : ApplicationService, ISpecValueAppService
     {
-        private readonly IRepository<Entity.CommonSpecValue, long> _Repository;
+        private readonly IRepository<Entity.CommonSpecValue, Guid> _Repository;
         private readonly IAbpSession _AbpSession;
         private readonly ISqlExecuter _sqlExecuter;
-        public SpecValueAppService(IRepository<Entity.CommonSpecValue, long> Repository, IAbpSession AbpSession,
+        public SpecValueAppService(IRepository<Entity.CommonSpecValue, Guid> Repository, IAbpSession AbpSession,
             ISqlExecuter sqlExecuter)
 
         {
@@ -28,7 +28,7 @@ namespace UnionMall.Common.CommonSpec
 
         public async Task AddOrEdit(CommonSpecValue value)
         {
-            if (value.Id > 0)
+            if (value.Id !=Guid.Empty)
             {
                 await _Repository.UpdateAsync(value);
             }
@@ -38,7 +38,7 @@ namespace UnionMall.Common.CommonSpec
             }
         }
 
-        public async Task Delete(long id)
+        public async Task Delete(Guid id)
         {
             var query = _Repository.FirstOrDefault(c => c.Id == id);
             if (query != null)
@@ -47,7 +47,7 @@ namespace UnionMall.Common.CommonSpec
             }
         }
 
-        public async Task<List<CommonSpecValue>> GetBySpecId(long id)
+        public async Task<List<CommonSpecValue>> GetBySpecId(Guid id)
         {
             return await _Repository.GetAllListAsync(c => c.SpecId == id);
         }

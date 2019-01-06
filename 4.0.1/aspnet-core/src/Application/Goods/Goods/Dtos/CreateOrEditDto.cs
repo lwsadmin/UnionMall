@@ -9,6 +9,6 @@ namespace UnionMall.Goods.Dto
     {
         public Entity.Goods Goods { get; set; }
         public List<Entity.Image> ImageList { get; set; }
-
+        public List<Entity.CommonSpecObject> ValueList { get; set; }
     }
 }

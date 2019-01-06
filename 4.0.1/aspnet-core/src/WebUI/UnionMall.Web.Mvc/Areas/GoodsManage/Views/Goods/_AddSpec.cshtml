@@ -7,67 +7,34 @@
         <div class="goodsType">
             @Html.Raw(ViewBag.Spec)
         </div>
-        <div class="hr-line-dashed"></div>
-        <table class="goodsLists table"></table>
-        <label onclick="submit()" type="button" class="submit">提交</label>
+        @*<div class="hr-line-dashed"></div>
+            <table class="goodsLists table"></table>*@
+        @*<label onclick="submit()" type="button" class="submit">提交</label>*@
     </div>
 </div>
 <script>
-
-    /* 提交数据 */
-    function submit() {
-        var result = [];
-        $(".goodsLists").find("tr").each(function () {
-            var tr = $(this);
-            if (tr.find("td").html() != undefined) {
-                var objValue = {
-                    objectId: $("input[name='Id']").val(),
-                    type: 0,
-                    image: '',
-                    price: tr.find("input[name='price']").val(),
-                    retailPrice: tr.find("input[name='RetailPrice']").val(),
-                    stock: tr.find("input[name='Stock']").val(),
-                    sPU: tr.find("input[name='SPU']").val(),
-                };
-                $(this).find("td").each(function () {
-                    var valueText = "";
-                    if ($(this).attr("data-value") != undefined) {
-                       
-                    }
-                });
-                result.push(objValue);
-            }
-        });
-        console.log(result)
-        //var th = document.querySelectorAll('th');
-        //var thName = [];
-        //th.forEach(function (e) {
-        //    thName.push(e.innerText);
-        //})
-        //var tr = document.querySelectorAll('tr');
-        //for (var i = 1, len = tr.length; i < len; i++) {
-        //    var td = tr[i].children;
-        //    var jsonStr = "{";
-        //    for (var j = 0, length = td.length; j < length; j++) {
-
-        //        if (j < th.length - 3) {
-        //            jsonStr += '"' + thName[j] + '":"' + td[j].innerText + '",'
-        //        } else {
-        //            jsonStr += '"' + thName[j] + '":"' + td[j].children[0].value + '",'
-        //        }
-
-        //    }
-        //    jsonStr = jsonStr.substr(0, jsonStr.length - 1)
-        //    jsonStr += "}"
-        //    result.push(JSON.parse(jsonStr))
-        //}
-
-
-    }
     var subData = {};
     var showData = [];
     var goodsType = document.querySelector(".goodsType");
-    var goodTypeStr = "";
+    //初始化
+    if ($(".simple_tag").length>0) {
+        $(".simple_tag").each(function () {
+            if ($(this).hasClass("active")) {
+                var exist = false;
+                for (var type in subData) {
+                    if (type == $(this).attr("data-spec")) {
+                        exist = true;
+                        subData[type].push($(this).attr("data-objid"));
+                    }
+                }
+                if (exist == false) {
+                    subData[ $(this).attr("data-spec")] = [];
+                    subData[$(this).attr("data-spec")].push($(this).attr("data-objid"));
+                }
+            }
+        });
+    }
+
 
     //点击商品类型效果
     function select(ele, e, val) {
@@ -107,6 +74,10 @@
                 }
             }
         }
+        if ($("span.active").length == 0) {
+            $(".goodsLists").find("tbody").html('');
+            return;
+        }
         renders(subData)
     }
 
@@ -120,7 +91,7 @@
                 sort.push(data[key].length)
             }
         }
-        sort.sort();
+      //  sort.sort();
         var length = sort.length;
         for (var i = 0; i < length; i++) {
             for (var key in data) {
@@ -134,7 +105,7 @@
             }
         }
 
-        /* 排序结束 */
+    /* 排序结束 */
         var nums = 1;
         for (var key in data) {
             nums = data[key].length * nums;
@@ -142,7 +113,6 @@
 
         var th = "<tr>";
         var showArr = [];
-
         for (var i = 0, len = showData.length; i < len; i++) {
             th += "<th>" + showData[i].key + "</th>";
             showArr.push(showData[i].val);
@@ -153,11 +123,12 @@
             var data = showData[i].val;
             showData[i].dom = [];
             for (var j = 0, length = data.length; j < length; j++) {
-                var str = "<td data-value='" + data[j] + "'>" + $("span[data-objid='" + data[j]+"']").html() + "</td>";
+                var str = "<td data-spec=\"" + $("span[data-objid='" + data[j] + "']").attr("data-specid") + "\"\
+ data-value=\"" + data[j] + "\">" + $("span[data-objid='" + data[j] + "']").html() + "</td>";
+
                 showData[i].dom.push(str);
             }
         }
-
         /* 将dom元素一一合并 */
         var doms = showData[0].dom;
         for (var i = 1, len = showData.length; i < len; i++) {
@@ -165,13 +136,47 @@
         }
         var tbody = "";
         for (var i = 0, len = doms.length; i < len; i++) {
+            //var exists = false;
+            //$(".goodsLists").find("tr").not().each(function () {
+            //    if ($(this).find("th").html() == undefined) {
+            //        debugger;
+            //        if (String($(this).html()).indexOf(doms[i]) > -1) {
+            //            exists = true;
+            //        }
+            //    }
+            //    if (exists) {
+            //        return false;
+            //    }
+            //});
+            //if (exists) {
+            //    continue;
+            //}
+
             var str = "<tr>" + doms[i] + "<td><input type='number' name='price' /></td>\
                 <td> <input type='number' name='RetailPrice' /></td>\
                 <td> <input type='number'name='Stock' /></td> <td><input type='text' name=SKU /></td>" + "</tr > ";
+
             tbody += str;
         }
+
         var goodsLists = document.querySelector(".goodsLists");
-        goodsLists.innerHTML = th + tbody;
+        if ($(".goodsLists").find("th").html() == undefined) {
+            tbody= th + tbody;
+         }
+
+        if ($("input[name='Id']").val() != "0" && $("input[name='Id']").val()!= "") {
+            $(".goodsLists").find("tbody").append(tbody);
+        } else {
+            //if ($(".goodsLists").find("th").html() == undefined) {
+            //    goodsLists.innerHTML = th + tbody;
+            //} else {
+            //    $(".goodsLists").find("tbody").append(tbody);
+
+            //}
+            goodsLists.innerHTML +=  tbody;
+
+        }
+
 
     }
 

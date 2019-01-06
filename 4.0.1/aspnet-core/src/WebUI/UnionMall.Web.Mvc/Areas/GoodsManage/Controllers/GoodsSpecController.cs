@@ -46,21 +46,21 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             return View(pageList);
         }
 
-        public async Task<IActionResult> Add(long? id)
+        public async Task<IActionResult> Add(Guid? id)
         {
             ViewBag.Category = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
             if (id == null)
             {
-                var s = _AppService.GetByIdAsync((long)id);
+                var s = _AppService.GetByIdAsync((Guid)id);
 
                 return PartialView("_Add", s);
             }
-            var dtos = await _AppService.GetByIdAsync((long)id);
-            var list = await _valueAppService.GetBySpecId((long)id);
+            var dtos = await _AppService.GetByIdAsync((Guid)id);
+            var list = await _valueAppService.GetBySpecId((Guid)id);
             string str = string.Empty;
             foreach (var item in list)
             {
-                str += $@"<li><a href='javascript:void(0);'>{item.Text}</a>
+                str += $@"<li><a href='javascript:void(0);' data-id='{item.Id}'>{item.Text}</a>
                                                 <button onclick='RemoveItem(this);' type='button' class='close'>
                                                     <span aria-hidden= 'true' >×</span><span class='sr-only'>Close</span>
                                                 </button>

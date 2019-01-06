@@ -3,7 +3,7 @@
     $("#add").click(function () {
         $(".modal-title").html('');
         $("#Memo").val('');
-        $("input[name='Id']").val(0);
+        $("input[name='Id']").val("00000000-0000-0000-0000-000000000000");
         $("input[name='Name']").val("");
         $("input[name='Text']").val("");
         $("#ul_li").html('');
@@ -27,7 +27,7 @@ var Save = function (e) {
     var valueList = [];
     EditDto.spec = spec;
     $("#ul_li").find("li").each(function () {
-        valueList.push({ text: $(this).find("a").html() });
+        valueList.push({ id: $(this).find("a").attr("data-id"),text: $(this).find("a").html() });
     });
     EditDto.valueList = valueList;
     _Service.createOrEdit(EditDto).done(function (data) {
@@ -47,7 +47,7 @@ function SetValue() {
         $("input[name='Text']").focus();
         return;
     }
-    $("#ul_li").append("<li><a href='javascript:void(0);'>" + $("input[name='Text']").val() + "</a><button type='button' class='close'>\
+    $("#ul_li").append("<li><a href='javascript:void(0);' data-id='00000000-0000-0000-0000-000000000000'>" + $("input[name='Text']").val() + "</a><button type='button' class='close'>\
             <span aria-hidden='true' >×</span><span class='sr-only'>Close</span></button></li>");
     $("input[name='Text']").val("").focus();
 

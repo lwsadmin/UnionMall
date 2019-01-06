@@ -7,7 +7,7 @@ using System.Text;
 namespace UnionMall.Entity
 {
     [Table("TCommonSpec")]
-    public class CommonSpec : Entity<long>, IMustHaveTenant
+    public class CommonSpec : Entity<Guid>, IMustHaveTenant
     {
         public int TenantId { get; set; }
         public long CategoryId { get; set; }

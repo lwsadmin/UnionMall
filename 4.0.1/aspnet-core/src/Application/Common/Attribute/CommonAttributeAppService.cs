@@ -90,7 +90,7 @@ namespace UnionMall.Common.Attribute
                         str.Append($@"<div class='form-group'>
                                 <label class='col-sm-2 control-label'>{item.Name}</label>
                                 <div class='col-sm-5'><input type = 'text' name='{item.ValueName}' 
-value='{(dtGoods == null ? "" : dtGoods.Rows[0][item.ValueName].ToString())}' class='form-control' required></div>
+value='{(dtGoods == null ? "" : dtGoods.Rows[0][item.ValueName].ToString())}' class='form-control'></div>
                             </div>");
                         break;
                     case "Radio":

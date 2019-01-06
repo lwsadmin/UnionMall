@@ -3,6 +3,7 @@ using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Common.CommonSpec;
@@ -36,13 +37,11 @@ namespace UnionMall.Common.CommonSpecObject
             }
         }
 
-        public async Task Delete(long id)
+        public async Task Delete(Expression<Func<Entity.CommonSpecObject, bool>> c)
         {
-            var query = _Repository.FirstOrDefault(c => c.Id == id);
-            if (query != null)
-            {
-                await _Repository.DeleteAsync(query);
-            }
+   
+                await _Repository.DeleteAsync(c);
+            
         }
 
         public async Task<List<Entity.CommonSpecObject>> GetByObjectId(long id, int Type = 0)

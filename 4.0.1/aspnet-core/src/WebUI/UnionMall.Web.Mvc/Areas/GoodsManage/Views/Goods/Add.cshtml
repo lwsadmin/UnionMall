@@ -28,12 +28,13 @@
     .chosen-container {
         line-height: 22px;
     }
+
     .dim {
         box-shadow: none !important;
-        font-weight:normal !important;
+        font-weight: normal !important;
     }
 
-    input {
+    .goodsLists input {
         text-align: center;
     }
 
@@ -62,26 +63,27 @@
                     padding: 10px;
                 }
 
-                .form-horizontal .active {
-                    background-color: #449D44;
-                    color: #fff;
-                }
+    .form-horizontal .active {
+        background-color: #449D44;
+        color: #fff;
+    }
 
-        .goodsAdd .goodsLists {
-            border-collapse: collapse;
+    .goodsAdd .goodsLists {
+        border-collapse: collapse;
+    }
+
+        .goodsAdd .goodsLists td, .goodsAdd .goodsLists th {
+            border: 1px solid #f4f4f4;
         }
 
-            .goodsAdd .goodsLists td, .goodsAdd .goodsLists th {
-                border: 1px solid #f4f4f4;
-            }
-
-        .goodsAdd .submit {
-            position: fixed;
-            right: 10%;
-            top: 50%;
-        }
+    .goodsAdd .submit {
+        position: fixed;
+        right: 10%;
+        top: 50%;
+    }
 </style>
 <div class="wrapper wrapper-content animated fadeInRight">
+
     <form class="form-inline" id="attrForm" data-ajax="true" data-ajax-update="#attrTable" action="/goodsmanage/goods/GetAttr" method="post"></form>
     <form class="form-inline" id="specForm" data-ajax="true" data-ajax-update="#specTable" action="/goodsmanage/goods/GetSpec" method="post"></form>
     <div class="ibox-content">
@@ -218,6 +220,7 @@
                             @Html.Partial("_AddImage", Model)
                         </div>
                     </div>
+                    <input type="hidden" id="NowCatId" value="" />
                     <div id="GoodsAttr" class="tab-pane fade" aria-labelledby="GoodsAttr-tab">
                         <div class="panel-body" id="attrTable">
                             @Html.Partial("_AddAttr")
@@ -258,17 +261,31 @@
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         // e.target // newly activated tab
         if (String(e.target).indexOf("GoodsAttr") != -1) {
-            if ($("#Goods_CategoryId").val()!="") {
+            if ($("#Goods_CategoryId").val() != "" && $("#NowCatId").val() != $("#Goods_CategoryId").val()) {
                 //$("#searchForm").attr("data-ajax-update", "#tableChat");
                 $("#attrForm").attr("action", "/goodsmanage/goods/GetAttr?goodsId="+$("input[name='Id']").val()+"&catid=" + $("#Goods_CategoryId").val());
                 $("#attrForm").submit();
             }
+            $("#attrTable").find("input").each(function () {
+                if ($(this).val() == "") {
+                    $(this).focus();
+                    return false;
+                }
+            });
         }
         if (String(e.target).indexOf("GoodsSpec") != -1) {
+
+            $("#specTable").html('');
             if ($("#Goods_CategoryId").val() != "") {
                 $("#specForm").attr("action", "/goodsmanage/goods/GetSpec?goodsId=" + $("input[name='Id']").val() + "&catid=" + $("#Goods_CategoryId").val());
                 $("#specForm").submit();
             }
+            $(".goodsLists").find("input").each(function () {
+                if ($(this).val() == "") {
+                    $(this).focus();
+                    return false;
+                }
+            });
         }
     })
     $(function () {
@@ -309,31 +326,77 @@
         //上传成功后处理方法
         $("#input").on("fileuploaded", function (event, data, previewId, index) {
             var url = data.response.result.url;
-            debugger;
             $("input[name='Image']").val(url);
             //$(".hid" + index).val(url).addClass(previewId);
         });
 
         var _Service = abp.services.app.goods;
         $("#formPost").on("submit", function (e) {
+
             e.preventDefault();
             if (!$(this).valid()) {
+                if (String($("#myTabs .active a").attr("href")).indexOf("basic") == -1) {
+                    $("a[href='#basic']").tab('show');
+                }
                 return;
             }
             if ($("#Goods_CategoryId").val() == "") {
+                if (String($("#myTabs .active a").attr("href")).indexOf("basic") == -1) {
+                    $("a[href='#basic']").tab('show');
+                }
                 $("#Goods_CategoryId").trigger("chosen:open");
                 return;
             }
             if ($("#Goods_BrandId").val() == "") {
+                if (String($("#myTabs .active a").attr("href")).indexOf("basic") == -1) {
+                    $("a[href='#basic']").tab('show');
+                }
                 $("#Goods_BrandId").trigger("chosen:open");
                 return;
             }
             if ($("#Goods_ChainStoreId").val() == "") {
+                if (String($("#myTabs .active a").attr("href")).indexOf("basic") == -1) {
+                    $("a[href='#basic']").tab('show');
+                }
                 $("#Goods_ChainStoreId").trigger("chosen:open");
                 return;
             }
             if ($("#Goods_Type").val() == "") {
+                if (String($("#myTabs .active a").attr("href")).indexOf("basic") == -1) {
+                    $("a[href='#basic']").tab('show');
+                }
                 $("#Goods_Type").trigger("chosen:open");
+                return;
+            }
+            var arrValid = true, specValid = true;
+            $("#attrTable").find("input").each(function () {
+                if ($(this).val() == "") {
+                    arrValid = false;
+                    if (String($("#myTabs .active a").attr("href")).indexOf("GoodsAttr") == -1) {
+                        $("a[href='#GoodsAttr']").tab('show');
+                        return false;
+                    }
+                    arrValid = false;
+                    $(this).focus();
+                    return false;
+                }
+            });
+            if (arrValid == false) {
+                return;
+            }
+            $(".goodsLists").find("input").each(function () {
+                if ($(this).val() == "") {
+                    specValid = false;
+                    if (String($("#myTabs .active a").attr("href")).indexOf("GoodsSpec") == -1) {
+                        $("a[href='#GoodsSpec']").tab('show');
+                        return false;
+                    }
+                    arrValid = false;
+                    $(this).focus();
+                    return false;
+                }
+            });
+            if (specValid == false) {
                 return;
             }
             var goods = $(this).serializeFormToObject();
@@ -359,8 +422,30 @@
                 });
             }
             EditDto.imageList = imgArray;
-            //debugger;
-            //return;
+            var result = [];
+            $(".goodsLists").find("tr").each(function () {
+                var tr = $(this);
+                if (tr.find("td").html() != undefined) {
+                    var objValue = {
+                        objectId: $("input[name='Id']").val(),
+                        type: 0,
+                        image: '',
+                        price: tr.find("input[name='price']").val(),
+                        retailPrice: tr.find("input[name='RetailPrice']").val(),
+                        stock: tr.find("input[name='Stock']").val(),
+                        sKU: tr.find("input[name='SKU']").val(),
+                    };
+                    var valueText = "";
+                    $(this).find("td").each(function () {
+                        if ($(this).attr("data-value") != undefined) {
+                            valueText += (($(this).attr("data-spec") + ":" + $(this).attr("data-value") + ','));
+                        }
+                    });
+                    objValue.valueText = valueText;
+                    result.push(objValue);
+                }
+            });
+            EditDto.valueList = result;
             _Service.createOrEdit(EditDto).done(function (data) {
                 var url = sessionStorage.getItem("page");
                 if (url != "" && url != undefined) {

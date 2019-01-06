@@ -2,6 +2,7 @@
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,13 +17,13 @@ namespace UnionMall.Common.CommonSpec
 {
     public class CommonSpecAppService : ApplicationService, ICommonSpecAppService
     {
-        private readonly IRepository<Entity.CommonSpec, long> _Repository;
+        private readonly IRepository<Entity.CommonSpec, Guid> _Repository;
         private readonly IAbpSession _AbpSession;
         private readonly ISqlExecuter _sqlExecuter;
-        private readonly IRepository<Entity.CommonSpecValue, long> _valueRepository;
+        private readonly IRepository<Entity.CommonSpecValue, Guid> _valueRepository;
         private readonly IRepository<Entity.CommonSpecObject, long> _objectRepository;
-        public CommonSpecAppService(IRepository<Entity.CommonSpec, long> Repository, IAbpSession AbpSession,
-            ISqlExecuter sqlExecuter, IRepository<Entity.CommonSpecValue, long> valueRepository,
+        public CommonSpecAppService(IRepository<Entity.CommonSpec, Guid> Repository, IAbpSession AbpSession,
+            ISqlExecuter sqlExecuter, IRepository<Entity.CommonSpecValue, Guid> valueRepository,
             IRepository<Entity.CommonSpecObject, long> objectRepository)
 
         {
@@ -31,12 +32,13 @@ namespace UnionMall.Common.CommonSpec
             _sqlExecuter = sqlExecuter;
             _valueRepository = valueRepository;
             _objectRepository = objectRepository;
+            LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
         }
         public async Task CreateOrEditAsync(CreateOrEdit cat)
         {
             cat.Spec.TenantId = AbpSession.TenantId ?? 0;
-            long id = 0;
-            if (cat.Spec.Id > 0)
+            Guid id = Guid.Empty;
+            if (cat.Spec.Id != Guid.Empty || cat.Spec.Id.ToString() == "")
             {
                 id = cat.Spec.Id;
                 await _Repository.UpdateAsync(cat.Spec);
@@ -47,17 +49,28 @@ namespace UnionMall.Common.CommonSpec
             }
             if (cat.ValueList.Count > 0)
             {
-                await _valueRepository.DeleteAsync(c => c.SpecId == id);
+                // await _valueRepository.DeleteAsync(c => c.SpecId == id);
                 foreach (var item in cat.ValueList)
                 {
                     item.SpecId = id;
-                    await _valueRepository.InsertAsync(item);
+                    if (item.Id == Guid.Empty)
+                    {
+                        await _valueRepository.InsertAsync(item);
+                    }
+                    else
+                    {
+                        var q = _valueRepository.Get(item.Id);
+                        q.Text = item.Text;
+                        await _valueRepository.UpdateAsync(q);
+
+                    }
+
                 }
             }
 
         }
 
-        public async Task Delete(long id)
+        public async Task Delete(Guid id)
         {
             var query = _Repository.FirstOrDefault(c => c.Id == id);
             if (query != null)
@@ -67,7 +80,7 @@ namespace UnionMall.Common.CommonSpec
             }
         }
 
-        public async Task<CreateOrEdit> GetByIdAsync(long Id)
+        public async Task<CreateOrEdit> GetByIdAsync(Guid Id)
         {
             CreateOrEdit s = new CreateOrEdit();
             s.Spec = await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
@@ -86,13 +99,33 @@ namespace UnionMall.Common.CommonSpec
         {
             StringBuilder sb = new StringBuilder();
             string sql = $@"select s.Id,s.Name,
-stuff((select  cast(i.id as nvarchar)+'|', i.Text +','  from dbo.TCommonSpecValue i
+stuff((select  cast(i.id as nvarchar(150))+'|', i.Text +','  from dbo.TCommonSpecValue i
  left join dbo.TCommonSpec f on i.SpecId=f.Id
  where s.Id=f.Id
 for xml path('')),1,0,'') VName
 from TCommonSpec s  
 where s.CategoryId={categoryId}";
             DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                return sb.ToString();
+            }
+            DataTable objTable = null;
+            if (goodsId > 0)
+            {
+                string objSql = $@"select ValueText,Image,cast(Price as float) Price,cast(RetailPrice as float) RetailPrice,Stock,SKU from TCommonSpecObject where type=0 and ObjectId={goodsId}";
+                objTable = _sqlExecuter.ExecuteDataSet(objSql).Tables[0];
+            }
+            string valueText = string.Empty;
+            if (objTable != null && objTable.Rows.Count > 0)
+            {
+                foreach (DataRow itemvValueText in objTable.Rows)
+                {
+                    valueText += $@"{itemvValueText["ValueText"]}";
+                }
+            }
+            string th = "";
+            Dictionary<string, string> dicDataText = new Dictionary<string, string>();
             foreach (DataRow item in dt.Rows)
             {
                 sb.Append($@"<div class='goodsTypeItem'>
@@ -101,11 +134,45 @@ where s.CategoryId={categoryId}";
                 {
                     if (item["VName"].ToString().Split(',')[i] == "")
                         continue;
-                    sb.Append($@"&nbsp;<span class='simple_tag' data-specid='{item["Id"]}' data-objid='{item["VName"].ToString().Split(',')[i].Split('|')[0]}'
+                    dicDataText.Add(item["VName"].ToString().Split(',')[i].Split('|')[0], item["VName"].ToString().Split(',')[i].Split('|')[1]);
+                    sb.Append($@"&nbsp;<span class='simple_tag {(valueText.Contains(item["VName"].ToString().Split(',')[i].Split('|')[0]) ? "active" : "")}' data-specid='{item["Id"]}' data-spec='{item["Name"]}' data-objid='{item["VName"].ToString().Split(',')[i].Split('|')[0]}'
 onclick=""select(this,'{item["Name"]}','{item["VName"].ToString().Split(',')[i].Split('|')[0]}');"">{item["VName"].ToString().Split(',')[i].Split('|')[1]}</span>");
                 }
                 sb.Append($@"</div>");
+                th += $"<th>{item["Name"]}</th>";
             }
+            th += $"<th>{L("Price")}</th><th>{L("RetailPrice")}</th><th>{L("Count")}</th><th>SKU</th>";
+            if (objTable == null || objTable.Rows.Count ==0)
+            {
+                th = "";
+                sb.AppendFormat($@"<div class=""hr-line-dashed""></div><table class=""goodsLists table""><tbody></tbody></table> ");
+                return sb.ToString();
+            }
+            sb.Append($@"<div class='hr-line-dashed'></div><table class='goodsLists table'><tbody><tr>{th}</tr>");
+
+            if (objTable != null && objTable.Rows.Count > 0)
+            {
+                foreach (DataRow itemvValueText in objTable.Rows)
+                {
+                    //<td data-spec='' data-value=''>玫瑰金</td>
+                    string[] array = itemvValueText["ValueText"].ToString().Split(",");
+                    sb.Append($@"<tr>");
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        if (array[i] == "")
+                            break;
+                        sb.Append($@"<td data-spec='{array[i].Split(":")[0]}' 
+data-value='{array[i].Split(":")[1]}'>{dicDataText.GetValueOrDefault(array[i].Split(":")[1])}</td>");
+                    }
+
+                    sb.Append($@"<td><input type='number' name='price' value='{itemvValueText["price"]}'></td>
+<td><input type='number' name='RetailPrice' value='{itemvValueText["RetailPrice"]}'></td>
+<td><input type='number' name='Stock' value='{itemvValueText["Stock"]}'></td>
+<td><input type='text' name='SKU' value='{itemvValueText["SKU"]}'></td>
+</tr>");
+                }
+            }
+            sb.Append($@"</tbody></div>");
 
             return sb.ToString();
         }

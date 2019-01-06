@@ -13,8 +13,8 @@ namespace UnionMall.Common.CommonSpec
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
         Task CreateOrEditAsync(CreateOrEdit cat);
-        Task<CreateOrEdit> GetByIdAsync(long Id);
-        Task Delete(long id);
+        Task<CreateOrEdit> GetByIdAsync(Guid Id);
+        Task Delete(Guid id);
         Task<List<SpecDropDown>> GetDropDown();
         Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0);
     }

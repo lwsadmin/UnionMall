@@ -321,6 +321,7 @@
     <text name="Integral" value="Integral" />
     <text name="Init" value="Init" />
     <text name="Price" value="Price" />
+    <text name="RetailPrice" value="RetailPrice" />
     <text name="RackRate" value="RackRate" />
     <text name="Sell" value="Sell" />
     <text name="Page" value="Page" />

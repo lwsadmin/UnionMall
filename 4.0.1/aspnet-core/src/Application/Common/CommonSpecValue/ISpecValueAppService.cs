@@ -10,8 +10,8 @@ namespace UnionMall.Common.CommonSpec
     public interface ISpecValueAppService : IApplicationService
     {
         Task<List<Entity.CommonSpecValue>> GetSelect();
-        Task<List<Entity.CommonSpecValue>> GetBySpecId(long id);
+        Task<List<Entity.CommonSpecValue>> GetBySpecId(Guid id);
         Task AddOrEdit(Entity.CommonSpecValue value);
-        Task Delete(long id);
+        Task Delete(Guid id);
     }
 }
