@@ -69,12 +69,18 @@ function SetInputData() {
     }
     var transaction = db.transaction("Spec", 'readwrite');
     var store = transaction.objectStore("Spec");
+    var i = 0;
     store.openCursor().onsuccess = function (event) {
         var cursor = event.target.result;
         if (cursor) {
+            i++;
+            console.log(i);
+            $(".goodsLists").find("tr:eq(" + i+")").each(function () {
 
-            $(".goodsLists").find("tr:gt(0)").each(function () {
-                alert($(this).html());
+                $(this).find("input[name='price']").val(cursor.value.Price);
+                $(this).find("input[name='RetailPrice']").val(cursor.value.RetailPrice);
+                $(this).find("input[name='Stock']").val(cursor.value.Stock);
+                $(this).find("input[name='SKU']").val(cursor.value.SKU);
             });
             cursor.continue();
         } else {
