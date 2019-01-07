@@ -7,9 +7,6 @@
         <div class="goodsType">
             @Html.Raw(ViewBag.Spec)
         </div>
-        @*<div class="hr-line-dashed"></div>
-            <table class="goodsLists table"></table>*@
-        @*<label onclick="submit()" type="button" class="submit">提交</label>*@
     </div>
 </div>
 <script>
@@ -60,7 +57,8 @@
             subData[e] = [];
             subData[e].push(val);
         }
-        renders(subData)
+        renders(subData);
+        SetInputData();
     }
 
     //删除一个类别
@@ -78,7 +76,8 @@
             $(".goodsLists").find("tbody").html('');
             return;
         }
-        renders(subData)
+        renders(subData);
+        SetInputData();
     }
 
     //根据最终数据, 渲染页面
@@ -160,6 +159,10 @@
         }
 
         var goodsLists = document.querySelector(".goodsLists");
+        goodsLists.innerHTML = th + tbody;
+        return;
+
+
         if ($(".goodsLists").find("th").html() == undefined) {
             tbody= th + tbody;
          }
@@ -191,4 +194,10 @@
         }
         return arr;
     }
+    $(function () {
+        clearObjectStore();
+        CreatDataToDataBase();
+    });
 </script>
+
+<script src="~/view-resources/Areas/GoodsManage/_addSpec.js"></script>
