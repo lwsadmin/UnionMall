@@ -24,6 +24,9 @@
         top: -5px;
         right: -5px;
     }
+    .swal2-container{
+        z-index:10000;
+    }
 </style>
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
@@ -122,4 +125,40 @@
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/GoodsManage/goods_spec.js"  asp-append-version="true"></script>
+<script>
+    function RemoveItem(btn) {
+        if ($(btn).siblings("a").attr("data-id") == "00000000-0000-0000-0000-000000000000") {
+            $(btn).parent("li").remove();
+        } else {
+            var _Service = abp.services.app.specValue;
+            var id = $(btn).siblings("a").attr("data-id");
+            var name = $(btn).siblings("a").html();
+            swal({
+                title: '@L("OK")@L("Delete")【' + name+'】?',
+                text: '',
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonText: '@L("OK")',
+                cancelButtonText: '@L("Cancel")'
+            }).then(function (isConfirm) {
+                if (isConfirm.value == true) {
+                    _Service.delete(id).done(function (data) {
+                        $(".pagination .active a").click();
+                        $("#Modal").modal('hide');
+                            toastr.options = {
+                                "closeButton": false,//是否配置关闭按钮
+                                "debug": false,//是否开启debug模式
+                                "newestOnTop": false,//新消息是否排在最上层
+                                "progressBar": true,//是否显示进度条
+                                "timeOut": "2000",//1.5s后关闭消息框
+                            }
+                            toastr.success('@L("Delete")@L("Success")!', '@L("Hint")');
+                        if ($(".pagination .active a").html() != undefined) {
 
+                        } else { $("#searchForm").submit(); }
+                    });
+                }
+            });
+        }
+    }
+</script>

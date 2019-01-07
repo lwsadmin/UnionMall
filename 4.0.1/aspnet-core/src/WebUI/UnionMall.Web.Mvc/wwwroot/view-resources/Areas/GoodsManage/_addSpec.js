@@ -33,7 +33,7 @@ function CreatDataToDataBase() {
 
         $(".goodsLists").find("tr").each(function () {
             i++;
-            var SpecInfo = {id: i};
+            var SpecInfo = {Id: i};
             if ($(this).find("input[name='price']").val() != undefined) { SpecInfo.Price = $(this).find("input[name='price']").val(); }
             else { return true; }
             if ($(this).find("input[name='RetailPrice']").val() != undefined) { SpecInfo.RetailPrice = $(this).find("input[name='RetailPrice']").val(); }

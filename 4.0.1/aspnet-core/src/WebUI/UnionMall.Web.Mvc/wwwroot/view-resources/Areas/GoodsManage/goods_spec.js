@@ -52,9 +52,7 @@ function SetValue() {
     $("input[name='Text']").val("").focus();
 
 }
-function RemoveItem(btn) {
-    $(btn).parent("li").remove();
-}
+
 function Delete(btn) {
     var _Service = abp.services.app.commonSpec;
     var id = $(btn).attr("data-id");

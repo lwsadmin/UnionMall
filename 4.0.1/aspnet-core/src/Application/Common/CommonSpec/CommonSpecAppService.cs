@@ -139,7 +139,12 @@ where s.CategoryId={categoryId}";
 onclick=""select(this,'{item["Name"]}','{item["VName"].ToString().Split(',')[i].Split('|')[0]}');"">{item["VName"].ToString().Split(',')[i].Split('|')[1]}</span>");
                 }
                 sb.Append($@"</div>");
-                th += $"<th>{item["Name"]}</th>";
+                if (valueText.Contains(item["Id"].ToString()))
+                {
+                    th += $"<th>{item["Name"]}</th>";
+
+                }
+ 
             }
             th += $"<th>{L("Price")}</th><th>{L("RetailPrice")}</th><th>{L("Count")}</th><th>SKU</th>";
             if (objTable == null || objTable.Rows.Count ==0)
