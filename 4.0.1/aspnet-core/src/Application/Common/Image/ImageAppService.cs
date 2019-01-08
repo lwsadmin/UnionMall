@@ -89,5 +89,10 @@ on i.ChainStoreId =c.id where 1=1 ";
                 }
             }
         }
+
+        public async Task DeleteBy(Expression<Func<Image, bool>> linq)
+        {
+            await _Repository.DeleteAsync(linq);
+        }
     }
 }

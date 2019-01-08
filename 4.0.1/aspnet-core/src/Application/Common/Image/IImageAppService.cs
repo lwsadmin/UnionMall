@@ -18,5 +18,6 @@ namespace UnionMall.Common
         Task CreateOrEditAsync(List<Image> imgList);
         Task Delete(long id);
         Task DeleteOnlyImg(string url);
+        Task DeleteBy(Expression<Func<Image, bool>> linq);
     }
 }

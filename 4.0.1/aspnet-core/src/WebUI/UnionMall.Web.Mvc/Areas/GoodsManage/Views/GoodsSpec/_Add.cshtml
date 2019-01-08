@@ -18,7 +18,7 @@
             <div class="modal-body">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="post" id="AddPost" class="form-horizontal">
+                        <form method="post" action="javascript:void(0);" id="AddPost" class="form-horizontal">
                             <input type="hidden" name="Id" value="@(Model.Spec!=null?Model.Spec.Id:Guid.Empty)" />
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">@L("Name")</label>
@@ -28,7 +28,7 @@
                                 <label class="col-sm-2 control-label">@L("GoodsCategory")</label>
                                 <div class="col-sm-9">
                                     <select class="form-control chosen-select" id="CategoryId" name="CategoryId">
-                                        <option value="" selected="selected">-@L("GoodsCategory")-</option>
+                                        <option value="0" >-@L("GoodsCategory")-</option>
                                         @foreach (var item in ViewBag.Category)
                                         {
                                             <option value="@item.Id">@item.Title</option>
@@ -77,6 +77,7 @@
         </div>
     </div>
 </div>
+
 <script>
 
     $("#Save").on("click", function (e) {

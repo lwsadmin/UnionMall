@@ -26,13 +26,13 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             _valueAppService = valueAppService;
             _catAppService = catAppService;
         }
-        public async Task<IActionResult> List(string name, string CategoryId, int page = 1, int pageSize = 10)
+        public async Task<IActionResult> List(string name, string CatId, int page = 1, int pageSize = 10)
         {
             string where = string.Empty;
             if (!string.IsNullOrEmpty(name))
             { where = $" and s.Name like '%{name}%'"; }
-            if (!string.IsNullOrEmpty(CategoryId))
-            { where = $" and s.CategoryId={CategoryId}"; }
+            if (!string.IsNullOrEmpty(CatId))
+            { where = $" and s.CategoryId={CatId}"; }
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, " ", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);

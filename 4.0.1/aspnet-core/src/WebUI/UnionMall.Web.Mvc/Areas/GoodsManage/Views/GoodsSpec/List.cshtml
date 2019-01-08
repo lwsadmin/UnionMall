@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="form-group" style="min-width:10vw;">
                                     <div class="m-b">
-                                        <select class="form-control chosen-select" name="CategoryId">
+                                        <select class="form-control chosen-select" name="CatId">
                                             <option value="">-@L("GoodsCategory")-</option>
                                             @foreach (var item in ViewBag.Category)
                                             {
@@ -105,6 +105,7 @@
                                         </select>
                                     </div>
                                 </div>
+  
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
                                 </div>
@@ -143,7 +144,7 @@
             }).then(function (isConfirm) {
                 if (isConfirm.value == true) {
                     _Service.delete(id).done(function (data) {
-                        $(".pagination .active a").click();
+     
                         $("#Modal").modal('hide');
                             toastr.options = {
                                 "closeButton": false,//是否配置关闭按钮
@@ -154,7 +155,7 @@
                             }
                             toastr.success('@L("Delete")@L("Success")!', '@L("Hint")');
                         if ($(".pagination .active a").html() != undefined) {
-
+                            $(".pagination .active a").click();
                         } else { $("#searchForm").submit(); }
                     });
                 }

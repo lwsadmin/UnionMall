@@ -30,6 +30,8 @@
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
+    <input type="hidden" id="IsGrantedEdit" value="@IsGranted("OnlineGoods.GoodsCategory.Edit").ToString().ToUpperInvariant()" />
+    <input type="hidden" id="IsGrantedDelete" value="@IsGranted("OnlineGoods.GoodsCategory.Delete").ToString().ToUpperInvariant()" />
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -74,7 +76,7 @@
                         <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
                     }
 
-                    @*<input type="text" class="form-control input-sm m-b-xs" id="filter" placeholder="@L("Search")表">*@
+
                     <div id="table">
                         @Html.Partial("_Table", Model)
                     </div>
@@ -105,7 +107,7 @@
         var id = $(btn).attr("data-id");
         var name = $(btn).attr("data-name");
         swal({
-            title: '@L($"DeleteConfirm")',
+            title:  '@L("OK")@L("Delete")【' + name+'】?',
             text: '',
             type: 'question',
             showCancelButton: true,
@@ -115,7 +117,17 @@
             if (isConfirm.value==true) {
                 $.post("/GoodsManage/Category/Delete", { id: id }, function (data) {
                     if (data.result.succ) {
-                        $(".pagination .active a").click();
+                               toastr.options = {
+                                "closeButton": false,//是否配置关闭按钮
+                                "debug": false,//是否开启debug模式
+                                "newestOnTop": false,//新消息是否排在最上层
+                                "progressBar": true,//是否显示进度条
+                                "timeOut": "2000",//1.5s后关闭消息框
+                            }
+                            toastr.success('@L("Delete")@L("Success")!', '@L("Hint")');
+                        if ($(".pagination .active a").html() != undefined) {
+                            $(".pagination .active a").click();
+                        } else { $("#searchForm").submit(); }
                     } else {
                         swal(
                             data.result.msg,

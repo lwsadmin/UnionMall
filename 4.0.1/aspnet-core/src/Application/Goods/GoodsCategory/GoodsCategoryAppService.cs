@@ -108,11 +108,6 @@ namespace UnionMall.Goods
             //  await _Repository.DeleteAsync(id);
             // throw new NotImplementedException();
             var query = _Repository.FirstOrDefault(c => c.Id == id);
-            if (query == null)
-            {
-                msg = "";
-                return true;
-            }
             var count = _Repository.GetAllList(c => c.ParentId == id).Count;
             if (count > 0)
             {

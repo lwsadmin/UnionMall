@@ -34,8 +34,10 @@ namespace UnionMall.Goods
         }
         public async Task CreateOrEditAsync(CreateOrEditDto model)
         {
+            long goodsId = 0;
             if (model.Goods.Id > 0)
             {
+                goodsId = model.Goods.Id;
                 await _Repository.UpdateAsync(model.Goods);
                 if (model.ValueList.Count > 0)
                 {
@@ -44,17 +46,17 @@ namespace UnionMall.Goods
             }
             else
             {
-                await _Repository.InsertAsync(model.Goods);
+                goodsId = await _Repository.InsertAndGetIdAsync(model.Goods);
                 for (int i = 0; i < model.ImageList.Count; i++)
                 {
-                    model.ImageList[i].ObjectId = model.Goods.Id;
+                    model.ImageList[i].ObjectId = goodsId;
                 }
 
             }
 
             for (int i = 0; i < model.ValueList.Count; i++)
             {
-                model.ValueList[i].ObjectId = model.Goods.Id;
+                model.ValueList[i].ObjectId = goodsId;
                 model.ValueList[i].TenantId = model.Goods.TenantId;
                 model.ValueList[i].Type = 0;
                 await _specObjService.AddOrEdit(model.ValueList[i]);
@@ -64,7 +66,15 @@ namespace UnionMall.Goods
 
         public async Task DeleteAsync(long id)
         {
-            throw new NotImplementedException();
+            var goods = await _Repository.FirstOrDefaultAsync(id);
+            await _imgService.DeleteOnlyImg(goods.Image);
+            await _Repository.DeleteAsync(c => c.Id == id);
+            var imgs = await _imgService.GetList(c => c.ObjectId == id && c.Type == 0);
+            foreach (var item in imgs)
+            {
+                await _imgService.Delete(item.Id);
+            }
+            await _specObjService.Delete(c => c.ObjectId == id && c.Type == 0);
         }
 
         public async Task<Entity.Goods> GetByIdAsync(long Id)

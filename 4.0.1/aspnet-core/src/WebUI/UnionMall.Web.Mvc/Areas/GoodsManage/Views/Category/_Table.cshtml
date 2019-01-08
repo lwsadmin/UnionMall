@@ -37,7 +37,7 @@
                     &nbsp; &nbsp;
                     @if (IsGranted("OnlineGoods.GoodsCategory.Delete"))
                     {
-                        <button type="button"  onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>
+                        <button type="button" data-id="@item["Id"]" data-name="@item["Title"]"  onclick="Delete(this);" class="btn btn-outline btn-danger btn-xs">@L("Delete")</button>
                     }
                 </td>
             </tr>
@@ -78,17 +78,20 @@
                 $.post("/GoodsManage/Category/GetChildCategory", { parentId: id }, function (data) {
 
                     for (var i = 0; i < data.result.data.length; i++) {
-                        var h = " <tr id='" + data.result.data[i].id+"' hasChild='true' pId='" + id + "'>\
+                        var h = " <tr id='" + data.result.data[i].id + "' hasChild='true' pId='" + id + "'>\
                 <td controller='true'>"+ data.result.data[i].title + "</td>\
                 <td>"+ data.result.data[i].sort + "</td>\
                 <td>"+ data.result.data[i].note + "</td>\
-                <td>\
-                    <a class='btn btn-outline btn-primary btn-xs' data-ajax='true' data-ajax-method='GET'\
+                <td>";
+                        if ($("#IsGrantedEdit").val()=="TRUE") {
+                            h += "<a class='btn btn-outline btn-primary btn-xs' data-ajax='true' data-ajax-method='GET'\
                        data-ajax-mode='Replace' data-ajax-update='#DivAdd' data-ajax-success='EditShow'\
-                       href='/GoodsManage/Category/Add/"+ data.result.data[i].id + "'>@L("Edit")</a>\
-                    &nbsp;&nbsp;\
-                    <button onclick='Delete(this);' data-name='"+ data.result.data[i].title + "' data-id='" + data.result.data[i].id +"' type='button' class='btn btn-outline btn-danger btn-xs'>@L("Delete")</button>\
-                </td>\
+                       href='/GoodsManage/Category/Add/"+ data.result.data[i].id + "'>@L("Edit")</a> &nbsp;&nbsp;&nbsp;&nbsp;";
+                        }
+                        if ($("#IsGrantedDelete").val() == "TRUE") {
+                            h += "<button onclick='Delete(this);' data-name='"+ data.result.data[i].title + "' data-id='" + data.result.data[i].id +"' type='button' class='btn btn-outline btn-danger btn-xs'>@L("Delete")</button>";
+                        }
+                        h+="</td>\
             </tr>";
                         $treeTable.addChilds(h);
                     }

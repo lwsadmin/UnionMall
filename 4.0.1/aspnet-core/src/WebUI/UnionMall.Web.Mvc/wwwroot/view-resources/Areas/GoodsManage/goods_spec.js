@@ -16,10 +16,11 @@ var Save = function (e) {
         e.preventDefault();
         return;
     }
-    if ($("#CategoryId").val() == "") {
+    if ($("#CategoryId").val() == "" || $("#CategoryId").val() == "0") {
         $("#CategoryId").trigger("chosen:open");
         e.preventDefault();
-        return;
+        e.stopPropagation();
+        return false;
     }
     var _Service = abp.services.app.commonSpec;
     var spec = $("#AddPost").serializeFormToObject();
@@ -30,6 +31,7 @@ var Save = function (e) {
         valueList.push({ id: $(this).find("a").attr("data-id"),text: $(this).find("a").html() });
     });
     EditDto.valueList = valueList;
+    debugger;
     _Service.createOrEdit(EditDto).done(function (data) {
         $("#Modal").modal('hide');
         if ($(".pagination .active a").html() != undefined) {

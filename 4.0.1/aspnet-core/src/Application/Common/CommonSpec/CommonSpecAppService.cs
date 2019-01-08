@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using UnionMall.Common.Attribute;
 using UnionMall.Common.Dto;
 using UnionMall.Entity;
+using UnionMall.Goods;
 using UnionMall.IRepositorySql;
 
 namespace UnionMall.Common.CommonSpec
@@ -22,9 +23,10 @@ namespace UnionMall.Common.CommonSpec
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<Entity.CommonSpecValue, Guid> _valueRepository;
         private readonly IRepository<Entity.CommonSpecObject, long> _objectRepository;
+        private readonly IGoodsCategoryAppService _goodsCateAppServices;
         public CommonSpecAppService(IRepository<Entity.CommonSpec, Guid> Repository, IAbpSession AbpSession,
             ISqlExecuter sqlExecuter, IRepository<Entity.CommonSpecValue, Guid> valueRepository,
-            IRepository<Entity.CommonSpecObject, long> objectRepository)
+            IRepository<Entity.CommonSpecObject, long> objectRepository, IGoodsCategoryAppService goodsCateAppServices)
 
         {
             _Repository = Repository;
@@ -32,6 +34,7 @@ namespace UnionMall.Common.CommonSpec
             _sqlExecuter = sqlExecuter;
             _valueRepository = valueRepository;
             _objectRepository = objectRepository;
+            _goodsCateAppServices = goodsCateAppServices;
             LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
         }
         public async Task CreateOrEditAsync(CreateOrEdit cat)
@@ -97,6 +100,7 @@ namespace UnionMall.Common.CommonSpec
 
         public async Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
         {
+
             StringBuilder sb = new StringBuilder();
             string sql = $@"select s.Id,s.Name,
 stuff((select  cast(i.id as nvarchar(150))+'|', i.Text +','  from dbo.TCommonSpecValue i
@@ -104,12 +108,19 @@ stuff((select  cast(i.id as nvarchar(150))+'|', i.Text +','  from dbo.TCommonSpe
  where s.Id=f.Id
 for xml path('')),1,0,'') VName
 from TCommonSpec s  
-where s.CategoryId={categoryId}";
-            DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+where s.CategoryId=";
+            DataTable dt = _sqlExecuter.ExecuteDataSet(sql+ $"{categoryId}").Tables[0];
             if (dt == null || dt.Rows.Count == 0)
             {
-                return sb.ToString();
+                if (categoryId > 0)
+                {
+                    long parentid = (await _goodsCateAppServices.GetByIdAsync(categoryId)).ParentId;
+                    dt = _sqlExecuter.ExecuteDataSet(sql + $"{parentid}").Tables[0];
+                }
+               
             }
+            if (dt == null || dt.Rows.Count == 0)
+                return sb.ToString();
             DataTable objTable = null;
             if (goodsId > 0)
             {
@@ -144,10 +155,10 @@ onclick=""select(this,'{item["Name"]}','{item["VName"].ToString().Split(',')[i].
                     th += $"<th>{item["Name"]}</th>";
 
                 }
- 
+
             }
             th += $"<th>{L("Price")}</th><th>{L("RetailPrice")}</th><th>{L("Count")}</th><th>SKU</th>";
-            if (objTable == null || objTable.Rows.Count ==0)
+            if (objTable == null || objTable.Rows.Count == 0)
             {
                 th = "";
                 sb.AppendFormat($@"<div class=""hr-line-dashed""></div><table class=""goodsLists table""><tbody></tbody></table> ");
