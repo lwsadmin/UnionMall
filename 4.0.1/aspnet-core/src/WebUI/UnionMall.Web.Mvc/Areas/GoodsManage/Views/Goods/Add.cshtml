@@ -258,6 +258,7 @@
     }
 </script>
 <script>
+    var img = '@Model.Goods.Image';
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         // e.target // newly activated tab
         if (String(e.target).indexOf("GoodsAttr") != -1) {
@@ -298,7 +299,7 @@
         }
 
         var imgArray = [];
-        var img = '@Model.Goods.Image';
+
         if (img != '') {
             imgArray.push(img);
         }

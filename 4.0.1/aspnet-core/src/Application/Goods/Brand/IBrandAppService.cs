@@ -7,6 +7,7 @@ using Abp.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Goods.Dto;
 using UnionMall.Entity;
+using System.Linq.Expressions;
 namespace UnionMall.Goods
 {
     public interface IBrandAppService : IApplicationService
@@ -15,6 +16,6 @@ namespace UnionMall.Goods
         Task<JsonResult> CreateOrEditAsync(Brand dto);
         Task<Brand> GetByIdAsync(long Id);
         Task<JsonResult> DeleteAsync(long id);
-        List<BrandSelectDto> GetMultiSelect();
+        List<BrandSelectDto> GetMultiSelect(long catId = 0);
     }
 }

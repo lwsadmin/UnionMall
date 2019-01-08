@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using UnionMall.IRepositorySql;
 using UnionMall.Entity;
 using UnionMall.Goods.Dto;
+using System.Linq.Expressions;
 namespace UnionMall.Goods
 {
     public class BrandAppService : ApplicationService, IBrandAppService
@@ -18,12 +19,14 @@ namespace UnionMall.Goods
         private readonly ISqlExecuter _sqlExecuter;
         private readonly IRepository<Brand, long> _Repository;
         public readonly IAbpSession _AbpSession;
+        public readonly IGoodsCategoryAppService _catService;
         public BrandAppService(ISqlExecuter sqlExecuter,
-            IRepository<Brand, long> Repository, IAbpSession AbpSession)
+            IRepository<Brand, long> Repository, IAbpSession AbpSession, IGoodsCategoryAppService catService)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
+            _catService = catService;
         }
         public async Task<JsonResult> CreateOrEditAsync(Brand dto)
         {
@@ -72,12 +75,17 @@ namespace UnionMall.Goods
             DataSet ds = _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
             return ds;
         }
-        public List<BrandSelectDto> GetMultiSelect()
+        public List<BrandSelectDto> GetMultiSelect(long catId = 0)
         {
             var query = _Repository.GetAllList();
             if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
             {
                 query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
+            }
+            if (catId > 0)
+            {
+               var cat= _catService
+               // query = query.FindAll(c =>c.goo);
             }
             return query.MapTo<List<BrandSelectDto>>();
         }
