@@ -1,0 +1,199 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "FundSettle";
+    ViewBag.SecondMenu = "AllSettleSet";
+}
+@using System.Data
+@using X.PagedList
+@*@model PagedList<DataRow>*@
+<link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("FundSettle")</a>
+            </li>
+            <li class="active">
+                <strong>@L("AllSettleSet")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="contact-box">
+                <form action="/SystemManage/PayParameter/SaveParameter" class="form-horizontal" id="formReg" method="post">
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">@L("Integral")@L("Price")</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" name="PointPayPrice" class="form-control" value="@ViewData["PointPayPrice"]" />
+                                    <span class="input-group-addon">=1@(L("Yuan"))</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="help-Block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">@L("Coupon")@L("Pay")</label>
+                            <div class="col-sm-3">
+                                <div>
+                                    <div class="radio radio-inline radio-success">
+                                        <input type="radio" id="cp" value="true" @(ViewData["CouponPaidForSettlement"].ToString().ToUpper() == "TRUE" ? "checked" : "") name="CouponPaidForSettlement">
+                                        <label for="cp">@L("Settlement")</label>
+                                    </div>
+                                    <div class="radio radio-inline radio-success">
+                                        <input type="radio" id="ucp" value="false" name="CouponPaidForSettlement" @(ViewData["CouponPaidForSettlement"].ToString().ToUpper() == "FALSE" ? "checked" : "")>
+                                        <label for="ucp">@L("No")@L("Settlement")</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">@L("Integral")@L("Pay")</label>
+                            <div class="col-sm-3">
+                                <div>
+                                    <div class="radio radio-inline radio-success">
+                                        <input type="radio" id="in" value="true" @(ViewData["PointPaidForSettlement"].ToString().ToUpper() == "TRUE" ? "checked" : "") name="PointPaidForSettlement">
+                                        <label for="in">@L("Settlement")</label>
+                                    </div>
+                                    <div class="radio radio-inline radio-success">
+                                        <input type="radio" id="uin" value="false" name="PointPaidForSettlement" @(ViewData["PointPaidForSettlement"].ToString().ToUpper() == "FALSE" ? "checked" : "")>
+                                        <label for="uin">@L("No")@L("Settlement")</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="hr-line-dashed"></div>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-offset-4 col-sm-4">
+                            <input id="btnSave" type="button" value="@L("Save")" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="contact-box">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>姓名</th>
+                            <th>姓</th>
+                            <th>用户名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>小明</td>
+                            <td>王</td>
+                            <td>wangxiaoming</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>小红</td>
+                            <td>王</td>
+                            <td>wangxiaohong</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>小黑</td>
+                            <td>王</td>
+                            <td>wangxiaohei</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="contact-box">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>姓名</th>
+                            <th>姓</th>
+                            <th>用户名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>小明</td>
+                            <td>王</td>
+                            <td>wangxiaoming</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>小红</td>
+                            <td>王</td>
+                            <td>wangxiaohong</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>小黑</td>
+                            <td>王</td>
+                            <td>wangxiaohei</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script>
+    $(function(){
+
+        var _Service = abp.services.app.parameter;
+        $("#btnSave").on("click", function (e) {
+        e.preventDefault();
+            $("#formReg").find("input[type='text'],input[type='radio']:checked").each(function () {
+                if ($(this).attr("name") != "" && $(this).attr("name") != undefined) {
+                    _Service.saveParameterValue($(this).attr("name"), $(this).val())
+                        .done(function (data) { })
+                        .fail(function (data) { })
+                        .always(function (data) { });
+                }
+
+            });
+                 toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+        });
+    });
+</script>

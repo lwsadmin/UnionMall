@@ -261,6 +261,7 @@
     <text name="CardID" value="CardID" />
     <text name="Other" value="Other" />
     <!--Action-->
+    <text name="Settlement" value="Settlement" />
     <text name="PayType" value="PayType" />
     <text name="Set" value="Set" />
     <text name="Comment" value="Comment" />

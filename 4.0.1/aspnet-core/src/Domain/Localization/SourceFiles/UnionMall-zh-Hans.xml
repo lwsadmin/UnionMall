@@ -188,6 +188,8 @@
     <text name="Usable" value="可用"/>
     <text name="GiftMall" value="礼品商城"/>
     <!--Action-->
+    <text name="Settlement" value="结算" />
+    <text name="No" value="不" />
     <text name="FacePay" value="当面付" />
     <text name="Upload" value="上传" />
     <text name="PayType" value="支付方式" />

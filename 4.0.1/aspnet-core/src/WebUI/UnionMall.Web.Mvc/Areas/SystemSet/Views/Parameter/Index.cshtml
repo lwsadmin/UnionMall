@@ -62,7 +62,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-2">@L("Default")@L("Level")</label>
                                             <div class="col-sm-3">
-                                                <select class="input-sm form-control chosen-select" id="MemberDefaultGroup" name="MemberDefaultGroup" required>
+                                                <select class="input-sm form-control input-s-sm inline" id="MemberDefaultGroup" name="MemberDefaultGroup" required>
                                                     @foreach (var item in ViewBag.Level)
                                                     {
                                                         if (Convert.ToInt64(ViewData["MemberDefaultGroup"]) == item.Id)
