@@ -77,17 +77,35 @@ namespace UnionMall.Goods
         }
         public List<BrandSelectDto> GetMultiSelect(long catId = 0)
         {
-            var query = _Repository.GetAllList();
-            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0)
+
+            string sql = $@"select id,Title from dbo.TBrand where 1=1";
+            if (_AbpSession.TenantId != null && (int)_AbpSession.TenantId > 0 && catId == 0)
             {
-                query = query.FindAll(c => c.TenantId == (int)_AbpSession.TenantId);
+                sql += $@" and TenantId={_AbpSession.TenantId}";
             }
             if (catId > 0)
             {
-               var cat= _catService
-               // query = query.FindAll(c =>c.goo);
+                var cat = _catService.GetByIdAsync(catId).Result;
+                if (!string.IsNullOrEmpty(cat.Brand))
+                {
+                    string s = cat.Brand.Remove(cat.Brand.LastIndexOf(","));
+                    sql += $@" and id in ({s})";
+                }
+                else
+                {
+                    return new List<BrandSelectDto>();
+                }
             }
-            return query.MapTo<List<BrandSelectDto>>();
+            List<BrandSelectDto> list = new List<BrandSelectDto>();
+            DataTable t = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            foreach (DataRow item in t.Rows)
+            {
+                BrandSelectDto dto = new BrandSelectDto();
+                dto.Id = (long)item["id"];
+                dto.Title =item["title"].ToString();
+                list.Add(dto);
+            }
+            return list;
         }
     }
 }

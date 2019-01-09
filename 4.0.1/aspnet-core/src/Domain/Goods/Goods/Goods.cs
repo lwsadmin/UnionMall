@@ -12,7 +12,7 @@ namespace UnionMall.Entity
     {
         public int TenantId { get; set; }
         public long CategoryId { get; set; }
-        public long BrandId { get; set; }
+        public long BrandId { get; set; } = 0;
         public long ChainStoreId { get; set; }
         public string Name { get; set; }
         public int Status { get; set; }
