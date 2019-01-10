@@ -21,6 +21,8 @@ namespace UnionMall.Entity
         public int CommentGrade { get; set; }
         public string Content { get; set; }
         public string Account { get; set; }
+        public string Images { get; set; } = "";
+        public CommentLevel Level { get; set; } = 0;
         public DateTime CreationTime { get; set; } = DateTime.Now;
 
 
@@ -31,5 +33,11 @@ namespace UnionMall.Entity
         商品评论 = 1,
         拼团评论 = 2,
         抢购评论 = 3
+    }
+    public enum CommentLevel
+    {
+        好评 = 0,
+        中评 = 1,
+        差评 = 2,
     }
 }

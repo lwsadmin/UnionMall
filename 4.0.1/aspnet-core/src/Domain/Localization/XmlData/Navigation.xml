@@ -46,10 +46,10 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsComment" Url="javascript:void(0);">
+    <Second Name="GoodsComment" Url="/goodsmanage/goodscomment/list">
+      <Action Name="Aduit"/>
+      <Action Name="Reply"  />
       <Action Name="Delete" />
-      <Action Name="Import" />
-      <Action Name="Export" />
     </Second>
     <Second Name="GoodAsk"  Url="javascript:void(0);"></Second>
   </First>
