@@ -49,7 +49,7 @@ namespace UnionMall.Member
                 idSql = $"SELECT rows FROM sysindexes WHERE id = OBJECT_ID('dbo.TMember') AND indid < 2";
             }
             where = where.Replace("*.", "m.").Replace("c.", "m.");
-            //  int[] chainstore = { 6, 16, 17, 18, 19, 20, 21 };
+         // int[] chainstore = { 6,16,17,18,19,20,21 };
             //int[] member = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
             //    18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
             //    36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
@@ -58,11 +58,11 @@ namespace UnionMall.Member
             //    91, 92, 93, 94, 95, 96, 97, 98, 99, 100 };
 
 
-            //DataTable t = _sqlExecuter.ExecuteDataSet("select * from tbalancenote").Tables[0];
+            //DataTable t = _sqlExecuter.ExecuteDataSet("select * from tgoodsorderitem").Tables[0];
             //foreach (DataRow item in t.Rows)
             //{
-            //    string s = $"update tbalancenote set chainstoreid={chainstore[new Random().Next(0, 7)]} " +
-            //        $",memberid={member[new Random().Next(0, 100)]}  where id={item["id"]}";
+            //    string s = $"update tgoodsorderitem set chainstoreid={chainstore[new Random().Next(0, 7)]} " +
+            //        $",tenantid=1, GoodsId={new Random().Next(0, 3)},specobjectid={new Random().Next(0, 4)}  where id={item["id"]}";
             //    _sqlExecuter.Execute(s);
             //}
             if (string.IsNullOrEmpty(table))

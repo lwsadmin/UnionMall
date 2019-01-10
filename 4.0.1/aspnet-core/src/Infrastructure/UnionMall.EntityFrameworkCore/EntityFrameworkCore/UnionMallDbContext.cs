@@ -33,6 +33,8 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<FlashSale> FlashSale { get; set; }
         public DbSet<FlashSaleOrder> FlashSaleOrder { get; set; }
         public DbSet<FlashSaleOrderItem> FlashSaleOrderItem { get; set; }
+        public DbSet<GoodsOrder> GoodsOrder { get; set; }
+        public DbSet<GoodsOrderItem> GoodsOrderItem { get; set; }
         public DbSet<Log> Log { get; set; }
         public DbSet<Parameter> Parameter { get; set; }
         public DbSet<Advert> Advert { get; set; }

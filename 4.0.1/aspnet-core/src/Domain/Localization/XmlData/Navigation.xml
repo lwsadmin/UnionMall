@@ -31,7 +31,11 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsOrder"  Url="javascript:void(0);"></Second>
+    <Second Name="GoodsOrder"  Url="/goodsmanage/goodsorder/list">
+      <Action Name="Delete" />
+      <Action Name="Import" />
+      <Action Name="Export" />
+    </Second>
     <Second Name="GoodsAttr" Url="/GoodsManage/GoodsAttr/List">
       <Action Name="Add" />
       <Action Name="Edit" />
@@ -42,7 +46,11 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="GoodsComment" Url="javascript:void(0);"></Second>
+    <Second Name="GoodsComment" Url="javascript:void(0);">
+      <Action Name="Delete" />
+      <Action Name="Import" />
+      <Action Name="Export" />
+    </Second>
     <Second Name="GoodAsk"  Url="javascript:void(0);"></Second>
   </First>
   <First Name="BusinessManage"  Icon="glyphicon glyphicon-th">

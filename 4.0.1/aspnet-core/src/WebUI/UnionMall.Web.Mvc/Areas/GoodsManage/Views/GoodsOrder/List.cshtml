@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "OnlineGoods";
+    ViewBag.SecondMenu = "GoodsOrder";
+}
+@using System.Data
+@using X.PagedList
+@model PagedList<DataRow>
+<link href="~/lib/treetable/script/treeTable/default/jquery.treeTable.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<style>
+    .order-item {
+        padding-left: 20px !important;
+        color: #333;
+        font-family: 'Microsoft YaHei';
+    }
+        .order-item p {
+            display: inline-block;
+            width: 33%;
+            margin: 0;
+        }
+</style>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("OnlineGoods")</a>
+            </li>
+            <li class="active">
+                <strong>@L("GoodsOrder")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("GoodsOrder")</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/goodsmanage/goodsorder/list?pageSize=10">10/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/goodsmanage/goodsorder/list?pageSize=15">15/@L("Page")</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm" data-ajax-method="GET" data-ajax-mode="Replace"
+                                   data-ajax-update="#table" href="/goodsmanage/goodsorder/list?pageSize=20">20/@L("Page")</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/goodsmanage/goodsorder/list" method="post">
+                                <input type="hidden" name="pageSize" value="10">
+
+                                <div class="form-group">
+                                    <input type="text" name="orderNumber" placeholder="@L("Order")@L("Number")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="name" placeholder="@L("Store")@L("Name")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="cardId" placeholder="@L("Member")@L("CardID")" class="m-b input-sm form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="timeFrom" placeholder="@L("Order")@L("Time")" class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                    <span style="display: inline-block;vertical-align: 5px;">@L("To")</span>
+                                    <input type="text" name="timeTo" placeholder="@L("Order")@L("Time")" class="m-b input-sm form-control" onclick="WdatePicker({lang: $('#CurrentLanguage').attr('data-lan')=='zh-Hans' ? 'zh-cn' : 'en' });">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm btn-primary m-b">@L("Search")</button>
+                                </div>
+                                @if (IsGranted("FlashSale.FlashSaleOrder.Export"))
+                                {
+                                    <button onclick="ExportExcel();" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-arrow-down"></i>&nbsp;@L("Export")</button>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/My97DatePicker/WdatePicker.js" asp-append-version="true"></script>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/treetable/script/treeTable/jquery.treeTable.js" asp-append-version="true"></script>
+<script>
+    function ExportExcel() {
+        var url = "/goodsmanage/goodsorder/exportexcel";
+        url += "?orderNumber=" + $("input[name='orderNumber']").val() + "&name=" + $("input[name='name']").val() + "&Store=" + $("#Store").val() + "&Name=" + $("input[name='Name']").val();
+        url += "&cardId=" + $("input[name='cardId']").val();
+        url += "&timeFrom=" + $("input[name='timeFrom']").val();
+        url += "&timeTo=" + $("input[name='timeTo']").val();
+        location.href = url;
+    }
+</script>

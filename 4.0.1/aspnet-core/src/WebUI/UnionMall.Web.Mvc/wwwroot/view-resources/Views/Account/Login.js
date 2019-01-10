@@ -49,7 +49,8 @@ $(function () {
         } else {
             localStorage.clear();
         }
-
+        $("#LoginButton").attr("disabled", "disabled");
+        debugger;
         abp.ui.setBusy(
             $('#LoginArea'),
 
@@ -58,14 +59,22 @@ $(function () {
                 url: $loginForm.attr('action'),
                 data: $loginForm.serialize(),
                 success: function (data) {
+                    debugger;
                     if (data != null) {
-                        swal({
-                            title: '',
-                            text: data.msg,
-                            type: 'error',
-                            confirmButtonText: 'OK'
-                        })
+                        $("#LoginButton").removeAttr("disabled");
+                        alert(data.msg);
+                        //swal({
+                        //    title: '',
+                        //    text: data.msg,
+                        //    type: 'error',
+                        //    confirmButtonText: 'OK'
+                        //})
+                    } else {
+                        debugger;
                     }
+                },
+                fail: function (data) {
+                    debugger;
                 }
             })
         );

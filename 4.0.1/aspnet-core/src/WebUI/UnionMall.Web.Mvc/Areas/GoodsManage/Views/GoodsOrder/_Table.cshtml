@@ -1,0 +1,132 @@
+﻿
+@{
+    Layout = null;
+}
+@using X.PagedList
+@using System.Data
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table id="tree_table" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Order")@L("Time")</th>
+            <th>@L("Order")@L("Number")</th>
+            <th>@L("Status")</th>
+            <th>@L("Belong")@L("Store")</th>
+            <th>@L("Total")@L("Pay")</th>
+            <th>@L("WeChat")@L("Pay")</th>
+            <th>@L("AliPay")@L("Pay")</th>
+            <th>@L("Balance")@L("Pay")</th>
+            <th>@L("Integral")@L("Pay")</th>
+            <th>@L("Coupon")@L("Pay")</th>
+            <th>@L("Member")@L("CardID")</th>
+            <th>@L("WeChat")@L("Name")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr id="@(item["id"])" hasChild="true">
+                <td controller="true">
+                    @item["CreationTime"]
+                </td>
+                <td>@item["BillNumber"]</td>
+                @switch (item["Status"].ToString())
+                {
+                    case "0":
+                        <td>@L("Paid")</td>
+                        break;
+                    case "-1":
+                        <td class="text-info">@L("Unpaid")</td>
+                        break;
+                    case "1":
+                        <td class="text-danger">@L("Revoked")</td>
+                        break;
+                    default:
+                        <td>@item["Status"]</td>
+                        break;
+                }
+                <td class="name">@item["Name"]</td>
+                <td>@item["TotalPay"]</td>
+                <td>@item["WeChatPay"]</td>
+                <td>@item["AliPay"]</td>
+                <td>@item["BalancePay"]</td>
+                <td>@item["IntegralPay"]</td>
+                <td>@item["CouponPay"]</td>
+                <td>@item["CardID"]</td>
+                <td>@item["WeChatName"]</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+new PagedListRenderOptions {
+MaximumPageNumbersToDisplay = 10,
+DisplayPageCountAndCurrentLocation = true,
+LinkToFirstPageFormat = L("FirstPage"),
+LinkToLastPageFormat = L("LastPage"),
+LinkToNextPageFormat = L("NextPage"),
+PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+LinkToPreviousPageFormat = L("PreviousPage"),
+UlElementClasses = new[] { "pagination col-md-8" },
+ContainerDivClasses = new[] { "row" } },
+new AjaxOptions()
+{
+DataForm = "searchForm",
+HttpMethod = "GET",
+UpdateTargetId = "table"
+}
+))
+
+<script>
+    var txt = $("input[name='orderNumber']").val().trim();
+    if (txt.length > 0) {
+        $(".title").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+    var txt = $("input[name='name']").val().trim();
+    if (txt.length > 0) {
+        $(".name").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+    $("input[name='pageSize']").val(@ViewBag.PageSize);
+    $(function () {
+        var option = {
+            theme: 'default',
+            expandLevel: 1,
+            beforeExpand: function ($treeTable, id) {
+                //判断id是否已经有了孩子节点，如果有了就不再加载，这样就可以起到缓存的作用
+                if ($('.' + id, $treeTable).length) { return; }
+                //这里的html可以是ajax请求
+
+                $.post("/goodsmanage/goodsorder/getorderitem", { orderId: id }, function (data) {
+                    var str = "<tr pId='" + id + "'><td class='order-item' colspan='12'>";
+                    for (var i = 0; i < data.result.data.result.length; i++) {
+                        var s = data.result.data.result[i].goodsSpec;
+                        if (s!=null&&s!="") {
+                            s = "&nbsp;&nbsp;("+s+")";
+                        }
+                        str += "<p>" + data.result.data.result[i].goodsName + "</p>";
+                        str += "<p>￥" + data.result.data.result[i].price + "</p>";
+                        str += "<p>×" + data.result.data.result[i].count  + s+"</p>";
+                    }
+                    str += " </td></tr>";
+                    $treeTable.addChilds(str);
+                });
+
+            },
+            onSelect: function ($treeTable, id) {
+                window.console && console.log('onSelect:' + id);
+            }
+        };
+        $('#tree_table').treeTable(option);
+    });
+</script>
