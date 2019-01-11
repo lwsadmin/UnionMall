@@ -22,5 +22,7 @@ namespace UnionMall.Entity
         public decimal MinPoint { get; set; }
 
         public decimal MaxPoint { get; set; }
+
+        public decimal Profit { get; set; } = 0;
     }
 }

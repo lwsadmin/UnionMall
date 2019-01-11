@@ -2,11 +2,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.FirstMenu = "FundSettle";
     ViewBag.SecondMenu = "AllSettleSet";
+
+    DataTable dt = ViewData["cat"] as DataTable;
 }
 @using System.Data
 @using X.PagedList
 @*@model PagedList<DataRow>*@
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
+<link href="~/lib/bootstrap3-editable/css/bootstrap-editable.css" asp-append-version="true" rel="stylesheet" />
+<script src="/lib/admin/js/bootstrap.min.js" asp-append-version="true"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -88,92 +92,132 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
     <div class="row">
-
-        <div class="col-lg-12">
+        <div class="col-lg-4">
             <div class="contact-box">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>姓名</th>
-                            <th>姓</th>
-                            <th>用户名</th>
+                            <th>分销等级</th>
+                            <th>佣金设置</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>一级分销</td>
                             <td>1</td>
-                            <td>小明</td>
-                            <td>王</td>
-                            <td>wangxiaoming</td>
                         </tr>
                         <tr>
+                            <td>二级分销</td>
                             <td>2</td>
-                            <td>小红</td>
-                            <td>王</td>
-                            <td>wangxiaohong</td>
                         </tr>
                         <tr>
+                            <td>三级分销</td>
                             <td>3</td>
-                            <td>小黑</td>
-                            <td>王</td>
-                            <td>wangxiaohei</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
         </div>
-
-    </div>
-    <div class="row">
-
-        <div class="col-lg-12">
+        <div class="col-lg-4">
             <div class="contact-box">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>姓名</th>
-                            <th>姓</th>
-                            <th>用户名</th>
+                            <th>推荐人等级</th>
+                            <th>分润设置</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>一级推荐人</td>
                             <td>1</td>
-                            <td>小明</td>
-                            <td>王</td>
-                            <td>wangxiaoming</td>
                         </tr>
                         <tr>
+                            <td>二级推荐人</td>
                             <td>2</td>
-                            <td>小红</td>
-                            <td>王</td>
-                            <td>wangxiaohong</td>
                         </tr>
                         <tr>
+                            <td>三级推荐人</td>
                             <td>3</td>
-                            <td>小黑</td>
-                            <td>王</td>
-                            <td>wangxiaohei</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
         </div>
-
+        <div class="col-lg-4">
+            <div class="contact-box">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>代理级别</th>
+                            <th>分润设置</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>一级代理</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>二级代理</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>三级代理</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    @if (dt != null && dt.Rows.Count > 0)
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact-box">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                @foreach (DataRow item in dt.Rows)
+                                {
+                                    <th>@item["title"]</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @foreach (DataRow item in dt.Rows)
+                                {
+                                <td>
+                                    <a href="#" class="editable" data-type="text" data-pk="@item["id"]" data-url="/Settlement/Global/Save" data-title="@item["title"]">@item["profit"]</a>
+                                </td>
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
 </div>
+<script src="/lib/bootstrap3-editable/js/bootstrap-editable.min.js" asp-append-version="true"></script>
 <script>
-    $(function(){
-
+    $(function () {
+        $('.editable').each(function () {
+            $(this).editable({
+                type: 'text',
+                success: function (response, newValue) {
+                    debugger;
+                    if (response.status == 'error') return response.msg; //msg will be shown in editable form 
+                }
+            })
+        });
         var _Service = abp.services.app.parameter;
         $("#btnSave").on("click", function (e) {
         e.preventDefault();
