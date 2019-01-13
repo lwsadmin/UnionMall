@@ -80,5 +80,11 @@ cast(m.minPoint as float) minPoint,cast(m.maxPoint as float) maxPoint from tmemb
             return query.MapTo<List<LevelDropDwonDto>>();
         }
 
+        public async Task SaveProfit(decimal pro, long id)
+        {
+            var s = _Repository.Get(id);
+            s.Profit = pro;
+            await _Repository.UpdateAsync(s);
+        }
     }
 }

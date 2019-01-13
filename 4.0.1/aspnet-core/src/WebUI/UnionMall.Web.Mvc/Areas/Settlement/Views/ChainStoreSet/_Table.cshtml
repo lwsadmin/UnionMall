@@ -1,0 +1,81 @@
+﻿
+@{
+
+    Layout = null;
+}
+@using System.Data
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@L("Store")@L("Name")</th>
+            <th>@L("Online")@L("Cmn")</th>
+            <th>@L("Offline")@L("Cmn")</th>
+            <th>@L("Offline")@L("Discount")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow item in Model)
+        {
+            <tr>
+                <td class="title">
+                    @if (Convert.ToBoolean(item["IsSystem"]))
+                    {
+                        <span class="label label-primary">自营</span>
+                    }
+                    @item["name"]
+                </td>
+                <td>
+                    <a href="#" class="editable" data-type="text" data-pk="@item["id"]" data-name="OnLineCommission"
+                       data-url="/Settlement/ChainStoreSet/Save" data-title="@L("Online")@L("Cmn")">@item["OnLineCommission"]</a>%
+
+                </td>
+                <td>
+                    <a href="#" class="editable" data-type="text" data-pk="@item["id"]" data-name="OffLineCommission"
+                       data-url="/Settlement/ChainStoreSet/Save" data-title="@L("Offline")@L("Cmn")">@item["OffLineCommission"]</a>%
+                </td>
+                <td>
+                    <a href="#" class="editable" data-type="text" data-pk="@item["id"]" data-name="OffLineDiscount"
+                       data-url="/Settlement/ChainStoreSet/Save" data-title="@L("Offline")@L("Discount")">@item["OffLineDiscount"]</a>%
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new PagedListRenderOptions {
+            MaximumPageNumbersToDisplay = 10,
+            DisplayPageCountAndCurrentLocation = true,
+            LinkToFirstPageFormat = L("FirstPage"),
+            LinkToLastPageFormat = L("LastPage"),
+            LinkToNextPageFormat = L("NextPage"),
+            PageCountAndCurrentLocationFormat = L("{1}pages{2}Records"),
+            LinkToPreviousPageFormat = L("PreviousPage"),
+            UlElementClasses = new[] { "pagination col-md-8" },
+            ContainerDivClasses = new[] { "row" } },
+
+
+        new AjaxOptions()
+        {
+            DataForm = "searchForm",
+            HttpMethod = "GET",
+            UpdateTargetId = "table"
+        }
+))
+<script>
+    var txt = $("input[name='storeName']").val().trim();
+    if (txt.length > 0) {
+        $(".title").each(function () {
+            var newTxt = $(this).html().replace(txt, txt.fontcolor("red"));
+            $(this).html(newTxt);
+        });
+    }
+        $("input[name='pageSize']").val(@ViewBag.PageSize);
+</script>

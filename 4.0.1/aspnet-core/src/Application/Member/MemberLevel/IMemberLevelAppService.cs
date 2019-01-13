@@ -13,5 +13,7 @@ namespace UnionMall.Member
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
 
         Task<List<LevelDropDwonDto>> GetDropDown();
+
+        Task SaveProfit(decimal pro, long id);
     }
 }

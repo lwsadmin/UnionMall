@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="zh-Hans">
   <texts>
-    <text value="测试" name="UnionMall"/>
+    <text value="联盟商城" name="UnionMall"/>
     <text value="未选择" name="NotSelected"/>
     <text value="更改商户" name="Changetenant"/>
     <text value="主页" name="HomePage"/>
@@ -142,11 +142,11 @@
     <text name="GiftCategory" value="礼品类别"/>
     <text name="GiftList" value="礼品管理"/>
     <text name="GiftOrder" value="礼品订单" />
-    <text name="FundSettle" value="资金结算"/>
+    <text name="FundSettle" value="财务结算"/>
     <text name="AllSettleSet" value="全局设置"/>
-    <text name="BusinessDivideSet" value="门店结算"/>
-    <text name="PointSet" value="门店资金"/>
-    <text name="BusinessSettle" value="资金明细"/>
+    <text name="StoreDivideSet" value="门店抽佣"/>
+    <text name="StoreFunds" value="门店资金"/>
+    <text name="BusinessSettle" value="财务明细"/>
     <text name="BusinessWithDrawCash" value="商户提现"/>
     <text name="MemberWithDrawCash" value="会员提现"/>
     <text name="StatisticsAnalysis" value="统计分析"/>
@@ -188,6 +188,12 @@
     <text name="Usable" value="可用"/>
     <text name="GiftMall" value="礼品商城"/>
     <!--Action-->
+    <text name="OneLevel" value="一级" />
+    <text name="TwoLevel" value="二级" />
+    <text name="ThreeLevel" value="三级" />
+    <text name="Online" value="线上" />
+    <text name="Offline" value="线下" />
+    <text name="Discount" value="折扣" />
     <text name="Settlement" value="结算" />
     <text name="No" value="不" />
     <text name="FacePay" value="当面付" />
@@ -211,6 +217,8 @@
     <!--Form-->
     <text name="Praise" value="赞" />
     <text name="Ago" value="前" />
+    
+    <text name="Cmn" value="佣金" />
     <text name="SortTip" value="从大到小降序展示" />
     <text name="noWechatTip" value="对不起，尚未接入微信平台，无法进行该操作!" />
     <text name="SpellGroupOrder" value="拼团订单" />
@@ -232,6 +240,7 @@
     <text name="Submit" value="提交" />
     <text name="SetHot" value="热门" />
     <text name="SetRec" value="推荐" />
+    <text name="Agent" value="代理" />
     <text name="SetTop" value="置顶" />
     <!--Table-->
     <text name="Certificate" value="证书" />
@@ -307,6 +316,8 @@
     <text name="Default" value="默认" />
     <!--message-->
     <text name="Hint" value="提示" />
+    <text name="Rce" value="应收金额" />
+    <text name="Ede" value="应支金额" />
     <text name="Exist{0}" value="已经存在 {0}!" />
     <text name="NotExist{0}" value="不存在{0}!" />
     <text name="DeleteConfirm{0}" value="确认删除【{0}】吗?" />

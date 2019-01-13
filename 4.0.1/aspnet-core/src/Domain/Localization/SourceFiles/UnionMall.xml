@@ -178,6 +178,10 @@
     <text name="GoodsComment" value="GoodsComment" />
     <text name="GoodAsk" value="GoodAsk" />
 
+
+    <text name="Rce" value="Receivable" />
+    <text name="Ede" value="Expenditure" />
+    
     <text name="BusinessName" value="BusinessName"/>
     <text name="UnionBusiness" value="UnionBusiness"/>
     <text name="OneJia" value="OneJia" />
@@ -220,8 +224,8 @@
     <text name="GiftOrder" value="GiftOrder" />
     <text name="FundSettle" value="FundSettle"/>
     <text name="AllSettleSet" value="AllSettleSet"/>
-    <text name="BusinessDivideSet" value="BusinessDivideSet"/>
-    <text name="PointSet" value="PointSet"/>
+    <text name="StoreDivideSet" value="StoreDivideSet"/>
+    <text name="StoreFunds" value="StoreFunds"/>
     <text name="BusinessSettle" value="BusinessSettle"/>
     <text name="BusinessWithDrawCash" value="BusinessWithDrawCash"/>
     <text name="MemberWithDrawCash" value="MemberWithDrawCash"/>
@@ -261,6 +265,14 @@
     <text name="CardID" value="CardID" />
     <text name="Other" value="Other" />
     <!--Action-->
+    <text name="Cmn" value="Commission" />
+    <text name="OneLevel" value="One-level" />
+    <text name="TwoLevel" value="Two-level" />
+    <text name="ThreeLevel" value="Three-level" />
+    <text name="Online" value="On-line" />
+    <text name="Offline" value="Off-line" />
+    <text name="Discount" value="Discount" />
+
     <text name="Settlement" value="Settlement" />
     <text name="PayType" value="PayType" />
     <text name="Set" value="Set" />
@@ -294,6 +306,7 @@
     <text name="Consume" value="Consume" />
     <text name="SetHot" value="SetPopular" />
     <text name="SetRec" value="SetRecommend" />
+    <text name="Agent" value="Agent" />
     <text name="SetTop" value="RoofPlacement" />
     <!--Table-->
     <text name="SecretKey" value="SecretKey" />

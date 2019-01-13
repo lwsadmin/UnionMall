@@ -16,5 +16,6 @@ namespace UnionMall.Business
         Task CreateOrEditAsync(ChainStore store);
         Task<List<StoreDropDownDto>> GetDropDown(long? businessID = null);
         bool Delete(long id, out string msg);
+        void SaveCmn(string column, string value, long id);
     }
 }

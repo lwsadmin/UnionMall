@@ -7,6 +7,7 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Controllers;
 using UnionMall.Member;
+using UnionMall.Settlement;
 using UnionMall.SystemSet;
 
 namespace UnionMall.Web.Mvc.Areas.Settlement.Controllers
@@ -17,10 +18,13 @@ namespace UnionMall.Web.Mvc.Areas.Settlement.Controllers
     {
         private readonly IParameterAppService _appService;
         private readonly IMemberLevelAppService _levelAppService;
-        public GlobalController(IParameterAppService appService, IMemberLevelAppService levelAppService)
+        private readonly IGlobalAppService _globalAppService;
+        public GlobalController(IParameterAppService appService, IMemberLevelAppService levelAppService,
+            IGlobalAppService globalAppService)
         {
             _appService = appService;
             _levelAppService = levelAppService;
+            _globalAppService = globalAppService;
         }
 
         public async Task<IActionResult> Index()
@@ -30,14 +34,22 @@ namespace UnionMall.Web.Mvc.Areas.Settlement.Controllers
             ViewData["CouponPaidForSettlement"] = await _appService.GetParameterValue("CouponPaidForSettlement");
             ViewData["PointPaidForSettlement"] = await _appService.GetParameterValue("PointPaidForSettlement");
             int total;
-            string table = $"select m.id,m.Title,m.profit from TMemberLevel m where 1=1 ";
+            string table = $"select m.id,m.Title, cast(m.profit as float) profit from TMemberLevel m where 1=1 ";
             ViewData["cat"] = _levelAppService.GetPage(1, int.MaxValue, "", out total, "", table).Tables[0];
+            ViewBag.Global = await _globalAppService.GetGlobalSet();
             return View();
         }
         [HttpPost]
-        public JsonResult Save(string pk)
+        public JsonResult Save(long pk, decimal value)
         {
+            _levelAppService.SaveProfit(value, pk);
+            return Json(new { });
+        }
 
+        [HttpPost]
+        public JsonResult SaveGlobal(string pk, decimal value)
+        {
+            _globalAppService.SaveGlobal(pk,value);
             return Json(new { });
         }
     }

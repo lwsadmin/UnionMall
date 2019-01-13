@@ -60,6 +60,10 @@ namespace UnionMall.Entity
         public int Sort { get; set; } = 0;
         [Required]
         public string Introduce { get; set; }
+
+        public decimal OffLineDiscount { get; set; } = 0;
+        public decimal OffLineCommission { get; set; } = 0;
+        public decimal OnLineCommission { get; set; } = 0;
         [Required]
         public DateTime CreationTime { get; set; } = DateTime.Now;
     }

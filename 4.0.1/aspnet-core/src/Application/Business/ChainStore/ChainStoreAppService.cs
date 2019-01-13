@@ -107,5 +107,11 @@ $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.Rol
             }
 
         }
+
+        public void SaveCmn(string column,string value, long id)
+        {
+            string sql = $@"update tchainstore set {column}={value} where id={id}";
+            _sqlExecuter.Execute(sql);
+        }
     }
 }

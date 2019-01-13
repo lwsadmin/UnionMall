@@ -198,9 +198,12 @@
     </Second>
   </First>
   <First Name="FundSettle"   Icon="glyphicon glyphicon-usd">
-    <Second Name="AllSettleSet"  Url="/Settlement/Global/Index"></Second>
-    <Second Name="BusinessDivideSet"  Url="/Settlement/StoreSet/List"></Second>
-    <Second Name="PointSet"  Url="/Settlement/StoreCapital/List"></Second>
+    <Second Name="AllSettleSet"  Url="/settlement/global/index"></Second>
+    <Second Name="StoreDivideSet"  Url="/settlement/chainstoreSet/list"></Second>
+    <Second Name="StoreFunds"  Url="/Settlement/StoreFunds/List">
+      <Action Name="Recharge" />
+      <Action Name="Settle" />
+    </Second>
     <Second Name="BusinessSettle"   Url="/Settlement/StoreMoneyReport/List"></Second>
     <Second Name="MemberWithDrawCash"  Url="javascript:void(0);"></Second>
     <Second Name="BusinessWithDrawCash"   Url="javascript:void(0);"></Second>

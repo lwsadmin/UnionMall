@@ -10,7 +10,7 @@
 @*@model PagedList<DataRow>*@
 <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" asp-append-version="true" rel="stylesheet" />
 <link href="~/lib/bootstrap3-editable/css/bootstrap-editable.css" asp-append-version="true" rel="stylesheet" />
-<script src="/lib/admin/js/bootstrap.min.js" asp-append-version="true"></script>
+@*<script src="/lib/admin/js/bootstrap.min.js" asp-append-version="true"></script>*@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -101,22 +101,31 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>分销等级</th>
-                            <th>佣金设置</th>
+                            <th>@L("Dtb")@L("Level")</th>
+                            <th>@L("Cmn")@L("Set")</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>一级分销</td>
-                            <td>1</td>
+                            <td>@L("OneLevel")@L("Dtb")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="FirstDistributor"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("OneLevel")@L("Dtb")">@ViewBag.Global.FirstDistributor.ToString("0.##")</a>%
+                            </td>
                         </tr>
                         <tr>
-                            <td>二级分销</td>
-                            <td>2</td>
+                            <td>@L("TwoLevel")@L("Dtb")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="SecondDistributor"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("TwoLevel")@L("Dtb")">@ViewBag.Global.SecondDistributor.ToString("0.##")</a>%
+                            </td>
                         </tr>
                         <tr>
-                            <td>三级分销</td>
-                            <td>3</td>
+                            <td>@L("ThreeLevel")@L("Dtb")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="ThirdDistributor"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("ThreeLevel")@L("Dtb")">@ViewBag.Global.ThirdDistributor.ToString("0.##")</a>%
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -127,22 +136,31 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>推荐人等级</th>
-                            <th>分润设置</th>
+                            <th>@L("SetRec")@L("Level")</th>
+                            <th>@L("Cmn")@L("Set")</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>一级推荐人</td>
-                            <td>1</td>
+                            <td>@L("OneLevel")@L("SetRec")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="FirstDistributor"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("OneLevel")@L("SetRec")">@ViewBag.Global.FirstDistributor.ToString("0.##")</a>%
+                            </td>
                         </tr>
                         <tr>
-                            <td>二级推荐人</td>
-                            <td>2</td>
+                            <td>@L("TwoLevel")@L("SetRec")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="SecondDistributor"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("TwoLevel")@L("SetRec")">@ViewBag.Global.SecondDistributor.ToString("0.##")</a>%
+                            </td>
                         </tr>
                         <tr>
-                            <td>三级推荐人</td>
-                            <td>3</td>
+                            <td>@L("ThreeLevel")@L("SetRec")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="ThirdDistributor"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("TwoLevel")@L("SetRec")">@ViewBag.Global.ThirdDistributor.ToString("0.##")</a>%
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -153,22 +171,31 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>代理级别</th>
-                            <th>分润设置</th>
+                            <th>@L("Agent")@L("Level")</th>
+                            <th>@L("Cmn")@L("Set")</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>一级代理</td>
-                            <td>3</td>
+                            <td>@L("OneLevel")@L("Agent")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="FirstAgent"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("OneLevel")@L("Agent")">@ViewBag.Global.FirstAgent.ToString("0.##")</a>%
+                            </td>
                         </tr>
                         <tr>
-                            <td>二级代理</td>
-                            <td>2</td>
+                            <td>@L("TwoLevel")@L("Agent")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="SecondAgent"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("TwoLevel")@L("Agent")">@ViewBag.Global.SecondAgent.ToString("0.##")</a>%
+                            </td>
                         </tr>
                         <tr>
-                            <td>三级代理</td>
-                            <td>1</td>
+                            <td>@L("ThreeLevel")@L("Agent")</td>
+                            <td>
+                                <a href="#" class="editable" data-type="text" data-pk="ThirdAgent"
+                                   data-url="/Settlement/Global/SaveGlobal" data-title="@L("ThreeLevel")@L("Agent")">@ViewBag.Global.ThirdAgent.ToString("0.##")</a>%
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -193,9 +220,9 @@
                             <tr>
                                 @foreach (DataRow item in dt.Rows)
                                 {
-                                <td>
-                                    <a href="#" class="editable" data-type="text" data-pk="@item["id"]" data-url="/Settlement/Global/Save" data-title="@item["title"]">@item["profit"]</a>
-                                </td>
+                                    <td title="@L("Edit")">
+                                        <a href="#" class="editable" data-type="text" data-pk="@item["id"]" data-url="/Settlement/Global/Save" data-title="@item["title"]">@item["profit"]</a>%
+                                    </td>
                                 }
                             </tr>
                         </tbody>
@@ -206,31 +233,45 @@
     }
 
 </div>
-<script src="/lib/bootstrap3-editable/js/bootstrap-editable.min.js" asp-append-version="true"></script>
+
 <script>
     $(function () {
-        $('.editable').each(function () {
-            $(this).editable({
-                type: 'text',
+        $.getScript('/lib/bootstrap3-editable/js/bootstrap-editable.min.js', function () {
+            $('.editable').editable({
+                placement: 'right',
+                validate: function (value) { //字段验证
+                    if (!$.trim(value)) {
+                        return ' ';
+                    }
+                    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+                    if (!regPos.test(value)) {
+                        return ' ';
+                    }
+                },
                 success: function (response, newValue) {
-                    debugger;
-                    if (response.status == 'error') return response.msg; //msg will be shown in editable form 
+                    if (response.status == 'error') return response.msg; //msg will be shown in editable form
+                    SuccessTip();
                 }
-            })
-        });
-        var _Service = abp.services.app.parameter;
-        $("#btnSave").on("click", function (e) {
-        e.preventDefault();
-            $("#formReg").find("input[type='text'],input[type='radio']:checked").each(function () {
-                if ($(this).attr("name") != "" && $(this).attr("name") != undefined) {
-                    _Service.saveParameterValue($(this).attr("name"), $(this).val())
-                        .done(function (data) { })
-                        .fail(function (data) { })
-                        .always(function (data) { });
-                }
-
             });
-                 toastr.options = {
+        });
+
+	var _Service = abp.services.app.parameter;
+	$("#btnSave").on("click",
+	function(e) {
+		e.preventDefault();
+		$("#formReg").find("input[type='text'],input[type='radio']:checked").each(function() {
+			if ($(this).attr("name") != "" && $(this).attr("name") != undefined) {
+				_Service.saveParameterValue($(this).attr("name"), $(this).val()).done(function(data) {}).fail(function(data) {}).always(function(data) {});
+			}
+
+		});
+		SuccessTip();
+
+	});
+});
+    function SuccessTip()
+    {
+                     toastr.options = {
                 "closeButton": false,//是否配置关闭按钮
                 "debug": false,//是否开启debug模式
                 "newestOnTop": false,//新消息是否排在最上层
@@ -238,6 +279,5 @@
                 "timeOut": "2000",//1.5s后关闭消息框
             }
             toastr.success('@L("Save")@L("Success")', '@L("Hint")');
-        });
-    });
+    }
 </script>

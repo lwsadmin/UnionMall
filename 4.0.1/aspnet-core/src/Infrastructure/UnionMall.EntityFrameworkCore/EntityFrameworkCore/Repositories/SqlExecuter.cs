@@ -23,7 +23,7 @@ namespace UnionMall.EntityFrameworkCore.Repositories
         {
             _dbContextProvider = dbContextProvider;
         }
-        public int Execute(string sql, params object[] parameters)
+        public  int Execute(string sql, params object[] parameters)
         {
             return _dbContextProvider.GetDbContext().Database.ExecuteSqlCommand(sql, parameters);
         }
