@@ -28,6 +28,7 @@
     <text name="SpecValue" value="Spec" />
     <text name="UserName" value="User name" />
     <text name="Name" value="Name" />
+    <text name="Whole" value="whole" />
     <text name="To" value="To" />
     <text name="Textbox" value="Textbox" />
     <text name="Checkbox" value="CheckBox" />

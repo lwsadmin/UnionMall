@@ -25,7 +25,7 @@
     <text value="用户列表" name="UserList"/>
     <text value="父级" name="Parent"/>
     <text value="列表" name="List"/>
-    <text value="名称" name="value"/>
+    <text value="全部" name="Whole" />
     <text value="创建时间" name="CreationTime"/>
     <text value="新增" name="Add"/>
     <text value="编辑" name="Edit"/>

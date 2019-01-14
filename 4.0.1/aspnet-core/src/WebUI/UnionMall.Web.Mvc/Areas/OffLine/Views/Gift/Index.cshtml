@@ -1,0 +1,242 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.FirstMenu = "OffLineCashie";
+    ViewBag.SecondMenu = "GiftExchange";
+}
+@using X.PagedList
+@using System.Data
+@using X.PagedList.Mvc.Core
+@model PagedList<DataRow>
+<link href="https://lab.hakim.se/ladda/dist/ladda.min.css" rel="stylesheet" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li>
+                <a>@L("OffLineCashie")</a>
+            </li>
+            <li class="active">
+                <strong>@L("GiftExchange")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <input type="hidden" name="memberId" value="0" />
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="contact-box">
+                    <form class="form-inline" id="searchForm" method="post">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="number" value="@ViewBag.CarId" required name="CardID" placeholder="@L("Member")@L("CardID")/@L("PhoneNumber")" class="m-b input-sm form-control" />
+                                <span class="input-group-btn">
+
+                                    <button id="readBtn" type="button" class="btn btn-primary btn-sm">
+                                        @L("OK")
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="widget-head-color-box  p-lg">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="text-center">
+                                    <img id="HeadImg" alt="image" class="img-circle circle-border m-t-xs img-responsive" src="/img/avatar-default.png" onerror="this.src='/img/avatar-default.png'" />
+                                    <div class="m-t-xs font-bold" id="Level"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3><strong>@L("WeChat")@L("Name"):<span id="WeChatName" class="">-</span></strong></h3>
+                                <p>@L("CardID"):<span id="CardID" class="">-</span></p>
+                                <p>@L("PhoneNumber"):<span id="Mobile" class="">-</span></p>
+                                <p>@L("Sex"):<span id="Sex" class="">-</span></p>
+                                <p>@L("BirthDay"):<span id="BirthDay" class="">-</span> </p>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3><strong>@L("FullName"):<span id="FullName" class=""></span></strong></h3>
+                                <p>@L("Integral"):<span id="Integral" class="">-</span></p>
+                                <p>@L("Balance"):<span id="Balance" class="">-</span></p>
+                                <p>@L("Email"):<span id="Email" class="">-</span></p>
+                                <p>@L("Register")@L("Time"):<span id="RegTime" class="">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="hr-line-dashed"></div>
+                    <div class="row">
+                        <div class="form-group form-group-lg">
+                            <h2 class="col-sm-4 control-label">@L("Total")@L("Integral"):0</h2>
+                            <div class="col-sm-6">
+                                <button type="button" id="con" class="btn btn-primary btn-lg btn-block" data-style="zoom-in">
+                                    <span class="ladda-label">@L("OK")@L("Recharge")</span><span class="ladda-spinner"></span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-lg-6">
+            <div class="tabs-container">
+                <div class="tabs-left">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-0" aria-expanded="false">@L("Whole")</a></li>
+                        @foreach (var item in ViewBag.Category)
+                        {
+                            <li class=""><a data-toggle="tab" href="#tab-@(@item.Id)" aria-expanded="false">@item.Title</a></li>
+                        }
+                    </ul>
+                    <div class="tab-content ">
+                        <div id="tab-0" class="tab-pane active">
+                            <div class="panel-body">
+                                @Html.Partial("_Table",Model)
+                            </div>
+                        </div>
+                        @foreach (var item in ViewBag.Category)
+                        {
+                            <div id="tab-@(@item.Id)" class="tab-pane">
+                                <div class="panel-body">
+                                    @Html.Partial("_Table", Model)
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<!-- Ladda -->
+<script src="https://lab.hakim.se/ladda/dist/spin.min.js"></script>
+<script src="https://lab.hakim.se/ladda/dist/ladda.min.js"></script>
+<script>
+    document.onkeydown = function () {
+        if (event.keyCode == 13 || event.keyCode == 123 || event.keyCode == 116) {
+            $("#readBtn").click();
+            event.keyCode = 0; event.returnValue = false;
+        }
+    }
+    $("#readBtn").click(function () {
+        if ($("input[name='CardID']").val() == "") {
+            $("input[name='CardID']").focus();
+            return;
+        }
+        abp.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            url: "/member/cardcore/GetCardInfo",
+            data: { cardId: $("input[name='CardID']").val() },
+            success: function (data) {
+
+                if (data.succ) {
+                    $("#HeadImg").attr("src", data.member.headImg);
+                    $("#CardID").html(data.member.cardID);
+                    $("#Level").html(data.member.level);
+                    $("#WeChatName").html(data.member.weChatName);
+                    $("#Mobile").html(data.member.mobile);
+                    $("#Sex").html(data.member.sex=="0"?'@L("Male")':'@L("Female")');
+                    $("#BirthDay").html(data.member.birthDay);
+                    $("#Integral").html(data.member.integral);
+                    $("#Balance").html(data.member.balance);
+                    $("#Email").html(data.member.email);
+                    $("#RegTime").html(data.member.regTime);
+                    $("#FullName").html(data.member.fullName);
+
+                    $("input[name='memberId']").val(data.member.id);
+                    $("#ConAm").focus();
+                } else {
+                    toastr.options = {
+                        "closeButton": false,//是否配置关闭按钮
+                        "debug": false,//是否开启debug模式
+                        "newestOnTop": false,//新消息是否排在最上层
+                        "progressBar": true,//是否显示进度条
+                        "timeOut": "2000",//1.5s后关闭消息框
+                    }
+                   toastr.error("@L("NotExist{0}",L("CardID"))", "@L("Hint")");
+                }
+            }
+        })
+    });
+
+    $("#con").click(function(e)
+    {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if ($("input[name='CardID']").val() == "" && $("#Integral").html()=="-") {
+            $("input[name='CardID']").focus();
+            return;
+        }
+        if ($("#ConAm").val()=="") {
+            $("#ConAm").focus();
+            return;
+        }
+        var l = Ladda.create(this);
+	    l.start();
+        var _Service = abp.services.app.member;
+        var note = {};
+        note.memberId = $("input[name='memberId']").val();
+        note.note = $("#memo").val();
+        note.totalPay = $("#ConAm").val();
+        note.cashPay = $("#ConAm").val();
+        note.value = $("#ConAm").val();
+        debugger;
+        _Service.memberRecharge(note).done(function (data) {
+            console.log(data);
+            if (data.succ) {
+                                          toastr.options = {
+                        "closeButton": false,//是否配置关闭按钮
+                        "debug": false,//是否开启debug模式
+                        "newestOnTop": false,//新消息是否排在最上层
+                        "progressBar": true,//是否显示进度条
+                        "timeOut": "2000",//1.5s后关闭消息框
+                    }
+            toastr.success(data.msg, "@L("Hint")");
+            } else {
+                          toastr.options = {
+                        "closeButton": false,//是否配置关闭按钮
+                        "debug": false,//是否开启debug模式
+                        "newestOnTop": false,//新消息是否排在最上层
+                        "progressBar": true,//是否显示进度条
+                        "timeOut": "2000",//1.5s后关闭消息框
+                    }
+            toastr.error(data.msg, "@L("Hint")");
+
+            }
+
+            l.stop();
+            setTimeout(function () {
+                $("#con").removeClass("ladda-button")
+            },1000)
+
+   //         l.toggle();
+			//l.isLoading();
+			//l.setProgress(0-1);
+        }).fail(function (data) {
+            }).always(function (data) {  });
+
+
+    });
+
+</script>

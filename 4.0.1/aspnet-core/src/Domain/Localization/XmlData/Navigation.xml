@@ -11,9 +11,9 @@
     <Second Name="QuickConsume"  Url="/OffLine/QuickConsume/Index"></Second>
     <Second Name="GoodsConsume"  Url="javascript:void(0);"></Second>
     <Second Name="MemberRecharge" Url="/OffLine/Recharge/Index"></Second>
-    <Second Name="CouponConsume"  Url="javascript:void(0);"></Second>
-    <Second Name="GiftExchange"  Url="javascript:void(0);"></Second>
-    <Second Name="PointRecharge"  Url="javascript:void(0);"></Second>
+    <!--<Second Name="CouponConsume"  Url="javascript:void(0);"></Second>-->
+    <Second Name="GiftExchange"  Url="/offline/gift/index"></Second>
+    <!--<Second Name="PointRecharge"  Url="javascript:void(0);"></Second>-->
   </First>
   <First Name="OnlineGoods" Icon="glyphicon glyphicon-shopping-cart">
     <Second Name="GoodsCategory"  Url="/GoodsManage/Category/List">
