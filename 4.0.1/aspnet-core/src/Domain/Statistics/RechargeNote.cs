@@ -13,18 +13,18 @@ namespace UnionMall.Entity
         public long BusinessId { get; set; }
         public long ChainStoreId { get; set; }
         public long MemberId { get; set; }
-        public string BillNumber { get; set; }
+        public string BillNumber { get; set; } = DateTime.Now.ToString();
 
-        public decimal TotalPay { get; set; }
-        public decimal CashPay { get; set; }
-        public decimal AliPay { get; set; }
-        public decimal WeChatPay { get; set; }
+        public decimal TotalPay { get; set; } = 0;
+        public decimal CashPay { get; set; } = 0;
+        public decimal AliPay { get; set; } = 0;
+        public decimal WeChatPay { get; set; } = 0;
 
-        public int Status { get; set; }
-        public decimal Value { get; set; }
-        public decimal Balance { get; set; }
-        public string UserAccount { get; set; }
-        public string Note { get; set; }
+        public int Status { get; set; } = 0;
+        public decimal Value { get; set; } = 0;
+        public decimal Balance { get; set; } = 0;
+        public string UserAccount { get; set; } = "";
+        public string Note { get; set; } = "";
         public DateTime CreationTime { get; set; } = DateTime.Now;
     }
 }

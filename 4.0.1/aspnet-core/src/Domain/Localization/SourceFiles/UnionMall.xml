@@ -154,7 +154,7 @@
     <text value="PersonalInformation" name="PersonalInformation"/>
     <text value="ModificationInformation" name="ModificationInformation"/>
     <text value="LockScreen" name="LockScreen"/>
-
+    <text name="NEnough" value="not Enough" />
     <!--ccccccccccccccccccccccccccccc-->
     <text name="FacePay" value="FaceToFacePay" />
     <text name="Upload" value="Upload" />
@@ -244,6 +244,7 @@
     <text name="CouponUseStatistics" value="CouponUseStatistics"/>
     <text name="MobileTerminalSet" value="MobileTerminalSet"/>
     <text name="AdvertSet" value="AdvertSet"/>
+    <text name="Recharge" value="Recharge"/>
     <text name="WeChatDocking" value="WeChatDocking"/>
     <text name="WeChatSet" value="WeChatSet"/>
     <text name="WeChat" value="WeChat" />

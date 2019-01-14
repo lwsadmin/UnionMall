@@ -3,7 +3,7 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.FirstMenu = "OffLineCashie";
-    ViewBag.SecondMenu = "QuickConsume";
+    ViewBag.SecondMenu = "MemberRecharge";
 }
 <link href="https://lab.hakim.se/ladda/dist/ladda.min.css" rel="stylesheet" />
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -17,14 +17,14 @@
                 <a>@L("OffLineCashie")</a>
             </li>
             <li class="active">
-                <strong>@L("QuickConsume")</strong>
+                <strong>@L("MemberRecharge")</strong>
             </li>
         </ol>
     </div>
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
-
+    <input type="hidden" name="memberId" value="0" />
     <div class="row">
         <div class="col-lg-6">
             <div class="ibox float-e-margins">
@@ -77,28 +77,23 @@
             <div class="contact-box">
                 <form method="get" class="form-horizontal">
                     <div class="form-group form-group-lg has-warning">
-                        <label class="col-sm-2 control-label">@L("Consume")@L("Amount")</label>
-
+                        <label class="col-sm-2 control-label">@L("Recharge")@L("Amount")</label>
                         <div class="col-sm-10"><input id="ConAm" type="number" step="1" min="0" class="form-control input-lg"></div>
                     </div>
-                    <div class="form-group form-group-lg has-warning">
-                        <label class="col-sm-2 control-label">@L("Rce")</label>
-
-                        <div class="col-sm-10"><input type="number" step="1" min="0" class="form-control input-lg"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">@L("Note")</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="memo"></textarea>
+                        </div>
                     </div>
                     <div class="hr-line-dashed"></div>
-                    @if (Convert.ToDecimal(ViewData["discount"]) < 10)
-                    {
-                        <div class="form-group">
-                            <h1 class="col-sm-2 control-label text-danger">@Convert.ToDecimal(ViewData["discount"]).ToString("0.##") @L("Discount") </h1>
-                        </div>
-                    }
+
 
                     <div class="form-group form-group-lg">
                         <label class="col-sm-2 control-label"></label>
                         <div class="col-sm-10">
                             <button type="button" id="con" class="btn btn-primary btn-lg btn-block" data-style="zoom-in">
-                                <span class="ladda-label">@L("OK")@L("Consume")</span><span class="ladda-spinner"></span>
+                                <span class="ladda-label">@L("OK")@L("Recharge")</span><span class="ladda-spinner"></span>
                             </button>
                         </div>
 
@@ -149,9 +144,8 @@
                     $("#Email").html(data.member.email);
                     $("#RegTime").html(data.member.regTime);
                     $("#FullName").html(data.member.fullName);
-                    $("input[name='memberId']").each(function () {
-                        $(this).val(data.member.id);
-                    });
+
+                    $("input[name='memberId']").val(data.member.id);
                     $("#ConAm").focus();
                 } else {
                     toastr.options = {
@@ -167,9 +161,10 @@
         })
     });
 
-    $("#con").click(function()
+    $("#con").click(function(e)
     {
-
+        e.preventDefault();
+        e.stopPropagation();
 
         if ($("input[name='CardID']").val() == "" && $("#Integral").html()=="-") {
             $("input[name='CardID']").focus();
@@ -179,12 +174,51 @@
             $("#ConAm").focus();
             return;
         }
-            var l = Ladda.create(this);
-			l.start();
-			// l.stop();
-			// l.toggle();
-			// l.isLoading();
-			// l.setProgress( 0-1 );
+        var l = Ladda.create(this);
+	    l.start();
+        var _Service = abp.services.app.member;
+        var note = {};
+        note.memberId = $("input[name='memberId']").val();
+        note.note = $("#memo").val();
+        note.totalPay = $("#ConAm").val();
+        note.cashPay = $("#ConAm").val();
+        note.value = $("#ConAm").val();
+        debugger;
+        _Service.memberRecharge(note).done(function (data) {
+            console.log(data);
+            if (data.succ) {
+                                          toastr.options = {
+                        "closeButton": false,//是否配置关闭按钮
+                        "debug": false,//是否开启debug模式
+                        "newestOnTop": false,//新消息是否排在最上层
+                        "progressBar": true,//是否显示进度条
+                        "timeOut": "2000",//1.5s后关闭消息框
+                    }
+            toastr.success(data.msg, "@L("Hint")");
+            } else {
+                          toastr.options = {
+                        "closeButton": false,//是否配置关闭按钮
+                        "debug": false,//是否开启debug模式
+                        "newestOnTop": false,//新消息是否排在最上层
+                        "progressBar": true,//是否显示进度条
+                        "timeOut": "2000",//1.5s后关闭消息框
+                    }
+            toastr.error(data.msg, "@L("Hint")");
+
+            }
+
+            l.stop();
+            setTimeout(function () {
+                $("#con").removeClass("ladda-button")
+            },1000)
+
+   //         l.toggle();
+			//l.isLoading();
+			//l.setProgress(0-1);
+        }).fail(function (data) {
+            }).always(function (data) {  });
+
+
     });
 
 </script>

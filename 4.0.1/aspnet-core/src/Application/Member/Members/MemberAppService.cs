@@ -17,6 +17,10 @@ using UnionMall.Common;
 using System.IO;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
+using UnionMall.Sessions;
+using UnionMall.Business;
+using UnionMall.Enum;
+using UnionMall.Statistics;
 //using UnionMall.SystemSet;
 
 namespace UnionMall.Member
@@ -27,17 +31,24 @@ namespace UnionMall.Member
         private readonly IAbpSession _AbpSession;
         private readonly ICommonAppService _comServices;
         private readonly IRepository<UnionMall.Entity.Member, long> _Repository;
-
+        private readonly ISessionAppService _sessionAppService;
+        private readonly IRechargeNoteAppService _reAppService;
+        private readonly IChainStoreAppService _storeServices;
         // private readonly ILogAppService _log;
         public MemberAppService(ISqlExecuter sqlExecuter, IRepository<UnionMall.Entity.Member, long> Repository,
-            IAbpSession AbpSession, ICommonAppService comServices
-            //, ILogAppService log
+            IAbpSession AbpSession, ISessionAppService sessionAppService, IChainStoreAppService storeServices, ICommonAppService comServices
+       , IRechargeNoteAppService reAppService
             )
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
             _comServices = comServices;
+            _sessionAppService = sessionAppService;
+            _storeServices = storeServices;
+            _reAppService = reAppService;
+            LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
+
             // _log = log;
         }
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
@@ -49,7 +60,7 @@ namespace UnionMall.Member
                 idSql = $"SELECT rows FROM sysindexes WHERE id = OBJECT_ID('dbo.TMember') AND indid < 2";
             }
             where = where.Replace("*.", "m.").Replace("c.", "m.");
-         // int[] chainstore = { 6,16,17,18,19,20,21 };
+            // int[] chainstore = { 6,16,17,18,19,20,21 };
             //int[] member = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
             //    18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
             //    36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
@@ -128,7 +139,7 @@ left join dbo.TChainStore c on T.chainstoreId=c.id";
             {
                 dto.TenantId = _AbpSession.TenantId;
                 var entity = _Repository.FirstOrDefault(c => c.CardID == dto.CardID && c.TenantId == dto.TenantId);
-                LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
+                // LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
                 if (entity != null)
                 {
                     return new JsonResult(new { succ = false, msg = L("Exist{0}", L("CardID")) + dto.CardID });
@@ -306,6 +317,35 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
                 ($"select Title from dbo.TMemberLevel where Id={m.LevelId}")
                 .Tables[0].Rows[0][0].ToString();
             return dto;
+        }
+
+        //[Abp.Domain.Uow.UnitOfWork]
+        public async Task<JsonResult> MemberRecharge(Entity.RechargeNote note)
+        {
+
+            var m = _Repository.FirstOrDefault(c => c.Id == note.MemberId);
+            if (m == null)
+            {
+                return new JsonResult(new { succ = false, msg = L("NotExist{0}!", L("Member") + L("Records")) });
+            }
+
+            var UserInfo = await _sessionAppService.GetCurrentLoginInformations();
+            var store = await _storeServices.GetByIdAsync(UserInfo.User.ChainStoreId);
+            // Logger.Warn("11111111111111111111111111111111111111111" + _comServices.GetBillNumber(OrderNumberType.OFQ));
+            if (store.AvailableValue < note.Value)
+            {
+                return new JsonResult(new { succ = false, msg = L("Store") + L("Usable") + L("Balance") + L("NEnough") + "!" });
+            }
+            note.TenantId = UserInfo.Tenant.Id;
+            note.Balance = m.Balance + note.Value;
+            note.BusinessId = store.BusinessId;
+            note.BillNumber = _comServices.GetBillNumber(OrderNumberType.OFMR);
+            note.UserAccount = UserInfo.User.UserName;
+
+            m.Balance += note.Value;
+            await _Repository.UpdateAsync(m);
+            await _reAppService.Create(note);
+            return new JsonResult(new { succ = true, msg = L("Recharge") + L("Success") + "!" });
         }
     }
 }

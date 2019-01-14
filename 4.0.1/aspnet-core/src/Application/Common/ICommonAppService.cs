@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UnionMall.Enum;
 
 namespace UnionMall.Common
 {
@@ -17,8 +18,8 @@ namespace UnionMall.Common
         DataTable ExcelToDataTable(IFormFile file, out string msg);
         Task<MemoryStream> DataTableToExcel(string sql);
         string GetWhere();
-
-
+        string GetBillNumber(OrderNumberType orderTypes);
+        string GetCodeNumber();
 
     }
 }

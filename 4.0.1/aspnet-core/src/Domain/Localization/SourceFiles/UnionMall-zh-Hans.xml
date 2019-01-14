@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="zh-Hans">
   <texts>
-    <text value="联盟商城" name="UnionMall"/>
+    <text value="Test" name="UnionMall"/>
     <text value="未选择" name="NotSelected"/>
     <text value="更改商户" name="Changetenant"/>
     <text value="主页" name="HomePage"/>
@@ -164,6 +164,7 @@
     <text name="CouponUseStatistics" value="优惠券使用统计"/>
     <text name="MobileTerminalSet" value="移动端设置"/>
     <text name="AdvertSet" value="广告图"/>
+        <text name="Recharge" value="充值"/>
     <text name="WeChatDocking" value="微信对接"/>
     <text name="WeChatSet" value="微信设置"/>
     <text name="PublicWeChatSet" value="公众号设置" />
@@ -207,6 +208,7 @@
     <text name="Import" value="导入" />
     <text name="Export" value="导出" />
     <text name="Balance" value="余额" />
+    <text name="NEnough" value="不足" />
     <text name="BirthDay" value="生日" />
     <text name="Other" value="其他" />
     <text name="Textbox" value="文本框" />

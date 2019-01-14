@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Threading.Tasks;
+using UnionMall.Entity;
 using UnionMall.IRepositorySql;
 
 namespace UnionMall.Statistics
@@ -48,6 +50,11 @@ isnull(cast(sum( CashPay) as float),0) CashPay
 where 1=1 
 {  where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n")}";
             return _sqlExecuter.ExecuteDataSet(table);
+        }
+
+        public async Task Create(RechargeNote note)
+        {
+            await _Repository.InsertAsync(note);
         }
     }
 }

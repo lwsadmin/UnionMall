@@ -19,9 +19,8 @@ namespace UnionMall.Member
         Task<Entity.Member> GetEntity(string cardId);
         Task<CardCoreDto> GetCardCore(string cardId);
         Task<JsonResult> SubmitRegAsync(RegDto dto);
-
+        Task<JsonResult> MemberRecharge(Entity.RechargeNote note);
         Task<JsonResult> Import(IFormFile flie);
-
         Task<MemoryStream> ExportToExcel(string where);
     }
 }

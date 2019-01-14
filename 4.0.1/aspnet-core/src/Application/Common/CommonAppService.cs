@@ -16,6 +16,8 @@ using Abp.UI;
 using NPOI.SS.UserModel;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
+using UnionMall.Enum;
+
 namespace UnionMall.Common
 {
     public class CommonAppService : ApplicationService, ICommonAppService
@@ -218,6 +220,42 @@ namespace UnionMall.Common
 
             string url = path + uploadFileName;//返回的没有转换的相对路径到前端，前端传入后台存入数据库
             return new JsonResult(new { error = 0, succ = true, url = url, size = size, name = name });
+        }
+
+        public string GetBillNumber(OrderNumberType orderTypes)
+        {
+            string TypeName = System.Enum.GetName(typeof(OrderNumberType), orderTypes);
+            string num1 = DateTime.Now.ToString("yyyyMMdd");
+            Random rd = new Random();
+            string BillNumber = TypeName + num1 + rd.Next(0, 99999).ToString("D5");
+            return BillNumber;
+        }
+
+        public string GetCodeNumber()
+        {
+            Random rd = new Random();
+            return rd.Next(0, 99999999).ToString("D8");
+        }
+        /// <summary>
+        /// 生成随机字母与数字组合
+        /// </summary>
+        /// <param name="Length">生成长度</param>
+        /// <param name="Sleep">是否要在生成前将当前线程阻止以避免重复</param>
+        /// <returns></returns>
+        public string GetStr(int Length, bool Sleep)
+        {
+            if (Sleep)
+                System.Threading.Thread.Sleep(3);
+            char[] Pattern = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            string result = "";
+            int n = Pattern.Length;
+            System.Random random = new Random(~unchecked((int)DateTime.Now.Ticks));
+            for (int i = 0; i < Length; i++)
+            {
+                int rnd = random.Next(0, n);
+                result += Pattern[rnd];
+            }
+            return result;
         }
     }
 }
