@@ -11,9 +11,11 @@ namespace UnionMall.Member.Dto
     {
         public string FullName { get; set; }
         public string Level { get; set; }
+        public long LevelId { get; set; }
         public string CardID { get; set; }
         public string WeChatName { get; set; }
         public string HeadImg { get; set; }
+        public long ChainStoreId { get; set; }
         public int Sex { get; set; }
         public string BirthDay { get; set; }
         public string Mobile { get; set; }

@@ -34,7 +34,8 @@
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
-
+    <input type="hidden" name="storeId" value="" />
+    <input type="hidden" name="levelId" value="" />
     <div class="row">
         <div class="col-lg-6">
             <div class="ibox float-e-margins">
@@ -186,6 +187,8 @@
                     $("#Email").html(data.member.email);
                     $("#RegTime").html(data.member.regTime);
                     $("#FullName").html(data.member.fullName);
+                    $("input[name='storeId']").val(data.member.chainStoreId);
+                    $("input[name='levelId']").val(data.member.levelId);
                     $("input[name='memberId']").each(function () {
                         $(this).val(data.member.id);
                     });
@@ -214,10 +217,35 @@
     });
     function EditStore()
     {
+        $("#Store").val($("input[name='storeId']").val());
+        $("#Store").trigger("chosen:updated");
         $("#editStore").modal('show');
     }
+    function SaveStore()
+    {
+        if ($("#Store").val() == "")
+        {
+            $("#Store").trigger("chosen:open");
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }
+    }
+
     function EditLevel()
     {
+        $("#LevelId").val($("input[name='levelId']").val());
+        $("#LevelId").trigger("chosen:updated");
         $("#editLevel").modal('show');
+    }
+    function SaveLevel()
+    {
+        if ($("#LevelId").val() == "")
+        {
+            $("#LevelId").trigger("chosen:open");
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }
     }
 </script>
