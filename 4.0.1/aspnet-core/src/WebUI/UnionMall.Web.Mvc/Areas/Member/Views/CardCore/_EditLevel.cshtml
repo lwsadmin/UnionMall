@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="modal inmodal" id="editLevel" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">@L("Change")@L("Level")</h4>
+                <small class="font-bold"></small>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>@L("Select")@L("Level")</label>
+                            @Html.DropDownList("Level", (SelectList)ViewData["Level"], L("Choose"), new { @class = "input-sm form-control chosen-select", @style = "padding: 3px 5px;" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">@L("Close")</button>
+                <button type="button" class="btn btn-primary">@L("Save")</button>
+            </div>
+        </div>
+    </div>
+</div>

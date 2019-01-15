@@ -82,6 +82,11 @@
     </Second>
     <Second Name="MemberRegister"  Url="/member/memberreg/index"></Second>
     <Second Name="CardInfo"  Url="/member/cardcore/index">
+      <Action Name="ChangeLevel" />
+      <Action Name="ChangeStore" />
+      <Action Name="ChangeCardID" />
+      <Action Name="ChangePwd" />
+      <Action Name="SendCoupon" />
     </Second>
   </First>
   <First Name="FlashSale"  Icon="glyphicon glyphicon-dashboard">

@@ -5,11 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.BalanceNote;
+using UnionMall.Business;
 using UnionMall.Common;
 using UnionMall.ConsumeNote;
 using UnionMall.Controllers;
 using UnionMall.Coupon;
+using UnionMall.Goods;
 using UnionMall.IntegralNote;
 using UnionMall.Member;
 using X.PagedList;
@@ -26,17 +29,24 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
         private readonly IIntegralNoteAppService _integralService;
         private readonly IBalanceNoteAppService _balanceService;
         private readonly IUsedStatisticsAppService _useService;
+        private readonly IGoodsOrderAppService _orderAppService;
+        private readonly IMemberLevelAppService _levelAppService;
+        private readonly IChainStoreAppService _storeAppService;
         public CardCoreController(IMemberAppService AppService, 
             IConsumeNoteAppService consumeService, 
-            ICommonAppService comAppService, IIntegralNoteAppService integralService,
-            IBalanceNoteAppService balanceService, IUsedStatisticsAppService useService)
+            ICommonAppService comAppService, IIntegralNoteAppService integralService, IGoodsOrderAppService orderAppService,
+            IBalanceNoteAppService balanceService, IUsedStatisticsAppService useService,
+            IMemberLevelAppService levelAppService, IChainStoreAppService storeAppService)
         {
             _AppService = AppService;
             _consumeService = consumeService;
             _comAppService = comAppService;
             _integralService = integralService;
             _balanceService = balanceService;
+            _orderAppService = orderAppService;
             _useService = useService;
+            _levelAppService = levelAppService;
+            _storeAppService = storeAppService;
         }
 
         public async Task<IActionResult> Index(long? id)
@@ -47,6 +57,11 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
                 ViewBag.CarId = (await _AppService.GetEntity((long)id)).CardID;
             }
 
+            var levelDropDown = (await _levelAppService.GetDropDown());
+            ViewData.Add("Level", new SelectList(levelDropDown, "Id", "Title"));
+
+            var storeDropDown = (await _storeAppService.GetDropDown());
+            ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
             return View();
         }
 
@@ -82,6 +97,14 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             DataSet ds = _useService.GetPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
             return View("_TableCoupon", pageList);
+        }
+        public async Task<IActionResult> OrderList(int page = 1, int pageSize = 10, string memberId = "")
+        {
+            string where = $" and Memberid={memberId}";
+            int total;
+            DataSet ds = _orderAppService.GetPage(page, pageSize, "id desc", out total, where);
+            IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
+            return View("_TableOrder", pageList);
         }
         [AbpMvcAuthorize("UnionMember.CardInfo")]
         public async Task<JsonResult> GetCardInfo(string cardId)

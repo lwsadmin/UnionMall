@@ -27,14 +27,14 @@ namespace UnionMall.Web.Mvc.Areas.OffLine.Controllers
             _AppService = AppService;
             _comService = comService;
         }
-        public async Task<IActionResult> Index(int pageIndex = 1, int pageSize = 10, string categoryId = "", string title = "")
+        public async Task<IActionResult> Index(int pageIndex = 1, int pageSize = 10, long categoryId = 0, string title = "")
         {
             string where = _comService.GetWhere();
             ViewBag.Title = title;
             ViewBag.Cat = categoryId;
             if (!string.IsNullOrEmpty(title))
                 where += $" and g.name like '%{title}%' ";
-            if (!string.IsNullOrEmpty(categoryId))
+            if (categoryId > 0)
                 where += $" and g.categoryId ={categoryId} ";
             int total;
             DataSet ds = _AppService.GetPage(pageIndex, pageSize, "g.sort desc,g.id desc", out total, where);
@@ -43,23 +43,24 @@ namespace UnionMall.Web.Mvc.Areas.OffLine.Controllers
             {
                 return View("_Table", pageList);
             }
+            ViewBag.Cat = categoryId;
             ViewBag.Category = await _catAppService.GetCategoryDropDownList(0, 1);
             return View(pageList);
         }
 
-        public async Task<IActionResult> List(int page = 1, int pageSize = 10, string categoryId = "", string title = "")
+        public async Task<IActionResult> List(int pageIndex = 1, int pageSize = 10, long categoryId = 0, string title = "")
         {
             string where = _comService.GetWhere();
             ViewBag.Title = title;
             ViewBag.Cat = categoryId;
             if (!string.IsNullOrEmpty(title))
                 where += $" and g.name like '%{title}%' ";
-            if (!string.IsNullOrEmpty(categoryId))
+            if (categoryId > 0)
                 where += $" and g.categoryId ={categoryId} ";
             int total;
-            DataSet ds = _AppService.GetPage(page, pageSize, "g.sort desc,g.id desc", out total, where);
-            IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
-            return View("_Table", pageList);
+            DataSet ds = _AppService.GetPage(pageIndex, pageSize, "g.sort desc,g.id desc", out total, where);
+            IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
+            return PartialView("_Table", pageList);
         }
     }
 }

@@ -22,7 +22,6 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
         private readonly IGoodsOrderAppService _AppService;
         private readonly ICommonAppService _comService;
         private readonly IGoodsOrderItemAppService _itemAppService;
-
         public GoodsOrderController(IGoodsOrderAppService AppService, ICommonAppService comService,
             IGoodsOrderItemAppService itemAppService)
         {

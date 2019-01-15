@@ -6,7 +6,16 @@
     ViewBag.FirstMenu = "UnionMember";
     ViewBag.SecondMenu = "CardInfo";
 }
-
+<style>
+    .order-item p {
+        padding-left: 20px;
+        display: inline-block;
+        width: 33%;
+        margin: 0;
+    }
+</style>
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" asp-append-version="true" rel="stylesheet" />
+<link href="~/lib/treetable/script/treeTable/default/jquery.treeTable.css" rel="stylesheet" asp-append-version="true" />
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
         <h2></h2>
@@ -44,8 +53,8 @@
                     </form>
                     <br />
                     <p>
-                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("Level")</button>
-                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("Store")</button>
+                        <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="EditLevel();">@L("Change")@L("Level")</button>
+                        <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="EditStore();">@L("Change")@L("Store")</button>
                         <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("CardID")</button>
                         <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("Password")</button>
                         <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Send")@L("Coupon")</button>
@@ -123,8 +132,8 @@
                         </div>
                     </div>
                     <div id="order" class="tab-pane fade" aria-labelledby="value-tab">
-                        <div class="panel-body">
-                            <p>4.近日沃尔沃宣布将联合瑞典汽车安全公司奥托立夫(AUTOLIV)成立一个独立子公司，该公司将专攻瞄准未来车型自动驾驶技 术相关的研发。奥托立夫公司(AUTOLIV)是在瑞典设立的一家国际跨国公司，公司多年来研发汽车电子安全系统、电子控制单元，汽车方向盘系统以及夜视 和雷达传感系统，新的合作能够让新公司吸取Autoliv多年来在汽车驾驶安全配件制造方面的经验，研发未来用于沃尔沃或其它厂商的无人驾驶软件系统。</p>
+                        <div class="panel-body" id="tableOrder">
+                            @Html.Partial("_TableOrder", null)
                         </div>
                     </div>
                     <div id="coupon" class="tab-pane fade" aria-labelledby="value-tab">
@@ -137,7 +146,11 @@
         </div>
     </div>
 </div>
+@Html.Partial("_EditStore")
+@Html.Partial("_EditLevel")
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/treetable/script/treeTable/jquery.treeTable.js" asp-append-version="true"></script>
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
 <script>
     document.onkeydown = function () {
         if (event.keyCode == 13 || event.keyCode == 123 || event.keyCode == 116) {
@@ -145,8 +158,6 @@
             event.keyCode = 0; event.returnValue = false;
         }
     }
-
-
     $('#myTabs a').click(function (e) {
         e.preventDefault()
         $(this).tab('show')
@@ -181,6 +192,7 @@
                     $("#consumeForm").submit();
                     $("#balanceForm").submit();
                     $("#integralForm").submit();
+                    $("#orderForm").submit();
                     $("#couponForm").submit();
                 } else {
                     toastr.options = {
@@ -197,6 +209,15 @@
     });
 
     $(function () {
-        if ($("input[name='CardID']").val() != "") { $("#readBtn").click();}
+        if ($("input[name='CardID']").val() != "") { $("#readBtn").click(); }
+        $('.chosen-select').chosen({ width: "100%" });
     });
+    function EditStore()
+    {
+        $("#editStore").modal('show');
+    }
+    function EditLevel()
+    {
+        $("#editLevel").modal('show');
+    }
 </script>
