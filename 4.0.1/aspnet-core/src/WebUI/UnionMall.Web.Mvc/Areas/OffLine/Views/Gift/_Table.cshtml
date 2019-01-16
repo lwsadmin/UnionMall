@@ -28,9 +28,10 @@
                 <td>@item["BusinessName"]</td>
                 <td>@item["Integral"]</td>
                 <td>@item["StockCount"]</td>
-                <td>
-                    <a onclick="return SetPage();" href="/giftmall/gift/add/@item["Id"]" title="@L("Edit")">
-                        <i class="fa fa-edit text-navy"></i>
+                <td class="onclick="AddItem();">
+                    <a href="javascript:void(0);" title="@L("Add")">
+                        <i class="fa fa-plus text-navy"></i>
+                        
                     </a>
                 </td>
             </tr>

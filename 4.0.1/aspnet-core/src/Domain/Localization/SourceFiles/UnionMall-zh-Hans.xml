@@ -5,6 +5,7 @@
     <text value="未选择" name="NotSelected"/>
     <text value="更改商户" name="Changetenant"/>
     <text value="主页" name="HomePage"/>
+    <text value="两次输入密码不一致!" name="TwoPwd"/>
     <text value="运营商" name="Tenants"/>
     <text value="保存" name="Save"/>
     <text value="取消" name="Cancel"/>
@@ -216,6 +217,12 @@
     <text name="Radio" value="单选框" />
     <text name="TextArea" value="多行文本框" />
     <text name="OptionTip" value="选项之间用,隔开" />
+
+    <text name="ChangeLevel" value="更换等级" />
+    <text name="ChangeStore" value="更换门店" />
+    <text name="ChangeCardID" value="更换卡号" />
+    <text name="ResetPwd"  value="重置密码"/>
+    <text name="SendCoupon" value="发送优惠券"/>
     <!--Form-->
     <text name="Praise" value="赞" />
     <text name="Ago" value="前" />
@@ -301,6 +308,7 @@
     <text name="Type" value="类型" />
     <text name="Begin" value="开始" />
     <text name="End" value="结束" />
+    <text name="Reset" value="重置" />
     <text name="Consume" value="消费" />
     <text name="Month" value="月" />
     <text name="Day" value="天" />

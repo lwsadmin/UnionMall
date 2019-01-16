@@ -23,9 +23,9 @@ namespace UnionMall.Coupon.ReceiveStatistics
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
-        public Task CreateAsync(CouponSendStatistics dt)
+        public async Task CreateAsync(CouponSendStatistics dt)
         {
-            throw new NotImplementedException();
+            await _Repository.InsertAsync(dt);
         }
 
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")

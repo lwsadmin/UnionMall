@@ -6,6 +6,7 @@
     <text value="Users" name="Users"/>
     <text value="UserList" name="UserList"/>
     <text value="Union" name="Union"/>
+    <text value="Two inconsistent passwor!" name="TwoPwd"/>
     <text name="This system is for demonstration only" value="This system is for demonstration only" />
     <text name="Welcome to" value="Welcome" />
     <text name="Welcome, {0}" value="Welcome {0}" />
@@ -34,6 +35,7 @@
     <text name="Checkbox" value="CheckBox" />
     <text name="Radio" value="Radio" />
     <text name="TextArea" value="TextArea" />
+    <text name="Reset" value="Reset" />
     <text name="OptionTip" value="Selections are separated by ," />
     <text name="Hint" value="Hint" />
     <text value="Distribution" name="Dtb"/>
@@ -266,6 +268,12 @@
     <text name="Female" value="Female" />
     <text name="CardID" value="CardID" />
     <text name="Other" value="Other" />
+
+    <text name="ChangeLevel" value="ChangeLevel" />
+    <text name="ChangeStore" value="ChangeStore" />
+    <text name="ChangeCardID" value="ChangeCardID" />
+    <text name="ResetPwd"  value="ResetPassword"/>
+    <text name="SendCoupon" value="SendCoupon"/>
     <!--Action-->
     <text name="Cmn" value="Commission" />
     <text name="OneLevel" value="One-level" />

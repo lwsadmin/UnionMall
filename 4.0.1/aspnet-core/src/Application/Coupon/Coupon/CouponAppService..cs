@@ -10,6 +10,10 @@ using UnionMall.Coupon.Dto;
 using UnionMall.Entity;
 using Abp.AutoMapper;
 using UnionMall.IRepositorySql;
+using UnionMall.Member;
+using Microsoft.AspNetCore.Mvc;
+using UnionMall.Coupon.ReceiveStatistics;
+
 namespace UnionMall.Coupon
 {
     public class CouponAppService : ApplicationService, ICouponAppService
@@ -17,13 +21,19 @@ namespace UnionMall.Coupon
 
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
-
+        public readonly IMemberAppService _memAppServices;
         private readonly IRepository<Entity.Coupon, long> _Repository;
-        public CouponAppService(ISqlExecuter sqlExecuter, IRepository<Entity.Coupon, long> Repository, IAbpSession AbpSession)
+        private readonly IReceiveStatisticsAppService _reciveNoteAppSerivece;
+        public CouponAppService(ISqlExecuter sqlExecuter, IMemberAppService memAppServices,
+            IRepository<Entity.Coupon, long> Repository, IReceiveStatisticsAppService reciveNoteAppSerivece,
+            IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
+            _memAppServices = memAppServices;
+            _reciveNoteAppSerivece = reciveNoteAppSerivece;
+            LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
         }
         public async Task Delete(long id)
         {
@@ -65,6 +75,35 @@ namespace UnionMall.Coupon
         public async Task<CreateEditDto> GetByIdAsync(long Id)
         {
             return AutoMapper.Mapper.Map<CreateEditDto>(await _Repository.GetAsync(Id));
+        }
+
+        public async Task<JsonResult> SendCoupon(long MemberId, long CouponId, string BillNumber = "")
+        {
+            var json = new JsonResult(new { });
+            var coupon = _Repository.FirstOrDefault(c => c.Id == CouponId);
+            if (coupon == null)
+            {
+                json.Value = new { succ = false, msg = L("NotExist{0}", L("Count")) };
+                return json;
+            }
+            if (coupon.TotalCount <= 0)
+            {
+                json.Value = new { succ = false, msg = L("Coupon") + L("Count") + L("NEnough") };
+                return json;
+            }
+            coupon.TotalCount -= 1;
+            await _Repository.UpdateAsync(coupon);
+
+            CouponSendStatistics cn = new CouponSendStatistics();
+            cn.TenantId = coupon.TenantId;
+            cn.CouponId = CouponId;
+            cn.MemberId = MemberId;
+            cn.SendOrderBillNumber = BillNumber;
+            cn.BeginDate = DateTime.Now;
+            cn.EndDate = DateTime.Now.AddDays(coupon.ValidityDay);
+            await _reciveNoteAppSerivece.CreateAsync(cn);
+            json.Value = new { succ= true };
+            return json;
         }
     }
 }

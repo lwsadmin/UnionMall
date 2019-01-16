@@ -44,12 +44,13 @@ namespace UnionMall.Goods
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select c.id,c.Praise,c.ReplyCount,a.Name,c.level,c.Images, c.CommentGrade, c.ReplyId,c.Content,c.CreationTime, m.WeChatName,m.HeadImg 
+                table = $@"select c.id,c.Praise,c.ReplyCount,a.Name,c.level,c.Images, c.CommentGrade, c.ReplyId,c.Content,c.CreationTime,
+ m.WeChatName,m.HeadImg 
 from dbo.TComment c left join	 dbo.TMember m on c.MemberId=m.id
-left join dbo.TGoods a on c.ObjectId=a.Id  where c.Type=1
+left join dbo.TGoods a  on c.ObjectId=a.Id  left  join dbo.TChainStore s on a.ChainStoreId=s.Id where c.Type=1
 and c.ReplyId=0 ";
             }
-            where = where.Replace("*.BusinessId", "ct.BusinessId").Replace(" *", " c");
+            where = where.Replace("*.BusinessId", "s.BusinessId").Replace(" *", " c");
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }

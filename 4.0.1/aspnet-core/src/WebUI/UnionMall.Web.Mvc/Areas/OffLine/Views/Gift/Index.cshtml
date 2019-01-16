@@ -26,7 +26,10 @@
         </ol>
     </div>
 </div>
-
+<input type="hidden" id="noCardId" value="@L("NotExist{0}",L("CardID"))" />
+<input type="hidden" id="hint" value="@L("Hint")" />
+<input type="hidden" id="Female" value="@L("Female")" />
+<input type="hidden" id="Male" value="@L("Male")" />
 <div class="wrapper wrapper-content animated fadeInRight">
     <input type="hidden" name="memberId" value="0" />
     <div class="row">
@@ -82,13 +85,10 @@
                                     <span class="ladda-label">@L("OK")@L("Receive")</span><span class="ladda-spinner"></span>
                                 </button>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
         <div class="col-lg-6">
             <div class="tabs-container">
@@ -107,16 +107,16 @@
                             </div>
                         </div>
                         @*@foreach (var item in ViewBag.Category)
-                        {
-                            <div id="tab-@(item.Id)" class="tab-pane">
-                                <div class="panel-body" id="div_table@(item.Id)">
-                                    @await Html.PartialAsync("_Table", Model, new ViewDataDictionary(ViewData)
-                                    {
-                                    { "index", item.Id }
-                                    })
+                            {
+                                <div id="tab-@(item.Id)" class="tab-pane">
+                                    <div class="panel-body" id="div_table@(item.Id)">
+                                        @await Html.PartialAsync("_Table", Model, new ViewDataDictionary(ViewData)
+                                        {
+                                        { "index", item.Id }
+                                        })
+                                    </div>
                                 </div>
-                            </div>
-                        }*@
+                            }*@
                     </div>
                 </div>
             </div>
@@ -125,126 +125,6 @@
 </div>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <!-- Ladda -->
-<script src="https://lab.hakim.se/ladda/dist/spin.min.js"></script>
-<script src="https://lab.hakim.se/ladda/dist/ladda.min.js"></script>
-<script>
-    document.onkeydown = function () {
-        if (event.keyCode == 13 || event.keyCode == 123 || event.keyCode == 116) {
-            $("#readBtn").click();
-            event.keyCode = 0; event.returnValue = false;
-        }
-    }
-    $('#myTabs a').click(function (e)
-    {
-        e.preventDefault();
-        //  alert($(this).attr("data-cat"));
-      //  $("#div_table" + $(this).attr("data-cat")).html("");
-        $("input[name='categoryId']").val($(this).attr("data-cat"));
-        //$("#searchForm").attr("data-ajax-update", "div_table" + $(this).attr("data-cat"));
-        //alert($("#searchForm").attr("data-ajax-update"));
-        debugger;
-        $("#searchForm").submit();
-        $(this).tab('show');
-    });
-    $("#readBtn").click(function () {
-        if ($("input[name='CardID']").val() == "") {
-            $("input[name='CardID']").focus();
-            return;
-        }
-        abp.ajax({
-            contentType: 'application/x-www-form-urlencoded',
-            url: "/member/cardcore/GetCardInfo",
-            data: { cardId: $("input[name='CardID']").val() },
-            success: function (data) {
-
-                if (data.succ) {
-                    $("#HeadImg").attr("src", data.member.headImg);
-                    $("#CardID").html(data.member.cardID);
-                    $("#Level").html(data.member.level);
-                    $("#WeChatName").html(data.member.weChatName);
-                    $("#Mobile").html(data.member.mobile);
-                    $("#Sex").html(data.member.sex=="0"?'@L("Male")':'@L("Female")');
-                    $("#BirthDay").html(data.member.birthDay);
-                    $("#Integral").html(data.member.integral);
-                    $("#Balance").html(data.member.balance);
-                    $("#Email").html(data.member.email);
-                    $("#RegTime").html(data.member.regTime);
-                    $("#FullName").html(data.member.fullName);
-
-                    $("input[name='memberId']").val(data.member.id);
-                    $("#ConAm").focus();
-                } else {
-                    toastr.options = {
-                        "closeButton": false,//是否配置关闭按钮
-                        "debug": false,//是否开启debug模式
-                        "newestOnTop": false,//新消息是否排在最上层
-                        "progressBar": true,//是否显示进度条
-                        "timeOut": "2000",//1.5s后关闭消息框
-                    }
-                   toastr.error("@L("NotExist{0}",L("CardID"))", "@L("Hint")");
-                }
-            }
-        })
-    });
-
-    $("#con").click(function(e)
-    {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if ($("input[name='CardID']").val() == "" && $("#Integral").html()=="-") {
-            $("input[name='CardID']").focus();
-            return;
-        }
-        if ($("#ConAm").val()=="") {
-            $("#ConAm").focus();
-            return;
-        }
-        var l = Ladda.create(this);
-	    l.start();
-        var _Service = abp.services.app.member;
-        var note = {};
-        note.memberId = $("input[name='memberId']").val();
-        note.note = $("#memo").val();
-        note.totalPay = $("#ConAm").val();
-        note.cashPay = $("#ConAm").val();
-        note.value = $("#ConAm").val();
-        debugger;
-        _Service.memberRecharge(note).done(function (data) {
-            console.log(data);
-            if (data.succ) {
-                                          toastr.options = {
-                        "closeButton": false,//是否配置关闭按钮
-                        "debug": false,//是否开启debug模式
-                        "newestOnTop": false,//新消息是否排在最上层
-                        "progressBar": true,//是否显示进度条
-                        "timeOut": "2000",//1.5s后关闭消息框
-                    }
-            toastr.success(data.msg, "@L("Hint")");
-            } else {
-                          toastr.options = {
-                        "closeButton": false,//是否配置关闭按钮
-                        "debug": false,//是否开启debug模式
-                        "newestOnTop": false,//新消息是否排在最上层
-                        "progressBar": true,//是否显示进度条
-                        "timeOut": "2000",//1.5s后关闭消息框
-                    }
-            toastr.error(data.msg, "@L("Hint")");
-
-            }
-
-            l.stop();
-            setTimeout(function () {
-                $("#con").removeClass("ladda-button")
-            },1000)
-
-   //         l.toggle();
-			//l.isLoading();
-			//l.setProgress(0-1);
-        }).fail(function (data) {
-            }).always(function (data) {  });
-
-
-    });
-
-</script>
+<script src="https://lab.hakim.se/ladda/dist/spin.min.js" asp-append-version="true"></script>
+<script src="https://lab.hakim.se/ladda/dist/ladda.min.js" asp-append-version="true"></script>
+<script src="~/view-resources/Areas/Offline/Gift/index.js" asp-append-version="true"></script>

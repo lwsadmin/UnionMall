@@ -54,11 +54,26 @@
                     </form>
                     <br />
                     <p>
-                        <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="EditLevel();">@L("Change")@L("Level")</button>
-                        <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="EditStore();">@L("Change")@L("Store")</button>
-                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("CardID")</button>
-                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Change")@L("Password")</button>
-                        <button type="button" class="btn btn-outline btn-primary btn-sm">@L("Send")@L("Coupon")</button>
+                        @if (IsGranted("UnionMember.CardInfo.ChangeLevel"))
+                        {
+                            <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="EditLevel();">@L("Change")@L("Level")</button>
+                        }
+                        @if (IsGranted("UnionMember.CardInfo.ChangeStore"))
+                        {
+                            <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="EditStore();">@L("Change")@L("Store")</button>
+                        }
+                        @if (IsGranted("UnionMember.CardInfo.ChangeCardID"))
+                        {
+                            <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="EditCardId();">@L("Change")@L("CardID")</button>
+                        }
+                        @if (IsGranted("UnionMember.CardInfo.ResetPwd"))
+                        {
+                            <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="ResetPwd();">@L("Reset")@L("Password")</button>
+                        }
+                        @if (IsGranted("UnionMember.CardInfo.SendCoupon"))
+                        {
+                            <button type="button" class="btn btn-outline btn-primary btn-sm" onclick="ShowSendCoupon();">@L("Send")@L("Coupon")</button>
+                        }      
                     </p>
                 </div>
             </div>
@@ -149,6 +164,9 @@
 </div>
 @Html.Partial("_EditStore")
 @Html.Partial("_EditLevel")
+@Html.Partial("_EditCard")
+@Html.Partial("_ResetPwd")
+@Html.Partial("_SendCoupon")
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <script src="~/lib/treetable/script/treeTable/jquery.treeTable.js" asp-append-version="true"></script>
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
@@ -210,7 +228,17 @@
             }
         })
     });
-
+        function SuccessTip()
+    {
+                     toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.success('@L("Save")@L("Success")', '@L("Hint")');
+    }
     $(function () {
         if ($("input[name='CardID']").val() != "") { $("#readBtn").click(); }
         $('.chosen-select').chosen({ width: "100%" });
@@ -230,6 +258,11 @@
             event.stopPropagation();
             return false;
         }
+        var _Service = abp.services.app.member;
+        _Service.cardCoreEdit("ChainStoreId", $("input[name='CardID']").val(), $("input[name='memberId']").val(),
+            $("#Store").val()).done(function (data) { SuccessTip(); $("#editStore").modal('hide'); })
+            .fail(function (data) { })
+            .always(function (data) { });
     }
 
     function EditLevel()
@@ -247,5 +280,90 @@
             event.stopPropagation();
             return false;
         }
+        var _Service = abp.services.app.member;
+        _Service.cardCoreEdit("LevelId", $("input[name='CardID']").val(), $("input[name='memberId']").val(),
+            $("#LevelId").val()).done(function (data) { SuccessTip(); $("#editLevel").modal('hide');})
+            .fail(function (data) { })
+            .always(function (data) { });
+    }
+    function EditCardId()
+    {
+        $("#newCardId").val('');
+        $("#editCardId").modal('show');
+    }
+    function SaveCard()
+    {
+        if ($("#newCardId").val() == "")
+        {
+            event.preventDefault();
+            event.stopPropagation();
+            $("#newCardId").focus();
+            return;
+        }
+        var _Service = abp.services.app.member;
+        _Service.cardCoreEdit("CardId", $("input[name='CardID']").val(), $("input[name='memberId']").val(),
+            $("#newCardId").val()).done(function (data) { SuccessTip(); $("#editCardId").modal('hide');})
+            .fail(function (data) { })
+            .always(function (data) { });
+    }
+    function ResetPwd()
+    {
+        $("#pwd").val('');
+        $("#newPwd").val('');
+        $("#editResetPwd").modal('show');
+
+    }
+    function SavePwd()
+    {
+        if ($("#pwd").val() == "")
+        { $("#pwd").focus(); return; }
+        if ($("#newPwd").val() == "")
+        { $("#newPwd").focus(); return; }
+
+        if ($("#newPwd").val() != $("#pwd").val())
+        {
+            $("#newPwd").focus();
+            $("#newPwd").siblings(".help-block").fadeIn(500);
+            return;
+        }
+        $("#newPwd").siblings(".help-block").fadeOut(300);
+        var _Service = abp.services.app.member;
+        _Service.cardCoreEdit("PassWord", $("input[name='CardID']").val(), $("input[name='memberId']").val(),
+            $("#newPwd").val()).done(function (data) { SuccessTip(); $("#editResetPwd").modal('hide'); })
+            .fail(function (data) { })
+            .always(function (data) { });
+    }
+    function ShowSendCoupon(){
+     $("#editCoupon").modal('show');
+    }
+    function  SendCoupon()
+    {
+        if ($("#sendCou").val()==null)
+        {
+            $("#editCoupon").modal('hide');
+            return;
+        }
+
+            var _Service = abp.services.app.coupon;
+        _Service.sendCoupon($("input[name='memberId']").val(),
+            $("#sendCou").val()).done(function (data) {
+                if (data.succ)
+                {
+                    $("#editCoupon").modal('hide'); SuccessTip();
+
+        }else {
+                                         toastr.options = {
+                "closeButton": false,//是否配置关闭按钮
+                "debug": false,//是否开启debug模式
+                "newestOnTop": false,//新消息是否排在最上层
+                "progressBar": true,//是否显示进度条
+                "timeOut": "2000",//1.5s后关闭消息框
+            }
+            toastr.error(data.msg, '@L("Hint")');
+        }
+
+    })
+            .fail(function (data) { })
+            .always(function (data) { });
     }
 </script>

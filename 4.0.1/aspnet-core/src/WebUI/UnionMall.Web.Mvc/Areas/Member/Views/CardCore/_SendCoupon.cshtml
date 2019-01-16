@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="modal inmodal" id="editCoupon" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">@L("Send")@L("Coupon")</h4>
+                <small class="font-bold"></small>
+            </div>
+            <form method="post" action="javascript:void(0);" class="form-horizontal">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>@L("Select")@L("Coupon")</label>
+                                <select class="input-sm form-control chosen-select" id="sendCou" style="padding: 3px 5px;">
+                                    @foreach (var item in ViewBag.CouponTable.Rows)
+                                    {
+                                        <option value="@item["id"]">@item["title"]</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">@L("Close")</button>
+                    <button type="button" class="btn btn-primary" onclick="SendCoupon();">@L("OK")@L("Send")</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

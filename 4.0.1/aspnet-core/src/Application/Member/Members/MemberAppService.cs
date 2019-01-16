@@ -347,5 +347,12 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             await _reAppService.Create(note);
             return new JsonResult(new { succ = true, msg = L("Recharge") + L("Success") + "!" });
         }
+
+        public async Task CardCoreEdit(string column, string card, long id, string value)
+        {
+            string sql = $@"update tmember set {column}={value} where id={id} and TenantId={AbpSession.TenantId} and cardid={card}";
+
+            _sqlExecuter.Execute(sql);
+        }
     }
 }

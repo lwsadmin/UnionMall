@@ -85,7 +85,7 @@
       <Action Name="ChangeLevel" />
       <Action Name="ChangeStore" />
       <Action Name="ChangeCardID" />
-      <Action Name="ChangePwd" />
+      <Action Name="ResetPwd" />
       <Action Name="SendCoupon" />
     </Second>
   </First>

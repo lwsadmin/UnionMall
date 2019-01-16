@@ -25,6 +25,7 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
     {
         private readonly IMemberAppService _AppService;
         private readonly ICommonAppService _comAppService;
+        private readonly ICouponAppService _couponService;
         private readonly IConsumeNoteAppService _consumeService;
         private readonly IIntegralNoteAppService _integralService;
         private readonly IBalanceNoteAppService _balanceService;
@@ -32,11 +33,12 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
         private readonly IGoodsOrderAppService _orderAppService;
         private readonly IMemberLevelAppService _levelAppService;
         private readonly IChainStoreAppService _storeAppService;
-        public CardCoreController(IMemberAppService AppService, 
-            IConsumeNoteAppService consumeService, 
+        public CardCoreController(IMemberAppService AppService,
+            IConsumeNoteAppService consumeService,
             ICommonAppService comAppService, IIntegralNoteAppService integralService, IGoodsOrderAppService orderAppService,
             IBalanceNoteAppService balanceService, IUsedStatisticsAppService useService,
-            IMemberLevelAppService levelAppService, IChainStoreAppService storeAppService)
+            IMemberLevelAppService levelAppService, CouponAppService couponService,
+            IChainStoreAppService storeAppService)
         {
             _AppService = AppService;
             _consumeService = consumeService;
@@ -47,6 +49,7 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             _useService = useService;
             _levelAppService = levelAppService;
             _storeAppService = storeAppService;
+            _couponService = couponService;
         }
 
         public async Task<IActionResult> Index(long? id)
@@ -62,6 +65,12 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
 
             var storeDropDown = (await _storeAppService.GetDropDown());
             ViewData.Add("ChainStore", new SelectList(storeDropDown, "Id", "Name"));
+
+            string where = _comAppService.GetWhere();
+            int total;
+            string sql = $@"select c.id,c.Title from dbo.TCoupon c where c.id>0";
+            DataSet ds = _couponService.GetPage(1, int.MaxValue, "id desc", out total, where, sql);
+            ViewBag.CouponTable = ds.Tables[0];
             return View();
         }
 
