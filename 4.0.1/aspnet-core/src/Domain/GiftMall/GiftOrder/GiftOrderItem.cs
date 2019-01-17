@@ -12,8 +12,8 @@ namespace UnionMall.Entity
         public int TenantId { get; set; }
         public long GiftOrderId { get; set; }
         public long GiftId { get; set; }
-        public int Count { get; set; }
+        public int Count { get; set; } = 1;
         public decimal Point { get; set; }
-        public string ExchangeAddress { get; set; }
+        public string ExchangeAddress { get; set; } = "";
     }
 }

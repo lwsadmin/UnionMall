@@ -77,9 +77,22 @@
                     </div>
                     <br />
                     <div class="hr-line-dashed"></div>
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>@L("Gift")</th>
+                                <th>@L("Integral")</th>
+                                <th>@L("Count")</th>
+                                <th>@L("Operate")</th>
+                            </tr>
+                        </thead>
+                        <tbody id="selectedTable"></tbody>
+                    </table>
+
                     <div class="row">
                         <div class="form-group form-group-lg">
-                            <h2 class="col-sm-4 control-label">@L("Total")@L("Integral"):0</h2>
+                            <h2 class="col-sm-4 control-label">@L("Total")@L("Integral"):<span id="total">0</span></h2>
                             <div class="col-sm-6">
                                 <button type="button" id="con" class="btn btn-primary btn-lg btn-block" data-style="zoom-in">
                                     <span class="ladda-label">@L("OK")@L("Receive")</span><span class="ladda-spinner"></span>
@@ -128,3 +141,78 @@
 <script src="https://lab.hakim.se/ladda/dist/spin.min.js" asp-append-version="true"></script>
 <script src="https://lab.hakim.se/ladda/dist/ladda.min.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Offline/Gift/index.js" asp-append-version="true"></script>
+<script>
+    $("#con").click(function (e)
+    {
+        e.preventDefault();
+        e.stopPropagation();
+        if ($("input[name='CardID']").val() == "" && $("#Integral").html() == "-")
+        {
+            $("input[name='CardID']").focus();
+            return;
+        }
+        if ($("#selectedTable").html() == "")
+        { return; }
+        var l = Ladda.create(this);
+        l.start();
+        var _Service = abp.services.app.giftOrder;
+        var dto = {};
+        var order = {};
+        var itemList = [];
+        //        public long GiftId { get; set; }
+        //public int Count { get; set; } = 1;
+        //public decimal Point { get; set; }
+        order.memberId = $("input[name='memberId']").val();
+        order.point = parseFloat($("#total").html());
+        $("#selectedTable").find("tr").each(function ()
+        {
+            itemList.push({
+                giftId: $(this).attr("data-id"),
+                count: $(this).find("td").eq(2).html(),
+                Point: $(this).find("td").eq(1).html(),
+            });
+        });
+        dto.order = order;
+        dto.itemList = itemList;
+
+        _Service.offExchange(dto).done(function (data)
+        {
+            if (data.succ)
+            {
+                toastr.options = {
+                    "closeButton": false,//是否配置关闭按钮
+                    "debug": false,//是否开启debug模式
+                    "newestOnTop": false,//新消息是否排在最上层
+                    "progressBar": true,//是否显示进度条
+                    "timeOut": "2000",//1.5s后关闭消息框
+                }
+                toastr.success(data.msg, $("#hint").val());
+            } else
+            {
+                toastr.options = {
+                    "closeButton": false,//是否配置关闭按钮
+                    "debug": false,//是否开启debug模式
+                    "newestOnTop": false,//新消息是否排在最上层
+                    "progressBar": true,//是否显示进度条
+                    "timeOut": "2000"//1.5s后关闭消息框
+                }
+                toastr.error(data.msg, $("#hint").val());
+
+            }
+            l.stop();
+            setTimeout(function ()
+            {
+                $("#con").removeClass("ladda-button")
+            }, 1000)
+
+            //         l.toggle();
+            //l.isLoading();
+            //l.setProgress(0-1);
+        }).fail(function (data)
+        {
+        }).always(function (data) { });
+
+
+    });
+
+</script>

@@ -15,10 +15,10 @@ namespace UnionMall.Entity
         public long MemberId { get; set; }
         public decimal Point { get; set; }
         public string Code { get; set; }
-        public string Images { get; set; }
+       // public string Images { get; set; }
         public int Status { get; set; }
         public string Memo { get; set; }
-        public string ExchangeAddress { get; set; }
+        public string ExchangeAddress { get; set; } = "";
         public DateTime ReceiveTime { get; set; }
         public DateTime CreationTime { get; set; } = DateTime.Now;
     }

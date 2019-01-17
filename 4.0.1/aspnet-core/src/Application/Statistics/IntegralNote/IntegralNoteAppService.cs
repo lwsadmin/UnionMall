@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Threading.Tasks;
+using UnionMall.Entity;
 using UnionMall.IRepositorySql;
 
 namespace UnionMall.IntegralNote
@@ -14,8 +16,8 @@ namespace UnionMall.IntegralNote
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
 
-        private readonly IRepository<Entity.BalanceNote, long> _Repository;
-        public IntegralNoteAppService(ISqlExecuter sqlExecuter, IRepository<Entity.BalanceNote, long> Repository, IAbpSession AbpSession)
+        private readonly IRepository<Entity.IntegralNote, long> _Repository;
+        public IntegralNoteAppService(ISqlExecuter sqlExecuter, IRepository<Entity.IntegralNote, long> Repository, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
@@ -41,6 +43,11 @@ cast(sum(Point) as float) TotalValue
 {  where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n")}
 group by  SUBSTRING( CONVERT(varchar(100), n.CreationTime, 112),0,7)";
             return _sqlExecuter.ExecuteDataSet(table);
+        }
+
+        public async Task CreateAsync(Entity.IntegralNote note)
+        {
+            await _Repository.InsertAsync(note);
         }
     }
 }

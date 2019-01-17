@@ -10,10 +10,8 @@ namespace UnionMall.Gift
 {
     public interface IGiftOrderItemAppService : IApplicationService
     {
-        DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
-        Task CreateOrEditAsync(Entity.GiftOrder model);
-        Task<Entity.GiftOrderItem> GetByIdAsync(long Id);
-        Task DeleteAsync(long id);
+        Task CreateAsync(Entity.GiftOrderItem item);
+        Task DeleteByOrderAsync(long orderId);
         Task<List<GiftOrderDetail>> GetOrderDetail(long orderId);
     }
 }

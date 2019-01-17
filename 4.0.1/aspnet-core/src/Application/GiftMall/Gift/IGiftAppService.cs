@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,5 +15,6 @@ namespace UnionMall.Gift
         Task CreateOrEditAsync(CreateOrEditDto model);
         Task<Entity.Gift> GetByIdAsync(long Id);
         Task DeleteAsync(long id);
+
     }
 }

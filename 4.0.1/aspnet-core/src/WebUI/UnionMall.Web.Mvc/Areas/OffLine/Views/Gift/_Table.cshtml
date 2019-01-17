@@ -10,7 +10,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>@L("Title")</th>
+            <th>@L("Gift")</th>
             <th>@L("Belong")@L("Business")</th>
             <th>@L("Integral")</th>
             <th>@L("Stock")@L("Count")</th>
@@ -28,10 +28,9 @@
                 <td>@item["BusinessName"]</td>
                 <td>@item["Integral"]</td>
                 <td>@item["StockCount"]</td>
-                <td class="onclick="AddItem();">
+                <td data-id="@item["Id"]" onclick="AddItem(this);" >
                     <a href="javascript:void(0);" title="@L("Add")">
-                        <i class="fa fa-plus text-navy"></i>
-                        
+                        <i class="fa fa-plus text-navy"></i> 
                     </a>
                 </td>
             </tr>

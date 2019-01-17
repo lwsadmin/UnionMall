@@ -58,67 +58,37 @@ $("#readBtn").click(function ()
         }
     })
 });
-
-$("#con").click(function (e)
+function AddItem(td)
 {
-    e.preventDefault();
-    e.stopPropagation();
-    if ($("input[name='CardID']").val() == "" && $("#Integral").html() == "-")
+
+    var p = parseFloat($("#total").html());
+    var sp = $(td).siblings(td).eq(2).html();
+    $("#total").html(parseFloat(p) + parseFloat(sp));
+    var id = $(td).attr("data-id");
+    if ($("#tr" + id).html() != undefined)
     {
-        $("input[name='CardID']").focus();
+        var n = $("#tr" + id).find("td").eq(2).html();
+        $("#tr" + id).find("td").eq(2).html(parseInt(n) + 1);
         return;
     }
-    if ($("#ConAm").val() == "")
-    {
-        $("#ConAm").focus();
-        return;
-    }
-    var l = Ladda.create(this);
-    l.start();
-    var _Service = abp.services.app.member;
-    var note = {};
-    note.memberId = $("input[name='memberId']").val();
-    note.note = $("#memo").val();
-    note.totalPay = $("#ConAm").val();
-    note.cashPay = $("#ConAm").val();
-    note.value = $("#ConAm").val();
-    _Service.memberRecharge(note).done(function (data)
-    {
-        console.log(data);
-        if (data.succ)
-        {
-            toastr.options = {
-                "closeButton": false,//是否配置关闭按钮
-                "debug": false,//是否开启debug模式
-                "newestOnTop": false,//新消息是否排在最上层
-                "progressBar": true,//是否显示进度条
-                "timeOut": "2000",//1.5s后关闭消息框
-            }
-            toastr.success(data.msg, $("#hint").val());
-        } else
-        {
-            toastr.options = {
-                "closeButton": false,//是否配置关闭按钮
-                "debug": false,//是否开启debug模式
-                "newestOnTop": false,//新消息是否排在最上层
-                "progressBar": true,//是否显示进度条
-                "timeOut": "2000"//1.5s后关闭消息框
-            }
-            toastr.error(data.msg, $("#hint").val());
+    var s = "<tr data-id='"+id+"' id='tr" + id + "'>\
+            <td>"+ $(td).siblings(td).eq(0).html() + "</td >\
+            <td>"+ $(td).siblings(td).eq(2).html() + "</td>\
+            <td>1</td>\
+            <td onclick='RemoveItem(this);'>\
+                <a href = 'javascript:void(0);' title = '' >\
+                    <i class='fa fa-close text-navy'></i>\
+                    </a>\
+                </td>\
+            </tr>";
+    $("#selectedTable").append(s);
+}
+function RemoveItem(td)
+{
+    var p = parseFloat($("#total").html());
+    var sp = $(td).siblings(td).eq(1).html();
+    var n = $(td).siblings(td).eq(2).html();
+    $("#total").html(parseFloat(p) - parseFloat(sp) * parseFloat(n));
 
-        }
-        l.stop();
-        setTimeout(function ()
-        {
-            $("#con").removeClass("ladda-button")
-        }, 1000)
-
-        //         l.toggle();
-        //l.isLoading();
-        //l.setProgress(0-1);
-    }).fail(function (data)
-    {
-    }).always(function (data) { });
-
-
-});
+    $(td).parent("tr").remove();
+}

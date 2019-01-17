@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +16,7 @@ namespace UnionMall.Gift
         Task CreateOrEditAsync(Entity.GiftOrder model);
         Task<Entity.GiftOrder> GetByIdAsync(long Id);
         Task DeleteAsync(long id);
+        Task<JsonResult> OffExchange(ExchangDto dto);
         Task<MemoryStream> ExportToExcel(string where);
     } 
 }

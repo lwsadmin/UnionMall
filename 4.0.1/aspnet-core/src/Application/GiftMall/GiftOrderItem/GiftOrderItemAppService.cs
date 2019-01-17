@@ -17,72 +17,32 @@ namespace UnionMall.Gift
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
-        private readonly IRepository<Entity.GiftOrder, long> _Repository;
-        private readonly IRepository<Entity.GiftOrderItem, long> _itemRepository;
+        //private readonly IRepository<Entity.GiftOrder, long> _Repository;
+        private readonly IRepository<Entity.GiftOrderItem, long> _Repository;
         private readonly IImageAppService _imgService;
         public GiftOrderItemAppService(ISqlExecuter sqlExecuter, IImageAppService imgService,
-    IRepository<Entity.GiftOrder, long> Repository, IRepository<Entity.GiftOrderItem, long> itemRepository,
+    IRepository<Entity.GiftOrderItem, long> Repository,
     IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
             _Repository = Repository;
             _AbpSession = AbpSession;
-            _itemRepository = itemRepository;
+            //_itemRepository = itemRepository;
             _imgService = imgService;
         }
-        public async Task CreateOrEditAsync(GiftOrder model)
+
+
+        public async Task DeleteByOrderAsync(long orderId)
         {
-            if (model.Id >= 0)
-            {
-                await _Repository.UpdateAsync(model);
-
-            }
-            else
-            {
-                await _Repository.InsertAsync(model);
-
-            }
+            await _Repository.DeleteAsync(C => C.GiftOrderId == orderId);
         }
-
-        public async Task DeleteAsync(long id)
-        {
-            var query = _Repository.FirstOrDefault(c => c.Id == id);
-            if (query != null)
-            {
-                await _Repository.DeleteAsync(query);
-            }
-        }
-
-        public async Task<Entity.GiftOrder> GetByIdAsync(long Id)
-        {
-            return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
-        }
-
-        public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
-        {
-            if (string.IsNullOrEmpty(table))
-            {
-                table = $@"select o.Id, convert(nvarchar(100),o.CreationTime,120) CreationTime,cast(o.Point as float) Point,
-o.BillNumber,o.Status,o.OperateTime,o.Way,o.Memo,c.Name,m.CardID,m.WeChatName from dbo.TGiftOrder o left join dbo.TChainStore c on o.ChainStoreId=c.Id
-left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
-            }
-            where = where.Replace("*.BusinessId", "c.BusinessId").Replace(" *", " o");
-            table += where;
-            return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
-        }
-
-        Task<GiftOrderItem> IGiftOrderItemAppService.GetByIdAsync(long Id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<GiftOrderDetail>> GetOrderDetail(long orderId)
         {
             List<GiftOrderDetail> d = new List<GiftOrderDetail>();
 
             try
             {
-                List<GiftOrderItem> itemList = _itemRepository.GetAllList(c => c.GiftOrderId == orderId);
+                List<GiftOrderItem> itemList = _Repository.GetAllList(c => c.GiftOrderId == orderId);
                 foreach (GiftOrderItem item in itemList)
                 {
                     GiftOrderDetail o = new GiftOrderDetail();
@@ -101,6 +61,13 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
                 throw new Exception(e.StackTrace + e.Message);
             }
 
+        }
+
+        public async Task CreateAsync(GiftOrderItem item)
+        {
+        
+            await _Repository.InsertAsync(item);
+           // throw new NotImplementedException();
         }
     }
 }
