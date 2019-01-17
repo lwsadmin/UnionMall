@@ -9,7 +9,7 @@
   </First>-->
   <First Name="OffLineCashie"  Icon="glyphicon glyphicon-yen">
     <Second Name="QuickConsume"  Url="/OffLine/QuickConsume/Index"></Second>
-    <Second Name="GoodsConsume"  Url="javascript:void(0);"></Second>
+    <Second Name="GoodsConsume"  Url="/offline/goodsconsume/index"></Second>
     <Second Name="MemberRecharge" Url="/OffLine/Recharge/Index"></Second>
     <!--<Second Name="CouponConsume"  Url="javascript:void(0);"></Second>-->
     <Second Name="GiftExchange"  Url="/offline/gift/index"></Second>

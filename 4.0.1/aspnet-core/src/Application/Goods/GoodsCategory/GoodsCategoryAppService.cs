@@ -124,5 +124,16 @@ namespace UnionMall.Goods
             var query = await _Repository.GetAllListAsync(c => c.ParentId == parentId);
             return query.MapTo<List<CategoryEditDto>>();
         }
+
+        public async Task<DataTable> GetGoodsCategory()
+        {
+            string sql = $@"select c.id, c.Title,count(g.Id) from TGoodsCategory c 
+left join TGoods  g on g.CategoryId=c.Id  where c.TenantId={AbpSession.TenantId}
+group by c.Id,c.Title having count(g.Id)>0";
+
+            DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            return dt;
+            //throw new NotImplementedException();
+        }
     }
 }

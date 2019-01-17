@@ -84,6 +84,7 @@ namespace UnionMall.Goods
 
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
+            where = where.Replace("*.BusinessId", "s.BusinessId").Replace(" *", " g");
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select g.id,g.Image,g.Status,g.Sort,g.Click,g.SellCount,g.Name,c.Title,
@@ -91,8 +92,9 @@ b.Title BTitle,s.Name StoreName,cast(g.Price as float) Price ,cast(g.RetailPrice
 on g.CategoryId=c.Id left join dbo.TBrand b on g.BrandId=b.Id
 left join dbo.TChainStore s on g.chainstoreid=s.Id
 where 1=1";
+             
             }
-            where = where.Replace("*.BusinessId", "s.BusinessId").Replace(" *", " g");
+
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
