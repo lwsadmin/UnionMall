@@ -109,7 +109,7 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
         public async Task<JsonResult> OffExchange(ExchangDto dto)
         {
 
-            var json = new JsonResult(new { succ = true, msg = "" });
+            var json = new JsonResult(new { succ = true, msg = L("GiftExchange") + L("Success")+"!"});
 
             var member = _memberRepository.Get(dto.Order.MemberId);
             if (member.Integral < dto.Order.Point)
@@ -144,7 +144,7 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             note.ChainStoreId = dto.Order.ChainStoreId;
             note.MemberId = dto.Order.MemberId;
             note.Way = (int)ConsumeType.PointRecharge;
-            note.Balance = member.Integral - dto.Order.Point;
+            note.Balance = member.Integral;// - dto.Order.Point;
             note.UserAccount = UserInfo.User.UserName;
             await _noteAppService.CreateAsync(note);
             return json;
