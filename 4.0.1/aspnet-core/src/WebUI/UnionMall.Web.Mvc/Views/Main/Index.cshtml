@@ -2,16 +2,16 @@
 
 @*<link href="/lib/admin/css/plugins/toastr/toastr.min.css" rel="stylesheet">*@
 <!-- ChartJS-->
-<script src="~/lib/admin/js/plugins/chartJs/Chart.min.js"></script>
-
-
-<!-- Flot -->
-<script src="~/lib/admin/js/plugins/flot/jquery.flot.js"></script>
-<script src="~/lib/admin/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="~/lib/admin/js/plugins/flot/jquery.flot.spline.js"></script>
-<script src="~/lib/admin/js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="~/lib/admin/js/plugins/flot/jquery.flot.pie.js"></script>
-
+@*<script src="~/lib/admin/js/plugins/chartJs/Chart.min.js"></script>
+    <script src="~/lib/admin/js/plugins/flot/jquery.flot.js"></script>
+    <script src="~/lib/admin/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/lib/admin/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="~/lib/admin/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="~/lib/admin/js/plugins/flot/jquery.flot.pie.js"></script>*@
+<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script src="https://img.hcharts.cn/highcharts/themes/grid-light.js"></script>
 <div class="row  border-bottom white-bg dashboard-header">
 
     <div class="col-md-3">
@@ -108,7 +108,7 @@
                 };
                 // alert(1);
                 toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA', 500000);
-                
+
             }, 1300);
 
 

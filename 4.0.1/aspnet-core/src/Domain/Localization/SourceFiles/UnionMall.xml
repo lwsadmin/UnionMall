@@ -348,6 +348,7 @@
     <text name="RetailPrice" value="RetailPrice" />
     <text name="RackRate" value="RackRate" />
     <text name="Sell" value="Sell" />
+    <text name="Buy" value="Buy" />
     <text name="Page" value="Page" />
     <text name="Level" value="Level" />
     <text name="Time" value="Time" />

@@ -287,6 +287,7 @@
     <text name="Init" value="初始化" />
     <text name="Price" value="价格" />
     <text name="Sell" value="销售" />
+    <text name="Buy" value="购买" />
     <text name="Page" value="页" />
     <text name="To" value="至" />
     <text name="Development" value="开发" />

@@ -16,19 +16,18 @@
             <th>@L("Stock")@L("Count")</th>
             <th>@L("Operate")</th>
         </tr>
-
     </thead>
     <tbody>
         @foreach (DataRow item in Model)
         {
             <tr>
-                <td class="title">
+                <td title="@item["Name"]" class="title">
                     @item["Name"]
                 </td>
                 <td>@item["StoreName"]</td>
                 <td>@item["Price"]</td>
                 <td>@item["Stock"]</td>
-                <td data-id="@item["Id"]" onclick="AddItem(this);" >
+                <td onclick="AddItem('@item["Id"]','@item["Name"]');" >
                     <a href="javascript:void(0);" title="@L("Add")">
                         <i class="fa fa-plus text-navy"></i> 
                     </a>

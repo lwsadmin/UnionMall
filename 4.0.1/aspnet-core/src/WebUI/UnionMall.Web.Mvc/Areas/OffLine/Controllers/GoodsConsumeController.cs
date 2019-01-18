@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UnionMall.Common;
+using UnionMall.Common.CommonSpec;
 using UnionMall.Controllers;
 using UnionMall.Goods;
 using X.PagedList;
@@ -19,13 +20,17 @@ namespace UnionMall.Web.Mvc.Areas.OffLine.Controllers
         private readonly IGoodsCategoryAppService _catAppService;
         private readonly IGoodsAppService _AppService;
         private readonly ICommonAppService _comService;
+        //private readonly ICommonSpecAppService _specAppService;
+
+        private readonly ISpecObjectAppService _specAppService;
         public GoodsConsumeController(IGoodsCategoryAppService catAppService,
-            IGoodsAppService AppService, ICommonAppService comService)
+            IGoodsAppService AppService, ICommonAppService comService, ISpecObjectAppService specAppService)
         {
 
             _catAppService = catAppService;
             _AppService = AppService;
             _comService = comService;
+            _specAppService = specAppService;
         }
 
         public async Task<IActionResult> Index(int pageIndex = 1, int pageSize = 10, long categoryId = 0, string title = "")
@@ -69,6 +74,12 @@ left join dbo.TChainStore s on g.chainstoreid=s.Id where 1=1";
             DataSet ds = _AppService.GetPage(pageIndex, pageSize, "g.sort desc", out total, where, tableSl);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), pageIndex, pageSize, total);
             return PartialView("_Table", pageList);
+        }
+
+        public async Task<ActionResult> Add(long goodsId)
+        {
+            DataTable dt = await _specAppService.GetObjTableBuyObjId(goodsId);
+            return View("_Select", dt);
         }
     }
 }

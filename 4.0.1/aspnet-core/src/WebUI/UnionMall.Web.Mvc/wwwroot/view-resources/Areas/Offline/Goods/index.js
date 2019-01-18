@@ -58,37 +58,3 @@ $("#readBtn").click(function ()
         }
     })
 });
-function AddItem(td)
-{
-
-    var p = parseFloat($("#total").html());
-    var sp = $(td).siblings(td).eq(2).html();
-    $("#total").html(parseFloat(p) + parseFloat(sp));
-    var id = $(td).attr("data-id");
-    if ($("#tr" + id).html() != undefined)
-    {
-        var n = $("#tr" + id).find("td").eq(2).html();
-        $("#tr" + id).find("td").eq(2).html(parseInt(n) + 1);
-        return;
-    }
-    var s = "<tr data-id='"+id+"' id='tr" + id + "'>\
-            <td>"+ $(td).siblings(td).eq(0).html() + "</td >\
-            <td>"+ $(td).siblings(td).eq(2).html() + "</td>\
-            <td>1</td>\
-            <td onclick='RemoveItem(this);'>\
-                <a href = 'javascript:void(0);' title = '' >\
-                    <i class='fa fa-close text-navy'></i>\
-                    </a>\
-                </td>\
-            </tr>";
-    $("#selectedTable").append(s);
-}
-function RemoveItem(td)
-{
-    var p = parseFloat($("#total").html());
-    var sp = $(td).siblings(td).eq(1).html();
-    var n = $(td).siblings(td).eq(2).html();
-    $("#total").html(parseFloat(p) - parseFloat(sp) * parseFloat(n));
-
-    $(td).parent("tr").remove();
-}

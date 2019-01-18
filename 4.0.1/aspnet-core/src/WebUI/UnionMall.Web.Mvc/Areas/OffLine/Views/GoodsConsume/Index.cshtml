@@ -33,7 +33,7 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <input type="hidden" name="memberId" value="0" />
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-10">
             <div class="ibox float-e-margins">
                 <div class="contact-box">
                     <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#div_table" action="/offline/goodsconsume/list" method="post">
@@ -42,7 +42,6 @@
                             <div class="input-group">
                                 <input type="number" value="@ViewBag.CarId" required name="CardID" placeholder="@L("Member")@L("CardID")/@L("PhoneNumber")" class="m-b input-sm form-control" />
                                 <span class="input-group-btn">
-
                                     <button id="readBtn" type="button" class="btn btn-primary btn-sm">
                                         @L("OK")
                                     </button>
@@ -51,7 +50,7 @@
                         </div>
                     </form>
                     <br />
-                    <div class="widget-head-color-box  p-lg">
+                    <div class="widget-head-color-box">
                         <div class="row">
                             <div class="col-sm-2">
                                 <div class="text-center">
@@ -75,38 +74,15 @@
                             </div>
                         </div>
                     </div>
-                    <br />
-                    <div class="hr-line-dashed"></div>
-
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>@L("Goods")</th>
-                                <th>@L("Price")</th>
-                                <th>@L("Count")</th>
-                                <th>@L("Operate")</th>
-                            </tr>
-                        </thead>
-                        <tbody id="selectedTable"></tbody>
-                    </table>
-
-                    <div class="row">
-                        <div class="form-group form-group-lg">
-                            <h2 class="col-sm-4 control-label">@L("Total")@L("Price"):<span id="total">0</span></h2>
-                            <div class="col-sm-6">
-                                <button type="button" id="con" class="btn btn-primary btn-lg btn-block" data-style="zoom-in">
-                                    <span class="ladda-label">@L("OK")@L("Pay")</span><span class="ladda-spinner"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+    </div>
+    <div class="row">
+        <div class="col-lg-10">
             <div class="tabs-container">
                 <div class="tabs-left">
-                    <ul class="nav nav-tabs" id="myTabs">
+                    <ul class="nav nav-tabs" style="" id="myTabs">
                         <li class="active"><a data-toggle="tab" data-cat="0" href="#tab-0" aria-expanded="false">@L("Whole")</a></li>
                         @foreach (var item in ViewBag.Category)
                         {
@@ -136,6 +112,10 @@
         </div>
     </div>
 </div>
+<div id="DivAdd">
+    @Html.Partial("_Select", new DataTable());
+</div>
+
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
 <!-- Ladda -->
 <script src="https://lab.hakim.se/ladda/dist/spin.min.js" asp-append-version="true"></script>
@@ -215,4 +195,23 @@
 
     });
 
+
+    function AddItem(id,name)
+    {
+
+        $.ajax({
+            url: '/OffLine/GoodsConsume/Add?goodsId=' + id,
+            type: 'POST',
+            contentType: 'application/html',
+            success: function (content)
+            {
+                //alert(content);
+                $("#DivAdd").html(content);
+                $("#Select .modal-title").html(name);
+                $("#Select").modal("show");
+
+            },
+            error: function (e) { }
+        });
+    }
 </script>

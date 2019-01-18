@@ -3,6 +3,7 @@ using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,9 +40,9 @@ namespace UnionMall.Common.CommonSpecObject
 
         public async Task Delete(Expression<Func<Entity.CommonSpecObject, bool>> c)
         {
-   
-                await _Repository.DeleteAsync(c);
-            
+
+            await _Repository.DeleteAsync(c);
+
         }
 
         public async Task<List<Entity.CommonSpecObject>> GetByObjectId(long id, int Type = 0)
@@ -55,6 +56,17 @@ namespace UnionMall.Common.CommonSpecObject
             StringBuilder str = new StringBuilder();
 
             return str.ToString();
+        }
+
+        public async Task<DataTable> GetObjTableBuyObjId(long objId, int type = 0)
+        {
+
+            string sql = $@"select o.id,o.TenantId,o.Stock,o.SellCount,o.Price,o.RetailPrice, t.Text from TCommonSpecObject o  
+cross apply (select stuff((select v.Text+',' from dbo.TCommonSpecValue v 
+where charindex(cast( v.Id as nvarchar(100)),cast( o.ValueText as nvarchar(1000)))>0 for xml path('')),1,1,'') as  Text ) T
+where o.ObjectId={objId} and type={type}";
+
+            return _sqlExecuter.ExecuteDataSet(sql).Tables[0];
         }
     }
 }
