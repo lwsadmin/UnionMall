@@ -86,5 +86,20 @@ cast(m.minPoint as float) minPoint,cast(m.maxPoint as float) maxPoint from tmemb
             s.Profit = pro;
             await _Repository.UpdateAsync(s);
         }
+
+        public async Task<DataTable> GetIndexData(string where)
+        {
+            if (!string.IsNullOrEmpty(where))
+            {
+                where = where.Replace("*", "m");
+            }
+            string sql = $@"select l.Title,count(m.Id) Count from TMemberLevel l 
+left join TMember m on m.LevelId=l.Id where {where}
+group by l.Title";
+
+            DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            return dt;
+            // throw new NotImplementedException();
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace UnionMall.Statistics
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
         DataSet GetTotalData(string where);
+        DataTable GetIndexData(string where);
     }
 }

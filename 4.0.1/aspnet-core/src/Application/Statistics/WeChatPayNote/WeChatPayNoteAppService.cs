@@ -43,5 +43,14 @@ cast(sum( amount) as float) TotalValue
 group by  SUBSTRING( CONVERT(varchar(100), n.CreationTime, 112),0,7)";
             return _sqlExecuter.ExecuteDataSet(table);
         }
+
+        public DataTable GetIndexData(string where)
+        {
+            string sql = $@"select CONVERT(varchar(100),n.CreationTime, 112) [Time], 
+cast(sum( amount) as float) TotalValue from TWeChatPayNote n
+where 1=1  {where=where.Replace("*","n")}
+group by  CONVERT(varchar(100),n.CreationTime, 112)";
+            return _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+        }
     }
 }

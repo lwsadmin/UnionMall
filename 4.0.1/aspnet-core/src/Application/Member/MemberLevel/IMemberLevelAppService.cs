@@ -15,5 +15,7 @@ namespace UnionMall.Member
         Task<List<LevelDropDwonDto>> GetDropDown();
 
         Task SaveProfit(decimal pro, long id);
+
+        Task<DataTable> GetIndexData(string where);
     }
 }

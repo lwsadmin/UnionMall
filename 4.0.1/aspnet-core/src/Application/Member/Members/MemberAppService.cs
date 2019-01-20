@@ -69,11 +69,11 @@ namespace UnionMall.Member
             //    91, 92, 93, 94, 95, 96, 97, 98, 99, 100 };
 
 
-            //DataTable t = _sqlExecuter.ExecuteDataSet("select * from tgoodsorderitem").Tables[0];
+            //DataTable t = _sqlExecuter.ExecuteDataSet("select id,regtime from tmember").Tables[0];
             //foreach (DataRow item in t.Rows)
             //{
-            //    string s = $"update tgoodsorderitem set chainstoreid={chainstore[new Random().Next(0, 7)]} " +
-            //        $",tenantid=1, GoodsId={new Random().Next(0, 3)},specobjectid={new Random().Next(0, 4)}  where id={item["id"]}";
+            //    string s = $"update TMember set RegTime=DATEADD(day,{new Random().Next(0, 100)}, GETDATE()) ,LevelId={new Random().Next(0,4 )}" +
+            //        $" where id={item["id"]}";
             //    _sqlExecuter.Execute(s);
             //}
             if (string.IsNullOrEmpty(table))
@@ -353,6 +353,22 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             string sql = $@"update tmember set {column}={value} where id={id} and TenantId={AbpSession.TenantId} and cardid={card}";
 
             _sqlExecuter.Execute(sql);
+        }
+
+        public async Task<DataTable> IndexMember(string where)
+        {
+
+            string sql = $@"select top 15 CONVERT(nvarchar(100),RegTime,23) DAY,
+ M=count(case when Sex=0 then '男' end),
+ W=count(case when Sex=1 then '女' end) 
+ from tmember m
+ where DATEADD(day,30,RegTime)>=GETDATE() and {where.Replace("*","m")}
+  group by   CONVERT(nvarchar(100),RegTime,23)
+  
+  order by CONVERT(nvarchar(100),RegTime,23) asc";
+            DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+            return dt;
+            // throw new NotImplementedException();
         }
     }
 }
