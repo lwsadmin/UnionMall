@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnionMall.IRepositorySql;
 
-namespace UnionMall.Offline.Recharge
+namespace UnionMall.Offline
 {
     public class RechargeAppService : ApplicationService, IRechargeAppService
     {

@@ -16,7 +16,7 @@
             <div class="modal-body">
 
                     <div class="ibox-content">
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered table-hover" id="objTable">
                             <thead>
                                 <tr>
                                     <th>@L("GoodsSpec")</th>
@@ -29,17 +29,19 @@
                             <tbody>
                                 @foreach (DataRow item in Model.Rows)
                                 {
-                                    <tr>
+                                    <tr style="cursor:pointer;">
                                         <td class="title">
                                             @item["Text"]
                                         </td>
                                         <td>@item["Stock"]</td>
-                                        <td><input type="number" class="form-control input-sm" max="@item["Stock"]" name="buy-count" value="1" /> </td>
+                                        <td style="padding:4px 0;"><input type="number" style="height:25px;" class="form-control input-sm" max="@item["Stock"]" name="buy-count" value="1" /> </td>
                                         <td>@item["Price"]</td>
                                         <td onclick="">
-                                            <a href="javascript:void(0);" title="@L("Add")">
-                                                <i class="fa fa-check text-navy"></i>
-                                            </a>
+
+                                            <div class="radio radio-inline radio-success">
+                                                <input type="radio" value="@item["Id"]" id="se@(item["Id"])" name="selected" />
+                                                <label for="se@(item["Id"])"></label>
+                                            </div>
                                         </td>
                                     </tr>
                                 }
@@ -48,7 +50,7 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">@L("Save")</button>
+                <button type="submit" class="btn btn-primary">@L("OK")@L("Consume")</button>
                 &nbsp;&nbsp;
                 <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
             </div>
@@ -56,3 +58,11 @@
         </div>
     </div>
 </div>
+<script>
+    $("#objTable tr").on("click", function ()
+    {
+        $("input[name='selected']:checked").prop("checked",false);
+        $(this).find("input[type='radio']").prop("checked", true);
+      //  this.style.backgroundColor = 'red';
+    });
+</script>

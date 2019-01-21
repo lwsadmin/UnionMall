@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.FirstMenu = "FundSettle";
+    ViewBag.SecondMenu = "FinancialDetail";
+}
+@using System.Data
+@using X.PagedList
+@using UnionMall.Entity;
+@model PagedList<DataRow>
+<link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
+<style>
+    #formPost .chosen-single {
+        height: 34px !important;
+        font-size: 14px;
+    }
+    #searchForm .chosen-single {
+        font-size: 14px;
+        line-height: 20px !important;
+    }
+</style>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("FundSettle")</a>
+            </li>
+            <li class="active">
+                <strong>@L("FinancialDetail")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@L("FinancialDetail") </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm"
+                                   data-ajax-loading="loading" data-ajax-loading-duration="2"
+                                   data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
+                                   href="/settlement/storemoneydetail/list?page=1&pageSize=10">10</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm"
+                                   data-ajax-loading="loading" data-ajax-loading-duration="2"
+                                   data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
+                                   href="/settlement/storemoneydetail/list?page=1&pageSize=15">15</a>
+                            </li>
+                            <li>
+                                <a data-ajax="true" data-ajax-form="searchForm"
+                                   data-ajax-loading="loading" data-ajax-loading-duration="2"
+                                   data-ajax-method="GET" data-ajax-mode="Replace" data-ajax-update="#table"
+                                   href="/settlement/storemoneydetail/list?page=1&pageSize=20">20</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-inline" id="searchForm" data-ajax="true" data-ajax-update="#table" action="/settlement/storemoneydetail/list" method="post">
+                                <input type="hidden" name="pageSize" value="10" />
+                                <div class="form-group" style="min-width:10vw;">
+                                    <div class="m-b">
+                                        @Html.DropDownList("businessId", (SelectList)ViewData["Business"], "-" + L("Belong") + L("Business") + "-", new { @class = "input-sm form-control  chosen-select" })
+                                    </div>
+                                </div>
+                                <div class="form-group" style="min-width:10vw;">
+                                    <div class="m-b">
+                                        <select class="input-sm form-control  chosen-select">
+                                            <option value="">-@L("Select")-</option>
+                                            <option value="1">-@L("Rce")-</option>
+                                            <option value="0">-@L("Ede")-</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group m-b">
+                                        <input type="text" name="storeName" placeholder="@L("Store")@L("Name")" class="input-sm form-control"> <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-sm btn-primary">@L("Search")</button>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="table">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/pager/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
+<script>
+    $('.chosen-select').chosen({ width: "100%" });
+</script>

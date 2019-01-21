@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,8 +9,10 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Common;
+using UnionMall.Common.CommonSpec;
 using UnionMall.Entity;
 using UnionMall.IRepositorySql;
+using UnionMall.Sessions;
 
 namespace UnionMall.Goods
 {
@@ -20,9 +23,10 @@ namespace UnionMall.Goods
         private readonly IRepository<Entity.GoodsOrder, long> _Repository;
         private readonly IImageAppService _imgService;
         private readonly ICommonAppService _comService;
-
+        private readonly ISpecObjectAppService _objService;
+        private readonly ISessionAppService _sessionAppService;
         public GoodsOrderAppService(ISqlExecuter sqlExecuter, IImageAppService imgService,
-            ICommonAppService comService,
+            ICommonAppService comService, ISpecObjectAppService objService, ISessionAppService sessionAppService,
     IRepository<Entity.GoodsOrder, long> Repository, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
@@ -30,6 +34,8 @@ namespace UnionMall.Goods
             _AbpSession = AbpSession;
             _imgService = imgService;
             _comService = comService;
+            _objService = objService;
+            _sessionAppService = sessionAppService;
         }
         public Task CreateOrEditAsync(GoodsOrder model)
         {
@@ -91,6 +97,31 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             where = where.Replace("*.BusinessId", "c.BusinessId").Replace(" *", " o");
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
+        }
+
+        public async Task<JsonResult> OffConsume(long goodsId, long MemberId, long ObjId = 0, int count = 1)
+        {
+            var json = new JsonResult(new { succ = true, msg = L("Consume") + L("Success") + "!" });
+            Entity.CommonSpecObject obj=null;
+            if (ObjId > 0)
+            {
+                obj = await _objService.GetEntityById(ObjId);
+                if (obj == null)
+                {
+                    json.Value = new { succ = false, msg = L("NotExist{0}", "SPU") + "!" };
+                    return json;
+                }
+            }
+            var UserInfo = await _sessionAppService.GetCurrentLoginInformations();
+            GoodsOrder order = new GoodsOrder();
+            order.BillNumber = _comService.GetBillNumber(Enum.OrderNumberType.OFGD);
+            order.TenantId = UserInfo.Tenant.Id;
+            order.ChainStoreId = (long)_sqlExecuter.ExecuteDataSet($"select businessid from tchainStore where id={UserInfo.User.ChainStoreId}").Tables[0].Rows[0][0];
+            order.ChainStoreId = UserInfo.User.ChainStoreId;
+            order.MemberId = MemberId;
+            order.TotalMoney = obj.Price * count;
+            order.TotalPay = obj.Price * count;
+            return json;
         }
     }
 }

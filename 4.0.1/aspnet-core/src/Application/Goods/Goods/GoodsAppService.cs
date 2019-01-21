@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -92,11 +93,13 @@ b.Title BTitle,s.Name StoreName,cast(g.Price as float) Price ,cast(g.RetailPrice
 on g.CategoryId=c.Id left join dbo.TBrand b on g.BrandId=b.Id
 left join dbo.TChainStore s on g.chainstoreid=s.Id
 where 1=1";
-             
+
             }
 
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
+
+
     }
 }

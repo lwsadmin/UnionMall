@@ -51,6 +51,11 @@ namespace UnionMall.Common.CommonSpecObject
             return await _Repository.GetAllListAsync(c => c.ObjectId == id && c.Type == Type);
         }
 
+        public async Task<Entity.CommonSpecObject> GetEntityById(long id)
+        {
+            return await _Repository.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
         public async Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
         {
             StringBuilder str = new StringBuilder();

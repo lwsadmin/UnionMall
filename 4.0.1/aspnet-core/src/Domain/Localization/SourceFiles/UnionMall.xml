@@ -229,7 +229,7 @@
     <text name="AllSettleSet" value="AllSettleSet"/>
     <text name="StoreDivideSet" value="StoreDivideSet"/>
     <text name="StoreFunds" value="StoreFunds"/>
-    <text name="BusinessSettle" value="BusinessSettle"/>
+    <text name="FinancialDetail" value="FinancialDetails"/>
     <text name="BusinessWithDrawCash" value="BusinessWithDrawCash"/>
     <text name="MemberWithDrawCash" value="MemberWithDrawCash"/>
     <text name="StatisticsAnalysis" value="StatisticsAnalysis"/>

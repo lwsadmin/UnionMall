@@ -362,7 +362,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
  M=count(case when Sex=0 then '男' end),
  W=count(case when Sex=1 then '女' end) 
  from tmember m
- where DATEADD(day,30,RegTime)>=GETDATE() and {where.Replace("*","m")}
+ where 1=1 and {where.Replace("*","m")}
   group by   CONVERT(nvarchar(100),RegTime,23)
   
   order by CONVERT(nvarchar(100),RegTime,23) asc";

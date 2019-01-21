@@ -56,11 +56,25 @@ namespace UnionMall.Web.Controllers
             string M = string.Empty;
             string W = string.Empty;
             string date = string.Empty;
+            for (int i = 15; i >= 1; i--)
+            {
+                if (dtMember.Select($" Day='{DateTime.Now.AddDays(-i).ToString("yyyy-MM-dd")}'").Count() <= 0)
+                {
+                    M += $"0,";
+                    W += $"0,";
+                }
+                else
+                {
+                    M += $"{dtMember.Select($" Day='{DateTime.Now.AddDays(-i).ToString("yyyy-MM-dd")}'")[0]["M"]},";
+                    W += $"{dtMember.Select($" Day='{DateTime.Now.AddDays(-i).ToString("yyyy-MM-dd")}'")[0]["W"]},";
+                }
+
+                date += $"'{DateTime.Now.AddDays(-i).ToString("MM-dd")}',";
+            }
             foreach (DataRow item in dtMember.Rows)
             {
-                date += $"'{item["day"].ToString().Substring(5, 5)}',";
-                M += $"{item["M"]},";
-                W += $"{item["W"]},";
+
+
             }
 
             ViewBag.Data = date;

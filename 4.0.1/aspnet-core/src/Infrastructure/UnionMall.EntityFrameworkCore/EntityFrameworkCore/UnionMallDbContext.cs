@@ -49,6 +49,7 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<CommonSpec> CommonSpec { get; set; }
         public DbSet<CommonSpecObject> CommonSpecObject { get; set; }
         public DbSet<GlobalSet> GlobalSet { get; set; }
+        public DbSet<ChainStoreCapitalNote> ChainStoreCapitalNote { get; set; }
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

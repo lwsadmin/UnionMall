@@ -10,6 +10,7 @@ namespace UnionMall.Enum
         OLGT = 1,
         OFQ = 2,
         OFMR = 3,
-        OFGT = 4
+        OFGT = 4,
+        OFGD= 5
     }
 }

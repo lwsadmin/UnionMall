@@ -147,7 +147,7 @@
     <text name="AllSettleSet" value="全局设置"/>
     <text name="StoreDivideSet" value="门店抽佣"/>
     <text name="StoreFunds" value="门店资金"/>
-    <text name="BusinessSettle" value="财务明细"/>
+    <text name="FinancialDetail" value="财务明细"/>
     <text name="BusinessWithDrawCash" value="商户提现"/>
     <text name="MemberWithDrawCash" value="会员提现"/>
     <text name="StatisticsAnalysis" value="统计分析"/>

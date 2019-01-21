@@ -209,7 +209,7 @@
       <Action Name="Recharge" />
       <Action Name="Settle" />
     </Second>
-    <Second Name="BusinessSettle"   Url="/Settlement/StoreMoneyReport/List"></Second>
+    <Second Name="FinancialDetail"   Url="/settlement/storemoneydetail/list"></Second>
     <Second Name="MemberWithDrawCash"  Url="javascript:void(0);"></Second>
     <Second Name="BusinessWithDrawCash"   Url="javascript:void(0);"></Second>
   </First>
