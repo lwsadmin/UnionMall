@@ -101,6 +101,26 @@
 <script>
     $(function ()
     {
+
+            toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "progressBar": true,
+            "preventDuplicates": false,
+            "positionClass": "toast-top-full-width",
+            "showDuration": "4000",
+            "hideDuration": "1000",
+            "timeOut": "10000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr.error("您的账户将于@(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"))日到期，为了不影响您的使用， 请您及时续费。", "提醒")
+
+
+
     // Build the chart
 Highcharts.chart('member', {
 		chart: {
