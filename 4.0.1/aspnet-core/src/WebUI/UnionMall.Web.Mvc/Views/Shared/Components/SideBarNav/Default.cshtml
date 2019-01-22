@@ -69,7 +69,16 @@
                     <ul class="nav nav-second-level">
                         @foreach (var subMenuItem in menuItem.Items)
                         {
-                            <li data-name="@subMenuItem.Name" class="@(Model.ActiveSecondMenuItemName == subMenuItem.Name ? "active" : "")"><a href="@subMenuItem.Url">@subMenuItem.DisplayName</a></li>
+                            <li data-name="@subMenuItem.Name" class="@(Model.ActiveSecondMenuItemName == subMenuItem.Name ? "active" : "")">
+                                <a href="@subMenuItem.Url">
+                                    @subMenuItem.DisplayName
+                                    @if (subMenuItem.Url == "" || subMenuItem.Url.ToLower() == "javascript:void(0);")
+                                    {
+                                        <span class="label label-warning pull-right">研发中</span>
+                                    }
+                                </a>
+                
+                            </li>
                         }
                     </ul>
                 </li>
@@ -97,19 +106,19 @@
             <li class="landing_link">
                 <a target="_blank" href="javascript:void(0);">
                     <i class="fa fa-star"></i>
-                    <span class="nav-label">一元云购</span> <span class="label label-warning pull-right">开发中</span>
+                    <span class="nav-label">一元云购</span> <span class="label label-warning pull-right">研发中</span>
                 </a>
             </li>
             <li class="landing_link">
                 <a target="_blank" href="javascript:void(0);">
                     <i class="fa fa-star"></i>
-                    <span class="nav-label">多人拼团</span> <span class="label label-warning pull-right">开发中</span>
+                    <span class="nav-label">多人拼团</span> <span class="label label-warning pull-right">研发中</span>
                 </a>
             </li>
             <li class="landing_link">
                 <a target="_blank" href="javascript:void(0);">
                     <i class="fa fa-star"></i>
-                    <span class="nav-label">小程序设置</span> <span class="label label-warning pull-right">开发中</span>
+                    <span class="nav-label">小程序设置</span> <span class="label label-warning pull-right">研发中</span>
                 </a>
             </li>
             <li class="landing_link">

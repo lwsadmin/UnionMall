@@ -12,9 +12,7 @@
                 <h4 class="modal-title">---</h4>
                 <small class="font-bold"></small>
             </div>
-
             <div class="modal-body">
-
                     <div class="ibox-content">
                         <table class="table table-bordered table-hover" id="objTable">
                             <thead>
@@ -47,10 +45,18 @@
                                 }
                             </tbody>
                         </table>
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">代金券支付</label>
+
+                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            </div>
+                        </div>
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">@L("OK")@L("Consume")</button>
+                <button type="submit" class="btn btn-primary" onclick="GoSubmit();">@L("OK")@L("Consume")</button>
                 &nbsp;&nbsp;
                 <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
             </div>
@@ -63,6 +69,5 @@
     {
         $("input[name='selected']:checked").prop("checked",false);
         $(this).find("input[type='radio']").prop("checked", true);
-      //  this.style.backgroundColor = 'red';
     });
 </script>

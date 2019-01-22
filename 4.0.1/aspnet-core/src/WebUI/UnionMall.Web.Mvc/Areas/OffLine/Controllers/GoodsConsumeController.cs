@@ -26,7 +26,6 @@ namespace UnionMall.Web.Mvc.Areas.OffLine.Controllers
         public GoodsConsumeController(IGoodsCategoryAppService catAppService,
             IGoodsAppService AppService, ICommonAppService comService, ISpecObjectAppService specAppService)
         {
-
             _catAppService = catAppService;
             _AppService = AppService;
             _comService = comService;
@@ -79,6 +78,17 @@ left join dbo.TChainStore s on g.chainstoreid=s.Id where 1=1";
         public async Task<ActionResult> Add(long goodsId)
         {
             DataTable dt = await _specAppService.GetObjTableBuyObjId(goodsId);
+            if (dt.Rows.Count == 0 || dt == null)//商品如果没有规格
+            {
+                DataRow dr = dt.NewRow();
+                var goods = await _AppService.GetByIdAsync(goodsId);
+                dr["Id"] = goodsId;
+                dr["Text"] = "--";
+                dr["Stock"] = goods.Stock;
+                dr["Price"] = goods.Price;
+                dt.Rows.Add(dr);
+
+            }
             return View("_Select", dt);
         }
     }

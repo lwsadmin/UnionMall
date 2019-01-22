@@ -124,17 +124,14 @@
 <script src="https://lab.hakim.se/ladda/dist/ladda.min.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Offline/Goods/index.js" asp-append-version="true"></script>
 <script>
-    $("#con").click(function (e)
+ function GoSubmit ()
     {
-        e.preventDefault();
-        e.stopPropagation();
         if ($("input[name='CardID']").val() == "" && $("#Integral").html() == "-")
         {
+            $("#Select").modal('hide');
             $("input[name='CardID']").focus();
             return;
         }
-        if ($("#selectedTable").html() == "")
-        { return; }
         var l = Ladda.create(this);
         l.start();
         var _Service = abp.services.app.giftOrder;
@@ -193,27 +190,8 @@
         }).fail(function (data)
         {
         }).always(function (data) { });
-
-
-    });
-
-
-    function AddItem(id,name)
-    {
-
-        $.ajax({
-            url: '/OffLine/GoodsConsume/Add?goodsId=' + id,
-            type: 'POST',
-            contentType: 'application/html',
-            success: function (content)
-            {
-                //alert(content);
-                $("#DivAdd").html(content);
-                $("#Select .modal-title").html(name);
-                $("#Select").modal("show");
-
-            },
-            error: function (e) { }
-        });
     }
+
+
+
 </script>

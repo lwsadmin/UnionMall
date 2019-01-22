@@ -13,6 +13,23 @@ $('#myTabs a').click(function (e)
     $("#searchForm").submit();
     $(this).tab('show');
 });
+function AddItem(id, name)
+{
+    $.ajax({
+        url: '/OffLine/GoodsConsume/Add?goodsId=' + id,
+        type: 'POST',
+        contentType: 'application/html',
+        success: function (content)
+        {
+            //alert(content);
+            $("#DivAdd").html(content);
+            $("#Select .modal-title").html(name);
+            $("#Select").modal("show");
+
+        },
+        error: function (e) { }
+    });
+}
 $("#readBtn").click(function ()
 {
     if ($("input[name='CardID']").val() == "")
