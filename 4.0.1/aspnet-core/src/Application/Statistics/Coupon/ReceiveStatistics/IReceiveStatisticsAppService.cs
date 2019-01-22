@@ -11,5 +11,6 @@ namespace UnionMall.Coupon.ReceiveStatistics
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
         Task CreateAsync(Entity.CouponSendStatistics dt);
+        DataTable  GetUseableCoupon(long memberId, decimal consumeValue);
     }
 }

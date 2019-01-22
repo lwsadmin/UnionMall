@@ -39,5 +39,12 @@ on s.MemberId=m.Id left join  dbo.TCoupon c on s.CouponId=c.Id where 1=1 ";
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
+
+        public DataTable GetUseableCoupon(long memberId, decimal consumeValue)
+        {
+            string sql = $@"select c.id,s.ReceiveCount,s.UsedCount,c.Type,c.Title,c.Value from TCouponSendStatistics s left join TCoupon c 
+on s.CouponId=c.Id  where MemberId={memberId} and  c.UseValueLimit<={consumeValue} and s.UsedCount<s.ReceiveCount and s.EndDate>=getdate()";
+            return _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+        }
     }
 }

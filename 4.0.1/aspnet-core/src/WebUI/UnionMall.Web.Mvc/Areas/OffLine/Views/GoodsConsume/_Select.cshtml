@@ -59,6 +59,14 @@
                                     <div class="col-sm-9">
                                         <select type="text" class="form-control">
                                             <option value="">-@L("Select")-</option>
+                                            @if (ViewBag.Coupon != null)
+                                            {
+                                                @foreach (var item in ViewBag.Coupon.Rows)
+                                                {
+                                                    <option value="@item["id"]">@item["title"]</option>
+
+                                                }
+                                            }
                                         </select>
                                     </div>
                                 </div>

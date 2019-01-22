@@ -16,7 +16,7 @@ $('#myTabs a').click(function (e)
 function AddItem(id, name)
 {
     $.ajax({
-        url: '/OffLine/GoodsConsume/Add?goodsId=' + id,
+        url: '/OffLine/GoodsConsume/Add?goodsId=' + id+"&memberId="+$("input[name='memberId']").val(),
         type: 'POST',
         contentType: 'application/html',
         success: function (content)

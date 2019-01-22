@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using UnionMall.Common;
 using UnionMall.Common.CommonSpec;
 using UnionMall.Controllers;
+using UnionMall.Coupon.ReceiveStatistics;
 using UnionMall.Goods;
 using X.PagedList;
 
@@ -20,16 +21,18 @@ namespace UnionMall.Web.Mvc.Areas.OffLine.Controllers
         private readonly IGoodsCategoryAppService _catAppService;
         private readonly IGoodsAppService _AppService;
         private readonly ICommonAppService _comService;
-        //private readonly ICommonSpecAppService _specAppService;
+        private readonly IReceiveStatisticsAppService _copAppService;
 
         private readonly ISpecObjectAppService _specAppService;
         public GoodsConsumeController(IGoodsCategoryAppService catAppService,
-            IGoodsAppService AppService, ICommonAppService comService, ISpecObjectAppService specAppService)
+            IGoodsAppService AppService, ICommonAppService comService, IReceiveStatisticsAppService copAppService,
+            ISpecObjectAppService specAppService)
         {
             _catAppService = catAppService;
             _AppService = AppService;
             _comService = comService;
             _specAppService = specAppService;
+            _copAppService = copAppService;
         }
 
         public async Task<IActionResult> Index(int pageIndex = 1, int pageSize = 10, long categoryId = 0, string title = "")
@@ -75,7 +78,7 @@ left join dbo.TChainStore s on g.chainstoreid=s.Id where 1=1";
             return PartialView("_Table", pageList);
         }
 
-        public async Task<ActionResult> Add(long goodsId)
+        public async Task<ActionResult> Add(long goodsId,long memberId)
         {
             DataTable dt = await _specAppService.GetObjTableBuyObjId(goodsId);
             if (dt.Rows.Count == 0 || dt == null)//商品如果没有规格
@@ -89,6 +92,8 @@ left join dbo.TChainStore s on g.chainstoreid=s.Id where 1=1";
                 dt.Rows.Add(dr);
 
             }
+
+            ViewBag.Coupon = _copAppService.GetUseableCoupon(memberId,(decimal)dt.Rows[0]["Price"]);
             return View("_Select", dt);
         }
     }
