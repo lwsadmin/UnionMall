@@ -17,5 +17,7 @@ namespace UnionMall.Coupon
         Task<CreateEditDto> GetByIdAsync(long Id);
         Task<JsonResult> SendCoupon(long MemberId, long CouponId, string BillNumber = "");
         Task Delete(long id);
+
+
     }
 }

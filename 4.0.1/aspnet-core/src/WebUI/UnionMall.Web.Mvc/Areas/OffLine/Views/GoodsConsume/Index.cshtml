@@ -192,6 +192,15 @@
         }).always(function (data) { });
     }
 
+        function InitNeedPay()
+    {
+       
+        var c=$("input[name='selected']:checked").val();
+        var count =$("#count"+c).val();
+        var price =$("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
+     //   alert(price);
+    $("#needPay").html(parseInt(count)*parseFloat(price));
 
+    }
 
 </script>

@@ -71,11 +71,6 @@ namespace UnionMall.Web.Controllers
 
                 date += $"'{DateTime.Now.AddDays(-i).ToString("MM-dd")}',";
             }
-            foreach (DataRow item in dtMember.Rows)
-            {
-
-
-            }
 
             ViewBag.Data = date;
             ViewBag.M = M;

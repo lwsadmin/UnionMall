@@ -25,7 +25,7 @@ function AddItem(id, name)
             $("#DivAdd").html(content);
             $("#Select .modal-title").html(name);
             $("#Select").modal("show");
-
+            InitNeedPay();
         },
         error: function (e) { }
     });
