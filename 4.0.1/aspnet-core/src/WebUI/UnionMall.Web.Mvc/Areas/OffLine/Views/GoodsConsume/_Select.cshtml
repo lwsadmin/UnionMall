@@ -33,7 +33,7 @@
                                     </td>
                                     <td>@item["Stock"]</td>
                                     <td style="padding:4px 0;">
-                                        <input id="count@(item["Id"])" type="number" style="height:25px;" class="form-control input-sm" max="@item["Stock"]" name="buy-count" value="1" />
+                                        <input id="count@(item["Id"])" type="number" oninput="SetCount(this);" style="height:25px;" class="form-control input-sm" max="@item["Stock"]" name="buy-count" value="1" />
                                     </td>
                                     <td>@item["Price"]</td>
                                     <td>
@@ -49,56 +49,64 @@
                     </table>
 
                     <div class="form-horizontal">
-                        <div class="row">
-                            <div class="col-md-offset-3 col-sm-6">
-                                <div class="form-group">
-                                    <div class="col-sm-3 radio radio-inline radio-success">
-                                        <input type="radio" value="0" id="ckCouponPay" checked="checked" />
-                                        <label for="ckCouponPay">@L("Coupon")</label>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <select type="text" class="form-control">
-                                            <option value="">-@L("Select")-</option>
-                                            @if (ViewBag.Coupon != null)
-                                            {
-                                                @foreach (var item in ViewBag.Coupon.Rows)
+                        @if (ViewBag.PayType.Contains("Coupon"))
+                        {
+                            <div class="row">
+                                <div class="col-md-offset-3 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-3 radio radio-inline radio-success">
+                                            <input type="radio" value="0" id="ckCouponPay" checked="checked" />
+                                            <label for="ckCouponPay">@L("Coupon")</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <select type="text" class="form-control" id="selectCop" onchange="InitNeedPay();">
+                                                <option value="">-@L("Usable")@L("Coupon")-</option>
+                                                @if (ViewBag.Coupon != null)
                                                 {
-                                                    <option value="@item["id"]">@item["title"]</option>
+                                                    @foreach (var item in ViewBag.Coupon.Rows)
+                                                    {
+                                                        <option data-value="@item["value"]" value="@item["id"]">@item["title"]</option>
 
+                                                    }
                                                 }
-                                            }
-                                        </select>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-offset-3 col-sm-6">
-                                <div class="form-group">
-                                    <div class="col-sm-3 checkbox checkbox-inline checkbox-success">
-                                        <input type="checkbox" value="0" id="ckIntegralPay" />
-                                        <label for="ckIntegralPay">@L("Integral")@L("Pay")</label>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-offset-3 col-sm-6">
-                                <div class="form-group">
-                                    <div class="col-sm-3 checkbox checkbox-inline checkbox-success">
-                                        <input type="checkbox" value="0" id="ckValuePay" />
-                                        <label for="ckValuePay">@L("Balance")@L("Pay")</label>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" />
+                        }
+                        @if (ViewBag.PayType.Contains("Integral"))
+                        {
+                            <div class="row">
+                                <div class="col-md-offset-3 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-3 checkbox checkbox-inline checkbox-success">
+                                            <input type="checkbox" data-max="@ViewBag.MaxIntegralToMoney" onchange="InitNeedPay();" value="@(ViewBag.Member==null?"0":ViewBag.Member.Integral)" id="ckIntegralPay" />
+                                            <label for="ckIntegralPay">@L("Integral")@L("Pay")</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="iptIntegral" readonly="readonly" class="form-control" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                        }
+                        @if (ViewBag.PayType.Contains("Balance"))
+                        {
+                            <div class="row">
+                                <div class="col-md-offset-3 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-3 checkbox checkbox-inline checkbox-success">
+                                            <input type="checkbox" onchange="InitNeedPay();" value="@(ViewBag.Member==null?"0":ViewBag.Member.Balance)" id="ckValuePay" />
+                                            <label for="ckValuePay">@L("Balance")@L("Pay")</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="iptBalance" readonly="readonly" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                         <div class="hr-line-dashed"></div>
                         <div class="row">
                             <div class="col-sm-12">

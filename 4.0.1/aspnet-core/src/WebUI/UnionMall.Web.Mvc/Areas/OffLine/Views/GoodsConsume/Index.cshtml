@@ -124,7 +124,7 @@
 <script src="https://lab.hakim.se/ladda/dist/ladda.min.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Offline/Goods/index.js" asp-append-version="true"></script>
 <script>
- function GoSubmit ()
+    function GoSubmit()
     {
         if ($("input[name='CardID']").val() == "" && $("#Integral").html() == "-")
         {
@@ -192,15 +192,63 @@
         }).always(function (data) { });
     }
 
-        function InitNeedPay()
+    function InitNeedPay()
     {
-       
-        var c=$("input[name='selected']:checked").val();
-        var count =$("#count"+c).val();
-        var price =$("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
-     //   alert(price);
-    $("#needPay").html(parseInt(count)*parseFloat(price));
+
+        var c = $("input[name='selected']:checked").val();
+        var count = $("#count" + c).val();
+        var price = $("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
+        var totalPay = parseInt(count) * parseFloat(price);
+        var couponPay = 0; var integralPay = 0; var balancePay = 0; var needPay = 0;
+        if ($("#selectCop").val() != undefined && $("#selectCop").val() != "")
+        {
+            couponPay = parseFloat($("#selectCop").find("option:selected").attr("data-value"));
+            totalPay -= couponPay;
+        }
+        if ($("#ckIntegralPay").val() != undefined && $("#ckIntegralPay").is(":checked"))
+        {
+            if (parseFloat($("#ckIntegralPay").attr("data-max")) >= totalPay)
+            {
+                $("#iptIntegral").val(totalPay);
+            }
+            else
+            {
+                $("#iptIntegral").val($("#ckIntegralPay").attr("data-max"));
+            }
+            integralPay = parseFloat($("#iptIntegral").val());
+            if (totalPay >= integralPay)
+            { totalPay -= integralPay; } else { totalPay = 0; }
+        } else { $("#iptIntegral").val(0); }
+        if ($("#ckValuePay").val() != undefined && $("#ckValuePay").is(":checked"))
+        {
+
+            if (parseFloat($("#ckValuePay").val()) >= totalPay)
+            {
+                $("#iptBalance").val(totalPay); 
+            } else
+            {
+                $("#iptBalance").val($("#ckValuePay").val());
+               
+            }
+            balancePay = parseFloat($("#iptBalance").val());
+            if (totalPay >= balancePay)
+            { totalPay -= balancePay; } else { totalPay = 0; }
+        } else { $("#iptBalance").val(0) }
+
+        $("#needPay").html(totalPay);
 
     }
-
+    function SetCount(ipt)
+    {
+        var s = $(ipt).val();
+        if (s == "")
+        {
+            //$(ipt).val(1);
+        }
+        if (parseInt(s) > parseInt($(ipt).attr("max")))
+        {
+            $(ipt).val($(ipt).attr("max"));
+        }
+        InitNeedPay();
+    }
 </script>

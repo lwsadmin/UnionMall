@@ -15,6 +15,11 @@ $('#myTabs a').click(function (e)
 });
 function AddItem(id, name)
 {
+    if ($("input[name='CardID']").val()=="")
+    {
+        $("input[name='CardID']").focus();
+        return;
+    }
     $.ajax({
         url: '/OffLine/GoodsConsume/Add?goodsId=' + id+"&memberId="+$("input[name='memberId']").val(),
         type: 'POST',

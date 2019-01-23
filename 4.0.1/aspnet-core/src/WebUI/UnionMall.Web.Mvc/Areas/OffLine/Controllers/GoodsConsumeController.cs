@@ -10,6 +10,8 @@ using UnionMall.Common.CommonSpec;
 using UnionMall.Controllers;
 using UnionMall.Coupon.ReceiveStatistics;
 using UnionMall.Goods;
+using UnionMall.Member;
+using UnionMall.SystemSet;
 using X.PagedList;
 
 namespace UnionMall.Web.Mvc.Areas.OffLine.Controllers
@@ -22,17 +24,20 @@ namespace UnionMall.Web.Mvc.Areas.OffLine.Controllers
         private readonly IGoodsAppService _AppService;
         private readonly ICommonAppService _comService;
         private readonly IReceiveStatisticsAppService _copAppService;
-
+        private readonly IMemberAppService _memAppService;
         private readonly ISpecObjectAppService _specAppService;
+        private readonly IParameterAppService _parService;
         public GoodsConsumeController(IGoodsCategoryAppService catAppService,
             IGoodsAppService AppService, ICommonAppService comService, IReceiveStatisticsAppService copAppService,
-            ISpecObjectAppService specAppService)
+            ISpecObjectAppService specAppService, IMemberAppService memAppService, IParameterAppService parService)
         {
             _catAppService = catAppService;
             _AppService = AppService;
             _comService = comService;
             _specAppService = specAppService;
             _copAppService = copAppService;
+            _memAppService = memAppService;
+            _parService = parService;
         }
 
         public async Task<IActionResult> Index(int pageIndex = 1, int pageSize = 10, long categoryId = 0, string title = "")
@@ -56,6 +61,7 @@ left join dbo.TChainStore s on g.chainstoreid=s.Id";
                 return View("_Table", pageList);
             }
             ViewBag.Cat = categoryId;
+            ViewBag.PayType = "";
             ViewBag.Category = (await _catAppService.GetGoodsCategory()).Rows;
             return View(pageList);
         }
@@ -78,7 +84,7 @@ left join dbo.TChainStore s on g.chainstoreid=s.Id where 1=1";
             return PartialView("_Table", pageList);
         }
 
-        public async Task<ActionResult> Add(long goodsId,long memberId)
+        public async Task<ActionResult> Add(long goodsId, long memberId)
         {
             DataTable dt = await _specAppService.GetObjTableBuyObjId(goodsId);
             if (dt.Rows.Count == 0 || dt == null)//商品如果没有规格
@@ -90,10 +96,15 @@ left join dbo.TChainStore s on g.chainstoreid=s.Id where 1=1";
                 dr["Stock"] = goods.Stock;
                 dr["Price"] = goods.Price;
                 dt.Rows.Add(dr);
-
             }
 
-            ViewBag.Coupon = _copAppService.GetUseableCoupon(memberId,(decimal)dt.Rows[0]["Price"]);
+
+            ViewBag.Member = await _memAppService.GetEntity(memberId);
+            decimal pp = Convert.ToDecimal(await _parService.GetParameterValue("PointPayPrice"));
+            ViewBag.MaxIntegralToMoney = ((decimal)(ViewBag.Member.Integral / pp)).ToString("#0.00");
+
+            ViewBag.PayType = await _parService.GetParameterValue("PayType");
+            ViewBag.Coupon = _copAppService.GetUseableCoupon(memberId, (decimal)dt.Rows[0]["Price"]);
             return View("_Select", dt);
         }
     }
