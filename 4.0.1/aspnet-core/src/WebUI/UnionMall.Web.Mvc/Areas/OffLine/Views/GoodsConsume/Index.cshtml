@@ -124,7 +124,7 @@
 <script src="https://lab.hakim.se/ladda/dist/ladda.min.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Offline/Goods/index.js" asp-append-version="true"></script>
 <script>
-    function GoSubmit()
+    function GoSubmit(btn)
     {
         if ($("input[name='CardID']").val() == "" && $("#Integral").html() == "-")
         {
@@ -132,8 +132,9 @@
             $("input[name='CardID']").focus();
             return;
         }
-        var l = Ladda.create(this);
+        var l = Ladda.create(btn);
         l.start();
+        return;
         var _Service = abp.services.app.giftOrder;
         var dto = {};
         var order = {};
