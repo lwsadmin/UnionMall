@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using UnionMall.Goods.GoodsOrder.Dto;
 
 namespace UnionMall.Goods
 {
@@ -15,7 +16,7 @@ namespace UnionMall.Goods
         Task CreateOrEditAsync(Entity.GoodsOrder model);
         Task<Entity.GoodsOrder> GetByIdAsync(long Id);
         Task DeleteAsync(long id);
-        Task<JsonResult> OffConsume(long goodsId, long MemberId, long ObjId = 0, int count = 1);
+        Task<JsonResult> OffConsume(SubmitOrderDto dto);
 
         Task<MemoryStream> ExportToExcel(string where);
     }

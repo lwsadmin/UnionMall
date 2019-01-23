@@ -135,27 +135,20 @@
         var l = Ladda.create(btn);
         l.start();
         return;
-        var _Service = abp.services.app.giftOrder;
+        var _Service = abp.services.app.goodsOrder;
         var dto = {};
         var order = {};
-        var itemList = [];
         //        public long GiftId { get; set; }
         //public int Count { get; set; } = 1;
         //public decimal Point { get; set; }
         order.memberId = $("input[name='memberId']").val();
         order.point = parseFloat($("#total").html());
-        $("#selectedTable").find("tr").each(function ()
-        {
-            itemList.push({
-                giftId: $(this).attr("data-id"),
-                count: $(this).find("td").eq(2).html(),
-                Point: $(this).find("td").eq(1).html(),
-            });
-        });
-        dto.order = order;
-        dto.itemList = itemList;
 
-        _Service.offExchange(dto).done(function (data)
+        dto.order = order;
+
+
+        return;
+        _Service.offConsume(dto).done(function (data)
         {
             if (data.succ)
             {

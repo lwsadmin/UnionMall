@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using UnionMall.Common;
 using UnionMall.Common.CommonSpec;
 using UnionMall.Entity;
+using UnionMall.Goods.GoodsOrder.Dto;
 using UnionMall.IRepositorySql;
 using UnionMall.Sessions;
 
@@ -99,28 +100,28 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
 
-        public async Task<JsonResult> OffConsume(long goodsId, long MemberId, long ObjId = 0, int count = 1)
+        public async Task<JsonResult> OffConsume(SubmitOrderDto dto)
         {
             var json = new JsonResult(new { succ = true, msg = L("Consume") + L("Success") + "!" });
-            Entity.CommonSpecObject obj=null;
-            if (ObjId > 0)
-            {
-                obj = await _objService.GetEntityById(ObjId);
-                if (obj == null)
-                {
-                    json.Value = new { succ = false, msg = L("NotExist{0}", "SPU") + "!" };
-                    return json;
-                }
-            }
-            var UserInfo = await _sessionAppService.GetCurrentLoginInformations();
-            GoodsOrder order = new GoodsOrder();
-            order.BillNumber = _comService.GetBillNumber(Enum.OrderNumberType.OFGD);
-            order.TenantId = UserInfo.Tenant.Id;
-            order.ChainStoreId = (long)_sqlExecuter.ExecuteDataSet($"select businessid from tchainStore where id={UserInfo.User.ChainStoreId}").Tables[0].Rows[0][0];
-            order.ChainStoreId = UserInfo.User.ChainStoreId;
-            order.MemberId = MemberId;
-            order.TotalMoney = obj.Price * count;
-            order.TotalPay = obj.Price * count;
+            //Entity.CommonSpecObject obj=null;
+            //if (ObjId > 0)
+            //{
+            //    obj = await _objService.GetEntityById(ObjId);
+            //    if (obj == null)
+            //    {
+            //        json.Value = new { succ = false, msg = L("NotExist{0}", "SPU") + "!" };
+            //        return json;
+            //    }
+            //}
+            //var UserInfo = await _sessionAppService.GetCurrentLoginInformations();
+            //GoodsOrder order = new GoodsOrder();
+            //order.BillNumber = _comService.GetBillNumber(Enum.OrderNumberType.OFGD);
+            //order.TenantId = UserInfo.Tenant.Id;
+            //order.ChainStoreId = (long)_sqlExecuter.ExecuteDataSet($"select businessid from tchainStore where id={UserInfo.User.ChainStoreId}").Tables[0].Rows[0][0];
+            //order.ChainStoreId = UserInfo.User.ChainStoreId;
+            //order.MemberId = MemberId;
+            //order.TotalMoney = obj.Price * count;
+            //order.TotalPay = obj.Price * count;
            // if()
             return json;
         }

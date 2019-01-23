@@ -90,21 +90,23 @@ UpdateTargetId = "table"
         });
     }
     $("input[name='pageSize']").val(@ViewBag.PageSize);
-    $(".img").mousemove(function (e) {
-        var h = window.screen.height;
-        var showY = showY - $("#table").offset().top;
-        var showX = e.pageX;
-        if (e.pageY + $("#pic").height() + 100 >= h) {
-            showY = h - $("#pic").height() - 100;
-        }
-        $("#pic").css({
-            "top": e.pageY,
-            "left": (showX)
-        }).fadeIn(500);
-    });
+    $(".img").hover(function () {
+        $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
+        $(".img").mousemove(function (e) {
+            var h = window.screen.height;
+            var showY = showY - $("#table").offset().top;
+            var showX = e.pageX;
+            if (e.pageY + $("#pic").height() + 150 >= h) {
+                showY = h - $("#pic").height() - 200;
+            }
+            $("#pic").css({
+                "top": showY,
+                "left": (showX)
+            }).fadeIn(500);
+        });
     }, function () {
         $("#pic").remove();
-        });
+    });
 
     function SetPage() {
         var url = "/giftmall/gift/List?pageIndex=" + $(".pagination ").find(".active").find("a").html();
