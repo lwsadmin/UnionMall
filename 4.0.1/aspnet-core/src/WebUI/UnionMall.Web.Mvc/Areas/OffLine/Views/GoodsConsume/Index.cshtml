@@ -134,8 +134,9 @@
         }
         var l = Ladda.create(btn);
         l.start();
-        return;
         var _Service = abp.services.app.goodsOrder;
+        var price = $("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
+        var totalMoney = parseInt(count) * parseFloat(price);
         var dto = {};
         var order = {};
         //        public long GiftId { get; set; }
@@ -143,10 +144,33 @@
         //public decimal Point { get; set; }
         order.memberId = $("input[name='memberId']").val();
         order.point = parseFloat($("#total").html());
+        order.totalMoney = totalMoney;
+        order.totalPay = parseFloat($("#needPay").html());
+        order.couponPay = 0;
+        order.integralPay = 0;
+        order.balancePay = 0;
+        order.moneyPay = 0;
+        order.wechatPay = 0;
+        order.aliPay = 0;
+        if ($("#selectCop").val() != undefined && $("#selectCop").val() != "")
+            order.couponPay = $("#selectCop").val();
+
+        if ($("#ckIntegralPay").val() != undefined && $("#ckIntegralPay").is(":checked"))
+            order.integralPay = $("#iptIntegral").val();
+
+        if ($("#ckValuePay").val() != undefined && $("#ckValuePay").is(":checked"))
+            order.balancePay = $("#iptBalance").val();
+
+        if ($("input[name='PayType']:checked").val() == "0")
+            order.moneyPay = 0;
+
+        if ($("input[name='PayType']:checked").val() == "1")
+            order.wechatPay = 0;
+        if ($("input[name='PayType']:checked").val() == "2")
+            order.aliPay = 0;
 
         dto.order = order;
-
-
+        var itemList = [];
         return;
         _Service.offConsume(dto).done(function (data)
         {
@@ -188,7 +212,6 @@
 
     function InitNeedPay()
     {
-
         var c = $("input[name='selected']:checked").val();
         var count = $("#count" + c).val();
         var price = $("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
@@ -197,7 +220,10 @@
         if ($("#selectCop").val() != undefined && $("#selectCop").val() != "")
         {
             couponPay = parseFloat($("#selectCop").find("option:selected").attr("data-value"));
-            totalPay -= couponPay;
+            if (totalPay > couponPay)
+                totalPay -= couponPay;
+            else
+                totalPay = 0;
         }
         if ($("#ckIntegralPay").val() != undefined && $("#ckIntegralPay").is(":checked"))
         {
@@ -218,27 +244,21 @@
 
             if (parseFloat($("#ckValuePay").val()) >= totalPay)
             {
-                $("#iptBalance").val(totalPay); 
+                $("#iptBalance").val(totalPay);
             } else
             {
                 $("#iptBalance").val($("#ckValuePay").val());
-               
+
             }
             balancePay = parseFloat($("#iptBalance").val());
             if (totalPay >= balancePay)
             { totalPay -= balancePay; } else { totalPay = 0; }
         } else { $("#iptBalance").val(0) }
-
         $("#needPay").html(totalPay);
-
     }
     function SetCount(ipt)
     {
         var s = $(ipt).val();
-        if (s == "")
-        {
-            //$(ipt).val(1);
-        }
         if (parseInt(s) > parseInt($(ipt).attr("max")))
         {
             $(ipt).val($(ipt).attr("max"));

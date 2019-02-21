@@ -103,6 +103,7 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
         public async Task<JsonResult> OffConsume(SubmitOrderDto dto)
         {
             var json = new JsonResult(new { succ = true, msg = L("Consume") + L("Success") + "!" });
+
             //Entity.CommonSpecObject obj=null;
             //if (ObjId > 0)
             //{
@@ -113,20 +114,20 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             //        return json;
             //    }
             //}
-            //var UserInfo = await _sessionAppService.GetCurrentLoginInformations();
+            var UserInfo = await _sessionAppService.GetCurrentLoginInformations();
             //GoodsOrder order = new GoodsOrder();
-            //order.BillNumber = _comService.GetBillNumber(Enum.OrderNumberType.OFGD);
-            //order.TenantId = UserInfo.Tenant.Id;
-            //order.ChainStoreId = (long)_sqlExecuter.ExecuteDataSet($"select businessid from tchainStore where id={UserInfo.User.ChainStoreId}").Tables[0].Rows[0][0];
-            //order.ChainStoreId = UserInfo.User.ChainStoreId;
+            dto.Order.BillNumber = _comService.GetBillNumber(Enum.OrderNumberType.OFGD);
+            dto.Order.TenantId = UserInfo.Tenant.Id;
+            dto.Order.BusinessId = (long)_sqlExecuter.ExecuteDataSet($"select businessid from tchainStore where id={UserInfo.User.ChainStoreId}").Tables[0].Rows[0][0];
+            dto.Order.ChainStoreId = UserInfo.User.ChainStoreId;
             //order.MemberId = MemberId;
             //order.TotalMoney = obj.Price * count;
             //order.TotalPay = obj.Price * count;
-           // if()
+            // if()
             return json;
         }
 
- 
+
 
         Task<Entity.GoodsOrder> IGoodsOrderAppService.GetByIdAsync(long Id)
         {
