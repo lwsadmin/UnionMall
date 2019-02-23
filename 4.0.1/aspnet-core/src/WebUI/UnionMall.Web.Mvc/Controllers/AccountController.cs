@@ -99,6 +99,7 @@ namespace UnionMall.Web.Controllers
 
         [HttpPost]
         [UnitOfWork]
+        [IgnoreAntiforgeryToken]
         public virtual async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
             returnUrl = NormalizeReturnUrl(returnUrl);
@@ -308,7 +309,7 @@ namespace UnionMall.Web.Controllers
         #region External Login
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             var redirectUrl = Url.Action(

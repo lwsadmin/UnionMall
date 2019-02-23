@@ -20,11 +20,12 @@ namespace UnionMall.Web
             }
 
             var directoryInfo = new DirectoryInfo(coreAssemblyDirectoryPath);
+            return directoryInfo.ToString();
             while (!DirectoryContains(directoryInfo.FullName, "UnionMall.sln"))
             {
                 if (directoryInfo.Parent == null)
                 {
-                    throw new Exception("Could not find content root folder!");
+                    throw new Exception(directoryInfo + "---------------Could not find content root folder!");
                 }
 
                 directoryInfo = directoryInfo.Parent;

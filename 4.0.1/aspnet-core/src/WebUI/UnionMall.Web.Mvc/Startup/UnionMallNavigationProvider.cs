@@ -3,6 +3,8 @@ using System.Xml;
 using Abp.Application.Navigation;
 using Abp.Localization;
 using UnionMall.Authorization;
+using System.Reflection;
+using Microsoft.AspNetCore.Hosting;
 
 namespace UnionMall.Web.Startup
 {
@@ -11,13 +13,21 @@ namespace UnionMall.Web.Startup
     /// </summary>
     public class UnionMallNavigationProvider : NavigationProvider
     {
+        private readonly IHostingEnvironment _HostingEnvironment;
+        //public UnionMallNavigationProvider() { }
+        public UnionMallNavigationProvider(IHostingEnvironment HostingEnvironment)
+        {
+            _HostingEnvironment = HostingEnvironment;
+        }
         public override void SetNavigation(INavigationProviderContext context)
         {
 
+
             XmlDocument NavigationXml = new XmlDocument();
-
-            string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
-
+            //string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
+            string currentDirectory = Path.GetFullPath(_HostingEnvironment.WebRootPath + "/Navigation.xml");
+            //string[] name = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            // Stream sm = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnionMall.Localization.XmlData.Navigation.xml");
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreComments = true; //忽略注释
             XmlReader reader = XmlReader.Create(currentDirectory, settings);
@@ -34,7 +44,7 @@ namespace UnionMall.Web.Startup
                         url: "",
                         icon: item.Attributes["Icon"].Value,
                         requiredPermissionName: item.Attributes["Name"].Value,
-                        requiresAuthentication:true
+                        requiresAuthentication: true
                         );
 
                     if (item.ChildNodes != null && item.ChildNodes.Count > 0)

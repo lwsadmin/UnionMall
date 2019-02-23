@@ -13,16 +13,17 @@
     </environment>
 
 }
-@section Scripts
-    {
-    <environment names="Development">
-        <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
-    </environment>
+@*@section Scripts
+        {
+        <environment names="Development">
+            <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
+        </environment>
 
-    <environment names="Staging,Production">
-        <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
-    </environment>
-}
+        <environment names="Staging,Production">
+            <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
+        </environment>
+    }*@
+<script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
 <div class="card" id="﻿LoginArea">
     <div class="body">
         <form id="LoginForm" asp-action="Login" method="post">

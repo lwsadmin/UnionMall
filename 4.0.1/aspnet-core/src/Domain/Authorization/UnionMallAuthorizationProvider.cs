@@ -4,11 +4,21 @@ using System.Xml;
 using Abp.Authorization;
 using Abp.Localization;
 using Abp.MultiTenancy;
+using Microsoft.AspNetCore.Hosting;
 
 namespace UnionMall.Authorization
 {
     public class UnionMallAuthorizationProvider : AuthorizationProvider
     {
+        private readonly IHostingEnvironment _HostingEnvironment;
+        public UnionMallAuthorizationProvider()
+        {
+
+        }
+        public UnionMallAuthorizationProvider(IHostingEnvironment HostingEnvironment)
+        {
+            _HostingEnvironment = HostingEnvironment;
+        }
         public override void SetPermissions(IPermissionDefinitionContext context)
         {
             //系统默认设置权限
@@ -18,12 +28,13 @@ namespace UnionMall.Authorization
 
             XmlDocument NavigationXml = new XmlDocument();
             //string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
+            string currentDirectory = Path.GetFullPath(_HostingEnvironment.WebRootPath + "/Navigation.xml");
             //string[] name = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            Stream sm = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnionMall.Localization.XmlData.Navigation.xml");
-       
+            // Stream sm = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnionMall.Localization.XmlData.Navigation.xml");
+
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreComments = true; //忽略注释
-            XmlReader reader = XmlReader.Create(sm, settings);
+            XmlReader reader = XmlReader.Create(currentDirectory, settings);
             NavigationXml.Load(reader);
             XmlNodeList List = NavigationXml.SelectNodes("//Navigation//First");
             foreach (XmlNode item in List)

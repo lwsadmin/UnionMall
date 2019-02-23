@@ -10,17 +10,17 @@ $(function () {
         $("input[name='Password']").val(localStorage.getItem("Password"));
     }
 
-    $loginForm.validate({
-        highlight: function (input) {
-            $(input).parents('.form-line').addClass('error');
-        },
-        unhighlight: function (input) {
-            $(input).parents('.form-line').removeClass('error');
-        },
-        errorPlacement: function (error, element) {
-            $(element).parents('.input-group').append(error);
-        }
-    });
+    //$loginForm.validate({
+    //    highlight: function (input) {
+    //        $(input).parents('.form-line').addClass('error');
+    //    },
+    //    unhighlight: function (input) {
+    //        $(input).parents('.form-line').removeClass('error');
+    //    },
+    //    errorPlacement: function (error, element) {
+    //        $(element).parents('.input-group').append(error);
+    //    }
+    //});
 
     $loginForm.submit(function (e) {
         e.preventDefault();
@@ -71,6 +71,7 @@ $(function () {
                         //})
                     } else {
                         debugger;
+                       // window.location.href = '/';
                     }
                 },
                 fail: function (data) {

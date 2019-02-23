@@ -32,27 +32,27 @@ namespace UnionMall.EntityFrameworkCore.Seed
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)
             where TDbContext : DbContext
         {
-            using (var uowManager = iocResolver.ResolveAsDisposable<IUnitOfWorkManager>())
-            {
-                using (var uow = uowManager.Object.Begin(TransactionScopeOption.Suppress))
-                {
-                    try
-                    {
-                        var context = uowManager.Object.Current.GetDbContext<TDbContext>(MultiTenancySides.Host);
+            //using (var uowManager = iocResolver.ResolveAsDisposable<IUnitOfWorkManager>())
+            //{
+            //    using (var uow = uowManager.Object.Begin(TransactionScopeOption.Suppress))
+            //    {
+            //        try
+            //        {
+            //            var context = uowManager.Object.Current.GetDbContext<TDbContext>(MultiTenancySides.Host);
 
-                        contextAction(context);
+            //            contextAction(context);
 
-                        uow.Complete();
+            //            uow.Complete();
 
-                    }
-                    catch (Exception e)
-                    {
+            //        }
+            //        catch (Exception e)
+            //        {
 
-                        throw e;
-                    }
+            //            throw e;
+            //        }
 
-                }
-            }
+            //    }
+            //}
         }
     }
 }

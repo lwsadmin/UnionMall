@@ -118,26 +118,25 @@
     <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
     <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
     <script src="~/js/main.js" asp-append-version="true"></script>
-    <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript" asp-append-version="true"></script>
-    @*<script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript" asp-append-version="true"></script>*@
-    <script>
 
-        window.onload = function ()
-        {    //$('#side-menu').metisMenu();
-            $(".pagination").next(".col-md-2").find("button").css("border-radius", "0");
-            $("#loading").fadeOut(300);
-            $("#close_btn").click(function ()
-            {
-                $(".side_content").css("width", "0px");
-                $("#show_btn").css("width", "25px");
-            });
-            $("#show_btn").click(function ()
-            {
-                $(".side_content").css("width", "154px");
-                $("#show_btn").css("width", "0px");
-            });
-        }
+    <script>
+        $(".pagination").next(".col-md-2").find("button").css("border-radius", "0");
+        $("#loading").fadeOut(300);
+        $("#close_btn").click(function ()
+        {
+            $(".side_content").css("width", "0px");
+            $("#show_btn").css("width", "25px");
+        });
+        $("#show_btn").click(function ()
+        {
+            $(".side_content").css("width", "154px");
+            $("#show_btn").css("width", "0px");
+        });
     </script>
+    @*<script src="/api/abpServiceProxies/Get?name=tasksystem/task" type="text/javascript"></script>*@
+    @*<script src="~/AbpServiceProxies/GetAll?v=1" type="text/javascript" asp-append-version="true"></script>*@
+    @*<script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript" asp-append-version="true"></script>*@
+
 </body>
 </html>
 
