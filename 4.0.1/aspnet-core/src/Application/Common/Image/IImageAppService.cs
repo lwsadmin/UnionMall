@@ -13,11 +13,13 @@ namespace UnionMall.Common
     {
         //JsonResult SaveSingleImg(IFormFile file, int tenandId);
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
-        Task<List<Entity.Image>> GetList(Expression<Func<Image, bool>> linq);
+        // Task<List<Entity.Image>> GetList(Expression<Func<Image, bool>> linq);
+
+        Task<List<Entity.Image>> GetList(long id, int type);
         Task CreateOrEditAsync(Image img);
         Task CreateOrEditAsync(List<Image> imgList);
         Task Delete(long id);
         Task DeleteOnlyImg(string url);
-        Task DeleteBy(Expression<Func<Image, bool>> linq);
+        Task DeleteBy(long id);
     }
 }

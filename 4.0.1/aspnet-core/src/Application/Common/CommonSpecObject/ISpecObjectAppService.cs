@@ -15,7 +15,8 @@ namespace UnionMall.Common.CommonSpec
         Task<Entity.CommonSpecObject> GetEntityById(long id);
         Task AddOrEdit(Entity.CommonSpecObject value);
         Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0);
-        Task Delete(Expression<Func<Entity.CommonSpecObject, bool>> c);
+        //Task Delete(Expression<Func<Entity.CommonSpecObject, bool>> c);
+        Task Delete(long id,int type);
         Task<DataTable> GetObjTableBuyObjId(long objId, int type = 0);
     }
 }

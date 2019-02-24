@@ -28,9 +28,9 @@ namespace UnionMall.Common
             _HostingEnvironment = HostingEnvironment;
             _sqlExecuter = sqlExecuter;
         }
-        public async Task<List<Image>> GetList(Expression<Func<Image, bool>> linq)
+        public async Task<List<Image>> GetList(long id, int type)
         {
-            return await _Repository.GetAllListAsync(linq);
+            return await _Repository.GetAllListAsync(c => c.ObjectId == id && c.Type == type);
         }
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
@@ -90,9 +90,9 @@ on i.ChainStoreId =c.id where 1=1 ";
             }
         }
 
-        public async Task DeleteBy(Expression<Func<Image, bool>> linq)
+        public async Task DeleteBy(long id)
         {
-            await _Repository.DeleteAsync(linq);
+            await _Repository.DeleteAsync(c=>c.ObjectId==id);
         }
     }
 }

@@ -38,10 +38,10 @@ namespace UnionMall.Common.CommonSpecObject
             }
         }
 
-        public async Task Delete(Expression<Func<Entity.CommonSpecObject, bool>> c)
+        public async Task Delete(long id,int type)
         {
 
-            await _Repository.DeleteAsync(c);
+            await _Repository.DeleteAsync(c=>c.ObjectId==id&&c.Type== type);
 
         }
 

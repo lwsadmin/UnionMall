@@ -1,6 +1,4 @@
-﻿
-@{
-
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.FirstMenu = "OffLineCashie";
     ViewBag.SecondMenu = "GoodsConsume";
@@ -170,7 +168,7 @@
             order.aliPay = 0;
 
         dto.order = order;
-        var itemList = [];
+       // var itemList = [];
         return;
         _Service.offConsume(dto).done(function (data)
         {

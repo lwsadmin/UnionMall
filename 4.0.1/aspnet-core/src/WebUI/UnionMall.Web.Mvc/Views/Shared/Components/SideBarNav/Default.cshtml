@@ -76,6 +76,10 @@
                                     {
                                         <span class="label label-warning pull-right">研发中</span>
                                     }
+                                    @if (subMenuItem.Url.ToLower().Contains("offline") && subMenuItem.Name!= "GoodsConsume")
+                                    {
+                                        <span class="label label-warning pull-right">调试中</span>
+                                    }
                                 </a>
                 
                             </li>
@@ -129,7 +133,7 @@
             </li>
 
             <li class="special_link">
-                <a href="javascript:void(0);">
+                <a href="/Main/About">
                     <i class="glyphicon glyphicon-exclamation-sign"></i>
                     <span class="nav-label">@L("About")</span>
                 </a>

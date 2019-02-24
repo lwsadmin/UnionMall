@@ -100,7 +100,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             if (id != null)
             {
                 a = await _AppService.GetByIdAsync((long)id);
-                imageList = await _imgAppService.GetList(c => c.ObjectId == id && c.Type == (int)ImageType.商品图片);
+                imageList = await _imgAppService.GetList((long)id,(int)ImageType.商品图片);
                 string imgs = "", config = "";
                 for (int i = 0; i < imageList.Count; i++)
                 {

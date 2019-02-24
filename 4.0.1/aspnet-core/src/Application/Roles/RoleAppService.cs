@@ -21,6 +21,7 @@ using Abp.Runtime.Session;
 using System.Xml;
 using System.IO;
 using System.Collections;
+using Microsoft.AspNetCore.Hosting;
 
 namespace UnionMall.Roles
 {
@@ -31,14 +32,16 @@ namespace UnionMall.Roles
         private readonly UserManager _userManager;
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
+        private readonly IHostingEnvironment _HostingEnvironment;
         public RoleAppService(IRepository<Role> repository, RoleManager roleManager,
-            UserManager userManager, ISqlExecuter sqlExecuter, IAbpSession AbpSession)
+            UserManager userManager, ISqlExecuter sqlExecuter, IAbpSession AbpSession, IHostingEnvironment HostingEnvironment)
             : base(repository)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _sqlExecuter = sqlExecuter;
             _AbpSession = AbpSession;
+            _HostingEnvironment = HostingEnvironment;
         }
 
         public override async Task<RoleDto> Create(CreateRoleDto input)
@@ -201,7 +204,8 @@ namespace UnionMall.Roles
         private List<PermissionDto> GetPermissionDtos()
         {
             XmlDocument NavigationXml = new XmlDocument();
-            string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
+            string currentDirectory = Path.GetFullPath(_HostingEnvironment.WebRootPath + "/Navigation.xml");
+           // string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreComments = true; //忽略注释
             XmlReader reader = XmlReader.Create(currentDirectory, settings);

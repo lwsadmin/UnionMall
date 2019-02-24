@@ -42,7 +42,7 @@ namespace UnionMall.Goods
                 await _Repository.UpdateAsync(model.Goods);
                 if (model.ValueList.Count > 0)
                 {
-                    await _specObjService.Delete(c => c.ObjectId == model.Goods.Id);
+                    await _specObjService.Delete(model.Goods.Id, 0);
                 }
             }
             else
@@ -70,12 +70,12 @@ namespace UnionMall.Goods
             var goods = await _Repository.FirstOrDefaultAsync(id);
             await _imgService.DeleteOnlyImg(goods.Image);
             await _Repository.DeleteAsync(c => c.Id == id);
-            var imgs = await _imgService.GetList(c => c.ObjectId == id && c.Type == 0);
+            var imgs = await _imgService.GetList(id, 0);
             foreach (var item in imgs)
             {
                 await _imgService.Delete(item.Id);
             }
-            await _specObjService.Delete(c => c.ObjectId == id && c.Type == 0);
+            await _specObjService.Delete(id, 0);
         }
 
         public async Task<Entity.Goods> GetByIdAsync(long Id)

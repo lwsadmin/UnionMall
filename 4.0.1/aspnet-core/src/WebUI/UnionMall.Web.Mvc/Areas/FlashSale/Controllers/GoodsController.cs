@@ -63,7 +63,7 @@ namespace UnionMall.Web.Mvc.Areas.FlashSaleMall.Controllers
             if (id != null)
             {
                 a = await _AppService.GetByIdAsync((long)id);
-                imageList = await _imgAppService.GetList(c => c.ObjectId == id && c.Type == (int)ImageType.限时抢购);
+                imageList = await _imgAppService.GetList((long)id,(int)ImageType.限时抢购);
                 string imgs = "", config = "";
                 for (int i = 0; i < imageList.Count; i++)
                 {

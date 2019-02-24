@@ -109,5 +109,10 @@ namespace UnionMall.Web.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> About()
+        {
+            return View();
+        }
     }
 }
