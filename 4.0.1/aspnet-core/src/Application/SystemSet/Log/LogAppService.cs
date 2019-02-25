@@ -34,7 +34,7 @@ namespace UnionMall.SystemSet
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select l.id, l.Content,l.UserAcccount,l.IPAddress,l.CreationTime from TLog l where id in(
+                table = $@"select l.id, l.Content,l.UserAccount,l.IPAddress,l.CreationTime from TLog l where id in(
 select id from TLog order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only)";
             }
             if (AbpSession.TenantId != null && (int)AbpSession.TenantId > 0)
@@ -62,7 +62,7 @@ select id from TLog order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NE
             }
             else
             {
-                l.TenantId = 0;
+                l.TenantId = 1;
                 l.UserAccount = "Unknown";
             }
             l.IPAddress = _Accessor.HttpContext.Connection.RemoteIpAddress.ToString();

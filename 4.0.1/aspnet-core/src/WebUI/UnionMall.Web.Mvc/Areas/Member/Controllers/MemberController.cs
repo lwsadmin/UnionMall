@@ -39,9 +39,9 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
         public async Task<IActionResult> List(int page = 1, int pageSize = 10, string Level = "", string Name = "",
             string Business = "", string Store = "", string RegTimeFrom = "", string RegTimeTo = "")
         {
-            System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-            stopwatch.Start(); //  开始监视代码运行时间
-                               //  需要测试的代码 ....
+            //System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+            //stopwatch.Start(); //  开始监视代码运行时间
+            //                   //  需要测试的代码 ....
 
             string where = string.Empty; where += _comAppService.GetWhere();
             if (!string.IsNullOrEmpty(Level))
@@ -61,10 +61,10 @@ namespace UnionMall.Web.Mvc.Areas.Member.Controllers
             int total;
             DataSet ds = _AppService.GetPage(page, pageSize, "id desc", out total, where);
             IPagedList pageList = new PagedList<DataRow>(ds.Tables[0].Select(), page, pageSize, total);
-            stopwatch.Stop(); //  停止监视
-            TimeSpan timespan = stopwatch.Elapsed; //  获取当前实例测量得出的总时间
-            double milliseconds = timespan.TotalMilliseconds;  //  总毫秒数
-            Logger.Warn("11111111111111111111111111耗时间："+ milliseconds.ToString());
+            //stopwatch.Stop(); //  停止监视
+            //TimeSpan timespan = stopwatch.Elapsed; //  获取当前实例测量得出的总时间
+            //double milliseconds = timespan.TotalMilliseconds;  //  总毫秒数
+            //Logger.Warn("11111111111111111111111111耗时间："+ milliseconds.ToString());
             if (Request.Headers.ContainsKey("x-requested-with"))
             {
                 return View("_Table", pageList);
