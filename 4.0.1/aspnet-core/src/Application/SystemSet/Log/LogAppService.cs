@@ -35,7 +35,7 @@ namespace UnionMall.SystemSet
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select l.id, l.Content,l.UserAccount,l.IPAddress,l.CreationTime from TLog l where id in(
-select id from TLog order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only)";
+select id from TLog order by id desc OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only)";
             }
             if (AbpSession.TenantId != null && (int)AbpSession.TenantId > 0)
             {

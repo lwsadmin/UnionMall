@@ -21,7 +21,7 @@
         @foreach (DataRow item in Model)
         {
             <tr>
-                <td>@item["CreationTime"]</td>
+                <td>@Convert.ToDateTime(item["CreationTime"]).ToString("yyyy-MM-dd HH:mm:ss")</td>
                 <td class="title">@item["content"]</td>
                 <td>@item["UserAccount"]</td>
                 <td>@item["IPAddress"]</td>
