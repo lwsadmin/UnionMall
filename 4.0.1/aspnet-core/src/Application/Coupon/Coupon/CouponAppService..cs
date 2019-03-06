@@ -39,7 +39,7 @@ namespace UnionMall.Coupon
         {
             await _Repository.DeleteAsync(c => c.Id == id);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -71,12 +71,12 @@ namespace UnionMall.Coupon
             }
 
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<CreateEditDto> GetByIdAsync(long Id)
         {
             return AutoMapper.Mapper.Map<CreateEditDto>(await _Repository.GetAsync(Id));
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<JsonResult> SendCoupon(long MemberId, long CouponId, string BillNumber = "")
         {
             var json = new JsonResult(new { });

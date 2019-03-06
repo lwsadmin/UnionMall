@@ -23,6 +23,7 @@ namespace UnionMall.SystemSet
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -32,7 +33,7 @@ namespace UnionMall.SystemSet
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
+        //[RemoteService(IsEnabled = false)]
         public async Task ChangeStatus(long id)
         {
             var query = await _Repository.FirstOrDefaultAsync(c => c.Id == id);

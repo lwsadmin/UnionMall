@@ -50,7 +50,7 @@ namespace UnionMall.Web.Controllers
 
 
             int total;
-            ViewBag.Consume = _consumeService.GetPage(1, 100, "n.id desc", out total, comWhere).Tables[0];
+            ViewBag.Consume = _consumeService.GetPage(1, 40, "n.id desc", out total, comWhere).Tables[0];
 
             DataTable dtMember = await _memService.IndexMember(where);
             string M = string.Empty;

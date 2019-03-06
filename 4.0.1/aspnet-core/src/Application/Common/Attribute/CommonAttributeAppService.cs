@@ -57,12 +57,12 @@ namespace UnionMall.Common.Attribute
                 await _Repository.DeleteAsync(query);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<CommonAttribute> GetByIdAsync(long Id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<string> GetHtmlAttr(long categoryId, long goodsid = 0, int type = 0)
         {
 
@@ -159,7 +159,7 @@ value='{(dtGoods == null ? "" : dtGoods.Rows[0][item.ValueName].ToString())}' cl
             }
             return str.ToString();
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))

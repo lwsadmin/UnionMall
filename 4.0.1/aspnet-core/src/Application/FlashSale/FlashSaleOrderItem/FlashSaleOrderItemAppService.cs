@@ -50,12 +50,12 @@ namespace UnionMall.FlashSale
                 await _Repository.DeleteAsync(query);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.FlashSaleOrderItem> GetByIdAsync(long Id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -70,7 +70,7 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
         }
 
 
-
+       // [RemoteService(IsEnabled = false)]
         public async Task<List<OrderDetail>> GetOrderDetail(long orderId)
         {
             List<OrderDetail> d = new List<OrderDetail>();

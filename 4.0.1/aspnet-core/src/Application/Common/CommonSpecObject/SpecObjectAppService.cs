@@ -44,25 +44,25 @@ namespace UnionMall.Common.CommonSpecObject
             await _Repository.DeleteAsync(c=>c.ObjectId==id&&c.Type== type);
 
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<Entity.CommonSpecObject>> GetByObjectId(long id, int Type = 0)
         {
 
             return await _Repository.GetAllListAsync(c => c.ObjectId == id && c.Type == Type);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.CommonSpecObject> GetEntityById(long id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == id);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
         {
             StringBuilder str = new StringBuilder();
 
             return str.ToString();
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<DataTable> GetObjTableBuyObjId(long objId, int type = 0)
         {
 

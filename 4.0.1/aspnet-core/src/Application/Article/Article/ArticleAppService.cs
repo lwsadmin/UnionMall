@@ -39,7 +39,7 @@ namespace UnionMall.Article
                 throw;
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -54,6 +54,7 @@ where 1=1";
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.Article> GetByIdAsync(long id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == id);

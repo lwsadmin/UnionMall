@@ -21,6 +21,7 @@ namespace UnionMall.ConsumeNote
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -41,6 +42,7 @@ on n.Memberid=m.id left join dbo.TChainStore c on n.ChainStoreId=c.Id where 1=1 
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetTotalData(string where)
         {
 

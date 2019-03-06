@@ -51,6 +51,7 @@ namespace UnionMall.Member
 
             // _log = log;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
 
@@ -162,6 +163,7 @@ left join dbo.TChainStore c on T.chainstoreId=c.id";
 
         }
         [Abp.Domain.Uow.UnitOfWork]
+        [RemoteService(IsEnabled = false)]
         public async Task<JsonResult> Import(IFormFile flie)
         {
 
@@ -281,7 +283,7 @@ left join dbo.TChainStore c on T.chainstoreId=c.id";
                 return new JsonResult(new { succ = false, msg = ex.Message });
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<MemoryStream> ExportToExcel(string where)
         {
             string sql = $@"select  m.FullName 姓名,stuff(m.WechatName,2,1,'*') 微信名,
@@ -294,7 +296,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
             // DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
             return await _comServices.DataTableToExcel(sql);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.Member> GetEntity(long id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == id);
@@ -303,6 +305,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
         {
             return await _Repository.FirstOrDefaultAsync(c => c.CardID == cardId);
         }
+        [RemoteService(IsEnabled = false)]
         public async Task<CardCoreDto> GetCardCore(string cardId)
         {
             var m = await _Repository.FirstOrDefaultAsync(c => c.CardID == cardId);
@@ -320,6 +323,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
         }
 
         //[Abp.Domain.Uow.UnitOfWork]
+        [RemoteService(IsEnabled = false)]
         public async Task<JsonResult> MemberRecharge(Entity.RechargeNote note)
         {
 
@@ -354,7 +358,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
 
             _sqlExecuter.Execute(sql);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<DataTable> IndexMember(string where)
         {
 

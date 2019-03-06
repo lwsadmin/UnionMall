@@ -57,7 +57,7 @@ namespace UnionMall.Goods
         }
 
 
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.GoodsOrderItem> GetByIdAsync(long Id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);

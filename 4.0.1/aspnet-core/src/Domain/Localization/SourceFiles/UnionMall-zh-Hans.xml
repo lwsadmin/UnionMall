@@ -42,7 +42,7 @@
     <text value="管理" name="Manage"/>
     <text value="信息" name="Info" />
     <text value="库存" name="Stock" />
-
+    <text value="技术研发" name="TCH"/>
     <text value="基础版" name="Basics"/>
     <text value="标准版" name="Standard" />
     <text value="旗舰版" name="Flagship" />

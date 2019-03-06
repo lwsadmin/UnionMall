@@ -46,12 +46,12 @@ namespace UnionMall.Common.CommonSpec
                 await _Repository.DeleteAsync(query);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<CommonSpecValue>> GetBySpecId(Guid id)
         {
             return await _Repository.GetAllListAsync(c => c.SpecId == id);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<Entity.CommonSpecValue>> GetSelect()
         {
             var query = await _Repository.GetAllListAsync();

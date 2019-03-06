@@ -27,7 +27,7 @@ namespace UnionMall.SystemSet
             _HostingEnvironment = HostingEnvironment;
             _AbpSession = AbpSession;
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -55,7 +55,7 @@ namespace UnionMall.SystemSet
                 await _Repository.InsertAsync(dto);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Advert> GetByIdAsync(long Id)
         {
             var s = await _Repository.GetAsync(Id);

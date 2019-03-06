@@ -28,10 +28,12 @@ namespace UnionMall.Common
             _HostingEnvironment = HostingEnvironment;
             _sqlExecuter = sqlExecuter;
         }
+        [RemoteService(IsEnabled = false)]
         public async Task<List<Image>> GetList(long id, int type)
         {
             return await _Repository.GetAllListAsync(c => c.ObjectId == id && c.Type == type);
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -43,6 +45,7 @@ on i.ChainStoreId =c.id where 1=1 ";
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
+        [RemoteService(IsEnabled = false)]
         public async Task CreateOrEditAsync(Image img)
         {
             if (img.Id <= 0)
@@ -89,7 +92,7 @@ on i.ChainStoreId =c.id where 1=1 ";
                 }
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task DeleteBy(long id)
         {
             await _Repository.DeleteAsync(c=>c.ObjectId==id);

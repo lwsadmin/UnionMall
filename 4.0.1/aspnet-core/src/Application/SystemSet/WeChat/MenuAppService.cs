@@ -17,6 +17,7 @@ namespace UnionMall.SystemSet.WeChat
 {
     public class MenuAppService : ApplicationService, IMenuAppService
     {
+        [RemoteService(IsEnabled = false)]
         public MenuError Create(string jsonData)
         {
             MenuError error = new MenuError();
@@ -34,7 +35,7 @@ namespace UnionMall.SystemSet.WeChat
             }
             return error;
         }
-
+        [RemoteService(IsEnabled = false)]
         public Menu GetMenu(string ACCESS_TOKEN)
         {
             var url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/get?access_token={0}", ACCESS_TOKEN);

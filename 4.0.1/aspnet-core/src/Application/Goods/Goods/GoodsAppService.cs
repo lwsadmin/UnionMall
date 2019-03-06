@@ -82,7 +82,7 @@ namespace UnionMall.Goods
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             where = where.Replace("*.BusinessId", "s.BusinessId").Replace(" *", " g");

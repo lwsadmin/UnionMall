@@ -26,6 +26,7 @@ namespace UnionMall.SystemSet
             _AbpSession = AbpSession;
             _unitOfWorkManager = unitOfWorkManager;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -42,7 +43,7 @@ m2.TenantId=0 and m2.keyName
             total = ds.Tables[0].Rows.Count;
             return ds;
         }
-
+        //[RemoteService(IsEnabled = false)]
         public async Task ChangeStatus(long id)
         {
             using (_unitOfWorkManager.Current.DisableFilter(AbpDataFilters.MayHaveTenant))

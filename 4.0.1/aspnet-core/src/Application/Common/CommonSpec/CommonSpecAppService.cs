@@ -82,7 +82,7 @@ namespace UnionMall.Common.CommonSpec
                 await _Repository.DeleteAsync(query);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<CreateOrEdit> GetByIdAsync(Guid Id)
         {
             CreateOrEdit s = new CreateOrEdit();
@@ -90,14 +90,14 @@ namespace UnionMall.Common.CommonSpec
             s.ValueList = await _valueRepository.GetAllListAsync(c => c.SpecId == Id);
             return s;
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<Entity.CommonSpec>> GetDropDown()
         {
             var query = await _Repository.GetAllListAsync();
             //  query = query.FindAll(c => c.BusinessId == businessID);
             return query;
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
         {
 
@@ -192,7 +192,7 @@ data-value='{array[i].Split(":")[1]}'>{dicDataText.GetValueOrDefault(array[i].Sp
 
             return sb.ToString();
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))

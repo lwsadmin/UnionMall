@@ -35,7 +35,7 @@ namespace UnionMall.Business
         {
             return _Repository.GetAsync(Id);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -85,6 +85,7 @@ left join TBusiness b on c.BusinessId = b.Id where 1=1 ";
             }
 
         }
+        [RemoteService(IsEnabled = false)]
         public async Task<List<StoreDropDownDto>> GetDropDown(long? businessID = null)
         {
             var query = await _Repository.GetAllListAsync();
@@ -107,7 +108,7 @@ $"left join dbo.TUserRoles ur on s.Id=ur.UserId left join dbo.TRoles r on ur.Rol
             }
 
         }
-
+        [RemoteService(IsEnabled = false)]
         public void SaveCmn(string column,string value, long id)
         {
             string sql = $@"update tchainstore set {column}={value} where id={id}";

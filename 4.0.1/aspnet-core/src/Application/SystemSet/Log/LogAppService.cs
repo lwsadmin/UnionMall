@@ -29,7 +29,7 @@ namespace UnionMall.SystemSet
             _Accessor = Accessor;
         }
 
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -49,7 +49,7 @@ select id from TLog order by id desc OFFSET {(pageIndex - 1) * pageSize} ROW FET
             }
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total, idSql, table);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task WriteLog(string content)
         {
             Log l = new Log();

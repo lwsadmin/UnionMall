@@ -26,6 +26,7 @@ namespace UnionMall.Goods
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
             DataSet ds = _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
@@ -53,13 +54,13 @@ namespace UnionMall.Goods
             }
 
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<CategoryEditDto> GetByIdAsync(long id)
         {
             var s = await _Repository.GetAsync(id);
             return s.MapTo<CategoryEditDto>();
         }
-
+        [RemoteService(IsEnabled = false)]
         public List<DropDownDto> GetCategoryDropDownList(int? tenantId, long parentId = 0, int type = 0)
         {
             DataSet ds = _sqlExecuter.GetCategoryDropDownList(tenantId, parentId, type);
@@ -118,13 +119,13 @@ namespace UnionMall.Goods
             msg = "";
             return true;
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<CategoryEditDto>> GetAllListByParentIdAsync(long parentId)
         {
             var query = await _Repository.GetAllListAsync(c => c.ParentId == parentId);
             return query.MapTo<List<CategoryEditDto>>();
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<DataTable> GetGoodsCategory()
         {
             string sql = $@"select c.id, c.Title,count(g.Id) from TGoodsCategory c 

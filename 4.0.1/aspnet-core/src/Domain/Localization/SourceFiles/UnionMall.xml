@@ -99,6 +99,7 @@
     <text name="Records" value="Records" />
     <text name="Balance" value="Balance" />
     <text name="SignIn" value="SignIn" />
+    <text value="Technology" name="TCH"/>
     <text name="CreateNewUser" value="Create new user" />
     <text name="Yes" value="Yes" />
     <text name="No" value="No" />

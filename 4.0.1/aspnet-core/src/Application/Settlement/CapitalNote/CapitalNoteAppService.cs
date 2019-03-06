@@ -29,11 +29,12 @@ namespace UnionMall.Settlement.CapitalNote
             _memAppServices = memAppServices;
             LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
         }
+        [RemoteService(IsEnabled = false)]
         public Task CreateOrEditAsync(ChainStoreCapitalNote note)
         {
             throw new NotImplementedException();
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))

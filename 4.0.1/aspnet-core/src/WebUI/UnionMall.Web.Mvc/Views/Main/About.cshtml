@@ -2,6 +2,77 @@
 @{
     ViewData["Title"] = "About";
 }
+<link href="~/css/kefu.css" rel="stylesheet" asp-append-version="true" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">@L("HomePage")</a>
+            </li>
+            <li class="active">
+                <strong>@L("TCH")</strong>
+            </li>
+        </ol>
+    </div>
+</div>
 
-<h2>About</h2>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>
+                                <strong>技术要点:</strong>
+                            </p>
+                            <pre>  C#开发语言  ABP技术框架  MVC模式  .NET CORE 技术平台<br />  HTML5,JavaScript,CSS3,Jquery,Vue</pre>
+
+                            <p>
+                                <strong>我要留言:</strong>
+                                <textarea rows="5" class="form-control"></textarea>
+                                <br />
+                                <button class="btn btn-primary">提交</button>
+                            </p>
+                            <br />
+                            <div class="alert alert-danger">
+                                受限于个人能力，本系统在功能，体验，性能上仍有诸多不足之处，请多多谅解。针对系统中的错误疏漏之处，请大家批评指正。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="side_content">
+                        <div class="side_list">
+                            <div class="side_center">
+                                <div class="custom_service">
+                                    <p>
+                                        <a target="_blank" href="tencent://Message/?Uin=919683350&websiteName=local.edu.com:8888=&Menu=yes"><img src="http://wpa.qq.com/pa?p=2:919683350:41"></a>
+                    
+                                    </p>
+                                </div>
+                                <div class="other">
+                                    <p><img src="/img/qrcode.png" width="180" /></p>
+                                    <p style="margin-top:0;">微信扫码 与他联系</p>
+                                </div>
+                                <br />
+                                <div class="msgserver">
+                                    <p><a target="_blank" href="tencent://Message/?Uin=919683350&websiteName=local.edu.com:8888=&Menu=yes">联系技术研发</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

@@ -45,7 +45,7 @@ namespace UnionMall.FlashSale
                 await _Repository.InsertAsync(model);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task DeleteAsync(long id)
         {
             var query = _Repository.FirstOrDefault(c => c.Id == id);
@@ -54,12 +54,12 @@ namespace UnionMall.FlashSale
                 await _Repository.DeleteAsync(query);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.FlashSaleOrder> GetByIdAsync(long Id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))

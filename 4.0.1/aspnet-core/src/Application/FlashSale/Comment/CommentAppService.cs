@@ -39,7 +39,7 @@ namespace UnionMall.FlashSale
                 throw;
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -53,6 +53,7 @@ where c.ReplyId=0 ";
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.Comment> GetByIdAsync(long id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == id);
@@ -69,7 +70,7 @@ where c.ReplyId=0 ";
                 await _Repository.UpdateAsync(model);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<ReplyListDto>> GetComByParentIdAsync(long parntId)
         {
             List<ReplyListDto> list = new List<ReplyListDto>();

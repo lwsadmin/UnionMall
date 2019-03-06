@@ -26,6 +26,7 @@ namespace UnionMall.Member
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
 
@@ -66,6 +67,7 @@ cast(m.minPoint as float) minPoint,cast(m.maxPoint as float) maxPoint from tmemb
                 await _Repository.DeleteAsync(query);
             }
         }
+        [RemoteService(IsEnabled = false)]
         public async Task<List<LevelDropDwonDto>> GetDropDown()
         {
             var query = await _Repository.GetAllListAsync();
@@ -79,14 +81,14 @@ cast(m.minPoint as float) minPoint,cast(m.maxPoint as float) maxPoint from tmemb
             }
             return query.MapTo<List<LevelDropDwonDto>>();
         }
-
+       // [RemoteService(IsEnabled = false)]
         public async Task SaveProfit(decimal pro, long id)
         {
             var s = _Repository.Get(id);
             s.Profit = pro;
             await _Repository.UpdateAsync(s);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<DataTable> GetIndexData(string where)
         {
             if (!string.IsNullOrEmpty(where))

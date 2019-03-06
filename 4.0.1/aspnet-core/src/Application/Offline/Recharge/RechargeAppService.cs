@@ -14,13 +14,14 @@ namespace UnionMall.Offline
     {
         private readonly ISqlExecuter _sqlExecuter;
         public readonly IAbpSession _AbpSession;
-
+        
         public RechargeAppService(ISqlExecuter sqlExecuter, IAbpSession AbpSession)
         {
             _sqlExecuter = sqlExecuter;
   
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public Task<JsonResult> MemberRecharge()
         {
 

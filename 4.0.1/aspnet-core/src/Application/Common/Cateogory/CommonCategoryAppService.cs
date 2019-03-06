@@ -64,17 +64,17 @@ left join TChainStore c on s.ChainStoreId = c.Id where s.id={_AbpSession.UserId}
 
 
         }
-
+        [RemoteService(IsEnabled = false)]
         public Task<List<CommonCategory>> GetAllListByParentIdAsync(long parentId)
         {
             throw new NotImplementedException();
         }
-
+        [RemoteService(IsEnabled = false)]
         public Task<CommonCategory> GetByIdAsync(long Id)
         {
             throw new NotImplementedException();
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<CatDropDownDto>> GetCategoryDropDownList(long parentId = 0, int type = 0)
         {
             var query = await _Repository.GetAllListAsync(c => c.Type == type && c.ParentId == parentId);
@@ -85,7 +85,7 @@ left join TChainStore c on s.ChainStoreId = c.Id where s.id={_AbpSession.UserId}
 
             return query.MapTo<List<CatDropDownDto>>();
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))

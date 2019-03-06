@@ -23,6 +23,7 @@ namespace UnionMall.IntegralNote
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -35,6 +36,7 @@ on n.MemberId=m.id left join dbo.TChainStore c on n.ChainStoreId=c.id where 1=1 
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetStatisticsData(string where)
         {
             string table = $@"select  SUBSTRING( CONVERT(varchar(100),n.CreationTime, 112),0,7) [Time], 
@@ -44,7 +46,7 @@ cast(sum(Point) as float) TotalValue
 group by  SUBSTRING( CONVERT(varchar(100), n.CreationTime, 112),0,7)";
             return _sqlExecuter.ExecuteDataSet(table);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task CreateAsync(Entity.IntegralNote note)
         {
             await _Repository.InsertAsync(note);

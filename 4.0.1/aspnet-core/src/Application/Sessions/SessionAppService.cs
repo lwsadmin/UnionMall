@@ -2,12 +2,13 @@
 using System.Threading.Tasks;
 using Abp.Auditing;
 using UnionMall.Sessions.Dto;
-
+using Abp.Application.Services;
 namespace UnionMall.Sessions
 {
     public class SessionAppService : UnionMallAppServiceBase, ISessionAppService
     {
         [DisableAuditing]
+        [RemoteService(IsEnabled = false)]
         public async Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations()
         {
             var output = new GetCurrentLoginInformationsOutput

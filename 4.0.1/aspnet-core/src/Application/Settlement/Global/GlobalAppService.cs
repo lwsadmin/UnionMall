@@ -22,6 +22,7 @@ namespace UnionMall.Settlement.Global
             _AbpSession = AbpSession;
             _Repository = Repository;
         }
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.GlobalSet> GetGlobalSet()
         {
             var s = await _Repository.FirstOrDefaultAsync(c => c.TenantId == AbpSession.TenantId);
@@ -32,7 +33,7 @@ namespace UnionMall.Settlement.Global
             }
             return s;
         }
-
+        [RemoteService(IsEnabled = false)]
         public void SaveGlobal(string column, decimal value)
         {
             string sql = $@"update TGlobalSet set {column}={value} where TenantId={AbpSession.TenantId}";

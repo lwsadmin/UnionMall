@@ -21,7 +21,7 @@ namespace UnionMall.Authorization.Accounts
             _userManager = userManager;
             _passwordHasher = passwordHasher;
         }
-
+        //[RemoteService(IsEnabled = false)]
         public async Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input)
         {
             var tenant = await TenantManager.FindByTenancyNameAsync(input.TenancyName);

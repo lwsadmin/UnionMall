@@ -69,12 +69,13 @@ namespace UnionMall.Goods
             var s = await _Repository.GetAsync(Id);
             return s;
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
             DataSet ds = _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
             return ds;
         }
+        [RemoteService(IsEnabled = false)]
         public List<BrandSelectDto> GetMultiSelect(long catId = 0)
         {
 

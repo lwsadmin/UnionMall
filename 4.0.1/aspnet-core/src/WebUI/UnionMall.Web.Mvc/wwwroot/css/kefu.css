@@ -6,23 +6,11 @@
     vertical-align: middle;
 }
 
-.scrollsidebar {
-    position: fixed;
-    z-index: 999;
-    bottom: 0;
-    right: 0
-}
-
-.side_content {
-    width: 154px;
-    height: auto;
-    overflow: hidden;
-    float: left;
-}
-
     .side_content .side_list {
-        width: 154px;
+        width: 200px;
         overflow: hidden;
+        margin:auto;
+        display:block;
     }
 
 .show_btn {

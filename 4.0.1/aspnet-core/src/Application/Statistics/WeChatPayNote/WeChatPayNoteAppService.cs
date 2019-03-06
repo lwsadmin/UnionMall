@@ -21,6 +21,7 @@ namespace UnionMall.Statistics
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -33,7 +34,7 @@ left join dbo.TChainStore c on n.chainstoreid=c.id where 1=1 ";
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetTotalData(string where)
         {
             string table = $@"select  SUBSTRING( CONVERT(varchar(100),n.CreationTime, 112),0,7) [Time], 
@@ -43,7 +44,7 @@ cast(sum( amount) as float) TotalValue
 group by  SUBSTRING( CONVERT(varchar(100), n.CreationTime, 112),0,7)";
             return _sqlExecuter.ExecuteDataSet(table);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataTable GetIndexData(string where)
         {
             string sql = $@"select CONVERT(varchar(100),n.CreationTime, 112) [Time], 

@@ -39,7 +39,7 @@ namespace UnionMall.Goods
                 throw;
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -70,7 +70,7 @@ and c.ReplyId=0 ";
                 await _Repository.UpdateAsync(model);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<ReplyListDto>> GetComByParentIdAsync(long parntId)
         {
             List<ReplyListDto> list = new List<ReplyListDto>();

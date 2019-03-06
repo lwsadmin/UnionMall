@@ -92,7 +92,7 @@ namespace UnionMall.MultiTenancy
 
             return MapToEntityDto(tenant);
         }
-
+        [RemoteService(IsEnabled = false)]
         protected override void MapToEntity(TenantDto updateInput, Tenant entity)
         {
             // Manually mapped since TenantDto contains non-editable properties too.
@@ -108,7 +108,7 @@ namespace UnionMall.MultiTenancy
             var tenant = await _tenantManager.GetByIdAsync(input.Id);
             await _tenantManager.DeleteAsync(tenant);
         }
-
+        [RemoteService(IsEnabled = false)]
         private void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);

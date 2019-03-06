@@ -23,6 +23,7 @@ namespace UnionMall.Statistics
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -37,7 +38,7 @@ on n.ChainStoreId=c.id left join TMember m on n.MemberId=m.Id where 1=1";
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetTotalData(string where)
         {
 
@@ -51,7 +52,7 @@ where 1=1
 {  where = where.Replace("*.BusinessId", "c.BusinessId").Replace("*", "n")}";
             return _sqlExecuter.ExecuteDataSet(table);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task Create(RechargeNote note)
         {
             await _Repository.InsertAsync(note);

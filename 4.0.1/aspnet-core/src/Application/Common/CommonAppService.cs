@@ -35,6 +35,7 @@ namespace UnionMall.Common
             _HostingEnvironment = HostingEnvironment;
             _sqlExecuter = sqlExecuter;
         }
+        [RemoteService(IsEnabled = false)]
         #region DataTableToExcel
         public async Task<MemoryStream> DataTableToExcel(string sql)
         {
@@ -84,6 +85,7 @@ namespace UnionMall.Common
         #endregion
 
         #region ExcelToDataTable
+        [RemoteService(IsEnabled = false)]
         public DataTable ExcelToDataTable(IFormFile flie, out string msg)
         {
             msg = "Success";
@@ -160,11 +162,12 @@ namespace UnionMall.Common
         }
         #endregion
 
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
+        [RemoteService(IsEnabled = false)]
         public string GetWhere()
         {
             string where = string.Empty;
@@ -188,7 +191,7 @@ namespace UnionMall.Common
 
 
         }
-
+        [RemoteService(IsEnabled = false)]
         public JsonResult SaveSingleImg(IFormFile file, int tenandId)
         {
             Tenant t = _Repository.Get(tenandId);
@@ -221,7 +224,7 @@ namespace UnionMall.Common
             string url = path + uploadFileName;//返回的没有转换的相对路径到前端，前端传入后台存入数据库
             return new JsonResult(new { error = 0, succ = true, url = url, size = size, name = name });
         }
-
+        [RemoteService(IsEnabled = false)]
         public string GetBillNumber(OrderNumberType orderTypes)
         {
             string TypeName = System.Enum.GetName(typeof(OrderNumberType), orderTypes);
@@ -230,12 +233,13 @@ namespace UnionMall.Common
             string BillNumber = TypeName + num1 + rd.Next(0, 99999).ToString("D5");
             return BillNumber;
         }
-
+        [RemoteService(IsEnabled = false)]
         public string GetCodeNumber()
         {
             Random rd = new Random();
             return rd.Next(0, 99999999).ToString("D8");
         }
+        [RemoteService(IsEnabled = false)]
         /// <summary>
         /// 生成随机字母与数字组合
         /// </summary>

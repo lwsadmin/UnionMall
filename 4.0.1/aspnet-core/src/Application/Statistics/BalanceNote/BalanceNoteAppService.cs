@@ -21,6 +21,7 @@ namespace UnionMall.BalanceNote
             _Repository = Repository;
             _AbpSession = AbpSession;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
@@ -33,7 +34,7 @@ on n.MemberId=m.id left join dbo.TChainStore c on n.ChainStoreId=c.id where 1=1 
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetStatisticsData(string where)
         {
             string table = $@"select  SUBSTRING( CONVERT(varchar(100),n.CreationTime, 112),0,7) [Time], 

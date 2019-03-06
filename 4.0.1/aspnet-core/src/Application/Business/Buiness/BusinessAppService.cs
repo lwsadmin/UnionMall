@@ -28,11 +28,12 @@ namespace UnionMall.Business
             _AbpSession = AbpSession;
             _storeRepository = storeRepository;
         }
+        [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string table, string orderBy, out int total)
         {
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<List<BusinessDropDownDto>> GetDropDown()
         {
             var query = await _Repository.GetAllListAsync();
@@ -62,7 +63,7 @@ namespace UnionMall.Business
                 await _Repository.InsertAsync(bus);
             }
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.Business> GetByIdAsync(long Id)
         {
             var s = await _Repository.GetAsync(Id);

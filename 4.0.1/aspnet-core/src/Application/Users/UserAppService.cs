@@ -178,7 +178,7 @@ namespace UnionMall.Users
         {
             identityResult.CheckErrors(LocalizationManager);
         }
-
+        [RemoteService(IsEnabled = false)]
         public DataSet GetUserPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")
         {
             if (string.IsNullOrEmpty(table))
