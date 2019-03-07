@@ -107,8 +107,6 @@ left join dbo.TChainStore c on T.chainstoreId=c.id";
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total, idSql, pageTable);
         }
 
-
-
         public async Task CreateOrEditAsync(UnionMall.Entity.Member dto)
         {
             dto.TenantId = _AbpSession.TenantId;
@@ -301,6 +299,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == id);
         }
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.Member> GetEntity(string cardId)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.CardID == cardId);
@@ -369,7 +368,7 @@ m.businessId=b.Id left join dbo.TChainStore c on m.chainstoreId=c.id where 1=1";
  where 1=1 and {where.Replace("*","m")}
   group by   CONVERT(nvarchar(100),RegTime,23)
   
-  order by CONVERT(nvarchar(100),RegTime,23) asc";
+  order by CONVERT(nvarchar(100),RegTime,23) desc";
             DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
             return dt;
             // throw new NotImplementedException();

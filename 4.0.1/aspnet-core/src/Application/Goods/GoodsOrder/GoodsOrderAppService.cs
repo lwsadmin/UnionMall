@@ -74,7 +74,7 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
 
             return await _comService.DataTableToExcel(sql);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.GoodsOrder> GetByIdAsync(long Id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);

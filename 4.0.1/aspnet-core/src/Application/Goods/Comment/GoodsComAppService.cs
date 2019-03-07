@@ -58,6 +58,7 @@ and c.ReplyId=0 ";
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == id);
         }
+        [RemoteService(IsEnabled = false)]
         public async Task CreateOrEditAsync(Entity.Comment model)
         {
             model.TenantId = _AbpSession.TenantId ?? 0;

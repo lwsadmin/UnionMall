@@ -43,7 +43,7 @@ namespace UnionMall.Roles
             _AbpSession = AbpSession;
             _HostingEnvironment = HostingEnvironment;
         }
-
+        [RemoteService(IsEnabled = false)]
         public override async Task<RoleDto> Create(CreateRoleDto input)
         {
             if (string.IsNullOrEmpty(input.DisplayName))
@@ -66,7 +66,7 @@ namespace UnionMall.Roles
 
             return MapToEntityDto(role);
         }
-
+        [RemoteService(IsEnabled = false)]
         public override async Task<RoleDto> Update(RoleDto input)
         {
             if (string.IsNullOrEmpty(input.DisplayName))

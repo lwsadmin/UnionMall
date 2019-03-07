@@ -148,7 +148,7 @@ $(function () {
         }
         var goods = $(this).serializeFormToObject();
         goods.categoryId = $("#Goods_CategoryId").val();
-        goods.brandId = $("#Goods_BrandId").val();
+        goods.brandId = ($("#Goods_BrandId").val() == "" ? "0" : $("#Goods_BrandId").val());
         goods.chainStoreId = $("#Goods_ChainStoreId").val();
         goods.type = $("#Goods_Type").val();
         var EditDto = {};

@@ -36,6 +36,7 @@ namespace UnionMall.Goods
         public async Task CreateOrEditAsync(CreateOrEditDto model)
         {
             long goodsId = 0;
+
             if (model.Goods.Id > 0)
             {
                 goodsId = model.Goods.Id;
@@ -77,7 +78,7 @@ namespace UnionMall.Goods
             }
             await _specObjService.Delete(id, 0);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<Entity.Goods> GetByIdAsync(long Id)
         {
             return await _Repository.FirstOrDefaultAsync(c => c.Id == Id);

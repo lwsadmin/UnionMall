@@ -79,7 +79,7 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
+        [RemoteService(IsEnabled = false)]
         public async Task<MemoryStream> ExportToExcel(string where)
         {
 

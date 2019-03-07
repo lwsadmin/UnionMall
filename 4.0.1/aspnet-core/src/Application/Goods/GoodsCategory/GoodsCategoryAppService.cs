@@ -103,7 +103,7 @@ namespace UnionMall.Goods
 
             return dropDownList;
         }
-
+        [RemoteService(IsEnabled = false)]
         public bool Delete(long id, out string msg)
         {
             //  await _Repository.DeleteAsync(id);

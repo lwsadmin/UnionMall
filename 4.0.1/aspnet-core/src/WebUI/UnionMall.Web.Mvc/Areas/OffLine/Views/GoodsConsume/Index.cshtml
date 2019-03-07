@@ -136,10 +136,7 @@
         var price = $("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
         var totalMoney = parseInt(count) * parseFloat(price);
         var dto = {};
-        var order = {};
-        //        public long GiftId { get; set; }
-        //public int Count { get; set; } = 1;
-        //public decimal Point { get; set; }
+        var order = {}; var item = {};
         order.memberId = $("input[name='memberId']").val();
         order.point = parseFloat($("#total").html());
         order.totalMoney = totalMoney;
@@ -168,7 +165,8 @@
             order.aliPay = 0;
 
         dto.order = order;
-       // var itemList = [];
+        //item
+        
         return;
         _Service.offConsume(dto).done(function (data)
         {
