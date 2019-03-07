@@ -132,12 +132,12 @@
         l.start();
         var _Service = abp.services.app.goodsOrder;
         var price = $("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
-        var count = $("input[name='selected']:checked").parents("tr").find($("input[name='buy-count']").val());
+        var count = $("input[name='selected']:checked").parents("tr").find("input[name='buy-count']").val();
         var totalMoney = parseInt(count) * parseFloat(price);
         var dto = {};
-        var order = {}; var item = {};
+        var order = {}; var itemList = []; var item = {};
         order.memberId = $("input[name='memberId']").val();
-        order.point = parseFloat($("#total").html());
+        order.point =0;
         order.totalMoney = totalMoney;
         order.totalPay = parseFloat($("#needPay").html());
         order.couponPay = 0;
@@ -171,9 +171,11 @@
             item.specObjectId = $("input[name='selected']:checked").val();     
         }
         item.price = price;
-        item.count = totalMoney;
-
-
+        item.count = count;
+        item.total = totalMoney;
+        itemList.push(item);
+        dto.itemList = itemList;
+        console.log(dto);
         _Service.offConsume(dto).done(function (data) {
             if (data.succ) {
                 toastr.options = {

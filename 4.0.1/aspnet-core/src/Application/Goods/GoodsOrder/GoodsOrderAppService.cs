@@ -37,6 +37,7 @@ namespace UnionMall.Goods
             _comService = comService;
             _objService = objService;
             _sessionAppService = sessionAppService;
+            LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
         }
         public Task CreateOrEditAsync(Entity.GoodsOrder model)
         {
@@ -99,12 +100,12 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             table += where;
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, table, orderBy, out total);
         }
-
+        //[Abp.Domain.Uow.UnitOfWork]
         public async Task<JsonResult> OffConsume(SubmitOrderDto dto)
         {
             var json = new JsonResult(new { succ = true, msg = L("Consume") + L("Success") + "!" });
 
-            //Entity.CommonSpecObject obj=null;
+            //Entity.CommonSpecObject obj = new Entity.CommonSpecObject();
             //if (ObjId > 0)
             //{
             //    obj = await _objService.GetEntityById(ObjId);

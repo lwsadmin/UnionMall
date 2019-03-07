@@ -21,7 +21,7 @@ namespace UnionMall.Entity
         public decimal BalancePay { get; set; }
         public decimal IntegralPay { get; set; }
         public int DistributionWay { get; set; } = 0;
-        public bool IsUsed { get; set; }
+        public bool IsUsed { get; set; } = false;
         public string FatherBillNumber { get; set; }
         public DateTime SubmitTime { get; set; } = DateTime.Now;
         public string UserAccount { get; set; }
