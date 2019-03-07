@@ -122,10 +122,8 @@
 <script src="https://lab.hakim.se/ladda/dist/ladda.min.js" asp-append-version="true"></script>
 <script src="~/view-resources/Areas/Offline/Goods/index.js" asp-append-version="true"></script>
 <script>
-    function GoSubmit(btn)
-    {
-        if ($("input[name='CardID']").val() == "" && $("#Integral").html() == "-")
-        {
+    function GoSubmit(btn) {
+        if ($("input[name='CardID']").val() == "" && $("#Integral").html() == "-") {
             $("#Select").modal('hide');
             $("input[name='CardID']").focus();
             return;
@@ -134,6 +132,7 @@
         l.start();
         var _Service = abp.services.app.goodsOrder;
         var price = $("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
+        var count = $("input[name='selected']:checked").parents("tr").find($("input[name='buy-count']").val());
         var totalMoney = parseInt(count) * parseFloat(price);
         var dto = {};
         var order = {}; var item = {};
@@ -165,13 +164,18 @@
             order.aliPay = 0;
 
         dto.order = order;
-        //item
-        
-        return;
-        _Service.offConsume(dto).done(function (data)
-        {
-            if (data.succ)
-            {
+        item.goodsOrderId = 0; item.businessId = 0; item.chainStoreId = 0; item.goodsId = 0; item.specObjectId = 0;
+        if ($("input[name='selected']:checked").parents("tr").find(".title").html() == "--") {
+            item.goodsId = $("input[name='selected']:checked").val();
+        } else {
+            item.specObjectId = $("input[name='selected']:checked").val();     
+        }
+        item.price = price;
+        item.count = totalMoney;
+
+
+        _Service.offConsume(dto).done(function (data) {
+            if (data.succ) {
                 toastr.options = {
                     "closeButton": false,//是否配置关闭按钮
                     "debug": false,//是否开启debug模式
@@ -180,8 +184,7 @@
                     "timeOut": "2000",//1.5s后关闭消息框
                 }
                 toastr.success(data.msg, $("#hint").val());
-            } else
-            {
+            } else {
                 toastr.options = {
                     "closeButton": false,//是否配置关闭按钮
                     "debug": false,//是否开启debug模式
@@ -193,70 +196,56 @@
 
             }
             l.stop();
-            setTimeout(function ()
-            {
+            setTimeout(function () {
                 $("#con").removeClass("ladda-button")
             }, 1000)
 
             //         l.toggle();
             //l.isLoading();
             //l.setProgress(0-1);
-        }).fail(function (data)
-        {
+        }).fail(function (data) {
         }).always(function (data) { });
     }
 
-    function InitNeedPay()
-    {
+    function InitNeedPay() {
         var c = $("input[name='selected']:checked").val();
         var count = $("#count" + c).val();
         var price = $("input[name='selected']:checked").parents("td").siblings("td").eq(3).html();
         var totalPay = parseInt(count) * parseFloat(price);
         var couponPay = 0; var integralPay = 0; var balancePay = 0; var needPay = 0;
-        if ($("#selectCop").val() != undefined && $("#selectCop").val() != "")
-        {
+        if ($("#selectCop").val() != undefined && $("#selectCop").val() != "") {
             couponPay = parseFloat($("#selectCop").find("option:selected").attr("data-value"));
             if (totalPay > couponPay)
                 totalPay -= couponPay;
             else
                 totalPay = 0;
         }
-        if ($("#ckIntegralPay").val() != undefined && $("#ckIntegralPay").is(":checked"))
-        {
-            if (parseFloat($("#ckIntegralPay").attr("data-max")) >= totalPay)
-            {
+        if ($("#ckIntegralPay").val() != undefined && $("#ckIntegralPay").is(":checked")) {
+            if (parseFloat($("#ckIntegralPay").attr("data-max")) >= totalPay) {
                 $("#iptIntegral").val(totalPay);
             }
-            else
-            {
+            else {
                 $("#iptIntegral").val($("#ckIntegralPay").attr("data-max"));
             }
             integralPay = parseFloat($("#iptIntegral").val());
-            if (totalPay >= integralPay)
-            { totalPay -= integralPay; } else { totalPay = 0; }
+            if (totalPay >= integralPay) { totalPay -= integralPay; } else { totalPay = 0; }
         } else { $("#iptIntegral").val(0); }
-        if ($("#ckValuePay").val() != undefined && $("#ckValuePay").is(":checked"))
-        {
+        if ($("#ckValuePay").val() != undefined && $("#ckValuePay").is(":checked")) {
 
-            if (parseFloat($("#ckValuePay").val()) >= totalPay)
-            {
+            if (parseFloat($("#ckValuePay").val()) >= totalPay) {
                 $("#iptBalance").val(totalPay);
-            } else
-            {
+            } else {
                 $("#iptBalance").val($("#ckValuePay").val());
 
             }
             balancePay = parseFloat($("#iptBalance").val());
-            if (totalPay >= balancePay)
-            { totalPay -= balancePay; } else { totalPay = 0; }
+            if (totalPay >= balancePay) { totalPay -= balancePay; } else { totalPay = 0; }
         } else { $("#iptBalance").val(0) }
         $("#needPay").html(totalPay);
     }
-    function SetCount(ipt)
-    {
+    function SetCount(ipt) {
         var s = $(ipt).val();
-        if (parseInt(s) > parseInt($(ipt).attr("max")))
-        {
+        if (parseInt(s) > parseInt($(ipt).attr("max"))) {
             $(ipt).val($(ipt).attr("max"));
         }
         InitNeedPay();
