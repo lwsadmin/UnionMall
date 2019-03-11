@@ -50,48 +50,48 @@ namespace UnionMall.Offline
             {
                 return new JsonResult(new { succ = false, msg = L("NotExist{0}!", L("Member") + L("Records")) });
             }
-
             var UserInfo = await _sessionAppService.GetCurrentLoginInformations();
             var store = await _storeServices.GetByIdAsync(UserInfo.User.ChainStoreId);
             // Logger.Warn("11111111111111111111111111111111111111111" + _comServices.GetBillNumber(OrderNumberType.OFQ));
-            if (store.AvailableValue < note.Value)
-            {
-                return new JsonResult(new { succ = false, msg = L("Store") + L("Usable") + L("Balance") + L("NEnough") + "!" });
-            }
+            //if (store.AvailableValue < note.Value)
+            //{
+            //    return new JsonResult(new { succ = false, msg = L("Store") + L("Usable") + L("Balance") + L("NEnough") + "!" });
+            //}
             note.TenantId = UserInfo.Tenant.Id;
             note.Balance = m.Balance + note.Value;
             note.BusinessId = store.BusinessId;
             note.BillNumber = _comServices.GetBillNumber(OrderNumberType.OFMR);
             note.UserAccount = UserInfo.User.UserName;
-
+            note.ChainStoreId = store.Id;
             m.Balance += note.Value;
             await _memberRepository.UpdateAsync(m);
             await _noteAppService.Create(note);
             //财务结算
             if (!store.IsSystem)
             {
-                store.SettlementMoney -= note.Value;
-                await _storeServices.CreateOrEditAsync(store);
-                UnionMall.Entity.ChainStoreCapitalNote capNote = new Entity.ChainStoreCapitalNote();
+                string business = $"select IsSystemBusiness from dbo.TBusiness where id=(select c.BusinessId from dbo.TChainStore c where id={store.Id})";
+                string s = _sqlExecuter.ExecuteDataSet(business).Tables[0].Rows[0][0].ToString();
+                if (s!= "True")
+                {
+                    store.SettlementMoney -= note.Value;
+                    await _storeServices.CreateOrEditAsync(store);
+                    UnionMall.Entity.ChainStoreCapitalNote capNote = new Entity.ChainStoreCapitalNote();
 
-                capNote.TenantId = store.TenantId;
-                capNote.ChainStoreId = store.Id;
-                capNote.BillNumber = note.BillNumber;
-                capNote.Type =1;
-                capNote.Way = FinanceType.MemberRecharge;
-                capNote.Value = note.Value;
-                capNote.Balance = store.SettlementMoney;
+                    capNote.TenantId = store.TenantId;
+                    capNote.ChainStoreId = store.Id;
+                    capNote.BillNumber = note.BillNumber;
+                    capNote.Type = 1;
+                    capNote.Way = FinanceType.MemberRecharge;
+                    capNote.Value = note.Value;
+                    capNote.Balance = store.SettlementMoney;
 
-                capNote.UserAccount = UserInfo.User.UserName;
-                capNote.CreationTime = DateTime.Now;
-                capNote.Status = 0;
-                capNote.ApplyTime = DateTime.Now;
-
-                _capRepository.Insert(capNote);
-
+                    capNote.UserAccount = UserInfo.User.UserName;
+                    capNote.CreationTime = DateTime.Now;
+                    capNote.Status = 0;
+                    capNote.ApplyTime = DateTime.Now;
+                    _capRepository.Insert(capNote);
+                }
             }
-
-
             return new JsonResult(new { succ = true, msg = L("Recharge") + L("Success") + "!" });
         }
     }

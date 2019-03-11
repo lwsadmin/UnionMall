@@ -176,17 +176,18 @@
         }
         var l = Ladda.create(this);
 	    l.start();
-        var _Service = abp.services.app.member;
+        var _Service = abp.services.app.recharge;
         var note = {};
         note.memberId = $("input[name='memberId']").val();
         note.note = $("#memo").val();
         note.totalPay = $("#ConAm").val();
         note.cashPay = $("#ConAm").val();
         note.value = $("#ConAm").val();
-        debugger;
         _Service.memberRecharge(note).done(function (data) {
             console.log(data);
             if (data.succ) {
+    $("#ConAm").val('');
+    $("#memo").val('');
                                           toastr.options = {
                         "closeButton": false,//是否配置关闭按钮
                         "debug": false,//是否开启debug模式

@@ -13,31 +13,35 @@
             <th>@L("Operate")@L("Time")</th>
             <th>@L("Order")@L("Number")</th>
             <th>@L("Store")</th>
-            <th>@L("Consume")@L("Amount")</th>
+            <th>@L("Recharge")@L("Amount")</th>
             <th>@L("WeChat")@L("Pay")</th>
             <th>@L("AliPay")@L("Pay")</th>
             <th>@L("Cash")@L("Pay")</th>
             <th>@L("CardID")</th>
             <th>@L("WeChat")@L("Name")</th>
+            <th>@L("Current")@L("Balance")</th>
+            <th>@L("Note")</th>
         </tr>
 
     </thead>
     <tbody>
         @foreach (DataRow item in Model)
         {
-            <tr>
-                <td class="title">
-                    @item["CreationTime"]
-                </td>
-                <td>@item["BillNumber"]</td>
-                <td class="name">@item["Name"]</td>
-                <td>@item["TotalPaid"]</td>
-                <td>@item["WeChatPay"]</td>
-                <td>@item["AliPay"]</td>
-                <td>@item["CashPay"]</td>
-                <td>@item["CardID"]</td>
-                <td>@item["WeChatName"]</td>
-            </tr>
+        <tr>
+            <td class="title">
+                @item["CreationTime"]
+            </td>
+            <td>@item["BillNumber"]</td>
+            <td class="name">@item["Name"]</td>
+            <td>@item["TotalPaid"]</td>
+            <td>@item["WeChatPay"]</td>
+            <td>@item["AliPay"]</td>
+            <td>@item["CashPay"]</td>
+            <td>@item["CardID"]</td>
+            <td>@item["WeChatName"]</td>
+            <td>@item["Balance"]</td>
+            <td>@item["Note"]</td>
+        </tr>
         }
 
     </tbody>

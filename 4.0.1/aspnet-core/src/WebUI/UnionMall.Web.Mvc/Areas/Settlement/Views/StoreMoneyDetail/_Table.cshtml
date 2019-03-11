@@ -11,6 +11,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
+            <th>@L("Operate")@L("Time")</th>
             <th>@L("Store")@L("Name")</th>
             <th>@L("Type")</th>
             <th>@L("Order")@L("Number")</th>
@@ -25,6 +26,7 @@
         @foreach (DataRow item in Model)
         {
         <tr>
+            <td>@(item["CreationTime"])</td>
             <td class="title">
                 @if (Convert.ToBoolean(item["IsSystem"]))
                 {
@@ -32,7 +34,7 @@
                 }
                 @item["name"]
             </td>
-            @*<td>@(item["type"])</td>*@
+
             <td>@(item["type"].ToString() == "1" ? L("Rce") : L("Ede"))</td>
             <td>@item["billNumber"]</td>
             <td>@item["way"]</td>

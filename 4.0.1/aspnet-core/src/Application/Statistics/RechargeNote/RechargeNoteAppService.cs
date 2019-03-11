@@ -28,7 +28,7 @@ namespace UnionMall.Statistics
         {
             if (string.IsNullOrEmpty(table))
             {
-                table = $@"select n.id,n.BillNumber,cast( n.TotalPay as float) TotalPaid,
+                table = $@"select n.id,n.BillNumber,cast( n.TotalPay as float) TotalPaid,n.Note,
 cast( n.CashPay as float) CashPay, cast( n.WeChatPay as float) WeChatPay,
 cast( n.AliPay as float) AliPay,cast( n.Value as float) Value,cast( n.Balance as float) Balance,n.UserAccount
 ,CONVERT(nvarchar,n.CreationTime,120) CreationTime,c.Name,stuff(m.CardID,8,4,'****') CardID,stuff(m.WeChatName,2,1,'*') WeChatName from TMemberRechargeNote n left join TChainStore c
