@@ -144,8 +144,10 @@ left join dbo.TMember m on o.MemberId=m.Id  where 1=1";
             note.ChainStoreId = dto.Order.ChainStoreId;
             note.MemberId = dto.Order.MemberId;
             note.Way = (int)ConsumeType.PointRecharge;
+            note.Point = dto.Order.Point;
             note.Balance = member.Integral;// - dto.Order.Point;
             note.UserAccount = UserInfo.User.UserName;
+            note.Memo = "礼品兑换";
             await _noteAppService.CreateAsync(note);
             return json;
         }

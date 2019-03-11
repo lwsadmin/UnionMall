@@ -10,8 +10,8 @@ namespace UnionMall.Entity
         public int TenantId { get; set; }
         public long ChainStoreId { get; set; }
         public string BillNumber { get; set; }
-        public FinanceType Type { get; set; }
-        public int Way { get; set; }
+        public int Type { get; set; }
+        public FinanceType Way { get; set; }
         public decimal Value { get; set; }
         public decimal Balance { get; set; }
         public string UserAccount { get; set; }

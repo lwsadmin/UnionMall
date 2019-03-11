@@ -30,9 +30,9 @@ namespace UnionMall.Settlement.CapitalNote
             LocalizationSourceName = UnionMallConsts.LocalizationSourceName;
         }
         [RemoteService(IsEnabled = false)]
-        public Task CreateOrEditAsync(ChainStoreCapitalNote note)
+        public async Task CreateOrEditAsync(ChainStoreCapitalNote note)
         {
-            throw new NotImplementedException();
+            await _Repository.InsertAsync(note);
         }
         [RemoteService(IsEnabled = false)]
         public DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "")

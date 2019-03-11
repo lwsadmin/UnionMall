@@ -9,6 +9,6 @@ namespace UnionMall.Offline
 {
     public interface IRechargeAppService: IApplicationService
     {
-        Task<JsonResult> MemberRecharge();
+        Task<JsonResult> MemberRecharge(Entity.RechargeNote note);
     }
 }
