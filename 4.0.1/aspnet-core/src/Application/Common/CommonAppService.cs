@@ -17,6 +17,9 @@ using NPOI.SS.UserModel;
 using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
 using UnionMall.Enum;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 
 namespace UnionMall.Common
 {
@@ -215,9 +218,17 @@ namespace UnionMall.Common
             directoryPath += uploadFileName;
             using (FileStream fs = File.Create(directoryPath))
             {
-                file.CopyTo(fs);
-                fs.Flush();
-                fs.Dispose();
+                if (fs.Length > 10240)
+                {
+                    Compress(fs, path + uploadFileName);
+                }
+                else
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                    fs.Dispose();
+                }
+
             }
             //   FileStream fs = new FileStream(directoryPath, FileMode.Create);
 
@@ -260,6 +271,52 @@ namespace UnionMall.Common
                 result += Pattern[rnd];
             }
             return result;
+        }
+
+        /// <summary>
+        /// 压缩到指定尺寸
+        /// </summary>
+        /// <param name="oldfile">原文件</param>
+        /// <param name="newfile">新文件</param>
+        [RemoteService(IsEnabled = false)]
+        public bool Compress(Stream stream, string newfile)
+        {
+            try
+            {
+                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+                System.Drawing.Imaging.ImageFormat thisFormat = img.RawFormat;
+
+                Size newSize = new Size(img.Width, img.Height);
+                Bitmap outBmp = new Bitmap(newSize.Width, newSize.Height);
+                Graphics g = Graphics.FromImage(outBmp);
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.DrawImage(img, new Rectangle(0, 0, newSize.Width, newSize.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel);
+                g.Dispose();
+                EncoderParameters encoderParams = new EncoderParameters();
+                long[] quality = new long[1];
+                quality[0] = 100;
+                EncoderParameter encoderParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
+                encoderParams.Param[0] = encoderParam;
+                ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
+                ImageCodecInfo jpegICI = null;
+                for (int x = 0; x < arrayICI.Length; x++)
+                    if (arrayICI[x].FormatDescription.Equals("JPEG"))
+                    {
+                        jpegICI = arrayICI[x]; //设置JPEG编码
+                        break;
+                    }
+                img.Dispose();
+                if (jpegICI != null) outBmp.Save(newfile, System.Drawing.Imaging.ImageFormat.Jpeg);
+                outBmp.Dispose();
+                stream.Dispose();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

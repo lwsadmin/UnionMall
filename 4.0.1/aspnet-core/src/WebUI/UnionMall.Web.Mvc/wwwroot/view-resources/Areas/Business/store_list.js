@@ -9,7 +9,13 @@
                 return;
             }
             var EditDto = _$form.serializeFormToObject();
-
+            if ($("#BusinessId").val() == "") {
+                $("#BusinessId").trigger("chosen:open");
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+                return;
+            }
             storeService.createOrEdit(EditDto).done(function (data) {
 
                 _$modal.modal('hide');
@@ -35,7 +41,8 @@
             ProChange($("select[name='ProvinceID']"));
         });
         $("#add").click(function () {
-
+            $('#BusinessId').val('');//赋值
+            $('#BusinessId').trigger("chosen:updated");//设置选中
             $("#CreateModal").modal("show");
            // $("#CreateModal").fadeIn("show");
         });

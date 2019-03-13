@@ -73,7 +73,10 @@
                 <div class="ibox-content">
                     @if (IsGranted("OnlineGoods.GoodsCategory.Add"))
                     {
-                        <button id="add" class="btn btn-primary btn-sm m-b" type="button"><i class="fa fa-plus"></i>&nbsp;@L("Add")</button>
+                    <a class="btn btn-primary btn-sm m-b" data-ajax="true" data-ajax-method="GET"
+                       data-ajax-mode="Replace" data-ajax-update="#DivAdd" data-ajax-success="EditShow"
+                       href="/GoodsManage/Category/Add">&nbsp;@L("Add")</a>
+            
                     }
 
 
@@ -95,11 +98,6 @@
 <script src="~/lib/admin/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js" asp-append-version="true"></script>
 <script src="/api/abpServiceProxies/Get?name=goodsCategory" type="text/javascript"></script>
 <script>
-    $("#add").click(function () {
-        $("#headTitle").html('@L("Add")@L("GoodsCategory")');
-        $("#CreateModal").modal("show");
-    });
-
     function EditShow(data) {
         $("#CreateModal").modal("show");
     }

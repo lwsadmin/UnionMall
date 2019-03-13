@@ -35,7 +35,6 @@ namespace UnionMall.Entity
         public int CityId { get; set; }
         [Required]
         public int DistrictId { get; set; }
-        [Required]
         public string Address { get; set; }
 
         public string Longitude { get; set; } = "";
@@ -58,8 +57,7 @@ namespace UnionMall.Entity
         public decimal SettlementMoney { get; set; } = 0;
         [Required]
         public int Sort { get; set; } = 0;
-        [Required]
-        public string Introduce { get; set; }
+        public string Introduce { get; set; } = "";
 
         public decimal OffLineDiscount { get; set; } = 0;
         public decimal OffLineCommission { get; set; } = 0;
