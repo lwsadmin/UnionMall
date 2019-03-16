@@ -21,17 +21,14 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="~/favicon.ico">
     <title>@L("UnionMall")</title>
+    <meta name="keywords" content="O2O商盟,一卡通商家联盟管理系统，商家联盟软件，异业联盟管理系统，异业联盟软件" />
+    <meta name="description" content="针对异业商家联盟会员积分打折、商家返利结算的一款管理系统。拥有联盟商总部管理加盟商，商家三级平台管理，能够与您的官方商城网站完美的结合，经过六年多的实践和探索，软件已经形成稳定，安全，可靠，快速集于一身的强大系统。适用于打造城市商业联盟，打造城市商圈打折性质的系统，通过一定的激励和奖励措施，促使会员在商家消费享受一定的折扣和积分。" />
     <link href="/lib/admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/lib/admin/css/bootstrap.min.css" rel="stylesheet" />
-
     <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/lib/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
-    <link href="~/lib/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
     <script src="/lib/admin/js/jquery-3.1.1.min.js"></script>
-
+   
     <!-- View specific styles -->
     @RenderSection("styles", required: false)
-
     <script type="text/javascript">
         var abp = abp || {};
         abp.appPath = '@ApplicationPath';
@@ -39,7 +36,7 @@
 
 </head>
 <body class="login-page">
-
+    <canvas  id="canv" style="height:100vh;width:100vw;position:fixed;"></canvas>
     <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);">@L("UnionMall")</a>
@@ -51,14 +48,15 @@
             </div>
         </div>
 
-        <vc:account-languages></vc:account-languages>
+
     </div>
+
     <environment names="Development">
 
 
     </environment>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-    <script src="~/lib/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Views/Account/login-cav.js"></script>
     <!--setBusy--->
     <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
 
@@ -68,5 +66,6 @@
 
     <!-- View specific scripts -->
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

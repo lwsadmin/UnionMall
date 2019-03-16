@@ -4,13 +4,13 @@
 @model UnionMall.Web.Models.Account.LoginFormViewModel
 @section Styles
     {
-    <environment names="Development">
+    @*<environment names="Development">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
     </environment>
 
     <environment names="Staging,Production">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
-    </environment>
+    </environment>*@
 
 }
 @*@section Scripts
@@ -23,7 +23,7 @@
             <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
         </environment>
     }*@
-<script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
+
 <div class="card" id="﻿LoginArea">
     <div class="body">
         <form id="LoginForm" asp-action="Login" method="post">
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-8 p-t-5">
+                @*<div class="col-xs-8 p-t-5">
                     <div class="checkbox checkbox-danger">
                         <input type="checkbox" name="RememberMe" id="rememberme" value="true">
                         <label for="rememberme">
@@ -65,9 +65,9 @@
                         </label>
                     </div>
 
-                </div>
+                </div>*@
                 <div class="col-xs-4">
-                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
+                    <button id="LoginButton"  class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
                 </div>
             </div>
             @if (Model.IsSelfRegistrationAllowed && 1 == 2)
@@ -79,5 +79,6 @@
                 </div>
             }
         </form>
+        <vc:account-languages></vc:account-languages>
     </div>
 </div>
