@@ -9,8 +9,9 @@ namespace UnionMall.Configuration
     public class ConfigurationAppService : UnionMallAppServiceBase, IConfigurationAppService
     {
         public async Task ChangeUiTheme(ChangeUiThemeInput input)
-        {
+        { 
             await SettingManager.ChangeSettingForUserAsync(AbpSession.ToUserIdentifier(), AppSettingNames.UiTheme, input.Theme);
         }
     }
 }
+ 
