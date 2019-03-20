@@ -10,18 +10,6 @@ $(function () {
         $("input[name='Password']").val(localStorage.getItem("Password"));
     }
 
-    //$loginForm.validate({
-    //    highlight: function (input) {
-    //        $(input).parents('.form-line').addClass('error');
-    //    },
-    //    unhighlight: function (input) {
-    //        $(input).parents('.form-line').removeClass('error');
-    //    },
-    //    errorPlacement: function (error, element) {
-    //        $(element).parents('.input-group').append(error);
-    //    }
-    //});
-
     $loginForm.submit(function (e) {
         e.preventDefault();
         if ($("input[name='TenancyName']").val() == "") {
@@ -32,14 +20,9 @@ $(function () {
             $("input[name='usernameOrEmailAddress']").focus();
             return false;
         }
-
         if ($("input[name='Password']").val() == "") {
             $("input[name='Password']").focus();
             return false;
-        }
-
-        if (!$loginForm.valid()) {
-            return;
         }
         if ($("#rememberme").is(":checked")) {
             localStorage.setItem("remmber", $("#rememberme").val());
@@ -50,7 +33,6 @@ $(function () {
             localStorage.clear();
         }
         $("#LoginButton").attr("disabled", "disabled");
-        debugger;
         abp.ui.setBusy(
             $('#LoginArea'),
 
@@ -58,8 +40,7 @@ $(function () {
                 contentType: 'application/x-www-form-urlencoded',
                 url: $loginForm.attr('action'),
                 data: $loginForm.serialize(),
-                success: function (data) {
-                    debugger;
+                success: function (data) { 
                     if (data != null) {
                         $("#LoginButton").removeAttr("disabled");
                         alert(data.msg);
@@ -70,12 +51,12 @@ $(function () {
                         //    confirmButtonText: 'OK'
                         //})
                     } else {
-                        debugger;
+            
                        // window.location.href = '/';
                     }
                 },
                 fail: function (data) {
-                    debugger;
+                 
                 }
             })
         );
@@ -87,6 +68,5 @@ $(function () {
         $form.find('input[name=provider]').val($a.attr('data-provider'));
         $form.submit();
     });
-
     $loginForm.find('input[type=text]:first-child').focus();
 });

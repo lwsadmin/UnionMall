@@ -101,9 +101,6 @@ namespace UnionMall.Web.Controllers
                 dayStr += $"'{DateTime.Now.AddDays(-i).ToString("MM-dd")}',";
             }
             ViewBag.ConDay = dayStr;
-
-
-
             ViewBag.WeChatLine = WeChatLine;
             ViewBag.AliLine = AliLine;
 
