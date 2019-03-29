@@ -54,14 +54,19 @@
     <Second Name="GoodAsk"  Url="javascript:void(0);"></Second>
   </First>
   <First Name="BusinessManage"  Icon="glyphicon glyphicon-th">
-    <Second Name="OneJia" Url="javascript:void(0);"></Second>
-    <Second Name="TwoJia" Url="javascript:void(0);"></Second>
+    <!--<Second Name="OneJia" Url="javascript:void(0);"></Second>
+    <Second Name="TwoJia" Url="javascript:void(0);"></Second>-->
     <Second Name="UnionBusiness"  Url="/business/business/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
     <Second Name="ChainStore"  Url="/business/chainstore/list">
+      <Action Name="Add" />
+      <Action Name="Edit" />
+      <Action Name="Delete" />
+    </Second>
+      <Second Name="Enter"  Url="/business/chainstore/list">
       <Action Name="Add" />
       <Action Name="Edit" />
       <Action Name="Delete" />

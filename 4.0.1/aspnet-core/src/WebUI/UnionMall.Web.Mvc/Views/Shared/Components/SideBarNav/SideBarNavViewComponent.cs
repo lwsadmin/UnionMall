@@ -33,7 +33,7 @@ namespace UnionMall.Web.Views.Shared.Components.SideBarNav
                 ActiveFisrtMenuItemName = FirstMenu,
                 ActiveSecondMenuItemName = SecondMenu
             };
-
+            var sc = model.MainMenu;
             GetCurrentLoginInformationsOutput s = await _sessionAppService.GetCurrentLoginInformations();
             ViewBag.LoginInfo = s;
             ViewBag.Role = _roleAppService.GetRole(s.User.Id);
