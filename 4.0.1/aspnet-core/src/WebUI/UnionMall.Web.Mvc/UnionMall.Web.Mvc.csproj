@@ -306,6 +306,7 @@
     <Content Update="Areas\GoodsManage\Views\GoodsAttr\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+<<<<<<< HEAD
     <Content Update="Areas\GoodsManage\Views\GoodsComment\List.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
@@ -330,6 +331,8 @@
     <Content Update="Areas\GoodsManage\Views\GoodsSpec\_Table.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+=======
+>>>>>>> parent of b7d819c... 1
     <Content Update="Areas\GoodsManage\Views\Goods\Add.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

@@ -27,8 +27,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Common\CommonSpecValue\Dto\" />
     <Folder Include="Offline\Dto\" />
+=======
+>>>>>>> parent of b7d819c... 1
     <Folder Include="Statistics\Coupon\ReceiveStatistics\Dto\" />
     <Folder Include="Statistics\Coupon\UsedStatistics\Dto\" />
   </ItemGroup>
