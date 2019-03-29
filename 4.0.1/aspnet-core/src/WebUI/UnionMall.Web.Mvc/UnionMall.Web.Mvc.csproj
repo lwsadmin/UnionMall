@@ -44,6 +44,9 @@
     <None Remove="wwwroot\Upload\**" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="wwwroot\Navigation.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="app.config" />
     <None Include="wwwroot\Abp\Framework\scripts\abp.js" />
     <None Include="wwwroot\Abp\Framework\scripts\libs\abp.blockUI.js" />
@@ -162,6 +165,9 @@
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Navigation.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\ArticleInfo\Data\" />
