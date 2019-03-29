@@ -1,5 +1,4 @@
 ﻿using Abp.Application.Services;
-using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using Newtonsoft.Json.Linq;
@@ -9,7 +8,10 @@ using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using UnionMall.Common.Attribute;
+<<<<<<< HEAD
 using UnionMall.Common.Dto;
+=======
+>>>>>>> parent of c5fd376... 1
 using UnionMall.Entity;
 using UnionMall.Goods;
 using UnionMall.IRepositorySql;
@@ -90,6 +92,7 @@ namespace UnionMall.Common.CommonSpec
             s.ValueList = await _valueRepository.GetAllListAsync(c => c.SpecId == Id);
             return s;
         }
+<<<<<<< HEAD
         [RemoteService(IsEnabled = false)]
         public async Task<List<Entity.CommonSpec>> GetDropDown()
         {
@@ -99,6 +102,10 @@ namespace UnionMall.Common.CommonSpec
         }
         [RemoteService(IsEnabled = false)]
         public async Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
+=======
+
+        public Task<string> GetHtmlAttr(long categoryId, long goodsId, int type = 0)
+>>>>>>> parent of c5fd376... 1
         {
 
             StringBuilder sb = new StringBuilder();
@@ -205,7 +212,7 @@ for xml path('')),1,0,'') VName
 from TCommonSpec s left join TGoodsCategory c on s.CategoryId=c.Id
 where s.TenantId={AbpSession.TenantId} {where}  order by id OFFSET {(pageIndex - 1) * pageSize} ROW FETCH NEXT {pageSize} ROWS only";
             }
-            string idSql = $@"select count(id) from TCommonSpec  where tenantid={AbpSession.TenantId} {where.Replace("s.", "")}";
+            string idSql = $@"select count(id) from TCommonSpec  where tenantid={AbpSession.TenantId} {where.Replace("s.","")}";
             return _sqlExecuter.GetPagedList(pageIndex, pageSize, "1", orderBy, out total, idSql, table);
         }
 

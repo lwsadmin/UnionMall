@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using UnionMall.Common.CommonSpec;
 using UnionMall.Controllers;
 using UnionMall.Goods;
@@ -18,6 +17,7 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
     public class GoodsSpecController : UnionMallControllerBase
     {
         private readonly ICommonSpecAppService _AppService;
+<<<<<<< HEAD
         private readonly IGoodsCategoryAppService _catAppService;
         private readonly ISpecValueAppService _valueAppService;
         public GoodsSpecController(ICommonSpecAppService AppService, ISpecValueAppService valueAppService, IGoodsCategoryAppService catAppService)
@@ -25,6 +25,12 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
             _AppService = AppService;
             _valueAppService = valueAppService;
             _catAppService = catAppService;
+=======
+
+        public GoodsSpecController(ICommonSpecAppService AppService)
+        {
+            _AppService = AppService;
+>>>>>>> parent of c5fd376... 1
         }
         public async Task<IActionResult> List(string name, string CatId, int page = 1, int pageSize = 10)
         {
@@ -42,7 +48,10 @@ namespace UnionMall.Web.Mvc.Areas.GoodsManage.Controllers
                 return View("_Table", pageList);
             }
 
+<<<<<<< HEAD
             ViewBag.Category = _catAppService.GetCategoryDropDownList(AbpSession.TenantId, 0);
+=======
+>>>>>>> parent of c5fd376... 1
             return View(pageList);
         }
 
