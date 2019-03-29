@@ -27,8 +27,8 @@ namespace UnionMall.Authorization
             //context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
 
             XmlDocument NavigationXml = new XmlDocument();
-            //string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
-            string currentDirectory = Path.GetFullPath(_HostingEnvironment.WebRootPath + "/Navigation.xml");
+            string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
+            //string currentDirectory = Path.GetFullPath(_HostingEnvironment.WebRootPath + "/Navigation.xml");//该引用会引发异常
             //string[] name = Assembly.GetExecutingAssembly().GetManifestResourceNames();
             // Stream sm = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnionMall.Localization.XmlData.Navigation.xml");
 

@@ -24,8 +24,8 @@ namespace UnionMall.Web.Startup
 
 
             XmlDocument NavigationXml = new XmlDocument();
-            //string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
-            string currentDirectory = Path.GetFullPath(_HostingEnvironment.WebRootPath + "/Navigation.xml");
+            string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
+            //string currentDirectory = Path.GetFullPath(_HostingEnvironment.WebRootPath + "/Navigation.xml");
             //string[] name = Assembly.GetExecutingAssembly().GetManifestResourceNames();
             // Stream sm = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnionMall.Localization.XmlData.Navigation.xml");
             XmlReaderSettings settings = new XmlReaderSettings();

@@ -54,7 +54,6 @@
     <Second Name="GoodAsk"  Url="javascript:void(0);"></Second>
   </First>
   <First Name="BusinessManage"  Icon="glyphicon glyphicon-th">
-
     <Second Name="UnionBusiness"  Url="/business/business/list">
       <Action Name="Add" />
       <Action Name="Edit" />

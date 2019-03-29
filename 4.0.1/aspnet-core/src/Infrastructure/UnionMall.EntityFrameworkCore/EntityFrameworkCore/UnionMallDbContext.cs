@@ -12,7 +12,6 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<GoodsCategory> GoodsCategory { get; set; }
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Business> Business { get; set; }
-
         public DbSet<Goods> Goods { get; set; }
         public DbSet<CommonAttribute> CommonAttribute { get; set; }
         public DbSet<ChainStore> ChainStore { get; set; }
@@ -46,14 +45,11 @@ namespace UnionMall.EntityFrameworkCore
         public DbSet<AliPayNote> AliPayNote { get; set; }
         public DbSet<WeChatPayNote> WeChatPayNote { get; set; }
         public DbSet<OperateModule> OperateModule { get; set; }
-<<<<<<< HEAD
         public DbSet<CommonSpecValue> CommonSpecValue { get; set; }
         public DbSet<CommonSpec> CommonSpec { get; set; }
         public DbSet<CommonSpecObject> CommonSpecObject { get; set; }
         public DbSet<GlobalSet> GlobalSet { get; set; }
         public DbSet<ChainStoreCapitalNote> ChainStoreCapitalNote { get; set; }
-=======
->>>>>>> parent of b7d819c... 1
         public UnionMallDbContext(DbContextOptions<UnionMallDbContext> options)
             : base(options)
         {

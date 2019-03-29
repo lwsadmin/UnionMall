@@ -166,7 +166,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Total")@L("Count")</label>
-                                        <input type="number" name="StockCount" value="@Model.Goods.Stock" class="form-control" required>
+                                        <input type="number" name="Stock" value="@Model.Goods.Stock" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>@L("Belong")@L("Store")</label>
@@ -249,7 +249,6 @@
 <script src="~/lib/admin/js/plugins/chosen/chosen.jquery.js" asp-append-version="true"></script>
 <script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
 <script>
-<<<<<<< HEAD
     var img = '@Model.Goods.Image';
     $("#Goods_CategoryId").on("change", function () {
         var s = $(this).val();
@@ -263,83 +262,6 @@
 
                 for (var i = 0; i < data.length; i++) {
                     $("#Goods_BrandId").append("<option value='" + data[i].id + "'>" + data[i].title+"</option>");
-=======
-    language = $("#CurrentLanguage").attr("data-lan");
-    if (language == "zh-Hans") {
-        $.getScript('http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js', function () {
-        });
-        $.getScript('/lib/fileinput/js/locales/zh.js', function () {
-        });
-    }
-</script>
-<script>
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        // e.target // newly activated tab
-        if (String(e.target).indexOf("GoodsAttr") != -1) {
-            if ($("#Goods_CategoryId").val()!="") {
-                //$("#searchForm").attr("data-ajax-update", "#tableChat");
-                $("#attrForm").attr("action", "/goodsmanage/goods/GetAttr?goodsId="+$("input[name='Id']").val()+"&catid=" + $("#Goods_CategoryId").val());
-                $("#attrForm").submit();
-                // GetChartData();
-           //     alert(1);
-            }
-
-        }
-        // e.relatedTarget // previous active tab
-    })
-    $(function () {
-        var imgArray = [];
-        var img = '@Model.Goods.Image';
-        if (img != '') {
-            imgArray.push(img);
-        }
-        $('.chosen-select').chosen({ width: "100%" });
-        $("#formPost").validate({});
-        $("#input").fileinput({
-            language: $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es',
-            showRemove: false,
-            showUpload: false,
-            allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
-            showUploadedThumbs: false,
-            uploadUrl: "/Common/Upload",
-            initialPreview: imgArray,
-            showClose: false,
-            showCancel: false,
-            slugCallback: function (filename) {
-                return filename.replace('(', '_').replace(']', '_');
-            }
-        });
-        //选择文件后处理事件
-        $("#input").on("filebatchselected", function (event, files) {
-            //执行文件上传方法
-            $("#input").fileinput("upload");
-        });
-        //上传成功后处理方法
-        $("#input").on("fileuploaded", function (event, data, previewId, index) {
-            var url = data.response.result.url;
-            debugger;
-            $("input[name='Image']").val(url);
-            //$(".hid" + index).val(url).addClass(previewId);
-        });
-
-        var _Service = abp.services.app.goods;
-        $("#formPost").on("submit", function (e) {
-            e.preventDefault();
-            if (!$(this).valid()) {
-                return;
-            }
-            var goods = $(this).serializeFormToObject();
-            goods.categoryId = $("#Goods_CategoryId").val();
-            goods.brandId = $("#Goods_BrandId").val();
-            goods.chainStoreId = $("#Goods_ChainStoreId").val();
-            goods.type = $("#Goods_Type").val();
-            var EditDto = {};
-            EditDto.goods = goods;
-            var imgArray = [];
-            for (var i = 0; i < 7; i++) {
-                if ($("#Url" + i).val() == "") {
-                    continue;
->>>>>>> parent of b7d819c... 1
                 }
                 $("#Goods_BrandId").trigger("chosen:updated");
             }).fail(function (data) {

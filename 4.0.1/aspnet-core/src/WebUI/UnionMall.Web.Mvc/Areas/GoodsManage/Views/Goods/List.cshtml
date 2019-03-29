@@ -19,11 +19,7 @@
 </script>
 <style>
     #formPost .chosen-single {
-<<<<<<< HEAD
         height: 34px !important;
-=======
-        height: 34px !important;++
->>>>>>> parent of b7d819c... 1
         font-size: 14px;
     }
 
@@ -111,13 +107,10 @@
                                             <option value="">-@L("GoodsCategory")-</option>
                                             @foreach (var item in ViewBag.Category)
                                             {
-
                                                 <option value="@item.Id">@item.Title</option>
-
                                             }
                                         </select>
                                     </div>
-
 
                                 </div>
                                 <div class="form-group">
@@ -126,9 +119,7 @@
                                             <option value="">-@L("Belong")@L("Store")-</option>
                                             @foreach (var item in ViewBag.Store)
                                             {
-
                                                 <option value="@item.Id">@item.Name</option>
-
                                             }
                                         </select>
                                     </div>
@@ -139,11 +130,14 @@
                                             <option value="">-@L("Belong")@L("Brand")-</option>
                                             @foreach (var item in ViewBag.Brand)
                                             {
-
                                                 <option value="@item.Id">@item.Title</option>
-
                                             }
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="m-b">
+                                        @Html.DropDownList("status", (SelectList)ViewData["GoodsType"], "-" + L("Goods") + L("Status") + "-", new { @class = "form-control chosen-select" })
                                     </div>
                                 </div>
                                 <div class="form-group">

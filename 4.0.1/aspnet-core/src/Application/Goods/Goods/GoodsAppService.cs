@@ -90,7 +90,7 @@ namespace UnionMall.Goods
             if (string.IsNullOrEmpty(table))
             {
                 table = $@"select g.id,g.Image,g.Status,g.Sort,g.Click,g.SellCount,g.Name,c.Title,
-b.Title BTitle,s.Name StoreName, g.Price,g.RetailPrice from dbo.TGoods g left join dbo.TGoodsCategory c
+b.Title BTitle,s.Name StoreName,cast(g.Price as float) Price ,cast(g.RetailPrice as float) RetailPrice from dbo.TGoods g left join dbo.TGoodsCategory c
 on g.CategoryId=c.Id left join dbo.TBrand b on g.BrandId=b.Id
 left join dbo.TChainStore s on g.chainstoreid=s.Id
 where 1=1";

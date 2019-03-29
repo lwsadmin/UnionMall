@@ -100,7 +100,7 @@ namespace UnionMall.Web.Controllers
 
         [HttpPost]
         [UnitOfWork]
-        [IgnoreAntiforgeryToken]
+        //[IgnoreAntiforgeryToken]
         public virtual async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
             returnUrl = NormalizeReturnUrl(returnUrl);
@@ -119,7 +119,7 @@ namespace UnionMall.Web.Controllers
                         await _signInManager.SignInAsync(loginResult.Identity, loginModel.RememberMe);
 
                         await UnitOfWorkManager.Current.SaveChangesAsync();
-                        //  await _log.WriteLog($"{loginModel.UsernameOrEmailAddress}登录系统");
+                      //  await _log.WriteLog($"{loginModel.UsernameOrEmailAddress}登录系统");
                         return Json(new AjaxResponse { Success = true, TargetUrl = returnUrl });
                     //return Json(new { succ = true, TargetUrl = returnUrl });
                     case AbpLoginResultType.InvalidUserNameOrEmailAddress:
