@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+@using System.Data
+@using UnionMall.Entity;
+
+<div class="modal inmodal fade in" id="CreateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h5 class="modal-title">@L("OperateModule")</h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <form method="post" id="formPost" class="form-horizontal">
+                            <input type="hidden" name="Id" value="" />
+                            <input type="hidden" name="TenantId" value="" />
+                            <input type="hidden" name="KeyName" value="" />
+                            <input type="hidden" name="Visabled" value="" />
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Title")</label>
+
+                                <div class="col-sm-10"><input type="text" name="Title" value="" class="form-control" required maxlength="10"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Image")</label>
+
+                                <div class="col-sm-10">
+                                    <input type="hidden" name="Icon" value="" />
+                                    <input id="input" title="" name="File" type="file" class="file" data-show-preview="false">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Link")</label>
+
+                                <div class="col-sm-10"><input type="text" name="LinkUrl" value="" class="form-control"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Sort")</label>
+                                <div class="col-sm-10">
+                                    <input type="number" name="Sort" value="" class="form-control" step="1" required>
+                                    <span class="help-block m-b-none">@L("SortTip")</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@L("Note")</label>
+                                <div class="col-sm-10">
+                                    <textarea name="Memo" class="form-control" maxlength="200" rows="5" cols="8"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">@L("Cancel")</button>
+                                <button id="Save" type="submit" class="btn btn-primary">@L("Save")</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

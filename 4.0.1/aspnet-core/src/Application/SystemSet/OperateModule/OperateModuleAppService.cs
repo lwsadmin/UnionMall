@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
+using UnionMall.Entity;
 using UnionMall.IRepositorySql;
 
 namespace UnionMall.SystemSet
@@ -77,6 +78,33 @@ m2.TenantId=0 and m2.keyName
             }
 
 
+        }
+        public async Task Edit(OperateModule query)
+        {
+            using (_unitOfWorkManager.Current.DisableFilter(AbpDataFilters.MayHaveTenant))
+            {
+                // var query = await _Repository.FirstOrDefaultAsync(c => c.Id == model.Id);
+                if (query.TenantId == 0)
+                {
+                    Entity.OperateModule module = new Entity.OperateModule();
+                    query.TenantId = (int)AbpSession.TenantId;
+                    module.KeyName = query.KeyName;
+                    module.Type = query.Type;
+                    module.Title = query.Title;
+                    module.TenantId = (int)AbpSession.TenantId;
+                    module.Visabled = !query.Visabled;
+                    module.Memo = query.Memo;
+                    module.LinkUrl = query.LinkUrl;
+                    module.Icon = query.Icon;
+                    module.Sort = query.Sort;
+                    await _Repository.InsertAsync(module);
+                }
+                else
+                {
+                    // model.TenantId = (int)AbpSession.TenantId;
+                    await _Repository.UpdateAsync(query);
+                }
+            }
         }
     }
 }

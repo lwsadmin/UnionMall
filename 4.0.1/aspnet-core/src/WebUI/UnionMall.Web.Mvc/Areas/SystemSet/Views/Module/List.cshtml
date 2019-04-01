@@ -6,6 +6,15 @@
 @using System.Data
 @using X.PagedList
 @model PagedList<DataRow>
+
+
+<style>
+    #pic {
+        position: fixed;
+        display: none;
+        z-index: 10;
+    }
+</style>
 <link href="~/lib/admin/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" asp-append-version="true" />
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
@@ -36,7 +45,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-wrench"></i>
                         </a>
-                   
+
                         <a class="close-link">
                             <i class="fa fa-times"></i>
                         </a>
@@ -62,9 +71,15 @@
             </div>
         </div>
     </div>
+    <div id="DivAdd">
+        @Html.Partial("_Add")
+    </div>
 </div>
 <script src="~/js/jquery.unobtrusive.js" asp-append-version="true"></script>
-
+<link href="~/lib/fileinput/css/fileinput.min.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/lib/fileinput/js/fileinput.js" asp-append-version="true"></script>
+<script src="~/lib/fileinput/js/locales/zh.js" asp-append-version="true"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
 <script>
 
     function change(id) {
@@ -87,5 +102,64 @@
             .always(function (data) { });
     }
 
+    var language = $("#CurrentLanguage").attr("data-lan") == 'zh-Hans' ? 'zh' : 'es';
+    $("#input").fileinput({
+        language: language,
+        showRemove: false,
+        showUpload: false,
+        allowedFileExtensions: ['jpg', 'png', 'jpeg'],//接收的文件后缀
+        showUploadedThumbs: false,
+        uploadUrl: "/Common/Upload",
+        showClose: false,
+        showCancel: false,
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+
+    //选择文件后处理事件
+    $("#input").on("filebatchselected", function (event, files) {
+        //执行文件上传方法
+        $("#input").fileinput("upload");
+    });
+    //上传成功后处理方法
+    $("#input").on("fileuploaded", function (event, data, previewId, index) {
+        var url = data.response.result.url;
+        $("input[name='Icon']").val(url);
+        //$(".hid" + index).val(url).addClass(previewId);
+    });
+    function Edit(Id,TenantId,title,icon,linkurl,keyname,sort,memo,Visabled)
+    {
+
+
+        $("input[name='Id']").val(Id);
+        $("input[name='TenantId']").val(TenantId);
+       $("input[name='Title']").val(title);
+     $("input[name='KeyName']").val(keyname);
+     $("input[name='Visabled']").val(Visabled);
+     $("input[name='Icon']").val(icon);
+    $("input[name='LinkUrl']").val(linkurl);
+
+    $("input[name='Sort']").val(sort);
+
+    $("textarea[name='Memo']").val(memo);
+
+      $("#CreateModal").modal('show');
+    }
+
+            $("#Save").click(function (e) {
+            e.preventDefault();
+            if (!$("#formPost").valid()) {
+                return;
+            }
+            var EditDto = $("#formPost").serializeFormToObject();
+                var _Service = abp.services.app.operateModule;
+                _Service.edit(EditDto).done(function (data) {
+                    $("#CreateModal").modal('hide');
+                    $("#searchForm").submit();
+
+            }).fail(function (data) {
+            }).always(function (data) { });
+        });
 
 </script>

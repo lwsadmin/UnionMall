@@ -11,6 +11,7 @@
     <thead>
         <tr>
             <th>@L("Title")</th>
+            <th>@L("Image")</th>
             <th>@L("Link")</th>
             <th>@L("Sort")</th>
             <th>@L("Note")</th>
@@ -21,31 +22,33 @@
     <tbody>
         @foreach (DataRow item in Model)
         {
-        <tr>
-            <td class="title">@item["Title"]</td>
-
-            <td>@item["LinkUrl"]</td>
-            <td>@item["Sort"]</td>
-            <td>@item["Memo"]</td>
-            @if (Convert.ToBoolean(item["visabled"]))
-            {
-                <td class="text-info">@L("Open")</td>
-            }
-            else
-            {
-                <td class="text-danger">@L("Close")</td>
-            }
-            <td>
+            <tr>
+                <td class="title">@item["Title"]</td>
+                <td class="img"><img style="height:15px;" src="@item["Icon"]" alt="Alternate Text" onerror="this.src='/img/nopic.png'" /></td>
+                <td>@item["LinkUrl"]</td>
+                <td>@item["Sort"]</td>
+                <td>@item["Memo"]</td>
                 @if (Convert.ToBoolean(item["visabled"]))
                 {
-                    <a onclick="change(@item["Id"])" title="@L("Close")"><i class="fa fa-toggle-on fa-lg" aria-hidden="true"></i></a>
+                    <td class="text-info">@L("Open")</td>
                 }
                 else
                 {
-                    <a onclick="change(@item["Id"])" title="@L("Open")"><i class="fa fa-toggle-off fa-lg" aria-hidden="true"></i></a>
+                    <td class="text-danger">@L("Close")</td>
                 }
-            </td>
-        </tr>
+                <td>
+                    <a style="margin-right:20px;" onclick="Edit('@item["Id"]','@item["TenantId"]','@item["Title"]','@item["icon"]','@item["linkurl"]','@item["keyname"]','@item["sort"]','@item["memo"]','@item["Visabled"]')" title="@L("Edit")" data-id="@item["Id"]"><i class="fa fa-edit text-navy"></i></a>
+                    @if (Convert.ToBoolean(item["visabled"]))
+                    {
+                        <a onclick="change(@item["Id"])" title="@L("Close")"><i class="fa fa-toggle-on fa-lg" aria-hidden="true"></i></a>
+                    }
+                    else
+                    {
+                        <a onclick="change(@item["Id"])" title="@L("Open")"><i class="fa fa-toggle-off fa-lg" aria-hidden="true"></i></a>
+                    }
+
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -70,6 +73,24 @@
         }
 ))
 <script>
+    $(".img").hover(function () {
+        $(this).append("<img src='" + $(this).find("img").attr("src") + "' id='pic'/>");
+        $(".img").mousemove(function (e) {
+            var h = window.screen.height;
+            var showY = showY - $("#table").offset().top;
+            var showX = e.pageX;
+            if (e.pageY + $("#pic").height() + 100 >= h) {
+                showY = h - $("#pic").height() - 100;
+            }
+            $("#pic").css({
+                "top": e.pageY,
+                "left": (showX)
+            }).fadeIn(500);
+        });
+    }, function () {
+        $("#pic").remove();
+    });
+
     var txt = $("input[name='title']").val().trim();
     if (txt.length > 0) {
         $(".title").each(function () {

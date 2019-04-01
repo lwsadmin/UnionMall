@@ -11,5 +11,6 @@ namespace UnionMall.SystemSet
     {
         DataSet GetPage(int pageIndex, int pageSize, string orderBy, out int total, string where = "", string table = "");
         Task ChangeStatus(long id);
+        Task Edit(UnionMall.Entity.OperateModule model);
     }
 }
