@@ -1,0 +1,317 @@
+﻿@using UnionMall.Web.Startup
+
+<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+<style>
+    .tablebox table, tbody, tfoot, thead, tr, th, td {
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 0px;
+    }
+
+    .tablebox {
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+    }
+
+        .tablebox table {
+            width: 100%;
+        }
+
+            .tablebox table th, .tablebox table td {
+                font-size: 12px;
+                text-align: center;
+                line-height: 36px;
+            }
+
+            .tablebox table th {
+                color: #1ab394;
+                background-color: #f6f6f6;
+            }
+
+            .tablebox table td img {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+        .tablebox.table_md table td, .tablebox.table_md table th {
+            line-height: 40px;
+        }
+</style>
+<input type="hidden" id="Male" value="@L("Male")" />
+<input type="hidden" id="Female" value="@L("Female")" />
+<input type="hidden" id="addMember" value="@L("Add")@L("Member")" />
+<div class="row  border-bottom white-bg dashboard-header">
+    <div class="col-md-8">
+        <div id="wm"></div>
+    </div>
+    <div class="col-md-4">
+        <div class="statistic-box">
+            <div id="member"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content tablebox">
+                            <table id="tableId" border="0" class="table" cellpadding="0">
+                                <thead>
+                                    <tr>
+                                        <th>@L("Member")</th>
+                                        <th>@L("Consume")</th>
+                                        <th>@L("Time")</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in ViewBag.Consume.Rows)
+                                    {
+                                        <tr>
+                                            <td>@item["WeChatName"]</td>
+                                            <td>@L(Enum.GetName(typeof(UnionMall.Entity.ConsumeType), item["Type"]))</td>
+                                            <td>@item["CreationTime"]</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content tablebox">
+                            <div id="con" style="min-width:400px;height:400px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function ()
+    {
+
+            toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "progressBar": true,
+            "preventDuplicates": false,
+            "positionClass": "toast-bottom-full-width",
+            "showDuration": "4000",
+            "hideDuration": "1000",
+            "timeOut": "10000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr.error("您的账户将于@(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"))日到期，为了不影响您的使用， 请您及时续费。", "提醒")
+
+
+
+    // Build the chart
+Highcharts.chart('member', {
+		chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+		},
+		title: {
+				text: ''
+		},credits: {
+                    enabled: false // 禁用版权信息
+                },
+		tooltip: {
+           // pointFormat: '<strong style="font-size:16px;">{series.name}</strong>: <strong>{point.percentage:.0f}</strong>'
+            style: { color: 'black', fontSize: '20px' },
+		},
+		plotOptions: {
+				pie: {
+						allowPointSelect: true,
+						cursor: 'pointer',
+						dataLabels: {
+								enabled: false
+						},
+						showInLegend: true
+				}
+		},
+		series: [{
+				name: '@Html.Raw(L("Count"))',
+				colorByPoint: true,
+            data: [@Html.Raw(ViewBag.TotalMember)]
+		}]
+});
+
+
+    });
+
+
+    // 参数1 tableID,参数2 div高度，参数3 速度，参数4 tbody中tr几条以上滚动
+    tableScroll('tableId', 400, 50, 10);
+    var MyMarhq;
+
+    function tableScroll(tableid, hei, speed, len)
+    {
+        clearTimeout(MyMarhq);
+        $('#' + tableid).parent().find('.tableid_').remove()
+        $('#' + tableid).parent().prepend(
+            '<table class="tableid_"><thead>' + $('#' + tableid + ' thead').html() + '</thead></table>'
+        ).css({
+            'position': 'relative',
+            'overflow': 'hidden',
+            'height': hei + 'px'
+        })
+        $(".tableid_").find('th').each(function (i)
+        {
+            $(this).css('width', $('#' + tableid).find('th:eq(' + i + ')').width());
+        });
+        $(".tableid_").css({
+            'position': 'absolute',
+            'top': 0,
+            'left': 0,
+            'z-index': 9
+        })
+        $('#' + tableid).css({
+            'position': 'absolute',
+            'top': 0,
+            'left': 0,
+            'z-index': 1
+        })
+
+        if ($('#' + tableid).find('tbody tr').length > len)
+        {
+            $('#' + tableid).find('tbody').html($('#' + tableid).find('tbody').html() + $('#' + tableid).find('tbody').html());
+            $(".tableid_").css('top', 0);
+            $('#' + tableid).css('top', 0);
+            var tblTop = 0;
+            var outerHeight = $('#' + tableid).find('tbody').find("tr").outerHeight();
+
+            function Marqueehq()
+            {
+                if (tblTop <= -outerHeight * $('#' + tableid).find('tbody').find("tr").length)
+                {
+                    tblTop = 0;
+                } else
+                {
+                    tblTop -= 1;
+                }
+                $('#' + tableid).css('margin-top', tblTop + 'px');
+                clearTimeout(MyMarhq);
+                MyMarhq = setTimeout(function ()
+                {
+                    Marqueehq()
+                }, speed);
+            }
+
+            MyMarhq = setTimeout(Marqueehq, speed);
+            $('#' + tableid).find('tbody').hover(function ()
+            {
+                clearTimeout(MyMarhq);
+            }, function ()
+            {
+                clearTimeout(MyMarhq);
+                if ($('#' + tableid).find('tbody tr').length > len)
+                {
+                    MyMarhq = setTimeout(Marqueehq, speed);
+                }
+            })
+        }
+
+    }
+    var chart = Highcharts.chart('wm', {
+        chart: {type: 'column'},
+        title: {text: $("#addMember").val()},credits: {
+                    enabled: false // 禁用版权信息
+                },
+        subtitle: { text: ''},
+        xAxis: {
+            categories: [@Html.Raw(ViewBag.Data)],
+            crosshair: true
+        },
+        yAxis: {min: 0, title: { text: ''}, },
+        tooltip: {
+            // head + 每个 point + footer 拼接成完整的 table
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: $("#Male").val(),
+            color:'#1ab394',
+            data: [@ViewBag.M]
+        },{
+                name: $("#Female").val(),
+                color: '#f8ac59',
+            data: [@ViewBag.W]
+        }]
+    });
+
+
+var chartMoney= Highcharts.chart('con', {
+	chart: {
+		type: 'spline'
+	},
+	title: {
+		text: '@Html.Raw(L("WeChat")+L("AliPayIncomeStatistics"))'
+	},
+	subtitle: {
+		text: ''
+	},
+	xAxis: {
+		categories: [@Html.Raw(ViewBag.ConDay)]
+	},
+	yAxis: {
+		title: {
+			text: ''
+		},
+		labels: {
+			formatter: function () {
+				return this.value + '';
+			}
+		}
+	},
+	tooltip: {
+		crosshairs: true,
+		shared: true
+	},
+	plotOptions: {
+		spline: {
+			marker: {
+				radius: 4,
+				lineColor: '#666666',
+				lineWidth: 1
+			}
+		}
+	},
+	series: [{
+		name: '@Html.Raw(L("WeChat"))',
+        color:'#44b549',
+		data: [@ViewBag.WeChatLine ]
+	}, {
+		name: '@Html.Raw(L("AliPay"))',
+        color:'#00bbee',
+		data: [@ViewBag.AliLine]
+	}]
+});
+</script>
