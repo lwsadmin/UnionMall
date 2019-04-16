@@ -24,13 +24,13 @@ namespace UnionMall.Web.Startup
 
 
             XmlDocument NavigationXml = new XmlDocument();
-            string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
+           // string currentDirectory = Path.GetFullPath("../../Domain/Localization/XmlData/Navigation.xml");
             //string currentDirectory = Path.GetFullPath(_HostingEnvironment.WebRootPath + "/Navigation.xml");
             //string[] name = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            // Stream sm = Assembly.GetExecutingAssembly().GetManifestResourceStream("UnionMall.Localization.XmlData.Navigation.xml");
+            Stream sm = Assembly.Load("UnionMall.Core").GetManifestResourceStream("UnionMall.Localization.XmlData.Navigation.xml");
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreComments = true; //忽略注释
-            XmlReader reader = XmlReader.Create(currentDirectory, settings);
+            XmlReader reader = XmlReader.Create(sm, settings);
 
             NavigationXml.Load(reader);
             XmlNodeList List = NavigationXml.SelectNodes("//Navigation//First");
