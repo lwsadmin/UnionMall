@@ -65,7 +65,7 @@ namespace UnionMall.Web.Startup
                 }
             });
 
-
+            app.Map("/ws", SocketHandler.Map);
             app.UseAbp(); // Initializes ABP framework.
 
             if (env.IsDevelopment())

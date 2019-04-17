@@ -6,7 +6,7 @@ using System.Threading;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
-namespace UnionMall.Common
+namespace UnionMall.Web.Startup
 {
     public class SocketHandler
     {
@@ -40,7 +40,11 @@ namespace UnionMall.Common
                 switch (type)
                 {
                     case "goods":
-                        await this.socket.SendAsync(utf8.GetBytes(type), WebSocketMessageType.Text, true, CancellationToken.None);
+                        for (int i = 0; i < 10; i++)
+                        {
+                            await this.socket.SendAsync(utf8.GetBytes(type), WebSocketMessageType.Text, true, CancellationToken.None);
+                        }
+                     
                         break;
                     case "member":
                         await this.socket.SendAsync(utf8.GetBytes(type), WebSocketMessageType.Text, true, CancellationToken.None);
@@ -58,7 +62,7 @@ namespace UnionMall.Common
         {
             if (!hc.WebSockets.IsWebSocketRequest)
                 return;
-            string type = hc.Request.Query["type"];
+            string type = "goods";// hc.Request.Query["type"];
 
             // string  sc = hc.Request.Form.Keys.ToString() ;
             var socket = await hc.WebSockets.AcceptWebSocketAsync();
