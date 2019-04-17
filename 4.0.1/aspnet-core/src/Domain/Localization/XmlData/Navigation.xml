@@ -64,7 +64,6 @@
       <Action Name="Edit" />
       <Action Name="Delete" />
     </Second>
-    <Second Name="Test"  Url="javascript:void(0);"></Second>
   </First>
   <First Name="UnionMember" Icon="glyphicon glyphicon-user">
     <Second Name="MemberLevel" Url="/member/memberlevel/list">
