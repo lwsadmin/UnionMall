@@ -20,6 +20,7 @@ using UnionMall.Enum;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace UnionMall.Common
 {
@@ -29,13 +30,16 @@ namespace UnionMall.Common
         private readonly IAbpSession _AbpSession;
         private readonly IHostingEnvironment _HostingEnvironment;
         private readonly ISqlExecuter _sqlExecuter;
-        public CommonAppService(IRepository<MultiTenancy.Tenant> Repository, IAbpSession AbpSession,
+        //https://www.cnblogs.com/MicroHeart/p/9448869.html
+        private readonly IMemoryCache _memoryCache;
+        public CommonAppService(IRepository<MultiTenancy.Tenant> Repository, IAbpSession AbpSession, IMemoryCache memoryCache,
             IHostingEnvironment HostingEnvironment, ISqlExecuter sqlExecuter)
 
         {
             _Repository = Repository;
             _AbpSession = AbpSession;
             _HostingEnvironment = HostingEnvironment;
+            _memoryCache = memoryCache;
             _sqlExecuter = sqlExecuter;
         }
         [RemoteService(IsEnabled = false)]
@@ -50,6 +54,14 @@ namespace UnionMall.Common
             try
             {
                 DataTable dt = _sqlExecuter.ExecuteDataSet(sql).Tables[0];
+
+                //1、滑动过期时间  缓存在两秒内没有被命中，则失效，命中后缓存时间又变为2秒
+                _memoryCache.Set("DataTableToExcel", "0", new MemoryCacheEntryOptions()
+                {
+                    SlidingExpiration = new TimeSpan(0, 0, 10),
+                    Priority = CacheItemPriority.NeverRemove
+                });
+
                 workbook = new XSSFWorkbook();
                 ms = new MemoryStream();
                 sheet = workbook.CreateSheet();
@@ -63,6 +75,11 @@ namespace UnionMall.Common
                     foreach (DataColumn column in dt.Columns)
                         dataRow.CreateCell(column.Ordinal).SetCellValue(row[column].ToString());
                     ++rowIndex;
+                    _memoryCache.Set("DataTableToExcel", (dt.Rows.Count/rowIndex), new MemoryCacheEntryOptions()
+                    {
+                        SlidingExpiration = new TimeSpan(0, 0, 10),
+                        Priority = CacheItemPriority.NeverRemove
+                    });
                 }
                 //列宽自适应，只对英文和数字有效
                 for (int i = 0; i <= dt.Columns.Count; ++i)
@@ -317,6 +334,11 @@ namespace UnionMall.Common
             {
                 return false;
             }
+        }
+
+        public  object GetMemoryCache(string key)
+        {
+            return _memoryCache.Get(key);
         }
     }
 }

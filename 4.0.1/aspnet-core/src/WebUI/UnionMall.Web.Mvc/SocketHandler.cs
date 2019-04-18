@@ -5,6 +5,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace UnionMall.Web.Startup
 {
@@ -14,10 +15,11 @@ namespace UnionMall.Web.Startup
 
         WebSocket socket;
         static readonly Encoding utf8 = Encoding.UTF8;
-
+        private readonly IMemoryCache _memoryCache;
         SocketHandler(WebSocket socket)
         {
             this.socket = socket;
+            //_memoryCache = memoryCache;
         }
 
         async Task EchoLoop(string type)
@@ -44,10 +46,16 @@ namespace UnionMall.Web.Startup
                         {
                             await this.socket.SendAsync(utf8.GetBytes(type), WebSocketMessageType.Text, true, CancellationToken.None);
                         }
-                     
                         break;
                     case "member":
-                        await this.socket.SendAsync(utf8.GetBytes(type), WebSocketMessageType.Text, true, CancellationToken.None);
+
+                        //string progress = _memoryCache.Get("DataTableToExcel").ToString();
+                        for (int i = 0; i < 100; i++)
+                        {
+                            await this.socket.SendAsync(utf8.GetBytes((i).ToString()), WebSocketMessageType.Text, true, CancellationToken.None);
+                            Thread.Sleep(30);
+                        }
+
                         break;
                     default:
                         break;
@@ -62,7 +70,7 @@ namespace UnionMall.Web.Startup
         {
             if (!hc.WebSockets.IsWebSocketRequest)
                 return;
-            string type = "goods";// hc.Request.Query["type"];
+            string type = hc.Request.Query["type"];
 
             // string  sc = hc.Request.Form.Keys.ToString() ;
             var socket = await hc.WebSockets.AcceptWebSocketAsync();

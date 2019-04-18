@@ -28,6 +28,7 @@ namespace UnionMall.Web.Startup
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();//添加MemoryCache组件
             // MVC
             services.AddMvc(
                 options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
